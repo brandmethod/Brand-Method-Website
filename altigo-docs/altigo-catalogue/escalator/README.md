@@ -75,5 +75,28 @@ stacks, so a machine with the licensed brand fonts installed uses them; everyone
 else gets Outfit, which is metrically close. Body text is IBM Plex Sans and
 labels are Inter — both exactly as in the source document.
 
-The corner stripe and all icons are vector, and the civil drawings on slide 10
-are inline SVG rather than a raster image, so they stay sharp in print.
+**No containers.** Structure is carried by the twelve-column grid, hairline
+rules, the type scale and white space. There are no cards, panels, pills, tinted
+blocks, icon tiles or rounded corners anywhere in the deck. The only two shapes
+that survive are the brand devices from the print edition: the red rule under
+each title, and the corner stripe.
+
+Photography is used flush and, where it earns the room, bled to the slide edge —
+the introduction and the device list both run their image off the right and
+bottom. The corner stripe, every icon and the civil drawings on slide 10 are
+vector, so they stay sharp at any size.
+
+**Image resolution.** Every photograph is carried at the native resolution of
+the 2026 print PDF, with no downscaling; the cover keeps its original JPEG
+stream byte-for-byte and the logo and safety diagram are lossless PNG. The rest
+are re-encoded once at quality 95 with 4:4:4 chroma, which is visually lossless.
+That is why `index.html` is around 4 MB.
+
+Several source photographs are small — the eight safety details range from 302
+to 616 px wide — so the layouts place them at or below native size. If sharper
+originals ever turn up, drop them into `assets/` under the same names and
+re-run `build.py`; nothing else needs to change.
+
+The stage is scaled with `zoom` rather than `transform`, on screen as well as in
+print. `zoom` relayouts, so text is re-rasterised and images are sampled at the
+displayed size instead of being resampled from a scaled layer.

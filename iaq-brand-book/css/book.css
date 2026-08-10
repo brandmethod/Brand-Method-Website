@@ -815,3 +815,10 @@ strong{font-weight:600;color:var(--ink)}
   .slide .rule::before{width:88px!important;animation:none!important}
   .leader path{stroke-dashoffset:0!important;animation:none!important}
 }
+
+/* inline capability icon used inside key/value rows (applications) */
+.kvi{
+  flex:none;width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:square;stroke-linejoin:miter;opacity:.55;
+}
+.dark .kvi{opacity:.7}

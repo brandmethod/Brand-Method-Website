@@ -6,7 +6,8 @@ Inlines css/book.css, js/book.js and every asset in assets/ as data URIs, so
 the result is one file that can be emailed, dropped on a USB stick or opened
 by double-click with no folder structure around it.
 
-    python3 build.py                → dist/IAQ-Brand-Identity-Book.html
+    python3 build.py    → dist/IAQ-Brand-Identity-Book.html   (share / download)
+                        → dist/artifact.html                 (artifact host)
 
 Everything still works in the single file: page turns, the index overlay,
 section rail, deep links and print/PDF export. Fonts still come from their
@@ -23,6 +24,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT_DIR = os.path.join(HERE, "dist")
 OUT_FILE = os.path.join(OUT_DIR, "IAQ-Brand-Identity-Book.html")
+ART_FILE = os.path.join(OUT_DIR, "artifact.html")
 
 
 def read(path):
@@ -77,10 +79,28 @@ def build():
     with open(OUT_FILE, "w", encoding="utf-8") as fh:
         fh.write(html)
 
+    # 4b. artifact variant: same page with the document scaffolding stripped,
+    #     because the artifact host supplies <!doctype>/<head>/<body> itself.
+    #     The font CDN links are dropped too — the artifact CSP blocks them, so
+    #     leaving them in would only produce a silent failed request.
+    head = re.search(r"<head>(.*?)</head>", html, re.S).group(1)
+    body = re.search(r"<body>(.*?)</body>", html, re.S).group(1)
+    style = re.search(r"<style>.*?</style>", head, re.S).group(0)
+    with open(ART_FILE, "w", encoding="utf-8") as fh:
+        fh.write(
+            "<title>IAQ · Brand Identity Book — Brand OS v3.1</title>\n"
+            "<!-- Artifact build: the font CDNs are blocked by the artifact CSP, so\n"
+            "     this view falls back to system faces; the downloadable single file\n"
+            "     sets in Switzer, Instrument Sans and JetBrains Mono. -->\n"
+            + style + "\n" + body
+        )
+
     size = os.path.getsize(OUT_FILE) / 1048576.0
     print("  %s pages" % html.count('<section class="slide'))
     print("  %s assets inlined" % (len(assets) - len(skipped)))
     print("  %.1f MB  →  %s" % (size, os.path.relpath(OUT_FILE, HERE)))
+    print("  %.1f MB  →  %s" % (os.path.getsize(ART_FILE) / 1048576.0,
+                                os.path.relpath(ART_FILE, HERE)))
     return 1 if skipped else 0
 
 

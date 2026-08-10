@@ -31,6 +31,8 @@ Open `index.html` in any browser.
 | `←` `→` `Space` `PgUp` `PgDn` | Previous / next slide |
 | `Home` / `End` | First / last slide |
 | `G` or **Grid** | All eleven slides as thumbnails |
+| Click any photograph | Open it full size; `←` `→` step through all 17, `Esc` closes |
+| Swipe left / right | Previous / next slide on touch screens |
 | `S` | Toggle **Slides** (one at a time) ↔ **Scroll** (continuous) |
 | `P` or **Print · PDF** | Print dialogue |
 | `#01` … `#11` in the URL | Deep-link to a slide |
@@ -73,24 +75,17 @@ Colours, typography, logo, the corner stripe and all photography follow the
 2026 print edition. `Axiforma` and `Ardela Edge X01` are named first in the font
 stacks, so a machine with the licensed brand fonts installed uses them; everyone
 else gets Outfit, which is metrically close. Body text is IBM Plex Sans and
-labels are Inter — both exactly as in the source document. Nothing in the
-document is italic or script; `i`, `em`, `cite` and `address` are all reset to
-`font-style: normal`.
+labels are Inter — both exactly as in the source document.
 
-**The arch.** The one curve the product actually has is the newel and handrail
-return, and it is the shape the whole catalogue is built on. The cover frames
-its photograph in a full arch inside a second, larger arch drawn as a hairline;
-the introduction and the device list bleed their photographs off the page inside
-the same arch; the five planning photographs repeat it at small scale; and the
-closing page draws it twice as an empty outline. Everything else that curves —
-the duty-class tags, the safety numbers, the icon marks, the handrail-colour
-swatches, the rise bars — is a circle or a full-radius pill, so the curves read
-as one family rather than as decoration.
+**Corners, not curves.** Every photograph, panel and drawing is a rectangle with
+an 18 px corner. There are no arches, semicircles or other cut curves anywhere in
+the deck — only rounded rectangles, plus circles for the safety numbers and
+full-radius pills for the duty-class tags. Nothing is italic or script; `i`,
+`em`, `cite` and `address` are all reset to `font-style: normal`.
 
 **Running footer.** Every page from 02 to 11 carries the same footer the closing
 page sets: a hairline, the catalogue line on the left, the page number on the
-right. On the two pages where a photograph bleeds off the right edge, the footer
-stops short of the image rather than running under it.
+right. It runs the full measure on every page.
 
 **Rhythm.** The deck opens dark, turns dark again at the range — the product
 spread — and closes dark. The seven white pages between them carry the detail.
@@ -109,3 +104,6 @@ re-run `build.py`; nothing else needs to change.
 The stage is scaled with `zoom` rather than `transform`, on screen as well as in
 print. `zoom` relayouts, so text is re-rasterised and images are sampled at the
 displayed size instead of being resampled from a scaled layer.
+
+All interaction — the progress bar, the image viewer, hover states — is hidden
+under `@media print`, so the PDF is unaffected.

@@ -48,7 +48,7 @@
   --f-label:'Inter',system-ui,sans-serif;
 
   --m:120px;              /* page margin */
-  --r:22px;               /* soft corner */
+  --r:18px;               /* soft corner — rounded rectangles only */
   --r-s:14px;
   --k:1;                  /* stage scale */
 }
@@ -111,6 +111,33 @@ img{display:block;max-width:100%}
   text-transform:uppercase;color:#fff;display:flex;gap:8px;align-items:baseline}
 .ov-cap i{color:#8FB0FF;font-size:9.5px}
 
+/* ── Interaction chrome ────────────────────────────────────────────── */
+.progress{position:fixed;top:56px;left:0;height:2px;width:0;background:var(--red);
+  z-index:61;transition:width .3s ease}
+
+/* any photograph or drawing can be opened full size */
+.zoomable{cursor:zoom-in}
+.zoomable img{transition:transform .35s cubic-bezier(.2,.7,.3,1)}
+.zoomable:hover img{transform:scale(1.035)}
+
+.lightbox{position:fixed;inset:0;z-index:80;background:rgba(5,8,18,.95);
+  display:none;align-items:center;justify-content:center;padding:60px 60px 96px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:82vh;width:auto;height:auto;
+  border-radius:var(--r);box-shadow:0 30px 90px rgba(0,0,0,.6);background:#fff}
+.lb-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.28);background:transparent;color:#fff;font-size:19px;
+  line-height:1;cursor:pointer;transition:.15s}
+.lb-close:hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+.lb-cap{position:absolute;left:0;right:0;bottom:34px;text-align:center;
+  font-family:var(--f-label);font-size:12.5px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,255,255,.72)}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;
+  border-radius:50%;border:1px solid rgba(255,255,255,.28);background:transparent;
+  color:#fff;font-size:22px;line-height:1;cursor:pointer;transition:.15s}
+.lb-nav:hover{background:rgba(255,255,255,.12)}
+.lb-prev{left:22px} .lb-next{right:22px}
+
 /* ── Page furniture ────────────────────────────────────────────────── */
 .logo{background:url({{ASSET:logo-blue.png}}) left center/contain no-repeat}
 .logo.w{background-image:url({{ASSET:logo-white.png}})}
@@ -143,7 +170,6 @@ img{display:block;max-width:100%}
     transparent 256px 269px, #1A55E8 269px 285px, transparent 285px)}
 
 .content{position:absolute;left:var(--m);right:var(--m);top:254px;bottom:150px}
-.content.bleed-r{right:0}
 
 .lead{font-size:25px;line-height:1.46;color:var(--body);max-width:1280px}
 .lead b{color:var(--blue);font-weight:600}
@@ -158,11 +184,6 @@ img{display:block;max-width:100%}
   letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
   border:1px solid var(--rule-2);border-radius:999px;padding:8px 18px}
 
-/* the arch — taken from the newel and handrail return, the one curve the
-   product actually has. Used to frame photography. */
-.arch{border-radius:50% 50% var(--r) var(--r) / 26% 26% var(--r) var(--r);overflow:hidden}
-.soft{border-radius:var(--r);overflow:hidden}
-.soft-s{border-radius:var(--r-s);overflow:hidden}
 
 /* ── Dark pages (cover · range · contact) ──────────────────────────── */
 .stage.dark{color:#fff}
@@ -183,13 +204,11 @@ img{display:block;max-width:100%}
   linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)}
 
 /* ── 01 Cover ──────────────────────────────────────────────────────── */
-.cover-arch{position:absolute;right:120px;top:118px;width:790px;height:962px;
-  border-radius:395px 395px 0 0;overflow:hidden}
-.cover-arch img{width:100%;height:100%;object-fit:cover;object-position:center 40%}
-.cover-arch::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(6,28,90,.16) 0%,rgba(6,28,90,.62) 100%)}
-.cover-ring{position:absolute;right:88px;top:86px;width:854px;height:1026px;
-  border:1px solid rgba(255,255,255,.3);border-radius:427px 427px 0 0;pointer-events:none}
+.cover-fig{position:absolute;right:120px;top:150px;bottom:118px;width:790px;
+  border-radius:var(--r);overflow:hidden}
+.cover-fig img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
+.cover-fig::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(6,28,90,.14) 0%,rgba(6,28,90,.5) 100%)}
 .cover-mark{position:absolute;left:var(--m);top:88px;width:250px;height:53px}
 .cover-year{position:absolute;left:412px;top:98px;font-family:var(--f-head);font-size:22px;
   font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.72)}
@@ -218,8 +237,7 @@ img{display:block;max-width:100%}
   border-top:2px solid var(--blue)}
 .pillar h4{font-family:var(--f-head);font-size:25px;font-weight:700;color:var(--blue);margin:10px 0 9px}
 .pillar p{font-size:17px;line-height:1.48;color:var(--body)}
-.intro-fig{position:relative;height:calc(100% + 150px);
-  border-radius:330px 330px 0 0;overflow:hidden}
+.intro-fig{position:relative;height:100%;border-radius:var(--r);overflow:hidden}
 .intro-fig img{width:100%;height:100%;object-fit:cover;object-position:center 44%}
 
 /* ── 03 / 04 Three columns ─────────────────────────────────────────── */
@@ -325,14 +343,14 @@ img{display:block;max-width:100%}
 .dlist li em{color:var(--muted);font-size:17px}
 .dnote{margin-top:auto;padding-top:22px;font-size:17px;line-height:1.52;color:var(--muted)}
 .dnote b{color:var(--blue);font-weight:600}
-.dfig{position:relative;height:calc(100% + 150px);border-radius:280px 280px 0 0;overflow:hidden}
+.dfig{position:relative;height:100%;border-radius:var(--r);overflow:hidden}
 .dfig img{width:100%;height:100%;object-fit:cover;object-position:56% center}
 
 /* ── 09 Planning guide ─────────────────────────────────────────────── */
 .lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:40px;height:100%}
 .lcol{display:flex;flex-direction:column}
-.lcol figure{height:352px;border-radius:50% 50% var(--r-s) var(--r-s) / 22% 22% var(--r-s) var(--r-s);
-  overflow:hidden;background:#EDF0F5;margin-bottom:18px}
+.lcol figure{height:352px;border-radius:var(--r-s);overflow:hidden;background:#EDF0F5;
+  margin-bottom:18px}
 .lcol figure img{width:100%;height:100%;object-fit:cover}
 .lcol h4{font-family:var(--f-head);font-size:24px;font-weight:700;color:var(--ink);margin:8px 0 10px}
 .lcol p{font-size:17px;line-height:1.46;color:var(--body)}
@@ -370,16 +388,12 @@ img{display:block;max-width:100%}
 .contact{background:
   radial-gradient(ellipse 58% 62% at 8% 94%, rgba(90,150,255,.5), transparent 62%),
   linear-gradient(178deg,#032B7C 0%,#023CB2 58%,#012E86 100%)}
-.c-arch{position:absolute;right:120px;top:112px;width:520px;height:806px;
-  border-radius:260px 260px var(--r) var(--r);border:1px solid rgba(255,255,255,.28)}
-.c-arch::before{content:'';position:absolute;inset:44px;border-radius:216px 216px var(--r) var(--r);
-  border:1px solid rgba(255,255,255,.16)}
 .c-mark{position:absolute;left:var(--m);top:96px;width:250px;height:53px}
 .c-h1{position:absolute;left:calc(var(--m) - 5px);top:178px;font-family:var(--f-display);
   font-size:96px;font-weight:800;letter-spacing:-.028em;color:#fff;line-height:1}
 .c-rule{position:absolute;left:var(--m);top:308px;width:132px;height:4px;border-radius:2px;
   background:var(--red)}
-.c-grid{position:absolute;left:var(--m);top:404px;width:1050px;
+.c-grid{position:absolute;left:var(--m);right:var(--m);top:404px;
   display:grid;grid-template-columns:1fr 1fr;gap:52px 80px}
 .c-grid > div{padding-top:20px;border-top:1px solid rgba(255,255,255,.28)}
 .c-grid dt{font-family:var(--f-label);font-size:12px;font-weight:500;letter-spacing:.24em;
@@ -397,7 +411,9 @@ img{display:block;max-width:100%}
 @media print{
   html,body{background:#fff!important;width:297mm!important;max-width:297mm!important;
     min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
-  .toolbar,.overview{display:none!important}
+  .toolbar,.overview,.progress,.lightbox{display:none!important}
+  .zoomable{cursor:default}
+  .zoomable img{transform:none!important}
   .app{display:block!important;min-height:0!important}
   .deck{padding-top:0!important;display:block!important;height:auto!important;
     width:297mm!important;margin:0!important;padding-bottom:0!important;gap:0!important}
@@ -445,14 +461,15 @@ img{display:block;max-width:100%}
     <button class="btn pri" id="doPrint" title="Print / Save as PDF · A4 landscape (P)">Print · PDF</button>
   </div>
 
+  <div class="progress" id="progress"></div>
+
   <main class="deck" id="deck">
 
   <!-- ══ 01 · COVER ══════════════════════════════════════════════════ -->
   <section class="slide" data-name="Cover" data-bg="cover">
     <div class="stage dark blue-bg">
       <div class="gridlines"></div>
-      <div class="cover-ring"></div>
-      <div class="cover-arch"><img src="{{ASSET:cover-photo.jpeg}}" alt=""></div>
+      <figure class="cover-fig"><img src="{{ASSET:cover-photo.jpeg}}" alt="Altigo escalator, glazed tunnel installation"></figure>
       <div class="cover-mark logo w" role="img" aria-label="Altigo"></div>
       <div class="cover-year">2026</div>
       <div class="cover-eyebrow">Altigo · Vertical Mobility</div>
@@ -473,7 +490,7 @@ img{display:block;max-width:100%}
       <h2 class="title">COMPANY INTRODUCTION</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content bleed-r">
+      <div class="content">
         <div class="intro">
           <div class="intro-txt">
             <h3 class="intro-h">Moving people, <b>elevating places.</b></h3>
@@ -500,7 +517,7 @@ img{display:block;max-width:100%}
           <figure class="intro-fig"><img src="{{ASSET:intro-photo.jpg}}" alt="Altigo escalator installation"></figure>
         </div>
       </div>
-      <div class="foot" style="right:700px"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>02</b></div>
+      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>02</b></div>
       <div class="corner"></div>
     </div>
   </section>
@@ -763,28 +780,28 @@ img{display:block;max-width:100%}
             <div class="sdiag"><img src="{{ASSET:safety-diagram.png}}" alt="Escalator safety feature locations"></div>
           </div>
           <div class="sgrid">
-            <div class="sitem"><figure><img src="{{ASSET:safety-1.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-1.jpg}}" alt="Emergency stop button"></figure>
               <div class="hd"><b>1</b><h4>Emergency Stop Button</h4></div>
               <p>Stops the escalator immediately and prevents a more severe incident.</p></div>
-            <div class="sitem"><figure><img src="{{ASSET:safety-2.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-2.jpg}}" alt="Direction indicator light"></figure>
               <div class="hd"><b>2</b><h4>Direction Indicator Light</h4></div>
               <p>Running direction and restriction signs at the handrail entry guide passengers.</p></div>
-            <div class="sitem"><figure><img src="{{ASSET:safety-3.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-3.jpg}}" alt="Skirt panel brush"></figure>
               <div class="hd"><b>3</b><h4>Skirt Panel Brush</h4></div>
               <p>Prevents clothing being caught between skirt panel and step edge.</p></div>
-            <div class="sitem"><figure><img src="{{ASSET:safety-4.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-4.jpg}}" alt="Step boundary lights"></figure>
               <div class="hd"><b>4</b><h4>Step Boundary Lights</h4></div>
               <p>Green fluorescence at the step edges helps passengers read step level.</p></div>
-            <div class="sitem"><figure><img src="{{ASSET:safety-5.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-5.jpg}}" alt="Handrail lighting"></figure>
               <div class="hd"><b>5</b><h4>Handrail Lighting</h4></div>
               <p>Set into the handrail support: soft light adds beauty to a running escalator.</p></div>
-            <div class="sitem"><figure><img src="{{ASSET:safety-6.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-6.jpg}}" alt="Skirt panel lights"></figure>
               <div class="hd"><b>6</b><h4>Skirt Panel Lights</h4></div>
               <p>Elegant lighting highlights the escalator and creates a safer, calmer ride.</p></div>
-            <div class="sitem"><figure><img src="{{ASSET:safety-7.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-7.jpg}}" alt="Newel"></figure>
               <div class="hd"><b>7</b><h4>Newel</h4></div>
               <p>The newel frame angle is 20°, reducing the risk of children or items being caught.</p></div>
-            <div class="sitem"><figure><img src="{{ASSET:safety-8.jpg}}" alt=""></figure>
+            <div class="sitem"><figure><img src="{{ASSET:safety-8.jpg}}" alt="Anti-slip step"></figure>
               <div class="hd"><b>8</b><h4>Anti-slip Step</h4></div>
               <p>Grooved steps improve anti-slip performance and visibility for greater safety.</p></div>
           </div>
@@ -802,7 +819,7 @@ img{display:block;max-width:100%}
       <h2 class="title">SAFETY &amp; DETECTION DEVICES</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content bleed-r">
+      <div class="content">
         <div class="devs">
           <div class="dcol">
             <div class="dhead"><h3>Standard devices</h3><span class="lab">10 fitted</span></div>
@@ -838,7 +855,7 @@ img{display:block;max-width:100%}
           <figure class="dfig"><img src="{{ASSET:truss.jpg}}" alt="Altigo escalator truss and step assembly"></figure>
         </div>
       </div>
-      <div class="foot" style="right:660px"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>08</b></div>
+      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>08</b></div>
       <div class="corner"></div>
     </div>
   </section>
@@ -855,19 +872,19 @@ img{display:block;max-width:100%}
            flow direction and footprint. <b>Five layouts</b> cover most cases, from a single run
            linking two levels to crisscross banks that move crowds through several floors at once.</p>
         <div class="lgrid" style="height:calc(100% - 112px)">
-          <div class="lcol"><figure><img src="{{ASSET:layout-1.jpg}}" alt=""></figure>
+          <div class="lcol"><figure><img src="{{ASSET:layout-1.jpg}}" alt="Single unit — one-way"></figure>
             <div class="lab red">One-way</div><h4>Single unit</h4>
             <p>Links two levels. Best where traffic runs mainly one way; reversible by time of day.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-2.jpg}}" alt=""></figure>
+          <div class="lcol"><figure><img src="{{ASSET:layout-2.jpg}}" alt="Continuous — one-way"></figure>
             <div class="lab red">One-way</div><h4>Continuous</h4>
             <p>Stacked runs, same direction, no detour. Links three sales levels; needs more space.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-3.jpg}}" alt=""></figure>
+          <div class="lcol"><figure><img src="{{ASSET:layout-3.jpg}}" alt="Interrupted — one-way"></figure>
             <div class="lab red">One-way</div><h4>Interrupted</h4>
             <p>Offset runs force a short walk between levels, leading shoppers past displays.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-4.jpg}}" alt=""></figure>
+          <div class="lcol"><figure><img src="{{ASSET:layout-4.jpg}}" alt="Parallel — two-way"></figure>
             <div class="lab red">Two-way</div><h4>Parallel</h4>
             <p>Up and down side by side. For heavy two-way flow; economical with three or more units.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-5.jpg}}" alt=""></figure>
+          <div class="lcol"><figure><img src="{{ASSET:layout-5.jpg}}" alt="Crisscross — two-way"></figure>
             <div class="lab red">Two-way</div><h4>Crisscross</h4>
             <p>Compact X-banks for large stores and transit; minimises travel time between levels.</p></div>
         </div>
@@ -992,7 +1009,6 @@ img{display:block;max-width:100%}
   <section class="slide" data-name="Contact" data-bg="contact">
     <div class="stage dark contact">
       <div class="gridlines"></div>
-      <div class="c-arch"></div>
       <div class="c-mark logo w" role="img" aria-label="Altigo"></div>
       <h2 class="c-h1">CONTACT US</h2>
       <div class="c-rule"></div>
@@ -1011,6 +1027,14 @@ img{display:block;max-width:100%}
   </main>
 
   <div class="overview" id="overview"><div class="ov-grid" id="ovGrid"></div></div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lb-close" id="lbClose" title="Close (Esc)">&#10005;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" title="Previous image">&#8249;</button>
+    <img id="lbImg" src="" alt="">
+    <button class="lb-nav lb-next" id="lbNext" title="Next image">&#8250;</button>
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
 </div>
 
 <script>
@@ -1036,6 +1060,7 @@ img{display:block;max-width:100%}
     [].forEach.call(document.querySelectorAll('.ov-item'),function(el,x){
       el.classList.toggle('current', x===i);
     });
+    document.getElementById('progress').style.width=((i+1)/N*100)+'%';
     if(history.replaceState) history.replaceState(null,'','#'+String(i+1).padStart(2,'0'));
     if(mode==='scroll'&&goTo) slides[i].scrollIntoView({behavior:'smooth',block:'start'});
   }
@@ -1096,6 +1121,50 @@ img{display:block;max-width:100%}
     }).then(function(){ window.print(); });
   }
 
+  /* ── zoomable figures ────────────────────────────────────────────── */
+  var figs=[], lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'),
+      lbCap=document.getElementById('lbCap'), lbAt=-1;
+
+  function collectFigures(){
+    [].forEach.call(deck.querySelectorAll('figure img, .sdiag img'),function(im){
+      var host=im.closest('figure')||im.parentNode;
+      host.classList.add('zoomable');
+      host.setAttribute('role','button');
+      host.setAttribute('tabindex','0');
+      var cap=im.getAttribute('alt')||
+              (host.closest('.slide')&&host.closest('.slide').dataset.name)||'';
+      var idx=figs.length;
+      figs.push({src:im.currentSrc||im.src, cap:cap});
+      host.addEventListener('click',function(){ openLb(idx); });
+      host.addEventListener('keydown',function(e){
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLb(idx); }
+      });
+    });
+  }
+  function openLb(x){
+    if(!figs.length) return;
+    lbAt=(x+figs.length)%figs.length;
+    lbImg.src=figs[lbAt].src;
+    lbCap.textContent=figs[lbAt].cap;
+    lb.classList.add('open');
+  }
+  function closeLb(){ lb.classList.remove('open'); lbImg.src=''; lbAt=-1; }
+  document.getElementById('lbClose').onclick=closeLb;
+  document.getElementById('lbPrev').onclick=function(e){ e.stopPropagation(); openLb(lbAt-1); };
+  document.getElementById('lbNext').onclick=function(e){ e.stopPropagation(); openLb(lbAt+1); };
+  lb.addEventListener('click',function(e){ if(e.target===lb||e.target===lbImg) closeLb(); });
+
+  /* ── swipe, for touch screens ────────────────────────────────────── */
+  var tx=0, ty=0;
+  deck.addEventListener('touchstart',function(e){
+    tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY;
+  },{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(mode!=='deck') return;
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.6) show(dx<0?i+1:i-1,true);
+  },{passive:true});
+
   document.getElementById('prev').onclick=function(){ show(i-1,true); };
   document.getElementById('next').onclick=function(){ show(i+1,true); };
   document.getElementById('mDeck').onclick=function(){ toggleGrid(false); setMode('deck'); };
@@ -1106,6 +1175,12 @@ img{display:block;max-width:100%}
   document.addEventListener('keydown',function(e){
     if(e.metaKey||e.ctrlKey||e.altKey) return;
     var k=e.key;
+    if(lb.classList.contains('open')){
+      if(k==='Escape') closeLb();
+      else if(k==='ArrowRight') openLb(lbAt+1);
+      else if(k==='ArrowLeft') openLb(lbAt-1);
+      e.preventDefault(); return;
+    }
     if(k==='ArrowRight'||k==='PageDown'||k===' '){ e.preventDefault(); show(i+1,true); }
     else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); show(i-1,true); }
     else if(k==='Home'){ e.preventDefault(); show(0,true); }
@@ -1136,7 +1211,7 @@ img{display:block;max-width:100%}
   });
 
   var h=parseInt((location.hash||'').replace('#',''),10);
-  fit(); buildOverview(); show(isNaN(h)?0:h-1); preloadFonts();
+  fit(); buildOverview(); collectFigures(); show(isNaN(h)?0:h-1); preloadFonts();
 })();
 </script>
 </body>

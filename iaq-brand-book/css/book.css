@@ -393,8 +393,9 @@ strong{font-weight:700;color:var(--ink)}
   border:none;border-top:1px solid var(--hair);
 }
 .dark .panel{border-top-color:var(--hair-d)}
-/* the red index rule replaces the box entirely */
-.panel.idx{border-top:none;border-left:2px solid var(--red);padding:3px 0 3px 24px}
+/* no rule, no box: the index panel is held by the column and the gutter
+   alone, so its content sits on the grid instead of 24px inside it */
+.panel.idx{border-top:none;border-left:none;padding:3px 0}
 .panel.flat{border-top:1px solid var(--hair);padding:18px 0 0}
 .dark .panel.flat{border-top-color:var(--hair-d)}
 /* a tinted field, not a bordered callout */

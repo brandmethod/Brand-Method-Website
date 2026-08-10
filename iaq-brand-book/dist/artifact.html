@@ -398,8 +398,9 @@ strong{font-weight:700;color:var(--ink)}
   border:none;border-top:1px solid var(--hair);
 }
 .dark .panel{border-top-color:var(--hair-d)}
-/* the red index rule replaces the box entirely */
-.panel.idx{border-top:none;border-left:2px solid var(--red);padding:3px 0 3px 24px}
+/* no rule, no box: the index panel is held by the column and the gutter
+   alone, so its content sits on the grid instead of 24px inside it */
+.panel.idx{border-top:none;border-left:none;padding:3px 0}
 .panel.flat{border-top:1px solid var(--hair);padding:18px 0 0}
 .dark .panel.flat{border-top-color:var(--hair-d)}
 /* a tinted field, not a bordered callout */
@@ -1492,7 +1493,7 @@ body.agrid #agrid{display:block}
         <h4 class="h-sm" style="margin:8px 0 8px">The Cleanroom Specialist</h4>
         <p class="sm">The controlled-environment specialist for MNCs building mission-critical facilities, proven to the highest cleanroom class.</p>
       </div>
-      <div class="panel idx" style="border-left-color:var(--ink)">
+      <div class="panel idx">
         <div class="lab-q">Regionally</div>
         <h4 class="h-sm" style="margin:8px 0 8px">Total Solutions / Turnkey Provider</h4>
         <p class="sm">The turnkey specialist that builds stringent-spec facilities end to end: one accountable partner from first drawing to lifetime care.</p>
@@ -2844,7 +2845,7 @@ body.agrid #agrid{display:block}
         <div class="panel idx"><h4 class="h-sm">Website</h4><p class="sm" style="margin-top:6px">Cloud base, navy bands, red leader lines and links.</p></div>
         <div class="panel idx"><h4 class="h-sm">Documents</h4><p class="sm" style="margin-top:6px">White base, ink text, red rules and eyebrows only.</p></div>
         <div class="panel idx"><h4 class="h-sm">Investor deck</h4><p class="sm" style="margin-top:6px">Navy grounds, white type, red numerals.</p></div>
-        <div class="panel idx" style="border-left-color:var(--ink)"><h4 class="h-sm">Site &amp; PPE</h4><p class="sm" style="margin-top:6px">Safety colours outrank brand colours, always.</p></div>
+        <div class="panel idx"><h4 class="h-sm">Site &amp; PPE</h4><p class="sm" style="margin-top:6px">Safety colours outrank brand colours, always.</p></div>
       </div>
       <div class="panel tint push">
         <div class="lab">The contrast floor</div>

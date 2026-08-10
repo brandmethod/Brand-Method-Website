@@ -135,6 +135,22 @@ Nothing else changes.
 
 ---
 
+## Photography drop-in (page 41)
+
+Page 41 — *Site, fleet & wearables* — ships with constructed drawings so the book
+is complete with no dependencies. Two tiles are also wired as **photo slots**:
+
+| Drop a file at        | Replaces                        | Best format          |
+|-----------------------|---------------------------------|----------------------|
+| `assets/ppe-hero.jpg` | the helmet + hi-vis vest drawing | portrait, ~900×1200 |
+| `assets/fleet-van.jpg`| the fleet van drawing            | landscape, ~1400×800 |
+
+Drop the file in, run `python3 build.py`, done. The drawing steps aside, the
+photograph fills the tile, and the real wordmark is applied on its white plate
+with the governing rule captioned beneath it. If the file is absent nothing
+breaks — the drawing simply stays. Shoot or generate the source **unbranded**:
+the identity is applied by the book, never baked into the image.
+
 ## Reusing this as a template
 
 1. Copy the folder and rename it.

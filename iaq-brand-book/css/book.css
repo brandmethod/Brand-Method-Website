@@ -1025,3 +1025,20 @@ strong{font-weight:600;color:var(--ink)}
 body.zoomed #stage{cursor:grab}
 body.zoomed #stage:active{cursor:grabbing}
 body.zoomed .edge{opacity:.35}
+
+/* Photo swap slots -----------------------------------------------------------
+   Site, fleet and wearables ship as constructed drawings. Drop a photograph in
+   at the named path and it takes over the tile: the drawing steps aside, the
+   real wordmark is applied on its white plate and the rule stays captioned.
+   No photo present, no broken image - the drawing simply stays. */
+.swap{position:relative;overflow:hidden}
+.swap>.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+          filter:saturate(.82) contrast(1.02)}
+.swap>.ph-plate,.swap>.ph-note{display:none}
+.swap.has-photo>.dr{display:none}
+.swap.has-photo>.ph-plate{display:block;position:absolute;left:22px;top:22px;
+          background:#fff;padding:11px 16px;z-index:2}
+.swap.has-photo>.ph-plate img{height:22px;width:auto;display:block}
+.swap.has-photo>.ph-note{display:block;position:absolute;left:22px;bottom:20px;z-index:2;
+          font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:#fff;
+          padding:7px 12px;background:rgba(12,18,32,.72);border-left:2px solid var(--red)}

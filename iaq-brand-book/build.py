@@ -65,8 +65,13 @@ def build():
             continue
         html = html.replace(rel, data_uri(rel))
 
-    if skipped:
-        print("  ! referenced but missing: %s" % ", ".join(skipped))
+    optional = {"assets/ppe-hero.jpg", "assets/fleet-van.jpg"}
+    waiting = [r for r in skipped if r in optional]
+    missing = [r for r in skipped if r not in optional]
+    if waiting:
+        print("  · photo slots open (drawings shown): %s" % ", ".join(waiting))
+    if missing:
+        print("  ! referenced but missing: %s" % ", ".join(missing))
 
     # 4. mark the build so the source and the bundle are never confused
     html = html.replace(
@@ -101,7 +106,7 @@ def build():
     print("  %.1f MB  →  %s" % (size, os.path.relpath(OUT_FILE, HERE)))
     print("  %.1f MB  →  %s" % (os.path.getsize(ART_FILE) / 1048576.0,
                                 os.path.relpath(ART_FILE, HERE)))
-    return 1 if skipped else 0
+    return 1 if missing else 0
 
 
 if __name__ == "__main__":

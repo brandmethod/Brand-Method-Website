@@ -77,11 +77,13 @@ stacks, so a machine with the licensed brand fonts installed uses them; everyone
 else gets Outfit, which is metrically close. Body text is IBM Plex Sans and
 labels are Inter — both exactly as in the source document.
 
-**Corners, not curves.** Every photograph, panel and drawing is a rectangle with
-an 18 px corner. There are no arches, semicircles or other cut curves anywhere in
-the deck — only rounded rectangles, plus circles for the safety numbers and
-full-radius pills for the duty-class tags. Nothing is italic or script; `i`,
-`em`, `cite` and `address` are all reset to `font-style: normal`.
+**Sharp corners, everywhere.** Nothing in the deck is rounded. Every photograph,
+panel, drawing, tag, badge, swatch, rule and button is a square corner; the
+radius tokens `--r` and `--r-s` are both `0` and there is no `border-radius`
+left with a non-zero value. Nothing is italic or script either; `i`, `em`,
+`cite` and `address` are all reset to `font-style: normal`. The only curves in
+the document belong to the Altigo mark itself and to the objects the technical
+drawings depict — the handrail section and the controller icon.
 
 **Safety callouts (page 07).** The numbers 1–8 on the cutaway were separate
 text on the source PDF page, not part of the drawing, so they were lost when the

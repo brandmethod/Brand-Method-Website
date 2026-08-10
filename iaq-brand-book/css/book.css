@@ -246,23 +246,12 @@ body:not(.roomy) .edge::after{display:none}
 .slide.is-active{opacity:1;visibility:visible;pointer-events:auto;z-index:2}
 .slide.is-out{z-index:1}
 
-/* drafting grid ground — 56px module at book scale */
-.slide::before{
-  content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(var(--grid-l) 1px,transparent 1px),
-                   linear-gradient(90deg,var(--grid-l) 1px,transparent 1px);
-  background-size:56px 56px;
-  mask-image:linear-gradient(180deg,transparent,#000 18%,#000 82%,transparent);
-}
+/* The drafting grid is a working tool, not decoration: it lives in the
+   alignment overlay (#agrid, toggled from the dock) and never on the page. */
 .slide.dark{background:var(--navy);color:#fff}
-.slide.dark::before{
-  background-image:linear-gradient(var(--grid-d) 1px,transparent 1px),
-                   linear-gradient(90deg,var(--grid-d) 1px,transparent 1px);
-}
-.slide.plain::before{display:none}
 
 /* -- corner registration ticks (line art direction) ------------------------ */
-.ticks{position:absolute;inset:34px;pointer-events:none;z-index:0}
+.ticks{display:none}
 .ticks i{position:absolute;width:16px;height:16px;opacity:.5}
 .ticks i::before,.ticks i::after{content:'';position:absolute;background:var(--red)}
 .ticks i::before{width:100%;height:1px;top:0;left:0}
@@ -282,11 +271,11 @@ body:not(.roomy) .edge::after{display:none}
 .eyebrow::before{content:'';width:7px;height:7px;background:var(--red);flex:none}
 .dark .eyebrow{color:var(--red)}
 h1.s-title{
-  font-family:var(--fd);font-weight:600;font-size:72px;line-height:.98;
+  font-family:var(--fd);font-weight:700;font-size:72px;line-height:.98;
   letter-spacing:-.03em;margin-top:18px;color:var(--ink);
 }
 .dark h1.s-title{color:#fff}
-h1.s-title .lt{color:var(--mist);font-weight:500}
+h1.s-title .lt{color:var(--mist);font-weight:600}
 .s-meta{
   font-family:var(--fm);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
   color:var(--mist);text-align:right;line-height:1.8;padding-bottom:6px;white-space:nowrap;
@@ -348,7 +337,7 @@ h1.s-title .lt{color:var(--mist);font-weight:500}
 }
 .dark .lab{color:var(--red)}
 .lab-q{
-  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.18em;
+  font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.18em;
   text-transform:uppercase;color:var(--mist);
 }
 .dark .lab-q{color:rgba(255,255,255,.44)}
@@ -362,17 +351,37 @@ h1.s-title .lt{color:var(--mist);font-weight:500}
 .dark .lab-h::after{background:var(--hair-d)}
 .lab-h .n{color:var(--red);font-weight:700}
 
+/* fill · card rows stretch to the body height and the data block sits on the
+   card's baseline, so a page of cards ends on the footer instead of floating */
+.s-body.fill{align-content:stretch}
+/* the section's own page list — the contents page earns its name */
+.toc-mini{list-style:none;margin:16px 0 0;padding:0}
+.toc-mini li{display:flex;gap:14px;align-items:baseline;padding:4.5px 0;
+             border-top:1px solid var(--hair-2)}
+.toc-mini li:first-child{border-top:none}
+.toc-mini b{font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.1em;
+            color:var(--mist);flex:none;width:22px}
+.toc-mini span{font-size:12.5px;font-weight:500;color:var(--steel);line-height:1.3}
+.s-body.fill>.panel{display:flex;flex-direction:column}
+.s-body.fill>.panel>.kv,.s-body.fill>.panel>.chips{margin-top:auto;padding-top:20px}
+
+/* section icons — line-drawn, one weight, red; used on the contents cards */
+.lab.wi{display:flex;align-items:center;gap:11px}
+.lab.wi svg{width:26px;height:26px;flex:none;fill:none;stroke:var(--red);
+            stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.dark .lab.wi svg{stroke:var(--red)}
+
 /* -- headings & copy ------------------------------------------------------- */
-h2.h-lg{font-family:var(--fd);font-weight:600;font-size:46px;line-height:1.06;letter-spacing:-.026em}
-h3.h-md{font-family:var(--fd);font-weight:600;font-size:25px;line-height:1.16;letter-spacing:-.018em}
-h4.h-sm{font-family:var(--fd);font-weight:600;font-size:18px;line-height:1.25;letter-spacing:-.01em}
-h5.h-xs{font-family:var(--fb);font-weight:600;font-size:15px;line-height:1.3}
-p,li{font-size:15.5px;line-height:1.65;color:var(--steel)}
-.dark p,.dark li{color:rgba(255,255,255,.66)}
-p.lead{font-size:18px;line-height:1.6;font-weight:500;color:var(--ink)}
+h2.h-lg{font-family:var(--fd);font-weight:700;font-size:46px;line-height:1.06;letter-spacing:-.026em}
+h3.h-md{font-family:var(--fd);font-weight:700;font-size:25px;line-height:1.16;letter-spacing:-.018em}
+h4.h-sm{font-family:var(--fd);font-weight:700;font-size:18px;line-height:1.25;letter-spacing:-.01em}
+h5.h-xs{font-family:var(--fb);font-weight:700;font-size:15px;line-height:1.3}
+p,li{font-size:15.5px;line-height:1.62;font-weight:500;color:#3A4359}
+.dark p,.dark li{color:rgba(255,255,255,.76)}
+p.lead{font-size:18px;line-height:1.58;font-weight:600;color:var(--ink)}
 .dark p.lead{color:rgba(255,255,255,.9)}
-p.sm{font-size:14px;line-height:1.6}
-strong{font-weight:600;color:var(--ink)}
+p.sm{font-size:14px;line-height:1.6;font-weight:500}
+strong{font-weight:700;color:var(--ink)}
 .dark strong{color:#fff}
 .red{color:var(--signal)}
 .dark .red{color:var(--red)}
@@ -412,7 +421,7 @@ strong{font-weight:600;color:var(--ink)}
 .chip{
   display:inline-flex;align-items:center;gap:7px;
   padding:6px 11px;border:1.5px solid var(--hair);
-  font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.13em;
+  font-family:var(--fm);font-size:10.5px;font-weight:600;letter-spacing:.13em;
   text-transform:uppercase;color:var(--steel);background:var(--white);
 }
 .dark .chip{border-color:var(--hair-d);color:rgba(255,255,255,.72);background:transparent}
@@ -429,7 +438,7 @@ strong{font-weight:600;color:var(--ink)}
 }
 .dark .kv div{border-color:var(--hair-d2)}
 .kv div:last-child{border-bottom:none}
-.kv dt,.kv .k{font-size:14.5px;font-weight:500;color:var(--ink);flex:1}
+.kv dt,.kv .k{font-size:14.5px;font-weight:600;color:var(--ink);flex:1}
 .dark .kv .k,.dark .kv dt{color:rgba(255,255,255,.88)}
 .kv dd,.kv .v{
   font-family:var(--fm);font-size:10px;letter-spacing:.13em;text-transform:uppercase;
@@ -454,7 +463,7 @@ strong{font-weight:600;color:var(--ink)}
 .stat .n{font-family:var(--fd);font-weight:700;font-size:46px;line-height:.92;letter-spacing:-.035em;color:var(--ink)}
 .dark .stat .n{color:#fff}
 .stat .n em{font-style:normal;color:var(--red)}
-.stat .l{margin-top:9px;font-family:var(--fm);font-size:9.5px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);line-height:1.6}
+.stat .l{margin-top:9px;font-family:var(--fm);font-size:9.5px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--mist);line-height:1.6}
 .stat.hot{border-color:var(--red)}
 .stat.hot .n{color:var(--signal)}
 .dark .stat.hot .n{color:var(--red)}
@@ -483,7 +492,7 @@ strong{font-weight:600;color:var(--ink)}
   letter-spacing:.12em;color:rgba(255,255,255,.72);
 }
 .sw .meta{padding-top:13px}
-.sw .meta .nm{font-family:var(--fd);font-weight:600;font-size:17px;letter-spacing:-.01em}
+.sw .meta .nm{font-family:var(--fd);font-weight:700;font-size:17px;letter-spacing:-.01em}
 .sw .meta .sp{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;color:var(--mist);margin-top:6px;line-height:1.75}
 .sw .meta .ds{font-size:13px;color:var(--steel);margin-top:8px;line-height:1.5}
 
@@ -575,22 +584,22 @@ strong{font-weight:600;color:var(--ink)}
 .cover .topbar{display:flex;align-items:center;justify-content:space-between;
   font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.42)}
 .cover .mark{height:74px;width:auto;margin-bottom:46px}
-.cover h1{font-family:var(--fd);font-weight:700;font-size:118px;line-height:.9;letter-spacing:-.045em}
+.cover h1{font-family:var(--fd);font-weight:800;font-size:118px;line-height:.9;letter-spacing:-.045em}
 .cover h1 em{font-style:normal;color:var(--red)}
-.cover .sub{font-family:var(--fd);font-weight:500;font-size:44px;letter-spacing:-.025em;color:var(--mist);margin-top:8px}
+.cover .sub{font-family:var(--fd);font-weight:600;font-size:44px;letter-spacing:-.025em;color:var(--mist);margin-top:8px}
 .cover .desc{max-width:620px;margin-top:30px;font-size:16.5px;line-height:1.7;color:rgba(255,255,255,.62)}
 .cover .facts{display:flex;gap:0;margin-top:auto;border-top:1px solid rgba(255,255,255,.14);padding-top:26px}
 .cover .facts div{padding-right:52px;margin-right:52px;border-right:1px solid rgba(255,255,255,.1)}
 .cover .facts div:last-child{border:none}
 .cover .facts .k{font-family:var(--fm);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
-.cover .facts .v{font-family:var(--fd);font-weight:600;font-size:19px;margin-top:8px;letter-spacing:-.01em}
+.cover .facts .v{font-family:var(--fd);font-weight:700;font-size:19px;margin-top:8px;letter-spacing:-.01em}
 .cover .edge{position:absolute;right:0;top:0;bottom:0;width:640px;z-index:3;pointer-events:none}
 /* a dimension run, not a leader: it measures the frame rather than pointing
    at nothing */
 .cover-dim{
   position:absolute;right:var(--pad-x);bottom:186px;z-index:4;width:420px;
   display:flex;align-items:center;gap:14px;
-  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.2em;
+  font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.2em;
   text-transform:uppercase;color:rgba(255,255,255,.5);white-space:nowrap;
 }
 .cover-dim i{position:relative;flex:1;height:1px;background:rgba(236,32,39,.75)}
@@ -622,13 +631,13 @@ strong{font-weight:600;color:var(--ink)}
 }
 .divider .dim::before,.divider .dim::after{content:'';position:absolute;top:-5px;width:1px;height:11px;background:var(--red)}
 .divider .dim::before{left:0}.divider .dim::after{right:0}
-.divider h2{font-family:var(--fd);font-weight:700;font-size:118px;line-height:.86;letter-spacing:-.045em}
+.divider h2{font-family:var(--fd);font-weight:800;font-size:118px;line-height:.86;letter-spacing:-.045em}
 .divider h2 span{display:block;color:var(--mist)}
 .divider .desc{margin-top:30px;max-width:660px;font-size:17px;line-height:1.65;color:rgba(255,255,255,.6)}
 .divider .toc{display:flex;gap:34px;margin-top:44px;flex-wrap:wrap}
 .divider .toc div{border-top:1px solid rgba(255,255,255,.2);padding-top:12px;min-width:172px}
 .divider .toc .n{font-family:var(--fm);font-size:9.5px;letter-spacing:.16em;color:var(--red)}
-.divider .toc .t{font-size:14.5px;margin-top:6px;color:rgba(255,255,255,.82);font-weight:500}
+.divider .toc .t{font-size:14.5px;margin-top:6px;color:rgba(255,255,255,.86);font-weight:600}
 .divider .strip{position:absolute;left:0;right:0;bottom:0;height:6px;display:flex}
 .divider .strip i{flex:1;background:rgba(255,255,255,.06)}
 .divider .strip i.on{background:var(--red)}
@@ -692,7 +701,7 @@ strong{font-weight:600;color:var(--ink)}
 /* -- TYPE SPECIMEN --------------------------------------------------------- */
 .spec{border-top:2px solid var(--ink);padding-top:20px}
 .spec .aa{font-size:74px;line-height:.9;letter-spacing:-.03em;color:var(--ink)}
-.spec .fam{font-family:var(--fd);font-weight:600;font-size:24px;margin-top:16px;letter-spacing:-.015em}
+.spec .fam{font-family:var(--fd);font-weight:700;font-size:24px;margin-top:16px;letter-spacing:-.015em}
 .spec .role{font-family:var(--fm);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-top:7px}
 .spec .wts{margin-top:16px;border-top:1px solid var(--hair-2)}
 .spec .wts div{display:flex;gap:14px;padding:9px 0;border-bottom:1px solid var(--hair-2)}
@@ -910,7 +919,7 @@ strong{font-weight:600;color:var(--ink)}
 .depth{position:relative}
 
 /* -- optical reticle · concentric registration ----------------------------- */
-.reticle{position:absolute;pointer-events:none;z-index:1;opacity:.5}
+.reticle{display:none}
 .reticle i{
   position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   border:1px solid rgba(255,255,255,.13);border-radius:50%;
@@ -1026,19 +1035,92 @@ body.zoomed #stage{cursor:grab}
 body.zoomed #stage:active{cursor:grabbing}
 body.zoomed .edge{opacity:.35}
 
-/* Photo swap slots -----------------------------------------------------------
-   Site, fleet and wearables ship as constructed drawings. Drop a photograph in
-   at the named path and it takes over the tile: the drawing steps aside, the
-   real wordmark is applied on its white plate and the rule stays captioned.
-   No photo present, no broken image - the drawing simply stays. */
+/* Photo tiles · applied identity ---------------------------------------------
+   Site, fleet and wearables ship with constructed drawings so the book is
+   complete with no dependencies. Where a photograph is supplied it takes the
+   tile over and the identity is applied ON the object - the mark on the helmet
+   front, the wordmark on the van flank - each pinned by a red leader to the
+   rule that governs it. The photograph is always sourced unbranded: the mark
+   is applied by the book, never baked into the image. */
 .swap{position:relative;overflow:hidden}
-.swap>.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
-          filter:saturate(.82) contrast(1.02)}
-.swap>.ph-plate,.swap>.ph-note{display:none}
+.swap>.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.swap>.ov{position:absolute;inset:0;z-index:2;pointer-events:none;display:none}
 .swap.has-photo>.dr{display:none}
-.swap.has-photo>.ph-plate{display:block;position:absolute;left:22px;top:22px;
-          background:#fff;padding:11px 16px;z-index:2}
-.swap.has-photo>.ph-plate img{height:22px;width:auto;display:block}
-.swap.has-photo>.ph-note{display:block;position:absolute;left:22px;bottom:20px;z-index:2;
-          font-family:var(--fm);font-size:9px;letter-spacing:.14em;color:#fff;
-          padding:7px 12px;background:rgba(12,18,32,.72);border-left:2px solid var(--red)}
+.swap.has-photo>.ov{display:block}
+.ov .mk{position:absolute;display:block}
+.ov .plate{position:absolute;background:#fff;display:flex;align-items:center;
+           justify-content:center;box-shadow:0 2px 10px rgba(12,18,32,.18)}
+.ov .plate img{width:78%;height:auto;display:block}
+.ov .url{position:absolute;font-family:var(--fm);font-weight:600;letter-spacing:.14em;
+         color:var(--steel);white-space:nowrap}
+.ov .cap{position:absolute;font-family:var(--fm);font-size:8.5px;font-weight:600;
+         letter-spacing:.14em;color:var(--signal);white-space:nowrap}
+.ov .ld{position:absolute;background:var(--red)}
+.ov .ld.h{height:1.2px}
+.ov .ld.v{width:1.2px}
+.ov .dot{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--red);
+         margin:-2.5px 0 0 -2.5px}
+
+/* ==========================================================================
+   11. ALIGNMENT OVERLAY  ·  a working tool, not page furniture
+   --------------------------------------------------------------------------
+   Toggled from the dock (or the A key). Lives inside #stage so it scales and
+   zooms with the page and measures in true 1920 x 1080 units. Nothing here
+   prints and nothing here is part of the brand surface, so it is allowed the
+   diagnostic blue the locked palette does not carry.
+   ========================================================================== */
+#agrid{position:absolute;inset:0;z-index:9;pointer-events:none;display:none;
+       font-family:var(--fm);font-size:10px;letter-spacing:.1em}
+body.agrid #agrid{display:block}
+
+/* margins — the zone type must never enter */
+#agrid .marg{position:absolute;background:rgba(236,32,39,.045);
+             border-color:rgba(236,32,39,.32);border-style:dashed;border-width:0}
+#agrid .marg.l{left:0;top:0;bottom:0;width:var(--pad-x);border-right-width:1px}
+#agrid .marg.r{right:0;top:0;bottom:0;width:var(--pad-x);border-left-width:1px}
+#agrid .marg.t{left:0;right:0;top:0;height:var(--pad-t);border-bottom-width:1px}
+#agrid .marg.b{left:0;right:0;bottom:0;height:var(--pad-b);border-top-width:1px}
+
+/* the 12 columns */
+#agrid .cols{position:absolute;left:var(--pad-x);right:var(--pad-x);
+             top:var(--pad-t);bottom:var(--pad-b);display:grid;
+             grid-template-columns:repeat(12,1fr);gap:var(--gut)}
+#agrid .cols i{background:rgba(43,108,214,.075);outline:1px solid rgba(43,108,214,.16);
+               position:relative}
+#agrid .cols i::after{content:attr(data-n);position:absolute;top:-17px;left:0;
+               color:rgba(43,108,214,.85);font-size:9px}
+
+/* horizontal registration: where the header ends and the footer begins */
+#agrid .zone{position:absolute;left:0;right:0;height:1px;background:rgba(43,108,214,.4)}
+#agrid .zone b{position:absolute;left:var(--pad-x);top:-16px;padding:2px 7px;
+               background:rgba(43,108,214,.92);color:#fff;font-size:9px;font-weight:600}
+
+/* centre axes */
+#agrid .axis{position:absolute;background:rgba(236,32,39,.42)}
+#agrid .axis.v{left:50%;top:0;bottom:0;width:1px}
+#agrid .axis.h{top:50%;left:0;right:0;height:1px}
+
+/* edge rulers */
+#agrid .ruler{position:absolute;color:rgba(12,18,32,.5);font-size:9px}
+#agrid .ruler.top{top:8px;left:0;right:0;height:12px}
+#agrid .ruler.top span{position:absolute;transform:translateX(-50%)}
+#agrid .ruler.left{left:8px;top:0;bottom:0;width:34px}
+#agrid .ruler.left span{position:absolute;transform:translateY(-50%)}
+.dark #agrid .ruler,.divider #agrid .ruler{color:rgba(255,255,255,.55)}
+
+/* legend */
+#agrid .key{position:absolute;right:var(--pad-x);bottom:calc(var(--pad-b) + 18px);
+            background:rgba(12,18,32,.92);color:#fff;padding:14px 18px;line-height:2;
+            border-left:2px solid var(--red)}
+#agrid .key u{display:block;text-decoration:none;color:rgba(255,255,255,.62)}
+#agrid .key u b{color:#fff;font-weight:600}
+
+/* ---------------------------------------------------------------- toast --- */
+#toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,14px);
+       background:var(--ink);color:#fff;padding:15px 22px;max-width:520px;z-index:60;
+       font-family:var(--fb);font-size:13.5px;font-weight:500;line-height:1.55;
+       border-left:2px solid var(--red);opacity:0;pointer-events:none;
+       transition:opacity .22s ease,transform .22s var(--e-out)}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+#toast b{font-weight:700}
+@media print{#toast,#agrid{display:none!important}}

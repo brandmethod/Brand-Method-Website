@@ -31,6 +31,7 @@
   <button class="zpct" id="z-fit" title="Reset to fit (0)"><span id="z-pct">100%</span></button>
   <button class="dbtn" id="z-in" title="Zoom in (+)"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
   <span class="sep"></span>
+  <button class="dbtn" id="btn-grid" title="Alignment grid (A)" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M3 3h18v18H3z"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></svg></button>
   <button class="dbtn wide" id="btn-index" title="Index (G)">Index</button>
   <button class="dbtn wide" id="btn-print" title="Export PDF">PDF</button>
 </div>
@@ -57,7 +58,21 @@
 <!-- ============================ STAGE ============================= -->
 <div id="viewport">
 <div id="stage">
-<div id="scan"><i></i></div>
+<div id="agrid" aria-hidden="true">
+  <div class="marg l"></div><div class="marg r"></div>
+  <div class="marg t"></div><div class="marg b"></div>
+  <div class="cols"></div>
+  <div class="zone" style="top:68px"><b>HEADER BASE · 68</b></div>
+  <div class="zone" style="bottom:44px"><b>CONTENT BOTTOM · 1036</b></div>
+  <div class="axis v"></div><div class="axis h"></div>
+  <div class="ruler top"></div><div class="ruler left"></div>
+  <div class="key">
+    <u>STAGE <b>1920 × 1080</b></u>
+    <u>MARGINS <b>112 SIDE · 68 TOP · 44 FOOT</b></u>
+    <u>COLUMNS <b>12 · 40 GUTTER</b></u>
+    <u>AXES <b>960 / 540</b></u>
+  </div>
+</div>
 
 <!-- ================================================================
      01 · COVER
@@ -157,57 +172,62 @@
     <div class="rule"></div>
   </header>
 
-  <div class="s-body g-3" style="align-content:start">
+  <div class="s-body g-3 fill">
     <a class="panel idx" style="text-decoration:none;color:inherit" data-r="1">
-      <div class="lab">1.0 · Foundation</div>
+      <div class="lab wi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 7.5 12 12l9-4.5z"/><path d="M3 12.5 12 17l9-4.5"/><path d="M3 17.5 12 22l9-4.5"/></svg>1.0 · Foundation</div>
       <h3 class="h-md" style="margin:12px 0 10px">Foundation &amp; story</h3>
       <p class="sm">Who IAQ is, what it owns, who it speaks to and the arc every asset tells.</p>
-      <div class="kv" style="margin-top:14px">
+      <ul class="toc-mini"><li><b>06</b><span>At a glance</span></li><li><b>08</b><span>Three pillars</span></li><li><b>09</b><span>The buying group</span></li><li><b>10</b><span>The client journey</span></li><li><b>13</b><span>The pitch</span></li></ul>
+      <div class="kv">
         <div><span class="k">Pages</span><span class="v hot">05 — 13</span></div>
         <div><span class="k">Status</span><span class="v">Strategy locked · 15 Jul 2026</span></div>
       </div>
     </a>
     <a class="panel idx" style="text-decoration:none;color:inherit" data-r="2">
-      <div class="lab">2.0 · Verbal</div>
+      <div class="lab wi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>2.0 · Verbal</div>
       <h3 class="h-md" style="margin:12px 0 10px">Verbal identity</h3>
       <p class="sm">The Trusted Engineer: register, vocabulary, channels and the messaging framework.</p>
-      <div class="kv" style="margin-top:14px">
+      <ul class="toc-mini"><li><b>15</b><span>The voice</span></li><li><b>16</b><span>Vocabulary · keep and ban</span></li><li><b>17</b><span>Channel by channel</span></li><li><b>18</b><span>Messaging framework</span></li><li><b>19</b><span>Proof, governed</span></li></ul>
+      <div class="kv">
         <div><span class="k">Pages</span><span class="v hot">14 — 19</span></div>
         <div><span class="k">Status</span><span class="v">Locked</span></div>
       </div>
     </a>
     <a class="panel idx" style="text-decoration:none;color:inherit" data-r="3">
-      <div class="lab">3.0 · Visual</div>
+      <div class="lab wi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h18v18H3z"/><circle cx="9" cy="9" r="3"/><path d="M3 17l5-4 4 3 4-4 5 4"/></svg>3.0 · Visual</div>
       <h3 class="h-md" style="margin:12px 0 10px">Visual identity</h3>
       <p class="sm">Logo system, colour, typography, the blueprint graphic language, icons and photography.</p>
-      <div class="kv" style="margin-top:14px">
+      <ul class="toc-mini"><li><b>21</b><span>Logo system</span></li><li><b>26</b><span>Colour</span></li><li><b>28</b><span>Typography</span></li><li><b>32</b><span>The blueprint system</span></li><li><b>35</b><span>System don’ts</span></li></ul>
+      <div class="kv">
         <div><span class="k">Pages</span><span class="v hot">20 — 35</span></div>
         <div><span class="k">Status</span><span class="v">As built · digital flagship</span></div>
       </div>
     </a>
     <a class="panel idx" style="text-decoration:none;color:inherit" data-r="4">
-      <div class="lab">4.0 · Applied</div>
+      <div class="lab wi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6.5h8v11H3zM13 6.5h8v6h-8zM13 15h8v2.5h-8z"/></svg>4.0 · Applied</div>
       <h3 class="h-md" style="margin:12px 0 10px">Applications</h3>
       <p class="sm">Website, documents, stationery, site, fleet, wearables and the feed.</p>
-      <div class="kv" style="margin-top:14px">
+      <ul class="toc-mini"><li><b>37</b><span>The digital flagship</span></li><li><b>39</b><span>Stationery</span></li><li><b>41</b><span>Site, fleet &amp; wearables</span></li><li><b>42</b><span>LinkedIn</span></li><li><b>43</b><span>Touchpoints in priority order</span></li></ul>
+      <div class="kv">
         <div><span class="k">Pages</span><span class="v hot">36 — 43</span></div>
         <div><span class="k">Status</span><span class="v">Website live · templates rolling</span></div>
       </div>
     </a>
     <a class="panel idx" style="text-decoration:none;color:inherit" data-r="5">
-      <div class="lab">5.0 · Governed</div>
+      <div class="lab wi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.4 8.2-8 9-4.6-.8-8-4-8-9V6z"/><path d="M8.6 12.2l2.4 2.4 4.4-4.6"/></svg>5.0 · Governed</div>
       <h3 class="h-md" style="margin:12px 0 10px">Assets &amp; governance</h3>
       <p class="sm">Master library, naming, trademark, subsidiary architecture and sign-off.</p>
-      <div class="kv" style="margin-top:14px">
+      <ul class="toc-mini"><li><b>45</b><span>Assets &amp; file naming</span></li><li><b>46</b><span>Trademark &amp; legal</span></li><li><b>47</b><span>Subsidiary architecture</span></li><li><b>52</b><span>Governance &amp; sign-off</span></li><li><b>53</b><span>Close</span></li></ul>
+      <div class="kv">
         <div><span class="k">Pages</span><span class="v hot">44 — 53</span></div>
         <div><span class="k">Status</span><span class="v">Q2 in progress</span></div>
       </div>
     </a>
     <div class="panel tint" data-r="6">
-      <div class="lab">How to use this book</div>
+      <div class="lab wi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4.5h6a2.5 2.5 0 012.5 2.5v13A2 2 0 0010.5 18H4z"/><path d="M20 4.5h-6A2.5 2.5 0 0011.5 7v13A2 2 0 0113.5 18H20z"/></svg>How to use this book</div>
       <h3 class="h-md" style="margin:12px 0 10px">This book wins</h3>
       <p class="sm">When a rule in this book and a live surface disagree, the book wins and the surface is corrected. Anything not covered here routes through the brand sign-off owner before it ships.</p>
-      <div class="chips" style="margin-top:16px">
+      <div class="chips">
         <span class="chip on">Single source of truth</span>
         <span class="chip">Versioned</span>
       </div>
@@ -2823,8 +2843,20 @@
       <div data-r="2">
         <div class="mock swap" style="height:352px;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 90% at 50% 22%,#FFFFFF 0%,#F1F4F8 62%,#E6EAF1 100%);padding:20px">
           <img class="ph" src="assets/ppe-hero.jpg" alt="IAQ site PPE" onload="this.closest('.swap').classList.add('has-photo')" onerror="this.remove()">
-          <div class="ph-plate"><img src="assets/iaq-wordmark.png" alt=""></div>
-          <div class="ph-note">MARK ON HELMET · VEST STAYS REGULATION</div>
+          <div class="ov">
+            <!-- the mark applied on the helmet front, nothing else on the shell -->
+            <img class="mk" src="assets/iaq-wordmark.png" alt=""
+                 style="left:15%;top:41%;width:11%;transform:rotate(-7deg)">
+            <span class="dot" style="left:26%;top:43.5%"></span>
+            <span class="ld h" style="left:26%;top:43.5%;width:11%"></span>
+            <span class="ld v" style="left:37%;top:15%;height:28.5%"></span>
+            <span class="cap" style="left:31%;top:10.5%">MARK ONLY · FRONT, CENTRED</span>
+            <!-- the vest carries a woven patch; the garment itself is untouched -->
+            <div class="plate" style="left:56%;top:59%;width:10%;height:5%;transform:rotate(3deg)">
+              <img src="assets/iaq-wordmark.png" alt="">
+            </div>
+            <span class="cap" style="left:6%;bottom:7%;top:auto;color:var(--mist)">REGULATION COLOUR · UNTOUCHED</span>
+          </div>
           <svg class="dr" viewBox="0 0 300 440" style="width:100%;height:100%" aria-label="IAQ helmet and safety vest">
             <defs>
               <linearGradient id="hatG" x1="0" y1="0" x2="0" y2="1">
@@ -2877,8 +2909,17 @@
       <div data-r="3">
         <div class="mock swap" style="height:352px;display:flex;align-items:center;justify-content:center;background:radial-gradient(120% 90% at 50% 22%,#FFFFFF 0%,#F1F4F8 62%,#E6EAF1 100%);padding:20px">
           <img class="ph" src="assets/fleet-van.jpg" alt="IAQ fleet vehicle" onload="this.closest('.swap').classList.add('has-photo')" onerror="this.remove()">
-          <div class="ph-plate"><img src="assets/iaq-wordmark.png" alt=""></div>
-          <div class="ph-note">WORDMARK ON WHITE BODY · NO WRAPS</div>
+          <div class="ov">
+            <!-- wordmark applied direct to the white flank, no wrap, no panel -->
+            <img class="mk" src="assets/iaq-wordmark.png" alt=""
+                 style="left:70%;top:45%;width:14%">
+            <span class="url" style="left:70%;top:53.5%;font-size:6px">IAQTECHNOLOGY.COM</span>
+            <span class="dot" style="left:77%;top:45%"></span>
+            <span class="ld v" style="left:77%;top:19%;height:26%"></span>
+            <span class="ld h" style="left:47%;top:19%;width:30%"></span>
+            <span class="cap" style="left:47%;top:14%">WORDMARK ON WHITE BODY</span>
+            <span class="cap" style="left:6%;bottom:7%;top:auto;color:var(--mist)">NO WRAPS · NO PHOTOGRAPHY · NO GRADIENTS</span>
+          </div>
           <svg class="dr" viewBox="0 0 520 300" style="width:100%;height:100%" aria-label="IAQ fleet van">
             <defs>
               <linearGradient id="bodyG" x1="0" y1="0" x2="0" y2="1">
@@ -3556,6 +3597,7 @@
 </div><!-- /#stage -->
 </div><!-- /#viewport -->
 
+<div id="toast" role="status" aria-live="polite"></div>
 <script src="js/book.js"></script>
 </body>
 </html>

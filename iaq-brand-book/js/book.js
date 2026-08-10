@@ -4,7 +4,7 @@
    Responsibilities
    1. Fit the fixed 1920x1080 stage to any viewport
    2. Page turning (keys, wheel, click, swipe, dock, rail, index)
-   3. Direction-aware page-turn animation + red scan sweep
+   3. Direction-aware page-turn animation
    4. Section rail + progress + auto-built index overlay
    5. Deep-link via #hash, print-safe
    ========================================================================== */
@@ -13,7 +13,6 @@
 
   var stage    = document.getElementById('stage');
   var slides   = Array.prototype.slice.call(document.querySelectorAll('.slide'));
-  var scan     = document.getElementById('scan');
   var progress = document.querySelector('#progress span');
   var counter  = document.getElementById('count');
   var railBox  = document.getElementById('rail');
@@ -27,6 +26,8 @@
   var zOut     = document.getElementById('z-out');
   var zFit     = document.getElementById('z-fit');
   var zPct     = document.getElementById('z-pct');
+  var gridBtn  = document.getElementById('btn-grid');
+  var toast    = document.getElementById('toast');
 
   var cur = 0, total = slides.length;
 
@@ -107,12 +108,6 @@
     void to.offsetWidth;                       // restart entrance choreography
     to.classList.add('is-active', dir > 0 ? 'in-next' : 'in-prev');
 
-    // red scan sweep
-    scan.classList.remove('go', 'rev');
-    void scan.offsetWidth;
-    scan.classList.add('go');
-    if (dir < 0) scan.classList.add('rev');
-
     cur = n;
     sync();
 
@@ -184,6 +179,8 @@
     else if (e.key === '-' || e.key === '_') { e.preventDefault(); zoomStep(-0.25); }
     else if (e.key === '0') { e.preventDefault(); setZoom(1); }
     else if (e.key.toLowerCase() === 'g') toggleIndex();
+    else if (e.key.toLowerCase() === 'a') toggleGrid();
+    else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'p') { e.preventDefault(); exportPDF(); }
     else if (e.key === 'Escape') closeIndex();
     else if (e.key.toLowerCase() === 'f') {
       if (!document.fullscreenElement) document.documentElement.requestFullscreen();
@@ -226,7 +223,8 @@
   zOut.addEventListener('click', function () { zoomStep(-0.25); });
   zFit.addEventListener('click', function () { setZoom(1); });
   document.getElementById('btn-index').addEventListener('click', toggleIndex);
-  document.getElementById('btn-print').addEventListener('click', function () { window.print(); });
+  if (gridBtn) gridBtn.addEventListener('click', toggleGrid);
+  document.getElementById('btn-print').addEventListener('click', exportPDF);
   document.querySelector('#index .close').addEventListener('click', closeIndex);
 
   // drag to pan while zoomed in
@@ -261,6 +259,62 @@
     dockT = setTimeout(function () { dock.classList.remove('awake'); }, 2200);
   });
 
+  /* ----------------------------------------------------------- PDF export */
+  // Printing is blocked inside a sandboxed frame (the artifact viewer is one),
+  // so say so plainly instead of letting the button look broken.
+  var embedded = false;
+  try { embedded = window.self !== window.top; } catch (err) { embedded = true; }
+
+  var toastT;
+  function say(html) {
+    if (!toast) return;
+    toast.innerHTML = html;
+    toast.classList.add('show');
+    clearTimeout(toastT);
+    toastT = setTimeout(function () { toast.classList.remove('show'); }, 6200);
+  }
+
+  function exportPDF() {
+    closeIndex();
+    document.body.classList.remove('agrid');
+    if (embedded) {
+      say('This view is embedded, so the browser blocks its print dialog. ' +
+          'Open the downloaded <b>IAQ-Brand-Identity-Book.html</b> and press ' +
+          '<b>Ctrl / \u2318 + P</b> \u2014 choose <b>Landscape</b>, margins <b>None</b>, ' +
+          'and tick <b>Background graphics</b>.');
+      return;
+    }
+    setTimeout(function () { window.print(); }, 60);
+  }
+
+  /* ------------------------------------------------- alignment grid overlay */
+  function buildGrid() {
+    var g = document.getElementById('agrid');
+    if (!g) return;
+    var cols = g.querySelector('.cols');
+    for (var i = 1; i <= 12; i++) {
+      var c = document.createElement('i');
+      c.setAttribute('data-n', i);
+      cols.appendChild(c);
+    }
+    var rt = g.querySelector('.ruler.top');
+    for (var x = 0; x <= 1920; x += 240) {
+      var sx = document.createElement('span');
+      sx.style.left = x + 'px'; sx.textContent = x;
+      rt.appendChild(sx);
+    }
+    var rl = g.querySelector('.ruler.left');
+    for (var y = 0; y <= 1080; y += 180) {
+      var sy = document.createElement('span');
+      sy.style.top = y + 'px'; sy.textContent = y;
+      rl.appendChild(sy);
+    }
+  }
+  function toggleGrid() {
+    var on = document.body.classList.toggle('agrid');
+    if (gridBtn) gridBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+
   /* ------------------------------------------------------ leader-line prep */
   // give every leader path its own dash length so the trace animation is exact
   document.querySelectorAll('.leader path').forEach(function (p) {
@@ -270,6 +324,7 @@
   /* ----------------------------------------------------------------- init */
   buildRail();
   buildIndex();
+  buildGrid();
   fit();
 
   var start = parseInt((location.hash || '').replace('#', ''), 10);

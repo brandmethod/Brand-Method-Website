@@ -26,6 +26,11 @@
   <span class="sep"></span>
   <button class="dbtn" id="btn-prev" title="Previous (←)"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
   <button class="dbtn" id="btn-next" title="Next (→)"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+  <span class="sep"></span>
+  <button class="dbtn" id="z-out" title="Zoom out (−)"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button>
+  <button class="zpct" id="z-fit" title="Reset to fit (0)"><span id="z-pct">100%</span></button>
+  <button class="dbtn" id="z-in" title="Zoom in (+)"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  <span class="sep"></span>
   <button class="dbtn wide" id="btn-index" title="Index (G)">Index</button>
   <button class="dbtn wide" id="btn-print" title="Export PDF">PDF</button>
 </div>
@@ -38,7 +43,7 @@
 </button>
 
 <div class="chrome" id="hint">
-  <kbd>←</kbd> <kbd>→</kbd> turn page &nbsp;·&nbsp; <kbd>G</kbd> index &nbsp;·&nbsp; <kbd>F</kbd> fullscreen<br>
+  <kbd>←</kbd> <kbd>→</kbd> turn page &nbsp;·&nbsp; <kbd>+</kbd> <kbd>−</kbd> zoom &nbsp;·&nbsp; <kbd>G</kbd> index &nbsp;·&nbsp; <kbd>F</kbd> fullscreen<br>
   1920 × 1080 · scroll, swipe or click to advance
 </div>
 
@@ -2555,60 +2560,67 @@
   </header>
 
   <div class="s-body" style="grid-template-rows:1fr auto">
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);grid-auto-rows:minmax(0,1fr)">
-      <div data-r="1">
-        <div class="mock" style="height:100%;display:flex;flex-direction:column;justify-content:center;padding:30px 32px">
-          <img src="assets/iaq-wordmark.png" style="height:26px" alt="">
-          <div style="height:2px;width:56px;background:var(--red);margin:16px 0 14px"></div>
-          <div style="font-family:var(--fd);font-weight:600;font-size:19px;letter-spacing:-.01em">Ahmad Faiz</div>
-          <div class="lab-q" style="margin-top:6px">Project Director · EPC</div>
-          <p class="sm" style="margin-top:14px;font-size:13px">IAQ Group · Your Total Facility Solutions Provider<br>+60 X-XXX XXXX · iaqtechnology.com</p>
-        </div>
-        <div class="mock-cap"><span>Email signature · type only, red rule</span><b>No banners</b></div>
-      </div>
+    <div style="display:grid;grid-template-columns:7fr 5fr;gap:var(--gut)">
 
-      <div data-r="2">
-        <div class="mock navy" style="height:100%;display:flex;flex-direction:column;justify-content:center;padding:30px 32px;position:relative;overflow:hidden">
-          <svg style="position:absolute;right:-24px;top:8px;width:300px;height:200px" viewBox="0 0 300 200" fill="none">
-            <path d="M24 168V44h216v124" stroke="rgba(255,255,255,.3)" stroke-width="1.3"/>
-            <path d="M24 72h216" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
-            <g stroke="rgba(255,255,255,.2)" stroke-width="1">
-              <path d="M32 72h34v8H32zM74 72h34v8H74zM116 72h34v8h-34zM158 72h34v8h-34zM200 72h34v8h-34z"/>
-            </g>
-            <rect x="24" y="80" width="216" height="52" fill="rgba(236,32,39,.12)" stroke="#EC2027" stroke-width="1.3"/>
-            <path d="M24 132h216M24 148h216" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
-            <path d="M24 186h216M24 180v12M240 180v12" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
-          </svg>
-          <div style="position:relative">
-            <img src="assets/iaq-wordmark.png" style="height:26px;filter:brightness(0) invert(1)" alt="">
-            <div style="font-family:var(--fd);font-weight:600;font-size:20px;color:#fff;margin-top:16px;letter-spacing:-.015em">Your Total Facility<br>Solutions Provider</div>
-            <div class="lab-q" style="margin-top:12px;color:rgba(255,255,255,.5)">ISO 9001 · 14001 · 45001 · CIDB G7</div>
+      <div class="stack" data-r="1">
+        <!-- email signature · 600 px wide, the standard maximum for mail clients -->
+        <div>
+          <div class="mock fmt" style="--ar:600/180;display:flex;flex-direction:column;justify-content:center;padding:26px 32px">
+            <img src="assets/iaq-wordmark.png" style="height:24px" alt="">
+            <div style="height:2px;width:52px;background:var(--red);margin:13px 0 11px"></div>
+            <div style="font-family:var(--fd);font-weight:600;font-size:17px;letter-spacing:-.01em">Ahmad Faiz</div>
+            <div class="lab-q" style="margin-top:5px">Project Director · EPC</div>
+            <p class="sm" style="margin-top:10px;font-size:12px">IAQ Group · Your Total Facility Solutions Provider<br>+60 X-XXX XXXX · iaqtechnology.com</p>
           </div>
+          <div class="mock-cap"><span>Email signature · type only, red rule</span><b>600 px wide · no banners</b></div>
         </div>
-        <div class="mock-cap"><span>LinkedIn company banner · navy schematic</span><b>1584 × 396</b></div>
+
+        <!-- LinkedIn company banner · 1584 x 396, a true 4:1 -->
+        <div>
+          <div class="mock navy fmt" style="--ar:1584/396;display:flex;align-items:center;padding:0 38px;position:relative;overflow:hidden">
+            <svg style="position:absolute;right:24px;top:50%;transform:translateY(-50%);width:300px;height:132px" viewBox="0 0 300 132" fill="none">
+              <path d="M18 116V26h192v90" stroke="rgba(255,255,255,.30)" stroke-width="1.3"/>
+              <path d="M18 48h192" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+              <g stroke="rgba(255,255,255,.2)" stroke-width="1">
+                <path d="M26 48h30v7H26zM64 48h30v7H64zM102 48h30v7h-30zM140 48h30v7h-30zM178 48h30v7h-30z"/>
+              </g>
+              <rect x="18" y="55" width="192" height="38" fill="rgba(236,32,39,.12)" stroke="#EC2027" stroke-width="1.3"/>
+              <path d="M18 100h192" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+              <path d="M240 116h44M240 110v12M284 110v12" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+            </svg>
+            <div style="position:relative">
+              <img src="assets/iaq-wordmark.png" style="height:22px;filter:brightness(0) invert(1)" alt="">
+              <div style="font-family:var(--fd);font-weight:600;font-size:19px;color:#fff;margin-top:12px;letter-spacing:-.015em">Your Total Facility Solutions Provider</div>
+              <div class="lab-q" style="margin-top:9px;color:rgba(255,255,255,.5)">ISO 9001 · 14001 · 45001 · CIDB G7</div>
+            </div>
+          </div>
+          <div class="mock-cap"><span>LinkedIn company banner · navy schematic</span><b>1584 × 396 px</b></div>
+        </div>
       </div>
 
-      <div data-r="3">
-        <div class="mock" style="height:100%;display:flex;flex-direction:column">
-          <div style="padding:18px 22px;border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center">
+      <!-- document chrome · A4 portrait, 210 x 297 -->
+      <div data-r="2" style="display:flex;flex-direction:column;min-width:0">
+        <div class="mock" style="flex:none;height:604px;width:427px;margin:0 auto;display:flex;flex-direction:column">
+          <div style="padding:13px 22px;border-bottom:1px solid var(--hair);display:flex;justify-content:space-between;align-items:center">
             <img src="assets/iaq-wordmark.png" style="height:20px" alt="">
             <span class="lab-q" style="font-size:8.5px">Tender submission · confidential</span>
           </div>
-          <div style="flex:1;padding:20px 22px;display:flex;flex-direction:column">
+          <div style="flex:1;padding:16px 22px;display:flex;flex-direction:column;min-height:0">
             <div class="lab" style="font-size:8px">3.2 · Scope of works</div>
             <div style="font-family:var(--fd);font-weight:600;font-size:14px;margin-top:7px;letter-spacing:-.012em;line-height:1.25">Cleanroom envelope &amp; process utilities</div>
             <p style="font-size:9px;line-height:1.75;color:var(--steel);margin-top:9px">Design, supply and installation of the cleanroom envelope, FFU ceiling grid and process utilities, with tool hookup and validation to the required class.</p>
-            <div class="kv push" style="margin-top:auto">
+            <div class="kv" style="margin-top:auto">
               <div><span class="k" style="font-size:9px">Delivered class</span><span class="v" style="font-size:7.5px">ISO CLASS 1</span></div>
               <div><span class="k" style="font-size:9px">Programme</span><span class="v" style="font-size:7.5px">42 WEEKS</span></div>
             </div>
           </div>
-          <div style="padding:14px 22px;border-top:1px solid var(--hair);display:flex;justify-content:space-between" class="lab-q">
+          <div style="padding:10px 22px;border-top:1px solid var(--hair);display:flex;justify-content:space-between" class="lab-q">
             <span style="font-size:8.5px">ISO 9001 · 14001 · 45001 · CIDB G7</span><span style="font-size:8.5px">01</span>
           </div>
         </div>
-        <div class="mock-cap"><span>Document header &amp; footer system</span><b>All templates</b></div>
+        <div class="mock-cap"><span>Document header &amp; footer system</span><b>A4 · 210 × 297 mm</b></div>
       </div>
+
     </div>
 
     <div class="panel flat" style="display:flex;align-items:flex-start;gap:48px" data-r="4">
@@ -2639,10 +2651,10 @@
     <div class="rule"></div>
   </header>
 
-  <div class="s-body g-58">
-    <div style="display:grid;grid-template-columns:5fr 7fr;gap:var(--gut)">
+  <div class="s-body" style="grid-template-columns:454px 392px 1fr">
+    <div style="display:contents">
       <div data-r="1">
-        <div class="mock" style="height:100%;padding:28px 26px;display:flex;flex-direction:column">
+        <div class="mock" style="flex:none;width:454px;height:642px;padding:30px 28px;display:flex;flex-direction:column">
           <img src="assets/iaq-wordmark.png" style="height:24px" alt="">
           <div style="height:1px;background:var(--hair);margin:22px 0 0"></div>
           <div style="flex:1;display:flex;flex-direction:column;padding-top:24px">
@@ -2658,24 +2670,24 @@
           <div style="height:2px;width:52px;background:var(--red);margin-bottom:12px"></div>
           <div class="lab-q" style="font-size:8px">IAQ GROUP · MALAYSIA · IAQTECHNOLOGY.COM</div>
         </div>
-        <div class="mock-cap"><span>Letterhead · A4</span><b>Logo top left</b></div>
+        <div class="mock-cap"><span>Letterhead · A4</span><b>210 × 297 mm</b></div>
       </div>
 
-      <div data-r="2" style="display:flex;flex-direction:column;gap:16px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1">
-          <div class="mock" style="padding:22px;display:flex;flex-direction:column;justify-content:space-between">
-            <img src="assets/iaq-wordmark.png" style="height:22px" alt="">
-            <div>
-              <div style="font-family:var(--fd);font-weight:600;font-size:16px">Nabilah Mohd Radzi</div>
-              <div class="lab-q" style="margin-top:5px;font-size:8.5px">Corporate · IAQ Group</div>
-            </div>
-          </div>
-          <div class="mock navy" style="padding:22px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
-            <div class="lab-q" style="color:rgba(255,255,255,.55);font-size:8.5px;letter-spacing:.2em">Your Total Facility<br>Solutions Provider</div>
-            <div style="height:2px;width:38px;background:var(--red);margin-top:14px"></div>
+      <div data-r="2" style="display:flex;flex-direction:column;gap:16px;min-width:0">
+        <!-- 90 x 54 mm is landscape: the card must never be shown portrait -->
+        <div class="mock" style="flex:none;width:392px;height:235px;padding:20px 22px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden">
+          <img src="assets/iaq-wordmark.png" style="height:22px" alt="">
+          <div>
+            <div style="font-family:var(--fd);font-weight:600;font-size:15px;letter-spacing:-.012em">Nabilah Mohd Radzi</div>
+            <div class="lab-q" style="margin-top:5px;font-size:8.5px">Corporate · IAQ Group</div>
+            <div class="lab-q" style="margin-top:9px;font-size:8px;color:var(--mist)">+60 X-XXX XXXX · iaqtechnology.com</div>
           </div>
         </div>
-        <div class="mock-cap"><span>Business card · front and back</span><b>90 × 54 mm</b></div>
+        <div class="mock navy" style="flex:none;width:392px;height:235px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+          <div class="lab-q" style="color:rgba(255,255,255,.55);font-size:8.5px;letter-spacing:.2em">Your Total Facility<br>Solutions Provider</div>
+          <div style="height:2px;width:38px;background:var(--red);margin-top:14px"></div>
+        </div>
+        <div class="mock-cap"><span>Business card · front and back</span><b>90 × 54 mm · landscape</b></div>
 
         <div class="panel tint">
           <p class="sm">Print is where restraint shows most. White space, exact alignment, one red rule: <strong>nothing else is needed to look governed.</strong></p>

@@ -238,6 +238,10 @@ body:not(.roomy) .edge::after{display:none}
   opacity:0;visibility:hidden;pointer-events:none;
   transform:translate3d(0,0,0);
   will-change:transform,opacity;
+  /* bleed elements (glow, oversized numerals, reticles) are meant to run off
+     the page. Clipping here rather than at the stage stops them creating a
+     scrollable overflow that shifts the whole layout sideways. */
+  overflow:hidden;
 }
 .slide.is-active{opacity:1;visibility:visible;pointer-events:auto;z-index:2}
 .slide.is-out{z-index:1}
@@ -996,3 +1000,28 @@ strong{font-weight:600;color:var(--ink)}
   width:198px;height:198px;filter:none;stroke:none;opacity:.85;
 }
 .spec-notes{display:flex;flex-direction:column;justify-content:center;min-width:0}
+
+/* --------------------------------------------------------------------------
+   TRUE-TO-SPEC FORMAT FRAMES
+   A mockup that does not hold its real aspect ratio teaches the wrong thing.
+   --ar carries the actual artwork proportion (1584/396, 90/54, 210/297 …).
+   -------------------------------------------------------------------------- */
+.fmt{width:100%;height:auto;aspect-ratio:var(--ar);flex:none}
+/* portrait formats take explicit dimensions: aspect-ratio against an
+   indefinite parent height blows the column out sideways */
+.fmt.tall{height:100%;width:auto;aspect-ratio:var(--ar);margin-inline:auto;max-width:100%;min-width:0}
+.fmt-note{font-family:var(--fm);font-size:9px;letter-spacing:.12em;color:var(--mist)}
+
+/* -- zoom readout in the dock --------------------------------------------- */
+.zpct{
+  min-width:52px;padding:0 8px;height:32px;
+  border:1px solid rgba(255,255,255,.14);
+  font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.08em;
+  color:rgba(255,255,255,.82);
+  transition:background .18s,border-color .18s,color .18s;
+}
+.zpct:hover{background:var(--red);border-color:var(--red);color:#fff}
+/* while zoomed the page is grabbable, not clickable-to-turn */
+body.zoomed #stage{cursor:grab}
+body.zoomed #stage:active{cursor:grabbing}
+body.zoomed .edge{opacity:.35}

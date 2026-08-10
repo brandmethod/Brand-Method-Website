@@ -23,6 +23,10 @@
   var hint     = document.getElementById('hint');
   var edgePrev = document.getElementById('edge-prev');
   var edgeNext = document.getElementById('edge-next');
+  var zIn      = document.getElementById('z-in');
+  var zOut     = document.getElementById('z-out');
+  var zFit     = document.getElementById('z-fit');
+  var zPct     = document.getElementById('z-pct');
 
   var cur = 0, total = slides.length;
 
@@ -30,14 +34,50 @@
   // Leave a gutter wide enough for the edge page buttons to sit beside the
   // book rather than on top of it; drop the gutter on narrow screens where
   // the page needs every pixel.
+  // Zoom multiplies the fit scale. Because the page is a fixed 1920x1080 stage
+  // scaled by transform, zooming never reflows anything: the layout is
+  // identical at every level and type re-rasterises crisply rather than
+  // enlarging pixels.
+  var zoom = 1, panX = 0, panY = 0, base = 1;
+  var ZMIN = 1, ZMAX = 4;
+
+  function clampPan() {
+    var k = base * zoom;
+    var ox = Math.max(0, (1920 * k - window.innerWidth) / 2);
+    var oy = Math.max(0, (1080 * k - window.innerHeight) / 2);
+    panX = Math.min(ox, Math.max(-ox, panX));
+    panY = Math.min(oy, Math.max(-oy, panY));
+  }
+
   function fit() {
     var w = window.innerWidth, h = window.innerHeight;
     var pad = w > 1100 ? 0.90 : (w > 760 ? 0.95 : 1);
-    var k = Math.min(w / 1920, h / 1080) * pad;
-    stage.style.transform = 'scale(' + k + ')';
+    base = Math.min(w / 1920, h / 1080) * pad;
+    var k = base * zoom;
+    clampPan();
+    stage.style.transform = 'translate(' + panX + 'px,' + panY + 'px) scale(' + k + ')';
     document.body.classList.toggle('roomy', (w - 1920 * k) / 2 >= 76);
+    document.body.classList.toggle('zoomed', zoom > 1.001);
+    if (zPct) zPct.textContent = Math.round(zoom * 100) + '%';
+    if (zOut) zOut.disabled = zoom <= ZMIN + 0.001;
+    if (zIn)  zIn.disabled  = zoom >= ZMAX - 0.001;
   }
   window.addEventListener('resize', fit);
+
+  function setZoom(z, cx, cy) {
+    var prev = zoom;
+    zoom = Math.min(ZMAX, Math.max(ZMIN, z));
+    if (zoom === prev) return;
+    if (zoom === 1) { panX = panY = 0; }
+    else if (cx !== undefined) {
+      // keep the point under the cursor fixed while scaling
+      var r = zoom / prev;
+      panX = cx - (cx - panX) * r;
+      panY = cy - (cy - panY) * r;
+    }
+    fit();
+  }
+  function zoomStep(d, cx, cy) { setZoom(Math.round((zoom + d) * 100) / 100, cx, cy); }
 
   /* -------------------------------------------------------------- pager */
   // Turns are interruptible: a click never waits for the previous animation
@@ -140,6 +180,9 @@
     else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); prev(); }
     else if (e.key === 'Home') go(0);
     else if (e.key === 'End') go(total - 1);
+    else if (e.key === '+' || e.key === '=') { e.preventDefault(); zoomStep(0.25); }
+    else if (e.key === '-' || e.key === '_') { e.preventDefault(); zoomStep(-0.25); }
+    else if (e.key === '0') { e.preventDefault(); setZoom(1); }
     else if (e.key.toLowerCase() === 'g') toggleIndex();
     else if (e.key === 'Escape') closeIndex();
     else if (e.key.toLowerCase() === 'f') {
@@ -150,12 +193,23 @@
 
   var wheelLock = 0;
   window.addEventListener('wheel', function (e) {
+    if (e.ctrlKey || e.metaKey) {                       // pinch / ctrl+wheel zooms
+      e.preventDefault();
+      zoomStep(e.deltaY > 0 ? -0.2 : 0.2,
+               e.clientX - window.innerWidth / 2,
+               e.clientY - window.innerHeight / 2);
+      return;
+    }
+    if (zoom > 1.001) {                                 // zoomed in: wheel pans
+      panX -= e.deltaX; panY -= e.deltaY; fit();
+      return;
+    }
     var now = Date.now();
     if (now - wheelLock < 340) return;
     if (Math.abs(e.deltaY) < 14 && Math.abs(e.deltaX) < 14) return;
     wheelLock = now;
     (e.deltaY > 0 || e.deltaX > 0) ? next() : prev();
-  }, { passive: true });
+  }, { passive: false });
 
   var tx = 0;
   window.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
@@ -168,12 +222,32 @@
   document.getElementById('btn-next').addEventListener('click', next);
   edgePrev.addEventListener('click', prev);
   edgeNext.addEventListener('click', next);
+  zIn.addEventListener('click',  function () { zoomStep(0.25); });
+  zOut.addEventListener('click', function () { zoomStep(-0.25); });
+  zFit.addEventListener('click', function () { setZoom(1); });
   document.getElementById('btn-index').addEventListener('click', toggleIndex);
   document.getElementById('btn-print').addEventListener('click', function () { window.print(); });
   document.querySelector('#index .close').addEventListener('click', closeIndex);
 
+  // drag to pan while zoomed in
+  var dragging = false, moved = false, sx = 0, sy = 0;
+  stage.addEventListener('mousedown', function (e) {
+    if (zoom <= 1.001) return;
+    dragging = true; moved = false; sx = e.clientX; sy = e.clientY;
+    e.preventDefault();
+  });
+  window.addEventListener('mousemove', function (e) {
+    if (!dragging) return;
+    var dx = e.clientX - sx, dy = e.clientY - sy;
+    if (Math.abs(dx) > 3 || Math.abs(dy) > 3) moved = true;
+    panX += dx; panY += dy; sx = e.clientX; sy = e.clientY; fit();
+  });
+  window.addEventListener('mouseup', function () { dragging = false; });
+
   // click the stage right/left half to page (ignores links & buttons)
   stage.addEventListener('click', function (e) {
+    if (moved) { moved = false; return; }      // that was a pan, not a page turn
+    if (zoom > 1.001) return;                  // zoomed in, clicks pan instead
     if (e.target.closest('a,button')) return;
     var r = stage.getBoundingClientRect();
     ((e.clientX - r.left) / r.width > 0.5) ? next() : prev();

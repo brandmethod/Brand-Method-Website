@@ -2194,7 +2194,7 @@
 <!-- ================================================================
      33 · ICONOGRAPHY
      ================================================================ -->
-<section class="slide" data-sec="3.0" data-secname="Visual" data-title="Iconography · One Stroke, One Grid">
+<section class="slide dark" data-sec="3.0" data-secname="Visual" data-title="Iconography · One Stroke, One Grid">
   <div class="ticks"><i></i><i></i><i></i><i></i></div>
   <header class="s-head">
     <div class="row">
@@ -2209,26 +2209,52 @@
 
   <div class="s-body g-75">
     <div class="stack" data-r="1">
-      <div class="lab-h"><span class="n">01</span> The set · drawn on a 24 px grid</div>
-      <div class="panel" style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr;gap:0;padding:0;align-content:center">
-        <!-- each cell -->
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="M3 9h18M3 15h18M9 4v16M15 4v16"/></svg><span>Cleanroom</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16M4 13h16"/><path d="M8 5v14M16 5v14"/></svg><span>FFU / filter</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 8h9v8H3zM12 12h6"/><path d="M18 6h3v12h-3z"/></svg><span>ACMV duct</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h5M15 12h5"/><path d="M9 7h6v10H9z"/><path d="M12 7V3M9 3h6"/></svg><span>Process valve</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 20V4h18v16z"/><path d="M7 16l4-6 3 4 3-5"/></svg><span>Commissioning</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M7 7h10v10H7z"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><span>Semiconductor</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 3h16v6H4zM4 9h16v6H4zM4 15h16v6H4z"/><path d="M7 6h2M7 12h2M7 18h2"/></svg><span>Data centre</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 7h14v10H3z"/><path d="M17 10h3v4h-3z"/><path d="M6 10v4M10 10v4"/></svg><span>EV &amp; battery</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M10 3h4v6l5 12H5l5-12z"/><path d="M8 15h8"/></svg><span>Life science</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 21V6l9-3 9 3v15z"/><path d="M9 21v-7h6v7"/></svg><span>Facility mgmt</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8 12l3 3 5-6"/></svg><span>Safety &amp; ISO</span></div>
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span>Tender doc</span></div>
+      <div class="lab-h"><span class="n">01</span> Specimen · the construction grid</div>
+
+      <div class="spec-row">
+        <div class="gtile hero">
+          <svg class="grid24" viewBox="0 0 24 24" aria-hidden="true">
+            <g stroke="rgba(255,255,255,.16)" stroke-width=".22">
+              <path d="M2 0v24M4 0v24M6 0v24M8 0v24M10 0v24M12 0v24M14 0v24M16 0v24M18 0v24M20 0v24M22 0v24"/>
+              <path d="M0 2h24M0 4h24M0 6h24M0 8h24M0 10h24M0 12h24M0 14h24M0 16h24M0 18h24M0 20h24M0 22h24"/>
+            </g>
+            <rect x="2" y="2" width="20" height="20" fill="none" stroke="rgba(236,32,39,.42)" stroke-width=".3"/>
+            <path d="M12 0v3M12 21v3M0 12h3M21 12h3" stroke="rgba(236,32,39,.55)" stroke-width=".4"/>
+          </svg>
+          <svg viewBox="0 0 24 24" class="mark"><path d="M3 4h18v16H3z"/><path d="M3 9h18M3 15h18M9 4v16M15 4v16"/></svg>
+        </div>
+
+        <div class="spec-notes">
+          <div class="kv">
+            <div><span class="k">Live area</span><span class="v hot">20 × 20 px</span></div>
+            <div><span class="k">Padding</span><span class="v hot">2 px all sides</span></div>
+            <div><span class="k">Stroke</span><span class="v hot">1.6 px · never mixed</span></div>
+            <div><span class="k">Caps &amp; joins</span><span class="v hot">Square · miter</span></div>
+          </div>
+          <p class="sm" style="margin-top:16px">The tile is a display case, not a style. Every mark stays outline-only on the
+          24&nbsp;px grid: the luminous plate presents it, it does not decorate it.</p>
+        </div>
+      </div>
+
+      <div class="lab-h" style="margin-top:4px"><span class="n">02</span> The set · twelve marks</div>
+      <div class="gtiles">
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M3 4h18v16H3z"/><path d="M3 9h18M3 15h18M9 4v16M15 4v16"/></svg><span>Cleanroom</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z"/><path d="M4 9h16M4 13h16"/><path d="M8 5v14M16 5v14"/></svg><span>FFU / filter</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M3 8h9v8H3zM12 12h6"/><path d="M18 6h3v12h-3z"/></svg><span>ACMV duct</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M4 12h5M15 12h5"/><path d="M9 7h6v10H9z"/><path d="M12 7V3M9 3h6"/></svg><span>Process valve</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M3 20V4h18v16z"/><path d="M7 16l4-6 3 4 3-5"/></svg><span>Commissioning</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M7 7h10v10H7z"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><span>Semiconductor</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M4 3h16v6H4zM4 9h16v6H4zM4 15h16v6H4z"/><path d="M7 6h2M7 12h2M7 18h2"/></svg><span>Data centre</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M3 7h14v10H3z"/><path d="M17 10h3v4h-3z"/><path d="M6 10v4M10 10v4"/></svg><span>EV &amp; battery</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M10 3h4v6l5 12H5l5-12z"/><path d="M8 15h8"/></svg><span>Life science</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M3 21V6l9-3 9 3v15z"/><path d="M9 21v-7h6v7"/></svg><span>Facility mgmt</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M8 12l3 3 5-6"/></svg><span>Safety &amp; ISO</span></div>
+            <div class="gtile"><svg viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg><span>Tender doc</span></div>
       </div>
     </div>
 
     <div class="stack" data-r="2">
-      <div class="lab-h"><span class="n">02</span> Construction rules</div>
+      <div class="lab-h"><span class="n">03</span> Construction rules</div>
       <div class="kv">
         <div><span class="k">Grid</span><span class="v hot">24 × 24 px · 2px padding</span></div>
         <div><span class="k">Stroke</span><span class="v hot">1.6 px · never mixed</span></div>
@@ -2238,22 +2264,23 @@
         <div><span class="k">Colour on navy</span><span class="v hot">White or IAQ Red</span></div>
       </div>
 
-      <div class="lab-h"><span class="n">03</span> Do not</div>
-      <div>
-        <div class="cross">Use rounded, filled or duotone icon styles</div>
-        <div class="cross">Mix stock icon sets into the system</div>
-        <div class="cross">Scale icons below 16px or off the pixel grid</div>
-      </div>
-
-      <div class="lab-h" style="margin-top:6px"><span class="n">04</span> Sizes in use</div>
+      <div class="lab-h"><span class="n">04</span> Sizes in use</div>
       <div class="kv">
         <div><span class="k">Inline with body copy</span><span class="v hot">16 px</span></div>
         <div><span class="k">Capability cards &amp; lists</span><span class="v hot">24 px</span></div>
         <div><span class="k">Section headers &amp; booth graphics</span><span class="v hot">32–48 px</span></div>
       </div>
 
-      <div class="panel tint push">
-        <p class="sm">Icons label capability; they never illustrate a mood. If a concept needs an illustration rather than an icon, it needs a schematic instead.</p>
+      <div class="lab-h"><span class="n">05</span> Do not</div>
+      <div>
+        <div class="cross">Use rounded, filled or duotone icon styles</div>
+        <div class="cross">Mix stock icon sets into the system</div>
+        <div class="cross">Scale icons below 16px or off the pixel grid</div>
+      </div>
+
+      <div class="panel push" style="background:rgba(236,32,39,.11)">
+        <p class="sm">Icons label capability; they never illustrate a mood. If a concept needs an
+        illustration rather than an icon, it needs a schematic instead.</p>
       </div>
     </div>
   </div>
@@ -2263,7 +2290,6 @@
     <span class="pg"><b>33</b><i></i>brandmethod.co · © 2026</span>
   </footer>
 </section>
-
 <!-- ================================================================
      34 · PHOTOGRAPHY
      ================================================================ -->

@@ -562,6 +562,11 @@ strong{font-weight:600;color:var(--ink)}
                    linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
   background-size:80px 80px;
   mask-image:radial-gradient(120% 100% at 22% 50%,#000 20%,transparent 78%)}
+.cover::after{
+  content:'';position:absolute;left:0;right:0;top:0;height:1px;z-index:5;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.16) 18%,rgba(236,32,39,.55) 52%,rgba(255,255,255,.12) 84%,transparent);
+}
+.cover .facts div{white-space:nowrap}
 .cover .inner{position:relative;z-index:4;height:100%;padding:74px var(--pad-x) 60px;display:flex;flex-direction:column}
 .cover .topbar{display:flex;align-items:center;justify-content:space-between;
   font-family:var(--fm);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.42)}
@@ -849,3 +854,92 @@ strong{font-weight:600;color:var(--ink)}
 .s-body [data-r] > .mock,
 .s-body [data-r] > .ph{flex:1 1 auto;min-height:0}
 .ic{padding:9px 8px}
+
+/* ==========================================================================
+   10. ATMOSPHERE
+   --------------------------------------------------------------------------
+   Art direction: depth comes from light, not from boxes. A single luminous
+   source bleeds across the ground, surfaces read as glass held in front of it,
+   and technical reticles register the optical centre. The palette is unchanged
+   — the bloom is IAQ Red and Deep Navy, never a new hue.
+   ========================================================================== */
+
+/* -- luminous grounds ------------------------------------------------------ */
+.slide.dark{
+  background:
+    radial-gradient(78% 62% at 26% 4%,  rgba(236,32,39,.20), transparent 62%),
+    radial-gradient(64% 58% at 88% 96%, rgba(72,83,106,.34), transparent 64%),
+    radial-gradient(120% 120% at 50% 50%, transparent 42%, rgba(4,7,13,.85) 100%),
+    var(--navy);
+}
+.slide:not(.dark):not(.cover):not(.divider){
+  background:
+    radial-gradient(72% 56% at 84% -12%, rgba(236,32,39,.055), transparent 62%),
+    radial-gradient(60% 52% at 4% 108%,  rgba(72,83,106,.075), transparent 60%),
+    var(--cloud);
+}
+/* dividers carry the same luminous dark ground as the showpiece spreads */
+.slide.divider{
+  background:
+    radial-gradient(64% 56% at 14% -8%,  rgba(236,32,39,.16), transparent 62%),
+    radial-gradient(58% 54% at 92% 98%,  rgba(72,83,106,.30), transparent 62%),
+    radial-gradient(120% 120% at 50% 50%, transparent 40%, rgba(4,7,13,.9) 100%),
+    var(--navy);
+}
+
+/* -- glass: a surface held in front of the light --------------------------- */
+.depth{
+  background:linear-gradient(158deg,rgba(255,255,255,.10),rgba(255,255,255,.028) 42%,rgba(255,255,255,.012));
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.16),
+    inset 0 -1px 0 rgba(0,0,0,.22),
+    0 32px 70px -34px rgba(0,0,0,.95);
+  backdrop-filter:blur(3px);
+}
+/* the light catches the top edge */
+.depth::before{
+  content:'';position:absolute;left:0;right:0;top:-1px;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.34) 22%,rgba(236,32,39,.5) 50%,rgba(255,255,255,.22) 76%,transparent);
+  opacity:.7;
+}
+.depth{position:relative}
+
+/* -- optical reticle · concentric registration ----------------------------- */
+.reticle{position:absolute;pointer-events:none;z-index:1;opacity:.5}
+.reticle i{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  border:1px solid rgba(255,255,255,.13);border-radius:50%;
+}
+.reticle.on-light i{border-color:rgba(12,18,32,.10)}
+.reticle b{
+  position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px 0 0 -4.5px;
+  background:var(--red);border-radius:50%;
+  box-shadow:0 0 0 5px rgba(236,32,39,.14),0 0 26px 5px rgba(236,32,39,.5);
+}
+.reticle s{position:absolute;left:50%;top:50%;background:rgba(255,255,255,.16);text-decoration:none}
+.reticle s.h{width:100%;height:1px;transform:translate(-50%,-50%)}
+.reticle s.v{height:100%;width:1px;transform:translate(-50%,-50%)}
+.reticle.on-light s{background:rgba(12,18,32,.12)}
+
+/* -- stat tiles on dark: translucent, not outlined ------------------------- */
+.dark .stat{
+  border-top-color:rgba(255,255,255,.4);
+}
+.dark .stat .n{text-shadow:0 0 34px rgba(236,32,39,.28)}
+
+/* -- divider: light behind the numeral ------------------------------------- */
+.divider .num-xl{
+  -webkit-text-stroke:2px rgba(255,255,255,.30);
+  text-shadow:0 0 90px rgba(236,32,39,.30);
+}
+.divider h2{text-shadow:0 22px 70px rgba(0,0,0,.55)}
+
+/* -- cover: cinematic --------------------------------------------------- */
+.cover h1{text-shadow:0 26px 80px rgba(0,0,0,.6)}
+.cover .bg img{opacity:.62;filter:grayscale(.18) contrast(1.14) brightness(.86)}
+.cover .bg::after{
+  background:
+    radial-gradient(46% 56% at 78% 34%, rgba(236,32,39,.13), transparent 66%),
+    linear-gradient(96deg,var(--navy) 20%,rgba(10,16,31,.9) 42%,rgba(10,16,31,.38) 72%,rgba(10,16,31,.62));
+}

@@ -24,7 +24,7 @@
   var edgePrev = document.getElementById('edge-prev');
   var edgeNext = document.getElementById('edge-next');
 
-  var cur = 0, busy = false, total = slides.length;
+  var cur = 0, total = slides.length;
 
   /* ---------------------------------------------------------------- fit */
   // Leave a gutter wide enough for the edge page buttons to sit beside the
@@ -40,21 +40,31 @@
   window.addEventListener('resize', fit);
 
   /* -------------------------------------------------------------- pager */
+  // Turns are interruptible: a click never waits for the previous animation
+  // to finish. The outgoing page is cut immediately and the new one starts.
+  var cleanupT = null;
+
   function go(n, dir) {
     n = Math.max(0, Math.min(total - 1, n));
-    if (n === cur || busy) return;
+    if (n === cur) return;
     dir = dir || (n > cur ? 1 : -1);
-    busy = true;
 
     var from = slides[cur], to = slides[n];
 
-    from.classList.remove('is-active', 'in-next', 'in-prev');
+    // drop anything still mid-flight from an earlier turn
+    clearTimeout(cleanupT);
+    slides.forEach(function (s) {
+      if (s !== from && s !== to) {
+        s.classList.remove('is-active', 'is-out', 'in-next', 'in-prev', 'out-next', 'out-prev');
+      }
+    });
+
+    from.classList.remove('is-active', 'in-next', 'in-prev', 'out-next', 'out-prev');
+    void from.offsetWidth;
     from.classList.add('is-out', dir > 0 ? 'out-next' : 'out-prev');
 
-    to.classList.remove('is-out', 'out-next', 'out-prev');
-    // restart entrance choreography
-    to.classList.remove('is-active');
-    void to.offsetWidth;
+    to.classList.remove('is-out', 'out-next', 'out-prev', 'is-active', 'in-next', 'in-prev');
+    void to.offsetWidth;                       // restart entrance choreography
     to.classList.add('is-active', dir > 0 ? 'in-next' : 'in-prev');
 
     // red scan sweep
@@ -66,10 +76,9 @@
     cur = n;
     sync();
 
-    setTimeout(function () {
+    cleanupT = setTimeout(function () {
       from.classList.remove('is-out', 'out-next', 'out-prev');
-      busy = false;
-    }, 740);
+    }, 280);
   }
   function next() { go(cur + 1, 1); }
   function prev() { go(cur - 1, -1); }
@@ -142,7 +151,7 @@
   var wheelLock = 0;
   window.addEventListener('wheel', function (e) {
     var now = Date.now();
-    if (now - wheelLock < 620) return;
+    if (now - wheelLock < 340) return;
     if (Math.abs(e.deltaY) < 14 && Math.abs(e.deltaX) < 14) return;
     wheelLock = now;
     (e.deltaY > 0 || e.deltaX > 0) ? next() : prev();

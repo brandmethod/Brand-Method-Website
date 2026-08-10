@@ -21,14 +21,21 @@
   var indexWrap= document.querySelector('#index .wrap');
   var dock     = document.getElementById('dock');
   var hint     = document.getElementById('hint');
+  var edgePrev = document.getElementById('edge-prev');
+  var edgeNext = document.getElementById('edge-next');
 
   var cur = 0, busy = false, total = slides.length;
 
   /* ---------------------------------------------------------------- fit */
+  // Leave a gutter wide enough for the edge page buttons to sit beside the
+  // book rather than on top of it; drop the gutter on narrow screens where
+  // the page needs every pixel.
   function fit() {
-    var pad = window.innerWidth > 900 ? 0.955 : 1;
-    var k = Math.min(window.innerWidth / 1920, window.innerHeight / 1080) * pad;
+    var w = window.innerWidth, h = window.innerHeight;
+    var pad = w > 1100 ? 0.90 : (w > 760 ? 0.95 : 1);
+    var k = Math.min(w / 1920, h / 1080) * pad;
     stage.style.transform = 'scale(' + k + ')';
+    document.body.classList.toggle('roomy', (w - 1920 * k) / 2 >= 76);
   }
   window.addEventListener('resize', fit);
 
@@ -78,6 +85,9 @@
       b.setAttribute('aria-current', b.dataset.sec === sec ? 'true' : 'false');
     });
 
+    edgePrev.disabled = (cur === 0);
+    edgeNext.disabled = (cur === total - 1);
+
     if (history.replaceState) history.replaceState(null, '', '#' + (cur + 1));
     if (hint) hint.style.opacity = cur === 0 ? '1' : '0';
   }
@@ -107,7 +117,9 @@
       seen[sec] = true;
       var b = document.createElement('button');
       b.dataset.sec = sec;
-      b.innerHTML = '<i></i><em>' + sec + ' ' + (nm || '') + '</em>';
+      b.innerHTML = '<i></i>';
+      b.title = sec + ' · ' + (nm || '');
+      b.setAttribute('aria-label', 'Go to section ' + sec + ' ' + (nm || ''));
       b.addEventListener('click', function () { go(i); });
       railBox.appendChild(b);
     });
@@ -145,6 +157,8 @@
 
   document.getElementById('btn-prev').addEventListener('click', prev);
   document.getElementById('btn-next').addEventListener('click', next);
+  edgePrev.addEventListener('click', prev);
+  edgeNext.addEventListener('click', next);
   document.getElementById('btn-index').addEventListener('click', toggleIndex);
   document.getElementById('btn-print').addEventListener('click', function () { window.print(); });
   document.querySelector('#index .close').addEventListener('click', closeIndex);

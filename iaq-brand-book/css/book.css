@@ -111,15 +111,41 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
 /* -- bottom control bar ---------------------------------------------------- */
 #dock{
-  bottom:18px;left:50%;transform:translateX(-50%);
+  bottom:8px;left:50%;transform:translateX(-50%);
   display:flex;align-items:center;gap:14px;
   padding:7px 8px 7px 16px;border-radius:2px;
   background:rgba(10,16,31,.82);
   border:1px solid rgba(255,255,255,.12);
   backdrop-filter:blur(14px);
-  opacity:.32;transition:opacity .3s var(--e-out);
+  opacity:.78;transition:opacity .3s var(--e-out);
 }
 #dock:hover,#dock:focus-within,#dock.awake{opacity:1}
+
+/* -- large edge page buttons ---------------------------------------------- */
+.edge{
+  position:fixed;top:50%;transform:translateY(-50%);z-index:120;
+  width:58px;height:58px;display:flex;align-items:center;justify-content:center;
+  background:rgba(10,16,31,.72);border:1px solid rgba(255,255,255,.18);
+  color:rgba(255,255,255,.85);backdrop-filter:blur(10px);
+  transition:background .2s,border-color .2s,color .2s,transform .15s,opacity .25s;
+}
+.edge:hover{background:var(--red);border-color:var(--red);color:#fff}
+.edge:active{transform:translateY(-50%) scale(.94)}
+.edge:disabled{opacity:.18;pointer-events:none}
+.edge svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7}
+#edge-prev{left:16px}
+#edge-next{right:16px}
+/* when the stage is scaled down enough to leave a gutter, the buttons sit
+   beside the book; otherwise they overlay it at lower weight */
+body.roomy .edge{background:rgba(10,16,31,.5)}
+body:not(.roomy) .edge{opacity:.55}
+body:not(.roomy) .edge:hover{opacity:1}
+.edge::after{
+  content:attr(data-k);position:absolute;bottom:-21px;left:50%;transform:translateX(-50%);
+  font-family:var(--fm);font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);white-space:nowrap;
+}
+body:not(.roomy) .edge::after{display:none}
 #dock .lab{
   font-size:10px;letter-spacing:.16em;text-transform:uppercase;
   color:rgba(255,255,255,.5);white-space:nowrap;
@@ -139,9 +165,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 
 /* -- section rail (left) --------------------------------------------------- */
 #rail{
-  left:22px;top:50%;transform:translateY(-50%);
+  left:20px;top:88px;transform:none;
   display:flex;flex-direction:column;gap:9px;
-  opacity:.3;transition:opacity .3s;
+  opacity:.34;transition:opacity .3s;
 }
 #rail:hover{opacity:1}
 #rail button{
@@ -151,12 +177,9 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   display:block;width:16px;height:2px;background:rgba(255,255,255,.3);
   transition:width .3s var(--e-out),background .3s;
 }
-#rail em{
-  font-style:normal;font-size:9px;letter-spacing:.14em;text-transform:uppercase;
-  opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s;
-  white-space:nowrap;
-}
-#rail:hover em{opacity:.75;transform:none}
+/* labels would run over the light stage and vanish; the rail stays a set of
+   ticks and uses native tooltips instead */
+#rail em{display:none}
 #rail button:hover i,#rail button[aria-current="true"] i{width:30px;background:var(--red)}
 #rail button[aria-current="true"]{color:#fff}
 
@@ -172,7 +195,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   color:var(--red);text-transform:uppercase;margin-bottom:6px;
 }
 #index .sub{font-family:var(--fb);font-size:13px;color:rgba(255,255,255,.45);margin-bottom:26px}
-#index .wrap{flex:1;overflow-y:auto;display:grid;grid-template-columns:repeat(10,1fr);gap:12px;align-content:start}
+#index .wrap{
+  flex:1;overflow-y:auto;display:grid;gap:12px;align-content:start;
+  grid-template-columns:repeat(auto-fill,minmax(148px,1fr));
+}
 #index .thumb{
   border:1px solid rgba(255,255,255,.12);padding:10px;text-align:left;
   aspect-ratio:16/9;display:flex;flex-direction:column;justify-content:space-between;
@@ -758,7 +784,7 @@ strong{font-weight:600;color:var(--ink)}
   body{background:#fff;overflow:visible}
   #viewport{position:static;display:block;perspective:none}
   #stage{width:1920px;height:1080px;transform:none!important;box-shadow:none;overflow:visible}
-  .chrome,#index,#scan,#hint{display:none!important}
+  .chrome,#index,#scan,#hint,.edge{display:none!important}
   .slide{
     position:relative;inset:auto;opacity:1!important;visibility:visible!important;
     animation:none!important;page-break-after:always;break-after:page;

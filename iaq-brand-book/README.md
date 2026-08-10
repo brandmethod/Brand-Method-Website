@@ -13,21 +13,27 @@ assets, and keep the shell.
 
 ## Run it
 
-Open `index.html` in any modern browser. No build step, no dependencies.
+Two ways, both interactive:
 
-For local serving (recommended, so fonts and assets resolve cleanly):
+**A. The single file** — `dist/IAQ-Brand-Identity-Book.html` (3 MB). One file,
+everything inlined. Double-click it, email it, drop it on a USB stick. This is
+the copy to hand to the client.
+
+**B. The source folder** — open `index.html`. Same book, split into
+`css/`, `js/` and `assets/` for editing.
+
+After editing the source, rebuild the single file:
 
 ```bash
 cd iaq-brand-book
-python3 -m http.server 8080
-# → http://localhost:8080
+python3 build.py        # → dist/IAQ-Brand-Identity-Book.html
 ```
 
 ## Navigate
 
 | Action | Control |
 |---|---|
-| Next / previous page | `→` `←`, `Space`, scroll, swipe, or click the right/left half of the page |
+| Next / previous page | the large **PREV / NEXT** buttons either side of the book, the arrows in the dock, `→` `←`, `Space`, scroll, swipe, or click the right/left half of the page |
 | Page index (all 53 thumbnails) | `G`, or the **INDEX** button |
 | Fullscreen presentation | `F` |
 | First / last page | `Home` / `End` |
@@ -44,7 +50,7 @@ Click **PDF** in the dock, or `Ctrl/Cmd + P`. In the print dialog:
 - **Background graphics:** On
 
 Each page exports as one landscape sheet at exact book dimensions. Note the
-export is image-heavy (~20 MB) because of the photography; share it by link or
+export is image-heavy (~15 MB) because of the photography; share it by link or
 file transfer rather than email attachment.
 
 ---
@@ -54,7 +60,11 @@ file transfer rather than email attachment.
 ```
 iaq-brand-book/
 ├── index.html          all 53 pages, one <section class="slide"> each
+├── build.py            packs everything into dist/ as one self-contained file
+├── dist/
+│   └── IAQ-Brand-Identity-Book.html   the shareable single file
 ├── css/book.css        the brand-book engine (tokens → primitives → pages)
+├── css/fonts-local.css optional self-hosted @font-face rules
 ├── js/book.js          deck engine: fit, page turns, index, rail, deep-links
 └── assets/
     ├── iaq-wordmark.png        primary registered wordmark (transparent)

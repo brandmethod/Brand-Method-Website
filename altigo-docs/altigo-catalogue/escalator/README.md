@@ -73,18 +73,27 @@ Colours, typography, logo, the corner stripe and all photography follow the
 2026 print edition. `Axiforma` and `Ardela Edge X01` are named first in the font
 stacks, so a machine with the licensed brand fonts installed uses them; everyone
 else gets Outfit, which is metrically close. Body text is IBM Plex Sans and
-labels are Inter — both exactly as in the source document.
+labels are Inter — both exactly as in the source document. Nothing in the
+document is italic or script; `i`, `em`, `cite` and `address` are all reset to
+`font-style: normal`.
 
-**No containers.** Structure is carried by the twelve-column grid, hairline
-rules, the type scale and white space. There are no cards, panels, pills, tinted
-blocks, icon tiles or rounded corners anywhere in the deck. The only two shapes
-that survive are the brand devices from the print edition: the red rule under
-each title, and the corner stripe.
+**The arch.** The one curve the product actually has is the newel and handrail
+return, and it is the shape the whole catalogue is built on. The cover frames
+its photograph in a full arch inside a second, larger arch drawn as a hairline;
+the introduction and the device list bleed their photographs off the page inside
+the same arch; the five planning photographs repeat it at small scale; and the
+closing page draws it twice as an empty outline. Everything else that curves —
+the duty-class tags, the safety numbers, the icon marks, the handrail-colour
+swatches, the rise bars — is a circle or a full-radius pill, so the curves read
+as one family rather than as decoration.
 
-Photography is used flush and, where it earns the room, bled to the slide edge —
-the introduction and the device list both run their image off the right and
-bottom. The corner stripe, every icon and the civil drawings on slide 10 are
-vector, so they stay sharp at any size.
+**Running footer.** Every page from 02 to 11 carries the same footer the closing
+page sets: a hairline, the catalogue line on the left, the page number on the
+right. On the two pages where a photograph bleeds off the right edge, the footer
+stops short of the image rather than running under it.
+
+**Rhythm.** The deck opens dark, turns dark again at the range — the product
+spread — and closes dark. The seven white pages between them carry the detail.
 
 **Image resolution.** Every photograph is carried at the native resolution of
 the 2026 print PDF, with no downscaling; the cover keeps its original JPEG

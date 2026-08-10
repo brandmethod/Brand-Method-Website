@@ -123,8 +123,10 @@ img{display:block;max-width:100%}
 .lightbox{position:fixed;inset:0;z-index:80;background:rgba(5,8,18,.95);
   display:none;align-items:center;justify-content:center;padding:60px 60px 96px}
 .lightbox.open{display:flex}
-.lightbox img{max-width:90vw;max-height:82vh;width:auto;height:auto;
+.lb-stage{position:relative;display:inline-block;line-height:0}
+.lb-stage img{max-width:90vw;max-height:82vh;width:auto;height:auto;
   border-radius:var(--r);box-shadow:0 30px 90px rgba(0,0,0,.6);background:#fff}
+.lb-stage .callout{width:44px;height:44px;font-size:21px;box-shadow:0 0 0 3px rgba(255,255,255,.95)}
 .lb-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border-radius:50%;
   border:1px solid rgba(255,255,255,.28);background:transparent;color:#fff;font-size:19px;
   line-height:1;cursor:pointer;transition:.15s}
@@ -316,7 +318,14 @@ img{display:block;max-width:100%}
 .stop{display:grid;grid-template-columns:1fr 780px;gap:60px;align-items:center;
   background:var(--blue-tint);border-radius:var(--r);padding:18px 40px}
 .sdiag{display:flex;justify-content:flex-end}
-.sdiag img{height:178px;width:auto}
+.sdiag-fig{position:relative;display:inline-block;line-height:0}
+.sdiag-fig img{height:186px;width:auto;display:block}
+/* positions lifted from the 2026 print edition, as a fraction of the drawing */
+.callout{position:absolute;transform:translate(-50%,-50%);
+  width:21px;height:21px;border-radius:50%;background:var(--red);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--f-label);font-size:10.5px;font-weight:700;line-height:1;
+  box-shadow:0 0 0 2px rgba(255,255,255,.92)}
 .sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 40px;margin-top:auto}
 .sitem{display:flex;flex-direction:column}
 .sitem figure{height:112px;border-radius:var(--r-s);overflow:hidden;background:#F2F4F8;
@@ -777,7 +786,19 @@ img{display:block;max-width:100%}
               <p style="margin-top:12px;font-size:17px;line-height:1.5;color:var(--muted)">
                  Numbers 1&ndash;8 mark where each feature sits on the unit.</p>
             </div>
-            <div class="sdiag"><img src="{{ASSET:safety-diagram.png}}" alt="Escalator safety feature locations"></div>
+            <div class="sdiag">
+              <figure class="sdiag-fig">
+                <img src="{{ASSET:safety-diagram.png}}" alt="Where the eight safety features sit on the unit">
+                <b class="callout" style="left:90.0%;top:76.0%">1</b>
+                <b class="callout" style="left:80.5%;top:69.5%">2</b>
+                <b class="callout" style="left:39.1%;top:35.9%">3</b>
+                <b class="callout" style="left:55.7%;top:54.7%">4</b>
+                <b class="callout" style="left:56.5%;top:38.6%">5</b>
+                <b class="callout" style="left:59.5%;top:60.5%">6</b>
+                <b class="callout" style="left:92.2%;top:60.1%">7</b>
+                <b class="callout" style="left:67.0%;top:72.5%">8</b>
+              </figure>
+            </div>
           </div>
           <div class="sgrid">
             <div class="sitem"><figure><img src="{{ASSET:safety-1.jpg}}" alt="Emergency stop button"></figure>
@@ -1031,7 +1052,7 @@ img{display:block;max-width:100%}
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
     <button class="lb-close" id="lbClose" title="Close (Esc)">&#10005;</button>
     <button class="lb-nav lb-prev" id="lbPrev" title="Previous image">&#8249;</button>
-    <img id="lbImg" src="" alt="">
+    <div class="lb-stage" id="lbStage"></div>
     <button class="lb-nav lb-next" id="lbNext" title="Next image">&#8250;</button>
     <div class="lb-cap" id="lbCap"></div>
   </div>
@@ -1122,7 +1143,8 @@ img{display:block;max-width:100%}
   }
 
   /* ── zoomable figures ────────────────────────────────────────────── */
-  var figs=[], lb=document.getElementById('lightbox'), lbImg=document.getElementById('lbImg'),
+  var figs=[], lb=document.getElementById('lightbox'),
+      lbStage=document.getElementById('lbStage'),
       lbCap=document.getElementById('lbCap'), lbAt=-1;
 
   function collectFigures(){
@@ -1134,7 +1156,7 @@ img{display:block;max-width:100%}
       var cap=im.getAttribute('alt')||
               (host.closest('.slide')&&host.closest('.slide').dataset.name)||'';
       var idx=figs.length;
-      figs.push({src:im.currentSrc||im.src, cap:cap});
+      figs.push({node:host, cap:cap});
       host.addEventListener('click',function(){ openLb(idx); });
       host.addEventListener('keydown',function(e){
         if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLb(idx); }
@@ -1144,15 +1166,20 @@ img{display:block;max-width:100%}
   function openLb(x){
     if(!figs.length) return;
     lbAt=(x+figs.length)%figs.length;
-    lbImg.src=figs[lbAt].src;
+    var c=figs[lbAt].node.cloneNode(true);
+    c.removeAttribute('class'); c.removeAttribute('role'); c.removeAttribute('tabindex');
+    c.style.cssText='position:relative;display:inline-block;line-height:0;margin:0';
+    var im=c.querySelector('img');
+    if(im) im.style.cssText='height:auto;width:auto;display:block';
+    lbStage.innerHTML=''; lbStage.appendChild(c);
     lbCap.textContent=figs[lbAt].cap;
     lb.classList.add('open');
   }
-  function closeLb(){ lb.classList.remove('open'); lbImg.src=''; lbAt=-1; }
+  function closeLb(){ lb.classList.remove('open'); lbStage.innerHTML=''; lbAt=-1; }
   document.getElementById('lbClose').onclick=closeLb;
   document.getElementById('lbPrev').onclick=function(e){ e.stopPropagation(); openLb(lbAt-1); };
   document.getElementById('lbNext').onclick=function(e){ e.stopPropagation(); openLb(lbAt+1); };
-  lb.addEventListener('click',function(e){ if(e.target===lb||e.target===lbImg) closeLb(); });
+  lb.addEventListener('click',function(e){ if(e.target===lb||e.target===lbStage) closeLb(); });
 
   /* ── swipe, for touch screens ────────────────────────────────────── */
   var tx=0, ty=0;

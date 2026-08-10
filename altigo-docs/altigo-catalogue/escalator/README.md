@@ -83,6 +83,13 @@ the deck — only rounded rectangles, plus circles for the safety numbers and
 full-radius pills for the duty-class tags. Nothing is italic or script; `i`,
 `em`, `cite` and `address` are all reset to `font-style: normal`.
 
+**Safety callouts (page 07).** The numbers 1–8 on the cutaway were separate
+text on the source PDF page, not part of the drawing, so they were lost when the
+image was extracted. They are back as HTML markers positioned by percentage,
+using the coordinates read out of the original page, with two pairs nudged apart
+so they don't collide at marker size. Because they are percentage-positioned,
+they scale correctly when the drawing is opened in the image viewer.
+
 **Running footer.** Every page from 02 to 11 carries the same footer the closing
 page sets: a hairline, the catalogue line on the left, the page number on the
 right. It runs the full measure on every page.

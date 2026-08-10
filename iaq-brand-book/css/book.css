@@ -56,7 +56,7 @@
   /* --- Motion -------------------------------------------------------------- */
   --e-out: cubic-bezier(.16,1,.3,1);
   --e-io:  cubic-bezier(.65,0,.35,1);
-  --t-page: 720ms;
+  --t-page: 420ms;
 }
 
 /* ==========================================================================
@@ -571,13 +571,27 @@ strong{font-weight:600;color:var(--ink)}
 .cover .facts .k{font-family:var(--fm);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4)}
 .cover .facts .v{font-family:var(--fd);font-weight:600;font-size:19px;margin-top:8px;letter-spacing:-.01em}
 .cover .edge{position:absolute;right:0;top:0;bottom:0;width:640px;z-index:3;pointer-events:none}
+/* a dimension run, not a leader: it measures the frame rather than pointing
+   at nothing */
+.cover-dim{
+  position:absolute;right:var(--pad-x);bottom:186px;z-index:4;width:420px;
+  display:flex;align-items:center;gap:14px;
+  font-family:var(--fm);font-size:10px;font-weight:500;letter-spacing:.2em;
+  text-transform:uppercase;color:rgba(255,255,255,.5);white-space:nowrap;
+}
+.cover-dim i{position:relative;flex:1;height:1px;background:rgba(236,32,39,.75)}
+.cover-dim i::before,.cover-dim i::after{
+  content:'';position:absolute;top:-4px;width:1px;height:9px;background:var(--red)}
+.cover-dim i::before{left:0}.cover-dim i::after{right:0}
 
 /* -- DIVIDER --------------------------------------------------------------- */
 .divider{background:var(--navy);color:#fff;justify-content:flex-end;overflow:hidden;padding-bottom:76px}
 .divider .num-xl{
-  position:absolute;right:-34px;bottom:-96px;top:auto;transform:none;
-  font-family:var(--fd);font-weight:700;font-size:560px;line-height:.78;letter-spacing:-.07em;
-  color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.17);z-index:1;
+  /* sits fully inside the frame — a section number that runs off the page
+     reads as a crop, not as a mark */
+  position:absolute;right:var(--pad-x);bottom:64px;top:auto;transform:none;
+  font-family:var(--fd);font-weight:700;font-size:392px;line-height:.78;letter-spacing:-.06em;
+  color:transparent;-webkit-text-stroke:2px rgba(255,255,255,.34);z-index:1;
 }
 .divider .dmeta{
   position:absolute;top:62px;left:var(--pad-x);right:var(--pad-x);z-index:5;
@@ -607,6 +621,9 @@ strong{font-weight:600;color:var(--ink)}
 
 /* -- MOCKUP SURFACES ------------------------------------------------------- */
 .mock{position:relative;background:var(--white);border:1px solid var(--hair);overflow:hidden}
+/* a column flex parent stretches an auto-width child: that was smearing the
+   wordmark across the mockups. A mark is never distorted, anywhere. */
+.mock img{align-self:flex-start;flex:none;width:auto}
 .mock.navy{background:var(--navy);border-color:rgba(255,255,255,.16)}
 .mock .bar{
   height:26px;display:flex;align-items:center;gap:6px;padding:0 10px;
@@ -700,25 +717,25 @@ strong{font-weight:600;color:var(--ink)}
    ========================================================================== */
 /* page transition: direction-aware slide + depth + red scan */
 @keyframes inNext{
-  from{opacity:0;transform:translate3d(64px,0,-140px) rotateY(-3.2deg)}
+  from{opacity:0;transform:translate3d(38px,0,0)}
   to  {opacity:1;transform:none}
 }
 @keyframes inPrev{
-  from{opacity:0;transform:translate3d(-64px,0,-140px) rotateY(3.2deg)}
+  from{opacity:0;transform:translate3d(-38px,0,0)}
   to  {opacity:1;transform:none}
 }
 @keyframes outNext{
   from{opacity:1;transform:none}
-  to  {opacity:0;transform:translate3d(-52px,0,-190px) rotateY(2.6deg)}
+  to  {opacity:0;transform:translate3d(-26px,0,0)}
 }
 @keyframes outPrev{
   from{opacity:1;transform:none}
-  to  {opacity:0;transform:translate3d(52px,0,-190px) rotateY(-2.6deg)}
+  to  {opacity:0;transform:translate3d(26px,0,0)}
 }
 .slide.in-next{animation:inNext var(--t-page) var(--e-out) both}
 .slide.in-prev{animation:inPrev var(--t-page) var(--e-out) both}
-.slide.out-next{animation:outNext calc(var(--t-page) * .8) var(--e-io) both}
-.slide.out-prev{animation:outPrev calc(var(--t-page) * .8) var(--e-io) both}
+.slide.out-next{animation:outNext calc(var(--t-page) * .62) var(--e-io) both}
+.slide.out-prev{animation:outPrev calc(var(--t-page) * .62) var(--e-io) both}
 
 /* red scan sweep across the stage on every turn */
 #scan{
@@ -728,47 +745,47 @@ strong{font-weight:600;color:var(--ink)}
   position:absolute;top:0;bottom:0;width:2px;background:var(--red);
   box-shadow:0 0 30px 6px rgba(236,32,39,.55);
 }
-#scan.go{animation:scanFade .72s linear both}
-#scan.go i{animation:scanMove .72s var(--e-io) both}
-#scan.go.rev i{animation:scanMoveR .72s var(--e-io) both}
+#scan.go{animation:scanFade .42s linear both}
+#scan.go i{animation:scanMove .42s var(--e-io) both}
+#scan.go.rev i{animation:scanMoveR .42s var(--e-io) both}
 @keyframes scanFade{0%{opacity:0}12%{opacity:1}75%{opacity:1}100%{opacity:0}}
 @keyframes scanMove{from{left:-4px}to{left:calc(100% + 4px)}}
 @keyframes scanMoveR{from{left:calc(100% + 4px)}to{left:-4px}}
 
 /* content choreography — elements marked [data-r] rise in sequence */
-.slide.is-active [data-r]{animation:rise .68s var(--e-out) both}
+.slide.is-active [data-r]{animation:rise .40s var(--e-out) both}
 [data-r]{opacity:0}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.slide.is-active [data-r="1"]{animation-delay:.10s}
-.slide.is-active [data-r="2"]{animation-delay:.17s}
-.slide.is-active [data-r="3"]{animation-delay:.24s}
-.slide.is-active [data-r="4"]{animation-delay:.31s}
-.slide.is-active [data-r="5"]{animation-delay:.38s}
-.slide.is-active [data-r="6"]{animation-delay:.45s}
-.slide.is-active [data-r="7"]{animation-delay:.52s}
-.slide.is-active [data-r="8"]{animation-delay:.59s}
+@keyframes rise{from{opacity:0;transform:translateY(11px)}to{opacity:1;transform:none}}
+.slide.is-active [data-r="1"]{animation-delay:0.050s}
+.slide.is-active [data-r="2"]{animation-delay:0.085s}
+.slide.is-active [data-r="3"]{animation-delay:0.120s}
+.slide.is-active [data-r="4"]{animation-delay:0.155s}
+.slide.is-active [data-r="5"]{animation-delay:0.190s}
+.slide.is-active [data-r="6"]{animation-delay:0.225s}
+.slide.is-active [data-r="7"]{animation-delay:0.260s}
+.slide.is-active [data-r="8"]{animation-delay:0.295s}
 
 /* rule draw-in */
-.slide.is-active .rule::before{animation:draw .9s var(--e-out) .1s both}
+.slide.is-active .rule::before{animation:draw .5s var(--e-out) .06s both}
 @keyframes draw{from{width:0}to{width:88px}}
 
 /* leader lines draw themselves */
 .slide.is-active .leader path{
   stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400);
-  animation:trace 1.15s var(--e-io) .35s both;
+  animation:trace .7s var(--e-io) .2s both;
 }
 @keyframes trace{to{stroke-dashoffset:0}}
-.slide.is-active .leader circle,.slide.is-active .leader text{animation:rise .5s var(--e-out) 1.1s both}
+.slide.is-active .leader circle,.slide.is-active .leader text{animation:rise .3s var(--e-out) .62s both}
 
 /* isometric layers assemble */
-.slide.is-active .layers .pl{animation:assemble .95s var(--e-out) both}
+.slide.is-active .layers .pl{animation:assemble .58s var(--e-out) both}
 @keyframes assemble{from{opacity:0;transform:translateZ(-90px)}to{opacity:1}}
 
 /* stat numerals count-up baseline (JS drives value) */
-.slide.is-active .stat .n{animation:rise .7s var(--e-out) .3s both}
+.slide.is-active .stat .n{animation:rise .42s var(--e-out) .18s both}
 
 /* dividers: number breathes */
-.slide.is-active .num-xl{animation:numIn 1.2s var(--e-out) both}
+.slide.is-active .num-xl{animation:numIn .7s var(--e-out) both}
 @keyframes numIn{from{opacity:0;transform:translateX(56px)}to{opacity:1;transform:none}}
 
 @media (prefers-reduced-motion:reduce){

@@ -109,10 +109,19 @@ Type: **Switzer** (display) · **Instrument Sans** (body) · **JetBrains Mono**
 ### Fonts
 
 Loaded from Google Fonts (Instrument Sans, JetBrains Mono) and Fontshare
-(Switzer), with a system fallback stack so the book still sets correctly
-offline. To make the book fully self-contained for archival or offline
-presentation, drop the `.woff2` files into `assets/fonts/` and replace the two
-`<link>` tags in `index.html` with local `@font-face` rules.
+(Switzer), with a system fallback stack so the book still lays out correctly
+without a connection — though it will not be in the brand faces.
+
+**To make it fully offline**, `css/fonts-local.css` is ready to go: drop the
+three variable `.woff2` files into `assets/fonts/` (sources listed in
+`assets/fonts/README.md`), then in `index.html` replace the two CDN `<link>`
+tags with:
+
+```html
+<link rel="stylesheet" href="css/fonts-local.css">
+```
+
+Nothing else changes.
 
 ---
 

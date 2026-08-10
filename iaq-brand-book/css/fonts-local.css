@@ -1,0 +1,54 @@
+/* ==========================================================================
+   IAQ · BRAND IDENTITY BOOK — self-hosted fonts (optional)
+   --------------------------------------------------------------------------
+   The book ships loading its three families from CDNs, which keeps the folder
+   light but means it needs a connection to set correctly. Use this file when
+   the book must be fully offline: archived, presented on a locked-down
+   machine, or handed over as a standalone folder.
+
+   TO SWITCH TO SELF-HOSTED FONTS
+   1. Drop these six files into assets/fonts/ (variable versions, woff2):
+
+        Switzer-Variable.woff2          fontshare.com/fonts/switzer
+        Switzer-VariableItalic.woff2    (optional — the book sets no italics)
+        InstrumentSans-Variable.woff2   fonts.google.com/specimen/Instrument+Sans
+        JetBrainsMono-Variable.woff2    jetbrains.com/lp/mono
+
+      (Static weights work too: name them Switzer-500.woff2 etc. and add one
+      @font-face per weight instead of the ranges below.)
+
+   2. In index.html, delete the two CDN <link> tags and put this in their
+      place, BEFORE css/book.css:
+
+        <link rel="stylesheet" href="css/fonts-local.css">
+
+   Nothing else changes: book.css already asks for these family names, and the
+   system fallback stack stays in place if a file is ever missing.
+   ========================================================================== */
+
+@font-face{
+  font-family:'Switzer';
+  src:url('../assets/fonts/Switzer-Variable.woff2') format('woff2-variations'),
+      url('../assets/fonts/Switzer-Variable.woff2') format('woff2');
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:'Instrument Sans';
+  src:url('../assets/fonts/InstrumentSans-Variable.woff2') format('woff2-variations'),
+      url('../assets/fonts/InstrumentSans-Variable.woff2') format('woff2');
+  font-weight:400 700;
+  font-style:normal;
+  font-display:swap;
+}
+
+@font-face{
+  font-family:'JetBrains Mono';
+  src:url('../assets/fonts/JetBrainsMono-Variable.woff2') format('woff2-variations'),
+      url('../assets/fonts/JetBrainsMono-Variable.woff2') format('woff2');
+  font-weight:100 800;
+  font-style:normal;
+  font-display:swap;
+}

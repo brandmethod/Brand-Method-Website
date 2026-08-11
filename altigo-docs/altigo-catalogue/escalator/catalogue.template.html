@@ -50,6 +50,7 @@
   --m:120px;              /* page margin */
   --r:0;                  /* sharp corners throughout — no rounding */
   --r-s:0;
+  --nav-accent:#2B62E8;   /* deck-nav accent — the brand blue, lifted for dark chrome */
   --k:1;                  /* stage scale */
 }
 
@@ -62,42 +63,93 @@ body{font-family:var(--f-body);color:var(--body);background:#070B16;
 img{display:block;max-width:100%}
 
 /* ── Shell ─────────────────────────────────────────────────────────── */
-.toolbar{position:fixed;bottom:0;left:0;right:0;z-index:60;height:56px;
-  display:flex;align-items:center;gap:16px;padding:0 20px;
-  background:rgba(7,11,22,.9);backdrop-filter:blur(14px);
-  border-top:1px solid rgba(255,255,255,.09)}
-.tb-mark{width:76px;height:16px}
-.tb-title{font-family:var(--f-label);font-size:11px;font-weight:500;letter-spacing:.15em;
-  text-transform:uppercase;color:rgba(255,255,255,.4);white-space:nowrap}
-.tb-spacer{flex:1}
-.tb-group{display:flex;align-items:center;gap:6px}
-.btn{font-family:var(--f-label);font-size:11px;font-weight:600;letter-spacing:.1em;
-  text-transform:uppercase;padding:8px 14px;
-  border:1px solid rgba(255,255,255,.18);background:transparent;color:rgba(255,255,255,.72);
-  cursor:pointer;transition:.15s;white-space:nowrap}
-.btn:hover{border-color:rgba(255,255,255,.42);color:#fff;background:rgba(255,255,255,.06)}
-.btn.on{background:var(--blue);border-color:var(--blue);color:#fff}
-.btn.pri{background:var(--red);border-color:var(--red);color:#fff}
-.btn.pri:hover{background:#ff3418;border-color:#ff3418}
-.btn.ico{padding:7px 13px;font-size:15px;line-height:1}
-.counter{font-family:var(--f-label);font-size:12px;font-weight:600;letter-spacing:.09em;
-  color:rgba(255,255,255,.6);min-width:60px;text-align:center;font-variant-numeric:tabular-nums}
-.counter b{color:#fff;font-weight:700}
+/* ══ UNIVERSAL DECK-NAV ════════════════════════════════════════════════
+   Ported structure: prev · dot rail · name · counter · next · edition
+   toggle · zoom · icons. Only the accent colour follows the brand.
+   This is interface chrome, not catalogue artwork — it keeps the pill
+   geometry of the shared component while the pages stay square.        */
+.navbar{position:fixed;left:0;right:0;bottom:18px;z-index:60;display:flex;
+  justify-content:center;pointer-events:none}
+.nav-pill{pointer-events:auto;display:flex;align-items:center;gap:14px;height:56px;
+  padding:0 18px;border-radius:28px;background:rgba(10,14,24,.94);
+  border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(16px);
+  box-shadow:0 14px 40px rgba(0,0,0,.5);max-width:calc(100vw - 32px)}
+.nv-div{width:1px;height:26px;background:rgba(255,255,255,.12);flex:0 0 auto}
 
-.deck{padding-bottom:56px}
+.nv-arrow{flex:0 0 auto;width:30px;height:30px;border:0;background:transparent;
+  color:rgba(255,255,255,.62);font-size:16px;line-height:1;cursor:pointer;border-radius:50%;
+  transition:.15s;display:flex;align-items:center;justify-content:center}
+.nv-arrow:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nv-arrow:disabled{opacity:.25;cursor:default}
+
+/* dot rail — 6px dots, active becomes a 24×15 numbered pill */
+.dotrail{display:flex;align-items:center;gap:7px;overflow-x:auto;scrollbar-width:none;
+  max-width:230px;padding:6px 2px}
+.dotrail::-webkit-scrollbar{display:none}
+.nv-dot{flex:0 0 auto;width:6px;height:6px;border-radius:50%;border:0;padding:0;
+  background:rgba(255,255,255,.26);cursor:pointer;transition:.18s;
+  font-family:var(--f-label);font-size:0;color:transparent}
+.nv-dot:hover{transform:scale(1.5);background:rgba(255,255,255,.55)}
+.nv-dot.on{width:24px;height:15px;border-radius:8px;background:var(--nav-accent);
+  color:#fff;font-size:9.5px;font-weight:700;letter-spacing:.02em;transform:none;
+  display:flex;align-items:center;justify-content:center}
+.nv-dot.on:hover{transform:none}
+
+.nv-name{font-family:var(--f-label);font-size:12.5px;font-weight:500;letter-spacing:.04em;
+  color:rgba(255,255,255,.9);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:230px}
+.nv-name b{color:var(--nav-accent);font-weight:700;margin-right:6px}
+.nv-count{font-family:var(--f-label);font-size:13px;font-weight:600;letter-spacing:.06em;
+  color:rgba(255,255,255,.45);white-space:nowrap;font-variant-numeric:tabular-nums}
+.nv-count b{color:#fff;font-weight:700}
+
+/* edition toggle · Standard hides the deep-dive pages, Full is the whole book */
+.nv-seg{display:flex;align-items:center;gap:6px}
+.seg{font-family:var(--f-label);font-size:11.5px;font-weight:600;letter-spacing:.04em;
+  padding:8px 16px;border-radius:16px;border:1px solid rgba(255,255,255,.2);
+  background:transparent;color:rgba(255,255,255,.66);cursor:pointer;transition:.15s;white-space:nowrap}
+.seg:hover{color:#fff;border-color:rgba(255,255,255,.42)}
+.seg.on{background:var(--nav-accent);border-color:var(--nav-accent);color:#fff}
+
+/* zoom · % resets to fit */
+.nv-zoom{display:flex;align-items:center;gap:6px}
+.nv-step{width:26px;height:26px;border:0;background:transparent;color:rgba(255,255,255,.62);
+  font-size:15px;line-height:1;cursor:pointer;border-radius:50%;transition:.15s}
+.nv-step:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nv-pct{min-width:52px;border:0;background:transparent;cursor:pointer;
+  font-family:var(--f-label);font-size:12.5px;font-weight:600;color:rgba(255,255,255,.86);
+  font-variant-numeric:tabular-nums}
+.nv-pct:hover{color:#fff}
+.nv-fit{font-family:var(--f-label);font-size:11.5px;font-weight:600;padding:7px 14px;
+  border-radius:15px;border:1px solid rgba(255,255,255,.2);background:transparent;
+  color:rgba(255,255,255,.66);cursor:pointer;transition:.15s}
+.nv-fit:hover{color:#fff;border-color:rgba(255,255,255,.42)}
+
+.nv-icons{display:flex;align-items:center;gap:4px}
+.nv-ico{width:34px;height:34px;border:0;border-radius:9px;background:transparent;
+  color:rgba(255,255,255,.6);cursor:pointer;transition:.15s;
+  display:flex;align-items:center;justify-content:center}
+.nv-ico svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.nv-ico:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nv-ico.on{color:#fff;background:var(--nav-accent)}
+
+.deck{padding-bottom:92px}
 .slide{position:relative;width:100%;height:calc(1080px * var(--k));overflow:hidden;background:#070B16}
 /* zoom, not transform — it relayouts, so type and images stay pixel-sharp */
 .stage{position:relative;width:1920px;height:1080px;zoom:var(--k);margin:0 auto;
   background:#fff;overflow:hidden}
 
-.app[data-mode="deck"] .deck{height:100vh;display:flex;align-items:center;justify-content:center}
+.app[data-mode="deck"] .deck{height:100vh;display:flex;align-items:center;justify-content:center;
+  overflow:auto}
+.app[data-mode="deck"] .slide{width:calc(1920px * var(--k));margin:auto;flex:0 0 auto}
 .app[data-mode="deck"] .slide{display:none}
 .app[data-mode="deck"] .slide.active{display:block}
 .app[data-mode="scroll"] .deck{display:flex;flex-direction:column;align-items:center;
-  gap:20px;padding:20px 0 76px}
+  gap:20px;padding:20px 0 108px}
 .app[data-mode="scroll"] .slide{width:calc(1920px * var(--k));box-shadow:0 18px 50px rgba(0,0,0,.5)}
 
-.overview{position:fixed;inset:0 0 56px;z-index:55;background:rgba(5,8,18,.97);
+.overview{position:fixed;inset:0 0 92px;z-index:55;background:rgba(5,8,18,.97);
   overflow:auto;padding:26px;display:none}
 .overview.open{display:block}
 .ov-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1560px;margin:0 auto}
@@ -112,8 +164,6 @@ img{display:block;max-width:100%}
 .ov-cap i{color:#8FB0FF;font-size:9.5px}
 
 /* ── Interaction chrome ────────────────────────────────────────────── */
-.progress{position:fixed;bottom:56px;left:0;height:2px;width:0;background:var(--red);
-  z-index:61;transition:width .3s ease}
 
 /* any photograph or drawing can be opened full size */
 .zoomable{cursor:zoom-in}
@@ -160,7 +210,7 @@ img{display:block;max-width:100%}
   text-transform:uppercase;color:#0B1220;background:rgba(0,214,255,.85);padding:2px 6px;
   white-space:nowrap}
 .guides .tag-g.pink{background:rgba(255,58,140,.85);color:#fff}
-.g-legend{position:fixed;left:18px;bottom:74px;z-index:62;display:none;padding:12px 15px;
+.g-legend{position:fixed;left:18px;bottom:92px;z-index:62;display:none;padding:12px 15px;
   background:rgba(6,14,32,.93);border:1px solid rgba(0,214,255,.4);color:#9FE9FF;
   font-family:'Inter',ui-monospace,monospace;font-size:10.5px;line-height:1.8;letter-spacing:.06em}
 .g-legend b{color:#fff;font-weight:600}
@@ -168,15 +218,19 @@ img{display:block;max-width:100%}
 .app.g-on .g-legend{display:block}
 
 /* hidden-UI review mode */
-.app.ui-off .toolbar,.app.ui-off .progress{display:none}
+.app.ui-off .navbar{display:none}
 .app.ui-off .deck{padding-bottom:0}
 .app.ui-off[data-mode="deck"] .deck{height:100vh}
-.ui-restore{position:fixed;bottom:12px;right:14px;z-index:70;display:none;
+.ui-restore{position:fixed;bottom:14px;right:16px;z-index:70;display:none;
   font-family:var(--f-label);font-size:10.5px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;padding:7px 12px;border:1px solid rgba(255,255,255,.22);
   background:rgba(7,11,22,.72);color:rgba(255,255,255,.72);cursor:pointer}
 .ui-restore:hover{color:#fff;border-color:rgba(255,255,255,.5)}
 .app.ui-off .ui-restore{display:block}
+
+.slide.ed-off{display:none!important}
+.app.thumb-only .navbar,.app.thumb-only .ui-restore{display:none}
+.app.thumb-only .deck{padding:0}
 
 /* ── Page furniture ────────────────────────────────────────────────── */
 .logo{background:url({{ASSET:logo-blue.png}}) left center/contain no-repeat}
@@ -483,7 +537,7 @@ img{display:block;max-width:100%}
 @media print{
   html,body{background:#fff!important;width:297mm!important;max-width:297mm!important;
     min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
-  .toolbar,.overview,.progress,.lightbox,.guides,.ui-restore,.g-legend{display:none!important}
+  .navbar,.overview,.lightbox,.guides,.ui-restore,.g-legend{display:none!important}
   .deck{padding-bottom:0!important}
   .zoomable{cursor:default}
   .zoomable img{transform:none!important}
@@ -498,6 +552,9 @@ img{display:block;max-width:100%}
     overflow:hidden;box-shadow:none!important;background:#fff;
     page-break-after:always;break-after:page;page-break-inside:avoid;break-inside:avoid;
   }
+  /* the edition filter must outrank the grouped .slide print rule above,
+     or Standard prints the deep-dive pages anyway */
+  .app .slide.ed-off{display:none!important}
   .slide:last-child{page-break-after:auto;break-after:auto}
   .slide[data-bg="cover"]{background-image:
     radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),
@@ -517,28 +574,39 @@ img{display:block;max-width:100%}
 <body>
 <div class="app" data-mode="deck" id="app">
 
-  <div class="toolbar">
-    <div class="tb-mark logo w" role="img" aria-label="Altigo"></div>
-    <div class="tb-title">Product Catalogue · Escalator · 2026</div>
-    <div class="tb-spacer"></div>
-    <div class="tb-group">
-      <button class="btn ico" id="prev" title="Previous (←)">&#8249;</button>
-      <div class="counter"><b id="cur">01</b> / <span id="tot">11</span></div>
-      <button class="btn ico" id="next" title="Next (→)">&#8250;</button>
+  <div class="navbar" id="navbar">
+    <div class="nav-pill">
+      <button class="nv-arrow" id="prev" title="Previous page (&larr;)">&#8592;</button>
+      <div class="dotrail" id="dotrail"></div>
+      <span class="nv-div"></span>
+      <div class="nv-name" id="navName">01 &middot; Cover</div>
+      <span class="nv-div"></span>
+      <div class="nv-count"><b id="cur">01</b> / <span id="tot">12</span></div>
+      <button class="nv-arrow" id="next" title="Next page (&rarr;)">&#8594;</button>
+      <span class="nv-div"></span>
+      <div class="nv-seg">
+        <button class="seg" id="edStd" title="Standard &mdash; hides the deep-dive pages">Standard</button>
+        <button class="seg on" id="edFull" title="Full &mdash; the complete book">Full</button>
+      </div>
+      <span class="nv-div"></span>
+      <div class="nv-zoom">
+        <button class="nv-step" id="zOut" title="Zoom out">&minus;</button>
+        <button class="nv-pct" id="zPct" title="Reset to fit">100%</button>
+        <button class="nv-step" id="zIn" title="Zoom in">+</button>
+        <button class="nv-fit" id="zFit" title="Fit to window (0)">Fit</button>
+      </div>
+      <span class="nv-div"></span>
+      <div class="nv-icons">
+        <button class="nv-ico" id="mGrid" title="All pages (G)"><svg viewBox="0 0 24 24"><rect x="3.2" y="3.2" width="7.6" height="7.6"/><rect x="13.2" y="3.2" width="7.6" height="7.6"/><rect x="3.2" y="13.2" width="7.6" height="7.6"/><rect x="13.2" y="13.2" width="7.6" height="7.6"/></svg></button>
+        <button class="nv-ico" id="mScroll" title="Continuous scroll (S)"><svg viewBox="0 0 24 24"><rect x="6" y="2.6" width="12" height="18.8"/><path d="M12 7.2v9.6M9 10.2 12 7.2l3 3M9 13.8l3 3 3-3"/></svg></button>
+        <button class="nv-ico" id="mGuide" title="Alignment guides &mdash; off / 100% / 50% (A)"><svg viewBox="0 0 24 24"><path d="M3 3v18M9 3v18M15 3v18M21 3v18M3 8.4h18M3 15.6h18"/></svg></button>
+        <button class="nv-ico" id="doPrint" title="Print / Save as PDF &middot; A4 landscape (P)"><svg viewBox="0 0 24 24"><path d="M6.4 9.2V3.4h11.2v5.8"/><rect x="3.2" y="9.2" width="17.6" height="7.6"/><path d="M6.4 14.6h11.2v6H6.4z"/></svg></button>
+        <button class="nv-ico" id="mHide" title="Hide this bar (H)"><svg viewBox="0 0 24 24"><path d="M4 12h16M8.6 16.6 4 12l4.6-4.6"/></svg></button>
+        <button class="nv-ico" id="goHome" title="Back to the cover"><svg viewBox="0 0 24 24"><path d="M3.4 10.4 12 3.4l8.6 7v10.2H3.4z"/><path d="M9.4 20.6v-6.4h5.2v6.4"/></svg></button>
+      </div>
     </div>
-    <div class="tb-group">
-      <button class="btn on" id="mDeck" title="One page at a time (S)">Slides</button>
-      <button class="btn" id="mScroll" title="Continuous scroll (S)">Scroll</button>
-      <button class="btn" id="mGrid" title="All pages (G)">Pages</button>
-    </div>
-    <div class="tb-group">
-      <button class="btn" id="mGuide" title="Alignment guides — off / full / 50% (A)">Guides</button>
-      <button class="btn" id="mHide" title="Hide this bar (H)">Hide bar</button>
-    </div>
-    <button class="btn pri" id="doPrint" title="Print / Save as PDF · A4 landscape (P)">Print · PDF</button>
   </div>
 
-  <div class="progress" id="progress"></div>
   <button class="ui-restore" id="uiRestore" title="Show the bar (H)">Show bar</button>
   <div class="g-legend">
     <b>ALIGNMENT</b> &middot; 120px sides &middot; 12 col &middot; 118px &middot; 24px gutters<br>
@@ -1170,47 +1238,109 @@ img{display:block;max-width:100%}
 
 <script>
 (function(){
+  /* ══ UNIVERSAL DECK-NAV ══════════════════════════════════════════════
+     Identical structure in every book; only the accent follows the brand.
+     Standard hides the deep-dive pages, Full is the complete book.      */
+  var STANDARD_HIDDEN = [9, 11];   // 1-based: the civil chapter opener and drawings
+  var LIBRARY_URL     = '';        // set to the hub path to make Home leave the book
+
   var app=document.getElementById('app'),
       deck=document.getElementById('deck'),
-      slides=[].slice.call(deck.querySelectorAll('.slide')),
-      N=slides.length, i=0, mode='deck', ovOpen=false;
+      all=[].slice.call(deck.querySelectorAll('.slide')),
+      vis=all.slice(), i=0, mode='deck', ovOpen=false,
+      edition='full', zoom=null, gState=0, lbAt=-1, figs=[];
 
-  document.getElementById('tot').textContent=String(N).padStart(2,'0');
+  var $=function(id){ return document.getElementById(id); };
+  var pad=function(n){ return String(n).padStart(2,'0'); };
 
-  function fit(){
-    var vw=window.innerWidth, vh=window.innerHeight, k;
-    var bar = app.classList.contains('ui-off') ? 0 : 56;
-    if(mode==='scroll') k=Math.min((vw-48)/1920, 1.05);
-    else k=Math.min((vw-48)/1920, (vh-bar-40)/1080);
-    document.documentElement.style.setProperty('--k', Math.max(k,0.12));
+  /* ── scale ───────────────────────────────────────────────────────── */
+  function fitK(){
+    var vw=window.innerWidth, vh=window.innerHeight,
+        bar=app.classList.contains('ui-off')||app.classList.contains('thumb-only') ? 24 : 108;
+    if(mode==='scroll') return Math.min((vw-48)/1920, 1.05);
+    return Math.max(Math.min((vw-48)/1920, (vh-bar)/1080), 0.1);
+  }
+  function applyScale(){
+    var k = zoom===null ? fitK() : zoom;
+    document.documentElement.style.setProperty('--k', k);
+    $('zPct').textContent = Math.round(k*100)+'%';
+    $('zFit').classList.toggle('on', zoom===null);
+  }
+  function setZoom(v){ zoom = v===null ? null : Math.min(Math.max(v,0.15),2.5); applyScale(); }
+  var fit=applyScale;
+
+  /* ── edition ─────────────────────────────────────────────────────── */
+  function applyEdition(){
+    var cur=vis[i], thumb=app.classList.contains('thumb-only');
+    all.forEach(function(s,x){
+      var off = thumb ? x>0
+                      : (edition==='standard' && STANDARD_HIDDEN.indexOf(x+1)>-1);
+      s.classList.toggle('ed-off', off);
+    });
+    vis=all.filter(function(s){ return !s.classList.contains('ed-off'); });
+    $('edStd').classList.toggle('on', edition==='standard');
+    $('edFull').classList.toggle('on', edition==='full');
+    $('tot').textContent=pad(vis.length);
+    var x=vis.indexOf(cur); i = x>-1 ? x : Math.min(i, vis.length-1);
+    buildDots(); show(i);
+  }
+  function setEdition(e){ edition=e; applyEdition(); }
+
+  /* ── dot rail ────────────────────────────────────────────────────── */
+  function buildDots(){
+    var rail=$('dotrail'); rail.innerHTML='';
+    vis.forEach(function(s,x){
+      var d=document.createElement('button');
+      d.className='nv-dot'; d.textContent=String(x+1);
+      d.title=pad(x+1)+' · '+(s.dataset.name||'');
+      d.onclick=function(){ show(x,true); };
+      rail.appendChild(d);
+    });
   }
 
+  /* ── navigation ──────────────────────────────────────────────────── */
   function show(n,goTo){
-    i=Math.max(0,Math.min(N-1,n));
-    slides.forEach(function(s,x){ s.classList.toggle('active', x===i); });
-    document.getElementById('cur').textContent=String(i+1).padStart(2,'0');
+    if(!vis.length) return;
+    i=Math.max(0,Math.min(vis.length-1,n));
+    all.forEach(function(s){ s.classList.remove('active'); });
+    vis[i].classList.add('active');
+    $('cur').textContent=pad(i+1);
+    $('navName').innerHTML='<b>'+pad(i+1)+'</b>&middot; '+(vis[i].dataset.name||'');
+    $('prev').disabled = i===0;
+    $('next').disabled = i===vis.length-1;
+    [].forEach.call($('dotrail').children,function(d,x){ d.classList.toggle('on',x===i); });
+    var on=$('dotrail').children[i];
+    if(on && on.scrollIntoView) on.scrollIntoView({block:'nearest',inline:'center'});
     [].forEach.call(document.querySelectorAll('.ov-item'),function(el,x){
-      el.classList.toggle('current', x===i);
-    });
-    document.getElementById('progress').style.width=((i+1)/N*100)+'%';
-    if(history.replaceState) history.replaceState(null,'','#'+String(i+1).padStart(2,'0'));
-    if(mode==='scroll'&&goTo) slides[i].scrollIntoView({behavior:'smooth',block:'start'});
+      el.classList.toggle('current', x===i); });
+    if(history.replaceState) history.replaceState(null,'','#'+pad(i+1));
+    if(mode==='scroll'&&goTo) vis[i].scrollIntoView({behavior:'smooth',block:'start'});
   }
 
   function setMode(m){
     mode=m; app.setAttribute('data-mode',m);
-    document.getElementById('mDeck').classList.toggle('on',m==='deck');
-    document.getElementById('mScroll').classList.toggle('on',m==='scroll');
-    fit();
-    if(m==='deck') show(i); else slides[i].scrollIntoView({block:'start'});
+    $('mScroll').classList.toggle('on',m==='scroll');
+    applyScale();
+    if(m==='deck') show(i); else vis[i].scrollIntoView({block:'start'});
   }
-
   function toggleGrid(force){
     ovOpen = (force===undefined) ? !ovOpen : force;
-    document.getElementById('overview').classList.toggle('open',ovOpen);
-    document.getElementById('mGrid').classList.toggle('on',ovOpen);
+    $('overview').classList.toggle('open',ovOpen);
+    $('mGrid').classList.toggle('on',ovOpen);
+  }
+  function setGuides(v){
+    gState=(v+3)%3;
+    app.classList.toggle('g-on', gState>0);
+    app.classList.toggle('g-half', gState===2);
+    $('mGuide').classList.toggle('on', gState>0);
+  }
+  function setUI(off){
+    app.classList.toggle('ui-off',off);
+    $('mHide').classList.toggle('on',off);
+    applyScale();
   }
 
+  /* ── guides overlay ──────────────────────────────────────────────── */
   var GUIDE_HTML =
     '<div class="cols"></div>'+
     '<div class="vm" style="left:120px"></div><div class="vm" style="left:1799px"></div>'+
@@ -1225,20 +1355,19 @@ img{display:block;max-width:100%}
     '<div class="tag-g pink" style="left:124px;top:236px">content top · 254</div>'+
     '<div class="tag-g pink" style="left:124px;top:912px">content bottom · 930</div>'+
     '<div class="tag-g" style="left:124px;top:990px">footer rule · 1008</div>'+
-    '<div class="tag-g" style="left:1620px;top:70px">right margin · 1800</div>'+
-'';
-
+    '<div class="tag-g" style="left:1620px;top:70px">right margin · 1800</div>';
   function buildGuides(){
-    slides.forEach(function(s){
+    all.forEach(function(s){
       var g=document.createElement('div');
       g.className='guides'; g.innerHTML=GUIDE_HTML;
       s.querySelector('.stage').appendChild(g);
     });
   }
 
+  /* ── thumbnails ──────────────────────────────────────────────────── */
   function buildOverview(){
-    var g=document.getElementById('ovGrid');
-    slides.forEach(function(s,x){
+    var g=$('ovGrid');
+    all.forEach(function(s,x){
       var d=document.createElement('div'); d.className='ov-item';
       var wrap=document.createElement('div');
       wrap.style.cssText='position:absolute;inset:0;overflow:hidden';
@@ -1247,9 +1376,9 @@ img{display:block;max-width:100%}
                       'zoom:1;margin:0;transform-origin:top left;transform:scale(.17)';
       wrap.appendChild(c); d.appendChild(wrap);
       var cap=document.createElement('div'); cap.className='ov-cap';
-      cap.innerHTML='<i>'+String(x+1).padStart(2,'0')+'</i>'+(s.dataset.name||'');
+      cap.innerHTML='<i>'+pad(x+1)+'</i>'+(s.dataset.name||'');
       d.appendChild(cap);
-      d.onclick=function(){ toggleGrid(false); show(x,true); };
+      d.onclick=function(){ toggleGrid(false); var y=vis.indexOf(s); if(y>-1) show(y,true); };
       g.appendChild(d);
     });
     if(window.ResizeObserver){
@@ -1263,40 +1392,20 @@ img{display:block;max-width:100%}
     }
   }
 
-  function preloadFonts(){
-    if(!document.fonts||!document.fonts.load) return Promise.resolve();
-    var faces=[];
-    [['IBM Plex Sans',[400,500,600,700]],['Outfit',[400,600,700,800]],['Inter',[400,500,600,700]]]
-      .forEach(function(f){ f[1].forEach(function(w){
-        faces.push(document.fonts.load(w+' 16px "'+f[0]+'"')); }); });
-    return Promise.all(faces).catch(function(){});
-  }
-  function printDeck(){
-    toggleGrid(false);
-    preloadFonts().then(function(){
-      return document.fonts && document.fonts.ready ? document.fonts.ready : null;
-    }).then(function(){ window.print(); });
-  }
-
-  /* ── zoomable figures ────────────────────────────────────────────── */
-  var figs=[], lb=document.getElementById('lightbox'),
-      lbStage=document.getElementById('lbStage'),
-      lbCap=document.getElementById('lbCap'), lbAt=-1;
-
+  /* ── image viewer ────────────────────────────────────────────────── */
+  var lb=$('lightbox'), lbStage=$('lbStage'), lbCap=$('lbCap');
   function collectFigures(){
     [].forEach.call(deck.querySelectorAll('figure img, .sdiag img'),function(im){
       var host=im.closest('figure')||im.parentNode;
       host.classList.add('zoomable');
-      host.setAttribute('role','button');
-      host.setAttribute('tabindex','0');
+      host.setAttribute('role','button'); host.setAttribute('tabindex','0');
       var cap=im.getAttribute('alt')||
               (host.closest('.slide')&&host.closest('.slide').dataset.name)||'';
       var idx=figs.length;
       figs.push({node:host, cap:cap});
       host.addEventListener('click',function(){ openLb(idx); });
       host.addEventListener('keydown',function(e){
-        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLb(idx); }
-      });
+        if(e.key==='Enter'||e.key===' '){ e.preventDefault(); openLb(idx); } });
     });
   }
   function openLb(x){
@@ -1312,48 +1421,45 @@ img{display:block;max-width:100%}
     lb.classList.add('open');
   }
   function closeLb(){ lb.classList.remove('open'); lbStage.innerHTML=''; lbAt=-1; }
-  document.getElementById('lbClose').onclick=closeLb;
-  document.getElementById('lbPrev').onclick=function(e){ e.stopPropagation(); openLb(lbAt-1); };
-  document.getElementById('lbNext').onclick=function(e){ e.stopPropagation(); openLb(lbAt+1); };
+  $('lbClose').onclick=closeLb;
+  $('lbPrev').onclick=function(e){ e.stopPropagation(); openLb(lbAt-1); };
+  $('lbNext').onclick=function(e){ e.stopPropagation(); openLb(lbAt+1); };
   lb.addEventListener('click',function(e){ if(e.target===lb||e.target===lbStage) closeLb(); });
 
-  /* ── swipe, for touch screens ────────────────────────────────────── */
-  var tx=0, ty=0;
-  deck.addEventListener('touchstart',function(e){
-    tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY;
-  },{passive:true});
-  deck.addEventListener('touchend',function(e){
-    if(mode!=='deck') return;
-    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
-    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.6) show(dx<0?i+1:i-1,true);
-  },{passive:true});
-
-  document.getElementById('prev').onclick=function(){ show(i-1,true); };
-  document.getElementById('next').onclick=function(){ show(i+1,true); };
-  document.getElementById('mDeck').onclick=function(){ toggleGrid(false); setMode('deck'); };
-  document.getElementById('mScroll').onclick=function(){ toggleGrid(false); setMode('scroll'); };
-  document.getElementById('mGrid').onclick=function(){ toggleGrid(); };
-
-  /* alignment guides: off → full → 50% → off */
-  var gState=0, gBtn=document.getElementById('mGuide');
-  function setGuides(v){
-    gState=(v+3)%3;
-    app.classList.toggle('g-on', gState>0);
-    app.classList.toggle('g-half', gState===2);
-    gBtn.classList.toggle('on', gState>0);
-    gBtn.textContent = gState===0 ? 'Guides' : (gState===1 ? 'Guides 100%' : 'Guides 50%');
+  /* ── print ───────────────────────────────────────────────────────── */
+  function preloadFonts(){
+    if(!document.fonts||!document.fonts.load) return Promise.resolve();
+    var faces=[];
+    [['IBM Plex Sans',[400,500,600,700]],['Outfit',[400,600,700,800]],['Inter',[400,500,600,700]]]
+      .forEach(function(f){ f[1].forEach(function(w){
+        faces.push(document.fonts.load(w+' 16px "'+f[0]+'"')); }); });
+    return Promise.all(faces).catch(function(){});
   }
-  gBtn.onclick=function(){ setGuides(gState+1); };
-
-  /* hide the bar while reviewing */
-  function setUI(off){
-    app.classList.toggle('ui-off',off);
-    document.getElementById('mHide').classList.toggle('on',off);
-    fit();
+  function printDeck(){
+    toggleGrid(false);
+    preloadFonts().then(function(){
+      return document.fonts && document.fonts.ready ? document.fonts.ready : null;
+    }).then(function(){ window.print(); });
   }
-  document.getElementById('mHide').onclick=function(){ setUI(true); };
-  document.getElementById('uiRestore').onclick=function(){ setUI(false); };
-  document.getElementById('doPrint').onclick=printDeck;
+
+  /* ── wiring ──────────────────────────────────────────────────────── */
+  $('prev').onclick=function(){ show(i-1,true); };
+  $('next').onclick=function(){ show(i+1,true); };
+  $('edStd').onclick=function(){ setEdition('standard'); };
+  $('edFull').onclick=function(){ setEdition('full'); };
+  $('zOut').onclick=function(){ setZoom((zoom===null?fitK():zoom)-0.1); };
+  $('zIn').onclick =function(){ setZoom((zoom===null?fitK():zoom)+0.1); };
+  $('zPct').onclick=function(){ setZoom(null); };
+  $('zFit').onclick=function(){ setZoom(null); };
+  $('mGrid').onclick=function(){ toggleGrid(); };
+  $('mScroll').onclick=function(){ toggleGrid(false); setMode(mode==='scroll'?'deck':'scroll'); };
+  $('mGuide').onclick=function(){ setGuides(gState+1); };
+  $('doPrint').onclick=printDeck;
+  $('mHide').onclick=function(){ setUI(true); };
+  $('uiRestore').onclick=function(){ setUI(false); };
+  $('goHome').onclick=function(){
+    if(LIBRARY_URL) location.href=LIBRARY_URL; else show(0,true);
+  };
 
   document.addEventListener('keydown',function(e){
     if(e.metaKey||e.ctrlKey||e.altKey) return;
@@ -1367,7 +1473,10 @@ img{display:block;max-width:100%}
     if(k==='ArrowRight'||k==='PageDown'||k===' '){ e.preventDefault(); show(i+1,true); }
     else if(k==='ArrowLeft'||k==='PageUp'){ e.preventDefault(); show(i-1,true); }
     else if(k==='Home'){ e.preventDefault(); show(0,true); }
-    else if(k==='End'){ e.preventDefault(); show(N-1,true); }
+    else if(k==='End'){ e.preventDefault(); show(vis.length-1,true); }
+    else if(k==='0'){ e.preventDefault(); setZoom(null); }
+    else if(k==='+'||k==='='){ e.preventDefault(); setZoom((zoom===null?fitK():zoom)+0.1); }
+    else if(k==='-'){ e.preventDefault(); setZoom((zoom===null?fitK():zoom)-0.1); }
     else if(k==='g'||k==='G'){ e.preventDefault(); toggleGrid(); }
     else if(k==='Escape'){ toggleGrid(false); }
     else if(k==='s'||k==='S'){ setMode(mode==='deck'?'scroll':'deck'); }
@@ -1376,27 +1485,43 @@ img{display:block;max-width:100%}
     else if(k==='p'||k==='P'){ e.preventDefault(); printDeck(); }
   });
 
+  var tx=0,ty=0;
+  deck.addEventListener('touchstart',function(e){
+    tx=e.changedTouches[0].clientX; ty=e.changedTouches[0].clientY; },{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(mode!=='deck') return;
+    var dx=e.changedTouches[0].clientX-tx, dy=e.changedTouches[0].clientY-ty;
+    if(Math.abs(dx)>60 && Math.abs(dx)>Math.abs(dy)*1.6) show(dx<0?i+1:i-1,true); },{passive:true});
+
   if(window.IntersectionObserver){
     var io=new IntersectionObserver(function(es){
       if(mode!=='scroll') return;
       es.forEach(function(e){
         if(e.isIntersecting && e.intersectionRatio>0.55){
-          var x=slides.indexOf(e.target); if(x>-1) show(x);
-        }
+          var x=vis.indexOf(e.target); if(x>-1) show(x); }
       });
     },{threshold:[0.55]});
-    slides.forEach(function(s){ io.observe(s); });
+    all.forEach(function(s){ io.observe(s); });
   }
 
-  window.addEventListener('resize',fit);
+  window.addEventListener('resize',applyScale);
   window.addEventListener('beforeprint',function(){ toggleGrid(false); });
   window.addEventListener('hashchange',function(){
     var x=parseInt((location.hash||'').replace('#',''),10);
     if(!isNaN(x) && x-1!==i) show(x-1,true);
   });
 
+  /* ── boot ────────────────────────────────────────────────────────── */
+  var q=new URLSearchParams(location.search);
+  if(q.get('thumb')==='1') app.classList.add('thumb-only');   // hub thumbnail: cover only, no bar
+  if(q.get('edition')==='standard') edition='standard';
+
+  buildGuides(); buildOverview(); collectFigures();
+  applyEdition();
   var h=parseInt((location.hash||'').replace('#',''),10);
-  fit(); buildGuides(); buildOverview(); collectFigures(); show(isNaN(h)?0:h-1); preloadFonts();
+  show(isNaN(h)?0:h-1);
+  applyScale();
+  preloadFonts();
 })();
 </script>
 </body>

@@ -24,20 +24,30 @@ No dependencies beyond the Python standard library.
 
 ## Using it
 
-Open `index.html` in any browser. The control bar sits along the foot of the window.
+Open `index.html` in any browser. The deck-nav pill floats at the foot of the
+window — the same component every book carries; only the accent colour changes.
+
+**prev · dot rail · page name · counter · next · edition · zoom · icons**
 
 | Control | Action |
 |---|---|
-| `←` `→` `Space` `PgUp` `PgDn` | Previous / next slide |
-| `Home` / `End` | First / last slide |
-| `G` or **Pages** | All twelve pages as thumbnails |
-| `A` or **Guides** | Alignment guides — off → 100% → 50% → off |
-| `H` or **Hide bar** | Hide the control bar while reviewing; the chip bottom-right brings it back |
+| `←` `→` `Space` `PgUp` `PgDn` | Previous / next page |
+| Dot rail | Jump to any page; the active dot becomes a numbered pill |
+| **Standard / Full** | Full is the complete book; Standard hides the deep-dive pages (09 and 11) |
+| `−` `%` `+` **Fit**, `0` | Zoom; the percentage and Fit both reset to fit-to-window |
+| `G` or the grid icon | All pages as thumbnails |
+| `S` or the scroll icon | Slides (one at a time) ↔ Scroll (continuous) |
+| `A` or the guides icon | Alignment guides — off → 100% → 50% → off |
+| `P` or the print icon | Print dialogue |
+| `H` or the collapse icon | Hide the bar; the chip bottom-right brings it back |
+| Home icon | Back to the cover, or to `LIBRARY_URL` if set |
 | Click any photograph | Open it full size; `←` `→` step through all 17, `Esc` closes |
-| Swipe left / right | Previous / next slide on touch screens |
-| `S` | Toggle **Slides** (one at a time) ↔ **Scroll** (continuous) |
-| `P` or **Print · PDF** | Print dialogue |
-| `#01` … `#12` in the URL | Deep-link to a page |
+| Swipe left / right | Previous / next page on touch screens |
+| `#01` … `#12` | Deep-link to a page |
+| `?edition=standard` | Open in the Standard edition |
+| `?thumb=1` | Cover only, no bar — for hub thumbnails |
+
+The edition applies to print as well: Full exports 12 A4 pages, Standard 10.
 
 ## Exporting the A4 PDF
 

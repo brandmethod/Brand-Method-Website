@@ -20,20 +20,25 @@ fonts and images are local.
 
 ---
 
-## Controls
+## The navigation bar
 
-| Action | Button | Key |
+A single fixed bar across the top: the Altigo mark and catalogue line on the
+left, the pager and controls on the right.
+
+| Control | What it does | Key |
 | --- | --- | --- |
-| Next / previous page | side arrows or bar arrows | `→` `←` `Space` `PgUp` `PgDn` |
-| First / last page | — | `Home` `End` |
-| Contents drawer | ☰ | `I` |
-| Alignment grid | **Grid** | `G` |
-| Hide the bar (clean review) | **Hide bar** | `H` |
-| Print / export A4 PDF | **Print A4** | `P` |
-| Fullscreen | ⛶ | `F` |
+| `‹` `01 / 17` `›` | Page back / forward, live page counter | `←` `→` `Space` `Home` `End` |
+| **Slides** | One page at a time, centred and scaled to the window | `1` |
+| **Scroll** | Every page stacked for continuous reading; the counter follows the scroll | `2` |
+| **Pages** | Live thumbnail overview of all 17 pages — click one to jump to it | `3` |
+| **Guides** | Alignment-grid overlay with its layer / opacity controls | `G` |
+| **Hide bar** | Clears the bar for a clean review; a chip brings it back | `H` |
+| **Print · PDF** | Opens the A4 landscape export checklist, then the print dialog | `P` |
 
-Swipe left/right works on touch screens. Every page has a deep link —
-`index.html#p07` opens page 7 directly.
+Fullscreen is `F`, `Esc` closes the overview or the print dialog. Swipe
+left/right works on touch screens in Slides view. A thin red progress line
+across the top of the bar tracks how far through the catalogue you are, and
+every page has a deep link — `index.html#p07` opens page 7 directly.
 
 ### Alignment grid
 

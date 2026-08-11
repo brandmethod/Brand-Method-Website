@@ -70,7 +70,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ul{list-style:none}
 
 /* ---------- 4. STAGE / DECK ------------------------------------------ */
-#stage{position:fixed;inset:0;overflow:hidden}
+#stage{position:fixed;left:0;right:0;top:var(--bar);bottom:0;overflow:hidden;transition:top .3s}
 #deck{
   position:absolute;left:50%;top:50%;width:1920px;height:1080px;
   transform-origin:center center;transform:translate(-50%,-50%);
@@ -272,100 +272,114 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 #guides[data-hide~="base"] .base,#guides[data-hide~="margin"] .margin,
 #guides[data-hide~="center"] .center,#guides[data-hide~="safe"] .safe{display:none}
 
-/* ---------- 12. UI CHROME -------------------------------------------- */
-#ui{position:fixed;inset:0;z-index:120;pointer-events:none;font-family:var(--ui)}
-#ui > *{pointer-events:auto}
-body.ui-hidden #ui .hideable{opacity:0;visibility:hidden;transform:translateY(14px)}
-#ui .hideable{transition:opacity .28s ease,transform .28s ease,visibility .28s}
+/* ---------- 12. UI CHROME — top navigation bar ------------------------ */
+:root{--bar:64px}
+body.ui-hidden{--bar:0px}
 
-.bar{
-  position:fixed;left:50%;bottom:26px;transform:translateX(-50%);
-  display:flex;align-items:center;gap:6px;padding:8px;
-  background:rgba(10,13,20,.86);backdrop-filter:blur(14px) saturate(140%);
-  border:1px solid rgba(255,255,255,.12);
+.topbar{
+  position:fixed;left:0;right:0;top:0;height:64px;z-index:150;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  padding:0 16px 0 22px;background:#0C0F14;border-bottom:1px solid rgba(255,255,255,.09);
+  font-family:var(--ui);
+  transition:transform .3s cubic-bezier(.22,.61,.36,1),opacity .3s;
 }
-body.ui-hidden .bar{transform:translateX(-50%) translateY(14px)}
-.btn{
-  display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;
-  color:#E7EBF2;font-size:12.5px;font-weight:500;letter-spacing:.02em;
-  border:1px solid transparent;transition:background .16s,color .16s,border-color .16s;white-space:nowrap;
-}
-.btn:hover{background:rgba(255,255,255,.10)}
-.btn.on{background:var(--blue);border-color:var(--blue-lift);color:#fff}
-.btn.icon{padding:0;width:38px;justify-content:center}
-.btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:square;stroke-linejoin:miter}
-.sep{width:1px;height:22px;background:rgba(255,255,255,.14);margin:0 4px}
-.count{font-family:var(--ui);font-size:12.5px;color:#9AA4B6;padding:0 8px;min-width:74px;text-align:center;letter-spacing:.08em}
-.count b{color:#fff;font-weight:600}
+body.ui-hidden .topbar{transform:translateY(-100%);opacity:0;pointer-events:none}
+.tb-prog{position:absolute;left:0;top:0;height:3px;width:0;background:var(--red);transition:width .35s ease}
 
-/* progress */
-.prog{position:fixed;left:0;top:0;height:3px;background:var(--red);width:0;
-  transition:width .3s ease,opacity .28s ease;z-index:130}
-body.ui-hidden .prog{opacity:0}
+.tb-left{display:flex;align-items:center;gap:20px;min-width:0}
+.tb-logo{width:96px;flex:none}
+.tb-div{width:1px;height:26px;background:rgba(255,255,255,.14);flex:none}
+.tb-title{font-size:11.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:#79839A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 
-/* restore chip when UI hidden */
+.tb-right{display:flex;align-items:center;gap:8px;flex:none}
+.tb-pager{display:flex;align-items:center;gap:6px;margin-right:6px}
+.tb-sq{width:34px;height:34px;display:grid;place-items:center;
+  border:1px solid rgba(255,255,255,.16);color:#C9D2E0;transition:background .15s,color .15s}
+.tb-sq:hover{background:rgba(255,255,255,.09);color:#fff}
+.tb-sq[disabled]{opacity:.28;pointer-events:none}
+.tb-sq svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:square}
+.tb-count{min-width:70px;text-align:center;font-size:12.5px;letter-spacing:.1em;
+  color:#6F7B90;font-variant-numeric:tabular-nums}
+.tb-count b{color:#fff;font-weight:600}
+
+.tb-btn{height:34px;padding:0 15px;border:1px solid rgba(255,255,255,.16);color:#C9D2E0;
+  font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;
+  transition:background .15s,color .15s,border-color .15s}
+.tb-btn:hover{background:rgba(255,255,255,.09);color:#fff}
+.tb-btn.is-on{background:var(--blue-lift);border-color:var(--blue-lift);color:#fff}
+.tb-print{background:var(--red);border-color:var(--red);color:#fff}
+.tb-print:hover{background:#FF2E14;border-color:#FF2E14;color:#fff}
+.topbar :focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* restore chip when the bar is hidden */
 .restore{
-  position:fixed;left:50%;bottom:12px;transform:translateX(-50%) translateY(30px);
-  display:flex;align-items:center;gap:8px;height:30px;padding:0 14px;
-  background:rgba(10,13,20,.7);color:#C9D2E0;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
-  opacity:0;visibility:hidden;transition:.28s;border:1px solid rgba(255,255,255,.1);
+  position:fixed;left:50%;top:12px;transform:translateX(-50%) translateY(-30px);
+  display:flex;align-items:center;height:30px;padding:0 16px;z-index:150;
+  background:rgba(12,15,20,.82);color:#C9D2E0;font-family:var(--ui);font-size:10.5px;
+  letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.14);
+  opacity:0;visibility:hidden;transition:.28s;
 }
 body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
 
-/* side arrows */
-.nav{position:fixed;top:50%;transform:translateY(-50%);width:56px;height:88px;display:grid;place-items:center;
-  background:rgba(10,13,20,.55);color:#fff;border:1px solid rgba(255,255,255,.12);transition:.18s}
-.nav:hover{background:var(--blue)}
-.nav.prev{left:18px}.nav.next{right:18px}
-.nav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8}
-.nav[disabled]{opacity:.25;pointer-events:none}
+/* ---------- 12b. VIEW MODES ------------------------------------------- */
+/* SLIDES — one page at a time, centred under the bar (default) */
+/* SCROLL — every page stacked, continuous vertical reading */
+body.mode-scroll #stage{overflow-y:auto;overflow-x:hidden}
+body.mode-scroll #deck{position:relative;left:50%;top:0;height:auto;
+  transform-origin:top center;background:none;box-shadow:none;padding:36px 0 56px}
+body.mode-scroll .slide{position:relative;display:block !important;margin:0 auto 34px;
+  box-shadow:0 18px 54px rgba(0,0,0,.5)}
+body.mode-scroll .slide .canvas{animation:none}
+body.mode-scroll #guides{display:none}
 
-/* index drawer */
-.drawer{
-  position:fixed;left:0;top:0;bottom:0;width:392px;background:#0E1219;color:#E7EBF2;
-  border-right:1px solid rgba(255,255,255,.1);transform:translateX(-100%);transition:transform .32s cubic-bezier(.22,.61,.36,1);
-  display:flex;flex-direction:column;z-index:140;
-}
-.drawer.open{transform:none}
-.drawer header{padding:26px 26px 18px;border-bottom:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;align-items:center}
-.drawer header b{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:#8C97AB;font-weight:500}
-.drawer ol{list-style:none;overflow:auto;flex:1;padding:8px 0}
-.drawer li button{display:grid;grid-template-columns:38px 1fr;gap:12px;width:100%;text-align:left;padding:12px 26px;font-size:13.5px;color:#B9C2D2;transition:.14s}
-.drawer li button span{font-family:var(--ui);font-size:11px;color:#5F6B80;letter-spacing:.1em;padding-top:2px}
-.drawer li button:hover{background:rgba(255,255,255,.05);color:#fff}
-.drawer li.cur button{color:#fff;background:rgba(2,66,202,.28);box-shadow:inset 3px 0 0 var(--red)}
-.drawer footer{padding:18px 26px;border-top:1px solid rgba(255,255,255,.1);font-size:11px;color:#5F6B80;letter-spacing:.06em}
+/* PAGES — thumbnail overview of the whole catalogue */
+.pages{position:fixed;left:0;right:0;top:var(--bar);bottom:0;z-index:135;
+  background:#080A0E;overflow:auto;display:none;padding:34px 28px 48px}
+.pages.open{display:block}
+.pages-grid{display:grid;grid-template-columns:repeat(auto-fill,288px);
+  justify-content:center;gap:28px 26px;max-width:1640px;margin:0 auto}
+.pg-item{display:flex;flex-direction:column;gap:11px;text-align:left;font-family:var(--ui)}
+.pg-thumb{position:relative;width:288px;height:162px;overflow:hidden;background:#fff;
+  border:1px solid rgba(255,255,255,.13);transition:transform .16s,border-color .16s}
+.pg-item:hover .pg-thumb{border-color:var(--blue-lift);transform:translateY(-3px)}
+.pg-item.cur .pg-thumb{border-color:var(--red);box-shadow:inset 0 0 0 2px var(--red)}
+.pg-thumb .slide{position:absolute;left:0;top:0;display:block !important;
+  transform:scale(.15);transform-origin:top left;box-shadow:none}
+.pg-thumb .slide .canvas{animation:none}
+.pg-meta{display:flex;gap:12px;align-items:baseline}
+.pg-meta b{font-size:10.5px;font-weight:600;letter-spacing:.16em;color:#5E6A80;flex:none}
+.pg-meta span{font-size:12.5px;color:#C9D2E0;line-height:1.3}
+.pg-item:hover .pg-meta span{color:#fff}
 
 /* grid control popover */
 .pop{
-  position:fixed;left:50%;bottom:80px;transform:translateX(-50%) translateY(8px);
-  background:rgba(10,13,20,.94);border:1px solid rgba(255,255,255,.14);padding:16px 18px;
-  display:none;gap:18px;align-items:center;backdrop-filter:blur(14px);z-index:125;
+  position:fixed;left:50%;top:calc(var(--bar) + 14px);transform:translateX(-50%);
+  background:rgba(10,13,20,.94);border:1px solid rgba(255,255,255,.14);padding:14px 16px;
+  display:none;gap:18px;align-items:center;backdrop-filter:blur(14px);z-index:145;font-family:var(--ui);
 }
 .pop.open{display:flex}
 .pop .grp{display:flex;align-items:center;gap:6px}
 .pop .lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7E8AA0;margin-right:2px}
-.chip{height:28px;padding:0 11px;font-size:11.5px;color:#C9D2E0;border:1px solid rgba(255,255,255,.16);transition:.14s;letter-spacing:.04em}
+.chip{height:28px;padding:0 11px;font-size:11.5px;color:#C9D2E0;
+  border:1px solid rgba(255,255,255,.16);transition:.14s;letter-spacing:.04em}
 .chip:hover{background:rgba(255,255,255,.08)}
 .chip.on{background:#fff;color:#0B0D12;border-color:#fff;font-weight:600}
 
-/* help */
-.help{position:fixed;right:24px;bottom:26px;display:grid;gap:8px;text-align:right;
-  font-size:11px;color:#6F7B90;letter-spacing:.1em;text-transform:uppercase}
-.help kbd{font-family:var(--ui);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);
-  padding:2px 7px;font-size:10px;color:#C9D2E0;margin-left:6px}
-
-/* print hint modal */
-.modal{position:fixed;inset:0;background:rgba(6,8,12,.72);display:none;place-items:center;z-index:200;backdrop-filter:blur(6px)}
+/* print helper modal */
+.modal{position:fixed;inset:0;background:rgba(6,8,12,.72);display:none;place-items:center;
+  z-index:200;backdrop-filter:blur(6px)}
 .modal.open{display:grid}
 .sheet{width:560px;background:#fff;color:var(--ink);padding:40px}
-.sheet h3{font-family:var(--display);font-weight:900;font-size:26px;color:var(--blue);text-transform:uppercase;margin-bottom:6px}
+.sheet h3{font-family:var(--display);font-weight:900;font-size:26px;color:var(--blue);
+  text-transform:uppercase;margin-bottom:6px}
 .sheet .k2{font-family:var(--edge);font-size:12px;letter-spacing:.26em;color:var(--red);text-transform:uppercase}
 .sheet ol{margin:22px 0 26px;padding-left:18px;list-style:decimal}
 .sheet li{font-size:15px;line-height:1.7;color:var(--ink-2)}
 .sheet li b{color:var(--ink)}
 .sheet .acts{display:flex;gap:10px;justify-content:flex-end}
-.sheet .acts button{height:42px;padding:0 22px;font-size:13px;font-weight:600;letter-spacing:.04em;border:1px solid var(--line)}
+.sheet .acts button{height:42px;padding:0 22px;font-size:13px;font-weight:600;
+  letter-spacing:.04em;border:1px solid var(--line);font-family:var(--ui)}
 .sheet .acts .go{background:var(--blue);color:#fff;border-color:var(--blue)}
 
 /* ---------- 13. PRINT — A4 LANDSCAPE --------------------------------- */
@@ -373,7 +387,8 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
 .printfoot{display:none}
 @media print{
   html,body{overflow:visible;background:#fff;height:auto}
-  #ui,#guides,.drawer,.pop,.modal,.prog{display:none !important}
+  .topbar,.restore,.pages,#guides,.pop,.modal{display:none !important}
+  body{--bar:0px}
   #stage,#deck{position:static;display:block;width:100%;height:auto;overflow:visible;
                transform:none !important;box-shadow:none;background:none;place-items:initial}
   /* One slide = one A4 landscape sheet. The sheet is sized in % / vh so it fills
@@ -396,6 +411,9 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
     transform:scale(calc(100vw / 1920px));
   }
   .slide.is-active .canvas{animation:none}
+  /* printing while in scroll view must not inherit its stacking margins */
+  body.mode-scroll #deck{padding:0;left:auto}
+  body.mode-scroll .slide{margin:0;box-shadow:none}
   .printfoot{
     display:flex;position:absolute;left:0;right:0;bottom:0;
     height:21.3mm;                                /* fallback */
@@ -414,8 +432,6 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
 </style>
 </head>
 <body>
-
-<div class="prog" id="prog"></div>
 
 <div id="stage">
   <div id="deck">
@@ -1416,71 +1432,55 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
   </div><!-- /#deck -->
 </div><!-- /#stage -->
 
-<!-- ======================================================= UI CHROME -->
-<div id="ui">
+<!-- ================================================ NAVIGATION BAR -->
+<header class="topbar" id="topbar">
+  <span class="tb-prog" id="prog"></span>
 
-  <button class="nav prev hideable" id="prev" aria-label="Previous page">
-    <svg viewBox="0 0 24 24"><polyline points="15,4 7,12 15,20"/></svg></button>
-  <button class="nav next hideable" id="next" aria-label="Next page">
-    <svg viewBox="0 0 24 24"><polyline points="9,4 17,12 9,20"/></svg></button>
-
-  <div class="bar hideable" id="bar">
-    <button class="btn icon" id="menuBtn" title="Index (I)" aria-label="Index">
-      <svg viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
-    <span class="sep"></span>
-    <button class="btn icon" id="bPrev" title="Previous (←)" aria-label="Previous">
-      <svg viewBox="0 0 24 24"><polyline points="15,4 7,12 15,20"/></svg></button>
-    <span class="count"><b id="cur">01</b> / <span id="tot">17</span></span>
-    <button class="btn icon" id="bNext" title="Next (→)" aria-label="Next">
-      <svg viewBox="0 0 24 24"><polyline points="9,4 17,12 9,20"/></svg></button>
-    <span class="sep"></span>
-    <button class="btn" id="gridBtn" title="Alignment guides (G)">
-      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18"/><line x1="9" y1="3" x2="9" y2="21"/><line x1="15" y1="3" x2="15" y2="21"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/></svg>
-      Grid</button>
-    <button class="btn" id="hideBtn" title="Hide bar (H)">
-      <svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><line x1="4" y1="20" x2="20" y2="4"/></svg>
-      Hide bar</button>
-    <button class="btn" id="printBtn" title="Print / export A4 PDF (P)">
-      <svg viewBox="0 0 24 24"><polyline points="6,9 6,3 18,3 18,9"/><path d="M6 18H4v-6h16v6h-2"/><rect x="8" y="14" width="8" height="7"/></svg>
-      Print A4</button>
-    <button class="btn icon" id="fsBtn" title="Fullscreen (F)" aria-label="Fullscreen">
-      <svg viewBox="0 0 24 24"><polyline points="3,9 3,3 9,3"/><polyline points="21,9 21,3 15,3"/><polyline points="3,15 3,21 9,21"/><polyline points="21,15 21,21 15,21"/></svg></button>
+  <div class="tb-left">
+    <img class="tb-logo" src="assets/img/logo-white.png" alt="ALTIGO">
+    <span class="tb-div"></span>
+    <span class="tb-title">Product Catalogue · Passenger Elevator · 2026</span>
   </div>
 
-  <!-- grid controls -->
-  <div class="pop" id="gridPop">
-    <div class="grp"><span class="lbl">Layers</span>
-      <button class="chip on" data-layer="margin">Margins</button>
-      <button class="chip on" data-layer="cols">Columns</button>
-      <button class="chip on" data-layer="rows">Rows</button>
-      <button class="chip" data-layer="base">Baseline</button>
-      <button class="chip on" data-layer="center">Centre</button>
-      <button class="chip" data-layer="safe">Safe area</button>
+  <div class="tb-right">
+    <div class="tb-pager">
+      <button class="tb-sq" id="bPrev" title="Previous page (←)" aria-label="Previous page">
+        <svg viewBox="0 0 24 24"><polyline points="15,4 7,12 15,20"/></svg></button>
+      <span class="tb-count"><b id="cur">01</b> / <span id="tot">17</span></span>
+      <button class="tb-sq" id="bNext" title="Next page (→)" aria-label="Next page">
+        <svg viewBox="0 0 24 24"><polyline points="9,4 17,12 9,20"/></svg></button>
     </div>
-    <div class="grp"><span class="lbl">Opacity</span>
-      <button class="chip on" data-op="1">100%</button>
-      <button class="chip" data-op="0.5">50%</button>
-      <button class="chip" data-op="0.25">25%</button>
-    </div>
+
+    <button class="tb-btn is-on" data-mode="slides" title="One page at a time (1)">Slides</button>
+    <button class="tb-btn" data-mode="scroll" title="Continuous scroll (2)">Scroll</button>
+    <button class="tb-btn" id="pagesBtn" title="Thumbnail overview (3)">Pages</button>
+    <button class="tb-btn" id="gridBtn" title="Alignment guides (G)">Guides</button>
+    <button class="tb-btn" id="hideBtn" title="Hide the bar (H)">Hide bar</button>
+    <button class="tb-btn tb-print" id="printBtn" title="Print / export A4 PDF (P)">Print · PDF</button>
   </div>
+</header>
 
-  <button class="restore" id="restore">Show bar · press H</button>
+<button class="restore" id="restore">Show bar · press H</button>
 
-  <div class="help hideable" id="help">
-    <div>Navigate <kbd>←</kbd><kbd>→</kbd> · Grid <kbd>G</kbd> · Hide <kbd>H</kbd> · Print <kbd>P</kbd> · Full <kbd>F</kbd></div>
+<!-- thumbnail overview -->
+<div class="pages" id="pagesView"><div class="pages-grid" id="pagesGrid"></div></div>
+
+<!-- alignment guide controls -->
+<div class="pop" id="gridPop">
+  <div class="grp"><span class="lbl">Layers</span>
+    <button class="chip on" data-layer="margin">Margins</button>
+    <button class="chip on" data-layer="cols">Columns</button>
+    <button class="chip on" data-layer="rows">Rows</button>
+    <button class="chip" data-layer="base">Baseline</button>
+    <button class="chip on" data-layer="center">Centre</button>
+    <button class="chip" data-layer="safe">Safe area</button>
+  </div>
+  <div class="grp"><span class="lbl">Opacity</span>
+    <button class="chip on" data-op="1">100%</button>
+    <button class="chip" data-op="0.5">50%</button>
+    <button class="chip" data-op="0.25">25%</button>
   </div>
 </div>
-
-<!-- index drawer -->
-<aside class="drawer" id="drawer">
-  <header>
-    <b>Contents · 17 pages</b>
-    <button class="btn icon" id="closeDrawer" aria-label="Close">
-      <svg viewBox="0 0 24 24"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg></button>
-  </header>
-  <ol id="tocList"></ol>
-  <footer>ALTIGO · Passenger Elevator · 2026</footer>
-</aside>
 
 <!-- print helper -->
 <div class="modal" id="printModal">
@@ -1506,80 +1506,166 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
 <script>
 (function(){
   "use strict";
-  var deck    = document.getElementById('deck');
-  var slides  = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
-  var total   = slides.length;
-  var idx     = 0;
 
-  /* ---------- scale deck to viewport ---------- */
+  var stage  = document.getElementById('stage');
+  var deck   = document.getElementById('deck');
+  var slides = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
+  var total  = slides.length;
+  var idx    = 0;
+  var mode   = 'slides';          /* slides | scroll */
+  var BAR    = 64;
+
+  document.getElementById('tot').textContent = total;
+
+  /* ---------- scaling ------------------------------------------------ */
+  function barH(){ return document.body.classList.contains('ui-hidden') ? 0 : BAR; }
+
   function fit(){
-    var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-    deck.style.transform = 'translate(-50%,-50%) scale(' + s + ')';
+    if (mode === 'scroll'){
+      var s = Math.min((window.innerWidth - 80) / 1920, 0.9);
+      deck.style.transform = 'translateX(-50%) scale(' + s + ')';
+      deck.style.marginBottom = -(deck.scrollHeight * (1 - s)) + 'px';
+      deck.dataset.scale = s;
+    } else {
+      var f = Math.min(window.innerWidth / 1920, (window.innerHeight - barH()) / 1080);
+      deck.style.transform = 'translate(-50%,-50%) scale(' + f + ')';
+      deck.style.marginBottom = '';
+    }
   }
   window.addEventListener('resize', fit);
-  fit();
 
-  /* ---------- navigation ---------- */
-  function show(n, dir){
-    n = Math.max(0, Math.min(total - 1, n));
-    if (n === idx && slides[n].classList.contains('is-active')) return;
-    slides[idx].classList.remove('is-active');
-    idx = n;
-    var s = slides[idx];
-    s.style.setProperty('--dir', (dir === -1 ? '-26px' : '26px'));
-    s.classList.add('is-active');
+  /* ---------- paging -------------------------------------------------- */
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function paint(){
     document.getElementById('cur').textContent = pad(idx + 1);
     document.getElementById('prog').style.width = ((idx + 1) / total * 100) + '%';
-    document.getElementById('prev').disabled = (idx === 0);
-    document.getElementById('next').disabled = (idx === total - 1);
-    Array.prototype.forEach.call(document.querySelectorAll('#tocList li'), function(li, i){
-      li.classList.toggle('cur', i === idx);
+    document.getElementById('bPrev').disabled = (idx === 0);
+    document.getElementById('bNext').disabled = (idx === total - 1);
+    Array.prototype.forEach.call(document.querySelectorAll('.pg-item'), function(el, i){
+      el.classList.toggle('cur', i === idx);
     });
     if (history.replaceState) history.replaceState(null, '', '#p' + pad(idx + 1));
   }
-  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function show(n, dir){
+    n = Math.max(0, Math.min(total - 1, n));
+    idx = n;
+    if (mode === 'scroll'){
+      var s = parseFloat(deck.dataset.scale) || 1;
+      stage.scrollTo({ top: slides[idx].offsetTop * s, behavior: dir === 'auto' ? 'auto' : 'smooth' });
+    } else {
+      slides.forEach(function(sl, i){ sl.classList.toggle('is-active', i === idx); });
+      slides[idx].style.setProperty('--dir', dir === -1 ? '-26px' : '26px');
+    }
+    paint();
+  }
   function nextS(){ show(idx + 1, 1); }
   function prevS(){ show(idx - 1, -1); }
 
-  document.getElementById('next').onclick  = nextS;
-  document.getElementById('prev').onclick  = prevS;
   document.getElementById('bNext').onclick = nextS;
   document.getElementById('bPrev').onclick = prevS;
-  document.getElementById('tot').textContent = total;
 
-  /* ---------- index drawer + contents page ---------- */
-  var drawer  = document.getElementById('drawer');
-  var tocList = document.getElementById('tocList');
-  var toc     = document.getElementById('toc');
-
-  slides.forEach(function(s, i){
-    var title = s.dataset.title || ('Page ' + (i + 1));
-    var sub   = s.dataset.sub || '';
-    var folio = s.dataset.folio || pad(i + 1);
-
-    var li = document.createElement('li');
-    var b  = document.createElement('button');
-    b.innerHTML = '<span>' + pad(i + 1) + '</span>' + title;
-    b.onclick = function(){ show(i, i > idx ? 1 : -1); closeDrawer(); };
-    li.appendChild(b); tocList.appendChild(li);
-
-    if (i > 1 && toc){                                   /* skip cover + contents */
-      var a = document.createElement('a');
-      a.href = '#p' + pad(i + 1);
-      a.innerHTML = '<span class="n">' + pad(i - 1) + '</span>' +
-                    '<span class="t">' + title + (sub ? '<span class="s">' + sub + '</span>' : '') + '</span>' +
-                    '<span class="pg">' + folio + '</span>';
-      a.onclick = function(e){ e.preventDefault(); show(i, 1); };
-      toc.appendChild(a);
+  /* ---------- view modes ---------------------------------------------- */
+  function setMode(m){
+    if (m === mode) return;
+    closePages();
+    mode = m;
+    document.body.classList.toggle('mode-scroll', m === 'scroll');
+    markMode();
+    if (m === 'scroll'){
+      slides.forEach(function(sl){ sl.classList.add('is-active'); });
+      toggleGrid(false);
+      fit();
+      show(idx, 'auto');
+    } else {
+      slides.forEach(function(sl, i){ sl.classList.toggle('is-active', i === idx); });
+      stage.scrollTop = 0;
+      fit();
+      paint();
     }
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function(b){
+    b.onclick = function(){ closePages(); markMode(); setMode(b.dataset.mode); };
   });
 
-  function openDrawer(){ drawer.classList.add('open'); }
-  function closeDrawer(){ drawer.classList.remove('open'); }
-  document.getElementById('menuBtn').onclick = function(){ drawer.classList.toggle('open'); };
-  document.getElementById('closeDrawer').onclick = closeDrawer;
+  function markMode(){
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function(b){
+      b.classList.toggle('is-on', b.dataset.mode === mode);
+    });
+  }
 
-  /* ---------- alignment guides ---------- */
+  /* keep the counter honest while scrolling */
+  var ticking = false;
+  stage.addEventListener('scroll', function(){
+    if (mode !== 'scroll' || ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){
+      var s = parseFloat(deck.dataset.scale) || 1;
+      var mid = stage.scrollTop + stage.clientHeight * 0.4;
+      var near = 0;
+      for (var i = 0; i < total; i++){ if (slides[i].offsetTop * s <= mid) near = i; }
+      if (near !== idx){ idx = near; paint(); }
+      ticking = false;
+    });
+  }, {passive:true});
+
+  /* ---------- pages overview ------------------------------------------ */
+  var pagesView = document.getElementById('pagesView');
+  var pagesGrid = document.getElementById('pagesGrid');
+  var pagesBtn  = document.getElementById('pagesBtn');
+  var built = false;
+
+  function buildPages(){
+    if (built) return;
+    slides.forEach(function(sl, i){
+      var item = document.createElement('button');
+      item.className = 'pg-item';
+      var thumb = document.createElement('div');
+      thumb.className = 'pg-thumb';
+      var clone = sl.cloneNode(true);
+      clone.classList.add('is-active');
+      clone.removeAttribute('id');
+      thumb.appendChild(clone);
+      var meta = document.createElement('div');
+      meta.className = 'pg-meta';
+      meta.innerHTML = '<b>' + pad(i + 1) + '</b><span>' + (sl.dataset.title || '') + '</span>';
+      item.appendChild(thumb); item.appendChild(meta);
+      item.onclick = function(){ closePages(); setMode('slides'); show(i, 1); };
+      pagesGrid.appendChild(item);
+    });
+    built = true;
+  }
+  function openPages(){
+    buildPages();
+    pagesView.classList.add('open');
+    pagesBtn.classList.add('is-on');
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function(b){ b.classList.remove('is-on'); });
+    paint();
+  }
+  function closePages(){
+    if (!pagesView.classList.contains('open')) return;
+    pagesView.classList.remove('open');
+    pagesBtn.classList.remove('is-on');
+    markMode();
+  }
+  pagesBtn.onclick = function(){ pagesView.classList.contains('open') ? closePages() : openPages(); };
+
+  /* ---------- contents page links ------------------------------------- */
+  var toc = document.getElementById('toc');
+  slides.forEach(function(sl, i){
+    if (i < 2 || !toc) return;                       /* skip cover + contents */
+    var a = document.createElement('a');
+    a.href = '#p' + pad(i + 1);
+    a.innerHTML = '<span class="n">' + pad(i - 1) + '</span>' +
+                  '<span class="t">' + (sl.dataset.title || '') +
+                  (sl.dataset.sub ? '<span class="s">' + sl.dataset.sub + '</span>' : '') + '</span>' +
+                  '<span class="pg">' + (sl.dataset.folio || pad(i + 1)) + '</span>';
+    a.onclick = function(e){ e.preventDefault(); setMode('slides'); show(i, 1); };
+    toc.appendChild(a);
+  });
+
+  /* ---------- alignment guides ---------------------------------------- */
   var guides  = document.getElementById('guides');
   var gridBtn = document.getElementById('gridBtn');
   var gridPop = document.getElementById('gridPop');
@@ -1592,8 +1678,9 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
 
   function toggleGrid(force){
     var on = (force === undefined) ? !guides.classList.contains('on') : force;
+    if (on && mode === 'scroll') setMode('slides');
     guides.classList.toggle('on', on);
-    gridBtn.classList.toggle('on', on);
+    gridBtn.classList.toggle('is-on', on);
     gridPop.classList.toggle('open', on && !document.body.classList.contains('ui-hidden'));
   }
   gridBtn.onclick = function(){ toggleGrid(); };
@@ -1616,26 +1703,21 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
     };
   });
 
-  /* ---------- hide bar ---------- */
+  /* ---------- hide bar -------------------------------------------------- */
   function toggleUI(force){
     var hide = (force === undefined) ? !document.body.classList.contains('ui-hidden') : force;
     document.body.classList.toggle('ui-hidden', hide);
-    document.getElementById('hideBtn').classList.toggle('on', hide);
-    if (hide){ gridPop.classList.remove('open'); closeDrawer(); }
+    document.getElementById('hideBtn').classList.toggle('is-on', hide);
+    if (hide){ gridPop.classList.remove('open'); closePages(); }
     else if (guides.classList.contains('on')) gridPop.classList.add('open');
+    fit();
   }
   document.getElementById('hideBtn').onclick = function(){ toggleUI(true); };
   document.getElementById('restore').onclick = function(){ toggleUI(false); };
 
-  /* ---------- fullscreen ---------- */
-  document.getElementById('fsBtn').onclick = function(){
-    if (!document.fullscreenElement){ (document.documentElement.requestFullscreen || function(){})(); }
-    else if (document.exitFullscreen) document.exitFullscreen();
-  };
-
-  /* ---------- print ---------- */
+  /* ---------- print ------------------------------------------------------ */
   var modal = document.getElementById('printModal');
-  document.getElementById('printBtn').onclick   = function(){ modal.classList.add('open'); };
+  document.getElementById('printBtn').onclick    = function(){ modal.classList.add('open'); };
   document.getElementById('cancelPrint').onclick = function(){ modal.classList.remove('open'); };
   document.getElementById('doPrint').onclick     = function(){
     modal.classList.remove('open');
@@ -1643,7 +1725,7 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
   };
   modal.onclick = function(e){ if (e.target === modal) modal.classList.remove('open'); };
 
-  /* ---------- keyboard ---------- */
+  /* ---------- keyboard ---------------------------------------------------- */
   document.addEventListener('keydown', function(e){
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     switch (e.key){
@@ -1651,40 +1733,46 @@ body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
       case 'ArrowLeft':  case 'PageUp':            prevS(); e.preventDefault(); break;
       case 'Home': show(0, -1); break;
       case 'End':  show(total - 1, 1); break;
+      case '1': setMode('slides'); break;
+      case '2': setMode('scroll'); break;
+      case '3': pagesBtn.click(); break;
       case 'g': case 'G': toggleGrid(); break;
       case 'h': case 'H': toggleUI(); break;
-      case 'i': case 'I': drawer.classList.toggle('open'); break;
       case 'p': case 'P': modal.classList.add('open'); break;
-      case 'f': case 'F': document.getElementById('fsBtn').click(); break;
-      case 'Escape': closeDrawer(); modal.classList.remove('open'); break;
+      case 'f': case 'F':
+        if (!document.fullscreenElement && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+        else if (document.exitFullscreen) document.exitFullscreen();
+        break;
+      case 'Escape': closePages(); modal.classList.remove('open'); break;
     }
   });
 
-  /* ---------- pointer / touch ---------- */
+  /* ---------- touch ------------------------------------------------------- */
   var x0 = null;
   deck.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
   deck.addEventListener('touchend', function(e){
-    if (x0 === null) return;
+    if (x0 === null || mode === 'scroll') return;
     var dx = e.changedTouches[0].clientX - x0;
     if (Math.abs(dx) > 60){ dx < 0 ? nextS() : prevS(); }
     x0 = null;
   }, {passive:true});
 
-  /* ---------- deep link ---------- */
+  /* ---------- boot -------------------------------------------------------- */
   var m = /^#p(\d+)$/.exec(location.hash);
-  show(m ? (parseInt(m[1], 10) - 1) : 0, 1);
+  idx = m ? Math.max(0, Math.min(total - 1, parseInt(m[1], 10) - 1)) : 0;
+  slides.forEach(function(sl, i){ sl.classList.toggle('is-active', i === idx); });
+  fit(); paint();
 
-  /* ---------- print: reveal every slide ---------- */
+  /* ---------- print: every page must be visible ---------------------------- */
   function allOn(on){
-    slides.forEach(function(s, i){ s.classList.toggle('is-active', on ? true : i === idx); });
+    slides.forEach(function(sl, i){ sl.classList.toggle('is-active', on || mode === 'scroll' || i === idx); });
   }
   window.addEventListener('beforeprint', function(){ allOn(true); });
   window.addEventListener('afterprint',  function(){ allOn(false); });
   if (window.matchMedia){
     var mq = window.matchMedia('print');
-    (mq.addEventListener ? mq.addEventListener.bind(mq, 'change') : mq.addListener.bind(mq))(function(e){
-      allOn(e.matches);
-    });
+    var handler = function(e){ allOn(e.matches); };
+    mq.addEventListener ? mq.addEventListener('change', handler) : mq.addListener(handler);
   }
 })();
 </script>

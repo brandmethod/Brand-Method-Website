@@ -22,8 +22,8 @@ fonts and images are local.
 
 ## The navigation bar
 
-A single fixed bar across the top: the Altigo mark and catalogue line on the
-left, the pager and controls on the right.
+A single fixed bar along the bottom of the window: the Altigo mark and
+catalogue line on the left, the pager and controls on the right.
 
 | Control | What it does | Key |
 | --- | --- | --- |
@@ -37,12 +37,12 @@ left, the pager and controls on the right.
 
 Fullscreen is `F`, `Esc` closes the overview or the print dialog. Swipe
 left/right works on touch screens in Slides view. A thin red progress line
-across the top of the bar tracks how far through the catalogue you are, and
-every page has a deep link — `index.html#p07` opens page 7 directly.
+along the top edge of the bar tracks how far through the catalogue you are,
+and every page has a deep link — `index.html#p07` opens page 7 directly.
 
 ### Alignment grid
 
-Press **Grid** to overlay the layout system the catalogue is built on:
+Press **Guides** to overlay the layout system the catalogue is built on:
 
 - **Margins** — 88 px side, 72 px top/bottom safe box
 - **Columns** — 12 columns · 116 px wide · 32 px gutter
@@ -59,7 +59,7 @@ bands and the folio all snap to it.
 
 ### Printing / exporting to PDF
 
-Press **Print A4** and follow the on-screen checklist:
+Press **Print · PDF** and follow the on-screen checklist:
 
 1. Destination — **Save as PDF**
 2. Layout — **Landscape** · Paper — **A4**
@@ -140,7 +140,7 @@ the real details from the back page.
 
 `index.html` is one plain file — no build step, no framework. Page content sits
 in `<section class="slide">` blocks in document order; the contents page and the
-navigation drawer build themselves from each section's `data-title`, `data-sub`
+Pages overview build themselves from each section's `data-title`, `data-sub`
 and `data-folio`.
 
 To reorder pages, move the `<section>` blocks. To add one, copy an existing

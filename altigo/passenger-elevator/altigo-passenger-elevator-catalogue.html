@@ -70,7 +70,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 ul{list-style:none}
 
 /* ---------- 4. STAGE / DECK ------------------------------------------ */
-#stage{position:fixed;left:0;right:0;top:var(--bar);bottom:0;overflow:hidden;transition:top .3s}
+#stage{position:fixed;left:0;right:0;top:0;bottom:var(--bar);overflow:hidden;transition:bottom .3s}
 #deck{
   position:absolute;left:50%;top:50%;width:1920px;height:1080px;
   transform-origin:center center;transform:translate(-50%,-50%);
@@ -277,13 +277,13 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 body.ui-hidden{--bar:0px}
 
 .topbar{
-  position:fixed;left:0;right:0;top:0;height:64px;z-index:150;
+  position:fixed;left:0;right:0;bottom:0;height:64px;z-index:150;
   display:flex;align-items:center;justify-content:space-between;gap:24px;
-  padding:0 16px 0 22px;background:#0C0F14;border-bottom:1px solid rgba(255,255,255,.09);
+  padding:0 16px 0 22px;background:#0C0F14;border-top:1px solid rgba(255,255,255,.09);
   font-family:var(--ui);
   transition:transform .3s cubic-bezier(.22,.61,.36,1),opacity .3s;
 }
-body.ui-hidden .topbar{transform:translateY(-100%);opacity:0;pointer-events:none}
+body.ui-hidden .topbar{transform:translateY(100%);opacity:0;pointer-events:none}
 .tb-prog{position:absolute;left:0;top:0;height:3px;width:0;background:var(--red);transition:width .35s ease}
 
 .tb-left{display:flex;align-items:center;gap:20px;min-width:0}
@@ -314,7 +314,7 @@ body.ui-hidden .topbar{transform:translateY(-100%);opacity:0;pointer-events:none
 
 /* restore chip when the bar is hidden */
 .restore{
-  position:fixed;left:50%;top:12px;transform:translateX(-50%) translateY(-30px);
+  position:fixed;left:50%;bottom:12px;transform:translateX(-50%) translateY(30px);
   display:flex;align-items:center;height:30px;padding:0 16px;z-index:150;
   background:rgba(12,15,20,.82);color:#C9D2E0;font-family:var(--ui);font-size:10.5px;
   letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.14);
@@ -334,7 +334,7 @@ body.mode-scroll .slide .canvas{animation:none}
 body.mode-scroll #guides{display:none}
 
 /* PAGES — thumbnail overview of the whole catalogue */
-.pages{position:fixed;left:0;right:0;top:var(--bar);bottom:0;z-index:135;
+.pages{position:fixed;left:0;right:0;top:0;bottom:var(--bar);z-index:135;
   background:#080A0E;overflow:auto;display:none;padding:34px 28px 48px}
 .pages.open{display:block}
 .pages-grid{display:grid;grid-template-columns:repeat(auto-fill,288px);
@@ -354,7 +354,7 @@ body.mode-scroll #guides{display:none}
 
 /* grid control popover */
 .pop{
-  position:fixed;left:50%;top:calc(var(--bar) + 14px);transform:translateX(-50%);
+  position:fixed;left:50%;bottom:calc(var(--bar) + 14px);transform:translateX(-50%);
   background:rgba(10,13,20,.94);border:1px solid rgba(255,255,255,.14);padding:14px 16px;
   display:none;gap:18px;align-items:center;backdrop-filter:blur(14px);z-index:145;font-family:var(--ui);
 }

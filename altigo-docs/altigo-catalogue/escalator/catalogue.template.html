@@ -172,6 +172,7 @@ img{display:block;max-width:100%}
     transparent 256px 269px, #1A55E8 269px 285px, transparent 285px)}
 
 .content{position:absolute;left:var(--m);right:var(--m);top:254px;bottom:150px}
+.content.bleed-r{right:0}
 
 .lead{font-size:25px;line-height:1.46;color:var(--body);max-width:1280px}
 .lead b{color:var(--blue);font-weight:600}
@@ -206,40 +207,43 @@ img{display:block;max-width:100%}
   linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)}
 
 /* ── 01 Cover ──────────────────────────────────────────────────────── */
-.cover-fig{position:absolute;right:120px;top:150px;bottom:118px;width:790px;
-  border-radius:var(--r);overflow:hidden}
-.cover-fig img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
-.cover-fig::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(6,28,90,.14) 0%,rgba(6,28,90,.5) 100%)}
+.cover-fig{position:absolute;inset:0;overflow:hidden}
+.cover-fig img{width:100%;height:100%;object-fit:cover;object-position:center 44%;
+  opacity:.74;mix-blend-mode:screen}
+.cover-fig::after{content:'';position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(4,20,72,.92) 0%,rgba(4,20,72,.52) 44%,rgba(4,20,72,.2) 100%),
+  linear-gradient(180deg,transparent 48%,rgba(4,18,64,.88) 100%)}
 .cover-mark{position:absolute;left:var(--m);top:88px;width:250px;height:53px}
-.cover-year{position:absolute;left:412px;top:98px;font-family:var(--f-head);font-size:22px;
+.cover-year{position:absolute;right:var(--m);top:98px;font-family:var(--f-head);font-size:22px;
   font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.72)}
-.cover-eyebrow{position:absolute;left:var(--m);top:392px;font-family:var(--f-label);font-size:17px;
+.cover-eyebrow{position:absolute;left:var(--m);top:322px;font-family:var(--f-label);font-size:17px;
   font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.84)}
-.cover-h1{position:absolute;left:calc(var(--m) - 7px);top:430px;font-family:var(--f-display);
-  font-size:140px;font-weight:800;line-height:.9;letter-spacing:-.034em;color:#fff}
+.cover-h1{position:absolute;left:calc(var(--m) - 9px);top:366px;font-family:var(--f-display);
+  font-size:172px;font-weight:800;line-height:.86;letter-spacing:-.038em;color:#fff}
 .cover-sub{position:absolute;left:var(--m);top:706px;display:flex;align-items:center;gap:20px}
 .cover-sub i{display:block;width:76px;height:4px;background:var(--red)}
 .cover-sub span{font-family:var(--f-head);font-size:32px;font-weight:800;letter-spacing:.14em;color:#fff}
-.cover-foot{position:absolute;left:var(--m);width:820px;bottom:64px;padding-top:24px;
-  border-top:1px solid rgba(255,255,255,.28);display:grid;grid-template-columns:1fr 1.35fr;gap:44px}
+.cover-foot{position:absolute;left:var(--m);right:var(--m);bottom:64px;padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.28);display:grid;
+  grid-template-columns:1fr 1.5fr 1.4fr;gap:56px}
 .cover-foot dt{font-family:var(--f-label);font-size:11px;font-weight:500;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.52);margin-bottom:9px}
 .cover-foot dd{font-family:var(--f-label);font-size:14.5px;font-weight:500;line-height:1.55;color:#fff}
 
 /* ── 02 Company introduction ───────────────────────────────────────── */
-.intro{display:grid;grid-template-columns:1fr 660px;gap:76px;height:100%}
+.intro{display:grid;grid-template-columns:1fr 700px;gap:80px;height:100%}
 .intro-txt{display:flex;flex-direction:column;height:100%}
-.intro-h{font-family:var(--f-head);font-size:44px;font-weight:800;color:var(--ink);
-  letter-spacing:-.026em;line-height:1.06;margin-bottom:26px;max-width:15ch}
+.intro-h{font-family:var(--f-head);font-size:76px;font-weight:800;color:var(--ink);
+  letter-spacing:-.036em;line-height:.97;margin-bottom:32px}
 .intro-h b{color:var(--blue);font-weight:800}
-.intro-txt p{font-size:19.5px;line-height:1.54;margin-bottom:17px;max-width:70ch}
-.intro-txt p b{color:var(--blue);font-weight:600}
+.intro-body{columns:2;column-gap:50px;column-fill:balance}
+.intro-body p{font-size:18px;line-height:1.6;margin-bottom:16px}
+.intro-body p b{color:var(--blue);font-weight:600}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:auto;padding-top:28px;
   border-top:2px solid var(--blue)}
 .pillar h4{font-family:var(--f-head);font-size:25px;font-weight:700;color:var(--blue);margin:10px 0 9px}
 .pillar p{font-size:17px;line-height:1.48;color:var(--body)}
-.intro-fig{position:relative;height:100%;border-radius:var(--r);overflow:hidden}
+.intro-fig{position:relative;height:calc(100% + 150px);overflow:hidden}
 .intro-fig img{width:100%;height:100%;object-fit:cover;object-position:center 44%}
 
 /* ── 03 / 04 Three columns ─────────────────────────────────────────── */
@@ -261,10 +265,10 @@ img{display:block;max-width:100%}
 .flow h5{font-family:var(--f-head);font-size:22px;font-weight:700;color:var(--blue);margin:9px 0 7px}
 .flow p{font-size:16.5px;line-height:1.44;color:var(--body)}
 .stats{grid-template-columns:repeat(5,1fr)}
-.stats b{display:block;font-family:var(--f-head);font-size:44px;font-weight:800;
-  color:var(--blue);letter-spacing:-.03em;line-height:1}
-.stats b sub{font-size:20px;font-weight:700;vertical-align:baseline;margin-left:4px}
-.stats span{display:block;margin-top:11px;font-size:16.5px;line-height:1.4;color:var(--body)}
+.stats b{display:block;font-family:var(--f-head);font-size:64px;font-weight:800;
+  color:var(--blue);letter-spacing:-.042em;line-height:.94}
+.stats b sub{font-size:23px;font-weight:700;vertical-align:baseline;margin-left:4px}
+.stats span{display:block;margin-top:13px;font-size:16px;line-height:1.4;color:var(--body)}
 
 /* ── 05 The range · dark chapter page ──────────────────────────────── */
 .range{display:flex;flex-direction:column;height:100%}
@@ -273,13 +277,14 @@ img{display:block;max-width:100%}
 .rcol:first-child{padding-left:0;border-left:0}
 .rcol:last-child{padding-right:0}
 .rcol .tag{color:#fff;border-color:rgba(255,255,255,.34);align-self:flex-start}
-.rcol h3{font-family:var(--f-head);font-size:32px;font-weight:800;color:#fff;
-  letter-spacing:-.02em;margin:16px 0 12px}
-.rcol > p{font-size:18px;line-height:1.5;color:rgba(255,255,255,.76);margin-bottom:12px}
-.riseviz{margin-top:auto;margin-bottom:16px}
-.rv-lab{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
-.rv-lab b{font-family:var(--f-head);font-size:27px;font-weight:800;color:#fff;
-  letter-spacing:-.02em;line-height:1}
+.rcol h3{font-family:var(--f-head);font-size:30px;font-weight:800;color:#fff;
+  letter-spacing:-.024em;margin:14px 0 10px}
+.rcol > p{font-size:17.5px;line-height:1.48;color:rgba(255,255,255,.72);margin-bottom:10px}
+.riseviz{margin-top:auto;margin-bottom:14px}
+.rise-n{display:block;font-family:var(--f-head);font-size:78px;font-weight:800;color:#fff;
+  letter-spacing:-.05em;line-height:.86;margin:8px 0 16px}
+.rise-n sub{font-size:26px;font-weight:700;vertical-align:baseline;margin-left:5px;
+  letter-spacing:0;color:rgba(255,255,255,.7)}
 .rv-track{height:6px;background:rgba(255,255,255,.2);overflow:hidden}
 .rv-track i{display:block;height:100%;background:#fff}
 .rv-track i.hi{background:var(--red)}
@@ -287,7 +292,7 @@ img{display:block;max-width:100%}
   font-family:var(--f-label);font-size:11.5px;font-weight:500;letter-spacing:.1em;
   color:rgba(255,255,255,.5)}
 .rrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
-  padding:9px 0;border-top:1px solid rgba(255,255,255,.18)}
+  padding:8px 0;border-top:1px solid rgba(255,255,255,.18)}
 .rrow dt{font-size:17px;color:rgba(255,255,255,.6)}
 .rrow dd{font-family:var(--f-label);font-size:14px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:#fff;text-align:right}
@@ -393,6 +398,27 @@ img{display:block;max-width:100%}
 .cnote{margin-top:auto;padding-top:20px;font-size:15.5px;line-height:1.55;color:var(--muted)}
 .cnote + .cnote{margin-top:12px;padding-top:0}
 
+/* ── Chapter divider ───────────────────────────────────────────────── */
+.chap{display:grid;grid-template-columns:1fr 640px;gap:90px;height:100%;align-content:start}
+.chap-n{font-family:var(--f-head);font-size:19px;font-weight:700;letter-spacing:.3em;
+  color:rgba(255,255,255,.5)}
+.chap h2{font-family:var(--f-display);font-size:118px;font-weight:800;line-height:.9;
+  letter-spacing:-.042em;color:#fff;margin:26px 0 34px}
+.chap .lede{font-size:26px;line-height:1.42;color:rgba(255,255,255,.82);max-width:22ch}
+.chap-toc{align-self:end;padding-top:24px;border-top:1px solid rgba(255,255,255,.3)}
+.chap-toc li{list-style:none;display:flex;gap:22px;align-items:baseline;padding:17px 0;
+  border-bottom:1px solid rgba(255,255,255,.16)}
+.chap-toc li b{font-family:var(--f-label);font-size:14px;font-weight:700;
+  color:rgba(255,255,255,.5);min-width:26px}
+.chap-toc li span{font-family:var(--f-head);font-size:25px;font-weight:700;color:#fff}
+.chap-fig{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.chap-fig > div{padding:0 30px;border-left:1px solid rgba(255,255,255,.22)}
+.chap-fig > div:first-child{padding-left:0;border-left:0}
+.chap-fig b{display:block;font-family:var(--f-head);font-size:44px;font-weight:800;color:#fff;
+  letter-spacing:-.04em;line-height:1}
+.chap-fig span{display:block;margin-top:9px;font-size:15.5px;line-height:1.4;
+  color:rgba(255,255,255,.66)}
+
 /* ── 11 Contact ────────────────────────────────────────────────────── */
 .contact{background:
   radial-gradient(ellipse 58% 62% at 8% 94%, rgba(90,150,255,.5), transparent 62%),
@@ -486,6 +512,7 @@ img{display:block;max-width:100%}
       <div class="cover-sub"><i></i><span>ESCALATOR</span></div>
       <dl class="cover-foot">
         <div><dt>Company</dt><dd>Altigo Sdn. Bhd.<br>Reg. 562238-H</dd></div>
+        <div><dt>Address</dt><dd>No. 54-3-3, Wisma Sri Mata, Jalan Van Praagh,<br>11600 Penang, Malaysia</dd></div>
         <div><dt>Contact</dt><dd>+604-283 7005 / +604-283 6772<br>enquiry@altigo.com · www.altigo.com</dd></div>
       </dl>
       <div class="corner"></div>
@@ -499,10 +526,11 @@ img{display:block;max-width:100%}
       <h2 class="title">COMPANY INTRODUCTION</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content">
+      <div class="content bleed-r">
         <div class="intro">
           <div class="intro-txt">
-            <h3 class="intro-h">Moving people, <b>elevating places.</b></h3>
+            <h3 class="intro-h">Moving people,<br><b>elevating places.</b></h3>
+            <div class="intro-body">
             <p>Imagine stepping into a building where every ride is smooth, every moment
                effortless and every floor easily reached. At <b>Altigo</b> we believe transport
                should never be merely a means to an end — it should be an experience that
@@ -514,6 +542,7 @@ img{display:block;max-width:100%}
             <p>Welcome to Altigo, where innovation meets reliability. Residential, commercial
                or industrial — we deliver solutions that transform spaces and elevate lives.
                Trust us to move you forward, every day, with ease and confidence.</p>
+            </div>
             <div class="pillars">
               <div class="pillar"><div class="idx">01</div><h4>Innovation</h4>
                 <p>VVVF drives, IoT monitoring and energy regeneration built in.</p></div>
@@ -526,7 +555,7 @@ img{display:block;max-width:100%}
           <figure class="intro-fig"><img src="{{ASSET:intro-photo.jpg}}" alt="Altigo escalator installation"></figure>
         </div>
       </div>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>02</b></div>
+      <div class="foot" style="right:850px"><span>Altigo · Escalator · 2026</span><b>02</b></div>
       <div class="corner"></div>
     </div>
   </section>
@@ -653,17 +682,17 @@ img{display:block;max-width:100%}
       <div class="mark logo w" role="img" aria-label="Altigo"></div>
       <div class="content">
         <div class="range">
-          <p class="lead" style="margin-bottom:28px;max-width:1180px">Every Altigo unit shares one
-             <b>integrated structure</b>, so installation and commissioning are faster and more
-             precise. Choose the duty class by where it lives — a boutique mall, a metro concourse,
-             an airport pier — and how hard it has to work.</p>
+          <p class="lead" style="margin-bottom:26px;max-width:1240px">Every Altigo unit shares one
+             <b>integrated structure</b>. Choose the duty class by where it lives — a boutique mall,
+             a metro concourse, an airport pier — and how hard it has to work.</p>
           <div class="rgrid" style="flex:1">
             <div class="rcol">
               <span class="tag">Duty class 01</span>
               <h3>Commercial</h3>
-              <p>Malls, hotels and offices. Smooth ZC-toothed drive, low noise below 57&nbsp;dB.</p>
+              <p>Malls, hotels and offices. Smooth ZC-toothed drive, under 57&nbsp;dB.</p>
               <div class="riseviz">
-                <div class="rv-lab"><span class="lab">Max rise</span><b>6 m</b></div>
+                <div class="lab">Max rise</div>
+                <b class="rise-n">6<sub>m</sub></b>
                 <div class="rv-track"><i style="width:27%"></i></div>
                 <div class="rv-scale"><span>0</span><span>22 m</span></div>
               </div>
@@ -676,9 +705,10 @@ img{display:block;max-width:100%}
             <div class="rcol">
               <span class="tag">Duty class 02</span>
               <h3>Public Transport</h3>
-              <p>Stations and transit hubs. Double-drive option for taller, busier runs.</p>
+              <p>Stations and transit hubs. Double-drive option for busier runs.</p>
               <div class="riseviz">
-                <div class="rv-lab"><span class="lab">Max rise</span><b>12 m</b></div>
+                <div class="lab">Max rise</div>
+                <b class="rise-n">12<sub>m</sub></b>
                 <div class="rv-track"><i style="width:55%"></i></div>
                 <div class="rv-scale"><span>0</span><span>22 m</span></div>
               </div>
@@ -691,9 +721,10 @@ img{display:block;max-width:100%}
             <div class="rcol">
               <span class="tag">Duty class 03</span>
               <h3>Heavy Duty</h3>
-              <p>Airports and high-footfall transit. CG26 worm-helical drive above 92% efficiency.</p>
+              <p>Airports and high-footfall transit. CG26 drive above 92% efficiency.</p>
               <div class="riseviz">
-                <div class="rv-lab"><span class="lab">Max rise</span><b>22 m</b></div>
+                <div class="lab">Max rise</div>
+                <b class="rise-n">22<sub>m</sub></b>
                 <div class="rv-track"><i class="hi" style="width:100%"></i></div>
                 <div class="rv-scale"><span>0</span><span>22 m</span></div>
               </div>
@@ -706,9 +737,10 @@ img{display:block;max-width:100%}
             <div class="rcol">
               <span class="tag">Duty class 04</span>
               <h3>Moving Walk</h3>
-              <p>Level and gentle-incline conveyors for concourses and big-box retail.</p>
+              <p>Level and gentle-incline conveyors for concourses and retail.</p>
               <div class="riseviz">
-                <div class="rv-lab"><span class="lab">Max rise</span><b>7.5 m</b></div>
+                <div class="lab">Max rise</div>
+                <b class="rise-n">7.5<sub>m</sub></b>
                 <div class="rv-track"><i style="width:34%"></i></div>
                 <div class="rv-scale"><span>0</span><span>22 m</span></div>
               </div>
@@ -881,7 +913,36 @@ img{display:block;max-width:100%}
     </div>
   </section>
 
-  <!-- ══ 09 · PLANNING GUIDE ═════════════════════════════════════════ -->
+  <!-- ══ 09 · CHAPTER DIVIDER ════════════════════════════════════════ -->
+  <section class="slide" data-name="Planning &amp; Civil" data-bg="range">
+    <div class="stage dark blue-bg">
+      <div class="gridlines"></div>
+      <div class="mark logo w" role="img" aria-label="Altigo"></div>
+      <div class="content">
+        <div class="chap">
+          <div>
+            <div class="chap-n">Part Two</div>
+            <h2>PLANNING<br>&amp; CIVIL</h2>
+            <p class="lede">Where the unit sits in the building, and the openings it needs.</p>
+            <div class="chap-fig">
+              <div><b>1400</b><span>Exterior truss width, millimetres</span></div>
+              <div><b>1460</b><span>Minimum well width, millimetres</span></div>
+              <div><b>30°</b><span>Standard inclination across the range</span></div>
+            </div>
+          </div>
+          <ul class="chap-toc">
+            <li><b>10</b><span>Logical positioning, by traffic</span></li>
+            <li><b>11</b><span>Construction parameters</span></li>
+            <li><b>12</b><span>Contact</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>09</b></div>
+      <div class="corner"></div>
+    </div>
+  </section>
+
+  <!-- ══ 10 · PLANNING GUIDE ═══════════════════════════════════════ -->
   <section class="slide" data-name="Planning Guide">
     <div class="stage">
       <div class="kicker">Planning Guide</div>
@@ -910,12 +971,12 @@ img{display:block;max-width:100%}
             <p>Compact X-banks for large stores and transit; minimises travel time between levels.</p></div>
         </div>
       </div>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>09</b></div>
+      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>10</b></div>
       <div class="corner"></div>
     </div>
   </section>
 
-  <!-- ══ 10 · CONSTRUCTION PARAMETERS ════════════════════════════════ -->
+  <!-- ══ 11 · CONSTRUCTION PARAMETERS ════════════════════════════════ -->
   <section class="slide" data-name="Construction Parameters">
     <div class="stage">
       <div class="kicker">Layout Plan · Civil</div>
@@ -1021,12 +1082,12 @@ img{display:block;max-width:100%}
 
         </div>
       </div>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>10</b></div>
+      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>11</b></div>
       <div class="corner"></div>
     </div>
   </section>
 
-  <!-- ══ 11 · CONTACT ════════════════════════════════════════════════ -->
+  <!-- ══ 12 · CONTACT ════════════════════════════════════════════════ -->
   <section class="slide" data-name="Contact" data-bg="contact">
     <div class="stage dark contact">
       <div class="gridlines"></div>
@@ -1040,7 +1101,7 @@ img{display:block;max-width:100%}
         <div><dt>Phone</dt><dd>+604-283 7005 / +604-283 6772</dd></div>
         <div class="wide"><dt>Address</dt><dd>No. 54-3-3, Wisma Sri Mata, Jalan Van Praagh, 11600 Penang, Malaysia</dd></div>
       </dl>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>11</b></div>
+      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>12</b></div>
       <div class="corner"></div>
     </div>
   </section>

@@ -35,7 +35,7 @@ Open `index.html` in any browser.
 | Swipe left / right | Previous / next slide on touch screens |
 | `S` | Toggle **Slides** (one at a time) ↔ **Scroll** (continuous) |
 | `P` or **Print · PDF** | Print dialogue |
-| `#01` … `#11` in the URL | Deep-link to a slide |
+| `#01` … `#12` in the URL | Deep-link to a page |
 
 ## Exporting the A4 PDF
 
@@ -96,8 +96,17 @@ they scale correctly when the drawing is opened in the image viewer.
 page sets: a hairline, the catalogue line on the left, the page number on the
 right. It runs the full measure on every page.
 
-**Rhythm.** The deck opens dark, turns dark again at the range — the product
-spread — and closes dark. The seven white pages between them carry the detail.
+**Rhythm and scale.** Twelve pages, dark on 01, 05, 09 and 12 — one dark page
+every four, so the deck never runs more than three white pages together. Page 09
+is a chapter divider that opens the planning and civil half; it carries the part
+title at 118 px, the three governing civil figures and a contents list.
+
+Scale contrast does the rest of the work. The cover title runs at 172 px over a
+full-bleed photograph; the introduction headline at 76 px beside a photograph
+bled off the right and bottom edges; the maximum rise on page 05 at 78 px, which
+turns a specification table into the product spread; the key figures on page 04
+at 64 px. Nothing on an interior page used to exceed 44 px, which is why the
+earlier drafts read flat.
 
 **Image resolution.** Every photograph is carried at the native resolution of
 the 2026 print PDF, with no downscaling; the cover keeps its original JPEG

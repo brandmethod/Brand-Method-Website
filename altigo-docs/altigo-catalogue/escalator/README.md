@@ -39,7 +39,7 @@ window — the same component every book carries; only the accent colour changes
 | `S` or the scroll icon | Slides (one at a time) ↔ Scroll (continuous) |
 | `A` or the guides icon | Alignment guides — off → 100% → 50% → off |
 | `P` or the print icon | Print dialogue |
-| `H` or the collapse icon | Hide the bar; the chip bottom-right brings it back |
+| `H` or the ⊘ icon, beside Home | Hide the bar; the ⊘ **Show bar** chip bottom-right brings it back |
 | Home icon | Back to the cover, or to `LIBRARY_URL` if set |
 | Click any photograph | Open it full size; `←` `→` step through all 17, `Esc` closes |
 | Swipe left / right | Previous / next page on touch screens |

@@ -281,101 +281,177 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 #guides[data-hide~="base"] .base,#guides[data-hide~="margin"] .margin,
 #guides[data-hide~="center"] .center,#guides[data-hide~="safe"] .safe{display:none}
 
-/* ---------- 12. UI CHROME — top navigation bar ------------------------ */
-:root{--bar:64px}
+/* ---------- 12. DECK-NAV — universal deck navigation ------------------ */
+/* Floating pill, bottom-centre. Structure is fixed across books; only the
+   accent colour follows the brand.                                        */
+:root{
+  --bar:96px;                       /* space the stage reserves for the pill */
+  --nav-h:58px;
+  --nav-bg:rgba(14,18,26,.92);
+  --nav-line:rgba(255,255,255,.11);
+  --nav-fg:#C4CDDB;
+  --nav-dim:#69748A;
+  --nav-accent:var(--blue-lift);
+  --mono:ui-monospace,"SF Mono","JetBrains Mono","IBM Plex Mono",Menlo,Consolas,monospace;
+}
 body.ui-hidden{--bar:0px}
 
-.topbar{
-  position:fixed;left:0;right:0;bottom:0;height:64px;z-index:150;
-  display:flex;align-items:center;justify-content:space-between;gap:24px;
-  padding:0 16px 0 22px;background:#0C0F14;border-top:1px solid rgba(255,255,255,.09);
-  font-family:var(--ui);
-  transition:transform .3s cubic-bezier(.22,.61,.36,1),opacity .3s;
+.deck-nav{
+  position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:150;
+  display:flex;align-items:center;gap:5px;height:var(--nav-h);padding:0 12px;
+  max-width:calc(100vw - 32px);
+  background:var(--nav-bg);border:1px solid var(--nav-line);border-radius:999px;
+  backdrop-filter:blur(18px) saturate(150%);
+  box-shadow:0 18px 50px rgba(0,0,0,.5);
+  font-family:var(--mono);
+  transition:transform .32s cubic-bezier(.22,.61,.36,1),opacity .32s;
 }
-body.ui-hidden .topbar{transform:translateY(100%);opacity:0;pointer-events:none}
-.tb-prog{position:absolute;left:0;top:0;height:3px;width:0;background:var(--red);transition:width .35s ease}
+body.ui-hidden .deck-nav{transform:translateX(-50%) translateY(140%);opacity:0;pointer-events:none}
+.deck-nav :focus-visible{outline:2px solid var(--nav-accent);outline-offset:2px;border-radius:999px}
 
-.tb-left{display:flex;align-items:center;gap:20px;min-width:0}
-.tb-logo{width:96px;flex:none}
-.tb-div{width:1px;height:26px;background:rgba(255,255,255,.14);flex:none}
-.tb-title{font-size:11.5px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:#79839A;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nv-sep{width:1px;height:24px;background:var(--nav-line);margin:0 9px;flex:none}
 
-.tb-right{display:flex;align-items:center;gap:8px;flex:none}
-.tb-pager{display:flex;align-items:center;gap:6px;margin-right:6px}
-.tb-sq{width:34px;height:34px;display:grid;place-items:center;
-  border:1px solid rgba(255,255,255,.16);color:#C9D2E0;transition:background .15s,color .15s}
-.tb-sq:hover{background:rgba(255,255,255,.09);color:#fff}
-.tb-sq[disabled]{opacity:.28;pointer-events:none}
-.tb-sq svg{width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2.1;stroke-linecap:square}
-.tb-count{min-width:70px;text-align:center;font-size:12.5px;letter-spacing:.1em;
-  color:#6F7B90;font-variant-numeric:tabular-nums}
-.tb-count b{color:#fff;font-weight:600}
+/* round icon buttons */
+.nv-ico{
+  width:34px;height:34px;flex:none;display:grid;place-items:center;border-radius:999px;
+  color:var(--nav-fg);transition:background .15s,color .15s;
+}
+.nv-ico:hover{background:rgba(255,255,255,.10);color:#fff}
+.nv-ico.is-on{background:var(--nav-accent);color:#fff}
+.nv-ico[disabled]{opacity:.26;pointer-events:none}
+.nv-ico svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.nv-ico.arrow{font-size:17px;line-height:1;padding-bottom:2px}
+.nv-ico.sm{width:26px;height:26px;font-size:15px;line-height:1}
 
-.tb-btn{height:34px;padding:0 15px;border:1px solid rgba(255,255,255,.16);color:#C9D2E0;
-  font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;white-space:nowrap;
-  transition:background .15s,color .15s,border-color .15s}
-.tb-btn:hover{background:rgba(255,255,255,.09);color:#fff}
-.tb-btn.is-on{background:var(--blue-lift);border-color:var(--blue-lift);color:#fff}
-.tb-print{background:var(--red);border-color:var(--red);color:#fff}
-.tb-print:hover{background:#FF2E14;border-color:#FF2E14;color:#fff}
-.topbar :focus-visible{outline:2px solid #fff;outline-offset:2px}
+/* dot rail */
+.nv-rail{
+  display:flex;align-items:center;gap:7px;max-width:240px;overflow-x:auto;
+  padding:0 4px;scrollbar-width:none;scroll-behavior:smooth;
+}
+.nv-rail::-webkit-scrollbar{display:none}
+.nv-dot{
+  width:6px;height:6px;flex:none;border-radius:999px;background:#4A5568;
+  transition:transform .16s ease,background .16s ease;
+}
+.nv-dot:hover{transform:scale(1.5);background:#8B97AC}
+.nv-dot.is-on{
+  width:24px;height:15px;background:var(--nav-accent);color:#fff;
+  display:grid;place-items:center;font-family:var(--mono);font-size:9.5px;
+  transform:none;
+}
+.nv-dot.is-on:hover{transform:none}
+
+/* slide name + counter */
+.nv-name{
+  font-size:12.5px;color:var(--nav-fg);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  max-width:264px;padding:0 4px;
+}
+.nv-name b{color:var(--nav-dim);font-weight:400}
+.nv-count{font-size:12.5px;color:var(--nav-dim);padding:0 6px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.nv-count b{color:#fff;font-weight:600}
+
+/* pill toggles */
+.nv-pill{
+  height:30px;padding:0 14px;border-radius:999px;border:1px solid var(--nav-line);
+  color:var(--nav-fg);font-family:var(--mono);font-size:12px;white-space:nowrap;
+  transition:background .15s,color .15s,border-color .15s;
+}
+.nv-pill:hover{background:rgba(255,255,255,.09);color:#fff}
+.nv-pill.is-on{background:var(--nav-accent);border-color:var(--nav-accent);color:#fff}
+.nv-edition{display:flex;align-items:center;gap:6px}
+
+/* zoom */
+.nv-zoom{display:flex;align-items:center;gap:4px}
+.nv-pct{
+  min-width:52px;text-align:center;font-size:12.5px;color:var(--nav-fg);
+  padding:4px 2px;border-radius:999px;font-variant-numeric:tabular-nums;
+}
+.nv-pct:hover{background:rgba(255,255,255,.09);color:#fff}
+.nv-tools{display:flex;align-items:center;gap:2px}
+
+/* narrow windows shed the optional pieces before the pill can overflow */
+@media (max-width:1180px){ .nv-name,.nv-name + .nv-sep{display:none} }
+@media (max-width:980px){ .nv-rail,.nv-rail + .nv-sep{display:none} }
+@media (max-width:820px){ .nv-edition,.nv-edition + .nv-sep{display:none} }
 
 /* restore chip when the bar is hidden */
 .restore{
-  position:fixed;left:50%;bottom:12px;transform:translateX(-50%) translateY(30px);
-  display:flex;align-items:center;height:30px;padding:0 16px;z-index:150;
-  background:rgba(12,15,20,.82);color:#C9D2E0;font-family:var(--ui);font-size:10.5px;
-  letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.14);
-  opacity:0;visibility:hidden;transition:.28s;
+  position:fixed;left:50%;bottom:16px;transform:translateX(-50%) translateY(30px);
+  display:flex;align-items:center;height:30px;padding:0 16px;z-index:150;border-radius:999px;
+  background:var(--nav-bg);color:var(--nav-fg);font-family:var(--mono);font-size:11px;
+  border:1px solid var(--nav-line);opacity:0;visibility:hidden;transition:.28s;
 }
 body.ui-hidden .restore{opacity:1;visibility:visible;transform:translateX(-50%)}
 
 /* ---------- 12b. VIEW MODES ------------------------------------------- */
-/* SLIDES — one page at a time, centred under the bar (default) */
-/* SCROLL — every page stacked, continuous vertical reading */
+.slide.is-out{display:none !important}          /* trimmed by the Standard edition */
+
 body.mode-scroll #stage{overflow-y:auto;overflow-x:hidden}
 body.mode-scroll #deck{position:relative;left:50%;top:0;height:auto;
   transform-origin:top center;background:none;box-shadow:none;padding:36px 0 56px}
 body.mode-scroll .slide{position:relative;display:block !important;margin:0 auto 34px;
   box-shadow:0 18px 54px rgba(0,0,0,.5)}
+body.mode-scroll .slide.is-out{display:none !important}
 body.mode-scroll .slide .canvas{animation:none}
 body.mode-scroll #guides{display:none}
 
-/* PAGES — thumbnail overview of the whole catalogue */
+/* zoomed past fit: the stage pans */
+body.mode-zoom #stage{overflow:auto}
+body.mode-zoom #deck{position:relative;left:0;top:0;margin:0 auto;transform-origin:top left}
+
+/* ---------- 12c. GRID OVERVIEW ---------------------------------------- */
 .pages{position:fixed;left:0;right:0;top:0;bottom:var(--bar);z-index:135;
-  background:#080A0E;overflow:auto;display:none;padding:34px 28px 48px}
+  background:#080A0E;overflow:auto;display:none;padding:34px 28px 20px}
 .pages.open{display:block}
 .pages-grid{display:grid;grid-template-columns:repeat(auto-fill,288px);
   justify-content:center;gap:28px 26px;max-width:1640px;margin:0 auto}
-.pg-item{display:flex;flex-direction:column;gap:11px;text-align:left;font-family:var(--ui)}
+.pg-item{display:flex;flex-direction:column;gap:11px;text-align:left;font-family:var(--mono)}
 .pg-thumb{position:relative;width:288px;height:162px;overflow:hidden;background:#fff;
   border:1px solid rgba(255,255,255,.13);transition:transform .16s,border-color .16s}
-.pg-item:hover .pg-thumb{border-color:var(--blue-lift);transform:translateY(-3px)}
+.pg-item:hover .pg-thumb{border-color:var(--nav-accent);transform:translateY(-3px)}
 .pg-item.cur .pg-thumb{border-color:var(--red);box-shadow:inset 0 0 0 2px var(--red)}
 .pg-thumb .slide{position:absolute;left:0;top:0;display:block !important;
-  transform:scale(.15);transform-origin:top left;box-shadow:none}
+  transform:scale(.15);transform-origin:top left;box-shadow:none;margin:0}
 .pg-thumb .slide .canvas{animation:none}
 .pg-meta{display:flex;gap:12px;align-items:baseline}
-.pg-meta b{font-size:10.5px;font-weight:600;letter-spacing:.16em;color:#5E6A80;flex:none}
-.pg-meta span{font-size:12.5px;color:#C9D2E0;line-height:1.3}
+.pg-meta b{font-size:10.5px;font-weight:600;color:var(--nav-dim);flex:none}
+.pg-meta span{font-size:12px;color:var(--nav-fg);line-height:1.3;font-family:var(--ui)}
 .pg-item:hover .pg-meta span{color:#fff}
 
-/* grid control popover */
+/* ---------- 12d. FILMSTRIP -------------------------------------------- */
+.filmstrip{
+  position:fixed;left:50%;transform:translateX(-50%) translateY(16px);
+  bottom:calc(var(--bar) + 4px);z-index:134;max-width:calc(100vw - 32px);
+  display:flex;gap:10px;padding:12px;overflow-x:auto;scrollbar-width:none;
+  background:var(--nav-bg);border:1px solid var(--nav-line);border-radius:18px;
+  backdrop-filter:blur(18px);opacity:0;visibility:hidden;transition:.24s;
+}
+.filmstrip::-webkit-scrollbar{display:none}
+.filmstrip.open{opacity:1;visibility:visible;transform:translateX(-50%)}
+.fs-item{position:relative;width:152px;height:86px;flex:none;overflow:hidden;background:#fff;
+  border:1px solid rgba(255,255,255,.14);border-radius:4px;transition:.15s}
+.fs-item:hover{border-color:var(--nav-accent)}
+.fs-item.cur{border-color:var(--red);box-shadow:inset 0 0 0 2px var(--red)}
+.fs-item .slide{position:absolute;left:0;top:0;display:block !important;margin:0;
+  transform:scale(.0792);transform-origin:top left;box-shadow:none}
+.fs-item .slide .canvas{animation:none}
+.fs-item i{position:absolute;left:0;bottom:0;padding:2px 6px;background:rgba(8,10,14,.78);
+  color:#fff;font-family:var(--mono);font-size:9px;font-style:normal}
+
+/* ---------- 12e. GUIDE CONTROLS + PRINT SHEET ------------------------- */
 .pop{
-  position:fixed;left:50%;bottom:calc(var(--bar) + 14px);transform:translateX(-50%);
-  background:rgba(10,13,20,.94);border:1px solid rgba(255,255,255,.14);padding:14px 16px;
-  display:none;gap:18px;align-items:center;backdrop-filter:blur(14px);z-index:145;font-family:var(--ui);
+  position:fixed;left:50%;bottom:calc(var(--bar) + 12px);transform:translateX(-50%);
+  background:var(--nav-bg);border:1px solid var(--nav-line);padding:14px 16px;border-radius:16px;
+  display:none;gap:18px;align-items:center;backdrop-filter:blur(14px);z-index:145;font-family:var(--mono);
 }
 .pop.open{display:flex}
 .pop .grp{display:flex;align-items:center;gap:6px}
-.pop .lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7E8AA0;margin-right:2px}
-.chip{height:28px;padding:0 11px;font-size:11.5px;color:#C9D2E0;
-  border:1px solid rgba(255,255,255,.16);transition:.14s;letter-spacing:.04em}
+.pop .lbl{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--nav-dim);margin-right:2px}
+.chip{height:28px;padding:0 11px;font-size:11.5px;color:var(--nav-fg);border-radius:999px;
+  border:1px solid var(--nav-line);transition:.14s;font-family:var(--mono)}
 .chip:hover{background:rgba(255,255,255,.08)}
 .chip.on{background:#fff;color:#0B0D12;border-color:#fff;font-weight:600}
 
-/* print helper modal */
 .modal{position:fixed;inset:0;background:rgba(6,8,12,.72);display:none;place-items:center;
   z-index:200;backdrop-filter:blur(6px)}
 .modal.open{display:grid}
@@ -391,13 +467,19 @@ body.mode-scroll #guides{display:none}
   letter-spacing:.04em;border:1px solid var(--line);font-family:var(--ui)}
 .sheet .acts .go{background:var(--blue);color:#fff;border-color:var(--blue)}
 
+/* ---------- 12f. THUMB MODE (?thumb=1) -------------------------------- */
+body.thumb-only{--bar:0px}
+body.thumb-only .deck-nav,body.thumb-only .restore,body.thumb-only .filmstrip,
+body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none !important}
+
 /* ---------- 13. PRINT — A4 LANDSCAPE --------------------------------- */
 @page{size:A4 landscape;margin:0}
 .printfoot{display:none}
 @media print{
   html,body{overflow:visible;background:#fff;height:auto}
-  .topbar,.restore,.pages,#guides,.pop,.modal{display:none !important}
+  .deck-nav,.restore,.pages,.filmstrip,#guides,.pop,.modal{display:none !important}
   body{--bar:0px}
+  .slide.is-out{display:none !important}   /* Standard edition prints short */
   #stage,#deck{position:static;display:block;width:100%;height:auto;overflow:visible;
                transform:none !important;box-shadow:none;background:none;place-items:initial}
   /* One slide = one A4 landscape sheet. The sheet is sized in % / vh so it fills
@@ -421,7 +503,7 @@ body.mode-scroll #guides{display:none}
   }
   .slide.is-active .canvas{animation:none}
   /* printing while in scroll view must not inherit its stacking margins */
-  body.mode-scroll #deck{padding:0;left:auto}
+  body.mode-scroll #deck,body.mode-zoom #deck{padding:0;left:auto;margin:0}
   body.mode-scroll .slide{margin:0;box-shadow:none}
   .printfoot{
     display:flex;position:absolute;left:0;right:0;bottom:0;
@@ -1440,38 +1522,55 @@ body.mode-scroll #guides{display:none}
 
   </div><!-- /#deck -->
 </div><!-- /#stage -->
+<!-- ================================================ UNIVERSAL DECK-NAV -->
+<nav class="deck-nav" id="nav">
+  <button class="nv-ico arrow" id="bPrev" title="Previous page (←)" aria-label="Previous page">&#8592;</button>
 
-<!-- ================================================ NAVIGATION BAR -->
-<header class="topbar" id="topbar">
-  <span class="tb-prog" id="prog"></span>
+  <div class="nv-rail" id="rail" role="tablist" aria-label="Pages"></div>
 
-  <div class="tb-left">
-    <img class="tb-logo" src="assets/img/logo-white.png" alt="ALTIGO">
-    <span class="tb-div"></span>
-    <span class="tb-title">Product Catalogue · Passenger Elevator · 2026</span>
+  <span class="nv-sep"></span>
+  <div class="nv-name" id="slideName"></div>
+  <span class="nv-sep"></span>
+
+  <div class="nv-count"><b id="cur">01</b> / <span id="tot">17</span></div>
+  <button class="nv-ico arrow" id="bNext" title="Next page (→)" aria-label="Next page">&#8594;</button>
+
+  <span class="nv-sep"></span>
+  <div class="nv-edition">
+    <button class="nv-pill" data-ed="standard" title="Standard — hides the deep-dive pages">Standard</button>
+    <button class="nv-pill is-on" data-ed="full" title="Full — the complete catalogue">Full</button>
   </div>
 
-  <div class="tb-right">
-    <div class="tb-pager">
-      <button class="tb-sq" id="bPrev" title="Previous page (←)" aria-label="Previous page">
-        <svg viewBox="0 0 24 24"><polyline points="15,4 7,12 15,20"/></svg></button>
-      <span class="tb-count"><b id="cur">01</b> / <span id="tot">17</span></span>
-      <button class="tb-sq" id="bNext" title="Next page (→)" aria-label="Next page">
-        <svg viewBox="0 0 24 24"><polyline points="9,4 17,12 9,20"/></svg></button>
-    </div>
-
-    <button class="tb-btn is-on" data-mode="slides" title="One page at a time (1)">Slides</button>
-    <button class="tb-btn" data-mode="scroll" title="Continuous scroll (2)">Scroll</button>
-    <button class="tb-btn" id="pagesBtn" title="Thumbnail overview (3)">Pages</button>
-    <button class="tb-btn" id="gridBtn" title="Alignment guides (G)">Guides</button>
-    <button class="tb-btn" id="hideBtn" title="Hide the bar (H)">Hide bar</button>
-    <button class="tb-btn tb-print" id="printBtn" title="Print / export A4 PDF (P)">Print · PDF</button>
+  <span class="nv-sep"></span>
+  <div class="nv-zoom">
+    <button class="nv-ico sm" id="zOut" title="Zoom out (−)" aria-label="Zoom out">&#8722;</button>
+    <button class="nv-pct" id="zPct" title="Reset to 100%">100%</button>
+    <button class="nv-ico sm" id="zIn" title="Zoom in (+)" aria-label="Zoom in">+</button>
+    <button class="nv-pill" id="zFit" title="Fit to window (0)">Fit</button>
   </div>
-</header>
 
-<button class="restore" id="restore">Show bar · press H</button>
+  <span class="nv-sep"></span>
+  <div class="nv-tools">
+    <button class="nv-ico" id="gridBtn" title="Grid overview (3)" aria-label="Grid overview">
+      <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7.5" height="7.5"/><rect x="13.5" y="3" width="7.5" height="7.5"/><rect x="3" y="13.5" width="7.5" height="7.5"/><rect x="13.5" y="13.5" width="7.5" height="7.5"/></svg></button>
+    <button class="nv-ico" id="stripBtn" title="Filmstrip (4)" aria-label="Filmstrip">
+      <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12"/><line x1="8" y1="6" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="18"/></svg></button>
+    <button class="nv-ico" id="scrollBtn" title="Continuous scroll (2)" aria-label="Continuous scroll">
+      <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="8"/><rect x="5" y="14" width="14" height="8"/></svg></button>
+    <button class="nv-ico" id="guidesBtn" title="Alignment guides (G)" aria-label="Alignment guides">
+      <svg viewBox="0 0 24 24"><line x1="9" y1="2" x2="9" y2="22"/><line x1="15" y1="2" x2="15" y2="22"/><line x1="2" y1="9" x2="22" y2="9"/><line x1="2" y1="15" x2="22" y2="15"/></svg></button>
+    <button class="nv-ico" id="printBtn" title="Print / export A4 PDF (P)" aria-label="Print">
+      <svg viewBox="0 0 24 24"><polyline points="6,9 6,3 18,3 18,9"/><path d="M6 18H4v-6h16v6h-2"/><rect x="8" y="14" width="8" height="7"/></svg></button>
+    <button class="nv-ico" id="hideBtn" title="Hide the bar (H)" aria-label="Hide the bar">
+      <svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><line x1="4" y1="20" x2="20" y2="4"/></svg></button>
+    <button class="nv-ico" id="homeBtn" title="Back to the cover (Home)" aria-label="Back to the cover">
+      <svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8"/><path d="M6 10v11h12V10"/></svg></button>
+  </div>
+</nav>
 
-<!-- thumbnail overview -->
+<button class="restore" id="restore">show bar &middot; H</button>
+
+<div class="filmstrip" id="filmstrip"></div>
 <div class="pages" id="pagesView"><div class="pages-grid" id="pagesGrid"></div></div>
 
 <!-- alignment guide controls -->
@@ -1497,7 +1596,8 @@ body.mode-scroll #guides{display:none}
     <p class="k2">Export</p>
     <h3>Print to A4 landscape</h3>
     <p style="font-size:15px;line-height:1.6;color:var(--ink-2);margin-top:10px">
-      Each page is laid out for A4 landscape (297 × 210 mm). In the browser print dialog:</p>
+      The <b id="edNote">Full</b> edition prints <b id="edCount">17</b> pages, one per A4 landscape sheet.
+      In the browser print dialog:</p>
     <ol>
       <li>Destination — <b>Save as PDF</b></li>
       <li>Layout — <b>Landscape</b> · Paper size — <b>A4</b></li>
@@ -1512,172 +1612,268 @@ body.mode-scroll #guides{display:none}
   </div>
 </div>
 
+
 <script>
+/* ===========================================================================
+   UNIVERSAL DECK-NAV
+   Identical structure in every book; only the accent colour follows the brand.
+   Keyboard: ← → page · 0 fit · Esc leaves an overlay · 1/2 slides/scroll ·
+             3 grid · 4 filmstrip · G guides · H hide · P print · F fullscreen
+   ?thumb=1 renders the cover only, with no bar (for hub thumbnails).
+   =========================================================================== */
 (function(){
   "use strict";
 
   var stage  = document.getElementById('stage');
   var deck   = document.getElementById('deck');
-  var slides = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
-  var total  = slides.length;
-  var idx    = 0;
-  var mode   = 'slides';          /* slides | scroll */
-  var BAR    = 64;
+  var all    = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
 
-  document.getElementById('tot').textContent = total;
+  /* pages the Standard edition leaves out — the technical deep dives */
+  var DEEP = ['Man Machine Series', 'Fixture Design', 'Construction Parameters'];
+  all.forEach(function(sl){
+    if (DEEP.indexOf(sl.dataset.title) !== -1) sl.dataset.deep = '1';
+  });
 
-  /* ---------- scaling ------------------------------------------------ */
-  function barH(){ return document.body.classList.contains('ui-hidden') ? 0 : BAR; }
+  var order   = [];            /* slide indices in the current edition */
+  var pos     = 0;             /* position within order               */
+  var edition = 'full';
+  var mode    = 'slides';      /* slides | scroll                     */
+  var zoom    = 'fit';         /* 'fit' or a number (1 = 100%)        */
+  var STEPS   = [.5,.65,.8,1,1.25,1.5,2];
 
+  var qs = new URLSearchParams(location.search);
+  var thumbOnly = qs.get('thumb') === '1';
+
+  /* ---------- edition ------------------------------------------------- */
+  function applyEdition(){
+    order = [];
+    all.forEach(function(sl, i){
+      var out = (edition === 'standard' && sl.dataset.deep === '1');
+      sl.classList.toggle('is-out', out);
+      if (!out) order.push(i);
+    });
+    /* folios follow the edition so the printed page numbers stay honest */
+    order.forEach(function(idx, j){
+      var sl = all[idx];
+      if (!sl.dataset.folio) return;
+      var f = pad(j + 1);
+      var el = sl.querySelector('.folio');       if (el) el.textContent = f;
+      var pf = sl.querySelector('.printfoot b'); if (pf) pf.textContent = f;
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-ed]'), function(b){
+      b.classList.toggle('is-on', b.dataset.ed === edition);
+    });
+    document.getElementById('tot').textContent = order.length;
+    document.getElementById('edNote').textContent  = edition === 'full' ? 'Full' : 'Standard';
+    document.getElementById('edCount').textContent = order.length;
+    buildRail(); buildToc(); rebuildOverlays();
+  }
+  function setEdition(e){
+    if (e === edition) return;
+    var wasSlide = order[pos];
+    edition = e;
+    applyEdition();
+    var np = order.indexOf(wasSlide);
+    show(np === -1 ? Math.min(pos, order.length - 1) : np, 'auto');
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('[data-ed]'), function(b){
+    b.onclick = function(){ setEdition(b.dataset.ed); };
+  });
+
+  /* ---------- scaling --------------------------------------------------- */
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+  function fitScale(){
+    return Math.min(stage.clientWidth / 1920, stage.clientHeight / 1080);
+  }
   function fit(){
+    document.body.classList.toggle('mode-zoom', mode === 'slides' && zoom !== 'fit');
     if (mode === 'scroll'){
       var s = Math.min((window.innerWidth - 80) / 1920, 0.9);
       deck.style.transform = 'translateX(-50%) scale(' + s + ')';
       deck.style.marginBottom = -(deck.scrollHeight * (1 - s)) + 'px';
       deck.dataset.scale = s;
-    } else {
-      var f = Math.min(window.innerWidth / 1920, (window.innerHeight - barH()) / 1080);
+    } else if (zoom === 'fit'){
+      var f = fitScale();
       deck.style.transform = 'translate(-50%,-50%) scale(' + f + ')';
+      deck.style.marginBottom = deck.style.width = deck.style.height = '';
+      deck.dataset.scale = f;
+    } else {
+      deck.style.transform = 'scale(' + zoom + ')';
+      deck.style.width  = (1920 * zoom) + 'px';
+      deck.style.height = (1080 * zoom) + 'px';
       deck.style.marginBottom = '';
+      deck.dataset.scale = zoom;
     }
+    document.getElementById('zPct').textContent =
+      Math.round((zoom === 'fit' ? fitScale() : zoom) * 100) + '%';
+    document.getElementById('zFit').classList.toggle('is-on', zoom === 'fit');
   }
   window.addEventListener('resize', fit);
 
-  /* ---------- paging -------------------------------------------------- */
-  function pad(n){ return (n < 10 ? '0' : '') + n; }
-
-  function paint(){
-    document.getElementById('cur').textContent = pad(idx + 1);
-    document.getElementById('prog').style.width = ((idx + 1) / total * 100) + '%';
-    document.getElementById('bPrev').disabled = (idx === 0);
-    document.getElementById('bNext').disabled = (idx === total - 1);
-    Array.prototype.forEach.call(document.querySelectorAll('.pg-item'), function(el, i){
-      el.classList.toggle('cur', i === idx);
-    });
-    if (history.replaceState) history.replaceState(null, '', '#p' + pad(idx + 1));
+  function setZoom(z){
+    zoom = z;
+    if (mode === 'scroll') setMode('slides');
+    fit();
+  }
+  document.getElementById('zFit').onclick = function(){ setZoom('fit'); };
+  document.getElementById('zPct').onclick = function(){ setZoom(1); };
+  document.getElementById('zIn').onclick  = function(){ step(+1); };
+  document.getElementById('zOut').onclick = function(){ step(-1); };
+  function step(dir){
+    var cur = zoom === 'fit' ? fitScale() : zoom, i;
+    if (dir > 0){ for (i = 0; i < STEPS.length; i++) if (STEPS[i] > cur + 0.001) return setZoom(STEPS[i]); return setZoom(STEPS[STEPS.length - 1]); }
+    for (i = STEPS.length - 1; i >= 0; i--) if (STEPS[i] < cur - 0.001) return setZoom(STEPS[i]);
+    setZoom(STEPS[0]);
   }
 
-  function show(n, dir){
-    n = Math.max(0, Math.min(total - 1, n));
-    idx = n;
+  /* ---------- paging ----------------------------------------------------- */
+  function paint(){
+    var sl = all[order[pos]];
+    document.getElementById('cur').textContent = pad(pos + 1);
+    document.getElementById('slideName').innerHTML =
+      '<b>' + pad(pos + 1) + '</b> &middot; ' + (sl.dataset.title || '');
+    document.getElementById('bPrev').disabled = (pos === 0);
+    document.getElementById('bNext').disabled = (pos === order.length - 1);
+    Array.prototype.forEach.call(document.querySelectorAll('.nv-dot'), function(d, i){
+      var on = i === pos;
+      d.classList.toggle('is-on', on);
+      d.textContent = on ? pad(i + 1) : '';
+      if (on && d.scrollIntoView) d.scrollIntoView({block:'nearest', inline:'center'});
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.pg-item'), function(el, i){ el.classList.toggle('cur', i === pos); });
+    Array.prototype.forEach.call(document.querySelectorAll('.fs-item'), function(el, i){
+      el.classList.toggle('cur', i === pos);
+      if (i === pos && el.scrollIntoView) el.scrollIntoView({block:'nearest', inline:'center'});
+    });
+    if (history.replaceState) history.replaceState(null, '', '#p' + pad(pos + 1));
+  }
+
+  function show(n, how){
+    pos = Math.max(0, Math.min(order.length - 1, n));
     if (mode === 'scroll'){
       var s = parseFloat(deck.dataset.scale) || 1;
-      stage.scrollTo({ top: slides[idx].offsetTop * s, behavior: dir === 'auto' ? 'auto' : 'smooth' });
+      stage.scrollTo({ top: all[order[pos]].offsetTop * s, behavior: how === 'auto' ? 'auto' : 'smooth' });
     } else {
-      slides.forEach(function(sl, i){ sl.classList.toggle('is-active', i === idx); });
-      slides[idx].style.setProperty('--dir', dir === -1 ? '-26px' : '26px');
+      all.forEach(function(sl, i){ sl.classList.toggle('is-active', i === order[pos]); });
+      all[order[pos]].style.setProperty('--dir', how === -1 ? '-26px' : '26px');
+      if (zoom !== 'fit'){ stage.scrollTop = 0; stage.scrollLeft = (deck.offsetWidth - stage.clientWidth) / 2; }
     }
     paint();
   }
-  function nextS(){ show(idx + 1, 1); }
-  function prevS(){ show(idx - 1, -1); }
-
+  function nextS(){ show(pos + 1, 1); }
+  function prevS(){ show(pos - 1, -1); }
   document.getElementById('bNext').onclick = nextS;
   document.getElementById('bPrev').onclick = prevS;
+  document.getElementById('homeBtn').onclick = function(){ closeAll(); setMode('slides'); show(0, -1); };
 
-  /* ---------- view modes ---------------------------------------------- */
-  function setMode(m){
-    if (m === mode) return;
-    closePages();
-    mode = m;
-    document.body.classList.toggle('mode-scroll', m === 'scroll');
-    markMode();
-    if (m === 'scroll'){
-      slides.forEach(function(sl){ sl.classList.add('is-active'); });
-      toggleGrid(false);
-      fit();
-      show(idx, 'auto');
-    } else {
-      slides.forEach(function(sl, i){ sl.classList.toggle('is-active', i === idx); });
-      stage.scrollTop = 0;
-      fit();
-      paint();
-    }
-  }
-  Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function(b){
-    b.onclick = function(){ closePages(); markMode(); setMode(b.dataset.mode); };
-  });
-
-  function markMode(){
-    Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function(b){
-      b.classList.toggle('is-on', b.dataset.mode === mode);
+  /* ---------- dot rail ---------------------------------------------------- */
+  function buildRail(){
+    var rail = document.getElementById('rail');
+    rail.innerHTML = '';
+    order.forEach(function(idx, i){
+      var d = document.createElement('button');
+      d.className = 'nv-dot';
+      d.title = pad(i + 1) + ' · ' + (all[idx].dataset.title || '');
+      d.setAttribute('aria-label', d.title);
+      d.onclick = function(){ show(i, i > pos ? 1 : -1); };
+      rail.appendChild(d);
     });
   }
 
-  /* keep the counter honest while scrolling */
+  /* ---------- view modes --------------------------------------------------- */
+  function setMode(m){
+    if (m === mode) return;
+    mode = m;
+    document.body.classList.toggle('mode-scroll', m === 'scroll');
+    document.getElementById('scrollBtn').classList.toggle('is-on', m === 'scroll');
+    if (m === 'scroll'){
+      zoom = 'fit';
+      order.forEach(function(idx){ all[idx].classList.add('is-active'); });
+      toggleGuides(false);
+      fit(); show(pos, 'auto');
+    } else {
+      all.forEach(function(sl, i){ sl.classList.toggle('is-active', i === order[pos]); });
+      stage.scrollTop = 0; fit(); paint();
+    }
+  }
+  document.getElementById('scrollBtn').onclick = function(){
+    closeAll(); setMode(mode === 'scroll' ? 'slides' : 'scroll');
+  };
+
   var ticking = false;
   stage.addEventListener('scroll', function(){
     if (mode !== 'scroll' || ticking) return;
     ticking = true;
     requestAnimationFrame(function(){
       var s = parseFloat(deck.dataset.scale) || 1;
-      var mid = stage.scrollTop + stage.clientHeight * 0.4;
-      var near = 0;
-      for (var i = 0; i < total; i++){ if (slides[i].offsetTop * s <= mid) near = i; }
-      if (near !== idx){ idx = near; paint(); }
+      var mid = stage.scrollTop + stage.clientHeight * 0.4, near = 0;
+      order.forEach(function(idx, i){ if (all[idx].offsetTop * s <= mid) near = i; });
+      if (near !== pos){ pos = near; paint(); }
       ticking = false;
     });
   }, {passive:true});
 
-  /* ---------- pages overview ------------------------------------------ */
+  /* ---------- grid + filmstrip overlays -------------------------------------- */
   var pagesView = document.getElementById('pagesView');
   var pagesGrid = document.getElementById('pagesGrid');
-  var pagesBtn  = document.getElementById('pagesBtn');
-  var built = false;
+  var strip     = document.getElementById('filmstrip');
 
-  function buildPages(){
-    if (built) return;
-    slides.forEach(function(sl, i){
+  function thumbOf(idx){
+    var c = all[idx].cloneNode(true);
+    c.classList.add('is-active'); c.classList.remove('is-out'); c.removeAttribute('id');
+    return c;
+  }
+  function rebuildOverlays(){
+    pagesGrid.innerHTML = ''; strip.innerHTML = '';
+    order.forEach(function(idx, i){
       var item = document.createElement('button');
       item.className = 'pg-item';
-      var thumb = document.createElement('div');
-      thumb.className = 'pg-thumb';
-      var clone = sl.cloneNode(true);
-      clone.classList.add('is-active');
-      clone.removeAttribute('id');
-      thumb.appendChild(clone);
-      var meta = document.createElement('div');
-      meta.className = 'pg-meta';
-      meta.innerHTML = '<b>' + pad(i + 1) + '</b><span>' + (sl.dataset.title || '') + '</span>';
-      item.appendChild(thumb); item.appendChild(meta);
-      item.onclick = function(){ closePages(); setMode('slides'); show(i, 1); };
+      var th = document.createElement('div'); th.className = 'pg-thumb'; th.appendChild(thumbOf(idx));
+      var meta = document.createElement('div'); meta.className = 'pg-meta';
+      meta.innerHTML = '<b>' + pad(i + 1) + '</b><span>' + (all[idx].dataset.title || '') + '</span>';
+      item.appendChild(th); item.appendChild(meta);
+      item.onclick = function(){ closeAll(); setMode('slides'); show(i, 1); };
       pagesGrid.appendChild(item);
+
+      var f = document.createElement('button');
+      f.className = 'fs-item'; f.title = (all[idx].dataset.title || '');
+      f.appendChild(thumbOf(idx));
+      var tag = document.createElement('i'); tag.textContent = pad(i + 1); f.appendChild(tag);
+      f.onclick = function(){ show(i, i > pos ? 1 : -1); };
+      strip.appendChild(f);
     });
-    built = true;
   }
-  function openPages(){
-    buildPages();
-    pagesView.classList.add('open');
-    pagesBtn.classList.add('is-on');
-    Array.prototype.forEach.call(document.querySelectorAll('[data-mode]'), function(b){ b.classList.remove('is-on'); });
-    paint();
-  }
-  function closePages(){
-    if (!pagesView.classList.contains('open')) return;
-    pagesView.classList.remove('open');
-    pagesBtn.classList.remove('is-on');
-    markMode();
-  }
-  pagesBtn.onclick = function(){ pagesView.classList.contains('open') ? closePages() : openPages(); };
+  function openGrid(){ closeStrip(); pagesView.classList.add('open'); document.getElementById('gridBtn').classList.add('is-on'); paint(); }
+  function closeGrid(){ pagesView.classList.remove('open'); document.getElementById('gridBtn').classList.remove('is-on'); }
+  function openStrip(){ closeGrid(); strip.classList.add('open'); document.getElementById('stripBtn').classList.add('is-on'); paint(); }
+  function closeStrip(){ strip.classList.remove('open'); document.getElementById('stripBtn').classList.remove('is-on'); }
+  function closeAll(){ closeGrid(); closeStrip(); }
+  document.getElementById('gridBtn').onclick  = function(){ pagesView.classList.contains('open') ? closeGrid() : openGrid(); };
+  document.getElementById('stripBtn').onclick = function(){ strip.classList.contains('open') ? closeStrip() : openStrip(); };
 
-  /* ---------- contents page links ------------------------------------- */
-  var toc = document.getElementById('toc');
-  slides.forEach(function(sl, i){
-    if (i < 2 || !toc) return;                       /* skip cover + contents */
-    var a = document.createElement('a');
-    a.href = '#p' + pad(i + 1);
-    a.innerHTML = '<span class="n">' + pad(i - 1) + '</span>' +
-                  '<span class="t">' + (sl.dataset.title || '') +
-                  (sl.dataset.sub ? '<span class="s">' + sl.dataset.sub + '</span>' : '') + '</span>' +
-                  '<span class="pg">' + (sl.dataset.folio || pad(i + 1)) + '</span>';
-    a.onclick = function(e){ e.preventDefault(); setMode('slides'); show(i, 1); };
-    toc.appendChild(a);
-  });
+  /* ---------- contents page ------------------------------------------------- */
+  function buildToc(){
+    var toc = document.getElementById('toc');
+    if (!toc) return;
+    toc.innerHTML = '';
+    order.forEach(function(idx, i){
+      if (i < 2) return;                                  /* skip cover + contents */
+      var sl = all[idx];
+      var a = document.createElement('a');
+      a.href = '#p' + pad(i + 1);
+      a.innerHTML = '<span class="n">' + pad(i - 1) + '</span>' +
+                    '<span class="t">' + (sl.dataset.title || '') +
+                    (sl.dataset.sub ? '<span class="s">' + sl.dataset.sub + '</span>' : '') + '</span>' +
+                    '<span class="pg">' + pad(i + 1) + '</span>';
+      a.onclick = function(e){ e.preventDefault(); closeAll(); setMode('slides'); show(i, 1); };
+      toc.appendChild(a);
+    });
+  }
 
-  /* ---------- alignment guides ---------------------------------------- */
-  var guides  = document.getElementById('guides');
-  var gridBtn = document.getElementById('gridBtn');
-  var gridPop = document.getElementById('gridPop');
+  /* ---------- alignment guides ------------------------------------------------ */
+  var guides   = document.getElementById('guides');
+  var guideBtn = document.getElementById('guidesBtn');
+  var gridPop  = document.getElementById('gridPop');
 
   (function build(){
     var c = document.getElementById('gcols'), r = document.getElementById('grows'), i;
@@ -1685,14 +1881,14 @@ body.mode-scroll #guides{display:none}
     for (i = 0; i < 8;  i++) r.appendChild(document.createElement('i'));
   })();
 
-  function toggleGrid(force){
+  function toggleGuides(force){
     var on = (force === undefined) ? !guides.classList.contains('on') : force;
     if (on && mode === 'scroll') setMode('slides');
     guides.classList.toggle('on', on);
-    gridBtn.classList.toggle('is-on', on);
+    guideBtn.classList.toggle('is-on', on);
     gridPop.classList.toggle('open', on && !document.body.classList.contains('ui-hidden'));
   }
-  gridBtn.onclick = function(){ toggleGrid(); };
+  guideBtn.onclick = function(){ toggleGuides(); };
 
   Array.prototype.forEach.call(gridPop.querySelectorAll('[data-layer]'), function(btn){
     btn.onclick = function(){
@@ -1712,19 +1908,19 @@ body.mode-scroll #guides{display:none}
     };
   });
 
-  /* ---------- hide bar -------------------------------------------------- */
+  /* ---------- hide bar ---------------------------------------------------------- */
   function toggleUI(force){
     var hide = (force === undefined) ? !document.body.classList.contains('ui-hidden') : force;
     document.body.classList.toggle('ui-hidden', hide);
     document.getElementById('hideBtn').classList.toggle('is-on', hide);
-    if (hide){ gridPop.classList.remove('open'); closePages(); }
+    if (hide){ gridPop.classList.remove('open'); closeAll(); }
     else if (guides.classList.contains('on')) gridPop.classList.add('open');
     fit();
   }
-  document.getElementById('hideBtn').onclick = function(){ toggleUI(true); };
-  document.getElementById('restore').onclick = function(){ toggleUI(false); };
+  document.getElementById('hideBtn').onclick  = function(){ toggleUI(true); };
+  document.getElementById('restore').onclick  = function(){ toggleUI(false); };
 
-  /* ---------- print ------------------------------------------------------ */
+  /* ---------- print --------------------------------------------------------------- */
   var modal = document.getElementById('printModal');
   document.getElementById('printBtn').onclick    = function(){ modal.classList.add('open'); };
   document.getElementById('cancelPrint').onclick = function(){ modal.classList.remove('open'); };
@@ -1734,47 +1930,60 @@ body.mode-scroll #guides{display:none}
   };
   modal.onclick = function(e){ if (e.target === modal) modal.classList.remove('open'); };
 
-  /* ---------- keyboard ---------------------------------------------------- */
+  /* ---------- keyboard -------------------------------------------------------------- */
   document.addEventListener('keydown', function(e){
     if (e.metaKey || e.ctrlKey || e.altKey) return;
     switch (e.key){
       case 'ArrowRight': case 'PageDown': case ' ': nextS(); e.preventDefault(); break;
       case 'ArrowLeft':  case 'PageUp':            prevS(); e.preventDefault(); break;
       case 'Home': show(0, -1); break;
-      case 'End':  show(total - 1, 1); break;
-      case '1': setMode('slides'); break;
-      case '2': setMode('scroll'); break;
-      case '3': pagesBtn.click(); break;
-      case 'g': case 'G': toggleGrid(); break;
+      case 'End':  show(order.length - 1, 1); break;
+      case '0': setZoom('fit'); break;
+      case '+': case '=': step(+1); break;
+      case '-': step(-1); break;
+      case '1': closeAll(); setMode('slides'); break;
+      case '2': closeAll(); setMode('scroll'); break;
+      case '3': document.getElementById('gridBtn').click(); break;
+      case '4': document.getElementById('stripBtn').click(); break;
+      case 'g': case 'G': toggleGuides(); break;
       case 'h': case 'H': toggleUI(); break;
       case 'p': case 'P': modal.classList.add('open'); break;
       case 'f': case 'F':
         if (!document.fullscreenElement && document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
         else if (document.exitFullscreen) document.exitFullscreen();
         break;
-      case 'Escape': closePages(); modal.classList.remove('open'); break;
+      case 'Escape': closeAll(); modal.classList.remove('open'); break;
     }
   });
 
-  /* ---------- touch ------------------------------------------------------- */
+  /* ---------- touch ------------------------------------------------------------------- */
   var x0 = null;
   deck.addEventListener('touchstart', function(e){ x0 = e.touches[0].clientX; }, {passive:true});
   deck.addEventListener('touchend', function(e){
-    if (x0 === null || mode === 'scroll') return;
+    if (x0 === null || mode === 'scroll' || zoom !== 'fit') return;
     var dx = e.changedTouches[0].clientX - x0;
     if (Math.abs(dx) > 60){ dx < 0 ? nextS() : prevS(); }
     x0 = null;
   }, {passive:true});
 
-  /* ---------- boot -------------------------------------------------------- */
+  /* ---------- boot ---------------------------------------------------------------------- */
+  applyEdition();
   var m = /^#p(\d+)$/.exec(location.hash);
-  idx = m ? Math.max(0, Math.min(total - 1, parseInt(m[1], 10) - 1)) : 0;
-  slides.forEach(function(sl, i){ sl.classList.toggle('is-active', i === idx); });
+  pos = m ? Math.max(0, Math.min(order.length - 1, parseInt(m[1], 10) - 1)) : 0;
+  all.forEach(function(sl, i){ sl.classList.toggle('is-active', i === order[pos]); });
   fit(); paint();
 
-  /* ---------- print: every page must be visible ---------------------------- */
+  if (thumbOnly){                     /* hub thumbnail: cover only, no chrome */
+    document.body.classList.add('thumb-only');
+    all.forEach(function(sl, i){ sl.classList.toggle('is-active', i === 0); });
+    fit();
+  }
+
+  /* ---------- print: reveal the whole edition ---------------------------------------------- */
   function allOn(on){
-    slides.forEach(function(sl, i){ sl.classList.toggle('is-active', on || mode === 'scroll' || i === idx); });
+    all.forEach(function(sl, i){
+      sl.classList.toggle('is-active', on || mode === 'scroll' || i === order[pos]);
+    });
   }
   window.addEventListener('beforeprint', function(){ allOn(true); });
   window.addEventListener('afterprint',  function(){ allOn(false); });

@@ -20,25 +20,31 @@ fonts and images are local.
 
 ---
 
-## The navigation bar
+## Deck-nav
 
-A single fixed bar along the bottom of the window: the Altigo mark and
-catalogue line on the left, the pager and controls on the right.
+A floating pill along the bottom of the window. Structure is fixed — the same
+bar every book gets — and only the accent colour follows the brand.
 
 | Control | What it does | Key |
 | --- | --- | --- |
-| `‹` `01 / 17` `›` | Page back / forward, live page counter | `←` `→` `Space` `Home` `End` |
-| **Slides** | One page at a time, centred and scaled to the window | `1` |
-| **Scroll** | Every page stacked for continuous reading; the counter follows the scroll | `2` |
-| **Pages** | Live thumbnail overview of all 17 pages — click one to jump to it | `3` |
-| **Guides** | Alignment-grid overlay with its layer / opacity controls | `G` |
-| **Hide bar** | Clears the bar for a clean review; a chip brings it back | `H` |
-| **Print · PDF** | Opens the A4 landscape export checklist, then the print dialog | `P` |
+| `←` `→` | Page back / forward | `←` `→` `Space` `Home` `End` |
+| dot rail | One 6 px dot per page; the current one becomes a numbered pill in the accent. Hover a dot to enlarge it, click to jump. Scrolls itself when the book is long | — |
+| slide name | `05 · Core Safety & Performance` — position and title of the page you are on | — |
+| counter | Position within the **current edition**, not the file | — |
+| **Standard / Full** | Full is the complete 17-page catalogue. Standard drops the three technical deep dives — Man Machine Series, Fixture Design, Construction Parameters — leaving 14 client-facing pages. Folios, the contents page, the counter, the rail and both overlays all renumber, and the A4 export prints the edition you are in | — |
+| `−` `100%` `+` | Zoom in steps 50 / 65 / 80 / 100 / 125 / 150 / 200 %. Past fit the page pans. Clicking the percentage resets to 100 % | `+` `-` |
+| **Fit** | Back to fit-the-window; the readout shows the fit percentage | `0` |
+| grid | Full-screen thumbnail overview, current page ringed | `3` |
+| filmstrip | Thumbnail strip above the bar for scrubbing without leaving the page | `4` |
+| scroll | Continuous vertical reading; the counter follows the scroll | `2` (`1` for slides) |
+| guides | Alignment-grid overlay with its layer / opacity controls | `G` |
+| print | A4 landscape export checklist, then the print dialog | `P` |
+| hide | Clears the bar; a chip brings it back | `H` |
+| home | Back to the cover | — |
 
-Fullscreen is `F`, `Esc` closes the overview or the print dialog. Swipe
-left/right works on touch screens in Slides view. A thin red progress line
-along the top edge of the bar tracks how far through the catalogue you are,
-and every page has a deep link — `index.html#p07` opens page 7 directly.
+`Esc` closes an overlay, `F` is fullscreen, and swipe works on touch screens.
+Every page has a deep link — `index.html#p07` opens page 7 — and
+`index.html?thumb=1` renders the cover alone with no bar, for hub thumbnails.
 
 ### Alignment grid
 

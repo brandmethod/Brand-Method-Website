@@ -24,7 +24,7 @@ No dependencies beyond the Python standard library.
 
 ## Using it
 
-Open `index.html` in any browser.
+Open `index.html` in any browser. The control bar sits along the foot of the window.
 
 | Control | Action |
 |---|---|
@@ -32,7 +32,7 @@ Open `index.html` in any browser.
 | `Home` / `End` | First / last slide |
 | `G` or **Pages** | All twelve pages as thumbnails |
 | `A` or **Guides** | Alignment guides — off → 100% → 50% → off |
-| `H` or **Hide bar** | Hide the toolbar while reviewing; the chip top-right brings it back |
+| `H` or **Hide bar** | Hide the control bar while reviewing; the chip bottom-right brings it back |
 | Click any photograph | Open it full size; `←` `→` step through all 17, `Esc` closes |
 | Swipe left / right | Previous / next slide on touch screens |
 | `S` | Toggle **Slides** (one at a time) ↔ **Scroll** (continuous) |

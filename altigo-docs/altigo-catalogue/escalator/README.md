@@ -30,7 +30,9 @@ Open `index.html` in any browser.
 |---|---|
 | `←` `→` `Space` `PgUp` `PgDn` | Previous / next slide |
 | `Home` / `End` | First / last slide |
-| `G` or **Grid** | All eleven slides as thumbnails |
+| `G` or **Pages** | All twelve pages as thumbnails |
+| `A` or **Guides** | Alignment guides — off → 100% → 50% → off |
+| `H` or **Hide bar** | Hide the toolbar while reviewing; the chip top-right brings it back |
 | Click any photograph | Open it full size; `←` `→` step through all 17, `Esc` closes |
 | Swipe left / right | Previous / next slide on touch screens |
 | `S` | Toggle **Slides** (one at a time) ↔ **Scroll** (continuous) |
@@ -91,6 +93,23 @@ image was extracted. They are back as HTML markers positioned by percentage,
 using the coordinates read out of the original page, with two pairs nudged apart
 so they don't collide at marker size. Because they are percentage-positioned,
 they scale correctly when the drawing is opened in the image viewer.
+
+**The grid.** 120 px side margins, twelve columns of 118 px with 24 px gutters:
+12×118 + 11×24 = 1680 = 1920 − 240. Horizontal zones at 88 (mark base), 212
+(header base), 254–930 (body) and 1008 (footer rule). Press `A` to see it.
+
+Every top-level block sits on whole columns. Three-column rows span four columns
+each (544 px), four-column rows span three (402 px), the introduction runs nine
+columns of text against a figure that starts at column ten, and the civil page is
+three blocks of 544 px with the elevation spanning two of them. The two five-up
+rows — the key figures on page 04 and the planning gallery on page 10 — are the
+one arrangement a twelve-column grid cannot host; they align to the outer margins
+and the centre line instead, which is noted in the CSS beside each.
+
+Aligning to the grid made most of the vertical rules redundant, so they are gone:
+the column dividers on the range page, the key-figure and process bands, the
+chapter figures and the dimension-key column. Horizontal rules that carry real
+structure — the header hairline, the footer, table and list rows — stay.
 
 **Running footer.** Every page from 02 to 11 carries the same footer the closing
 page sets: a hairline, the catalogue line on the left, the page number on the

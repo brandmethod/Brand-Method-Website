@@ -140,6 +140,44 @@ img{display:block;max-width:100%}
 .lb-nav:hover{background:rgba(255,255,255,.12)}
 .lb-prev{left:22px} .lb-next{right:22px}
 
+/* ── Alignment guides ──────────────────────────────────────────────────
+   12 columns of 118 px with 24 px gutters inside a 120 px margin:
+   12×118 + 11×24 = 1680 = 1920 − 240.                                    */
+.guides{position:absolute;inset:0;z-index:40;pointer-events:none;display:none;
+  font-family:'Inter',ui-monospace,monospace}
+.app.g-on .guides{display:block}
+.app.g-half .guides{opacity:.5}
+
+.guides .cols{position:absolute;left:120px;right:120px;top:0;bottom:0;
+  background:repeating-linear-gradient(90deg,
+    rgba(0,214,255,.11) 0 118px, transparent 118px 142px)}
+.guides .vm{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,58,140,.55)}
+.guides .hz{position:absolute;left:0;right:0;height:1px;background:rgba(0,214,255,.42)}
+.guides .hz.key{background:rgba(255,58,140,.5)}
+.guides .cx{position:absolute;top:0;bottom:0;left:960px;width:1px;
+  background:rgba(255,214,0,.34)}
+.guides .tag-g{position:absolute;font-size:10px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:#0B1220;background:rgba(0,214,255,.85);padding:2px 6px;
+  white-space:nowrap}
+.guides .tag-g.pink{background:rgba(255,58,140,.85);color:#fff}
+.g-legend{position:fixed;left:18px;bottom:18px;z-index:62;display:none;padding:12px 15px;
+  background:rgba(6,14,32,.93);border:1px solid rgba(0,214,255,.4);color:#9FE9FF;
+  font-family:'Inter',ui-monospace,monospace;font-size:10.5px;line-height:1.8;letter-spacing:.06em}
+.g-legend b{color:#fff;font-weight:600}
+.g-legend i{color:#FF6FA8}
+.app.g-on .g-legend{display:block}
+
+/* hidden-UI review mode */
+.app.ui-off .toolbar,.app.ui-off .progress{display:none}
+.app.ui-off .deck{padding-top:0}
+.app.ui-off[data-mode="deck"] .deck{height:100vh}
+.ui-restore{position:fixed;top:12px;right:14px;z-index:70;display:none;
+  font-family:var(--f-label);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;padding:7px 12px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(7,11,22,.72);color:rgba(255,255,255,.72);cursor:pointer}
+.ui-restore:hover{color:#fff;border-color:rgba(255,255,255,.5)}
+.app.ui-off .ui-restore{display:block}
+
 /* ── Page furniture ────────────────────────────────────────────────── */
 .logo{background:url({{ASSET:logo-blue.png}}) left center/contain no-repeat}
 .logo.w{background-image:url({{ASSET:logo-white.png}})}
@@ -231,15 +269,16 @@ img{display:block;max-width:100%}
 .cover-foot dd{font-family:var(--f-label);font-size:14.5px;font-weight:500;line-height:1.55;color:#fff}
 
 /* ── 02 Company introduction ───────────────────────────────────────── */
-.intro{display:grid;grid-template-columns:1fr 700px;gap:80px;height:100%}
+/* 9 columns of text, then the figure from column 10 to the page edge */
+.intro{display:grid;grid-template-columns:1254px 1fr;gap:24px;height:100%}
 .intro-txt{display:flex;flex-direction:column;height:100%}
 .intro-h{font-family:var(--f-head);font-size:76px;font-weight:800;color:var(--ink);
   letter-spacing:-.036em;line-height:.97;margin-bottom:32px}
 .intro-h b{color:var(--blue);font-weight:800}
-.intro-body{columns:2;column-gap:50px;column-fill:balance}
+.intro-body{columns:2;column-gap:24px;column-fill:balance}
 .intro-body p{font-size:18px;line-height:1.6;margin-bottom:16px}
 .intro-body p b{color:var(--blue);font-weight:600}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:auto;padding-top:28px;
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:auto;padding-top:28px;
   border-top:2px solid var(--blue)}
 .pillar h4{font-family:var(--f-head);font-size:25px;font-weight:700;color:var(--blue);margin:10px 0 9px}
 .pillar p{font-size:17px;line-height:1.48;color:var(--body)}
@@ -248,7 +287,7 @@ img{display:block;max-width:100%}
 
 /* ── 03 / 04 Three columns ─────────────────────────────────────────── */
 .stack{display:flex;flex-direction:column;height:100%}
-.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:64px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .fcol{display:flex;flex-direction:column;padding-top:20px;border-top:2px solid var(--blue)}
 .fcol .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
 .fcol .icon{width:60px;height:60px;border:1.5px solid var(--rule-2);
@@ -260,10 +299,12 @@ img{display:block;max-width:100%}
 .fcol p{font-size:19.5px;line-height:1.56}
 .fcol .spec{margin-top:auto;padding-top:20px}
 
-.band{margin-top:auto;padding-top:26px;border-top:2px solid var(--blue);display:grid;gap:52px}
+.band{margin-top:auto;padding-top:26px;border-top:2px solid var(--blue);display:grid;gap:24px}
 .flow{grid-template-columns:repeat(4,1fr)}
 .flow h5{font-family:var(--f-head);font-size:22px;font-weight:700;color:var(--blue);margin:9px 0 7px}
 .flow p{font-size:16.5px;line-height:1.44;color:var(--body)}
+/* five equal columns, like the planning gallery, align to the outer margins
+   and the centre line rather than to column edges */
 .stats{grid-template-columns:repeat(5,1fr)}
 .stats b{display:block;font-family:var(--f-head);font-size:64px;font-weight:800;
   color:var(--blue);letter-spacing:-.042em;line-height:.94}
@@ -272,10 +313,8 @@ img{display:block;max-width:100%}
 
 /* ── 05 The range · dark chapter page ──────────────────────────────── */
 .range{display:flex;flex-direction:column;height:100%}
-.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
-.rcol{padding:0 44px;border-left:1px solid rgba(255,255,255,.2);display:flex;flex-direction:column}
-.rcol:first-child{padding-left:0;border-left:0}
-.rcol:last-child{padding-right:0}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.rcol{display:flex;flex-direction:column}
 .rcol .tag{color:#fff;border-color:rgba(255,255,255,.34);align-self:flex-start}
 .rcol h3{font-family:var(--f-head);font-size:30px;font-weight:800;color:#fff;
   letter-spacing:-.024em;margin:14px 0 10px}
@@ -297,7 +336,7 @@ img{display:block;max-width:100%}
 .rrow dd{font-family:var(--f-label);font-size:14px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:#fff;text-align:right}
 .rband{margin-top:30px;padding-top:24px;border-top:2px solid rgba(255,255,255,.36);
-  display:grid;grid-template-columns:repeat(4,1fr);gap:52px}
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .rband h5{font-family:var(--f-head);font-size:21px;font-weight:700;color:#fff;margin-bottom:7px}
 .rband p{font-size:16.5px;line-height:1.44;color:rgba(255,255,255,.7)}
 
@@ -331,7 +370,7 @@ img{display:block;max-width:100%}
   display:flex;align-items:center;justify-content:center;
   font-family:var(--f-label);font-size:10.5px;font-weight:700;line-height:1;
   box-shadow:0 0 0 2px rgba(255,255,255,.92)}
-.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px 40px;margin-top:auto}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:auto}
 .sitem{display:flex;flex-direction:column}
 .sitem figure{height:112px;border-radius:var(--r-s);overflow:hidden;background:#F2F4F8;
   margin-bottom:13px}
@@ -344,7 +383,7 @@ img{display:block;max-width:100%}
 .sitem p{font-size:16px;line-height:1.42;color:var(--muted)}
 
 /* ── 08 Devices ────────────────────────────────────────────────────── */
-.devs{display:grid;grid-template-columns:1fr 1fr 560px;gap:70px;height:100%}
+.devs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;height:100%}
 .dcol{display:flex;flex-direction:column}
 .dhead{display:flex;align-items:baseline;justify-content:space-between;
   padding-bottom:15px;border-bottom:2px solid var(--blue);margin-bottom:4px}
@@ -361,7 +400,9 @@ img{display:block;max-width:100%}
 .dfig img{width:100%;height:100%;object-fit:cover;object-position:56% center}
 
 /* ── 09 Planning guide ─────────────────────────────────────────────── */
-.lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:40px;height:100%}
+/* five equal columns cannot sit on a twelve-column grid; they align to the
+   outer margins and the centre line instead */
+.lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;height:100%}
 .lcol{display:flex;flex-direction:column}
 .lcol figure{height:352px;border-radius:var(--r-s);overflow:hidden;background:#EDF0F5;
   margin-bottom:18px}
@@ -370,11 +411,10 @@ img{display:block;max-width:100%}
 .lcol p{font-size:17px;line-height:1.46;color:var(--body)}
 
 /* ── 10 Construction ───────────────────────────────────────────────── */
-.civil{display:grid;grid-template-columns:1fr 1fr 520px;grid-template-rows:300px 1fr;
-  gap:32px 56px;height:100%}
+.civil{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:300px 1fr;
+  gap:32px 24px;height:100%}
 .fig-elev{grid-column:1 / 3;grid-row:1}
-.fig-key {grid-column:3;grid-row:1 / 3;padding-left:56px;border-left:1px solid var(--rule);
-  display:flex;flex-direction:column}
+.fig-key {grid-column:3;grid-row:1 / 3;display:flex;flex-direction:column}
 .fig-cs  {grid-column:1;grid-row:2}
 .fig-plan{grid-column:2;grid-row:2}
 .fig{display:flex;flex-direction:column;min-height:0}
@@ -399,7 +439,7 @@ img{display:block;max-width:100%}
 .cnote + .cnote{margin-top:12px;padding-top:0}
 
 /* ── Chapter divider ───────────────────────────────────────────────── */
-.chap{display:grid;grid-template-columns:1fr 640px;gap:90px;height:100%;align-content:start}
+.chap{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;height:100%;align-content:start}
 .chap-n{font-family:var(--f-head);font-size:19px;font-weight:700;letter-spacing:.3em;
   color:rgba(255,255,255,.5)}
 .chap h2{font-family:var(--f-display);font-size:118px;font-weight:800;line-height:.9;
@@ -411,9 +451,7 @@ img{display:block;max-width:100%}
 .chap-toc li b{font-family:var(--f-label);font-size:14px;font-weight:700;
   color:rgba(255,255,255,.5);min-width:26px}
 .chap-toc li span{font-family:var(--f-head);font-size:25px;font-weight:700;color:#fff}
-.chap-fig{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:0}
-.chap-fig > div{padding:0 30px;border-left:1px solid rgba(255,255,255,.22)}
-.chap-fig > div:first-child{padding-left:0;border-left:0}
+.chap-fig{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .chap-fig b{display:block;font-family:var(--f-head);font-size:44px;font-weight:800;color:#fff;
   letter-spacing:-.04em;line-height:1}
 .chap-fig span{display:block;margin-top:9px;font-size:15.5px;line-height:1.4;
@@ -429,7 +467,7 @@ img{display:block;max-width:100%}
 .c-rule{position:absolute;left:var(--m);top:308px;width:132px;height:4px;
   background:var(--red)}
 .c-grid{position:absolute;left:var(--m);right:var(--m);top:404px;
-  display:grid;grid-template-columns:1fr 1fr;gap:52px 80px}
+  display:grid;grid-template-columns:repeat(2,1fr);gap:52px 24px}
 .c-grid > div{padding-top:20px;border-top:1px solid rgba(255,255,255,.28)}
 .c-grid dt{font-family:var(--f-label);font-size:12px;font-weight:500;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.56);margin-bottom:13px}
@@ -446,7 +484,7 @@ img{display:block;max-width:100%}
 @media print{
   html,body{background:#fff!important;width:297mm!important;max-width:297mm!important;
     min-width:0!important;margin:0!important;padding:0!important;overflow:visible!important}
-  .toolbar,.overview,.progress,.lightbox{display:none!important}
+  .toolbar,.overview,.progress,.lightbox,.guides,.ui-restore,.g-legend{display:none!important}
   .zoomable{cursor:default}
   .zoomable img{transform:none!important}
   .app{display:block!important;min-height:0!important}
@@ -489,14 +527,25 @@ img{display:block;max-width:100%}
       <button class="btn ico" id="next" title="Next (→)">&#8250;</button>
     </div>
     <div class="tb-group">
-      <button class="btn on" id="mDeck" title="One slide at a time (S)">Slides</button>
+      <button class="btn on" id="mDeck" title="One page at a time (S)">Slides</button>
       <button class="btn" id="mScroll" title="Continuous scroll (S)">Scroll</button>
-      <button class="btn" id="mGrid" title="All slides (G)">Grid</button>
+      <button class="btn" id="mGrid" title="All pages (G)">Pages</button>
+    </div>
+    <div class="tb-group">
+      <button class="btn" id="mGuide" title="Alignment guides — off / full / 50% (A)">Guides</button>
+      <button class="btn" id="mHide" title="Hide this bar (H)">Hide bar</button>
     </div>
     <button class="btn pri" id="doPrint" title="Print / Save as PDF · A4 landscape (P)">Print · PDF</button>
   </div>
 
   <div class="progress" id="progress"></div>
+  <button class="ui-restore" id="uiRestore" title="Show the bar (H)">Show bar</button>
+  <div class="g-legend">
+    <b>ALIGNMENT</b> &middot; 120px sides &middot; 12 col &middot; 118px &middot; 24px gutters<br>
+    <b>ZONES</b> &middot; mark 88 &middot; <i>header 212</i> &middot; <i>body 254&ndash;930</i> &middot; footer 1008<br>
+    <b>TYPE</b> &middot; title 54 &middot; lead 25 &middot; body 19.5 &middot; label 13<br>
+    <b>KEYS</b> &middot; A guides &middot; H hide bar &middot; G pages &middot; S scroll
+  </div>
 
   <main class="deck" id="deck">
 
@@ -1130,8 +1179,9 @@ img{display:block;max-width:100%}
 
   function fit(){
     var vw=window.innerWidth, vh=window.innerHeight, k;
+    var bar = app.classList.contains('ui-off') ? 0 : 56;
     if(mode==='scroll') k=Math.min((vw-48)/1920, 1.05);
-    else k=Math.min((vw-48)/1920, (vh-56-40)/1080);
+    else k=Math.min((vw-48)/1920, (vh-bar-40)/1080);
     document.documentElement.style.setProperty('--k', Math.max(k,0.12));
   }
 
@@ -1159,6 +1209,31 @@ img{display:block;max-width:100%}
     ovOpen = (force===undefined) ? !ovOpen : force;
     document.getElementById('overview').classList.toggle('open',ovOpen);
     document.getElementById('mGrid').classList.toggle('on',ovOpen);
+  }
+
+  var GUIDE_HTML =
+    '<div class="cols"></div>'+
+    '<div class="vm" style="left:120px"></div><div class="vm" style="left:1799px"></div>'+
+    '<div class="cx"></div>'+
+    '<div class="hz" style="top:88px"></div>'+
+    '<div class="hz key" style="top:212px"></div>'+
+    '<div class="hz key" style="top:254px"></div>'+
+    '<div class="hz key" style="top:930px"></div>'+
+    '<div class="hz" style="top:1008px"></div>'+
+    '<div class="tag-g" style="left:124px;top:70px">mark base · 88</div>'+
+    '<div class="tag-g pink" style="left:124px;top:194px">header base · 212</div>'+
+    '<div class="tag-g pink" style="left:124px;top:236px">content top · 254</div>'+
+    '<div class="tag-g pink" style="left:124px;top:912px">content bottom · 930</div>'+
+    '<div class="tag-g" style="left:124px;top:990px">footer rule · 1008</div>'+
+    '<div class="tag-g" style="left:1620px;top:70px">right margin · 1800</div>'+
+'';
+
+  function buildGuides(){
+    slides.forEach(function(s){
+      var g=document.createElement('div');
+      g.className='guides'; g.innerHTML=GUIDE_HTML;
+      s.querySelector('.stage').appendChild(g);
+    });
   }
 
   function buildOverview(){
@@ -1258,6 +1333,26 @@ img{display:block;max-width:100%}
   document.getElementById('mDeck').onclick=function(){ toggleGrid(false); setMode('deck'); };
   document.getElementById('mScroll').onclick=function(){ toggleGrid(false); setMode('scroll'); };
   document.getElementById('mGrid').onclick=function(){ toggleGrid(); };
+
+  /* alignment guides: off → full → 50% → off */
+  var gState=0, gBtn=document.getElementById('mGuide');
+  function setGuides(v){
+    gState=(v+3)%3;
+    app.classList.toggle('g-on', gState>0);
+    app.classList.toggle('g-half', gState===2);
+    gBtn.classList.toggle('on', gState>0);
+    gBtn.textContent = gState===0 ? 'Guides' : (gState===1 ? 'Guides 100%' : 'Guides 50%');
+  }
+  gBtn.onclick=function(){ setGuides(gState+1); };
+
+  /* hide the bar while reviewing */
+  function setUI(off){
+    app.classList.toggle('ui-off',off);
+    document.getElementById('mHide').classList.toggle('on',off);
+    fit();
+  }
+  document.getElementById('mHide').onclick=function(){ setUI(true); };
+  document.getElementById('uiRestore').onclick=function(){ setUI(false); };
   document.getElementById('doPrint').onclick=printDeck;
 
   document.addEventListener('keydown',function(e){
@@ -1276,6 +1371,8 @@ img{display:block;max-width:100%}
     else if(k==='g'||k==='G'){ e.preventDefault(); toggleGrid(); }
     else if(k==='Escape'){ toggleGrid(false); }
     else if(k==='s'||k==='S'){ setMode(mode==='deck'?'scroll':'deck'); }
+    else if(k==='a'||k==='A'){ e.preventDefault(); setGuides(gState+1); }
+    else if(k==='h'||k==='H'){ e.preventDefault(); setUI(!app.classList.contains('ui-off')); }
     else if(k==='p'||k==='P'){ e.preventDefault(); printDeck(); }
   });
 
@@ -1299,7 +1396,7 @@ img{display:block;max-width:100%}
   });
 
   var h=parseInt((location.hash||'').replace('#',''),10);
-  fit(); buildOverview(); collectFigures(); show(isNaN(h)?0:h-1); preloadFonts();
+  fit(); buildGuides(); buildOverview(); collectFigures(); show(isNaN(h)?0:h-1); preloadFonts();
 })();
 </script>
 </body>

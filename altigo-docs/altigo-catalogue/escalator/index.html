@@ -245,12 +245,12 @@ img{display:block;max-width:100%}
 .title .dot{color:var(--red)}
 .rule{position:absolute;left:var(--m);top:198px;width:132px;height:4px;background:var(--red);
 }
-.hair{position:absolute;left:var(--m);right:var(--m);top:212px;height:1px;background:var(--rule)}
+.hair{display:none}
 .mark{position:absolute;right:var(--m);top:88px;width:224px;height:48px;background-position:right center}
 
 /* running footer — the same device on every page, set by the closing page */
-.foot{position:absolute;left:var(--m);right:var(--m);bottom:52px;padding-top:20px;
-  border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline}
+.foot{position:absolute;left:var(--m);right:var(--m);bottom:52px;display:flex;
+  justify-content:space-between;align-items:baseline}
 .foot span{font-family:var(--f-label);font-size:13px;font-weight:500;letter-spacing:.22em;
   text-transform:uppercase;color:var(--muted)}
 .foot b{font-family:var(--f-head);font-size:22px;font-weight:800;letter-spacing:.06em;
@@ -279,23 +279,21 @@ img{display:block;max-width:100%}
 /* rounded tag — the catalogue's small curved element */
 .tag{display:inline-block;font-family:var(--f-label);font-size:12.5px;font-weight:700;
   letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
-  border:1px solid var(--rule-2);padding:7px 16px}
+  border:1px solid var(--blue);padding:7px 16px}
 
 
 /* ── Dark pages (cover · range · contact) ──────────────────────────── */
 .stage.dark{color:#fff}
 .stage.dark .title{color:#fff}
-.stage.dark .hair{background:rgba(255,255,255,.26)}
+.stage.dark .hair{display:none}
 .stage.dark .lead{color:rgba(255,255,255,.88)}
 .stage.dark .lead b{color:#fff}
 .stage.dark .lab{color:rgba(255,255,255,.6)}
 .stage.dark .lab.red{color:#FF6A55}
-.stage.dark .foot{border-top-color:rgba(255,255,255,.26)}
+.stage.dark .foot{border-top:0;padding-top:0}
 .stage.dark .foot span{color:rgba(255,255,255,.7)}
 .stage.dark .foot b{color:#fff}
-.gridlines{position:absolute;inset:0;pointer-events:none;background-image:
-  repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px),
-  repeating-linear-gradient(0deg,  rgba(255,255,255,.05) 0 1px, transparent 1px 80px)}
+.gridlines{display:none}
 .blue-bg{background:
   radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),
   linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)}
@@ -316,12 +314,12 @@ img{display:block;max-width:100%}
   font-size:172px;font-weight:800;line-height:.86;letter-spacing:-.038em;color:#fff}
 .cover-sub{position:absolute;left:var(--m);top:706px}
 .cover-sub span{font-family:var(--f-head);font-size:32px;font-weight:800;letter-spacing:.14em;color:#fff}
-.cover-foot{position:absolute;left:var(--m);right:var(--m);bottom:64px;padding-top:24px;
-  border-top:1px solid rgba(255,255,255,.28);display:grid;
-  grid-template-columns:1fr 1.5fr 1.4fr;gap:56px}
+.cover-foot{position:absolute;left:var(--m);bottom:64px;width:1254px;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:24px}
 .cover-foot dt{font-family:var(--f-label);font-size:11px;font-weight:500;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.52);margin-bottom:9px}
-.cover-foot dd{font-family:var(--f-label);font-size:14.5px;font-weight:500;line-height:1.55;color:#fff}
+.cover-foot dd{font-family:var(--f-label);font-size:14.5px;font-weight:600;line-height:1.65;
+  color:#fff;text-transform:uppercase;letter-spacing:.02em}
 
 /* ── 02 Company introduction ───────────────────────────────────────── */
 /* 9 columns of text, then the figure from column 10 to the page edge */
@@ -345,7 +343,7 @@ img{display:block;max-width:100%}
 .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .fcol{display:flex;flex-direction:column;padding-top:20px;border-top:2px solid var(--blue)}
 .fcol .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
-.fcol .icon{width:60px;height:60px;border:1.5px solid var(--rule-2);
+.fcol .icon{width:60px;height:60px;border:1.5px solid var(--blue);
   display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .fcol .icon svg{width:29px;height:29px;stroke:var(--blue);fill:none;stroke-width:1.5;
   stroke-linecap:round;stroke-linejoin:round}
@@ -370,7 +368,7 @@ img{display:block;max-width:100%}
 .range{display:flex;flex-direction:column;height:100%}
 .rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .rcol{display:flex;flex-direction:column}
-.rcol .tag{color:#fff;border-color:rgba(255,255,255,.34);align-self:flex-start}
+.rcol .tag{color:rgba(255,255,255,.72);border:0;padding:0;align-self:flex-start}
 .rcol h3{font-family:var(--f-head);font-size:30px;font-weight:800;color:#fff;
   letter-spacing:-.024em;margin:14px 0 10px}
 .rcol > p{font-size:17.5px;line-height:1.48;color:rgba(255,255,255,.72);margin-bottom:10px}
@@ -386,11 +384,11 @@ img{display:block;max-width:100%}
   font-family:var(--f-label);font-size:11.5px;font-weight:500;letter-spacing:.1em;
   color:rgba(255,255,255,.5)}
 .rrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
-  padding:8px 0;border-top:1px solid rgba(255,255,255,.18)}
+  padding:7px 0}
 .rrow dt{font-size:17px;color:rgba(255,255,255,.6)}
 .rrow dd{font-family:var(--f-label);font-size:14px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:#fff;text-align:right}
-.rband{margin-top:30px;padding-top:24px;border-top:2px solid rgba(255,255,255,.36);
+.rband{margin-top:34px;padding-top:0;
   display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
 .rband h5{font-family:var(--f-head);font-size:21px;font-weight:700;color:#fff;margin-bottom:7px}
 .rband p{font-size:16.5px;line-height:1.44;color:rgba(255,255,255,.7)}
@@ -401,7 +399,7 @@ img{display:block;max-width:100%}
   font-family:var(--f-label);font-size:13px;font-weight:700;letter-spacing:.22em;
   text-transform:uppercase;color:var(--muted)}
 .ptable th:first-child{color:var(--blue)}
-.ptable td{padding:21px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:21px}
+.ptable td{padding:19px 0;vertical-align:baseline;font-size:21px}
 .ptable td + td, .ptable th + th{padding-left:56px}
 .ptable .part{font-family:var(--f-head);font-weight:700;font-size:24px;color:var(--ink);width:28%}
 .ptable .std{width:34%;color:var(--body)}
@@ -444,8 +442,8 @@ img{display:block;max-width:100%}
   padding-bottom:15px;border-bottom:2px solid var(--blue);margin-bottom:4px}
 .dhead h3{font-family:var(--f-head);font-size:29px;font-weight:700;color:var(--ink)}
 .dlist{list-style:none}
-.dlist li{display:flex;align-items:baseline;gap:16px;padding:11px 0;
-  border-bottom:1px solid var(--rule);font-size:19.5px;color:var(--body)}
+.dlist li{display:flex;align-items:baseline;gap:16px;padding:10px 0;
+  font-size:19.5px;color:var(--body)}
 .dlist li span{font-family:var(--f-label);font-size:12px;font-weight:700;color:var(--blue-pale);
   min-width:18px;letter-spacing:.06em}
 .dlist li em{color:var(--muted);font-size:17px}
@@ -473,7 +471,7 @@ img{display:block;max-width:100%}
 .fig-cs  {grid-column:1;grid-row:2}
 .fig-plan{grid-column:2;grid-row:2}
 .fig{display:flex;flex-direction:column;min-height:0}
-.fig > .lab{padding-bottom:11px;border-bottom:1px solid var(--rule);margin-bottom:10px}
+.fig > .lab{margin-bottom:14px}
 .fig svg{flex:1;width:100%;height:100%;min-height:0}
 .dwg .st{stroke:var(--blue);fill:none;stroke-width:2}
 .dwg .fill{fill:#fff;stroke:var(--blue);stroke-width:2}
@@ -486,7 +484,7 @@ img{display:block;max-width:100%}
 .dwg text.v{fill:var(--red);font-weight:700}
 .dwg text.sym{font-size:21px;font-weight:700;fill:var(--blue)}
 .keytab{list-style:none;font-size:17px}
-.keytab li{display:flex;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule)}
+.keytab li{display:flex;gap:16px;align-items:baseline;padding:11px 0}
 .keytab b{font-family:var(--f-label);font-weight:700;color:var(--blue);min-width:24px;font-size:16px}
 .keytab span{color:var(--body);flex:1}
 .keytab em{font-family:var(--f-label);font-size:14px;font-weight:600;color:var(--red);white-space:nowrap}
@@ -632,8 +630,8 @@ img{display:block;max-width:100%}
       <div class="cover-sub"><span>ESCALATOR</span></div>
       <dl class="cover-foot">
         <div><dt>Company</dt><dd>Altigo Sdn. Bhd.<br>Reg. 562238-H</dd></div>
-        <div><dt>Address</dt><dd>No. 54-3-3, Wisma Sri Mata, Jalan Van Praagh,<br>11600 Penang, Malaysia</dd></div>
-        <div><dt>Contact</dt><dd>+604-283 7005 / +604-283 6772<br>altigo@akkalliance.com · www.akkalliance.com</dd></div>
+        <div><dt>Contact</dt><dd>+604-283 7005<br>+604-283 6772</dd></div>
+        <div><dt>Digital</dt><dd>www.akkalliance.com<br>altigo@akkalliance.com</dd></div>
       </dl>
       <div class="corner"></div>
     </div>

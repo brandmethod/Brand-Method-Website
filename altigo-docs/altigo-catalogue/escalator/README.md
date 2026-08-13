@@ -121,9 +121,15 @@ the column dividers on the range page, the key-figure and process bands, the
 chapter figures and the dimension-key column. Horizontal rules that carry real
 structure — the header hairline, the footer, table and list rows — stay.
 
-**Running footer.** Every page from 02 to 11 carries the same footer the closing
-page sets: a hairline, the catalogue line on the left, the page number on the
-right. It runs the full measure on every page.
+**No pale rules.** There is no white or light-grey line anywhere in the book.
+The header hairline, the footer rule, the table, list and dimension-key rules,
+the grid texture on the dark pages and the pale outlines on tags and icon frames
+are all gone; spacing carries the structure instead. The only rules left are
+brand marks — the red rule under each title and the blue rules above the column
+and band headers.
+
+**Running footer.** Every page from 02 to 11 carries the same footer: the
+catalogue line on the left, the page number on the right, no rule above it.
 
 **Rhythm and scale.** Twelve pages, dark on 01, 05, 09 and 12 — one dark page
 every four, so the deck never runs more than three white pages together. Page 09

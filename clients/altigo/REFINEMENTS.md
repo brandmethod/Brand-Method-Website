@@ -1,6 +1,6 @@
 # ALTIGO Company Profile 2026 — Refinement Pass
 
-Source: `ALTIGO_Company_Profile_2026.html` · 42 pages (was 43) · 2.35 MB (was 2.96 MB)
+Source: `ALTIGO_Company_Profile_2026.html` · 41 pages (was 43) · 2.35 MB (was 2.96 MB)
 
 ## Applied
 
@@ -43,6 +43,28 @@ Source: `ALTIGO_Company_Profile_2026.html` · 42 pages (was 43) · 2.35 MB (was 
 - Removed dead CSS (`.tile`, `.band`, `.fcard`, `.cover-img`, `.emblem`, empty spec-table
   comment). Scrubbed two "ported from OWND" comments referencing another client.
 - Table-of-contents entries are now real `<button>`s — previously click-only `<div>`s.
+
+### Iconography (client-directed)
+- Custom inline-SVG icon set drawn in the deck's line style (1.6 stroke, round caps),
+  inheriting the red/blue alternation through `currentColor` so no colour rules changed.
+- Numerals replaced by icons on Target Market (8), The ALTIGO Difference (4), Our Value (6),
+  Our Products (5), Service Scope (4), Maintenance Programme (4), Our Activities (6) and
+  Product Journey (7). Certified Performance Range gained 6 spec icons.
+- Heading marks beside Our Objective (burst), Our Aim (bullseye) and Our Value (diamond).
+- Numerals kept where they carry real sequence and the client asked for them: Our Objective,
+  Our Achievements, and the chapter dividers.
+- Icon boxes run larger than the optical target because the drawn glyph fills roughly 70%
+  of its viewBox — 56px boxes on cards, 48px on the journey, 54px on the spec cells.
+
+### Later client edits
+- Our Objective restored to the client's source wording (my earlier reframing reverted).
+- Product Journey stages now carry a phase-of-life tag, pre construction through later life,
+  so the row reads as a timeline rather than a list.
+- ALTIGO x STADE page removed; chapter 05 is now "Activities". Its one remaining page was
+  moved from the Full-only tier to Standard, otherwise chapter 05 would have been a divider
+  with nothing behind it in the short edition.
+- Our Products columns rebuilt on a shared grid. They were independent flex stacks, so a
+  longer caption shrank that column's image and the row lost its baseline.
 
 ## Needs client input before this ships
 

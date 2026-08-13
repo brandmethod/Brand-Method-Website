@@ -115,7 +115,7 @@ ul{list-style:none}
 .slide.dark{background:var(--blue)}
 .slide.dark .kicker{color:#FF8A78}
 .slide.dark .h1{color:#fff}
-.slide.dark .headrule{background:rgba(255,255,255,.22)}
+.slide.dark .headrule{background:transparent}   /* no white rules on the dark pages */
 .slide.dark .folio{color:rgba(255,255,255,.85)}
 .slide.dark .foliolabel{color:rgba(255,255,255,.45)}
 
@@ -230,9 +230,6 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 .cover .wash{position:absolute;inset:0;background:
   linear-gradient(180deg,rgba(2,25,88,.72) 0%,rgba(2,40,140,.55) 38%,rgba(2,30,105,.92) 100%),
   linear-gradient(90deg,rgba(2,25,88,.88) 0%,rgba(2,25,88,.12) 62%)}
-.cover .netting{position:absolute;inset:0;opacity:.16;
-  background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
-  background-size:148px 120px;background-position:88px 72px}
 .cover .logo{position:absolute;left:88px;top:72px;width:262px}
 .cover .yr{position:absolute;right:88px;top:74px;font-family:var(--edge);font-size:18px;letter-spacing:.3em;color:#fff}
 .cover h1{
@@ -247,7 +244,6 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 .cover .meta{position:absolute;left:88px;bottom:112px;display:grid;grid-template-columns:repeat(3,412px);gap:32px}
 .cover .meta dt{font-family:var(--ui);font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:9px}
 .cover .meta dd{font-family:var(--edge);font-size:15px;letter-spacing:.06em;color:#fff;line-height:1.5}
-.cover .rulewide{position:absolute;left:88px;right:88px;bottom:246px;height:1px;background:rgba(255,255,255,.26)}
 .corner{position:absolute;right:0;bottom:0;width:330px;height:290px;overflow:hidden;pointer-events:none}
 .corner i{position:absolute;display:block;height:390px;width:15px;transform:rotate(41deg);transform-origin:bottom left}
 .corner i.r{background:var(--red);left:150px;bottom:-40px}
@@ -536,7 +532,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
     <div class="canvas">
       <div class="bg"><img src="assets/img/cover-bg.jpg" alt="Altigo elevator shaft, looking up"></div>
       <div class="wash"></div>
-      <div class="netting"></div>
       <img class="logo" src="assets/img/logo-white.png" alt="ALTIGO">
       <div class="yr">2026</div>
 
@@ -544,7 +539,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <h1>PRODUCT<br>CATALOGUE</h1>
       <div class="prod">Passenger Elevator</div>
 
-      <div class="rulewide"></div>
       <dl class="meta">
         <div><dt>Company</dt><dd>ALTIGO SDN. BHD.<br>REG. 562238-H</dd></div>
         <div><dt>Contact</dt><dd>+604-283 7005<br>+604-283 6772</dd></div>
@@ -626,10 +620,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div style="position:absolute;inset:0;background:
         radial-gradient(1200px 700px at 78% 10%,#1B57E8 0%,transparent 62%),
         linear-gradient(160deg,#0242CA 0%,#012A8C 100%)"></div>
-      <div style="position:absolute;inset:0;opacity:.13;
-        background-image:linear-gradient(rgba(255,255,255,.55) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.55) 1px,transparent 1px);
-        background-size:148px 120px;background-position:88px 72px"></div>
-
       <header class="pagehead">
         <p class="kicker">THE RANGE · DESIGN</p>
         <h2 class="h1">PASSENGER ELEVATORS DESIGN</h2>
@@ -1504,10 +1494,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div style="position:absolute;inset:0;background:
         radial-gradient(1100px 760px at 16% 82%,#2A63F0 0%,transparent 60%),
         linear-gradient(150deg,#0242CA 0%,#012160 100%)"></div>
-      <div style="position:absolute;inset:0;opacity:.12;
-        background-image:linear-gradient(rgba(255,255,255,.6) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.6) 1px,transparent 1px);
-        background-size:148px 120px;background-position:88px 72px"></div>
-
       <img src="assets/img/logo-white.png" alt="ALTIGO" style="position:absolute;left:88px;top:72px;width:250px">
       <h2 class="h1" style="position:absolute;left:88px;top:170px;font-size:76px;color:#fff;margin:0">CONTACT US</h2>
       <div style="position:absolute;left:88px;top:282px;width:96px;height:4px;background:var(--red)"></div>
@@ -1536,7 +1522,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         </div>
       </dl>
 
-      <div style="position:absolute;left:88px;right:88px;bottom:118px;height:1px;background:rgba(255,255,255,.26)"></div>
       <p style="position:absolute;left:88px;bottom:72px;font-family:var(--ui);font-weight:600;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)">
         Altigo · Product Catalogue · Malaysia 2026</p>
       <p style="position:absolute;right:88px;bottom:72px;font-family:var(--edge);font-size:18px;letter-spacing:.3em;color:#fff">2026</p>

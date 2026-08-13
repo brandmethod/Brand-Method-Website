@@ -104,10 +104,11 @@ red, `#0B0D12` ink, plus grey steps for hairlines and secondary text.
 edges.
 
 **Lines** — the original's stacked rules, boxed-in-boxed card borders and the
-repeated diagonal corner stripe on interior pages were removed. What remains:
-one hairline under each page header with a short red tab, one 2 px rule under
-each card title, and the red/blue diagonal only on the cover and the back page
-where it belongs.
+repeated diagonal corner stripe on interior pages were removed, and so was every
+white rule and grid overlay on the dark pages. What remains: on light pages, one
+grey hairline under the page header with a short red tab and one hairline under
+each card title; on dark pages, the red tab alone. The red/blue diagonal appears
+only on the cover and the back page.
 
 ---
 

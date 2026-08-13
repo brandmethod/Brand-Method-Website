@@ -1030,7 +1030,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="kicker">01 &nbsp;·&nbsp; <b>Brand Identity</b></span>
       <span class="rail-r">People Behind the Brand</span>
     </header>
-    <div class="main">
+    <div class="main" style="justify-content:center">
       <div class="title anim" style="max-width:560px">
         <div class="eye"><span class="tick"></span><span class="lbl rd">04 &nbsp;·&nbsp; Leadership</span></div>
         <h1 class="d3 wt">People Behind<br>the <span style="color:#7FA8FF">Brand</span></h1>
@@ -1039,12 +1039,14 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
         Two generations of leadership, one standard. The company was founded on
         engineering discipline and is carried forward with the same conviction.
       </p>
-      <div class="anim" style="position:absolute;left:0;bottom:0;display:flex;gap:40px;z-index:6">
-        <div class="ppl-card">
+      <div class="ppl-tag" style="left:845px">
+        <div class="ppl-plate anim">
           <span class="lbl rd">Founder &amp; Managing Director</span>
           <h3 class="d5 wt">Mr. Ang Kam Keong</h3>
         </div>
-        <div class="ppl-card">
+      </div>
+      <div class="ppl-tag" style="left:1387px">
+        <div class="ppl-plate anim">
           <span class="lbl rd">Executive Director</span>
           <h3 class="d5 wt">Mr. Ang Tse Wei, Melvin</h3>
         </div>
@@ -1058,8 +1060,11 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
   </div>
 </section>
 <style>
-.ppl-card{display:flex;flex-direction:column;gap:9px;padding:22px 26px;min-width:300px;
-  background:rgba(10,13,44,.72);backdrop-filter:blur(10px);border-left:3px solid var(--red)}
+.ppl-tag{position:absolute;bottom:0;transform:translateX(-50%);z-index:6}
+.ppl-plate{display:flex;flex-direction:column;align-items:center;gap:10px;
+  padding:19px 32px 21px;white-space:nowrap;text-align:center;border-top:3px solid var(--red);
+  background:rgba(10,13,44,.74);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+
 </style>
 
 <!-- ═══════════════════════ COMPANY CULTURE ═══════════════════════ -->

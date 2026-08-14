@@ -55,9 +55,7 @@ img{display:block;max-width:100%}
 .main[style*="align-items:center"] > img{align-self:center}
 
 /* ---------- deck shell · stage / scaler / track (universal deck-nav contract) ---------- */
-:root{--navh:104px}
-.stage{position:fixed;left:0;right:0;top:0;bottom:var(--navh);background:#101012;overflow:hidden}
-html.thumbmode .stage{bottom:0}
+.stage{position:fixed;inset:0;background:#101012;overflow:hidden}
 .scaler{position:absolute;left:0;top:0;transform-origin:0 0;width:var(--W);height:var(--H);overflow:hidden}
 .track{display:flex;will-change:transform;transition:transform .52s cubic-bezier(.65,.02,.22,1)}
 .slide{
@@ -190,11 +188,11 @@ table.spec td:last-child{text-align:right;font-variant-numeric:tabular-nums;font
   --nav-fg:rgba(255,255,255,.72);
   --grad:linear-gradient(135deg,#C25910,#F17A27);
 }
-.deck-nav{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:400;
-  display:flex;align-items:center;gap:14px;padding:10px 14px;max-width:calc(100vw - 48px);
-  background:rgba(16,16,19,.86);backdrop-filter:blur(26px) saturate(1.5);-webkit-backdrop-filter:blur(26px) saturate(1.5);
-  box-shadow:0 18px 50px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.06);
-  border:1px solid rgba(255,255,255,.09);border-radius:16px;user-select:none}
+.deck-nav{position:fixed;left:0;top:0;width:100%;z-index:400;
+  display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 26px;
+  background:rgba(16,16,19,.94);backdrop-filter:blur(26px) saturate(1.5);-webkit-backdrop-filter:blur(26px) saturate(1.5);
+  box-shadow:0 -1px 0 rgba(255,255,255,.07) inset;
+  border:0;border-radius:0;user-select:none;box-sizing:border-box}
 .dn-arr{flex:none;width:36px;height:36px;border-radius:10px;border:none;background:rgba(255,255,255,.07);
   color:rgba(255,255,255,.8);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;
   transition:background .16s,color .16s;line-height:1;padding:0}
@@ -242,7 +240,7 @@ table.spec td:last-child{text-align:right;font-variant-numeric:tabular-nums;font
 body.panning{cursor:grabbing}
 
 /* ---------- filmstrip ---------- */
-.filmstrip{position:fixed;left:0;right:0;bottom:var(--navh);z-index:380;background:rgba(14,14,17,.98);
+.filmstrip{position:fixed;left:0;right:0;bottom:var(--navb,76px);z-index:380;background:rgba(14,14,17,.98);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--nav-line);
   transform:translateY(calc(100% + 96px));transition:transform .3s cubic-bezier(.4,0,.2,1)}
 .filmstrip.open{transform:translateY(0)}
@@ -2257,24 +2255,34 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
   var _ox=0,_oy=0,_bs=1, Z=1,PX=0,PY=0, ZMIN=1,ZMAX=4;
   function vpW(){return stageEl.clientWidth||window.innerWidth;}
   function vpH(){return stageEl.clientHeight||window.innerHeight;}
-  function clampPan(){var vw=vpW(),vh=vpH(),dw=Z*_bs*W,dh=Z*_bs*H,baseX=Z*_ox,baseY=Z*_oy,
+  function clampPan(){var vw=vpW(),vh=vpH()-NAVH,dw=Z*_bs*W,dh=Z*_bs*H,baseX=Z*_ox,baseY=Z*_oy,
     maxX=-baseX,minX=vw-dw-baseX,maxY=-baseY,minY=vh-dh-baseY;
     if(minX>maxX){PX=(minX+maxX)/2;}else{PX=Math.min(maxX,Math.max(minX,PX));}
     if(minY>maxY){PY=(minY+maxY)/2;}else{PY=Math.min(maxY,Math.max(minY,PY));}}
   function applyView(){
     if(window.matchMedia&&window.matchMedia('print').matches)return;
-    if(Z<=1){Z=1;PX=0;PY=0;}
-    clampPan();
+    if(Z<=1){Z=1;PX=0;PY=0;}else{clampPan();}
     scaler.style.transform='translate('+(PX+Z*_ox)+'px,'+(PY+Z*_oy)+'px) scale('+(Z*_bs)+')';
     updateZoomUI();
   }
-  function fit(){var vw=vpW(),vh=vpH(),s=Math.min(vw/W,vh/H);_bs=s;_ox=(vw-W*s)/2;_oy=(vh-H*s)/2;applyView();}
+  var NAVH=58;
+  function measureNav(){if(deckNav){var r=deckNav.getBoundingClientRect();if(r.height>10)NAVH=r.height;}return NAVH;}
+  function seatNav(){
+    if(!deckNav)return;
+    var vh=vpH(),dw=W*_bs,top=_oy+H*_bs;
+    deckNav.style.left=Math.round(_ox)+'px';
+    deckNav.style.width=Math.round(dw)+'px';
+    deckNav.style.top=Math.round(top)+'px';
+    document.documentElement.style.setProperty('--navb',Math.round(vh-top)+'px');
+  }
+  function fit(){var vw=vpW(),vh=vpH(),nh=measureNav(),
+    s=Math.min(vw/W,(vh-nh)/H);_bs=s;_ox=(vw-W*s)/2;_oy=vh-nh-H*s;applyView();seatNav();}
   window.addEventListener('resize',function(){fit();if(typeof drawGuides==='function')drawGuides();});fit();
   function resetZoom(){Z=1;PX=0;PY=0;applyView();}
   function zoomTo(z2,ax,ay){z2=Math.min(ZMAX,Math.max(ZMIN,z2));if(z2===Z)return;
-    if(ax==null){ax=vpW()/2;ay=vpH()/2;}
+    if(ax==null){ax=vpW()/2;ay=(vpH()-NAVH)/2;}
     PX=ax-z2*(ax-PX)/Z;PY=ay-z2*(ay-PY)/Z;Z=z2;applyView();}
-  function zoomStep(m){zoomTo(Z*m,vpW()/2,vpH()/2);}
+  function zoomStep(m){zoomTo(Z*m,vpW()/2,(vpH()-NAVH)/2);}
   function updateZoomUI(){
     var pct=document.getElementById('zPct');if(pct)pct.textContent=Math.round(Z*100)+'%';
     var zo=document.getElementById('zOut'),zi=document.getElementById('zIn');

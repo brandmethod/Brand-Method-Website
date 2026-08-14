@@ -47,7 +47,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:#26262a;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+html,body{background:#101012;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 body{font-family:'IN',system-ui,sans-serif;counter-reset:pg}
 img{display:block;max-width:100%}
 /* an img placed directly in a flex column must not be stretched across the cross axis */
@@ -55,7 +55,9 @@ img{display:block;max-width:100%}
 .main[style*="align-items:center"] > img{align-self:center}
 
 /* ---------- deck shell · stage / scaler / track (universal deck-nav contract) ---------- */
-.stage{position:fixed;inset:0;background:#101012;overflow:hidden}
+:root{--navh:104px}
+.stage{position:fixed;left:0;right:0;top:0;bottom:var(--navh);background:#101012;overflow:hidden}
+html.thumbmode .stage{bottom:0}
 .scaler{position:absolute;left:0;top:0;transform-origin:0 0;width:var(--W);height:var(--H);overflow:hidden}
 .track{display:flex;will-change:transform;transition:transform .52s cubic-bezier(.65,.02,.22,1)}
 .slide{
@@ -240,7 +242,7 @@ table.spec td:last-child{text-align:right;font-variant-numeric:tabular-nums;font
 body.panning{cursor:grabbing}
 
 /* ---------- filmstrip ---------- */
-.filmstrip{position:fixed;left:0;right:0;bottom:76px;z-index:380;background:rgba(14,14,17,.98);
+.filmstrip{position:fixed;left:0;right:0;bottom:var(--navh);z-index:380;background:rgba(14,14,17,.98);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--nav-line);
   transform:translateY(calc(100% + 96px));transition:transform .3s cubic-bezier(.4,0,.2,1)}
 .filmstrip.open{transform:translateY(0)}
@@ -2262,7 +2264,9 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
 
   /* ── zoom + pan, single owner of scaler.transform ── */
   var _ox=0,_oy=0,_bs=1, Z=1,PX=0,PY=0, ZMIN=1,ZMAX=4;
-  function clampPan(){var vw=window.innerWidth,vh=window.innerHeight,dw=Z*_bs*W,dh=Z*_bs*H,baseX=Z*_ox,baseY=Z*_oy,
+  function vpW(){return stageEl.clientWidth||window.innerWidth;}
+  function vpH(){return stageEl.clientHeight||window.innerHeight;}
+  function clampPan(){var vw=vpW(),vh=vpH(),dw=Z*_bs*W,dh=Z*_bs*H,baseX=Z*_ox,baseY=Z*_oy,
     maxX=-baseX,minX=vw-dw-baseX,maxY=-baseY,minY=vh-dh-baseY;
     if(minX>maxX){PX=(minX+maxX)/2;}else{PX=Math.min(maxX,Math.max(minX,PX));}
     if(minY>maxY){PY=(minY+maxY)/2;}else{PY=Math.min(maxY,Math.max(minY,PY));}}
@@ -2273,13 +2277,13 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
     scaler.style.transform='translate('+(PX+Z*_ox)+'px,'+(PY+Z*_oy)+'px) scale('+(Z*_bs)+')';
     updateZoomUI();
   }
-  function fit(){var vw=window.innerWidth,vh=window.innerHeight,s=Math.min(vw/W,vh/H);_bs=s;_ox=(vw-W*s)/2;_oy=(vh-H*s)/2;applyView();}
+  function fit(){var vw=vpW(),vh=vpH(),s=Math.min(vw/W,vh/H);_bs=s;_ox=(vw-W*s)/2;_oy=(vh-H*s)/2;applyView();}
   window.addEventListener('resize',function(){fit();if(typeof drawGuides==='function')drawGuides();});fit();
   function resetZoom(){Z=1;PX=0;PY=0;applyView();}
   function zoomTo(z2,ax,ay){z2=Math.min(ZMAX,Math.max(ZMIN,z2));if(z2===Z)return;
-    if(ax==null){ax=window.innerWidth/2;ay=window.innerHeight/2;}
+    if(ax==null){ax=vpW()/2;ay=vpH()/2;}
     PX=ax-z2*(ax-PX)/Z;PY=ay-z2*(ay-PY)/Z;Z=z2;applyView();}
-  function zoomStep(m){zoomTo(Z*m,window.innerWidth/2,window.innerHeight/2);}
+  function zoomStep(m){zoomTo(Z*m,vpW()/2,vpH()/2);}
   function updateZoomUI(){
     var pct=document.getElementById('zPct');if(pct)pct.textContent=Math.round(Z*100)+'%';
     var zo=document.getElementById('zOut'),zi=document.getElementById('zIn');

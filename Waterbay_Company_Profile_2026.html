@@ -37,8 +37,8 @@
   --bone-2:#E9E9E5;
   --line-d:rgba(255,255,255,.16);
   --line-l:rgba(11,11,12,.14);
-  --dim-d:rgba(255,255,255,.62);
-  --dim-l:rgba(11,11,12,.58);
+  --dim-d:rgba(255,255,255,.90);
+  --dim-l:rgba(11,11,12,.88);
   --W:1920px; --H:1080px;
   --mx:112px;         /* side margin */
   --mt:74px;          /* top margin  */
@@ -74,7 +74,7 @@ img{display:block;max-width:100%}
 .t-bone{background:var(--bone)}
 .t-orange{background:var(--orange);color:#fff}
 .t-ink .dim,.t-carbon .dim{color:var(--dim-d)}
-.t-orange .dim{color:rgba(255,255,255,.82)}
+.t-orange .dim{color:rgba(255,255,255,.95)}
 .dim{color:var(--dim-l)}
 
 /* ---------- rails ---------- */
@@ -100,10 +100,11 @@ img{display:block;max-width:100%}
 .d5{font-family:'CG';font-weight:400;font-size:33px;line-height:1.2;letter-spacing:-.012em}
 .d6{font-family:'CG';font-weight:400;font-size:26px;line-height:1.26;letter-spacing:-.008em}
 .lead{font-family:'IN';font-weight:300;font-size:25px;line-height:1.56;letter-spacing:-.004em;text-wrap:pretty}
-.body{font-family:'IN';font-weight:400;font-size:20px;line-height:1.66;letter-spacing:.002em;text-wrap:pretty}
+.body{font-family:'IN';font-weight:400;font-size:19px;line-height:1.62;letter-spacing:.002em;text-wrap:pretty}
 .small{font-family:'IN';font-weight:400;font-size:17px;line-height:1.62}
 .micro{font-family:'IN';font-weight:500;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase}
-.lbl{font-family:'AX';font-weight:600;font-size:15px;letter-spacing:.16em;text-transform:uppercase}
+.lbl{font-family:'AX';font-weight:700;font-size:20px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--orange)}
 .or{color:var(--orange)}
 .gy{color:var(--grey)}
 .wt{color:#fff}
@@ -126,7 +127,7 @@ strong,b{font-weight:600}
 .row{display:flex}
 .col{display:flex;flex-direction:column}
 .between{justify-content:space-between}
-.gap-s{gap:14px}.gap-m{gap:26px}.gap-l{gap:44px}
+.gap-s{gap:9px}.gap-m{gap:26px}.gap-l{gap:44px}
 .mt-a{margin-top:auto}
 .cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .veil{position:absolute;inset:0;z-index:1}
@@ -359,7 +360,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       </div>
       <div class="row anim" style="gap:78px;align-items:flex-end">
         <div class="col gap-s">
-          <span class="lbl or" style="font-size:18px;letter-spacing:.14em">Waterbay HQ</span>
+          <span class="lbl">Waterbay HQ</span>
           <span class="body dim" style="font-size:16px;line-height:1.55">16, Entrepreneur Park, Jalan Perusahaan 10<br>13600 Perai, Pulau Pinang, Malaysia</span>
         </div>
       </div>
@@ -506,7 +507,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
         </div>
         <div class="row anim" style="gap:60px;margin-top:34px">
           <div class="col gap-s" style="flex:1">
-            <span class="lbl" style="font-size:18px">Company Introduction</span>
+            <span class="lbl">Company Introduction</span>
             <p class="body dim" style="font-size:18px">
               Waterbay Sdn Bhd is a Malaysian dental equipment manufacturer founded in 2010.
               We design and build systems that improve mobility, efficiency and comfort in
@@ -515,7 +516,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
             </p>
           </div>
           <div class="col gap-s" style="flex:1">
-            <span class="lbl" style="font-size:18px">What We Do</span>
+            <span class="lbl">What We Do</span>
             <p class="body dim" style="font-size:18px">
               We manufacture portable dental equipment that extends where treatment can take
               place. Clinics and institutions use our systems to deliver care with greater
@@ -963,7 +964,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
         <div class="title anim">
           <div class="lbl or" style="margin-bottom:18px">The tagline</div>
           <h1 class="d2">Effortless Mobility,<br>Exceptional Care</h1>
-          <p class="lead" style="margin-top:24px;max-width:880px;color:rgba(255,255,255,.72)">
+          <p class="lead" style="margin-top:24px;max-width:880px;color:rgba(255,255,255,.90)">
             Seamless mobility without surrendering clinical quality, so a practitioner can
             work with the same confidence in any environment.
           </p>
@@ -2031,7 +2032,7 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
         <div class="cr cr-x">
           <div class="lbl" style="color:#fff;opacity:.85">What this means for a buyer</div>
           <p class="d5 wt" style="margin-top:14px">Every claim in this profile can be traced to a certificate held on file.</p>
-          <p class="small" style="color:rgba(255,255,255,.86);margin-top:14px">Full copies are supplied with any tender submission or distributor agreement on request.</p>
+          <p class="small" style="color:rgba(255,255,255,.95);margin-top:14px">Full copies are supplied with any tender submission or distributor agreement on request.</p>
         </div>
       </div>
     </div>

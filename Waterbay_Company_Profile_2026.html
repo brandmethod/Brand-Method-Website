@@ -133,12 +133,15 @@ strong,b{font-weight:600}
 .z2{position:relative;z-index:2}
 
 /* ---------- section divider ---------- */
-.dvl{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 64px;list-style:none;align-content:end}
-.dvl li{display:grid;grid-template-columns:30px 1fr;gap:16px;align-items:baseline}
-.dvl li span{font-family:'AX';font-weight:600;font-size:18px;letter-spacing:.14em;color:var(--orange)}
-.dvl li b{display:block;font-family:'IN';font-weight:500;font-size:20px;line-height:1.3;color:#fff}
-.dvl li i{display:block;font-style:normal;font-family:'IN';font-weight:300;font-size:16.5px;line-height:1.4;
-  color:rgba(255,255,255,.56);margin-top:3px}
+.dvfoot{display:flex;align-items:flex-end;justify-content:space-between;gap:90px}
+.dvl{list-style:none;flex:1;min-width:0;max-width:880px}
+.dvl li{display:grid;grid-template-columns:46px 1fr;gap:18px;align-items:baseline;padding:15px 0;
+  border-bottom:1px solid rgba(255,255,255,.17)}
+.dvl li:first-child{border-top:1px solid rgba(255,255,255,.17)}
+.dvl li span{font-family:'AX';font-weight:700;font-size:23px;letter-spacing:.08em;color:var(--orange)}
+.dvl li b{font-family:'IN';font-weight:500;font-size:23px;line-height:1.3;color:#fff}
+.dvn{flex:none;font-family:'CG';font-weight:400;font-size:216px;line-height:.78;letter-spacing:-.05em;
+  color:transparent;-webkit-text-stroke:2.2px rgba(255,255,255,.5);margin-bottom:-14px}
 
 /* ---------- cards & lists ---------- */
 .pill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-l);border-radius:999px;
@@ -482,10 +485,13 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
     <header class="rail"><span class="kicker"><i>Chapter 01</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Company Snapshot</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Company<br>Snapshot</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Company Introduction</b><i>Who we are and what we make</i></div></li>
-        <li><span>b</span><div><b>Markets Served</b><i>Where the equipment is deployed today</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Company Introduction</b></li>
+          <li><span>b</span><b>Markets Served</b></li>
+        </ul>
+        <div class="dvn">01</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>
@@ -595,13 +601,16 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
     <header class="rail"><span class="kicker"><i>Chapter 02</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Company Overview</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Company<br>Overview</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Company History</b><i>2010 to 2026, step by step</i></div></li>
-        <li><span>b</span><div><b>Vision and Mission</b><i>What we are here to change</i></div></li>
-        <li><span>c</span><div><b>Leadership and Founder Story</b><i>Azhan Mohd, Founder and Chief Executive</i></div></li>
-        <li><span>d</span><div><b>Culture and Core Strengths</b><i>The five principles we work by</i></div></li>
-        <li><span>e</span><div><b>People Behind The Brand</b><i>The leadership team</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Company History</b></li>
+          <li><span>b</span><b>Vision and Mission</b></li>
+          <li><span>c</span><b>Leadership and Founder Story</b></li>
+          <li><span>d</span><b>Culture and Core Strengths</b></li>
+          <li><span>e</span><b>People Behind The Brand</b></li>
+        </ul>
+        <div class="dvn">02</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>
@@ -822,12 +831,15 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
     <header class="rail"><span class="kicker"><i>Chapter 03</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Brand Identity</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Brand<br>Identity</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Brand Positioning</b><i>The place we hold in the market</i></div></li>
-        <li><span>b</span><div><b>Brand USP</b><i>Mobility, efficiency and precision</i></div></li>
-        <li><span>c</span><div><b>Brand Values</b><i>Five commitments, engineered in</i></div></li>
-        <li><span>d</span><div><b>Purpose, Tagline and Impact</b><i>Effortless Mobility, Exceptional Care</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Brand Positioning</b></li>
+          <li><span>b</span><b>Brand USP</b></li>
+          <li><span>c</span><b>Brand Values</b></li>
+          <li><span>d</span><b>Purpose, Tagline and Impact</b></li>
+        </ul>
+        <div class="dvn">03</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>
@@ -990,11 +1002,14 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
     <header class="rail"><span class="kicker"><i>Chapter 04</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Market &amp; Performance</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Market &amp;<br>Performance</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Target Market</b><i>Seven buyers, one requirement</i></div></li>
-        <li><span>b</span><div><b>Competitive Landscape</b><i>Where Waterbay is positioned</i></div></li>
-        <li><span>c</span><div><b>Performance and Proof</b><i>Claims with the evidence attached</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Target Market</b></li>
+          <li><span>b</span><b>Competitive Landscape</b></li>
+          <li><span>c</span><b>Performance and Proof</b></li>
+        </ul>
+        <div class="dvn">04</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>
@@ -1185,14 +1200,17 @@ table.cmp col.c1{width:30%}table.cmp col.c2{width:24%}table.cmp col.c3{width:46%
     <header class="rail"><span class="kicker"><i>Chapter 05</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Products &amp; Services</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Products &amp;<br>Services</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Service Pillars and Core Offerings</b><i>Five pillars behind every product</i></div></li>
-        <li><span>b</span><div><b>STÜHL Product Platform</b><i>The automatic portable dental chair</i></div></li>
-        <li><span>c</span><div><b>Product Anatomy</b><i>Eight parts that do the work</i></div></li>
-        <li><span>d</span><div><b>Features and Benefits</b><i>Specification, and what it means in a clinic</i></div></li>
-        <li><span>e</span><div><b>Engineering and 3D Development</b><i>Modelled before it is manufactured</i></div></li>
-        <li><span>f</span><div><b>Product and Customer Journey</b><i>From first contact to repeat order</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Service Pillars and Core Offerings</b></li>
+          <li><span>b</span><b>STÜHL Product Platform</b></li>
+          <li><span>c</span><b>Product Anatomy</b></li>
+          <li><span>d</span><b>Features and Benefits</b></li>
+          <li><span>e</span><b>Engineering and 3D Development</b></li>
+          <li><span>f</span><b>Product and Customer Journey</b></li>
+        </ul>
+        <div class="dvn">05</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>
@@ -1579,11 +1597,14 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
     <header class="rail"><span class="kicker"><i>Chapter 06</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Clients &amp; Social Proof</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Clients &amp;<br>Social Proof</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Client Reference and Deployments</b><i>Ministries, universities and clinics</i></div></li>
-        <li><span>b</span><div><b>PR and Media Mentions</b><i>National agencies and ministry channels</i></div></li>
-        <li><span>c</span><div><b>Events, Activities and Digital Presence</b><i>Where the brand shows up</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Client Reference and Deployments</b></li>
+          <li><span>b</span><b>PR and Media Mentions</b></li>
+          <li><span>c</span><b>Events, Activities and Digital Presence</b></li>
+        </ul>
+        <div class="dvn">06</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>
@@ -1747,11 +1768,14 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
     <header class="rail"><span class="kicker"><i>Chapter 07</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Office, Projects &amp; Facilities</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Office, Projects<br>&amp; Facilities</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Facilities and Office Overview</b><i>Design, build and test under one roof</i></div></li>
-        <li><span>b</span><div><b>Past Project Portfolio</b><i>Four kinds of deployment</i></div></li>
-        <li><span>c</span><div><b>Upcoming Projects and Roadmap</b><i>Near, medium and long term</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Facilities and Office Overview</b></li>
+          <li><span>b</span><b>Past Project Portfolio</b></li>
+          <li><span>c</span><b>Upcoming Projects and Roadmap</b></li>
+        </ul>
+        <div class="dvn">07</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>
@@ -1952,10 +1976,13 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
     <header class="rail"><span class="kicker"><i>Chapter 08</i> &nbsp;/&nbsp; Waterbay Company Profile</span><span class="rail-r">Achievements &amp; Certifications</span></header>
     <div class="main col between" style="padding-top:60px">
       <h1 class="d1 anim">Achievements &amp;<br>Certifications</h1>
-      <ul class="dvl anim">
-        <li><span>a</span><div><b>Credentials at a Glance</b><i>Independently verified</i></div></li>
-        <li><span>b</span><div><b>Quality and Regulatory Documents</b><i>The certificates themselves</i></div></li>
-      </ul>
+      <div class="dvfoot anim">
+        <ul class="dvl">
+          <li><span>a</span><b>Credentials at a Glance</b></li>
+          <li><span>b</span><b>Quality and Regulatory Documents</b></li>
+        </ul>
+        <div class="dvn">08</div>
+      </div>
     </div>
     <footer class="foot"><span>Waterbay Company Profile</span><span class="conf">© 2026 Waterbay. All rights reserved. Internal use only.</span><span class="pg"></span></footer>
   </div>

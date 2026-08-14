@@ -135,11 +135,16 @@ the back page:
 
 > ALTIGO SDN. BHD. · REG. 562238-H
 > NO. 54-3-3, WISMA SRI MATA, JALAN VAN PRAAGH, 11600 PENANG, MALAYSIA
-> +604-283 7005 / +604-283 6772 · ENQUIRY@ALTIGO.COM · WWW.ALTIGO.COM
+> +604-283 7005 / +604-283 6772 · ALTIGOELEVATOR@GMAIL.COM · WWW.AKKALLIANCE.COM
 
 The cover in the source PDF carried placeholder contacts
 (`+60 1234-56-7890`, `ALTIGO@EMAIL.COM`, empty address); those were replaced with
 the real details from the back page.
+
+The source also printed `WWW.ALTIGO.COM` and `ENQUIRY@ALTIGO.COM` — a domain the
+company does not hold. Altigo trades under AKK, so the website line is now
+`WWW.AKKALLIANCE.COM`, and the enquiry address is the working
+`ALTIGOELEVATOR@GMAIL.COM`.
 
 ---
 

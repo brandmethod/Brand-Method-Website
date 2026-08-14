@@ -135,10 +135,10 @@ strong,b{font-weight:600}
 
 /* ---------- section divider ---------- */
 .dvfoot{display:flex;align-items:flex-end;justify-content:space-between;gap:90px}
-.dvl{list-style:none;flex:1;min-width:0;max-width:900px;display:flex;flex-direction:column;gap:12px}
-.dvl li{display:grid;grid-template-columns:28px 1fr;gap:13px;align-items:baseline}
-.dvl li span{font-family:'AX';font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--orange)}
-.dvl li b{font-family:'IN';font-weight:400;font-size:19px;line-height:1.28;color:#fff}
+.dvl{list-style:none;flex:1;min-width:0;max-width:900px;display:flex;flex-direction:column;gap:11px}
+.dvl li{display:grid;grid-template-columns:24px 1fr;gap:11px;align-items:baseline}
+.dvl li span{font-family:'AX';font-weight:700;font-size:14px;letter-spacing:.05em;color:var(--orange)}
+.dvl li b{font-family:'IN';font-weight:400;font-size:17.5px;line-height:1.28;color:#fff}
 .dvn{flex:none;font-family:'CG';font-weight:400;font-size:355px;line-height:.74;letter-spacing:-.055em;
   color:transparent;-webkit-text-stroke:2.4px rgba(255,255,255,.42);margin-bottom:-30px}
 
@@ -244,7 +244,9 @@ body.panning{cursor:grabbing}
 /* ---------- alignment guides ---------- */
 .guides{position:absolute;left:0;top:0;width:var(--W);height:var(--H);z-index:900;
   pointer-events:none;display:none;opacity:.5}
-html.guides-on .guides{display:block}
+html.guides-1 .guides{display:block;opacity:1}
+html.guides-2 .guides{display:block;opacity:.5}
+html.guides-3 .guides{display:block;opacity:.25}
 .gd-cols{position:absolute;left:112px;top:0;bottom:0;width:1696px;
   background:
     repeating-linear-gradient(to right,rgba(241,122,39,.95) 0 1px,transparent 1px 111px,
@@ -254,6 +256,7 @@ html.guides-on .guides{display:block}
 .gd-v{top:0;bottom:0;width:1px}
 .gd-h{left:0;right:0;height:1px}
 .gd-c{background:rgba(255,255,255,.85)}
+.gd-s{background:rgba(241,122,39,.6);height:1px}
 
 /* ---------- filmstrip ---------- */
 .filmstrip{position:fixed;left:0;right:0;bottom:var(--navb,76px);z-index:380;background:rgba(14,14,17,.98);
@@ -1765,7 +1768,7 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
 .dgt-i img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
 .dgt-ph{flex:1;min-width:0;align-items:center;justify-content:center;gap:24px}
 .dgt-ph figcaption{width:100%;text-align:center}
-.dgt-d{flex:none;width:268px;height:382px;border-radius:26px;overflow:hidden;background:#0B0B0C;
+.dgt-d{flex:none;width:262px;height:374px;border-radius:26px;overflow:hidden;background:#0B0B0C;
   border:3px solid var(--orange);box-shadow:0 26px 54px rgba(11,11,12,.20)}
 .dgt-d img{width:100%;height:100%;object-fit:cover;object-position:50% 0}
 .dgt figcaption{min-height:52px}
@@ -2194,6 +2197,10 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
     <div class="gd-l gd-v" style="left:112px"></div>
     <div class="gd-l gd-v" style="left:1807px"></div>
     <div class="gd-l gd-h" style="top:74px"></div>
+    <div class="gd-l gd-h gd-s" style="top:101px"></div>
+    <div class="gd-l gd-h gd-s" style="top:143px"></div>
+    <div class="gd-l gd-h gd-s" style="top:954px"></div>
+    <div class="gd-l gd-h gd-s" style="top:988px"></div>
     <div class="gd-l gd-h" style="top:1019px"></div>
     <div class="gd-l gd-v gd-c" style="left:959px"></div>
     <div class="gd-l gd-h gd-c" style="top:539px"></div>
@@ -2494,11 +2501,16 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
     else if(e.key.toLowerCase()==='a'){toggleGuides();}
   });
   var guideBtn=document.getElementById('guideBtn');
-  function toggleGuides(on){
+  var gLvl=0;                       /* 0 off, 1 = 100%, 2 = 50%, 3 = 25% */
+  function toggleGuides(lvl){
     var el=document.documentElement;
-    if(on===undefined)on=!el.classList.contains('guides-on');
-    el.classList.toggle('guides-on',on);
-    if(guideBtn)guideBtn.classList.toggle('on',on);
+    gLvl=(lvl===undefined)?(gLvl+1)%4:lvl;
+    el.classList.remove('guides-1','guides-2','guides-3');
+    if(gLvl)el.classList.add('guides-'+gLvl);
+    if(guideBtn){
+      guideBtn.classList.toggle('on',gLvl>0);
+      guideBtn.title='Alignment guides (A) \u00b7 '+(gLvl?[0,'100%','50%','25%'][gLvl]:'off');
+    }
   }
   if(guideBtn)guideBtn.addEventListener('click',function(){toggleGuides();});
 

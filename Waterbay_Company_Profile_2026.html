@@ -135,12 +135,12 @@ strong,b{font-weight:600}
 
 /* ---------- section divider ---------- */
 .dvfoot{display:flex;align-items:flex-end;justify-content:space-between;gap:90px}
-.dvl{list-style:none;flex:1;min-width:0;max-width:900px;display:flex;flex-direction:column;gap:19px}
-.dvl li{display:grid;grid-template-columns:50px 1fr;gap:22px;align-items:baseline}
-.dvl li span{font-family:'AX';font-weight:700;font-size:21px;letter-spacing:.08em;color:var(--orange)}
-.dvl li b{font-family:'IN';font-weight:500;font-size:25px;line-height:1.25;color:#fff}
-.dvn{flex:none;font-family:'CG';font-weight:400;font-size:340px;line-height:.74;letter-spacing:-.055em;
-  color:transparent;-webkit-text-stroke:2.6px rgba(255,255,255,.46);margin-bottom:-26px}
+.dvl{list-style:none;flex:1;min-width:0;max-width:900px;display:flex;flex-direction:column;gap:12px}
+.dvl li{display:grid;grid-template-columns:28px 1fr;gap:13px;align-items:baseline}
+.dvl li span{font-family:'AX';font-weight:700;font-size:15px;letter-spacing:.06em;color:var(--orange)}
+.dvl li b{font-family:'IN';font-weight:400;font-size:19px;line-height:1.28;color:#fff}
+.dvn{flex:none;font-family:'CG';font-weight:400;font-size:355px;line-height:.74;letter-spacing:-.055em;
+  color:transparent;-webkit-text-stroke:2.4px rgba(255,255,255,.42);margin-bottom:-30px}
 
 /* ---------- cards & lists ---------- */
 .pill{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line-l);border-radius:999px;
@@ -241,6 +241,20 @@ table.spec td:last-child{text-align:right;font-variant-numeric:tabular-nums;font
 .deck-nav.zoomed #zFit{color:var(--orange)}
 body.panning{cursor:grabbing}
 
+/* ---------- alignment guides ---------- */
+.guides{position:absolute;left:0;top:0;width:var(--W);height:var(--H);z-index:900;
+  pointer-events:none;display:none;opacity:.5}
+html.guides-on .guides{display:block}
+.gd-cols{position:absolute;left:112px;top:0;bottom:0;width:1696px;
+  background:
+    repeating-linear-gradient(to right,rgba(241,122,39,.95) 0 1px,transparent 1px 111px,
+      rgba(241,122,39,.95) 111px 112px,transparent 112px 144px),
+    repeating-linear-gradient(to right,rgba(241,122,39,.14) 0 112px,transparent 112px 144px)}
+.gd-l{position:absolute;background:var(--orange)}
+.gd-v{top:0;bottom:0;width:1px}
+.gd-h{left:0;right:0;height:1px}
+.gd-c{background:rgba(255,255,255,.85)}
+
 /* ---------- filmstrip ---------- */
 .filmstrip{position:fixed;left:0;right:0;bottom:var(--navb,76px);z-index:380;background:rgba(14,14,17,.98);
   backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-top:1px solid var(--nav-line);
@@ -296,7 +310,8 @@ body.panning{cursor:grabbing}
   border-radius:99px;border:2px solid transparent;background-clip:padding-box}
 
 /* ---------- thumb mode: ?thumb=1 renders the cover only, no chrome ---------- */
-html.thumbmode .deck-nav,html.thumbmode .filmstrip,html.thumbmode .nav-grid{display:none!important}
+html.thumbmode .deck-nav,html.thumbmode .filmstrip,html.thumbmode .nav-grid,
+html.thumbmode .guides{display:none!important}
 html.thumbmode .anim{opacity:1!important;transform:none!important;transition:none!important}
 
 /* ---------- entrance motion (screen only) ---------- */
@@ -315,7 +330,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
 @page{size:1920px 1080px;margin:0}
 @media print{
   html,body{background:#fff;overflow:visible;height:auto}
-  .deck-nav,.filmstrip,.nav-grid{display:none!important}
+  .deck-nav,.filmstrip,.nav-grid,.guides{display:none!important}
   .stage{position:static;background:transparent;overflow:visible}
   .scaler{position:static;transform:none!important;width:1920px;height:1080px;overflow:visible}
   .track{display:block;transform:none!important;transition:none!important}
@@ -2173,7 +2188,17 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
 </style>
 
 </div>
-</div></div>
+</div>
+  <div class="guides" id="guides" aria-hidden="true">
+    <div class="gd-cols"></div>
+    <div class="gd-l gd-v" style="left:112px"></div>
+    <div class="gd-l gd-v" style="left:1807px"></div>
+    <div class="gd-l gd-h" style="top:74px"></div>
+    <div class="gd-l gd-h" style="top:1019px"></div>
+    <div class="gd-l gd-v gd-c" style="left:959px"></div>
+    <div class="gd-l gd-h gd-c" style="top:539px"></div>
+  </div>
+</div>
 
 <!-- ════════════════ UNIVERSAL DECK-NAV · ported from OWND ════════════════ -->
 <div class="deck-nav" id="deckNav">
@@ -2193,6 +2218,7 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
   </div>
   <div class="dn-sep"></div>
   <button class="print-btn" id="gridBtn" title="All pages (G)"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="5" height="5" rx="1"/><rect x="9" y="2" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg></button>
+  <button class="print-btn" id="guideBtn" title="Alignment guides (A)"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1v14M1 8h14"/><path d="M4.5 1v14M11.5 1v14" opacity=".5"/></svg></button>
   <button class="print-btn" id="printBtn" title="Print / export PDF"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11H2a1 1 0 01-1-1V7a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-1 1h-2"/><path d="M4 1h8v5H4z"/><path d="M4 11h8v4H4z"/></svg></button>
   <div class="dn-sep"></div>
   <button class="print-btn" id="menuBtn" title="Home &middot; back to cover"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5"/><path d="M3.5 6.2v7.3h9V6.2"/><path d="M6.5 13.5v-4h3v4"/></svg></button>
@@ -2465,7 +2491,17 @@ table.spec.plain td{border-bottom:0;padding:13px 0}
     else if(e.key==='-'||e.key==='_'){zoomStep(0.8);}
     else if(e.key==='0'){resetZoom();}
     else if(e.key.toLowerCase()==='g'){toggleStrip();}
+    else if(e.key.toLowerCase()==='a'){toggleGuides();}
   });
+  var guideBtn=document.getElementById('guideBtn');
+  function toggleGuides(on){
+    var el=document.documentElement;
+    if(on===undefined)on=!el.classList.contains('guides-on');
+    el.classList.toggle('guides-on',on);
+    if(guideBtn)guideBtn.classList.toggle('on',on);
+  }
+  if(guideBtn)guideBtn.addEventListener('click',function(){toggleGuides();});
+
   var tx0=null;
   document.addEventListener('touchstart',function(e){if(Z>1.001){tx0=null;return;}tx0=e.touches[0].clientX;},{passive:true});
   document.addEventListener('touchend',function(e){

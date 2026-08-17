@@ -4,8 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MyHero Brand Identity Book</title>
-<meta name="description" content="MyHero Brand Identity Book — Light Edition, 30 pages. Prepared for Dr. Amira, Elite Care Clinic, by Brand Method.">
+<meta name="description" content="MyHero Brand Identity Book — Light Edition. Prepared for Dr. Amira, Elite Care Clinic, by Brand Method.">
 <meta name="robots" content="noindex, nofollow">
+<style>*{margin:0;padding:0}html{-webkit-text-size-adjust:100%}svg{display:block}button{font:inherit}</style>
 </head>
 <body>
 <style>
@@ -41,6 +42,8 @@
     --ai: #74589e;
     --ai-soft: #efe9f4;
 
+    --accent: #2b7fc4;
+
     --f: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     --m: ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", Menlo, Consolas, monospace;
   }
@@ -55,126 +58,25 @@
     overflow: hidden;
   }
 
-  /* ================= viewer chrome ================= */
-
-  .hud {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: 52px;
-    z-index: 40;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 0 16px;
-    background: var(--shell-2);
-    border-bottom: 1px solid var(--shell-rule);
-  }
-
-  .hud__brand { display: flex; align-items: center; gap: 9px; }
-
-  .hud__sym {
-    width: 28px; height: 28px; border-radius: 8px;
-    background: var(--dark); border: 1px solid var(--shell-rule);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .hud__sym svg { width: 60%; height: 60%; }
-
-  .hud__name { font-size: 15px; font-weight: 700; letter-spacing: -0.03em; }
-  .hud__name em { font-style: normal; color: var(--peach); }
-
-  .hud__ttl {
-    font-family: var(--m); font-size: 10px; letter-spacing: 0.16em;
-    text-transform: uppercase; color: var(--shell-mut);
-    border-left: 1px solid var(--shell-rule); padding-left: 14px;
-  }
-  @media (max-width: 720px) { .hud__ttl { display: none; } }
-
-  .hud__r { margin-left: auto; display: flex; align-items: center; gap: 8px; }
-
-  .btn {
-    font-family: var(--m); font-size: 10px; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--shell-ink);
-    background: transparent; border: 1px solid var(--shell-rule);
-    padding: 7px 11px; cursor: pointer; border-radius: 3px; line-height: 1;
-  }
-  .btn:hover:not(:disabled) { border-color: var(--peach); color: var(--peach); }
-  .btn:disabled { opacity: 0.32; cursor: default; }
-
-  .arw { width: 34px; padding: 7px 0; font-size: 13px; }
-
-  .count {
-    font-family: var(--m); font-size: 11px; color: var(--shell-mut);
-    font-variant-numeric: tabular-nums; min-width: 62px; text-align: center;
-  }
-  .count b { color: var(--shell-ink); font-weight: 500; }
-
-  /* ================= section nav bar ================= */
-
-  .secbar {
-    position: fixed;
-    top: 52px; left: 0; right: 0;
-    z-index: 39;
-    display: flex;
-    align-items: stretch;
-    gap: 0;
-    background: var(--shell);
-    border-bottom: 1px solid var(--shell-rule);
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  .secbar::-webkit-scrollbar { display: none; }
-
-  .sec {
-    flex: 1 1 0;
-    min-width: 132px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 9px 14px 8px;
-    background: transparent;
-    border: 0;
-    border-right: 1px solid var(--shell-rule);
-    cursor: pointer;
-    text-align: left;
-    font-family: var(--m);
-    color: var(--shell-mut);
-    position: relative;
-  }
-  .sec:last-child { border-right: 0; }
-
-  .sec__n { font-size: 10px; letter-spacing: 0.16em; color: var(--shell-mut); }
-  .sec__l { font-size: 10px; letter-spacing: 0.13em; text-transform: uppercase; line-height: 1.2; }
-
-  .sec__bar { height: 2px; background: var(--shell-rule); margin-top: auto; }
-  .sec__bar i { display: block; height: 100%; width: 0; background: var(--peach); }
-
-  .sec:hover { color: var(--shell-ink); background: var(--shell-2); }
-  .sec:hover .sec__n { color: var(--peach); }
-
-  .sec[aria-current="true"] { color: var(--shell-ink); background: var(--shell-2); }
-  .sec[aria-current="true"] .sec__n { color: var(--peach); }
-
-  @media (max-width: 860px) {
-    .sec { min-width: 116px; }
-    .sec__l { font-size: 9px; }
-  }
-
-  /* ================= stage ================= */
+  /* ================= deck stage ================= */
 
   .stage {
     position: fixed;
-    top: 100px; left: 0; right: 0; bottom: 0;
+    top: 0; left: 0; right: 0;
+    bottom: 92px;                 /* deck-nav never overlaps the book */
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden;
+    overflow: auto;
+    padding: 18px;
   }
+  .stage::-webkit-scrollbar { height: 8px; width: 8px; }
+  .stage::-webkit-scrollbar-thumb { background: #2a3646; border-radius: 4px; }
 
   .deck {
     width: 1920px; height: 1080px;
-    position: relative;
-    flex: none;
+    position: relative; flex: none;
     transform-origin: center center;
     background: var(--paper);
-    box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.55);
   }
 
   .slide {
@@ -185,11 +87,152 @@
     opacity: 0; visibility: hidden;
     overflow: hidden;
   }
-
   .slide.on { opacity: 1; visibility: visible; }
 
   @media (prefers-reduced-motion: no-preference) {
-    .slide { transition: opacity 0.28s ease; }
+    .slide { transition: opacity 0.26s ease; }
+  }
+
+  /* ================= universal deck-nav ================= */
+
+  .dnav {
+    position: fixed;
+    left: 50%; bottom: 18px;
+    transform: translateX(-50%);
+    z-index: 60;
+    display: flex; align-items: center;
+    gap: 0;
+    max-width: calc(100vw - 24px);
+    height: 56px;
+    padding: 0 6px;
+    background: #0f1823;
+    border: 1px solid rgba(255,255,255,0.11);
+    border-radius: 999px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+    font-family: var(--m);
+  }
+
+  .dn__sep { width: 1px; align-self: stretch; margin: 12px 4px; background: rgba(255,255,255,0.12); flex: none; }
+  .dn__grp { display: flex; align-items: center; gap: 4px; padding: 0 8px; }
+
+  .dn__b {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 34px; min-width: 34px; padding: 0 10px;
+    background: transparent; border: 0; border-radius: 999px;
+    color: #b9c6d6; font-family: var(--m); font-size: 15px;
+    cursor: pointer; line-height: 1;
+  }
+  .dn__b:hover:not(:disabled) { background: rgba(255,255,255,0.09); color: #fff; }
+  .dn__b:disabled { opacity: 0.28; cursor: default; }
+  .dn__b svg { width: 18px; height: 18px; }
+
+  /* dot rail */
+  .dn__rail {
+    display: flex; align-items: center; gap: 7px;
+    max-width: 260px; overflow-x: auto; padding: 0 6px;
+    scrollbar-width: none;
+  }
+  .dn__rail::-webkit-scrollbar { display: none; }
+
+  .dot {
+    width: 6px; height: 6px; border-radius: 999px; flex: none;
+    background: rgba(255,255,255,0.3); border: 0; padding: 0; cursor: pointer;
+    transition: transform 0.14s ease, background 0.14s ease;
+  }
+  .dot:hover { transform: scale(1.5); background: rgba(255,255,255,0.6); }
+
+  .dot.act {
+    width: 24px; height: 15px; border-radius: 999px;
+    background: var(--accent);
+    color: #fff; font-family: var(--m); font-size: 9px;
+    display: inline-flex; align-items: center; justify-content: center;
+    transform: none;
+  }
+  .dot.act:hover { transform: none; }
+
+  /* name + counter */
+  .dn__name {
+    font-size: 13px; color: #dbe6f2; white-space: nowrap;
+    max-width: 240px; overflow: hidden; text-overflow: ellipsis;
+    padding: 0 12px; letter-spacing: 0.02em;
+  }
+  .dn__ct { font-size: 13px; color: #8b9cb0; padding: 0 10px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .dn__ct b { color: #eef4fa; font-weight: 500; }
+
+  /* edition toggle */
+  .dn__ed { display: flex; align-items: center; gap: 6px; padding: 0 8px; }
+  .edb {
+    height: 32px; padding: 0 16px; border-radius: 999px;
+    font-family: var(--m); font-size: 12px; cursor: pointer; line-height: 1;
+    background: transparent; color: #b9c6d6;
+    border: 1px solid rgba(255,255,255,0.22);
+  }
+  .edb:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+  .edb[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+  /* zoom */
+  .dn__zm { display: flex; align-items: center; gap: 2px; padding: 0 6px; }
+  .dn__pct { font-size: 13px; color: #dbe6f2; min-width: 52px; text-align: center; background: transparent; border: 0; cursor: pointer; font-family: var(--m); }
+  .dn__pct:hover { color: #fff; }
+  .fitb { height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: transparent; color: #b9c6d6; font-family: var(--m); font-size: 12px; cursor: pointer; }
+  .fitb:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+
+  @media (max-width: 1180px) { .dn__name, .dn__hideM { display: none; } }
+  @media (max-width: 840px) { .dn__rail { max-width: 128px; } .dn__zm { display: none; } }
+
+  /* ================= grid / filmstrip overlay ================= */
+
+  .ovl {
+    position: fixed; inset: 0; z-index: 70;
+    background: rgba(8,12,18,0.97);
+    overflow-y: auto; padding: 26px 26px 110px;
+    display: none;
+  }
+  .ovl[data-open="true"] { display: block; }
+
+  .ovl__h {
+    display: flex; align-items: center; gap: 14px; margin-bottom: 20px;
+    font-family: var(--m); font-size: 11px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #8b9cb0;
+  }
+  .ovl__h button { margin-left: auto; }
+
+  .ovl__g { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 14px; }
+
+  .th {
+    background: #0f1823; border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 5px; padding: 0; cursor: pointer; overflow: hidden; text-align: left;
+  }
+  .th:hover { border-color: var(--accent); }
+  .th[aria-current="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px rgba(43,127,196,0.4); }
+
+  .th__p { aspect-ratio: 16/9; background: var(--paper); position: relative; overflow: hidden; }
+  .th__p.dk { background: var(--dark); }
+  .th__p i {
+    position: absolute; left: 9%; right: 9%; background: rgba(30,26,23,0.16); height: 5%; border-radius: 2px;
+  }
+  .th__p.dk i { background: rgba(245,237,230,0.2); }
+  .th__p b { position: absolute; left: 9%; top: 16%; width: 46%; height: 11%; background: var(--accent); opacity: 0.85; border-radius: 2px; }
+
+  .th__m { display: flex; justify-content: space-between; gap: 8px; padding: 9px 11px; font-family: var(--m); font-size: 10px; color: #b9c6d6; }
+  .th__m span { color: #7b8ca0; }
+
+  /* ================= print ================= */
+
+  @page { size: 1920px 1080px; margin: 0; }
+
+  @media print {
+    body { background: #fff; overflow: visible; }
+    .dnav, .ovl, .stage::-webkit-scrollbar { display: none !important; }
+    .stage { position: static; inset: auto; padding: 0; overflow: visible; display: block; }
+    .deck { transform: none !important; width: 1920px; height: auto; box-shadow: none; }
+    .slide {
+      position: relative; inset: auto;
+      width: 1920px; height: 1080px;
+      opacity: 1 !important; visibility: visible !important;
+      break-after: page; page-break-after: always;
+    }
+    .slide.skip { display: none !important; }
   }
 
   /* page chrome */
@@ -390,26 +433,8 @@
   .ov__i[aria-current="true"] { border-color: var(--blue); color: var(--blue); }
   .ov__i span { font-family: var(--m); font-size: 11px; color: var(--shell-mut); font-variant-numeric: tabular-nums; }
 
-  :focus-visible { outline: 2px solid var(--peach); outline-offset: 2px; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
-
-<header class="hud">
-  <div class="hud__brand">
-    <div class="hud__sym" aria-hidden="true">
-      <svg viewBox="0 0 40 40" fill="none"><path d="M13 20h5l2.5-5.5L24 25l2.5-5h6" stroke="#e9a68f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </div>
-    <span class="hud__name">My<em>Hero</em></span>
-  </div>
-  <span class="hud__ttl">Brand Identity Book · Light Edition</span>
-  <div class="hud__r">
-    <button class="btn" id="cBtn" aria-expanded="false">Contents</button>
-    <button class="btn arw" id="pBtn" aria-label="Previous page">‹</button>
-    <span class="count"><b id="cur">01</b> / 30</span>
-    <button class="btn arw" id="nBtn" aria-label="Next page">›</button>
-  </div>
-</header>
-
-<nav class="secbar" id="secbar" aria-label="Sections"></nav>
 
 <div class="stage">
   <div class="deck" id="deck">
@@ -1067,120 +1092,217 @@
   </div>
 </div>
 
-<div class="ov" id="ov">
-  <p class="ov__h">Contents · 30 pages</p>
-  <div id="ovList"></div>
+<nav class="dnav" id="dnav" aria-label="Deck navigation">
+  <div class="dn__grp">
+    <button class="dn__b" id="prev" aria-label="Previous page">←</button>
+  </div>
+
+  <div class="dn__rail" id="rail" role="tablist" aria-label="Pages"></div>
+
+  <div class="dn__sep dn__hideM"></div>
+  <span class="dn__name dn__hideM" id="sname"></span>
+
+  <div class="dn__sep"></div>
+  <span class="dn__ct"><b id="cnum">1</b> / <span id="ctot">30</span></span>
+  <button class="dn__b" id="next" aria-label="Next page">→</button>
+
+  <div class="dn__sep"></div>
+  <div class="dn__ed">
+    <button class="edb" id="edStd" aria-pressed="false">Standard</button>
+    <button class="edb" id="edFull" aria-pressed="true">Full</button>
+  </div>
+
+  <div class="dn__sep dn__hideM"></div>
+  <div class="dn__zm">
+    <button class="dn__b" id="zOut" aria-label="Zoom out">−</button>
+    <button class="dn__pct" id="zPct" title="Reset zoom">100%</button>
+    <button class="dn__b" id="zIn" aria-label="Zoom in">+</button>
+    <button class="fitb" id="zFit">Fit</button>
+  </div>
+
+  <div class="dn__sep"></div>
+  <div class="dn__grp">
+    <button class="dn__b" id="gridBtn" aria-label="Grid view" title="Grid / filmstrip">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+    </button>
+    <button class="dn__b" id="printBtn" aria-label="Print or PDF" title="Print / PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 15h12v6H6z"/></svg>
+    </button>
+    <button class="dn__b" id="homeBtn" aria-label="Cover" title="Home · library">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="ovl" id="ovl">
+  <div class="ovl__h">
+    <span>All pages</span>
+    <span id="ovlCount"></span>
+    <button class="fitb" id="ovlClose">Close · Esc</button>
+  </div>
+  <div class="ovl__g" id="ovlGrid"></div>
 </div>
 
 <script>
 (function () {
-  var deck = document.getElementById('deck');
+  var deck   = document.getElementById('deck');
   var slides = Array.prototype.slice.call(deck.querySelectorAll('.slide'));
-  var cur = 0;
 
-  var GROUPS = [
-    ['00 · Essential Core', ['Cover','Table of Contents','Introduction & Terms','Edition & Scope','Brand System Map']],
-    ['01 · Our Brand', ['Divider','Who We Are','Our Story','Vision, Mission & Positioning','Values & Culture','Voice & Character']],
-    ['02 · Strategy', ['Divider','Audience & Personas','Positioning & Messaging']],
-    ['03 · Visual Identity', ['Divider','Logo Overview','Logo Variations','Clearspace & Don’ts','Colour Palette','Typography','Hero Icon & Avatar']],
-    ['04 · The App', ['Divider','App Identity','UI Foundations','Key Screens & the AI Surface']],
-    ['05 · Applications', ['Divider','Clinic Touchpoints','Digital & Store Presence']],
-    ['06 · Governance', ['Legal, Usage & Approvals','Back Cover']]
+  /* code · name per page, and which pages are deep-dive (hidden in Standard) */
+  var NAMES = [
+    '0.0 · Cover','0.1 · Table of Contents','0.2 · Introduction & Terms','0.3 · Edition & Scope',
+    '0.4 · Brand System Map','01 · Our Brand','1.1 · Who We Are','1.2 · Our Story',
+    '1.3 · Vision, Mission & Positioning','1.4 · Values & Culture','1.5 · Voice & Character',
+    '02 · Strategy','2.1 · Audience & Personas','2.2 · Positioning & Messaging',
+    '03 · Visual Identity','3.1 · Logo Overview','3.2 · Logo Variations','3.3 · Clearspace & Don’ts',
+    '3.4 · Colour Palette','3.5 · Typography','3.6 · Hero Icon & Avatar',
+    '04 · The App','4.1 · App Identity','4.2 · UI Foundations','4.3 · Key Screens & the AI Surface',
+    '05 · Applications','5.1 · Clinic Touchpoints','5.2 · Digital & Store Presence',
+    '6.1 · Legal, Usage & Approvals','0.0 · Back Cover'
   ];
+  var DEEP = [3, 4, 17, 20, 23, 24, 27];   /* zero-based */
 
-  /* build contents overlay */
-  var list = document.getElementById('ovList'), n = 0, btns = [];
-  GROUPS.forEach(function (g) {
-    var wrap = document.createElement('div'); wrap.className = 'ov__g';
-    var h = document.createElement('div'); h.className = 'ov__gh'; h.textContent = g[0];
-    var inner = document.createElement('div'); inner.className = 'ov__l';
-    g[1].forEach(function (label) {
-      var i = n++;
+  var edition = 'full';
+  var order   = [];        /* visible slide indices, in order */
+  var pos     = 0;         /* position within order */
+  var zoom    = 100;
+  var fitScale = 1;
+
+  function rebuild(keepIdx) {
+    order = [];
+    slides.forEach(function (s, i) {
+      var deep = DEEP.indexOf(i) !== -1;
+      var show = edition === 'full' || !deep;
+      s.classList.toggle('skip', !show);
+      if (show) { order.push(i); }
+    });
+    document.getElementById('ctot').textContent = order.length;
+    buildRail();
+    buildGrid();
+    var p = order.indexOf(keepIdx);
+    go(p === -1 ? Math.min(pos, order.length - 1) : p);
+  }
+
+  /* ---- dot rail ---- */
+  var rail = document.getElementById('rail'), dots = [];
+  function buildRail() {
+    rail.innerHTML = ''; dots = [];
+    order.forEach(function (idx, p) {
+      var d = document.createElement('button');
+      d.className = 'dot'; d.type = 'button';
+      d.setAttribute('aria-label', 'Page ' + (p + 1) + ' — ' + NAMES[idx]);
+      d.title = NAMES[idx];
+      d.addEventListener('click', function () { go(p); });
+      rail.appendChild(d); dots.push(d);
+    });
+  }
+
+  /* ---- grid overlay ---- */
+  var ovl = document.getElementById('ovl'), ovlGrid = document.getElementById('ovlGrid'), thumbs = [];
+  function buildGrid() {
+    ovlGrid.innerHTML = ''; thumbs = [];
+    order.forEach(function (idx, p) {
       var b = document.createElement('button');
-      b.className = 'ov__i'; b.type = 'button';
-      b.innerHTML = '<span style="font-family:inherit;color:inherit;font-size:14px">' + label +
-                    '</span><span>' + String(i + 1).padStart(2, '0') + '</span>';
-      b.addEventListener('click', function () { go(i); closeOv(); });
-      btns.push(b); inner.appendChild(b);
+      b.className = 'th'; b.type = 'button';
+      var dark = slides[idx].classList.contains('dark');
+      b.innerHTML =
+        '<div class="th__p' + (dark ? ' dk' : '') + '"><b></b>' +
+        '<i style="top:38%"></i><i style="top:50%;right:22%"></i><i style="top:62%;right:34%"></i></div>' +
+        '<div class="th__m"><span style="color:#dbe6f2">' + NAMES[idx] + '</span><span>' +
+        String(p + 1).padStart(2, '0') + '</span></div>';
+      b.addEventListener('click', function () { go(p); closeGrid(); });
+      ovlGrid.appendChild(b); thumbs.push(b);
     });
-    wrap.appendChild(h); wrap.appendChild(inner); list.appendChild(wrap);
-  });
-
-  /* section nav bar — start page + length per section */
-  var SECS = [], at = 0;
-  GROUPS.forEach(function (g, i) {
-    SECS.push({ n: String(i).padStart(2, '0'), label: g[0].split('· ')[1], start: at, len: g[1].length });
-    at += g[1].length;
-  });
-
-  var secbar = document.getElementById('secbar'), secEls = [];
-  SECS.forEach(function (s) {
-    var b = document.createElement('button');
-    b.className = 'sec'; b.type = 'button';
-    b.innerHTML = '<span class="sec__n">' + s.n + '</span>' +
-                  '<span class="sec__l">' + s.label + '</span>' +
-                  '<span class="sec__bar"><i></i></span>';
-    b.addEventListener('click', function () { go(s.start); });
-    secbar.appendChild(b); secEls.push(b);
-  });
-
-  var curEl = document.getElementById('cur');
-  var pBtn = document.getElementById('pBtn'), nBtn = document.getElementById('nBtn');
-
-  function go(i) {
-    cur = Math.max(0, Math.min(slides.length - 1, i));
-    slides.forEach(function (s, k) { s.classList.toggle('on', k === cur); });
-    curEl.textContent = String(cur + 1).padStart(2, '0');
-    pBtn.disabled = cur === 0;
-    nBtn.disabled = cur === slides.length - 1;
-    btns.forEach(function (b, k) {
-      if (k === cur) { b.setAttribute('aria-current', 'true'); }
-      else { b.removeAttribute('aria-current'); }
-    });
-    SECS.forEach(function (s, k) {
-      var el = secEls[k], inSec = cur >= s.start && cur < s.start + s.len;
-      if (inSec) { el.setAttribute('aria-current', 'true'); }
-      else { el.removeAttribute('aria-current'); }
-      var pct = cur >= s.start + s.len ? 100
-              : inSec ? ((cur - s.start + 1) / s.len) * 100 : 0;
-      el.querySelector('.sec__bar i').style.width = pct + '%';
-    });
-    if (location.hash !== '#' + (cur + 1)) {
-      history.replaceState(null, '', '#' + (cur + 1));
-    }
+    document.getElementById('ovlCount').textContent = order.length + ' pages · ' + edition;
   }
 
-  /* scale 1920x1080 to fit */
-  var stage = document.querySelector('.stage');
+  /* ---- paging ---- */
+  var sname = document.getElementById('sname'), cnum = document.getElementById('cnum');
+  var prev = document.getElementById('prev'), next = document.getElementById('next');
+
+  function go(p) {
+    pos = Math.max(0, Math.min(order.length - 1, p));
+    var idx = order[pos];
+    slides.forEach(function (s, k) { s.classList.toggle('on', k === idx); });
+    sname.textContent = NAMES[idx];
+    cnum.textContent = pos + 1;
+    prev.disabled = pos === 0;
+    next.disabled = pos === order.length - 1;
+    dots.forEach(function (d, k) {
+      var on = k === pos;
+      d.classList.toggle('act', on);
+      d.textContent = on ? String(pos + 1) : '';
+      if (on) { d.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+    });
+    thumbs.forEach(function (t, k) {
+      if (k === pos) { t.setAttribute('aria-current', 'true'); } else { t.removeAttribute('aria-current'); }
+    });
+    history.replaceState(null, '', '#' + (idx + 1));
+  }
+
+  /* ---- zoom / fit ---- */
+  var stage = document.querySelector('.stage'), zPct = document.getElementById('zPct');
   function fit() {
-    var w = stage.clientWidth - 32, h = stage.clientHeight - 32;
-    var s = Math.min(w / 1920, h / 1080);
-    deck.style.transform = 'scale(' + s + ')';
+    var w = stage.clientWidth - 36, h = stage.clientHeight - 36;
+    fitScale = Math.min(w / 1920, h / 1080);
+    apply();
   }
+  function apply() {
+    deck.style.transform = 'scale(' + (fitScale * zoom / 100) + ')';
+    zPct.textContent = zoom + '%';
+    stage.style.alignItems = zoom > 100 ? 'flex-start' : 'center';
+  }
+  function setZoom(z) { zoom = Math.max(50, Math.min(250, z)); apply(); }
+
+  document.getElementById('zIn').addEventListener('click', function () { setZoom(zoom + 10); });
+  document.getElementById('zOut').addEventListener('click', function () { setZoom(zoom - 10); });
+  zPct.addEventListener('click', function () { setZoom(100); });
+  document.getElementById('zFit').addEventListener('click', function () { setZoom(100); fit(); });
   window.addEventListener('resize', fit);
 
-  /* contents overlay */
-  var ov = document.getElementById('ov'), cBtn = document.getElementById('cBtn');
-  function openOv() { ov.setAttribute('data-open', 'true'); cBtn.setAttribute('aria-expanded', 'true'); }
-  function closeOv() { ov.setAttribute('data-open', 'false'); cBtn.setAttribute('aria-expanded', 'false'); }
-  cBtn.addEventListener('click', function () {
-    ov.getAttribute('data-open') === 'true' ? closeOv() : openOv();
+  /* ---- edition toggle ---- */
+  var edStd = document.getElementById('edStd'), edFull = document.getElementById('edFull');
+  function setEdition(e) {
+    var keep = order[pos];
+    edition = e;
+    edStd.setAttribute('aria-pressed', e === 'standard');
+    edFull.setAttribute('aria-pressed', e === 'full');
+    rebuild(keep);
+  }
+  edStd.addEventListener('click', function () { setEdition('standard'); });
+  edFull.addEventListener('click', function () { setEdition('full'); });
+
+  /* ---- grid, print, home ---- */
+  function openGrid()  { ovl.setAttribute('data-open', 'true'); }
+  function closeGrid() { ovl.setAttribute('data-open', 'false'); }
+  document.getElementById('gridBtn').addEventListener('click', function () {
+    ovl.getAttribute('data-open') === 'true' ? closeGrid() : openGrid();
   });
+  document.getElementById('ovlClose').addEventListener('click', closeGrid);
+  document.getElementById('printBtn').addEventListener('click', function () { window.print(); });
+  document.getElementById('homeBtn').addEventListener('click', function () { go(0); closeGrid(); });
 
-  pBtn.addEventListener('click', function () { go(cur - 1); });
-  nBtn.addEventListener('click', function () { go(cur + 1); });
-
+  /* ---- keyboard: arrows page, 0 = fit, Esc leaves grid ---- */
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') { closeOv(); return; }
-    if (e.key === 'ArrowRight' || e.key === 'PageDown') { go(cur + 1); e.preventDefault(); }
-    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { go(cur - 1); e.preventDefault(); }
+    if (e.key === 'Escape') { closeGrid(); return; }
+    if (e.key === '0') { setZoom(100); fit(); e.preventDefault(); return; }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { go(pos + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { go(pos - 1); e.preventDefault(); }
     else if (e.key === 'Home') { go(0); e.preventDefault(); }
-    else if (e.key === 'End') { go(slides.length - 1); e.preventDefault(); }
+    else if (e.key === 'End') { go(order.length - 1); e.preventDefault(); }
   });
 
-  var start = parseInt((location.hash || '').slice(1), 10);
+  /* ---- ?thumb=1 : cover only, no bar (hub thumbnails) ---- */
+  if (/[?&]thumb=1/.test(location.search)) {
+    document.getElementById('dnav').style.display = 'none';
+    ovl.style.display = 'none';
+    stage.style.bottom = '0';
+  }
+
+  rebuild(0);
   fit();
-  go(isNaN(start) ? 0 : start - 1);
+  var start = parseInt((location.hash || '').slice(1), 10);
+  if (!isNaN(start)) { var p = order.indexOf(start - 1); if (p !== -1) { go(p); } }
 })();
 </script>
 </body>

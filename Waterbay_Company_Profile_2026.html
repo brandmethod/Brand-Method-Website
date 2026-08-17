@@ -102,7 +102,7 @@ img{display:block;max-width:100%}
 .lead{font-family:'IN';font-weight:300;font-size:25px;line-height:1.56;letter-spacing:-.004em;text-wrap:pretty}
 .body{font-family:'IN';font-weight:400;font-size:19px;line-height:1.62;letter-spacing:.002em;text-wrap:pretty}
 .small{font-family:'IN';font-weight:400;font-size:17px;line-height:1.62;text-wrap:pretty}
-p,li,figcaption,td{text-wrap:pretty}
+p,li,figcaption,td,span,.mini span,.soc p,.fstat span{text-wrap:pretty}
 .micro{font-family:'IN';font-weight:500;font-size:13.5px;letter-spacing:.14em;text-transform:uppercase}
 .lbl{font-family:'AX';font-weight:700;font-size:20px;letter-spacing:.13em;text-transform:uppercase;
   color:var(--orange)}
@@ -400,8 +400,8 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Contents</span>
     </header>
     <div class="main" style="padding-top:30px">
-      <div class="row" style="gap:88px;height:100%">
-        <div class="col" style="width:360px;flex:none">
+      <div class="row" style="gap:64px;height:100%">
+        <div class="col" style="width:300px;flex:none">
           <div class="title anim">
             <h1 class="d3" style="font-size:60px">Table of<br>Contents</h1>
           </div>
@@ -476,17 +476,17 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
   </div>
 </section>
 <style>
-.tocgrid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 60px;align-content:start}
+.tocgrid{flex:1;min-width:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0 56px;align-content:start}
 .toc-c{margin-bottom:56px}
 .toc-c:last-child{margin-bottom:0}
 .toc-h[data-goto]{cursor:pointer;transition:color .18s}
 .toc-h[data-goto]:hover{color:var(--orange)}
 .toc-h[data-goto]:hover em{color:var(--orange)}
 .toc-h{font-family:'CG';font-weight:400;font-size:26px;letter-spacing:-.008em;margin-bottom:18px;
-  display:flex;gap:13px;align-items:baseline}
+  display:flex;gap:22px;align-items:baseline}
 .toc-h b{flex:none;width:26px;font-family:'AX';font-weight:700;font-size:14px;letter-spacing:.1em;color:var(--orange)}
 .toc-h > span{flex:1;min-width:0}
-.toc-i{display:flex;gap:13px;align-items:baseline;padding-left:39px;
+.toc-i{display:flex;gap:22px;align-items:baseline;padding-left:39px;
   font-family:'IN';font-weight:300;font-size:17px;line-height:2.2;color:var(--dim-l)}
 .toc-i > span{flex:1;min-width:0}
 .toc-h em,.toc-i em{flex:none;font-style:normal;font-family:'AX';font-weight:500;font-size:13.5px;

@@ -162,19 +162,6 @@
   .dn__ct { font-size: 15px; color: #9b8d82; white-space: nowrap; font-variant-numeric: tabular-nums; padding: 0 6px; }
   .dn__ct b { color: #fbf5ef; font-weight: 500; font-size: 17px; }
 
-  /* edition toggle */
-  .edb {
-    height: 32px; padding: 0 15px; border-radius: 7px;
-    font-family: var(--m); font-size: 12px; cursor: pointer; line-height: 1;
-    background: transparent; color: #c6b8ad; border: 0;
-    display: inline-flex; align-items: center; gap: 7px;
-  }
-  .edb:hover { color: #fff; }
-  .edb[aria-pressed="true"] { background: var(--accent); color: #fff; }
-  .edb[aria-pressed="true"]::before {
-    content: ""; width: 6px; height: 6px; border-radius: 999px;
-    background: #fff; display: inline-block;
-  }
 
   /* zoom */
   .dn__pct { font-size: 14px; color: #efe4da; min-width: 54px; text-align: center; background: transparent; border: 0; cursor: pointer; font-family: var(--m); }
@@ -732,6 +719,13 @@
   .xr__t { font-size: 21px; line-height: 1.4; color: var(--ink-2); margin: 5px 0 0; }
   .xr__t b { color: var(--ink); font-weight: 650; }
 
+  .rsv { flex: 1; display: flex; align-items: center; justify-content: center; }
+  .rsv span {
+    font-family: var(--m); font-size: 15px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--faint);
+    border: 1px dashed var(--rule-2); padding: 16px 28px;
+  }
+
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
 
@@ -801,7 +795,7 @@
           <div class="toc__g"><h3>04 · Applications</h3>
             <div class="toc__r">Clinic Touchpoints<span>25</span></div><div class="toc__r">Digital &amp; Store Presence<span>26</span></div></div>
           <div class="toc__g"><h3>05 · Governance</h3>
-            <div class="toc__r">Legal, Usage &amp; Approvals<span>27</span></div><div class="toc__r">Back Cover<span>28</span></div></div>
+            <div class="toc__r">Legal, Usage &amp; Approvals<span>29</span></div><div class="toc__r">Back Cover<span>30</span></div></div>
         </div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">02</span></div>
@@ -1406,7 +1400,25 @@
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">26</span></div>
     </section>
 
-    <!-- 27 GOVERNANCE -->
+    <!-- 27 RESERVED -->
+    <section class="slide">
+      <p class="eyebrow">Reserved</p>
+      <div class="body">
+        <div class="rsv"><span>Reserved for future content</span></div>
+      </div>
+      <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co</span><span class="ed">Light</span><span class="pn">27</span></div>
+    </section>
+
+    <!-- 28 RESERVED -->
+    <section class="slide">
+      <p class="eyebrow">Reserved</p>
+      <div class="body">
+        <div class="rsv"><span>Reserved for future content</span></div>
+      </div>
+      <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co</span><span class="ed">Light</span><span class="pn">28</span></div>
+    </section>
+
+    <!-- 29 GOVERNANCE -->
     <section class="slide">
       <p class="eyebrow">05 · Governance · 5.1</p>
       <h2 class="t">Legal, Usage &amp; Approvals</h2>
@@ -1428,10 +1440,10 @@
           <div class="cell"><span class="k">03 · Approve</span><h3>Sign off</h3><p>Written approval within three working days. No written approval, no ship.</p></div>
         </div>
       </div>
-      <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">27</span></div>
+      <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">29</span></div>
     </section>
 
-    <!-- 28 BACK COVER -->
+    <!-- 30 BACK COVER -->
     <section class="slide dark">
       <p class="eyebrow">Brand OS v1.0 · Close</p>
       <div class="dv">
@@ -1444,7 +1456,7 @@
           <div><b>© 2026</b>All rights reserved</div>
         </div>
       </div>
-      <div class="foot"><span>Confidential · internal &amp; authorised partner use only</span><span class="ed">Light</span><span class="pn">28</span></div>
+      <div class="foot"><span>Confidential · internal &amp; authorised partner use only</span><span class="ed">Light</span><span class="pn">30</span></div>
     </section>
 
   </div>
@@ -1456,13 +1468,9 @@
   <div class="dn__rail" id="rail" aria-label="Pages"></div>
 
   <span class="dn__name" id="sname"></span>
-  <span class="dn__ct"><b id="cnum">1</b> / <span id="ctot">28</span></span>
+  <span class="dn__ct"><b id="cnum">1</b> / <span id="ctot">30</span></span>
   <button class="dn__b dn__b--box" id="next" aria-label="Next page">→</button>
 
-  <div class="dn__box">
-    <button class="edb" id="edStd" aria-pressed="false">Standard</button>
-    <button class="edb" id="edFull" aria-pressed="true">Full</button>
-  </div>
 
   <div class="dn__box dn__zmbox">
     <button class="dn__b" id="zOut" aria-label="Zoom out"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 12h12"/></svg></button>
@@ -1521,25 +1529,19 @@
     '2.4 · Colour Palette','2.5 · Typography','2.6 · Hero Icon & Avatar',
     '03 · The App','3.1 · App Identity','3.2 · UI Foundations','3.3 · Key Screens & the AI Surface',
     '04 · Applications','4.1 · Clinic Touchpoints','4.2 · Digital & Store Presence',
+    'Reserved','Reserved',
     '5.1 · Legal, Usage & Approvals','0.0 · Back Cover'
   ];
 
-  var DEEP = [3, 4, 15, 18, 21, 22, 25];   /* zero-based */
 
-  var edition = 'full';
-  var order   = [];        /* visible slide indices, in order */
+  var order   = [];        /* slide indices, in order */
   var pos     = 0;         /* position within order */
   var zoom    = 100;
   var fitScale = 1;
 
   function rebuild(keepIdx) {
     order = [];
-    slides.forEach(function (s, i) {
-      var deep = DEEP.indexOf(i) !== -1;
-      var show = edition === 'full' || !deep;
-      s.classList.toggle('skip', !show);
-      if (show) { order.push(i); }
-    });
+    slides.forEach(function (s, i) { order.push(i); });
     document.getElementById('ctot').textContent = order.length;
     buildRail();
     buildGrid();
@@ -1577,7 +1579,7 @@
       b.addEventListener('click', function () { go(p); closeGrid(); });
       ovlGrid.appendChild(b); thumbs.push(b);
     });
-    document.getElementById('ovlCount').textContent = order.length + ' pages · ' + edition;
+    document.getElementById('ovlCount').textContent = order.length + ' pages';
   }
 
   /* ---- paging ---- */
@@ -1626,17 +1628,6 @@
   document.getElementById('zFit').addEventListener('click', function () { setZoom(100); fit(); });
   window.addEventListener('resize', fit);
 
-  /* ---- edition toggle ---- */
-  var edStd = document.getElementById('edStd'), edFull = document.getElementById('edFull');
-  function setEdition(e) {
-    var keep = order[pos];
-    edition = e;
-    edStd.setAttribute('aria-pressed', e === 'standard');
-    edFull.setAttribute('aria-pressed', e === 'full');
-    rebuild(keep);
-  }
-  edStd.addEventListener('click', function () { setEdition('standard'); });
-  edFull.addEventListener('click', function () { setEdition('full'); });
 
   /* ---- grid / filmstrip overlay ---- */
   function openGrid()  { ovl.setAttribute('data-open', 'true'); centreFilm(); }

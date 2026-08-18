@@ -6,10 +6,14 @@
 <title>MyHero Brand Identity Book</title>
 <meta name="description" content="MyHero Brand Identity Book — Light Edition. Prepared for Dr. Amira, Elite Care Clinic, by Brand Method.">
 <meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>*{margin:0;padding:0}html{-webkit-text-size-adjust:100%}svg{display:block}button{font:inherit}</style>
 </head>
 <body>
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
   :root {
     --shell: #14100e;
     --shell-2: #1e1a16;
@@ -44,8 +48,8 @@
 
     --accent: #2b7fc4;
 
-    --f: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    --m: ui-monospace, "SF Mono", "JetBrains Mono", "Roboto Mono", Menlo, Consolas, monospace;
+    --f: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --m: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
   }
 
   * { box-sizing: border-box; }
@@ -63,10 +67,10 @@
   .stage {
     position: fixed;
     top: 0; left: 0; right: 0;
-    bottom: 92px;                 /* deck-nav never overlaps the book */
+    bottom: 84px;                 /* deck-nav never overlaps the book */
     display: flex; align-items: center; justify-content: center;
     overflow: auto;
-    padding: 18px;
+    padding: 8px;
   }
   .stage::-webkit-scrollbar { height: 8px; width: 8px; }
   .stage::-webkit-scrollbar-thumb { background: #2a3646; border-radius: 4px; }
@@ -102,7 +106,8 @@
     z-index: 60;
     display: flex; align-items: center;
     gap: 0;
-    max-width: calc(100vw - 24px);
+    width: 1180px;                /* replaced at runtime with the canvas width */
+    max-width: calc(100vw - 16px);
     height: 56px;
     padding: 0 6px;
     background: #0f1823;
@@ -129,7 +134,7 @@
   /* dot rail */
   .dn__rail {
     display: flex; align-items: center; gap: 7px;
-    max-width: 260px; overflow-x: auto; padding: 0 6px;
+    flex: 1 1 auto; min-width: 60px; overflow-x: auto; padding: 0 6px;
     scrollbar-width: none;
   }
   .dn__rail::-webkit-scrollbar { display: none; }
@@ -153,7 +158,7 @@
   /* name + counter */
   .dn__name {
     font-size: 13px; color: #dbe6f2; white-space: nowrap;
-    max-width: 240px; overflow: hidden; text-overflow: ellipsis;
+    max-width: 300px; overflow: hidden; text-overflow: ellipsis; flex: none;
     padding: 0 12px; letter-spacing: 0.02em;
   }
   .dn__ct { font-size: 13px; color: #8b9cb0; padding: 0 10px; white-space: nowrap; font-variant-numeric: tabular-nums; }
@@ -223,7 +228,7 @@
   .ovl[data-mode="film"] { display: none; }
   .ovl[data-mode="film"][data-open="true"] {
     display: flex; flex-direction: column; justify-content: center;
-    inset: 0 0 92px 0; background: rgba(8,12,18,0.9); padding: 20px 26px;
+    inset: 0 0 84px 0; background: rgba(8,12,18,0.9); padding: 20px 26px;
   }
 
   /* ================= library gate ================= */
@@ -912,20 +917,20 @@
       <p class="eyebrow">03 · Visual Identity · 3.5</p>
       <h2 class="t">Typography</h2>
       <div class="body">
-        <p class="lede">Three roles, one job each, so hierarchy stays obvious on a small screen held at arm's length.</p>
+        <p class="lede">MyHero runs on <b>IBM Plex</b>. Engineered and neutral enough to carry medical information credibly, humanist enough that it never reads as a government form — and its mono companion gives dosages and record numbers a face of their own. Three roles, one job each.</p>
         <div class="grid g3" style="margin-bottom:22px">
-          <div class="cell"><span class="k">Headline</span><p style="font-size:62px;font-weight:700;letter-spacing:-0.035em;color:var(--ink);margin:0 0 10px;line-height:1">Aa Bb Cc</p><p>A humanist grotesque. Confident, never editorial. Screen titles and section heads.</p></div>
-          <div class="cell"><span class="k">Body &amp; interface</span><p style="font-size:50px;font-weight:400;color:var(--ink);margin:0 0 10px;line-height:1">Aa Bb Cc</p><p>Highly legible at 15–17px. Open apertures, tall x-height, unambiguous 1 / l / I.</p></div>
-          <div class="cell"><span class="k">Data &amp; dosage</span><p style="font-family:var(--m);font-size:44px;color:var(--ink);margin:0 0 10px;line-height:1">Aa 0123</p><p>Monospace with tabular figures. Record numbers, dosages, dates, times.</p></div>
+          <div class="cell"><span class="k">Headline · IBM Plex Sans</span><p style="font-size:60px;font-weight:600;letter-spacing:-0.035em;color:var(--ink);margin:0 0 6px;line-height:1">Aa Bb Cc</p><p style="font-family:var(--m);font-size:15px;color:var(--ink-3);margin:0 0 10px">SemiBold 600 · Bold 700</p><p>Page titles and section heads. Set tight, never letter-spaced open.</p></div>
+          <div class="cell"><span class="k">Body &amp; interface · IBM Plex Sans</span><p style="font-size:48px;font-weight:400;color:var(--ink);margin:0 0 6px;line-height:1">Aa Bb Cc</p><p style="font-family:var(--m);font-size:15px;color:var(--ink-3);margin:0 0 10px">Regular 400 · Medium 500</p><p>Open apertures and a tall x-height keep it legible at 15–17px, with an unambiguous 1 / l / I.</p></div>
+          <div class="cell"><span class="k">Data &amp; dosage · IBM Plex Mono</span><p style="font-family:var(--m);font-size:42px;color:var(--ink);margin:0 0 6px;line-height:1">Aa 0123</p><p style="font-family:var(--m);font-size:15px;color:var(--ink-3);margin:0 0 10px">Regular 400 · Medium 500</p><p>Tabular figures for record numbers, dosages, dates and times. Never used for body copy.</p></div>
         </div>
         <div class="grid g2">
           <div class="cell"><span class="k">Hierarchy</span>
             <dl class="kv" style="grid-template-columns:150px 1fr">
-              <dt>Display</dt><dd>32 / 36 · bold · −3.5% tracking</dd>
-              <dt>Title</dt><dd>22 / 28 · semibold · −2% tracking</dd>
-              <dt>Body</dt><dd>16 / 24 · regular</dd>
-              <dt>Caption</dt><dd>13 / 18 · regular</dd>
-              <dt>Label</dt><dd>11 / 14 · mono · +13% tracking · caps</dd></dl></div>
+              <dt>Display</dt><dd>Plex Sans 600 · 32 / 36 · −3.5% tracking</dd>
+              <dt>Title</dt><dd>Plex Sans 600 · 22 / 28 · −2% tracking</dd>
+              <dt>Body</dt><dd>Plex Sans 400 · 16 / 24</dd>
+              <dt>Caption</dt><dd>Plex Sans 400 · 13 / 18</dd>
+              <dt>Label</dt><dd>Plex Mono 500 · 11 / 14 · +13% · caps</dd></dl></div>
           <div class="cell cell--alt"><span class="k">The dosage legibility floor</span>
             <p style="font-size:22px">Non-negotiable, and it overrides any design preference: <b>dosage, dose-time, allergy and record-number text is never set below 16px, never lighter than regular weight, and never tracked tighter than zero.</b> If a layout cannot hold that, the layout changes.</p></div>
         </div>
@@ -1319,8 +1324,9 @@
 
   /* ---- zoom / fit ---- */
   var stage = document.querySelector('.stage'), zPct = document.getElementById('zPct');
+  var dnav = document.getElementById('dnav');
   function fit() {
-    var w = stage.clientWidth - 36, h = stage.clientHeight - 36;
+    var w = stage.clientWidth - 16, h = stage.clientHeight - 16;
     fitScale = Math.min(w / 1920, h / 1080);
     apply();
   }
@@ -1328,6 +1334,9 @@
     deck.style.transform = 'scale(' + (fitScale * zoom / 100) + ')';
     zPct.textContent = zoom + '%';
     stage.style.alignItems = zoom > 100 ? 'flex-start' : 'center';
+    /* bar spans exactly the canvas, so its edges line up with the page */
+    var navW = Math.min(1920 * fitScale, window.innerWidth - 16);
+    dnav.style.width = Math.max(navW, 320) + 'px';
   }
   function setZoom(z) { zoom = Math.max(50, Math.min(250, z)); apply(); }
 

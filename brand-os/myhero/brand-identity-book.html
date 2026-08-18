@@ -67,7 +67,7 @@
   .stage {
     position: fixed;
     top: 0; left: 0; right: 0;
-    bottom: 84px;                 /* deck-nav never overlaps the book */
+    bottom: 64px;                 /* deck-nav never overlaps the book */
     display: flex; align-items: center; justify-content: center;
     overflow: auto;
     padding: 8px;
@@ -101,89 +101,91 @@
 
   .dnav {
     position: fixed;
-    left: 50%; bottom: 18px;
-    transform: translateX(-50%);
+    left: 0; right: 0; bottom: 0;
     z-index: 60;
-    display: flex; align-items: center;
-    gap: 0;
-    width: 1180px;                /* replaced at runtime with the canvas width */
-    max-width: calc(100vw - 16px);
-    height: 56px;
-    padding: 0 6px;
-    background: #0f1823;
-    border: 1px solid rgba(255,255,255,0.11);
-    border-radius: 999px;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.55);
+    display: flex; align-items: center; gap: 10px;
+    height: 64px; padding: 0 18px;
+    background: #14100e;
+    border-top: 1px solid rgba(255,255,255,0.13);
     font-family: var(--m);
   }
 
-  .dn__sep { width: 1px; align-self: stretch; margin: 12px 4px; background: rgba(255,255,255,0.12); flex: none; }
-  .dn__grp { display: flex; align-items: center; gap: 4px; padding: 0 8px; }
+  .dn__box {
+    display: flex; align-items: center; gap: 2px;
+    height: 38px; padding: 0 5px;
+    border: 1px solid rgba(255,255,255,0.17);
+    border-radius: 9px;
+  }
 
   .dn__b {
     display: inline-flex; align-items: center; justify-content: center;
-    height: 34px; min-width: 34px; padding: 0 10px;
-    background: transparent; border: 0; border-radius: 999px;
-    color: #b9c6d6; font-family: var(--m); font-size: 15px;
+    height: 36px; min-width: 36px; padding: 0 10px;
+    background: transparent; border: 0; border-radius: 7px;
+    color: #c6b8ad; font-family: var(--m); font-size: 15px;
     cursor: pointer; line-height: 1;
   }
-  .dn__b:hover:not(:disabled) { background: rgba(255,255,255,0.09); color: #fff; }
-  .dn__b:disabled { opacity: 0.28; cursor: default; }
+  .dn__b:hover:not(:disabled) { background: rgba(255,255,255,0.1); color: #fff; }
+  .dn__b:disabled { opacity: 0.26; cursor: default; }
   .dn__b svg { width: 18px; height: 18px; }
+
+  .dn__b--box {
+    width: 40px; height: 40px; padding: 0;
+    border: 1px solid rgba(255,255,255,0.17); border-radius: 9px;
+  }
 
   /* dot rail */
   .dn__rail {
     display: flex; align-items: center; gap: 7px;
-    flex: 1 1 auto; min-width: 60px; overflow-x: auto; padding: 0 6px;
+    flex: 1 1 auto; min-width: 60px; overflow-x: auto; padding: 0 4px;
     scrollbar-width: none;
   }
   .dn__rail::-webkit-scrollbar { display: none; }
 
   .dot {
     width: 6px; height: 6px; border-radius: 999px; flex: none;
-    background: rgba(255,255,255,0.3); border: 0; padding: 0; cursor: pointer;
+    background: rgba(255,255,255,0.28); border: 0; padding: 0; cursor: pointer;
     transition: transform 0.14s ease, background 0.14s ease;
   }
   .dot:hover { transform: scale(1.5); background: rgba(255,255,255,0.6); }
-
   .dot.act {
-    width: 24px; height: 15px; border-radius: 999px;
-    background: var(--accent);
-    color: #fff; font-family: var(--m); font-size: 9px;
+    width: 26px; height: 16px; border-radius: 999px;
+    background: var(--accent); color: #fff;
+    font-family: var(--m); font-size: 10px;
     display: inline-flex; align-items: center; justify-content: center;
     transform: none;
   }
   .dot.act:hover { transform: none; }
 
-  /* name + counter */
-  .dn__name {
-    font-size: 13px; color: #dbe6f2; white-space: nowrap;
-    max-width: 300px; overflow: hidden; text-overflow: ellipsis; flex: none;
-    padding: 0 12px; letter-spacing: 0.02em;
-  }
-  .dn__ct { font-size: 13px; color: #8b9cb0; padding: 0 10px; white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .dn__ct b { color: #eef4fa; font-weight: 500; }
+  .dn__name { font-size: 14px; color: #efe4da; white-space: nowrap; max-width: 300px; overflow: hidden; text-overflow: ellipsis; flex: none; padding: 0 4px; }
+  .dn__ct { font-size: 15px; color: #9b8d82; white-space: nowrap; font-variant-numeric: tabular-nums; padding: 0 6px; }
+  .dn__ct b { color: #fbf5ef; font-weight: 500; font-size: 17px; }
 
   /* edition toggle */
-  .dn__ed { display: flex; align-items: center; gap: 6px; padding: 0 8px; }
   .edb {
-    height: 32px; padding: 0 16px; border-radius: 999px;
+    height: 32px; padding: 0 15px; border-radius: 7px;
     font-family: var(--m); font-size: 12px; cursor: pointer; line-height: 1;
-    background: transparent; color: #b9c6d6;
-    border: 1px solid rgba(255,255,255,0.22);
+    background: transparent; color: #c6b8ad; border: 0;
+    display: inline-flex; align-items: center; gap: 7px;
   }
-  .edb:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
-  .edb[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .edb:hover { color: #fff; }
+  .edb[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .edb[aria-pressed="true"]::before {
+    content: ""; width: 6px; height: 6px; border-radius: 999px;
+    background: #fff; display: inline-block;
+  }
 
   /* zoom */
-  .dn__zm { display: flex; align-items: center; gap: 2px; padding: 0 6px; }
-  .dn__pct { font-size: 13px; color: #dbe6f2; min-width: 52px; text-align: center; background: transparent; border: 0; cursor: pointer; font-family: var(--m); }
+  .dn__pct { font-size: 14px; color: #efe4da; min-width: 54px; text-align: center; background: transparent; border: 0; cursor: pointer; font-family: var(--m); }
   .dn__pct:hover { color: #fff; }
-  .fitb { height: 32px; padding: 0 14px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.22); background: transparent; color: #b9c6d6; font-family: var(--m); font-size: 12px; cursor: pointer; }
-  .fitb:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+  .fitb {
+    height: 32px; padding: 0 14px; border-radius: 7px; border: 0;
+    background: transparent; color: #c6b8ad; font-family: var(--m);
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  }
+  .fitb:hover { color: #fff; background: rgba(255,255,255,0.1); }
 
-  @media (max-width: 1180px) { .dn__name, .dn__hideM { display: none; } }
-  @media (max-width: 840px) { .dn__rail { max-width: 128px; } .dn__zm { display: none; } }
+  @media (max-width: 1240px) { .dn__name { display: none; } }
+  @media (max-width: 900px)  { .dn__zmbox { display: none; } }
 
   /* ================= grid / filmstrip overlay ================= */
 
@@ -228,7 +230,7 @@
   .ovl[data-mode="film"] { display: none; }
   .ovl[data-mode="film"][data-open="true"] {
     display: flex; flex-direction: column; justify-content: center;
-    inset: 0 0 84px 0; background: rgba(8,12,18,0.9); padding: 20px 26px;
+    inset: 0 0 64px 0; background: rgba(20,16,14,0.92); padding: 20px 26px;
   }
 
   /* ================= library gate ================= */
@@ -364,6 +366,11 @@
 
   .stack { display: grid; gap: 17px; }
 
+  .grid.grow { flex: 1; align-content: stretch; }
+  .grid.grow .cell { display: flex; flex-direction: column; justify-content: center; }
+  .grid.grow .cell .k { flex: none; }
+  .band { margin-top: 22px; }
+
   .ri { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
   .ri__n { font-family: var(--m); font-size: 17px; color: var(--blue); padding-top: 4px; }
   .ri p { margin: 0; font-size: 21px; line-height: 1.45; color: var(--ink-2); }
@@ -498,6 +505,106 @@
   .ov__i[aria-current="true"] { border-color: var(--blue); color: var(--blue); }
   .ov__i span { font-family: var(--m); font-size: 11px; color: var(--shell-mut); font-variant-numeric: tabular-nums; }
 
+
+  /* ================= weight: filled blocks, bleeds, figures ================= */
+
+  .slide.bleed { padding: 0; }
+
+  /* filled cell variants — colour carries the key statements */
+  .cell--accent { background: var(--blue-deep); color: #fff; }
+  .cell--accent .k { color: #a9d0ee; }
+  .cell--accent h3, .cell--accent .big { color: #fff; }
+  .cell--accent p { color: rgba(255,255,255,0.9); }
+  .cell--accent p b { color: #fff; }
+
+  .cell--ink { background: var(--dark); color: var(--on-dark); }
+  .cell--ink .k { color: var(--peach); }
+  .cell--ink h3, .cell--ink .big { color: var(--on-dark); }
+  .cell--ink p { color: rgba(245,237,230,0.86); }
+  .cell--ink p b { color: #fff; }
+
+  .cell--rose { background: var(--rose-soft); }
+  .cell--rose .k { color: var(--rose); }
+  .cell--warm { background: var(--paper-3); }
+
+  /* accent rule under the page title — gives every page a spine */
+  h2.t { position: relative; }
+  .slide:not(.dark):not(.bleed) h2.t::after {
+    content: ""; position: absolute; left: 0; bottom: -12px;
+    width: 96px; height: 5px; background: var(--blue);
+  }
+  h2.t { margin-bottom: 40px; }
+
+  /* figure panel — fills space that was reading as emptiness */
+  .fig {
+    position: relative; overflow: hidden;
+    background: linear-gradient(122deg, var(--blue-deep) 0%, var(--blue) 46%, var(--rose) 84%, var(--peach) 100%);
+    min-height: 150px;
+  }
+  .fig::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 76% 22%, rgba(255,255,255,0.22), transparent 60%); }
+  .fig__t { position: absolute; left: 26px; bottom: 20px; z-index: 1; font-family: var(--m); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+  .fig__q { position: absolute; left: 26px; right: 26px; top: 26px; z-index: 1; font-size: 34px; font-weight: 650; letter-spacing: -0.028em; color: #fff; line-height: 1.18; }
+
+  /* statement band — full-width colour block inside a page */
+  .band {
+    display: flex; align-items: center; gap: 34px;
+    background: var(--dark); color: var(--on-dark);
+    padding: 30px 34px; margin-top: auto;
+  }
+  .band__k { font-family: var(--m); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--peach); flex: none; }
+  .band__t { font-size: 30px; font-weight: 650; letter-spacing: -0.025em; line-height: 1.25; margin: 0; }
+
+  /* ================= cover ================= */
+
+  .cv { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+
+  .cv__top {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 30px 104px 22px;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--m); font-size: 16px; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--ink-3);
+  }
+  .cv__tag { border: 1px solid var(--blue); color: var(--blue); padding: 7px 14px; }
+
+  .cv__main { flex: 1; padding: 40px 104px 0; display: flex; flex-direction: column; }
+
+  .cv__kick { display: inline-flex; align-items: center; gap: 14px; font-family: var(--m); font-size: 17px; letter-spacing: 0.19em; text-transform: uppercase; color: var(--ink-2); margin-bottom: 18px; }
+  .cv__ring { width: 22px; height: 22px; border-radius: 999px; border: 6px solid var(--blue); flex: none; }
+
+  .cv__word { font-size: 178px; font-weight: 700; letter-spacing: -0.055em; line-height: 0.86; margin: 0 0 6px; color: var(--blue); }
+  .cv__word em { font-style: normal; color: var(--ink); }
+
+  .cv__title { font-size: 82px; font-weight: 400; letter-spacing: -0.035em; line-height: 1; margin: 0 0 30px; color: var(--ink-3); }
+
+  .cv__desc { font-size: 25px; line-height: 1.5; color: var(--ink-2); max-width: 1000px; margin: 0 0 30px; }
+
+  .cv__pills { display: flex; gap: 12px; }
+  .cv__pill { font-family: var(--m); font-size: 14px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-2); border: 1px solid var(--rule-2); border-radius: 999px; padding: 10px 20px; }
+
+  /* full-bleed bottom band */
+  .cv__band { display: grid; grid-template-columns: 1fr 1fr; height: 300px; margin-top: auto; }
+
+  .cv__left { background: var(--blue-deep); color: #fff; padding: 34px 104px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .cv__left::after { content: ""; position: absolute; right: -90px; top: -60px; width: 380px; height: 380px; border-radius: 999px; background: rgba(255,255,255,0.07); }
+  .cv__mark { font-size: 54px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; position: relative; z-index: 1; }
+  .cv__addr { font-family: var(--m); font-size: 15px; letter-spacing: 0.1em; line-height: 1.9; text-transform: uppercase; color: rgba(255,255,255,0.88); position: relative; z-index: 1; }
+
+  .cv__right { position: relative; overflow: hidden; background: linear-gradient(118deg, #1b5a90 0%, #2b7fc4 40%, #c9607f 80%, #e9a68f 100%); }
+  .cv__right::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 74% 26%, rgba(255,255,255,0.25), transparent 58%); }
+  .cv__scan { position: absolute; left: 0; right: 0; top: 52%; height: 3px; background: #f7d9c9; box-shadow: 0 0 26px rgba(247,217,201,0.95); z-index: 1; }
+  .cv__rtag { position: absolute; left: 30px; bottom: 24px; z-index: 2; font-family: var(--m); font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+
+  /* ================= dividers, with a colour field ================= */
+
+  .divfield {
+    position: absolute; inset: 0;
+    background: linear-gradient(126deg, #14100e 0%, #1b5a90 58%, #2b7fc4 100%);
+    opacity: 0.9;
+  }
+  .divfield::after { content: ""; position: absolute; right: -120px; bottom: -160px; width: 620px; height: 620px; border-radius: 999px; border: 70px solid rgba(255,255,255,0.06); }
+  .slide.dark .dv, .slide.dark .eyebrow, .slide.dark .foot { position: relative; z-index: 1; }
+
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
 
@@ -505,30 +612,37 @@
   <div class="deck" id="deck">
 
     <!-- 01 COVER -->
-    <section class="slide">
-      <div class="sc">
-        <div class="sc__top"><span><b>MyHero</b> · Personal Medical Records</span><span>Client Level · Brand Identity</span></div>
-        <div class="sc__kick"><span class="sc__dot"></span><span>One record, owned by the patient</span></div>
-        <div class="sc__lock">
-          <div class="sc__sym" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M13 20h5l2.5-5.5L24 25l2.5-5h6" stroke="#2b7fc4" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <p class="sc__word">My<em>Hero</em></p>
+    <section class="slide bleed">
+      <div class="cv">
+        <div class="cv__top">
+          <span>Brand Method · Brandbook Architect</span>
+          <span class="cv__tag">Client Level · Brand Identity</span>
         </div>
-        <h1 class="sc__title">Brand Identity Book</h1>
-        <p class="sc__desc">The core manual that defines how MyHero speaks, looks, and earns trust. It unites strategy, identity, and interface into one system — so every screen, every prescription slip, and every message from the clinic reads as one brand, whoever makes it.</p>
-        <div class="sc__pills">
-          <span class="sc__pill">Digital Health</span><span class="sc__pill">Medical Records</span>
-          <span class="sc__pill">Mobile Application</span><span class="sc__pill">Light Edition</span>
-        </div>
-        <div class="sc__band">
-          <div class="sc__cell">
-            <div class="sc__card" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><path d="M13 20h5l2.5-5.5L24 25l2.5-5h6" stroke="#e9a68f" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-            <div class="sc__addr"><b>Elite Care Clinic</b>Kuala Lumpur, Malaysia<br>Brand OS v1.0 · 2026</div>
+
+        <div class="cv__main">
+          <span class="cv__kick"><span class="cv__ring"></span>Personal Medical Records</span>
+          <p class="cv__word">My<em>Hero</em></p>
+          <h1 class="cv__title">Brand Identity Book</h1>
+          <p class="cv__desc">The core manual that defines how MyHero speaks, looks, and earns trust. It unites strategy, identity, and interface into one system, so every screen, prescription slip, and message from the clinic reads as one brand across every touchpoint.</p>
+          <div class="cv__pills">
+            <span class="cv__pill">Digital Health</span>
+            <span class="cv__pill">Medical Records</span>
+            <span class="cv__pill">Brand OS v1.0</span>
+            <span class="cv__pill">2026</span>
           </div>
-          <div class="sc__panel"><span class="sc__scan"></span><span class="sc__ptag">Visual panel · identity system</span></div>
         </div>
-        <div class="sc__discl"><span>Light Edition · Brand Identity Book v1.0</span><span>© 2026 All rights reserved · Confidential</span></div>
+
+        <div class="cv__band">
+          <div class="cv__left">
+            <span class="cv__mark">MyHero</span>
+            <span class="cv__addr">Elite Care Clinic<br>Kuala Lumpur, Wilayah Persekutuan<br>Malaysia · Brand OS v1.0 · 2026</span>
+          </div>
+          <div class="cv__right">
+            <span class="cv__scan"></span>
+            <span class="cv__rtag">Visual panel · identity system</span>
+          </div>
+        </div>
       </div>
-      <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">01</span></div>
     </section>
 
     <!-- 02 TOC -->
@@ -570,12 +684,13 @@
         <p class="lede"><b>Purpose of this guide.</b> This is the MyHero Brand Identity Book. It defines who we are, what we stand for, and how the brand appears wherever a patient meets it. It exists so every screen, slip, post, and reply reads as one brand, whoever makes it.</p>
         <p class="lede"><b>How to use it.</b> The book is a system, not a suggestion. Follow the rules as written. When a situation is not covered, borrow the closest rule and confirm with the brand desk before it ships. In a health product this matters more than usual: an inconsistency here does not just look careless, it costs trust at the exact moment trust is being decided.</p>
         <p class="lede"><b>Who it is for.</b> Elite Care Clinic staff, the development team, appointed agencies, and any authorised partner producing anything that carries the MyHero name.</p>
-        <div class="grid g4">
+        <div class="grid g4 grow">
           <div class="cell"><span class="k">01 · Ownership</span><p>All marks, assets, and creatives in this book are the intellectual property of the MyHero owning entity.</p></div>
           <div class="cell"><span class="k">02 · Usage rights</span><p>Licensed for MyHero business use by internal teams and authorised partners only.</p></div>
           <div class="cell"><span class="k">03 · Confidentiality</span><p>This book and its assets are confidential. No external sharing without written approval.</p></div>
           <div class="cell"><span class="k">04 · Acceptance</span><p>Using any asset means accepting these terms. Full detail sits in Governance · 6.1.</p></div>
         </div>
+        <div class="band"><span class="band__k">The standard</span><p class="band__t">In a health product an inconsistency does not just look careless. It costs trust at the exact moment trust is being decided.</p></div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">03</span></div>
     </section>
@@ -642,6 +757,7 @@
 
     <!-- 06 DIVIDER -->
     <section class="slide dark">
+      <span class="divfield"></span>
       <p class="eyebrow">Brand OS v1.0 · Our Brand</p>
       <div class="dv"><p class="dv__n">01</p><h2 class="dv__t">Our Brand</h2><p class="dv__d">Who MyHero is, what it stands for, and how it speaks.</p></div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span class="ed">Light</span><span class="pn">06</span></div>
@@ -653,12 +769,13 @@
       <h2 class="t">Who We Are</h2>
       <div class="body">
         <p class="lede">MyHero is a personal medical record app for families managing ongoing care. It takes the history that currently lives in a clinic filing cabinet — visits, prescriptions, results, allergies — and puts it in the hand of the person it belongs to. It is built by a practising doctor, which is why it holds what a clinic actually needs, and read by parents at eleven at night, which is why it says it plainly.</p>
-        <div class="grid g4">
-          <div class="cell"><span class="k">01</span><h3>Records first</h3><p>The product is a medical record people can actually hold. Everything else, the AI included, exists in service of that. We are not an AI company that happens to store health data.</p></div>
+        <div class="grid g4 grow">
+          <div class="cell cell--accent"><span class="k">01</span><h3>Records first</h3><p>The product is a medical record people can actually hold. Everything else, the AI included, exists in service of that. We are not an AI company that happens to store health data.</p></div>
           <div class="cell"><span class="k">02</span><h3>Credible, not cold</h3><p>Medical seriousness without the grey weight of a government form. Accuracy is the floor; warmth is what makes people open it twice.</p></div>
           <div class="cell"><span class="k">03</span><h3>Built for whoever carries the file</h3><p>Designed for the parent in the waiting room, not the specialist at the desk. If a tired non-medical adult cannot follow it, it is not finished.</p></div>
-          <div class="cell"><span class="k">04</span><h3>Technology behind the doctor</h3><p>AI supports the record. It never fronts it, never diagnoses, and never speaks with more confidence than the evidence allows.</p></div>
+          <div class="cell cell--warm"><span class="k">04</span><h3>Technology behind the doctor</h3><p>AI supports the record. It never fronts it, never diagnoses, and never speaks with more confidence than the evidence allows.</p></div>
         </div>
+        <div class="band"><span class="band__k">The test</span><p class="band__t">If a tired, non-medical adult cannot follow it at eleven at night, it is not finished.</p></div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">07</span></div>
     </section>
@@ -672,8 +789,8 @@
         <p class="lede">MyHero started with something a practising doctor sees at every single follow-up: the consultation that begins from zero. The same history re-explained. The same prescriptions re-listed from memory or from a photo on a cracked phone screen. A file that exists — accurate, complete, careful — but lives in a cabinet the patient will never open.</p>
         <div class="grid g3">
           <div class="cell"><span class="k">The frustration</span><p>Every follow-up starts over. Patients carry folders, photograph prescriptions, and still arrive without the one detail that matters. The clinic re-enters what it already knows.</p></div>
-          <div class="cell"><span class="k">The idea</span><p>One secure record the patient owns and carries. Visits, prescriptions, results and allergies in one place, on the phone already in their hand, in language they can read without a translator.</p></div>
-          <div class="cell"><span class="k">The shift</span><p>From record-keeping done <em>to</em> patients, to a record patients hold. Less manual entry for the clinic, less repetition for the family, and a history that arrives before the consultation does.</p></div>
+          <div class="cell cell--ink"><span class="k">The idea</span><p>One secure record the patient owns and carries. Visits, prescriptions, results and allergies in one place, on the phone already in their hand, in language they can read without a translator.</p></div>
+          <div class="cell cell--warm"><span class="k">The shift</span><p>From record-keeping done <em>to</em> patients, to a record patients hold. Less manual entry for the clinic, less repetition for the family, and a history that arrives before the consultation does.</p></div>
         </div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">08</span></div>
@@ -684,10 +801,13 @@
       <p class="eyebrow">01 · Our Brand · 1.3</p>
       <h2 class="t">Vision, Mission &amp; Positioning</h2>
       <div class="body">
-        <div class="stack" style="gap:44px">
-          <div><span class="k">Vision · ten years ahead</span><p class="big">A Malaysia where every patient walks into every appointment with their full history already in their hand.</p></div>
-          <div><span class="k">Mission · what we do daily</span><p class="big">To give patients one secure, plain-language place for their medical records — and give clinics a lighter way to keep them.</p></div>
-          <div><span class="k">Positioning</span><p class="lede" style="margin:0;max-width:1500px">MyHero is a <b>personal medical record app for Malaysian families managing ongoing care</b>: clinic-grade accuracy in a form a parent can read at eleven at night, built by a practising doctor, with technology that supports the clinician rather than replacing them.</p></div>
+        <div class="grid g2 grow" style="margin-bottom:0">
+          <div class="cell cell--accent" style="padding:38px 40px 42px"><span class="k">Vision · ten years ahead</span><p class="big" style="margin:0">A Malaysia where every patient walks into every appointment with their full history already in their hand.</p></div>
+          <div class="cell cell--ink" style="padding:38px 40px 42px"><span class="k">Mission · what we do daily</span><p class="big" style="margin:0">To give patients one secure, plain-language place for their medical records — and give clinics a lighter way to keep them.</p></div>
+        </div>
+        <div class="band">
+          <span class="band__k">Positioning</span>
+          <p class="band__t">MyHero is a <b>personal medical record app for Malaysian families managing ongoing care</b>: clinic-grade accuracy in a form a parent can read at eleven at night, built by a practising doctor, with technology that supports the clinician rather than replacing them.</p>
         </div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">09</span></div>
@@ -699,8 +819,8 @@
       <h2 class="t">Values &amp; Culture</h2>
       <div class="body">
         <div class="grid g3" style="margin-bottom:26px">
-          <div class="cell"><span class="k">Tagline</span><p class="big" style="margin:0">Your health, in your hands.</p></div>
-          <div class="cell cell--alt"><span class="k">Brand USP</span><p style="font-size:23px;color:var(--ink);line-height:1.35">The record belongs to the patient, not the filing cabinet.</p></div>
+          <div class="cell cell--accent"><span class="k">Tagline</span><p class="big" style="margin:0;font-size:46px">Your health, in your hands.</p></div>
+          <div class="cell cell--ink"><span class="k">Brand USP</span><p style="font-size:23px;color:var(--ink);line-height:1.35">The record belongs to the patient, not the filing cabinet.</p></div>
           <div class="cell"><span class="k">Our culture</span><p>We build for the worst day, not the demo. Clarity over cleverness, accuracy over speed, calm over urgency.</p></div>
         </div>
         <span class="k">Our values</span>
@@ -727,7 +847,7 @@
           <div class="cell"><h3>Warm</h3><p>Written to a person, not to a case number.</p></div>
         </div>
         <div class="grid g2" style="margin-bottom:22px">
-          <div class="cell"><span class="k">If MyHero was a person</span><h3 style="font-size:34px">The Trusted Clinician</h3>
+          <div class="cell cell--ink"><span class="k">If MyHero was a person</span><h3 style="font-size:34px">The Trusted Clinician</h3>
             <p>The doctor who sits down before speaking, uses your words instead of theirs, tells you what is actually true, and does not perform confidence they do not have. Competent enough to be calm.</p></div>
           <div class="cell cell--alt"><dl class="kv">
             <dt>Tone</dt><dd>Calm, plain, unhurried. Never alarming, never chirpy.</dd>
@@ -750,6 +870,7 @@
 
     <!-- 12 DIVIDER -->
     <section class="slide dark">
+      <span class="divfield"></span>
       <p class="eyebrow">Brand OS v1.0 · Strategy</p>
       <div class="dv"><p class="dv__n">02</p><h2 class="dv__t">Strategy</h2><p class="dv__d">Who MyHero is for, and what it says to them.</p></div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span class="ed">Light</span><span class="pn">12</span></div>
@@ -761,8 +882,8 @@
       <h2 class="t">Audience &amp; Personas</h2>
       <div class="body">
         <p class="lede">Three audiences, one record at the centre. The parent and the tracker are who we design for; the clinic is who we design <em>with</em>. When they conflict, the patient wins.</p>
-        <div class="grid g3">
-          <div class="cell"><span class="k">Primary</span><h3>The Parent</h3>
+        <div class="grid g3 grow">
+          <div class="cell cell--accent"><span class="k">Primary</span><h3>The Parent</h3>
             <dl class="kv" style="grid-template-columns:110px 1fr;margin-top:16px;font-size:18px">
               <dt>Who</dt><dd>Young parents managing a child's immunisations, allergies and repeat visits.</dd>
               <dt>Carries</dt><dd>A folder, a photo roll of prescriptions, and a memory under strain.</dd>
@@ -774,13 +895,14 @@
               <dt>Carries</dt><dd>A pillbox, a paper slip, and a date they are trying not to miss.</dd>
               <dt>Fears</dt><dd>Running out, doubling a dose, missing a review.</dd>
               <dt>Trusts</dt><dd>Exact dosages, exact dates, reminders that do not nag.</dd></dl></div>
-          <div class="cell"><span class="k">Tertiary</span><h3>The Clinic</h3>
+          <div class="cell cell--warm"><span class="k">Tertiary</span><h3>The Clinic</h3>
             <dl class="kv" style="grid-template-columns:110px 1fr;margin-top:16px;font-size:18px">
               <dt>Who</dt><dd>Elite Care Clinic staff entering and retrieving records during consultation.</dd>
               <dt>Carries</dt><dd>The system of record, and the liability that comes with it.</dd>
               <dt>Fears</dt><dd>Double entry, transcription errors, no audit trail.</dd>
               <dt>Trusts</dt><dd>Speed, and being able to see who changed what.</dd></dl></div>
         </div>
+        <div class="band"><span class="band__k">When they conflict</span><p class="band__t">The patient wins. The clinic is who we design <em>with</em>; the parent and the tracker are who we design <em>for</em>.</p></div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">13</span></div>
     </section>
@@ -792,12 +914,12 @@
       <div class="body">
         <span class="k">Message hierarchy — in this order, always</span>
         <div class="grid g3" style="margin:12px 0 26px">
-          <div class="cell"><span class="k">01 · What</span><p style="font-size:26px;color:var(--ink);line-height:1.3">One secure place for your medical records.</p></div>
+          <div class="cell cell--accent"><span class="k">01 · What</span><p style="font-size:26px;color:var(--ink);line-height:1.3">One secure place for your medical records.</p></div>
           <div class="cell"><span class="k">02 · Who</span><p style="font-size:26px;color:var(--ink);line-height:1.3">For families managing ongoing care.</p></div>
           <div class="cell"><span class="k">03 · Why us</span><p style="font-size:26px;color:var(--ink);line-height:1.3">Built by a practising doctor, so it holds what a clinic actually needs.</p></div>
         </div>
         <div class="grid g2">
-          <div class="cell"><span class="k">The AI messaging rule</span>
+          <div class="cell cell--ink"><span class="k">The AI messaging rule</span>
             <p>AI is named as <b>supporting technology</b>, never as the headline and never in the first line of any asset. No diagnostic claims. No prediction language. "Smart" is never a substitute for "accurate". If a sentence would still be true with the AI removed, lead with that sentence.</p></div>
           <div class="cell cell--alt"><span class="k">Words</span>
             <p><b>We use:</b> record, history, prescription, dosage, reminder, secure, yours, your doctor.</p>
@@ -809,6 +931,7 @@
 
     <!-- 15 DIVIDER -->
     <section class="slide dark">
+      <span class="divfield"></span>
       <p class="eyebrow">Brand OS v1.0 · Visual Identity</p>
       <div class="dv"><p class="dv__n">03</p><h2 class="dv__t">Visual Identity</h2><p class="dv__d">The mark, the colour, and the type that make MyHero recognisable in a waiting room.</p></div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span class="ed">Light</span><span class="pn">15</span></div>
@@ -848,12 +971,13 @@
       <h2 class="t">Logo Variations</h2>
       <div class="body">
         <p class="lede">Four versions, and no others. Every surface in this book uses one of these.</p>
-        <div class="grid g4">
+        <div class="grid g4 grow">
           <div class="cell"><div class="slot" style="min-height:210px">Primary lockup</div><p style="margin-top:18px"><b>Default.</b> Mark plus wordmark, horizontal. Used wherever there is room.</p></div>
           <div class="cell"><div class="slot" style="min-height:210px">App icon</div><p style="margin-top:18px"><b>Square.</b> Mark only, inside the platform safe area. Never the wordmark.</p></div>
           <div class="cell"><div class="slot" style="min-height:210px">Reversed · white</div><p style="margin-top:18px"><b>On dark or photography.</b> Solid white, no outline, no shadow.</p></div>
           <div class="cell"><div class="slot" style="min-height:210px">Mono · ink</div><p style="margin-top:18px"><b>Single colour.</b> Stamps, faxes, carbon-copy slips, anything printed at the counter.</p></div>
         </div>
+        <div class="band"><span class="band__k">Rule</span><p class="band__t">Four versions, and no others. Anything outside this set needs written approval before it ships.</p></div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">17</span></div>
     </section>
@@ -931,7 +1055,7 @@
               <dt>Body</dt><dd>Plex Sans 400 · 16 / 24</dd>
               <dt>Caption</dt><dd>Plex Sans 400 · 13 / 18</dd>
               <dt>Label</dt><dd>Plex Mono 500 · 11 / 14 · +13% · caps</dd></dl></div>
-          <div class="cell cell--alt"><span class="k">The dosage legibility floor</span>
+          <div class="cell cell--accent"><span class="k">The dosage legibility floor</span>
             <p style="font-size:22px">Non-negotiable, and it overrides any design preference: <b>dosage, dose-time, allergy and record-number text is never set below 16px, never lighter than regular weight, and never tracked tighter than zero.</b> If a layout cannot hold that, the layout changes.</p></div>
         </div>
       </div>
@@ -960,17 +1084,19 @@
             <li>More than two accent colours</li>
             <li>Anything that would sit in a game's store listing</li></ul></div>
         </div>
-        <div class="grid g3">
+        <div class="grid g3 grow">
           <div class="cell"><span class="k">Avatar set</span><p>Three variations for in-app use: default, greeting, and empty-state. Same figure, same proportions, different posture only.</p></div>
           <div class="cell"><span class="k">Small sizes</span><p>Below 32px the figure is replaced by the app icon. The doctor is never simplified into a cartoon to survive shrinking.</p></div>
-          <div class="cell"><span class="k">Never</span><p>The hero icon is never the app icon, never the logo, and never appears next to a medical result or dosage.</p></div>
+          <div class="cell cell--warm"><span class="k">Never</span><p>The hero icon is never the app icon, never the logo, and never appears next to a medical result or dosage.</p></div>
         </div>
+        <div class="band"><span class="band__k">The line</span><p class="band__t">Trustworthy clinician, never cartoon superhero. That distance is the difference between a medical product and a game.</p></div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">21</span></div>
     </section>
 
     <!-- 22 DIVIDER -->
     <section class="slide dark">
+      <span class="divfield"></span>
       <p class="eyebrow">Brand OS v1.0 · The App</p>
       <div class="dv"><p class="dv__n">04</p><h2 class="dv__t">The App</h2><p class="dv__d">The product itself: what it looks like in the hand, and the rules that keep it warm.</p></div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span class="ed">Light</span><span class="pn">22</span></div>
@@ -1060,6 +1186,7 @@
 
     <!-- 26 DIVIDER -->
     <section class="slide dark">
+      <span class="divfield"></span>
       <p class="eyebrow">Brand OS v1.0 · Applications</p>
       <div class="dv"><p class="dv__n">05</p><h2 class="dv__t">Applications</h2><p class="dv__d">Where the brand meets a patient — at the counter, and on the feed.</p></div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span class="ed">Light</span><span class="pn">26</span></div>
@@ -1079,7 +1206,7 @@
           <div class="cell"><span class="k">05</span><h3>Nametag &amp; apparel</h3><p>Mark only, single colour, on the existing uniform. MyHero never outranks Elite Care Clinic on staff.</p></div>
           <div class="cell"><span class="k">06</span><h3>Reception replies</h3><p>WhatsApp templates for the three questions reception will actually be asked.</p></div>
         </div>
-        <div class="cell" style="border:1px solid var(--rule)"><span class="k">Counter copy · approved wording</span>
+        <div class="cell cell--accent"><span class="k">Counter copy · approved wording</span>
           <p style="font-size:26px;color:var(--ink);line-height:1.35">"Your records, on your phone. Scan to set up before your next visit — it takes two minutes, and your history is already here."</p></div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">27</span></div>
@@ -1103,12 +1230,13 @@
             <p><b>02 · Plain answer.</b> A common question about records or prescriptions, answered without selling.</p>
             <p><b>03 · From the clinic.</b> Dr Amira on something she sees in practice. Never a testimonial about the app.</p></div>
         </div>
-        <div class="grid g2">
+        <div class="grid g2 grow">
           <div class="cell"><span class="k">Content duty of care</span>
             <p>No medical advice, ever — only information about the product and general record-keeping. No patient stories, no before-and-afters, no screenshots containing real data. Nothing that implies the app improves a health outcome.</p></div>
-          <div class="cell cell--alt"><span class="k">Launch frame</span>
+          <div class="cell cell--ink"><span class="k">Launch frame</span>
             <p>One announcement asset in the four required ratios: 4:5 feed, 1:1 feed, 9:16 story, 1200×630 link. Same copy across all four.</p></div>
         </div>
+        <div class="band"><span class="band__k">Duty of care</span><p class="band__t">No medical advice, no patient stories, no real data in any mockup. Nothing that implies the app improves a health outcome.</p></div>
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">28</span></div>
     </section>
@@ -1158,45 +1286,35 @@
 </div>
 
 <nav class="dnav" id="dnav" aria-label="Deck navigation">
-  <div class="dn__grp">
-    <button class="dn__b" id="prev" aria-label="Previous page">←</button>
-  </div>
+  <button class="dn__b dn__b--box" id="prev" aria-label="Previous page">←</button>
 
-  <div class="dn__rail" id="rail" role="tablist" aria-label="Pages"></div>
+  <div class="dn__rail" id="rail" aria-label="Pages"></div>
 
-  <div class="dn__sep dn__hideM"></div>
-  <span class="dn__name dn__hideM" id="sname"></span>
-
-  <div class="dn__sep"></div>
+  <span class="dn__name" id="sname"></span>
   <span class="dn__ct"><b id="cnum">1</b> / <span id="ctot">30</span></span>
-  <button class="dn__b" id="next" aria-label="Next page">→</button>
+  <button class="dn__b dn__b--box" id="next" aria-label="Next page">→</button>
 
-  <div class="dn__sep"></div>
-  <div class="dn__ed">
+  <div class="dn__box">
     <button class="edb" id="edStd" aria-pressed="false">Standard</button>
     <button class="edb" id="edFull" aria-pressed="true">Full</button>
   </div>
 
-  <div class="dn__sep dn__hideM"></div>
-  <div class="dn__zm">
+  <div class="dn__box dn__zmbox">
     <button class="dn__b" id="zOut" aria-label="Zoom out">−</button>
     <button class="dn__pct" id="zPct" title="Reset zoom">100%</button>
     <button class="dn__b" id="zIn" aria-label="Zoom in">+</button>
     <button class="fitb" id="zFit">Fit</button>
   </div>
 
-  <div class="dn__sep"></div>
-  <div class="dn__grp">
-    <button class="dn__b" id="gridBtn" aria-label="Grid view" title="Grid / filmstrip">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
-    </button>
-    <button class="dn__b" id="printBtn" aria-label="Print or PDF" title="Print / PDF">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 15h12v6H6z"/></svg>
-    </button>
-    <button class="dn__b" id="homeBtn" aria-label="Cover" title="Home · library">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/></svg>
-    </button>
-  </div>
+  <button class="dn__b dn__b--box" id="gridBtn" aria-label="Grid view" title="Grid / filmstrip">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+  </button>
+  <button class="dn__b dn__b--box" id="printBtn" aria-label="Print or PDF" title="Print / PDF">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 15h12v6H6z"/></svg>
+  </button>
+  <button class="dn__b dn__b--box" id="homeBtn" aria-label="Library" title="Home · library">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/></svg>
+  </button>
 </nav>
 
 <div class="ovl" id="ovl" data-mode="grid">
@@ -1334,9 +1452,6 @@
     deck.style.transform = 'scale(' + (fitScale * zoom / 100) + ')';
     zPct.textContent = zoom + '%';
     stage.style.alignItems = zoom > 100 ? 'flex-start' : 'center';
-    /* bar spans exactly the canvas, so its edges line up with the page */
-    var navW = Math.min(1920 * fitScale, window.innerWidth - 16);
-    dnav.style.width = Math.max(navW, 320) + 'px';
   }
   function setZoom(z) { zoom = Math.max(50, Math.min(250, z)); apply(); }
 

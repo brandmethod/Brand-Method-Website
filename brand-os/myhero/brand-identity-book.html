@@ -590,10 +590,9 @@
   .cv__mark { font-size: 54px; font-weight: 700; letter-spacing: -0.045em; line-height: 1; position: relative; z-index: 1; }
   .cv__addr { font-family: var(--m); font-size: 15px; letter-spacing: 0.1em; line-height: 1.9; text-transform: uppercase; color: rgba(255,255,255,0.88); position: relative; z-index: 1; }
 
-  .cv__right { position: relative; overflow: hidden; background: linear-gradient(118deg, #1b5a90 0%, #2b7fc4 40%, #c9607f 80%, #e9a68f 100%); }
-  .cv__right::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 74% 26%, rgba(255,255,255,0.25), transparent 58%); }
-  .cv__scan { position: absolute; left: 0; right: 0; top: 52%; height: 3px; background: #f7d9c9; box-shadow: 0 0 26px rgba(247,217,201,0.95); z-index: 1; }
-  .cv__rtag { position: absolute; left: 30px; bottom: 24px; z-index: 2; font-family: var(--m); font-size: 14px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+  /* cover image slot: unmistakably empty until an <img> is dropped in */
+  .ph.cv__right { background: #262220; border: 2px dashed rgba(255,255,255,0.34); }
+  .ph.cv__right.filled { border: 0; }
 
   /* ================= dividers, with a colour field ================= */
 
@@ -604,6 +603,40 @@
   }
   .divfield::after { content: ""; position: absolute; right: -120px; bottom: -160px; width: 620px; height: 620px; border-radius: 999px; border: 70px solid rgba(255,255,255,0.06); }
   .slide.dark .dv, .slide.dark .eyebrow, .slide.dark .foot { position: relative; z-index: 1; }
+
+
+  /* ================= image placeholders — swap the <img src> ================= */
+
+  .ph {
+    position: relative; overflow: hidden;
+    background: var(--paper-3);
+    border: 2px dashed var(--rule-2);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ph--onDark { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.32); }
+
+  .ph > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .ph.filled { border-style: solid; border-color: var(--rule); }
+  .ph.filled .ph__in { display: none; }
+
+  .ph__in {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    text-align: center; padding: 16px; position: relative; z-index: 1;
+  }
+  .ph__ic { width: 34px; height: 34px; color: var(--ink-3); opacity: 0.75; }
+  .ph--onDark .ph__ic { color: rgba(255,255,255,0.85); }
+
+  .ph__l {
+    font-family: var(--m); font-size: 14px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-2);
+  }
+  .ph--onDark .ph__l { color: #fff; }
+
+  .ph__d {
+    font-family: var(--m); font-size: 12px; letter-spacing: 0.1em;
+    color: var(--ink-3); text-transform: uppercase;
+  }
+  .ph--onDark .ph__d { color: rgba(255,255,255,0.75); }
 
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
@@ -637,9 +670,13 @@
             <span class="cv__mark">MyHero</span>
             <span class="cv__addr">Elite Care Clinic<br>Kuala Lumpur, Wilayah Persekutuan<br>Malaysia · Brand OS v1.0 · 2026</span>
           </div>
-          <div class="cv__right">
-            <span class="cv__scan"></span>
-            <span class="cv__rtag">Visual panel · identity system</span>
+          <div class="ph ph--onDark cv__right" data-label="Cover visual">
+            <!-- REPLACE: <img src="cover-visual.jpg" alt="MyHero cover visual"> -->
+            <div class="ph__in">
+              <svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg>
+              <span class="ph__l">Cover visual</span>
+              <span class="ph__d" data-dim></span>
+            </div>
           </div>
         </div>
       </div>
@@ -943,7 +980,7 @@
       <h2 class="t">Logo Overview</h2>
       <div class="body">
         <div class="grid g2" style="margin-bottom:22px">
-          <div class="cell"><div class="slot" style="min-height:200px">Primary lockup</div></div>
+          <div class="cell"><div class="ph" style="min-height:200px" data-label="Primary lockup"><!-- REPLACE: <img src="..." alt="Primary lockup"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Primary lockup</span><span class="ph__d" data-dim></span></div></div></div>
           <div class="cell cell--alt"><span class="k">The standard</span>
             <p>The mark carries a medical product, so it is judged against a standard rather than a preference. It must read as medical before any word is read, hold warmth without becoming playful, and survive the places a clinic actually prints it.</p></div>
         </div>
@@ -972,10 +1009,10 @@
       <div class="body">
         <p class="lede">Four versions, and no others. Every surface in this book uses one of these.</p>
         <div class="grid g4 grow">
-          <div class="cell"><div class="slot" style="min-height:210px">Primary lockup</div><p style="margin-top:18px"><b>Default.</b> Mark plus wordmark, horizontal. Used wherever there is room.</p></div>
-          <div class="cell"><div class="slot" style="min-height:210px">App icon</div><p style="margin-top:18px"><b>Square.</b> Mark only, inside the platform safe area. Never the wordmark.</p></div>
-          <div class="cell"><div class="slot" style="min-height:210px">Reversed · white</div><p style="margin-top:18px"><b>On dark or photography.</b> Solid white, no outline, no shadow.</p></div>
-          <div class="cell"><div class="slot" style="min-height:210px">Mono · ink</div><p style="margin-top:18px"><b>Single colour.</b> Stamps, faxes, carbon-copy slips, anything printed at the counter.</p></div>
+          <div class="cell"><div class="ph" style="min-height:210px" data-label="Primary lockup"><!-- REPLACE: <img src="..." alt="Primary lockup"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Primary lockup</span><span class="ph__d" data-dim></span></div></div><p style="margin-top:18px"><b>Default.</b> Mark plus wordmark, horizontal. Used wherever there is room.</p></div>
+          <div class="cell"><div class="ph" style="min-height:210px" data-label="App icon"><!-- REPLACE: <img src="..." alt="App icon"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">App icon</span><span class="ph__d" data-dim></span></div></div><p style="margin-top:18px"><b>Square.</b> Mark only, inside the platform safe area. Never the wordmark.</p></div>
+          <div class="cell"><div class="ph" style="min-height:210px" data-label="Reversed · white"><!-- REPLACE: <img src="..." alt="Reversed · white"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Reversed · white</span><span class="ph__d" data-dim></span></div></div><p style="margin-top:18px"><b>On dark or photography.</b> Solid white, no outline, no shadow.</p></div>
+          <div class="cell"><div class="ph" style="min-height:210px" data-label="Mono · ink"><!-- REPLACE: <img src="..." alt="Mono · ink"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Mono · ink</span><span class="ph__d" data-dim></span></div></div><p style="margin-top:18px"><b>Single colour.</b> Stamps, faxes, carbon-copy slips, anything printed at the counter.</p></div>
         </div>
         <div class="band"><span class="band__k">Rule</span><p class="band__t">Four versions, and no others. Anything outside this set needs written approval before it ships.</p></div>
       </div>
@@ -1067,7 +1104,7 @@
       <p class="eyebrow">03 · Visual Identity · 3.6</p>
       <h2 class="t">The Hero Icon &amp; Avatar</h2>
       <div class="body">
-        <p class="lede">The distance between a <b>trustworthy clinician</b> and a <b>cartoon superhero</b> is not a matter of taste — it is the difference between a medical product and a game. The line is drawn here.</p>
+        <div style="display:grid;grid-template-columns:1fr 420px;gap:34px;align-items:start;margin-bottom:26px"><p class="lede" style="margin:0">The distance between a <b>trustworthy clinician</b> and a <b>cartoon superhero</b> is not a matter of taste — it is the difference between a medical product and a game. The line is drawn here.</p><div class="ph" style="height:200px" data-label="Approved hero icon"><!-- REPLACE: <img src="hero-icon.png" alt="MyHero hero icon"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Approved hero icon</span><span class="ph__d" data-dim></span></div></div></div>
         <div class="dd" style="margin-bottom:22px">
           <div class="dd__c dd__do"><p class="dd__h">Trustworthy clinician</p><ul>
             <li>Adult proportions — roughly 1:7 head to body</li>
@@ -1109,9 +1146,9 @@
       <div class="body">
         <p class="lede">How the brand lands on a phone before anyone opens it. The store listing has about four words to say "medical records" — it does not get to be clever.</p>
         <div class="grid g3" style="margin-bottom:22px">
-          <div class="cell"><div class="slot" style="min-height:190px">Icon on home screen · light &amp; dark</div></div>
-          <div class="cell"><div class="slot" style="min-height:190px">Splash screen</div></div>
-          <div class="cell"><div class="slot" style="min-height:190px">Screenshot frames</div></div>
+          <div class="cell"><div class="ph" style="min-height:190px" data-label="Icon on home screen · light &amp; dark"><!-- REPLACE: <img src="..." alt="Icon on home screen · light &amp; dark"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Icon on home screen · light &amp; dark</span><span class="ph__d" data-dim></span></div></div></div>
+          <div class="cell"><div class="ph" style="min-height:190px" data-label="Splash screen"><!-- REPLACE: <img src="..." alt="Splash screen"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Splash screen</span><span class="ph__d" data-dim></span></div></div></div>
+          <div class="cell"><div class="ph" style="min-height:190px" data-label="Screenshot frames"><!-- REPLACE: <img src="..." alt="Screenshot frames"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Screenshot frames</span><span class="ph__d" data-dim></span></div></div></div>
         </div>
         <div class="grid g2">
           <div class="cell"><span class="k">Store listing</span>
@@ -1564,8 +1601,25 @@
     stage.style.bottom = '0';
   }
 
+  /* ---- image placeholders: stamp the exact export size, flip when filled ---- */
+  function syncSlots() {
+    document.querySelectorAll('.ph').forEach(function (ph) {
+      var img = ph.querySelector('img');
+      var has = img && img.getAttribute('src') && img.getAttribute('src').trim() !== '';
+      ph.classList.toggle('filled', !!has);
+      if (has) { return; }
+      var d = ph.querySelector('[data-dim]');
+      if (!d) { return; }
+      var w = Math.round(ph.offsetWidth), h = Math.round(ph.offsetHeight);
+      if (w && h) { d.textContent = w + ' × ' + h + ' px · export @2×'; }
+    });
+  }
+  window.MyHeroSlots = syncSlots;   /* call again after dropping images in */
+
   rebuild(0);
   fit();
+  syncSlots();
+  window.addEventListener('resize', syncSlots);
   var start = parseInt((location.hash || '').slice(1), 10);
   if (!isNaN(start)) { var p = order.indexOf(start - 1); if (p !== -1) { go(p); } }
 })();

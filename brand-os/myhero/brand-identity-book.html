@@ -369,7 +369,6 @@
   .grid.grow { flex: 1; align-content: stretch; }
   .grid.grow .cell { display: flex; flex-direction: column; justify-content: center; }
   .grid.grow .cell .k { flex: none; }
-  .band { margin-top: 22px; }
 
   .ri { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; }
   .ri__n { font-family: var(--m); font-size: 17px; color: var(--blue); padding-top: 4px; }
@@ -545,15 +544,6 @@
   .fig__t { position: absolute; left: 26px; bottom: 20px; z-index: 1; font-family: var(--m); font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
   .fig__q { position: absolute; left: 26px; right: 26px; top: 26px; z-index: 1; font-size: 34px; font-weight: 650; letter-spacing: -0.028em; color: #fff; line-height: 1.18; }
 
-  /* statement band — full-width colour block inside a page */
-  .band {
-    display: flex; align-items: center; gap: 34px;
-    background: var(--dark); color: var(--on-dark);
-    padding: 30px 34px; margin-top: auto;
-  }
-  .band__k { font-family: var(--m); font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--peach); flex: none; }
-  .band__t { font-size: 30px; font-weight: 650; letter-spacing: -0.025em; line-height: 1.25; margin: 0; }
-
   /* ================= cover ================= */
 
   .cv { flex: 1; display: flex; flex-direction: column; min-height: 0; }
@@ -638,6 +628,64 @@
   }
   .ph--onDark .ph__d { color: rgba(255,255,255,0.75); }
 
+
+  /* ================= document ecosystem grid ================= */
+
+  h2.t em { font-style: normal; color: var(--blue); }
+
+  .pgtag { position: absolute; top: 74px; right: 104px; display: flex; align-items: center; gap: 14px; z-index: 3; }
+  .pgtag__b {
+    display: inline-flex; align-items: center; gap: 9px;
+    background: var(--blue); color: #fff; border-radius: 999px;
+    font-family: var(--m); font-size: 13px; letter-spacing: 0.16em;
+    text-transform: uppercase; padding: 7px 16px;
+  }
+  .pgtag__b::before { content: "◆"; font-size: 10px; }
+  .pgtag__r { width: 30px; height: 30px; border-radius: 999px; border: 9px solid var(--blue); }
+
+  .eco { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; flex: 1; min-height: 0; }
+
+  .eco__c { display: flex; flex-direction: column; border: 1px solid var(--rule); background: var(--paper); min-height: 0; }
+
+  .eco__p {
+    flex: 1; position: relative; min-height: 0;
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+
+  .eco__t {
+    position: relative; z-index: 1;
+    font-size: 25px; font-weight: 700; line-height: 1.22;
+    letter-spacing: 0.005em; text-align: center; text-transform: uppercase;
+    padding: 0 18px;
+  }
+
+  .eco__p--accent { background: var(--blue); }
+  .eco__p--accent .eco__t { color: #fff; }
+  .eco__p--ink { background: var(--dark); }
+  .eco__p--ink .eco__t { color: var(--on-dark); }
+  .eco__p--dots { background: var(--paper-2); }
+  .eco__p--dots .eco__t { color: var(--ink); }
+
+  /* grid rule texture, as on the reference panels */
+  .eco__p--accent::before, .eco__p--ink::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.09) 0 1px, transparent 1px 34px),
+      repeating-linear-gradient(90deg, rgba(255,255,255,0.09) 0 1px, transparent 1px 34px);
+  }
+  .eco__p--dots::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: radial-gradient(var(--rule-2) 1.2px, transparent 1.2px);
+    background-size: 16px 16px; opacity: 0.7;
+  }
+
+  .eco__cap {
+    flex: none; border-top: 1px solid var(--rule);
+    padding: 17px 20px; font-family: var(--m); font-size: 14px;
+    letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3);
+  }
+  .eco__cap b { color: var(--ink); font-weight: 500; }
+
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 </style>
 
@@ -690,8 +738,8 @@
         <div class="toc">
           <div class="toc__g"><h3>00 · Essential Core</h3>
             <div class="toc__r">Cover<span>01</span></div><div class="toc__r">Table of Contents<span>02</span></div>
-            <div class="toc__r">Introduction &amp; Terms<span>03</span></div><div class="toc__r">Edition &amp; Scope<span>04</span></div>
-            <div class="toc__r">Brand System Map<span>05</span></div></div>
+            <div class="toc__r">Introduction &amp; Terms<span>03</span></div><div class="toc__r">Package Tiers<span>04</span></div>
+            <div class="toc__r">The Document Ecosystem<span>05</span></div></div>
           <div class="toc__g"><h3>01 · Our Brand</h3>
             <div class="toc__r">Who We Are<span>07</span></div><div class="toc__r">Our Story<span>08</span></div>
             <div class="toc__r">Vision, Mission &amp; Positioning<span>09</span></div><div class="toc__r">Values &amp; Culture<span>10</span></div>
@@ -727,7 +775,7 @@
           <div class="cell"><span class="k">03 · Confidentiality</span><p>This book and its assets are confidential. No external sharing without written approval.</p></div>
           <div class="cell"><span class="k">04 · Acceptance</span><p>Using any asset means accepting these terms. Full detail sits in Governance · 6.1.</p></div>
         </div>
-        <div class="band"><span class="band__k">The standard</span><p class="band__t">In a health product an inconsistency does not just look careless. It costs trust at the exact moment trust is being decided.</p></div>
+
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">03</span></div>
     </section>
@@ -735,10 +783,9 @@
     <!-- 04 EDITION -->
     <section class="slide">
       <p class="eyebrow">Essential Core · 0.3</p>
-      <h2 class="t">Edition &amp; Scope</h2>
+      <h2 class="t">Package Tiers</h2>
       <div class="body">
-        <p class="lede">This is the <b>Light Edition</b>: everything the clinic and the build team need to use the brand correctly, day to day. What it leaves out is listed beside it, so scope is a printed fact rather than a conversation.</p>
-        <div class="grid g2">
+        <div class="grid g2 grow">
           <div class="cell"><span class="k">Light Edition · this book</span>
             <div class="stack" style="margin-top:16px">
               <div class="ri"><span class="ri__n">01</span><p>Brand opener: who we are, story, vision, mission, values, voice</p></div>
@@ -768,28 +815,53 @@
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">04</span></div>
     </section>
 
-    <!-- 05 SYSTEM MAP -->
+    <!-- 05 DOCUMENT ECOSYSTEM -->
     <section class="slide">
+      <div class="pgtag"><span class="pgtag__b">Full</span><span class="pgtag__r"></span></div>
       <p class="eyebrow">Essential Core · 0.4</p>
-      <h2 class="t">Brand System Map</h2>
+      <h2 class="t">The Document <em>Ecosystem</em></h2>
       <div class="body">
-        <p class="lede">A brand book is not one document. It is one tier of a Brand Operating System — this is where MyHero's documents sit, and what each one is for.</p>
-        <div class="grid g4">
-          <div class="cell"><span class="k">Tier 1 · Research &amp; Creation</span><h3>Where the thinking is proved</h3>
-            <p><b>Brand Audit.</b> The opportunity, the market gap, the jobs the product has to do.</p>
-            <p><b>Brand Creation.</b> Naming, story, and identity direction.</p></div>
-          <div class="cell cell--alt"><span class="k">Tier 2 · The Brand Book</span><h3>Where the rules live</h3>
-            <p><b>This document.</b> The single source of truth for identity, voice, and application.</p>
-            <p>Every asset that carries the MyHero name is checked against it.</p></div>
-          <div class="cell"><span class="k">Tier 3 · Operations</span><h3>How the brand runs</h3>
-            <p><b>Brand Playbook.</b> Day-to-day execution after handover.</p>
-            <p><b>Content OS.</b> What gets published, by whom, on what rhythm.</p></div>
-          <div class="cell cell--alt"><span class="k">Tier 4 · Companions</span><h3>How the brand is presented</h3>
-            <p><b>Company Profile</b> and <b>Corporate Deck</b> for partners and investors.</p>
-            <p><b>Go-to-Market Plan</b> for launch.</p></div>
+        <div class="eco">
+
+          <div class="eco__c">
+            <div class="eco__p eco__p--accent"><span class="eco__t">Brand<br>Identity Book</span></div>
+            <div class="eco__cap"><b>01</b> · This document · the source of truth</div>
+          </div>
+
+          <div class="eco__c">
+            <div class="eco__p eco__p--ink"><span class="eco__t">Brand Assets<br>Library</span></div>
+            <div class="eco__cap"><b>02</b> · Logos, tokens, templates, licences</div>
+          </div>
+
+          <div class="eco__c">
+            <div class="eco__p ph" data-label="Clinic print kit">
+              <!-- REPLACE: <img src="clinic-print-kit.jpg" alt="Clinic print kit"> -->
+              <div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Clinic Print Kit</span><span class="ph__d" data-dim></span></div>
+            </div>
+            <div class="eco__cap"><b>03</b> · Counter, slip, card, apparel</div>
+          </div>
+
+          <div class="eco__c">
+            <div class="eco__p eco__p--dots"><span class="eco__t">App UI Kit<br>&amp; Tokens</span></div>
+            <div class="eco__cap"><b>04</b> · Components, states, screen specs</div>
+          </div>
+
+          <div class="eco__c">
+            <div class="eco__p eco__p--accent"><span class="eco__t">Social &amp;<br>Store Kit</span></div>
+            <div class="eco__cap"><b>05</b> · Channel templates, sized and rationed</div>
+          </div>
+
+          <div class="eco__c">
+            <div class="eco__p ph" data-label="The MyHero app">
+              <!-- REPLACE: <img src="app-home.jpg" alt="The MyHero app"> -->
+              <div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">The MyHero App</span><span class="ph__d" data-dim></span></div>
+            </div>
+            <div class="eco__cap"><b>06</b> · The system's home</div>
+          </div>
+
         </div>
       </div>
-      <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">05</span></div>
+      <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co</span><span class="ed">Light</span><span class="pn">05</span></div>
     </section>
 
     <!-- 06 DIVIDER -->
@@ -812,7 +884,7 @@
           <div class="cell"><span class="k">03</span><h3>Built for whoever carries the file</h3><p>Designed for the parent in the waiting room, not the specialist at the desk. If a tired non-medical adult cannot follow it, it is not finished.</p></div>
           <div class="cell cell--warm"><span class="k">04</span><h3>Technology behind the doctor</h3><p>AI supports the record. It never fronts it, never diagnoses, and never speaks with more confidence than the evidence allows.</p></div>
         </div>
-        <div class="band"><span class="band__k">The test</span><p class="band__t">If a tired, non-medical adult cannot follow it at eleven at night, it is not finished.</p></div>
+
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">07</span></div>
     </section>
@@ -842,10 +914,7 @@
           <div class="cell cell--accent" style="padding:38px 40px 42px"><span class="k">Vision · ten years ahead</span><p class="big" style="margin:0">A Malaysia where every patient walks into every appointment with their full history already in their hand.</p></div>
           <div class="cell cell--ink" style="padding:38px 40px 42px"><span class="k">Mission · what we do daily</span><p class="big" style="margin:0">To give patients one secure, plain-language place for their medical records — and give clinics a lighter way to keep them.</p></div>
         </div>
-        <div class="band">
-          <span class="band__k">Positioning</span>
-          <p class="band__t">MyHero is a <b>personal medical record app for Malaysian families managing ongoing care</b>: clinic-grade accuracy in a form a parent can read at eleven at night, built by a practising doctor, with technology that supports the clinician rather than replacing them.</p>
-        </div>
+
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">09</span></div>
     </section>
@@ -939,7 +1008,7 @@
               <dt>Fears</dt><dd>Double entry, transcription errors, no audit trail.</dd>
               <dt>Trusts</dt><dd>Speed, and being able to see who changed what.</dd></dl></div>
         </div>
-        <div class="band"><span class="band__k">When they conflict</span><p class="band__t">The patient wins. The clinic is who we design <em>with</em>; the parent and the tracker are who we design <em>for</em>.</p></div>
+
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">13</span></div>
     </section>
@@ -1014,7 +1083,7 @@
           <div class="cell"><div class="ph" style="min-height:210px" data-label="Reversed · white"><!-- REPLACE: <img src="..." alt="Reversed · white"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Reversed · white</span><span class="ph__d" data-dim></span></div></div><p style="margin-top:18px"><b>On dark or photography.</b> Solid white, no outline, no shadow.</p></div>
           <div class="cell"><div class="ph" style="min-height:210px" data-label="Mono · ink"><!-- REPLACE: <img src="..." alt="Mono · ink"> --><div class="ph__in"><svg class="ph__ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.8"/><path d="m21 16-5.5-5.5L7 19"/></svg><span class="ph__l">Mono · ink</span><span class="ph__d" data-dim></span></div></div><p style="margin-top:18px"><b>Single colour.</b> Stamps, faxes, carbon-copy slips, anything printed at the counter.</p></div>
         </div>
-        <div class="band"><span class="band__k">Rule</span><p class="band__t">Four versions, and no others. Anything outside this set needs written approval before it ships.</p></div>
+
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">17</span></div>
     </section>
@@ -1126,7 +1195,7 @@
           <div class="cell"><span class="k">Small sizes</span><p>Below 32px the figure is replaced by the app icon. The doctor is never simplified into a cartoon to survive shrinking.</p></div>
           <div class="cell cell--warm"><span class="k">Never</span><p>The hero icon is never the app icon, never the logo, and never appears next to a medical result or dosage.</p></div>
         </div>
-        <div class="band"><span class="band__k">The line</span><p class="band__t">Trustworthy clinician, never cartoon superhero. That distance is the difference between a medical product and a game.</p></div>
+
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">21</span></div>
     </section>
@@ -1273,7 +1342,7 @@
           <div class="cell cell--ink"><span class="k">Launch frame</span>
             <p>One announcement asset in the four required ratios: 4:5 feed, 1:1 feed, 9:16 story, 1200×630 link. Same copy across all four.</p></div>
         </div>
-        <div class="band"><span class="band__k">Duty of care</span><p class="band__t">No medical advice, no patient stories, no real data in any mockup. Nothing that implies the app improves a health outcome.</p></div>
+
       </div>
       <div class="foot"><span>Brand OS v1.0 · MyHero</span><span>brandmethod.co · © 2026 All rights reserved</span><span class="ed">Light</span><span class="pn">28</span></div>
     </section>
@@ -1386,8 +1455,8 @@
 
   /* code · name per page, and which pages are deep-dive (hidden in Standard) */
   var NAMES = [
-    '0.0 · Cover','0.1 · Table of Contents','0.2 · Introduction & Terms','0.3 · Edition & Scope',
-    '0.4 · Brand System Map','01 · Our Brand','1.1 · Who We Are','1.2 · Our Story',
+    '0.0 · Cover','0.1 · Table of Contents','0.2 · Introduction & Terms','0.3 · Package Tiers',
+    '0.4 · Document Ecosystem','01 · Our Brand','1.1 · Who We Are','1.2 · Our Story',
     '1.3 · Vision, Mission & Positioning','1.4 · Values & Culture','1.5 · Voice & Character',
     '02 · Strategy','2.1 · Audience & Personas','2.2 · Positioning & Messaging',
     '03 · Visual Identity','3.1 · Logo Overview','3.2 · Logo Variations','3.3 · Clearspace & Don’ts',

@@ -2,18 +2,30 @@
 
 Brand creation deck for the MyHero / "My Health Record" app (Dr Amira · Elite Care Clinic).
 
-- **Canvas:** 1920 × 1080 per page, 20 pages
+- **Canvas:** 1920 × 1080 per page, 35 pages
 - **Source:** `index.html` — open in a browser; pages scale to fit the window
-- **Exports:** `exports/01.png` … `exports/20.png` (full-resolution 1920 × 1080)
+- **Exports:** `exports/01.png` … `exports/35.png` (full-resolution 1920 × 1080)
 
-## Cover format
-Follows the house cover layout: master lockup → 3-line process headline with the brand
-name in accent → category pill → deliverables line → golden-ratio spiral → twin footers.
+## Structure
+Follows the Brand Method brand-creation format:
+
+1. **Cover** — brand name + tagline, large "BRAND CREATION", golden-ratio spiral, description, twin footers
+2. **Name Guide** *(blue divider — reference)* — name funnel, naming routes, real-world examples
+3. **Logo Guide** *(blue divider — reference)* — logo creation, brand architecture, logo types,
+   features & meaning, development, exploration, art style, detailing, logo system & colour
+4. **Stylescape Guide** *(blue divider — reference)* — the three-tier method
+5. **Brand Foundation** *(black divider — client)* — name, why the name, positioning,
+   brand architecture, hierarchy tree, tagline test, competitor analysis
+6. **Stylescape** *(black divider — client)* — MID tier, recommended direction
+7. **Logo Ideation** *(black divider — client)* — concept/element, combo/build, sketch/shape,
+   founder concept, logo system drafts, next steps
+
+Blue dividers mark generic reference sections; black dividers mark MyHero-specific work.
 
 ## Status
-The **logo system is marked IN PROGRESS** throughout. Sections 09–12 present three
-temporary concept routes (Guardian / The Kept Record / Pulse); the shield mark used on
-the cover is a placeholder drawn from Route A and has **not** been approved.
+The **logo system is in progress**. All marks shown are placeholder geometry from the
+Guardian route; no route has been selected. Third-party brands are cited by name as
+written examples only — no third-party logos are reproduced.
 
 ## Sourced from the 15 Aug 2026 kickstart notes
 - Original colour scheme retained — sky blue primary, blush pink secondary

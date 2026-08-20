@@ -1,6 +1,6 @@
 # ALTIGO Company Profile 2026 — Refinement Pass
 
-Source: `ALTIGO_Company_Profile_2026.html` · 41 pages (was 43) · 2.35 MB (was 2.96 MB)
+Source: `ALTIGO_Company_Profile_2026.html` · 41 pages, single edition (was 43) · 2.39 MB (was 2.96 MB)
 
 ## Applied
 
@@ -23,9 +23,9 @@ Source: `ALTIGO_Company_Profile_2026.html` · 41 pages (was 43) · 2.35 MB (was 
 ### Structure
 - **Removed "Our Success"** — it duplicated ~70% of Our Achievements. TOC and the
   Chapter 02 divider updated to match.
-- **Standard/Full tiering inverted.** Standard (34 pp) now keeps Safety & Compliance,
-  Certified Performance Range and EU Type Examination — previously it dropped exactly
-  those and kept the generic value grids.
+- **Standard/Full edition toggle removed** at the client's request; the deck ships as one
+  41-page book. Nav control, CSS, the `setEdition` switcher and all 41 `data-tier`
+  attributes are gone, and the grid overview no longer reads the toggle for its label.
 
 ### Design
 - **Organisation chart built.** Was a "to be confirmed" placeholder. Directors named;

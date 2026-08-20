@@ -1,8 +1,13 @@
 # Altigo · Product Catalogue · Escalator 2026
 
-Interactive rebuild of the Altigo escalator catalogue. Eleven slides at exactly
+Interactive rebuild of the Altigo escalator catalogue. Thirteen pages at exactly
 **1920 × 1080**, with slide navigation on screen and a clean **A4 landscape**
 export when printed to PDF.
+
+The book is set to the **Altigo house standard** — the same grid, type scale,
+cover, contents and closing page as the *Passenger Elevator* catalogue, so the
+two sit together as one series. The standard is documented under *House
+standard* below.
 
 ## Files
 
@@ -13,6 +18,7 @@ export when printed to PDF.
 | `build.py` | Inlines `assets/` + `fonts/` into `index.html`. |
 | `assets/` | Photography, logo and the safety diagram, extracted from the 2026 print PDF and optimised. |
 | `fonts/` | Self-hosted Latin `woff2` subsets, so the catalogue renders identically without a network connection. |
+| `pdf/` | Exports: A4 landscape and native 1920 × 1080, each in a Full and a Standard edition. |
 
 ## Rebuilding after an edit
 
@@ -33,7 +39,7 @@ window — the same component every book carries; only the accent colour changes
 |---|---|
 | `←` `→` `Space` `PgUp` `PgDn` | Previous / next page |
 | Dot rail | Jump to any page; the active dot becomes a numbered pill |
-| **Standard / Full** | Full is the complete book; Standard hides the deep-dive pages (09 and 11) |
+| **Standard / Full** | Full is the complete book; Standard hides the deep-dive pages (10 and 12) |
 | `−` `%` `+` **Fit**, `0` | Zoom; the percentage and Fit both reset to fit-to-window |
 | `G` or the grid icon | All pages as thumbnails |
 | `S` or the scroll icon | Slides (one at a time) ↔ Scroll (continuous) |
@@ -43,12 +49,12 @@ window — the same component every book carries; only the accent colour changes
 | Home icon | Back to the cover, or to `LIBRARY_URL` if set |
 | Click any photograph | Open it full size; `←` `→` step through all 17, `Esc` closes |
 | Swipe left / right | Previous / next page on touch screens |
-| `#01` … `#12` | Deep-link to a page |
+| `#01` … `#13` | Deep-link to a page |
 | `?edition=standard` | Open in the Standard edition |
 | `?thumb=1` | Cover only, no bar — for hub thumbnails |
 | `?paper=slide` | Print at the native 1920×1080 page instead of A4 |
 
-The edition applies to print as well: Full exports 12 pages, Standard 10.
+The edition applies to print as well: Full exports 13 pages, Standard 11.
 
 Two paper sizes. By default the deck prints A4 landscape, with each 16:9 page
 scaled to the full 297 mm width and centred. Add `?paper=slide` to print at the
@@ -66,7 +72,7 @@ Click **Print · PDF**, then in the browser dialogue set:
 - **Margins** — None / Default
 - **Background graphics** — **on** (Chrome hides it under *More settings*)
 
-Each slide becomes one A4 landscape page.
+Each page becomes one A4 landscape page.
 
 ### How the 16:9 → A4 fit works
 
@@ -90,11 +96,12 @@ Three details make the export reliable, and are easy to break:
 
 ## Design notes
 
-Colours, typography, logo, the corner stripe and all photography follow the
-2026 print edition. `Axiforma` and `Ardela Edge X01` are named first in the font
-stacks, so a machine with the licensed brand fonts installed uses them; everyone
-else gets Outfit, which is metrically close. Body text is IBM Plex Sans and
-labels are Inter — both exactly as in the source document.
+Colours, logo, the corner stripe and all photography follow the 2026 print
+edition; the typography follows the house standard. `Ardela Edge X01` sets the
+kickers, the small letterspaced labels and the cover title; `Axiforma` sets
+everything else — page titles, body, figures and captions. Both are named first
+in the font stacks, so a machine with the licensed brand fonts installed uses
+them; everyone else gets Outfit, which is metrically close.
 
 **Sharp corners, everywhere.** Nothing in the deck is rounded. Every photograph,
 panel, drawing, tag, badge, swatch, rule and button is a square corner; the
@@ -104,52 +111,55 @@ left with a non-zero value. Nothing is italic or script either; `i`, `em`,
 the document belong to the Altigo mark itself and to the objects the technical
 drawings depict — the handrail section and the controller icon.
 
-**Safety callouts (page 07).** The numbers 1–8 on the cutaway were separate
+**Safety callouts (page 08).** The numbers 1–8 on the cutaway were separate
 text on the source PDF page, not part of the drawing, so they were lost when the
 image was extracted. They are back as HTML markers positioned by percentage,
 using the coordinates read out of the original page, with two pairs nudged apart
 so they don't collide at marker size. Because they are percentage-positioned,
 they scale correctly when the drawing is opened in the image viewer.
 
-**The grid.** 120 px side margins, twelve columns of 118 px with 24 px gutters:
-12×118 + 11×24 = 1680 = 1920 − 240. Horizontal zones at 88 (mark base), 212
-(header base), 254–930 (body) and 1008 (footer rule). Press `A` to see it.
+**The grid.** 88 px side margins and 32 px gutters, as the house standard sets
+them: two columns of 856, three of 560, four of 410. Horizontal zones at 71
+(kicker), 108 (title), 180 (header hairline), 212 (body top) and 984 (body
+bottom). Press `A` to see it.
 
-Every top-level block sits on whole columns. Three-column rows span four columns
-each (544 px), four-column rows span three (402 px), the introduction runs nine
-columns of text against a figure that starts at column ten, and the civil page is
-three blocks of 544 px with the elevation spanning two of them. The two five-up
-rows — the key figures on page 04 and the planning gallery on page 10 — are the
-one arrangement a twelve-column grid cannot host; they align to the outer margins
-and the centre line instead, which is noted in the CSS beside each.
+Every top-level block sits on whole columns. The introduction is two 856 columns,
+the range page is four of 410, the parts table is three of 560, and the civil page
+is three blocks with the elevation spanning two of them. The two five-up rows —
+the key figures on page 05 and the planning gallery on page 11 — are the one
+arrangement the column set cannot host; they align to the outer margins and the
+centre line instead, which is noted in the CSS beside each.
 
 Aligning to the grid made most of the vertical rules redundant, so they are gone:
 the column dividers on the range page, the key-figure and process bands, the
 chapter figures and the dimension-key column. Horizontal rules that carry real
-structure — the header hairline, the footer, table and list rows — stay.
+structure — the header hairline, the contents rows, table and list rows — stay.
 
-**Pale rules: covers only.** Pages 02–11 keep their pale rules — the header
-hairline, the footer rule, table, list and dimension-key rows, the grid texture
-on pages 05 and 09, and the outlines on tags and icon frames. The cover and the
-closing page carry none: no grid texture, no rule above the contact block, none
-between the contact fields, and no footer rule. The exceptions are scoped by the
-section's `data-bg`, so the two covers can change without touching the rest.
+**Pale rules: covers only.** Pages 02–12 keep their pale rules — the header
+hairline, the contents rows, table, list and dimension-key rows, the grid texture
+on pages 06 and 10, and the outlines on icon frames. The cover and the closing
+page carry none: no grid texture, no rule above the contact block and none
+between the contact fields. The exceptions are scoped by the section's
+`data-bg`, so the two covers can change without touching the rest.
 
-**Running footer.** Every page from 02 to 11 carries the same footer: a hairline,
-the catalogue line on the left, the page number on the right. On the closing page
-the rule is dropped and the right-hand slot reads 2026.
+Small labels are plain letterspaced type, not outlined chips — the house books
+never box a label, and boxing one reintroduces exactly the container shapes the
+rebuild set out to remove.
 
-**Rhythm and scale.** Twelve pages, dark on 01, 05, 09 and 12 — one dark page
-every four, so the deck never runs more than three white pages together. Page 09
-is a chapter divider that opens the planning and civil half; it carries the part
-title at 118 px, the three governing civil figures and a contents list.
+**No running footer.** As in the house standard, interior pages carry neither a
+footer nor a page number; the body simply runs to `y 984`. The closing page is
+the exception — the catalogue line on the left, the year on the right, at
+`y 987`.
 
-Scale contrast does the rest of the work. The cover title runs at 172 px over a
-full-bleed photograph; the introduction headline at 76 px beside a photograph
-bled off the right and bottom edges; the maximum rise on page 05 at 78 px, which
-turns a specification table into the product spread; the key figures on page 04
-at 64 px. Nothing on an interior page used to exceed 44 px, which is why the
-earlier drafts read flat.
+**Rhythm and scale.** Thirteen pages, dark on 01, 06, 10 and 13 — roughly one
+dark page every four, so the deck never runs more than four white pages together.
+Page 10 is a chapter divider that opens the planning and civil half; it carries
+the part title, the three governing civil figures and a contents list.
+
+Scale contrast is carried by the two dark display pages, where the house
+standard allows it: the cover title at 172 px over a full-bleed photograph and
+the closing head at 76 px. Interior pages hold to the standard — 44 px for the
+page title and for the largest figure, nothing above it.
 
 **Image resolution.** Every photograph is carried at the native resolution of
 the 2026 print PDF, with no downscaling; the cover keeps its original JPEG
@@ -168,3 +178,45 @@ displayed size instead of being resampled from a scaled layer.
 
 All interaction — the progress bar, the image viewer, hover states — is hidden
 under `@media print`, so the PDF is unaffected.
+
+## House standard
+
+Measured off the *Passenger Elevator* 1920 × 1080 edition and matched here to
+within a couple of pixels. Coordinates are from the top-left of the page.
+
+| Element | Position | Type |
+|---|---|---|
+| Side margin | 88 px, both sides | — |
+| Gutter | 32 px; two columns of 856 px | — |
+| Logo | `x 88, y 72`, 262 × 55 on the cover, 250 × 53 elsewhere | — |
+| Kicker | `x 88, y 71` | Ardela Edge X01 ExtraBold 16, red, letterspaced |
+| Page title | `x 88, y 108`, second line at 155 | Axiforma SemiBold 44, blue |
+| Red rule | `x 88, y 179`, 96 × 3 | — |
+| Header hairline | `x 88 → 1832, y 180` | — |
+| Body top | `y 212` | — |
+| Body bottom | `y 984` | — |
+| Lead paragraph | 19–22 | Axiforma Regular |
+| Body | 17, line pitch 28 | Axiforma Regular |
+| Small body | 16, line pitch 24 | Axiforma Regular |
+| Section label | 12–13, letterspaced | Ardela Edge X01 |
+| Caption | 14 | Axiforma Regular |
+| Figure | 21 | Axiforma SemiBold |
+
+Three things are cover-only, and are deliberately absent from every interior
+page: the diagonal red-and-blue corner stripe, the grid texture, and display
+type above 44 px. Interior pages carry no footer and no page number — the
+contents page is the only place page numbers appear.
+
+**The cover.** Year at `y 75` right-aligned; eyebrow at `y 341`; the title at
+`y 387` in Ardela 172 with a 151 px line pitch; the product line at `y 781` in
+Axiforma SemiBold 30; a three-column footer at `y 901` on 444 px centres, labels
+at 11 and values at 15 with a 23 px pitch.
+
+**The closing page.** Head at `y 171` in Axiforma SemiBold 76; red rule at
+`y 282`, 96 × 4; a two-column field grid at `x 88` and `x 680` starting at
+`y 399`, labels at 12 and values at 23; the running line and the year at `y 987`.
+
+**The contents page.** Two 856 px columns, one rule above each row on a 99 px
+pitch starting at `y 212`. Item number at the column edge in red, title 76 px in
+at 20, its tag inline 12 px after the title at 14, and the page number
+right-aligned at 18 in blue.

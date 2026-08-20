@@ -36,18 +36,20 @@
   --blue-pale:#B9CCF4;
   --blue-tint:#F1F5FE;
   --red:#F61800;
-  --ink:#0B1220;
-  --body:#2B3345;
-  --muted:#6C7891;
-  --rule:#E1E7F2;
-  --rule-2:#C3CEE4;
+  --ink:#0B0D12;
+  --body:#3A4150;
+  --muted:#6B7385;
+  --rule:#D9DEE8;
+  --rule-2:#E2E7F0;
 
   --f-display:'Ardela Edge X01','ArdelaEdgeX01','Axiforma','Outfit',system-ui,sans-serif;
   --f-head:'Axiforma','Outfit',system-ui,sans-serif;
-  --f-body:'IBM Plex Sans',system-ui,sans-serif;
-  --f-label:'Inter',system-ui,sans-serif;
+  /* the house sets Axiforma throughout, Ardela Edge on the kickers */
+  --f-body:'Axiforma','Outfit',system-ui,sans-serif;
+  --f-label:'Axiforma','Outfit',system-ui,sans-serif;
 
-  --m:120px;              /* page margin */
+  --m:88px;               /* page margin — house standard */
+  --gut:32px;             /* column gutter */
   --r:0;                  /* sharp corners throughout — no rounding */
   --r-s:0;
   --nav-accent:#2B62E8;   /* deck-nav accent — the brand blue, lifted for dark chrome */
@@ -246,23 +248,25 @@ img{display:block;max-width:100%}
 .logo{background:url({{ASSET:logo-blue.png}}) left center/contain no-repeat}
 .logo.w{background-image:url({{ASSET:logo-white.png}})}
 
-.kicker{position:absolute;left:var(--m);top:92px;font-family:var(--f-label);font-size:14px;
-  font-weight:600;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
-.title{position:absolute;left:var(--m);top:116px;font-family:var(--f-head);font-size:54px;
-  font-weight:800;letter-spacing:-.022em;color:var(--blue);line-height:1.04}
+.kicker{position:absolute;left:var(--m);top:71px;font-family:var(--f-display);font-size:16px;
+  font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--red)}
+.title{position:absolute;left:var(--m);top:104px;font-family:var(--f-head);font-size:44px;
+  font-weight:600;letter-spacing:-.012em;color:var(--blue);line-height:1.07}
 .title .dot{color:var(--red)}
-.rule{position:absolute;left:var(--m);top:198px;width:132px;height:4px;background:var(--red);
-}
-.hair{position:absolute;left:var(--m);right:var(--m);top:212px;height:1px;background:var(--rule)}
-.mark{position:absolute;right:var(--m);top:88px;width:224px;height:48px;background-position:right center}
+.rule{position:absolute;left:var(--m);top:179px;width:96px;height:3px;background:var(--red);z-index:2}
+.hair{position:absolute;left:var(--m);right:var(--m);top:180px;height:1px;background:var(--rule)}
+.mark{position:absolute;right:var(--m);top:74px;width:196px;height:42px;background-position:right center}
 
 /* running footer — the same device on every page, set by the closing page */
-.foot{position:absolute;left:var(--m);right:var(--m);bottom:52px;padding-top:20px;
-  border-top:1px solid var(--rule);display:flex;justify-content:space-between;align-items:baseline}
-.foot span{font-family:var(--f-label);font-size:13px;font-weight:500;letter-spacing:.22em;
+/* only the closing page carries a footer; interior pages have none */
+.foot{display:none}
+.slide[data-bg="contact"] .foot{position:absolute;left:var(--m);right:var(--m);top:987px;bottom:auto;
+  display:flex;justify-content:space-between;align-items:baseline}
+.foot span{font-family:var(--f-label);font-size:14px;font-weight:500;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted)}
-.foot b{font-family:var(--f-head);font-size:22px;font-weight:800;letter-spacing:.06em;
-  color:var(--blue);font-variant-numeric:tabular-nums}
+.slide[data-bg="contact"] .foot span{color:rgba(255,255,255,.62)}
+.foot b{font-family:var(--f-head);font-size:18px;font-weight:600;letter-spacing:.2em;
+  color:#fff;font-variant-numeric:tabular-nums}
 
 /* the two brand devices carried over from the 2026 print edition */
 .corner{position:absolute;right:0;bottom:0;width:214px;height:214px;pointer-events:none;
@@ -273,10 +277,10 @@ img{display:block;max-width:100%}
     transparent 0 244px, #F61800 244px 256px,
     transparent 256px 269px, #1A55E8 269px 285px, transparent 285px)}
 
-.content{position:absolute;left:var(--m);right:var(--m);top:254px;bottom:150px}
+.content{position:absolute;left:var(--m);right:var(--m);top:216px;bottom:64px}
 .content.bleed-r{right:0}
 
-.lead{font-size:25px;line-height:1.46;color:var(--body);max-width:1280px}
+.lead{font-size:19px;line-height:1.62;color:var(--body);max-width:1280px}
 .lead b{color:var(--blue);font-weight:600}
 
 .lab{font-family:var(--f-label);font-size:13px;font-weight:700;letter-spacing:.22em;
@@ -284,10 +288,9 @@ img{display:block;max-width:100%}
 .lab.red{color:var(--red)}
 .lab.blue{color:var(--blue)}
 .idx{font-family:var(--f-head);font-size:15px;font-weight:700;letter-spacing:.18em;color:var(--blue-pale)}
-/* rounded tag — the catalogue's small curved element */
-.tag{display:inline-block;font-family:var(--f-label);font-size:12.5px;font-weight:700;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--blue);
-  border:1px solid var(--rule-2);padding:7px 16px}
+/* small label — plain letterspaced type, as the house books set it */
+.tag{display:inline-block;font-family:var(--f-display);font-size:13px;font-weight:800;
+  letter-spacing:.22em;text-transform:uppercase;color:var(--blue)}
 
 
 /* ── Dark pages (cover · range · contact) ──────────────────────────── */
@@ -315,77 +318,97 @@ img{display:block;max-width:100%}
 .cover-fig::after{content:'';position:absolute;inset:0;background:
   linear-gradient(100deg,rgba(4,20,72,.92) 0%,rgba(4,20,72,.52) 44%,rgba(4,20,72,.2) 100%),
   linear-gradient(180deg,transparent 48%,rgba(4,18,64,.88) 100%)}
-.cover-mark{position:absolute;left:var(--m);top:88px;width:250px;height:53px}
-.cover-year{position:absolute;right:var(--m);top:98px;font-family:var(--f-head);font-size:22px;
+.cover-mark{position:absolute;left:var(--m);top:72px;width:262px;height:55px}
+.cover-year{position:absolute;right:var(--m);top:75px;font-family:var(--f-head);font-size:18px;
   font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.72)}
-.cover-eyebrow{position:absolute;left:var(--m);top:322px;font-family:var(--f-label);font-size:17px;
+.cover-eyebrow{position:absolute;left:var(--m);top:341px;font-family:var(--f-label);font-size:17px;
   font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.84)}
-.cover-h1{position:absolute;left:calc(var(--m) - 9px);top:366px;font-family:var(--f-display);
-  font-size:172px;font-weight:800;line-height:.86;letter-spacing:-.038em;color:#fff}
-.cover-sub{position:absolute;left:var(--m);top:706px}
-.cover-sub span{font-family:var(--f-head);font-size:32px;font-weight:800;letter-spacing:.14em;color:#fff}
-.cover-foot{position:absolute;left:var(--m);bottom:64px;width:1254px;display:grid;
-  grid-template-columns:repeat(3,1fr);gap:24px}
+.cover-h1{position:absolute;left:var(--m);top:417px;font-family:var(--f-display);
+  font-size:172px;font-weight:800;line-height:.878;letter-spacing:-.03em;color:#fff}
+.cover-sub{position:absolute;left:var(--m);top:781px}
+.cover-sub span{font-family:var(--f-head);font-size:30px;font-weight:600;letter-spacing:.1em;color:#fff}
+.cover-foot{position:absolute;left:var(--m);top:901px;width:1332px;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:0}
 .cover-foot dt{font-family:var(--f-label);font-size:11px;font-weight:500;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.52);margin-bottom:9px}
-.cover-foot dd{font-family:var(--f-label);font-size:14.5px;font-weight:600;line-height:1.65;
+.cover-foot dd{font-family:var(--f-label);font-size:15px;font-weight:600;line-height:1.53;
   color:#fff;text-transform:uppercase;letter-spacing:.02em}
 
-/* ── 02 Company introduction ───────────────────────────────────────── */
-/* 9 columns of text, then the figure from column 10 to the page edge */
-.intro{display:grid;grid-template-columns:1254px 1fr;gap:24px;height:100%}
-.intro-txt{display:flex;flex-direction:column;height:100%}
-.intro-h{font-family:var(--f-head);font-size:76px;font-weight:800;color:var(--ink);
-  letter-spacing:-.036em;line-height:.97;margin-bottom:32px}
+/* ── 02 Contents ───────────────────────────────────────────────────── */
+/* the house contents page: two 856 columns, rows on a 99px pitch, a rule
+   above every row and one closing each column — as the sibling books.   */
+.toc{position:relative;top:-4px;display:grid;grid-template-columns:856px 856px;
+  gap:0 var(--gut);align-content:start}
+.toc-col{display:flex;flex-direction:column}
+.toc-row{display:flex;align-items:baseline;height:99px;padding-top:15px;
+  border-top:1px solid var(--rule-2);box-sizing:border-box}
+.toc-col .toc-row:last-child{border-bottom:1px solid var(--rule-2);height:68px}
+.toc-n{flex:none;width:76px;font-family:var(--f-label);font-size:14px;font-weight:700;
+  letter-spacing:.18em;color:var(--red);font-variant-numeric:tabular-nums}
+.toc-t{font-family:var(--f-head);font-size:20px;font-weight:600;color:var(--ink)}
+.toc-k{margin-left:12px;font-family:var(--f-body);font-size:14px;font-weight:400;
+  color:var(--muted)}
+.toc-p{margin-left:auto;font-family:var(--f-head);font-size:18px;font-weight:600;
+  color:var(--blue);font-variant-numeric:tabular-nums}
+
+/* ── 03 Company introduction ───────────────────────────────────────── */
+/* two 856 columns: copy left, a contained photograph right with a caption tab */
+.intro{display:grid;grid-template-columns:1fr 856px;gap:var(--gut)}
+.intro-txt{display:flex;flex-direction:column}
+.intro-h{font-family:var(--f-head);font-size:22px;font-weight:700;color:var(--ink);
+  line-height:1.35;margin-bottom:26px}
 .intro-h b{color:var(--blue);font-weight:800}
-.intro-body{columns:2;column-gap:24px;column-fill:balance}
-.intro-body p{font-size:18px;line-height:1.6;margin-bottom:16px}
+.intro-body{columns:2;column-gap:var(--gut);column-fill:balance}
+.intro-body p{font-size:19px;line-height:1.62;margin-bottom:18px}
 .intro-body p b{color:var(--blue);font-weight:600}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:auto;padding-top:28px;
-  border-top:2px solid var(--blue)}
-.pillar h4{font-family:var(--f-head);font-size:25px;font-weight:700;color:var(--blue);margin:10px 0 9px}
-.pillar p{font-size:17px;line-height:1.48;color:var(--body)}
-.intro-fig{position:relative;height:calc(100% + 150px);overflow:hidden}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);margin-top:auto}
+.pillar{padding-top:22px;border-top:2px solid var(--blue)}
+.pillar h4{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);margin:0 0 10px}
+.pillar p{font-size:16px;line-height:1.5;color:var(--body)}
+.intro-fig{position:relative;height:564px;overflow:hidden}
 .intro-fig img{width:100%;height:100%;object-fit:cover;object-position:center 44%}
+.fig-tab{position:absolute;left:0;bottom:0;background:var(--blue);color:#fff;
+  font-family:var(--f-label);font-size:13px;font-weight:600;letter-spacing:.16em;
+  text-transform:uppercase;padding:14px 26px}
 
 /* ── 03 / 04 Three columns ─────────────────────────────────────────── */
 .stack{display:flex;flex-direction:column;height:100%}
-.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
 .fcol{display:flex;flex-direction:column;padding-top:20px;border-top:2px solid var(--blue)}
 .fcol .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
 .fcol .icon{width:60px;height:60px;border:1.5px solid var(--rule-2);
   display:flex;align-items:center;justify-content:center;flex:0 0 auto}
 .fcol .icon svg{width:29px;height:29px;stroke:var(--blue);fill:none;stroke-width:1.5;
   stroke-linecap:round;stroke-linejoin:round}
-.fcol h3{font-family:var(--f-head);font-size:30px;font-weight:700;color:var(--ink);
-  line-height:1.14;letter-spacing:-.016em;margin-bottom:14px}
-.fcol p{font-size:19.5px;line-height:1.56}
+.fcol h3{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);
+  line-height:1.3;margin-bottom:10px}
+.fcol p{font-size:16px;line-height:1.5}
 .fcol .spec{margin-top:auto;padding-top:20px}
 
-.band{margin-top:auto;padding-top:26px;border-top:2px solid var(--blue);display:grid;gap:24px}
+.band{margin-top:auto;padding-top:26px;border-top:2px solid var(--blue);display:grid;gap:var(--gut)}
 .flow{grid-template-columns:repeat(4,1fr)}
-.flow h5{font-family:var(--f-head);font-size:22px;font-weight:700;color:var(--blue);margin:9px 0 7px}
-.flow p{font-size:16.5px;line-height:1.44;color:var(--body)}
+.flow h5{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);margin:8px 0 8px}
+.flow p{font-size:16px;line-height:1.5;color:var(--body)}
 /* five equal columns, like the planning gallery, align to the outer margins
    and the centre line rather than to column edges */
 .stats{grid-template-columns:repeat(5,1fr)}
-.stats b{display:block;font-family:var(--f-head);font-size:64px;font-weight:800;
+.stats b{display:block;font-family:var(--f-head);font-size:44px;font-weight:600;
   color:var(--blue);letter-spacing:-.042em;line-height:.94}
-.stats b sub{font-size:23px;font-weight:700;vertical-align:baseline;margin-left:4px}
-.stats span{display:block;margin-top:13px;font-size:16px;line-height:1.4;color:var(--body)}
+.stats b sub{font-size:18px;font-weight:700;vertical-align:baseline;margin-left:4px}
+.stats span{display:block;margin-top:12px;font-size:16px;line-height:1.5;color:var(--body)}
 
 /* ── 05 The range · dark chapter page ──────────────────────────────── */
 .range{display:flex;flex-direction:column;height:100%}
-.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
 .rcol{display:flex;flex-direction:column}
-.rcol .tag{color:#fff;border-color:rgba(255,255,255,.34);align-self:flex-start}
-.rcol h3{font-family:var(--f-head);font-size:30px;font-weight:800;color:#fff;
-  letter-spacing:-.024em;margin:14px 0 10px}
-.rcol > p{font-size:17.5px;line-height:1.48;color:rgba(255,255,255,.72);margin-bottom:10px}
+.rcol .tag{color:rgba(255,255,255,.86);align-self:flex-start}
+.rcol h3{font-family:var(--f-head);font-size:19px;font-weight:600;color:#fff;
+  margin:12px 0 10px}
+.rcol > p{font-size:16px;line-height:1.5;color:rgba(255,255,255,.72);margin-bottom:10px}
 .riseviz{margin-top:auto;margin-bottom:14px}
-.rise-n{display:block;font-family:var(--f-head);font-size:78px;font-weight:800;color:#fff;
-  letter-spacing:-.05em;line-height:.86;margin:8px 0 16px}
-.rise-n sub{font-size:26px;font-weight:700;vertical-align:baseline;margin-left:5px;
+.rise-n{display:block;font-family:var(--f-head);font-size:44px;font-weight:600;color:#fff;
+  letter-spacing:-.03em;line-height:1;margin:6px 0 14px}
+.rise-n sub{font-size:18px;font-weight:700;vertical-align:baseline;margin-left:5px;
   letter-spacing:0;color:rgba(255,255,255,.7)}
 .rv-track{height:6px;background:rgba(255,255,255,.2);overflow:hidden}
 .rv-track i{display:block;height:100%;background:#fff}
@@ -395,13 +418,13 @@ img{display:block;max-width:100%}
   color:rgba(255,255,255,.5)}
 .rrow{display:flex;justify-content:space-between;align-items:baseline;gap:10px;
   padding:8px 0;border-top:1px solid rgba(255,255,255,.18)}
-.rrow dt{font-size:17px;color:rgba(255,255,255,.6)}
+.rrow dt{font-size:16px;color:rgba(255,255,255,.6)}
 .rrow dd{font-family:var(--f-label);font-size:14px;font-weight:700;letter-spacing:.09em;
   text-transform:uppercase;color:#fff;text-align:right}
 .rband{margin-top:30px;padding-top:24px;border-top:2px solid rgba(255,255,255,.36);
-  display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
-.rband h5{font-family:var(--f-head);font-size:21px;font-weight:700;color:#fff;margin-bottom:7px}
-.rband p{font-size:16.5px;line-height:1.44;color:rgba(255,255,255,.7)}
+  display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
+.rband h5{font-family:var(--f-head);font-size:19px;font-weight:600;color:#fff;margin-bottom:8px}
+.rband p{font-size:16px;line-height:1.5;color:rgba(255,255,255,.7)}
 
 /* ── 06 Parts ──────────────────────────────────────────────────────── */
 .ptable{width:100%;border-collapse:collapse;margin-top:6px}
@@ -409,31 +432,30 @@ img{display:block;max-width:100%}
   font-family:var(--f-label);font-size:13px;font-weight:700;letter-spacing:.22em;
   text-transform:uppercase;color:var(--muted)}
 .ptable th:first-child{color:var(--blue)}
-.ptable td{padding:21px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:21px}
+.ptable td{padding:32px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:19px}
 .ptable td + td, .ptable th + th{padding-left:56px}
-.ptable .part{font-family:var(--f-head);font-weight:700;font-size:24px;color:var(--ink);width:28%}
+.ptable .part{font-family:var(--f-head);font-weight:600;font-size:19px;color:var(--ink);width:28%}
 .ptable .std{width:34%;color:var(--body)}
 .ptable .opt{color:var(--blue);font-weight:600}
 .swatch{display:inline-flex;align-items:center;gap:10px;margin-right:26px;white-space:nowrap}
 .swatch i{width:17px;height:17px;display:block}
-.tnote{margin-top:24px;font-size:17.5px;line-height:1.5;color:var(--muted);max-width:118ch}
+.tnote{margin-top:40px;font-size:16px;line-height:1.5;color:var(--muted);max-width:118ch}
 .tnote b{color:var(--red);font-family:var(--f-label);font-size:12.5px;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase}
 
 /* ── 07 Safety ─────────────────────────────────────────────────────── */
 .safety{display:flex;flex-direction:column;height:100%;gap:22px}
-.stop{display:grid;grid-template-columns:1fr 780px;gap:60px;align-items:center;
-  background:var(--blue-tint);border-radius:var(--r);padding:18px 40px}
+.stop{display:grid;grid-template-columns:1fr 780px;gap:60px;align-items:start}
 .sdiag{display:flex;justify-content:flex-end}
 .sdiag-fig{position:relative;display:inline-block;line-height:0}
-.sdiag-fig img{height:186px;width:auto;display:block}
+.sdiag-fig img{height:292px;width:auto;display:block}
 /* positions lifted from the 2026 print edition, as a fraction of the drawing */
 .callout{position:absolute;transform:translate(-50%,-50%);
   width:21px;height:21px;background:var(--red);color:#fff;
   display:flex;align-items:center;justify-content:center;
   font-family:var(--f-label);font-size:10.5px;font-weight:700;line-height:1;
   box-shadow:0 0 0 2px rgba(255,255,255,.92)}
-.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:auto}
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut);margin-top:auto}
 .sitem{display:flex;flex-direction:column}
 .sitem figure{height:112px;border-radius:var(--r-s);overflow:hidden;background:#F2F4F8;
   margin-bottom:13px}
@@ -442,22 +464,22 @@ img{display:block;max-width:100%}
 .sitem .hd b{width:26px;height:26px;background:var(--red);color:#fff;
   display:flex;align-items:center;justify-content:center;flex:0 0 auto;
   font-family:var(--f-label);font-size:12px;font-weight:700}
-.sitem h4{font-family:var(--f-head);font-size:19px;font-weight:700;color:var(--ink)}
-.sitem p{font-size:16px;line-height:1.42;color:var(--muted)}
+.sitem h4{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue)}
+.sitem p{font-size:16px;line-height:1.5;color:var(--body)}
 
 /* ── 08 Devices ────────────────────────────────────────────────────── */
-.devs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;height:100%}
+.devs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);height:100%}
 .dcol{display:flex;flex-direction:column}
 .dhead{display:flex;align-items:baseline;justify-content:space-between;
   padding-bottom:15px;border-bottom:2px solid var(--blue);margin-bottom:4px}
-.dhead h3{font-family:var(--f-head);font-size:29px;font-weight:700;color:var(--ink)}
+.dhead h3{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue)}
 .dlist{list-style:none}
 .dlist li{display:flex;align-items:baseline;gap:16px;padding:11px 0;
-  border-bottom:1px solid var(--rule);font-size:19.5px;color:var(--body)}
+  border-bottom:1px solid var(--rule);font-size:16px;color:var(--body)}
 .dlist li span{font-family:var(--f-label);font-size:12px;font-weight:700;color:var(--blue-pale);
   min-width:18px;letter-spacing:.06em}
-.dlist li em{color:var(--muted);font-size:17px}
-.dnote{margin-top:auto;padding-top:22px;font-size:17px;line-height:1.52;color:var(--muted)}
+.dlist li em{color:var(--muted);font-size:14px}
+.dnote{margin-top:auto;padding-top:22px;font-size:16px;line-height:1.5;color:var(--muted)}
 .dnote b{color:var(--blue);font-weight:600}
 .dfig{position:relative;height:100%;border-radius:var(--r);overflow:hidden}
 .dfig img{width:100%;height:100%;object-fit:cover;object-position:56% center}
@@ -465,13 +487,13 @@ img{display:block;max-width:100%}
 /* ── 09 Planning guide ─────────────────────────────────────────────── */
 /* five equal columns cannot sit on a twelve-column grid; they align to the
    outer margins and the centre line instead */
-.lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px;height:100%}
+.lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gut);height:100%}
 .lcol{display:flex;flex-direction:column}
 .lcol figure{height:352px;border-radius:var(--r-s);overflow:hidden;background:#EDF0F5;
   margin-bottom:18px}
 .lcol figure img{width:100%;height:100%;object-fit:cover}
-.lcol h4{font-family:var(--f-head);font-size:24px;font-weight:700;color:var(--ink);margin:8px 0 10px}
-.lcol p{font-size:17px;line-height:1.46;color:var(--body)}
+.lcol h4{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);margin:8px 0 10px}
+.lcol p{font-size:16px;line-height:1.5;color:var(--body)}
 
 /* ── 10 Construction ───────────────────────────────────────────────── */
 .civil{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:300px 1fr;
@@ -493,51 +515,51 @@ img{display:block;max-width:100%}
 .dwg text.s{font-size:13px;fill:#6C7891}
 .dwg text.v{fill:var(--red);font-weight:700}
 .dwg text.sym{font-size:21px;font-weight:700;fill:var(--blue)}
-.keytab{list-style:none;font-size:17px}
+.keytab{list-style:none;font-size:16px}
 .keytab li{display:flex;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule)}
 .keytab b{font-family:var(--f-label);font-weight:700;color:var(--blue);min-width:24px;font-size:16px}
 .keytab span{color:var(--body);flex:1}
 .keytab em{font-family:var(--f-label);font-size:14px;font-weight:600;color:var(--red);white-space:nowrap}
-.cnote{margin-top:auto;padding-top:20px;font-size:15.5px;line-height:1.55;color:var(--muted)}
+.cnote{margin-top:auto;padding-top:20px;font-size:14px;line-height:1.55;color:var(--muted)}
 .cnote + .cnote{margin-top:12px;padding-top:0}
 
 /* ── Chapter divider ───────────────────────────────────────────────── */
-.chap{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;height:100%;align-content:start}
+.chap{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gut);height:100%;align-content:start}
 .chap-n{font-family:var(--f-head);font-size:19px;font-weight:700;letter-spacing:.3em;
   color:rgba(255,255,255,.5)}
-.chap h2{font-family:var(--f-display);font-size:118px;font-weight:800;line-height:.9;
+.chap h2{font-family:var(--f-head);font-size:76px;font-weight:600;line-height:1.02;
   letter-spacing:-.042em;color:#fff;margin:26px 0 34px}
-.chap .lede{font-size:26px;line-height:1.42;color:rgba(255,255,255,.82);max-width:22ch}
+.chap .lede{font-size:19px;line-height:1.6;color:rgba(255,255,255,.82);max-width:22ch}
 .chap-toc{align-self:end;padding-top:24px;border-top:1px solid rgba(255,255,255,.3)}
 .chap-toc li{list-style:none;display:flex;gap:22px;align-items:baseline;padding:17px 0;
   border-bottom:1px solid rgba(255,255,255,.16)}
 .chap-toc li b{font-family:var(--f-label);font-size:14px;font-weight:700;
   color:rgba(255,255,255,.5);min-width:26px}
-.chap-toc li span{font-family:var(--f-head);font-size:25px;font-weight:700;color:#fff}
-.chap-fig{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.chap-fig b{display:block;font-family:var(--f-head);font-size:44px;font-weight:800;color:#fff;
+.chap-toc li span{font-family:var(--f-head);font-size:19px;font-weight:600;color:#fff}
+.chap-fig{margin-top:38px;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
+.chap-fig b{display:block;font-family:var(--f-head);font-size:44px;font-weight:600;color:#fff;
   letter-spacing:-.04em;line-height:1}
-.chap-fig span{display:block;margin-top:9px;font-size:15.5px;line-height:1.4;
+.chap-fig span{display:block;margin-top:10px;font-size:16px;line-height:1.5;
   color:rgba(255,255,255,.66)}
 
 /* ── 11 Contact ────────────────────────────────────────────────────── */
 .contact{background:
   radial-gradient(ellipse 58% 62% at 8% 94%, rgba(90,150,255,.5), transparent 62%),
   linear-gradient(178deg,#032B7C 0%,#023CB2 58%,#012E86 100%)}
-.c-mark{position:absolute;left:var(--m);top:96px;width:250px;height:53px}
-.c-h1{position:absolute;left:calc(var(--m) - 5px);top:178px;font-family:var(--f-display);
-  font-size:96px;font-weight:800;letter-spacing:-.028em;color:#fff;line-height:1}
-.c-rule{position:absolute;left:var(--m);top:308px;width:132px;height:4px;
+.c-mark{position:absolute;left:var(--m);top:72px;width:250px;height:53px}
+.c-h1{position:absolute;left:var(--m);top:180px;font-family:var(--f-head);
+  font-size:76px;font-weight:600;letter-spacing:-.014em;color:#fff;line-height:1}
+.c-rule{position:absolute;left:var(--m);top:282px;width:96px;height:4px;
   background:var(--red)}
-.c-grid{position:absolute;left:var(--m);right:var(--m);top:404px;
-  display:grid;grid-template-columns:repeat(2,1fr);gap:52px 24px}
+.c-grid{position:absolute;left:var(--m);right:var(--m);top:399px;
+  display:grid;grid-template-columns:560px 1fr;gap:55px var(--gut)}
 .c-grid > div{padding-top:0}
 .c-grid dt{font-family:var(--f-label);font-size:12px;font-weight:500;letter-spacing:.24em;
-  text-transform:uppercase;color:rgba(255,255,255,.56);margin-bottom:13px}
-.c-grid dd{font-family:var(--f-head);font-size:29px;font-weight:700;color:#fff;line-height:1.32;
+  text-transform:uppercase;color:rgba(255,255,255,.56);margin-bottom:7px}
+.c-grid dd{font-family:var(--f-head);font-size:23px;font-weight:600;color:#fff;line-height:1.5;
   text-transform:uppercase;letter-spacing:.01em}
-.c-grid dd small{display:block;font-family:var(--f-label);font-size:15px;font-weight:400;
-  letter-spacing:.14em;color:rgba(255,255,255,.6);margin-top:10px}
+.c-grid dd small{display:block;font-family:var(--f-label);font-size:14px;font-weight:400;
+  letter-spacing:.12em;color:rgba(255,255,255,.6);margin-top:5px}
 .c-grid .wide{grid-column:1 / -1}
 
 /* ══ PRINT · A4 landscape ══════════════════════════════════════════════
@@ -648,14 +670,43 @@ img{display:block;max-width:100%}
     </div>
   </section>
 
-  <!-- ══ 02 · COMPANY INTRODUCTION ═══════════════════════════════════ -->
+  <!-- ══ 02 · CONTENTS ═══════════════════════════════════════════════ -->
+  <section class="slide" data-name="Contents">
+    <div class="stage">
+      <div class="kicker">The Catalogue</div>
+      <h2 class="title">CONTENTS</h2>
+      <div class="rule"></div><div class="hair"></div>
+      <div class="mark logo" role="img" aria-label="Altigo"></div>
+      <div class="content">
+        <div class="toc">
+          <div class="toc-col">
+          <div class="toc-row"><span class="toc-n">01</span><span class="toc-t">Company Introduction</span><span class="toc-k">Who we are</span><span class="toc-p">03</span></div>
+          <div class="toc-row"><span class="toc-n">02</span><span class="toc-t">Intelligent Control &amp; Comfort</span><span class="toc-k">Technology</span><span class="toc-p">04</span></div>
+          <div class="toc-row"><span class="toc-n">03</span><span class="toc-t">Technical Advantages</span><span class="toc-k">Engineering</span><span class="toc-p">05</span></div>
+          <div class="toc-row"><span class="toc-n">04</span><span class="toc-t">Four Platforms, One Structure</span><span class="toc-k">The range</span><span class="toc-p">06</span></div>
+          <div class="toc-row"><span class="toc-n">05</span><span class="toc-t">Standard &amp; Optional Parts</span><span class="toc-k">Components</span><span class="toc-p">07</span></div>
+          <div class="toc-row"><span class="toc-n">06</span><span class="toc-t">Comprehensive Safety Guarantee</span><span class="toc-k">Safety</span><span class="toc-p">08</span></div>
+          </div>
+          <div class="toc-col">
+          <div class="toc-row"><span class="toc-n">07</span><span class="toc-t">Safety &amp; Detection Devices</span><span class="toc-k">Protection</span><span class="toc-p">09</span></div>
+          <div class="toc-row"><span class="toc-n">08</span><span class="toc-t">Planning &amp; Civil</span><span class="toc-k">The chapter</span><span class="toc-p">10</span></div>
+          <div class="toc-row"><span class="toc-n">09</span><span class="toc-t">Logical Positioning, by Traffic</span><span class="toc-k">Planning guide</span><span class="toc-p">11</span></div>
+          <div class="toc-row"><span class="toc-n">10</span><span class="toc-t">Construction Parameters</span><span class="toc-k">Civil</span><span class="toc-p">12</span></div>
+          <div class="toc-row"><span class="toc-n">11</span><span class="toc-t">Contact Us</span><span class="toc-k">Altigo Sdn. Bhd.</span><span class="toc-p">13</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 03 · COMPANY INTRODUCTION ═══════════════════════════════════ -->
   <section class="slide" data-name="Company Introduction">
     <div class="stage">
       <div class="kicker">The Company</div>
       <h2 class="title">COMPANY INTRODUCTION</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content bleed-r">
+      <div class="content" style="display:flex;flex-direction:column">
         <div class="intro">
           <div class="intro-txt">
             <h3 class="intro-h">Moving people,<br><b>elevating places.</b></h3>
@@ -672,20 +723,20 @@ img{display:block;max-width:100%}
                or industrial — we deliver solutions that transform spaces and elevate lives.
                Trust us to move you forward, every day, with ease and confidence.</p>
             </div>
-            <div class="pillars">
-              <div class="pillar"><div class="idx">01</div><h4>Innovation</h4>
-                <p>VVVF drives, IoT monitoring and energy regeneration built in.</p></div>
-              <div class="pillar"><div class="idx">02</div><h4>Reliability</h4>
-                <p>Engineered and tested for smooth, quiet, dependable everyday service.</p></div>
-              <div class="pillar"><div class="idx">03</div><h4>Sustainability</h4>
-                <p>Lower running energy and a longer service life across the range.</p></div>
-            </div>
           </div>
-          <figure class="intro-fig"><img src="{{ASSET:intro-photo.jpg}}" alt="Altigo escalator installation"></figure>
+          <figure class="intro-fig"><img src="{{ASSET:intro-photo.jpg}}" alt="Altigo escalator installation">
+            <span class="fig-tab">Altigo &middot; Vertical Mobility</span></figure>
+        </div>
+        <div class="pillars">
+          <div class="pillar"><h4>Innovation</h4>
+            <p>VVVF drives, IoT monitoring and energy regeneration built in.</p></div>
+          <div class="pillar"><h4>Reliability</h4>
+            <p>Engineered and tested for smooth, quiet, dependable everyday service.</p></div>
+          <div class="pillar"><h4>Sustainability</h4>
+            <p>Lower running energy and a longer service life across the range.</p></div>
         </div>
       </div>
       <div class="foot" style="right:850px"><span>Altigo · Escalator · 2026</span><b>02</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -742,7 +793,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>03</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -797,7 +847,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>04</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -889,7 +938,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>05</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -927,7 +975,6 @@ img{display:block;max-width:100%}
            available as options across the whole duty range.</p>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>06</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -942,7 +989,7 @@ img{display:block;max-width:100%}
         <div class="safety">
           <div class="stop">
             <div>
-              <p class="lead" style="font-size:23px">From children to the elderly, a broad set of
+              <p class="lead" style="font-size:22px">From children to the elderly, a broad set of
                  safety features helps <b>every passenger</b> get on and off safely.</p>
               <p style="margin-top:12px;font-size:17px;line-height:1.5;color:var(--muted)">
                  Numbers 1&ndash;8 mark where each feature sits on the unit.</p>
@@ -990,7 +1037,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>07</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -1038,7 +1084,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>08</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -1067,7 +1112,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>09</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -1101,7 +1145,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>10</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -1212,7 +1255,6 @@ img{display:block;max-width:100%}
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>11</b></div>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -1253,7 +1295,7 @@ img{display:block;max-width:100%}
   /* ══ UNIVERSAL DECK-NAV ══════════════════════════════════════════════
      Identical structure in every book; only the accent follows the brand.
      Standard hides the deep-dive pages, Full is the complete book.      */
-  var STANDARD_HIDDEN = [9, 11];   // 1-based: the civil chapter opener and drawings
+  var STANDARD_HIDDEN = [10, 12];  // 1-based: the civil chapter opener and drawings
   var LIBRARY_URL     = '';        // set to the hub path to make Home leave the book
 
   var app=document.getElementById('app'),

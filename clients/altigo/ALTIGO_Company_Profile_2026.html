@@ -107,10 +107,19 @@ img{display:block;max-width:100%}
 .t-deep .pg,.t-ink .pg{color:#fff;opacity:.86}
 .pg::after{content:counter(pg,decimal-leading-zero)}
 
+/* ---------- line breaking ----------
+   balance evens out heading lines; pretty stops a paragraph ending on a
+   stranded word or two. Both degrade to normal wrapping where unsupported. */
+h1,h2,h3,h4,.d1,.d2,.d3,.d4,.d5,.d6,.toc-h{text-wrap:balance}
+/* leads and card copy are short enough for balance, which evens every line
+   including the last; pretty only guards a single stranded word. */
+.lead,.body,.small,.stat .d,.card p,.tm p,.pr p,.eu p,.tr p,.prj p,.pjf-card p{text-wrap:balance}
+p,.toc-i{text-wrap:pretty}
+
 /* ---------- type scale ---------- */
 .d1{font-family:'IN';font-weight:800;font-size:132px;line-height:.9;letter-spacing:-.045em}
 .d2{font-family:'IN';font-weight:800;font-size:86px;line-height:.96;letter-spacing:-.038em}
-.d3{font-family:'IN';font-weight:800;font-size:58px;line-height:1.04;letter-spacing:-.032em}
+.d3{font-family:'IN';font-weight:800;font-size:70px;line-height:1.04;letter-spacing:-.032em}
 .d4{font-family:'IN';font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-.026em}
 .d5{font-family:'IN';font-weight:700;font-size:27px;line-height:1.2;letter-spacing:-.018em}
 .d6{font-family:'IN';font-weight:700;font-size:22px;line-height:1.28;letter-spacing:-.012em}
@@ -567,24 +576,24 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">ALTIGO Elevator &nbsp;·&nbsp; Company Profile</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">Snapshot</span></div>
           <h1 class="d3 nv">Company at a <span class="bl">Glance</span></h1>
         </div>
-        <p class="lead" style="max-width:660px;padding-bottom:6px">
+        <p class="lead" style="max-width:660px">
           ALTIGO Elevator Sdn Bhd is a Malaysian provider of integrated lift and escalator
           solutions, serving property management, building maintenance and construction
           since 2001.
         </p>
       </div>
       <div class="fill anim" style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:22px;margin-top:46px">
-        <div class="gl-cell"><span class="k">Founded</span><span class="v">2001</span><span class="d">Twenty five years of continuous operation in vertical transportation.</span></div>
-        <div class="gl-cell"><span class="k">Registration</span><span class="v">562238-H</span><span class="d">Registered 22 October 2001 under the laws of Malaysia.</span></div>
-        <div class="gl-cell"><span class="k">Service</span><span class="v">Escalator &amp; Lift</span><span class="d">Installation, modernisation and proactive maintenance.</span></div>
-        <div class="gl-cell"><span class="k">Certification</span><span class="v">DOSH Certified</span><span class="d">Approved supplier, installer and maintenance provider.</span></div>
-        <div class="gl-cell"><span class="k">Presence</span><span class="v">Three States</span><span class="d">Penang, Kuala Lumpur and Negeri Sembilan.</span></div>
-        <div class="gl-cell"><span class="k">Technology</span><span class="v">STADE Partner</span><span class="d">Global manufacturing partner for certified lift systems.</span></div>
+        <div class="gl-cell"><span class="gl-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.2" y="4.8" width="17.6" height="16.4" rx="2"/><path d="M3.2 9.8h17.6"/><path d="M8 2.6v4.4M16 2.6v4.4"/><circle cx="12" cy="15.4" r="2.1"/></svg></span><span class="k">Founded</span><span class="v">2001</span><span class="d">Twenty five years of continuous operation in vertical transportation.</span></div>
+        <div class="gl-cell"><span class="gl-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.6 2.8h7.8l5 5v13.4H5.6Z"/><path d="M13.4 2.8V7.8h5"/><path d="M8.8 12.2h6.4M8.8 15.6h4.4"/></svg></span><span class="k">Registration</span><span class="v">562238-H</span><span class="d">Registered 22 October 2001 under the laws of Malaysia.</span></div>
+        <div class="gl-cell"><span class="gl-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.6" y="3" width="16.8" height="18" rx="2"/><path d="M12 3v18"/><path d="m6.2 10.8 1.9-2.3 1.9 2.3"/><path d="m15.9 13.2 1.9 2.3 1.9-2.3"/></svg></span><span class="k">Service</span><span class="v">Escalator &amp; Lift</span><span class="d">Installation, modernisation and proactive maintenance.</span></div>
+        <div class="gl-cell"><span class="gl-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.6 6v6c0 4.5 3.1 7.7 7.4 9.2 4.3-1.5 7.4-4.7 7.4-9.2V6Z"/><path d="m8.9 11.8 2.2 2.2 4-4.4"/></svg></span><span class="k">Certification</span><span class="v">DOSH Certified</span><span class="d">Approved supplier, installer and maintenance provider.</span></div>
+        <div class="gl-cell"><span class="gl-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10.4c0 5.6-8 11.2-8 11.2s-8-5.6-8-11.2a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10.2" r="3"/></svg></span><span class="k">Presence</span><span class="v">Three States</span><span class="d">Penang, Kuala Lumpur and Negeri Sembilan.</span></div>
+        <div class="gl-cell"><span class="gl-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.2"/><path d="M2.9 9.4h18.2M2.9 14.6h18.2"/><path d="M12 2.8c2.4 2.6 3.6 5.7 3.6 9.2s-1.2 6.6-3.6 9.2c-2.4-2.6-3.6-5.7-3.6-9.2S9.6 5.4 12 2.8Z"/></svg></span><span class="k">Technology</span><span class="v">STADE Partner</span><span class="d">Global manufacturing partner for certified lift systems.</span></div>
       </div>
     </div>
     <footer class="foot">
@@ -595,9 +604,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
   </div>
 </section>
 <style>
-.gl-cell{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:34px 38px;background:var(--mist)}
+.gl-cell{display:flex;flex-direction:column;justify-content:center;gap:11px;padding:30px 38px;background:var(--mist)}
+.gl-i{display:flex;color:var(--blue);margin-bottom:2px}
+.gl-cell:nth-child(2n) .gl-i{color:var(--red)}
+.gl-i svg{display:block;width:52px;height:52px}
 .gl-cell .k{font-family:'AX';font-weight:600;font-size:11.6px;letter-spacing:.185em;text-transform:uppercase;color:var(--red)}
-.gl-cell .v{font-family:'IN';font-weight:800;font-size:44px;line-height:1.02;letter-spacing:-.034em;color:var(--navy)}
+.gl-cell .v{font-family:'IN';font-weight:800;font-size:48px;line-height:1.02;letter-spacing:-.034em;color:var(--navy)}
 .gl-cell .d{font-family:'IN';font-weight:400;font-size:16.5px;line-height:1.58;color:var(--body);max-width:340px}
 </style>
 
@@ -645,12 +657,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Our Objective</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">01 &nbsp;·&nbsp; Objective</span></div>
           <div class="row center" style="gap:22px"><h1 class="d3 nv">Our <span class="bl">Objective</span></h1><svg class="hd-mark" width="46" height="46" viewBox="0 0 32 32" fill="none" aria-hidden="true"><g stroke="var(--red)" stroke-width="2.6" stroke-linecap="round"><path d="M16 8.5V1.5"/><path d="m21.3 10.7 4.9-4.9"/><path d="M23.5 16h7"/><path d="m21.3 21.3 4.9 4.9"/><path d="M16 23.5v7"/><path d="M8.5 16h-7"/><path d="m10.7 10.7-4.9-4.9"/></g><g stroke="var(--blue)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 27.4 12.6 19.4"/><path d="M12.6 19.4v4.8M12.6 19.4H7.8"/></g></svg></div>
         </div>
-        <p class="lead" style="max-width:760px;padding-bottom:6px">
+        <p class="lead" style="max-width:760px">
           Our mission is to achieve excellence in vertical transportation by providing
           exceptional lift and escalator solutions ensuring the safety, reliability, and
           efficiency of every project through proactive maintenance, advanced technology,
@@ -759,12 +771,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Operating Footprint</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">04 &nbsp;·&nbsp; Footprint</span></div>
           <h1 class="d3 nv">Operating <span class="bl">Footprint</span></h1>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Three operating bases across Peninsular Malaysia keep our engineers within
           reach of every site we maintain, with a regional ambition across Southeast Asia
           and the Middle East.
@@ -924,12 +936,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">The ALTIGO Difference</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">02 &nbsp;·&nbsp; Differentiators</span></div>
           <h1 class="d3 nv">The ALTIGO <span class="bl">Difference</span></h1>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Four positions that separate a specialist from a supplier, and that clients
           return to us for after the first contract ends.
         </p>
@@ -986,12 +998,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Our Value</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">03 &nbsp;·&nbsp; Values</span></div>
           <div class="row center" style="gap:22px"><h1 class="d3 nv">Our <span class="bl">Value</span></h1><svg class="hd-mark" width="46" height="46" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 3.4 28.6 16 16 28.6 3.4 16Z" stroke="var(--blue)" stroke-width="3.2" stroke-linejoin="round"/><path d="M16 10.6 21.4 16 16 21.4 10.6 16Z" fill="var(--red)"/></svg></div>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Six principles that decide how we quote, how we install and how we answer the
           phone at seven in the morning.
         </p>
@@ -1073,12 +1085,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Company Culture</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">05 &nbsp;·&nbsp; Culture</span></div>
           <h1 class="d3 nv">Company <span class="rd">Culture</span></h1>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Our culture is rooted in innovation, safety and excellence, and it shows up in
           how we treat both our clients and each other.
         </p>
@@ -1127,12 +1139,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Organisation Chart</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">06 &nbsp;·&nbsp; Structure</span></div>
           <h1 class="d3 nv">Organisation <span class="bl">Chart</span></h1>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Two generations of leadership at the top and a deliberately flat structure
           beneath it, so a client&rsquo;s issue reaches the person who can resolve it
           without travelling through layers.
@@ -1269,12 +1281,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Market Statistics</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">01 &nbsp;·&nbsp; Demand</span></div>
           <h1 class="d3 nv">Market <span class="rd">Statistics</span></h1>
         </div>
-        <p class="lead" style="max-width:620px;padding-bottom:6px">
+        <p class="lead" style="max-width:620px">
           Demand for lifts and escalators has climbed steadily for two decades, driven by
           density above ground and ageing equipment below it.
         </p>
@@ -1363,12 +1375,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Target Market</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">02 &nbsp;·&nbsp; Sectors</span></div>
           <h1 class="d3 wt">Target <span style="color:#7FA8FF">Market</span></h1>
         </div>
-        <p class="lead" style="max-width:680px;padding-bottom:6px">
+        <p class="lead" style="max-width:680px">
           Eight sectors, each with its own traffic pattern, compliance burden and
           tolerance for downtime. We specify for the building, not for the catalogue.
         </p>
@@ -1447,12 +1459,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Our Products</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">01 &nbsp;·&nbsp; Range</span></div>
           <h1 class="d3 nv">Our <span class="bl">Products</span></h1>
         </div>
-        <p class="lead" style="max-width:660px;padding-bottom:6px">
+        <p class="lead" style="max-width:660px">
           Five product families covering every vertical movement requirement in a
           modern building, from a private residence to a public terminal. Passenger
           systems are built on the EU type examined TIGO-R platform.
@@ -1522,12 +1534,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Product Range in Detail &nbsp;·&nbsp; I</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">02 &nbsp;·&nbsp; Detail</span></div>
           <h1 class="d3 nv">Vertical Transport for <span class="bl">People</span></h1>
         </div>
-        <p class="lead" style="max-width:640px;padding-bottom:6px">
+        <p class="lead" style="max-width:640px">
           Passenger and home systems, where ride quality, finish and quiet operation
           are judged every day by the people who use them.
         </p>
@@ -1591,12 +1603,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Product Range in Detail &nbsp;·&nbsp; II</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">02 &nbsp;·&nbsp; Detail</span></div>
           <h1 class="d3 nv">Movement at <span class="rd">Volume</span></h1>
         </div>
-        <p class="lead" style="max-width:640px;padding-bottom:6px">
+        <p class="lead" style="max-width:640px">
           High duty systems for crowds, vehicles and freight, where continuous
           operation and load capacity decide the specification.
         </p>
@@ -1668,12 +1680,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Service Scope</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">03 &nbsp;·&nbsp; Services</span></div>
           <h1 class="d3 nv">Service <span class="bl">Scope</span></h1>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Four services, one accountable team. Most clients begin with one and stay
           with us for the rest of the building's life.
         </p>
@@ -1703,12 +1715,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Maintenance Programme</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">04 &nbsp;·&nbsp; Uptime</span></div>
           <h1 class="d3 wt">Maintenance <span style="color:#7FA8FF">Programme</span></h1>
         </div>
-        <p class="lead" style="max-width:660px;padding-bottom:6px">
+        <p class="lead" style="max-width:660px">
           Prevention is better than repair. Our maintenance philosophy keeps systems
           running and downtime near zero.
         </p>
@@ -1763,12 +1775,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Product Journey</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">05 &nbsp;·&nbsp; Process</span></div>
           <h1 class="d3 nv">Product <span class="bl">Journey</span></h1>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Seven stages from the first site meeting to the twentieth year of operation,
           each one owned by the same team.
         </p>
@@ -1885,7 +1897,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Voices from our clients</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">01 &nbsp;·&nbsp; Voices</span></div>
           <h1 class="d3 nv">What Our Clients <span class="bl">Say</span></h1>
@@ -1996,12 +2008,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Our Activities</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">01 &nbsp;·&nbsp; Activities</span></div>
           <h1 class="d3 nv">Our <span class="bl">Activities</span></h1>
         </div>
-        <p class="lead" style="max-width:700px;padding-bottom:6px">
+        <p class="lead" style="max-width:700px">
           Six programmes that keep our capability, our compliance and our community
           commitments moving forward together.
         </p>
@@ -2067,12 +2079,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Our Track Record</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">01 &nbsp;·&nbsp; Record</span></div>
           <h1 class="d3 nv">Our Track <span class="bl">Record</span></h1>
         </div>
-        <p class="lead" style="max-width:780px;padding-bottom:6px">
+        <p class="lead" style="max-width:780px">
           Since 2001, ALTIGO has earned the trust of property developers, facility
           managers and building owners across Malaysia, not through promises, but
           through consistent delivery and a zero compromise approach to quality and safety.
@@ -2080,22 +2092,22 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       </div>
       <div class="fill anim" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:48px">
         <div class="tr">
-          <span class="tr-v">200<em>+</em></span>
+          <span class="tr-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.8h18"/><path d="M5.4 20.8V9.6l5.4-3.4v14.6"/><path d="M10.8 20.8V11l7.8 2.6v7.2"/><path d="M8 12.4v1.6M8 16.4V18M14.2 16.2v1.8"/></svg></span><span class="tr-v">200<em>+</em></span>
           <span class="tr-k">Projects delivered</span>
           <p>Nationwide installations across residential, commercial and public buildings.</p>
         </div>
         <div class="tr">
-          <span class="tr-v">98<em>%</em></span>
+          <span class="tr-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></svg></span><span class="tr-v">98<em>%</em></span>
           <span class="tr-k">Client satisfaction</span>
           <p>A satisfaction rate reflecting strong long term relationships and repeat contracts.</p>
         </div>
         <div class="tr">
-          <span class="tr-v">DOSH</span>
+          <span class="tr-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 4.6 6v6c0 4.5 3.1 7.7 7.4 9.2 4.3-1.5 7.4-4.7 7.4-9.2V6Z"/><path d="m8.9 11.8 2.2 2.2 4-4.4"/></svg></span><span class="tr-v">DOSH</span>
           <span class="tr-k">Certified and compliant</span>
           <p>Qualified supplier, installer and maintenance provider under Malaysian regulation.</p>
         </div>
         <div class="tr">
-          <span class="tr-v">25</span>
+          <span class="tr-i"><svg fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.6h18"/><path d="m4.6 16.4 4.8-5.2 3.4 3 5.2-6.4"/><path d="M14.4 7.8h4v4"/></svg></span><span class="tr-v">25</span>
           <span class="tr-k">Years of leadership</span>
           <p>Continuous industry leadership in vertical transportation since 2001.</p>
         </div>
@@ -2114,6 +2126,9 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
 <style>
 .tr{display:flex;flex-direction:column;justify-content:center;gap:14px;padding:38px 34px;background:var(--mist);
   border-top:3px solid var(--blue)}
+.tr-i{display:flex;color:var(--blue);margin-bottom:2px}
+.tr:nth-child(2n) .tr-i{color:var(--red)}
+.tr-i svg{display:block;width:52px;height:52px}
 .tr:nth-child(2n){border-top-color:var(--red)}
 .tr-v{font-family:'AE','IN',sans-serif;font-weight:800;font-size:86px;line-height:.94;color:var(--navy);letter-spacing:-.01em}
 .tr-v em{font-style:normal;font-family:'IN';font-weight:800;font-size:40px;color:var(--red);margin-left:2px;letter-spacing:-.03em}
@@ -2130,12 +2145,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Our Achievements</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">02 &nbsp;·&nbsp; Achievements</span></div>
           <h1 class="d3 nv">Our <span class="rd">Achievements</span></h1>
         </div>
-        <p class="lead" style="max-width:680px;padding-bottom:6px">
+        <p class="lead" style="max-width:680px">
           Six areas where independent recognition, technical capability and service
           discipline reinforce one another.
         </p>
@@ -2167,12 +2182,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Safety &amp; Compliance</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">03 &nbsp;·&nbsp; Compliance</span></div>
           <h1 class="d3 wt">Safety &amp; <span style="color:#7FA8FF">Compliance</span></h1>
         </div>
-        <p class="lead" style="max-width:660px;padding-bottom:6px">
+        <p class="lead" style="max-width:660px">
           Safety is not a department at ALTIGO. It is the constraint every other
           decision is designed around.
         </p>
@@ -2276,12 +2291,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Certified Performance Range</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">05 &nbsp;·&nbsp; Specification</span></div>
           <h1 class="d3 wt">Certified Performance <span style="color:#7FA8FF">Range</span></h1>
         </div>
-        <p class="lead" style="max-width:640px;padding-bottom:6px">
+        <p class="lead" style="max-width:640px">
           The examined operating envelope of the TIGO-R traction drive passenger lift
           platform, as certified under the European Lift Directive.
         </p>
@@ -2367,12 +2382,12 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
       <span class="rail-r">Completed Projects</span>
     </header>
     <div class="main">
-      <div class="row between anim" style="align-items:flex-end;gap:80px">
+      <div class="row between anim" style="align-items:flex-start;gap:80px">
         <div class="title">
           <div class="eye"><span class="tick"></span><span class="lbl rd">01 &nbsp;·&nbsp; Portfolio</span></div>
           <h1 class="d3 nv">Latest Project <span class="bl">References</span></h1>
         </div>
-        <p class="lead" style="max-width:640px;padding-bottom:6px">
+        <p class="lead" style="max-width:640px">
           Recent installation and maintenance engagements across Penang and Selangor,
           spanning residential, institutional and industrial buildings.
         </p>

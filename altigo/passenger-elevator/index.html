@@ -176,7 +176,12 @@ ul{list-style:none}
 .dl{margin-top:auto;padding-top:24px;display:grid;gap:0}
 .dl div{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-top:1px solid #E2E7F0}
 .dl .k{font-size:16px;color:var(--ink-2)}
+.dwg{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.dwg img{max-width:100%;max-height:100%;width:auto;object-fit:contain}
 .dl.params{margin-top:0}
+.dl.params.tight div{padding:13px 0}
+.dl.params.tight .k{font-size:15.5px}
+.dl.params.tight b{font-size:18px}
 .dl.params div{padding:17px 0;align-items:baseline}
 .dl.params .k{font-size:17px;color:var(--ink-2)}
 .dl.params b{font-family:var(--body);font-weight:700;font-size:21px;color:var(--blue);white-space:nowrap}
@@ -1420,66 +1425,75 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div class="headrule"></div>
 
       <div class="body">
-        <div style="display:flex;flex-direction:column;height:100%">
-          <p class="p" style="font-size:19px;max-width:1200px">Indicative dimensions for a typical machine-room
-            configuration. They give a working envelope at planning stage — final values are confirmed per project
-            against load, speed and travel height.</p>
+        <div style="display:grid;grid-template-columns:412px 412px 856px;gap:32px;height:100%">
 
-          <div style="display:grid;grid-template-columns:repeat(3,560px);gap:32px;margin-top:40px;align-items:start">
+          <section class="stack">
+            <div class="seclabel"><b>Elevator shaft · section</b><i></i></div>
+            <figure class="dwg" style="flex:1;min-height:0">
+              <img src="assets/img/dwg-shaft.png" alt="Elevator shaft, section view">
+            </figure>
+          </section>
 
-            <section class="stack">
-              <div class="seclabel"><b>Shaft</b><i></i></div>
-              <div class="dl params">
-                <div><span class="k">Shaft width</span><b>2100 mm</b></div>
-                <div><span class="k">Net shaft depth</span><b>1750 mm</b></div>
-                <div><span class="k">Overhead</span><b>4500 mm</b></div>
-                <div><span class="k">Pit depth</span><b>1500 mm</b></div>
+          <section class="stack" style="gap:26px">
+            <div style="display:flex;flex-direction:column;flex:1;min-height:0">
+              <div class="seclabel"><b>Machine room · plan</b><i></i></div>
+              <figure class="dwg" style="flex:1;min-height:0">
+                <img src="assets/img/dwg-machine.png" alt="Machine room arrangement plan">
+              </figure>
+            </div>
+            <div style="display:flex;flex-direction:column;flex:1;min-height:0">
+              <div class="seclabel"><b>Shaft layout · plan</b><i></i></div>
+              <figure class="dwg" style="flex:1;min-height:0">
+                <img src="assets/img/dwg-layout.png" alt="Shaft layout, plan view">
+              </figure>
+            </div>
+          </section>
+
+          <section class="stack">
+            <p class="p" style="font-size:17px">Indicative dimensions for a typical machine-room configuration.
+              The drawings are schematic and not to scale — they show the arrangement, while the figures below give
+              a working envelope at planning stage.</p>
+
+            <div style="display:grid;grid-template-columns:412px 412px;gap:34px 32px;margin-top:30px">
+              <div>
+                <div class="seclabel"><b>Shaft</b><i></i></div>
+                <div class="dl params tight">
+                  <div><span class="k">Shaft width</span><b>2100 mm</b></div>
+                  <div><span class="k">Net shaft depth</span><b>1750 mm</b></div>
+                  <div><span class="k">Overhead</span><b>4500 mm</b></div>
+                  <div><span class="k">Pit depth</span><b>1500 mm</b></div>
+                </div>
               </div>
-            </section>
-
-            <section class="stack">
-              <div class="seclabel"><b>Car</b><i></i></div>
-              <div class="dl params">
-                <div><span class="k">Net car width</span><b>1600 mm</b></div>
-                <div><span class="k">Net car depth</span><b>1400 mm</b></div>
-                <div><span class="k">Car height (HEG)</span><b>2200 mm</b></div>
-                <div><span class="k">Net door width</span><b>900 mm</b></div>
+              <div>
+                <div class="seclabel"><b>Car</b><i></i></div>
+                <div class="dl params tight">
+                  <div><span class="k">Net car width</span><b>1600 mm</b></div>
+                  <div><span class="k">Net car depth</span><b>1400 mm</b></div>
+                  <div><span class="k">Car height (HEG)</span><b>2200 mm</b></div>
+                  <div><span class="k">Net door width</span><b>900 mm</b></div>
+                </div>
               </div>
-            </section>
-
-            <section class="stack" style="gap:40px">
               <div>
                 <div class="seclabel"><b>Building</b><i></i></div>
-                <div class="dl params">
+                <div class="dl params tight">
                   <div><span class="k">Top floor height</span><b>3450 mm</b></div>
                   <div><span class="k">Travel height (floor to floor)</span><b>2400 mm</b></div>
                 </div>
               </div>
               <div>
                 <div class="seclabel"><b>Machine room</b><i></i></div>
-                <div class="dl params">
+                <div class="dl params tight">
                   <div><span class="k">Net machine room width</span><b>2700 mm</b></div>
                   <div><span class="k">Net machine room depth</span><b>4200 mm</b></div>
                 </div>
               </div>
-            </section>
-
-          </div>
-
-          <div style="margin-top:auto;background:var(--paper-2);padding:36px 40px;
-                      display:grid;grid-template-columns:824px 824px;gap:32px">
-            <div>
-              <p class="sub" style="margin-bottom:12px">Detailed documentation</p>
-              <p class="p" style="font-size:17px">Shaft sections, machine-room arrangement drawings and the full
-                civil-works package are issued separately for each project — matched to the load, speed and travel
-                height specified.</p>
             </div>
-            <div>
-              <p class="sub" style="margin-bottom:12px">Confirming your figures</p>
-              <p class="p" style="font-size:17px">Send the building drawings and the intended traffic profile, and
-                Altigo returns the confirmed shaft, pit and machine-room dimensions for tender documentation.</p>
-            </div>
-          </div>
+
+            <p class="micro" style="margin-top:auto">Dimensioned shaft sections, machine-room arrangement drawings
+              and the full civil-works package are issued separately for each project — matched to the load, speed
+              and travel height specified. Final values are confirmed per project.</p>
+          </section>
+
         </div>
       </div>
       <span class="foliolabel">Civil · General parameters</span>

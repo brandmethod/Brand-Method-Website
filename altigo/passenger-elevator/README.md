@@ -142,6 +142,11 @@ Editorial changes were limited to correcting typography and obvious errors:
 - page numbers were duplicated in the source (two pages numbered `03`) → now
   sequential 02–17
 - a **Contents** page was added as page 02 so a 17-page deck can be navigated
+- **Construction Parameters** keeps its three schematic drawings, but every
+  dimension line, arrow and figure was stripped out of them (they were drawn in
+  blue over black line art, so the annotations could be separated by colour).
+  The measurements live only in the wording beside the drawings; dimensioned
+  drawings are issued per project as separate documents
 
 **Contact details are unchanged** and now appear consistently on the cover and
 the back page:

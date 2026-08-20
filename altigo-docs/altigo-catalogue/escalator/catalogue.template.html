@@ -1526,6 +1526,31 @@ img{display:block;max-width:100%}
   /* ── boot ────────────────────────────────────────────────────────── */
   var q=new URLSearchParams(location.search);
   if(q.get('thumb')==='1') app.classList.add('thumb-only');   // hub thumbnail: cover only, no bar
+
+  /* ?paper=slide — print at the native 1920×1080 page instead of A4, so the
+     pages come out edge to edge with no letterbox band. Injected last so it
+     outranks the A4 block above on equal specificity. */
+  if(q.get('paper')==='slide'){
+    var st=document.createElement('style');
+    st.textContent =
+      '@page{size:1920px 1080px;margin:0}'+
+      '@media print{'+
+      'html,body{width:1920px!important;max-width:none!important}'+
+      '.deck{width:1920px!important}'+
+      '.app[data-mode="deck"] .slide,.app[data-mode="scroll"] .slide,.slide{'+
+        'width:1920px!important;height:1080px!important;display:block!important}'+
+      '.app .slide.ed-off{display:none!important}'+
+      '.stage{zoom:1!important;position:relative!important;margin:0!important}'+
+      '.slide[data-bg]{background:none!important}'+
+      '.slide[data-bg="cover"] .stage,.slide[data-bg="range"] .stage{background:'+
+        'radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),'+
+        'linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)!important}'+
+      '.slide[data-bg="contact"] .stage{background:'+
+        'radial-gradient(ellipse 58% 62% at 8% 94%, rgba(90,150,255,.5), transparent 62%),'+
+        'linear-gradient(178deg,#032B7C 0%,#023CB2 58%,#012E86 100%)!important}'+
+      '}';
+    document.head.appendChild(st);
+  }
   if(q.get('edition')==='standard') edition='standard';
 
   buildGuides(); buildOverview(); collectFigures();

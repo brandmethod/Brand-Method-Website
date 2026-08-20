@@ -46,8 +46,15 @@ window — the same component every book carries; only the accent colour changes
 | `#01` … `#12` | Deep-link to a page |
 | `?edition=standard` | Open in the Standard edition |
 | `?thumb=1` | Cover only, no bar — for hub thumbnails |
+| `?paper=slide` | Print at the native 1920×1080 page instead of A4 |
 
-The edition applies to print as well: Full exports 12 A4 pages, Standard 10.
+The edition applies to print as well: Full exports 12 pages, Standard 10.
+
+Two paper sizes. By default the deck prints A4 landscape, with each 16:9 page
+scaled to the full 297 mm width and centred. Add `?paper=slide` to print at the
+native page instead — 1920 × 1080 px, which is 1440 × 810 pt or 508 × 285.75 mm,
+the same page the 2026 source PDF used. Nothing is scaled and nothing letterboxes;
+the pages come out edge to edge.
 
 ## Exporting the A4 PDF
 

@@ -34,6 +34,23 @@ body{background:#3A3A3A;font-family:'Poppins',system-ui,-apple-system,sans-serif
 .slide{width:calc(1920px*var(--s));height:calc(1080px*var(--s));position:relative;}
 .canvas{width:1920px;height:1080px;background:#fff;position:absolute;top:0;left:0;transform:scale(var(--s));transform-origin:top left;overflow:hidden;padding:74px 84px 62px;display:flex;flex-direction:column;}
 
+
+/* ---- viewer chrome (never exported) ---- */
+#nav{position:fixed;right:0;top:0;bottom:0;width:290px;background:#141414;color:#fff;overflow-y:auto;z-index:99;transform:translateX(100%);transition:transform .22s ease;padding:22px 0 60px;}
+#nav.open{transform:none;}
+#nav h6{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;color:#7A7A7A;padding:16px 22px 8px;text-transform:uppercase;}
+#nav a{display:flex;gap:12px;padding:8px 22px;color:#C8C8C8;text-decoration:none;font-size:12.5px;line-height:1.4;border-left:2px solid transparent;}
+#nav a:hover{background:#1F1F1F;color:#fff;}
+#nav a.on{border-left-color:#1E9BF0;color:#fff;background:#1F1F1F;}
+#nav a i{font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10.5px;color:#6A6A6A;flex:none;width:20px;padding-top:1px;}
+#nav a.div-b{color:#8CC8EE;font-weight:500;}
+#nav a.div-k{color:#fff;font-weight:500;}
+#navbtn{position:fixed;right:18px;bottom:18px;z-index:100;background:#141414;color:#fff;border:none;border-radius:4px;padding:11px 16px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;cursor:pointer;text-transform:uppercase;}
+#navbtn:hover{background:#2A2A2A;}
+#navbtn:focus-visible,#nav a:focus-visible{outline:2px solid #1E9BF0;outline-offset:2px;}
+body.exporting #nav,body.exporting #navbtn{display:none;}
+@media print{#nav,#navbtn{display:none;}}
+
 /* ---- chrome ---- */
 .chip{position:absolute;left:0;top:0;background:#EFEFEF;color:#9A9A9A;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 16px;font-weight:400;}
 .stitle{font-size:34px;font-weight:400;letter-spacing:.055em;text-transform:uppercase;color:var(--ink);line-height:1.15;flex:none;}
@@ -120,6 +137,85 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
 .tier-r i{width:52px;height:52px;display:block;}
 .draftbox{border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:22px;}
 .draftbox em{font-family:'JetBrains Mono',monospace;font-size:10px;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);}
+.famnode{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 14px;text-align:center;position:relative;}
+.famnode b{font-size:14px;font-weight:600;letter-spacing:.08em;}
+.famnode span{font-size:11.5px;font-weight:300;color:var(--ink-3);}
+.famnode i{width:26px;height:3px;display:block;margin-top:8px;}
+.famstrip{border:1px solid var(--line-2);background:var(--wash);padding:12px;text-align:center;}
+.famstrip span{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;color:var(--ink-3);margin-bottom:5px;}
+.famstrip b{font-size:12px;font-weight:600;letter-spacing:.06em;}
+.cdrow{display:flex;align-items:center;gap:22px;}
+.cdrow .arrow{font-style:normal;font-size:19px;color:#C8C8C8;}
+.cdlabel{margin-left:14px;}
+.cdlabel b{display:block;font-size:16px;font-weight:600;margin-bottom:4px;}
+.cdlabel span{font-size:12.5px;font-weight:300;color:var(--ink-3);}
+.numlist2{display:flex;flex-direction:column;gap:20px;justify-content:space-between;height:100%;}
+.numlist2 b{display:block;font-size:14.5px;font-weight:600;margin-bottom:6px;}
+.numlist2 p{font-size:13px;font-weight:300;line-height:1.55;color:var(--ink-2);}
+.refrow{display:flex;align-items:center;gap:14px;}
+.refrow svg{width:34px;height:34px;flex:none;}
+.syscard{display:flex;flex-direction:column;}
+.syscard .sys-art{flex:1;min-height:150px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;padding:18px;}
+.syscard h4{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+.bstile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:14px;}
+.bslabel{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-3);}
+.modrow{display:flex;align-items:center;gap:14px;}
+.modrow svg{width:38px;height:38px;flex:none;}
+.modrow b{font-size:21px;font-weight:600;letter-spacing:-.015em;display:block;}
+.modrow em{font-size:15px;font-style:normal;font-weight:400;letter-spacing:.02em;display:block;margin-top:2px;}
+.modpair{display:flex;flex-direction:column;gap:9px;}
+.mp-top{display:flex;align-items:center;gap:9px;}
+.mp-top svg{width:26px;height:26px;flex:none;}
+.mp-top b{font-size:16px;font-weight:600;letter-spacing:-.015em;}
+.mp-bot{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:8px;}
+.mp-bot i{width:11px;height:11px;display:block;}
+.mp-bot span{font-size:12px;font-weight:600;letter-spacing:.1em;}
+.quotecard{border:1px solid var(--line);padding:15px 17px;}
+.quotecard p{font-size:14.5px;font-weight:400;color:var(--ink);line-height:1.5;margin-bottom:7px;}
+.quotecard span{font-size:12px;font-weight:300;color:var(--ink-3);line-height:1.5;}
+.refcard{display:flex;flex-direction:column;}
+.refcard .rc-art{flex:1;min-height:78px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:11px;padding:14px;}
+.refcard .rc-art[style*="gap"]{flex-direction:row;}
+.refcard h5{font-size:13.5px;font-weight:600;margin-bottom:5px;}
+.famnode{display:flex;flex-direction:column;align-items:center;gap:6px;padding:16px 14px;text-align:center;position:relative;}
+.famnode b{font-size:14px;font-weight:600;letter-spacing:.08em;}
+.famnode span{font-size:11.5px;font-weight:300;color:var(--ink-3);}
+.famnode i{width:26px;height:3px;display:block;margin-top:8px;}
+.famstrip{border:1px solid var(--line-2);background:var(--wash);padding:12px;text-align:center;}
+.famstrip span{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.16em;color:var(--ink-3);margin-bottom:5px;}
+.famstrip b{font-size:12px;font-weight:600;letter-spacing:.06em;}
+.cdrow{display:flex;align-items:center;gap:22px;}
+.cdrow .arrow{font-style:normal;font-size:19px;color:#C8C8C8;}
+.cdlabel{margin-left:14px;}
+.cdlabel b{display:block;font-size:16px;font-weight:600;margin-bottom:4px;}
+.cdlabel span{font-size:12.5px;font-weight:300;color:var(--ink-3);}
+.numlist2{display:flex;flex-direction:column;gap:20px;}
+.numlist2 b{display:block;font-size:14.5px;font-weight:600;margin-bottom:6px;}
+.numlist2 p{font-size:13px;font-weight:300;line-height:1.55;color:var(--ink-2);}
+.refrow{display:flex;align-items:center;gap:14px;}
+.refrow svg{width:34px;height:34px;flex:none;}
+.syscard{display:flex;flex-direction:column;}
+.syscard .sys-art{flex:1;min-height:150px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;padding:18px;}
+.syscard h4{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:8px;}
+.bstile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:14px;}
+.bslabel{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;color:var(--ink-3);}
+.modrow{display:flex;align-items:center;gap:14px;}
+.modrow svg{width:38px;height:38px;flex:none;}
+.modrow b{font-size:21px;font-weight:600;letter-spacing:-.015em;display:block;}
+.modrow em{font-size:15px;font-style:normal;font-weight:400;letter-spacing:.02em;display:block;margin-top:2px;}
+.modpair{display:flex;flex-direction:column;gap:9px;}
+.mp-top{display:flex;align-items:center;gap:9px;}
+.mp-top svg{width:26px;height:26px;flex:none;}
+.mp-top b{font-size:16px;font-weight:600;letter-spacing:-.015em;}
+.mp-bot{display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);padding-top:8px;}
+.mp-bot i{width:11px;height:11px;display:block;}
+.mp-bot span{font-size:12px;font-weight:600;letter-spacing:.1em;}
+.quotecard{border:1px solid var(--line);padding:15px 17px;}
+.quotecard p{font-size:14.5px;font-weight:400;color:var(--ink);line-height:1.5;margin-bottom:7px;}
+.quotecard span{font-size:12px;font-weight:300;color:var(--ink-3);line-height:1.5;}
+.refcard{display:flex;flex-direction:column;}
+.refcard .rc-art{flex:1;min-height:78px;display:flex;align-items:center;justify-content:center;margin-bottom:11px;padding:14px;gap:8px;}
+.refcard h5{font-size:13.5px;font-weight:600;margin-bottom:5px;}
 .swatch-lg{height:132px;display:flex;align-items:flex-end;padding:14px;}
 </style>
 </head>
@@ -173,8 +269,8 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
         <div class="lbl" style="margin-bottom:10px">Rule of thumb</div>
         <p class="s">Start with 100+ candidates. Expect 50–60% to fall out at trademark and domain screening alone. Anything that reaches stage 7 must be defensible, pronounceable and free.</p>
         <div class="rule" style="margin:22px 0"></div>
-        <div class="lbl" style="margin-bottom:10px">Applied to MyHero</div>
-        <p class="s">MyHero entered at stage 7 as a founder-led candidate and was validated backwards through the funnel. The descriptive lockup <b style="color:var(--ink)">My Health Record</b> carries the category so the brand name does not have to.</p>
+        <div class="lbl" style="margin-bottom:10px">Working backwards</div>
+        <p class="s">A founder-led name usually enters at stage 7 rather than stage 1. When that happens the funnel is run <b style="color:var(--ink)">in reverse</b> — the candidate is tested against every earlier stage before it is accepted, not after.</p>
       </div>
       <div style="display:flex;flex-direction:column;gap:9px;justify-content:center">
         <div class="fstep" style="--w:100%;--c:#2B4FD8"><b>1</b> Establish criteria<span>Category, tone, audience, must-avoid list</span></div>
@@ -205,11 +301,11 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <div class="ncat" style="--c:#D8453F"><h4>Founder</h4><p>A person's name carries the brand.</p><em>Ford · Dyson · Chanel</em><span>+ Authentic, personal &nbsp;— Tied to one reputation</span></div>
       <div class="ncat" style="--c:#2FA36B"><h4>Metaphor</h4><p>Borrows meaning from another world.</p><em>Amazon · Nike · Oracle</em><span>+ Memorable, rich &nbsp;— Can mis-signal category</span></div>
       <div class="ncat" style="--c:#2E9AA8"><h4>Compound</h4><p>Two plain words fused into one.</p><em>Facebook · PayPal · YouTube</em><span>+ Clear and ownable &nbsp;— Can date quickly</span></div>
-      <div class="ncat" style="--c:#6B3FD4"><h4>Possessive</h4><p>Puts the user inside the name.</p><em>MyFitnessPal · YourStory · <b>MyHero</b></em><span>+ Immediate ownership &nbsp;— Crowded prefix</span></div>
+      <div class="ncat" style="--c:#6B3FD4"><h4>Possessive</h4><p>Puts the user inside the name.</p><em>MyFitnessPal · MyProtein · YourStory</em><span>+ Immediate ownership &nbsp;— Crowded prefix</span></div>
     </div>
     <div class="card w" style="margin-top:20px;display:flex;align-items:center;gap:26px">
-      <div class="lbl" style="flex:none">MyHero sits here</div>
-      <p class="b" style="margin:0;font-size:15px"><b>Possessive + suggestive.</b> "My" hands ownership of the record to the parent; "Hero" carries the emotional promise without describing a feature. The category work is done by the descriptive lockup <b>My Health Record</b>, which frees the brand name from having to explain itself.</p>
+      <div class="lbl" style="flex:none">How to choose</div>
+      <p class="b" style="margin:0;font-size:15px"><b>Routes can be combined.</b> The most durable names pair an emotional route with a descriptive lockup — the brand name carries the feeling, and a plain category line beneath it does the explaining. That split lets the name stay short without leaving the buyer guessing.</p>
     </div>
   </div>
   <div class="foot">MyHero Brand Creation</div><div class="pnum">04</div>
@@ -233,9 +329,8 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <tr><td><b>Retail</b></td><td>Furniture</td><td><b>Muji</b></td><td>Shortened from a phrase meaning "no brand quality goods".</td><td>Coined from a philosophy; the name is the positioning.</td></tr>
       <tr><td><b>Wellness</b></td><td>Meditation</td><td><b>Calm</b></td><td>Owns the outcome word outright.</td><td>Descriptive of the benefit, not the mechanism.</td></tr>
       <tr><td><b>Wellness</b></td><td>Sleep</td><td><b>Headspace</b></td><td>Names the thing the user actually wants back.</td><td>Compound metaphor; spatial, not clinical.</td></tr>
-      <tr class="hl"><td><b>Health app</b></td><td>Family records</td><td><b>MyHero</b></td><td>Puts the parent in the name and promises support without over-claiming.</td><td>Possessive + suggestive; category carried by the descriptive lockup.</td></tr>
     </table>
-    <p class="s" style="margin-top:16px">Pattern across all ten: the strongest names describe the <b style="color:var(--ink)">outcome or the relationship</b>, never the technology. Not one of them names its own mechanism — which is precisely why none of them had to be renamed when the mechanism changed.</p>
+    <p class="s" style="margin-top:16px">Pattern across all nine: the strongest names describe the <b style="color:var(--ink)">outcome or the relationship</b>, never the technology. Not one of them names its own mechanism — which is precisely why none of them had to be renamed when the mechanism changed.</p>
   </div>
   <div class="foot">MyHero Brand Creation</div><div class="pnum">05</div>
 </div></div>
@@ -360,11 +455,46 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       </div>
     </div>
     <div class="card w" style="margin-top:20px;display:flex;align-items:center;gap:26px">
-      <div class="lbl" style="flex:none">Recommendation for MyHero</div>
-      <p class="b" style="margin:0;font-size:15px"><b>Sub-brand under Elite Care Clinic.</b> The clinic supplies the medical credibility a new app cannot earn on its own, while MyHero keeps a distinct, warmer identity for parents. Endorsement lockup to be resolved in Phase 2 — see Brand Architecture 1.</p>
+      <div class="lbl" style="flex:none">How to choose</div>
+      <p class="b" style="margin:0;font-size:15px"><b>Follow the trust, then the audience.</b> If the parent's reputation is the reason people buy, move left. If the products serve audiences that would reject each other, move right. Most young brands belong in the second column — borrowing credibility while building their own.</p>
     </div>
   </div>
   <div class="foot">MyHero Brand Creation</div><div class="pnum">08</div>
+</div></div>
+
+<!-- ============ BRAND FAMILY ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Guide</div>
+  <div class="stitle">Brand Family</div>
+  <div class="ssub">How one parent mark holds a family of related brands together</div>
+  <div class="body-area">
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;min-height:0;padding:10px 0">
+      <div style="display:flex;justify-content:center;margin-bottom:34px">
+        <div class="famnode" style="background:#141414;color:#fff;padding:16px 40px"><b style="font-size:20px;letter-spacing:.06em">PARENT BRAND</b><span style="color:rgba(255,255,255,.6)">The endorsement everyone inherits</span></div>
+      </div>
+      <div style="height:26px;display:flex;justify-content:center"><div style="width:1px;background:var(--line)"></div></div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px">
+        <div class="famnode" style="border:1px solid var(--line)"><b>SELECT</b><span>Entry tier</span><i style="background:#2B4FD8"></i></div>
+        <div class="famnode" style="border:1px solid var(--line)"><b>COURT</b><span>Mid tier</span><i style="background:#2FA36B"></i></div>
+        <div class="famnode" style="border:1px solid var(--line)"><b>RESIDENCE</b><span>Extended stay</span><i style="background:#E8912A"></i></div>
+        <div class="famnode" style="border:1px solid var(--line)"><b>SIGNATURE</b><span>Premium tier</span><i style="background:#6B3FD4"></i></div>
+        <div class="famnode" style="border:1px solid var(--line)"><b>RESERVE</b><span>Luxury tier</span><i style="background:#141414"></i></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;margin-top:20px">
+        <div class="famstrip"><span>PARENT</span><b>SELECT</b></div>
+        <div class="famstrip"><span>PARENT</span><b>COURT</b></div>
+        <div class="famstrip"><span>PARENT</span><b>RESIDENCE</b></div>
+        <div class="famstrip"><span>PARENT</span><b>SIGNATURE</b></div>
+        <div class="famstrip"><span>PARENT</span><b>RESERVE</b></div>
+      </div>
+    </div>
+    <div class="grid3" style="flex:none;margin-top:22px">
+      <div class="card"><div class="lbl" style="margin-bottom:12px">What stays constant</div><p class="b" style="font-size:15px">The parent's name, its position in the lockup, the typeface and the spacing. These four are what make a family read as a family.</p></div>
+      <div class="card"><div class="lbl" style="margin-bottom:12px">What is allowed to vary</div><p class="b" style="font-size:15px">Colour, the child's own name and any tier-specific device. Vary more than this and the family becomes a collection of unrelated brands.</p></div>
+      <div class="card"><div class="lbl" style="margin-bottom:12px">Marriott, as the example</div><p class="b" style="font-size:15px">Courtyard, Residence Inn, Fairfield and SpringHill Suites each keep their own name and colour, with "Marriott" locked beneath every one of them at the same size and weight.</p></div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">09</div>
 </div></div>
 
 <!-- ============ TYPE OF LOGOS ============ -->
@@ -377,7 +507,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
 
       <div class="ltype"><div class="lt-art">
         <svg width="58" height="58" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="26" r="14" stroke="#141414" stroke-width="2.6"/><circle cx="26" cy="24" r="2.4" fill="#141414"/><circle cx="38" cy="24" r="2.4" fill="#141414"/><path d="M26 31c3 3.4 9 3.4 12 0" stroke="#141414" stroke-width="2.4" stroke-linecap="round"/><path d="M18 52c0-8 6-12 14-12s14 4 14 12" stroke="#141414" stroke-width="2.6" stroke-linecap="round"/></svg>
-      </div><h4>Mascot</h4><p>A character carries the brand.</p><em>KFC · Michelin · Pringles</em><span class="warn">Rejected for MyHero — reads as childish in a medical context</span></div>
+      </div><h4>Mascot</h4><p>A character carries the brand.</p><em>KFC · Michelin · Pringles</em><span>Approachable and memorable; reads as childish in serious categories</span></div>
 
       <div class="ltype"><div class="lt-art">
         <svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.6"><path d="M32 52C20 44 11 37.5 11 29a10 10 0 0 1 21-5 10 10 0 0 1 21 5c0 8.5-9 15-21 23Z" stroke-linejoin="round"/></svg>
@@ -392,24 +522,24 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       </div><h4>Letterform</h4><p>One letter, drawn as the mark.</p><em>McDonald's · Netflix · Uniqlo</em><span>Compact and scalable; single letters are crowded</span></div>
 
       <div class="ltype"><div class="lt-art">
-        <div style="font-size:24px;font-weight:600;letter-spacing:-.02em;color:#141414">MyHero</div>
+        <div style="font-size:24px;font-weight:600;letter-spacing:-.02em;color:#141414">Brandname</div>
       </div><h4>Wordmark</h4><p>The name itself, drawn distinctively.</p><em>Google · Coca-Cola · Uber</em><span>Builds name recognition; weak as a small app icon</span></div>
 
       <div class="ltype"><div class="lt-art">
-        <div style="display:flex;align-items:center;gap:9px"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="4"><path d="M32 6 53 14v17c0 12.7-8.5 22-21 26.5C19.5 53 11 43.7 11 31V14Z" stroke-linejoin="round"/><path d="M32 22v18M23 31h18" stroke-linecap="round"/></svg><div style="font-size:19px;font-weight:600;color:#141414">MyHero</div></div>
-      </div><h4>Combination</h4><p>Symbol plus wordmark, separable.</p><em>Airbnb · Slack · Mastercard</em><span class="good">Recommended for MyHero — icon works alone at 24px</span></div>
+        <div style="display:flex;align-items:center;gap:9px"><svg width="30" height="30" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="4"><path d="M32 6 53 14v17c0 12.7-8.5 22-21 26.5C19.5 53 11 43.7 11 31V14Z" stroke-linejoin="round"/><path d="M32 22v18M23 31h18" stroke-linecap="round"/></svg><div style="font-size:19px;font-weight:600;color:#141414">Brandname</div></div>
+      </div><h4>Combination</h4><p>Symbol plus wordmark, separable.</p><em>Airbnb · Slack · Mastercard</em><span>Most flexible form; the symbol can work alone at 24px</span></div>
 
       <div class="ltype"><div class="lt-art">
         <svg width="58" height="58" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.6"><circle cx="32" cy="32" r="22"/><circle cx="32" cy="32" r="15"/><path d="M32 24v16M24 32h16" stroke-linecap="round"/></svg>
       </div><h4>Emblem</h4><p>Type locked inside a contained shape.</p><em>Starbucks · Harley-Davidson · BMW</em><span>Authoritative and traditional; poor at small sizes</span></div>
 
       <div class="ltype"><div class="lt-art">
-        <div style="font-size:27px;font-weight:700;letter-spacing:.06em;color:#141414">MHR</div>
+        <div style="font-size:27px;font-weight:700;letter-spacing:.06em;color:#141414">BNM</div>
       </div><h4>Lettermark</h4><p>Initials replace a long name.</p><em>HBO · IBM · NASA</em><span>Solves long names; meaningless until well known</span></div>
 
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">09</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">10</div>
 </div></div>
 
 <!-- ============ LOGO FEATURES & MEANING ============ -->
@@ -426,14 +556,14 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <div class="lfeat"><b>Beats</b><p>The letter b becomes a head wearing headphones, seen from the side.</p><span>Product use shown, not stated</span></div>
       <div class="lfeat"><b>Airbnb</b><p>A person, a place and a heart resolved into a single continuous loop.</p><span>Three ideas, one unbroken line</span></div>
       <div class="lfeat"><b>Adidas</b><p>Three bars angled into a mountain — the obstacle athletes climb.</p><span>Abstract shape given a story</span></div>
-      <div class="lfeat" style="border-color:#BFE2FA;background:#F7FBFE"><b style="color:var(--harbour)">MyHero — the test</b><p>Whichever route is chosen must hold a second reading: protection <i>and</i> care, or record <i>and</i> keepsake.</p><span style="color:var(--harbour)">One shape, two truths</span></div>
+      <div class="lfeat"><b>Tour de France</b><p>The letters TOUR conceal a cyclist — the R is the rider, the O is the wheel.</p><span>Letterform doubles as image</span></div>
     </div>
     <div class="card w" style="margin-top:20px;display:flex;align-items:center;gap:26px">
       <div class="lbl" style="flex:none">The principle</div>
-      <p class="b" style="margin:0;font-size:15px">None of these marks explain themselves on first sight, and none of them need to. The hidden idea is what makes a logo <b>worth looking at twice</b> — and what gives a brand something to tell.</p>
+      <p class="b" style="margin:0;font-size:15px">None of these marks explain themselves on first sight, and none of them need to. The hidden idea is what makes a logo <b>worth looking at twice</b> — and what gives a brand something to tell. Any mark worth building should hold a second reading.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">10</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">11</div>
 </div></div>
 
 <!-- ============ LOGO DEVELOPMENT ============ -->
@@ -444,7 +574,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
   <div class="body-area">
     <div style="display:grid;grid-template-columns:1fr 1.35fr;gap:56px;flex:1;min-height:0">
       <div>
-        <p class="b">The process starts by defining the brand's key ideas — protection, focus, continuity. These ideas are translated into visual symbols, treated as candidate elements.</p>
+        <p class="b">The process starts by defining the brand's key ideas — for example protection, focus, continuity. These ideas are translated into visual symbols, treated as candidate elements.</p>
         <p class="b" style="margin-top:14px">The elements are then <b>combined into a single design</b>, ensuring everything works together harmoniously. Afterwards the design is refined with careful adjustments to proportions, colour and balance, making it adaptable for any application.</p>
         <p class="b" style="margin-top:14px">Finally, the logo is tested to ensure it performs well across all mediums — from digital platforms to physical materials — delivering both meaning and functionality.</p>
         <div class="rule" style="margin:24px 0"></div>
@@ -466,15 +596,15 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
             <path d="M18 31h6.5l4-7.5 6 14 3.8-6.5H46" stroke="#0A4E7E" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <div>
-            <div style="font-size:34px;font-weight:600;letter-spacing:-.02em;color:var(--ink)">MyHero</div>
+            <div style="font-size:34px;font-weight:600;letter-spacing:-.02em;color:var(--ink)">Brandname</div>
             <div class="lbl" style="margin-top:6px">Composite — illustrative only</div>
           </div>
         </div>
-        <p class="s" style="text-align:center;max-width:520px;margin:0 auto">Shield holds the pulse: the record protects, and the line inside proves there is a life being tracked. Shown as method, not as a proposed final mark.</p>
+        <p class="s" style="text-align:center;max-width:520px;margin:0 auto">Container holds the cue: the outer shape carries protection, the line inside carries proof of life. Shown to demonstrate the method — not as a proposed mark.</p>
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">11</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">12</div>
 </div></div>
 
 <!-- ============ LOGO EXPLORATION ============ -->
@@ -486,7 +616,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
     <p class="b" style="max-width:1150px;margin-bottom:24px">The process involves refining the logo through adjustments in shape, angle and reflects, by testing different alignments, layering techniques and perspectives. The design is enhanced for balance and depth. Simplified versions, such as outlines, are created for versatility in merchandise applications and embossing or subtle branding. This ensures the sign is polished, adaptable and ready for diverse uses.</p>
     <div id="explore" style="display:grid;grid-template-columns:repeat(8,1fr);gap:26px;flex:1;min-height:0;align-content:center"></div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">12</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">13</div>
 </div></div>
 
 <!-- ============ ART STYLE & PERSONALIZATION ============ -->
@@ -501,16 +631,16 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <div class="astyle"><div class="as-art"><svg width="70" height="70" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="24" r="11" fill="#1E9BF0"/><path d="M14 52c0-9 8-14 18-14s18 5 18 14z" fill="#0A4E7E"/></svg></div><h5>Two-tone</h5><p class="s">Adds depth without adding complexity</p></div>
       <div class="astyle"><div class="as-art"><svg width="70" height="70" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="24" r="11" fill="#8CC8EE"/><circle cx="32" cy="24" r="11" fill="none" stroke="#0A4E7E" stroke-width="2.2"/><path d="M14 52c0-9 8-14 18-14s18 5 18 14z" fill="#E7F4FE"/><path d="M14 52c0-9 8-14 18-14s18 5 18 14" fill="none" stroke="#0A4E7E" stroke-width="2.2" stroke-linecap="round"/></svg></div><h5>Line + fill</h5><p class="s">Warmest of the flat styles; friendly but still precise</p></div>
       <div class="astyle"><div class="as-art"><svg width="70" height="70" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8CC8EE"/><stop offset="1" stop-color="#0A4E7E"/></linearGradient></defs><circle cx="32" cy="24" r="11" fill="url(#g1)"/><path d="M14 52c0-9 8-14 18-14s18 5 18 14z" fill="url(#g1)"/></svg></div><h5>Gradient</h5><p class="s">Contemporary; fails in one-colour print and embroidery</p></div>
-      <div class="astyle"><div class="as-art"><svg width="70" height="70" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.2"><circle cx="32" cy="24" r="11"/><path d="M14 52c0-9 8-14 18-14s18 5 18 14" stroke-linecap="round"/><circle cx="27" cy="22" r="1.8" fill="#141414" stroke="none"/><circle cx="37" cy="22" r="1.8" fill="#141414" stroke="none"/><path d="M27 29c2.6 2.8 7.4 2.8 10 0" stroke-linecap="round"/></svg></div><h5>Character</h5><p class="s"><b class="no">Not for MyHero</b> — faces read as a toy</p></div>
+      <div class="astyle"><div class="as-art"><svg width="70" height="70" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.2"><circle cx="32" cy="24" r="11"/><path d="M14 52c0-9 8-14 18-14s18 5 18 14" stroke-linecap="round"/><circle cx="27" cy="22" r="1.8" fill="#141414" stroke="none"/><circle cx="37" cy="22" r="1.8" fill="#141414" stroke="none"/><path d="M27 29c2.6 2.8 7.4 2.8 10 0" stroke-linecap="round"/></svg></div><h5>Character</h5><p class="s"><b class="no">High risk</b> — faces read as a toy in serious categories</p></div>
     </div>
     <div class="rule" style="margin-bottom:22px"></div>
     <div class="grid3" style="flex:1;min-height:0">
       <div class="card"><div class="lbl" style="margin-bottom:12px">What style decides</div><p class="b" style="font-size:15px">Style is read before shape. A parent judges whether an app is serious within about two seconds, and style — not concept — is what they are judging.</p></div>
-      <div class="card"><div class="lbl" style="margin-bottom:12px">Direction for MyHero</div><p class="b" style="font-size:15px"><b>Line + fill, two-tone.</b> Rounded terminals for warmth, single stroke weight for precision, no faces and no gradient in the mark itself.</p></div>
-      <div class="card"><div class="lbl" style="margin-bottom:12px">Hard limits</div><p class="b" style="font-size:15px">No character rendering, no 3D, no drop shadow, no gradient inside the symbol. Gradient is permitted on the app icon tile only.</p></div>
+      <div class="card"><div class="lbl" style="margin-bottom:12px">Choosing a style</div><p class="b" style="font-size:15px">Rounded terminals read as warm; flat terminals read as precise. A single stroke weight throughout is what separates a designed system from a collection of icons.</p></div>
+      <div class="card"><div class="lbl" style="margin-bottom:12px">Common limits</div><p class="b" style="font-size:15px">3D, drop shadows and gradients inside a symbol all fail in one-colour print, embroidery and engraving. Where a gradient is wanted, it belongs on the tile behind the symbol — never in the symbol itself.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">13</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">14</div>
 </div></div>
 
 <!-- ============ DETAILING & DIRECTION ============ -->
@@ -555,11 +685,92 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       </div>
     </div>
     <div class="card w" style="margin-top:22px;display:flex;align-items:center;gap:26px">
-      <div class="lbl" style="flex:none">Direction</div>
-      <p class="b" style="margin:0;font-size:15px">MyHero sits at <b>Level 02</b>. Level 01 loses the app icon; Level 03 loses the category. The rule that follows from this: <b>one container plus one medical cue</b> — never two cues, never none.</p>
+      <div class="lbl" style="flex:none">Where most brands land</div>
+      <p class="b" style="margin:0;font-size:15px"><b>Level 02.</b> Level 01 loses the app icon and the embroidery; Level 03 loses the category and could belong to anyone. The rule that falls out of this: <b>one container plus one cue</b> — never two cues, never none.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">14</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">15</div>
+</div></div>
+
+<!-- ============ CONCEPT DIRECTION ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Guide</div>
+  <div class="stitle">Concept Direction</div>
+  <div class="ssub">One base symbol, taken in different directions by what you combine it with</div>
+  <div class="body-area">
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:56px;flex:1;min-height:0">
+      <div>
+        <p class="b">This process explores how a single base symbol can be taken in several directions while retaining one core identity and positioning. By integrating distinct, theme-like combinations for a corporate look or tenant, for a community-focused approach the character evolves to convey unique meanings.</p>
+        <p class="b" style="margin-top:14px">Each direction aligns with the brand's values, ensuring consistency across all variations — and gives the client a real choice between routes rather than between drawings of the same route.</p>
+        <div class="rule" style="margin:24px 0"></div>
+        <div class="lbl" style="margin-bottom:12px">The discipline</div>
+        <p class="s">The base symbol never changes shape between directions. Only the second element changes. If the base has to be redrawn to fit, the direction is fighting the concept.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:38px">
+        <div class="cdrow">
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg>
+          <i class="plus">+</i>
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M8 24 32 12l24 12M12 24v24M52 24v24M8 50h48M22 30v14M42 30v14"/></svg>
+          <i class="arrow">→</i>
+          <svg width="66" height="66" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="3.6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M20 28 32 22l12 6M22.5 28v13M41.5 28v13M20 44h24" stroke-linecap="round"/></svg>
+          <div class="cdlabel"><b>Institutional</b><span>Authority, permanence, public trust</span></div>
+        </div>
+        <div class="cdrow">
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg>
+          <i class="plus">+</i>
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3.4" stroke-linecap="round"><path d="M10 32h9l6-13 10 26 6-13h13"/></svg>
+          <i class="arrow">→</i>
+          <svg width="66" height="66" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="3.6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg>
+          <div class="cdlabel"><b>Clinical</b><span>Precision, monitoring, proof of life</span></div>
+        </div>
+        <div class="cdrow">
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg>
+          <i class="plus">+</i>
+          <svg width="60" height="60" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3.4" stroke-linejoin="round"><path d="M32 50C21 43 13 37 13 30a8.5 8.5 0 0 1 19-4.5A8.5 8.5 0 0 1 51 30c0 7-8 13-19 20Z"/></svg>
+          <i class="arrow">→</i>
+          <svg width="66" height="66" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="3.6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M32 45c-7-4.6-10.5-8-10.5-11.6 0-3 2.3-5.2 5.2-5.2 2 0 3.9 1.1 5.3 2.9 1.4-1.8 3.3-2.9 5.3-2.9 2.9 0 5.2 2.2 5.2 5.2C42.5 37 39 40.4 32 45Z" fill="#0A4E7E" stroke="none"/></svg>
+          <div class="cdlabel"><b>Human</b><span>Warmth, family, personal care</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">16</div>
+</div></div>
+
+<!-- ============ LOGO REFINEMENT ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Guide</div>
+  <div class="stitle">Logo Refinement</div>
+  <div class="ssub">The process of refining a logo — creating a unified visual identity system</div>
+  <div class="body-area">
+    <div style="display:grid;grid-template-columns:400px 1fr;gap:56px;flex:1;min-height:0">
+      <div class="numlist2">
+        <div><b>1 &nbsp; Refinement for balance</b><p>Proportions are fine-tuned using the golden ratio, so the outline and visual weight appear even across all sizes.</p></div>
+        <div><b>2 &nbsp; Geometric detail for consistency</b><p>A structured grid system ensures symmetry and proportionality, making the logo adaptable for every use and application.</p></div>
+        <div><b>3 &nbsp; Iterative refinement process</b><p>Multiple design iterations allow for continuous improvement, focusing on clarity, scalability and user-tested integration.</p></div>
+        <div><b>4 &nbsp; Developing a visual identity system</b><p>From the core logo, complementary variations are refined to represent different services or products while maintaining design consistency.</p></div>
+        <div><b>5 &nbsp; Adaptability across mediums</b><p>Ensuring the logo works seamlessly in digital and print formats, from small icons to large displays without losing impact or clarity.</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;justify-content:center;gap:26px">
+        <div style="display:flex;align-items:center;gap:46px">
+          <div style="position:relative;width:150px;height:150px;flex:none">
+            <svg width="150" height="150" viewBox="0 0 64 64" fill="none" style="position:absolute;inset:0">
+              <g stroke="#E4E4E4" stroke-width="0.5"><path d="M0 24.4h64M0 39.6h64M24.4 0v64M39.6 0v64"/><circle cx="32" cy="32" r="26"/><circle cx="32" cy="32" r="16"/></g>
+            </svg>
+            <svg width="150" height="150" viewBox="0 0 64 64" fill="none" style="position:absolute;inset:0"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z" stroke="#141414" stroke-width="3.2" stroke-linejoin="round"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke="#141414" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div style="flex:1;display:flex;flex-direction:column;gap:14px">
+            <div class="refrow"><svg viewBox="0 0 64 64" fill="none" stroke="#1E9BF0" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><span style="font-size:22px;font-weight:600;color:var(--ink)">Brandname</span></div>
+            <div class="refrow"><svg viewBox="0 0 64 64" fill="none" stroke="#2FA36B" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><span style="font-size:22px;font-weight:600;color:var(--ink)">Brandname <span style="font-weight:300;color:#2FA36B">connect</span></span></div>
+            <div class="refrow"><svg viewBox="0 0 64 64" fill="none" stroke="#E8912A" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><span style="font-size:22px;font-weight:600;color:var(--ink)">Brandname <span style="font-weight:300;color:#E8912A">engage</span></span></div>
+            <div class="refrow"><svg viewBox="0 0 64 64" fill="none" stroke="#6B3FD4" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><span style="font-size:22px;font-weight:600;color:var(--ink)">Brandname <span style="font-weight:300;color:#6B3FD4">cloud</span></span></div>
+          </div>
+        </div>
+        <p class="s" style="max-width:720px">The construction grid on the left is what makes the family on the right possible. Once proportions are fixed to a system, a sub-brand is a colour and a word — not a redraw.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">17</div>
 </div></div>
 
 <!-- ============ LOGO SYSTEM & COLOUR ============ -->
@@ -591,8 +802,8 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <div>
         <div class="lbl" style="margin-bottom:16px">Colour breakdown discipline</div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
-          <div><div style="background:#1E9BF0;height:78px;display:flex;align-items:flex-end;padding:9px"><span style="color:#fff;font-size:11px;font-weight:500">Primary</span></div><div style="background:#0A4E7E;height:52px"></div><div style="background:#0A2437;height:38px"></div><p class="s" style="margin-top:9px">Sky family</p></div>
-          <div><div style="background:#FF8CA8;height:78px;display:flex;align-items:flex-end;padding:9px"><span style="color:#7E2B42;font-size:11px;font-weight:500">Secondary</span></div><div style="background:#FFB9CA;height:52px"></div><div style="background:#FFF0F4;height:38px"></div><p class="s" style="margin-top:9px">Blush family</p></div>
+          <div><div style="background:#1E9BF0;height:78px;display:flex;align-items:flex-end;padding:9px"><span style="color:#fff;font-size:11px;font-weight:500">Primary</span></div><div style="background:#0A4E7E;height:52px"></div><div style="background:#0A2437;height:38px"></div><p class="s" style="margin-top:9px">Primary family</p></div>
+          <div><div style="background:#FF8CA8;height:78px;display:flex;align-items:flex-end;padding:9px"><span style="color:#7E2B42;font-size:11px;font-weight:500">Secondary</span></div><div style="background:#FFB9CA;height:52px"></div><div style="background:#FFF0F4;height:38px"></div><p class="s" style="margin-top:9px">Secondary family</p></div>
           <div><div style="background:#141414;height:78px;display:flex;align-items:flex-end;padding:9px"><span style="color:#fff;font-size:11px;font-weight:500">Mono</span></div><div style="background:#8A8A8A;height:52px"></div><div style="background:#D8D8D8;height:38px"></div><p class="s" style="margin-top:9px">One colour</p></div>
           <div><div style="background:#fff;border:1px solid var(--line);height:78px;display:flex;align-items:flex-end;padding:9px"><span style="font-size:11px;font-weight:500">Reverse</span></div><div style="background:#F6F6F6;height:52px;border-left:1px solid var(--line);border-right:1px solid var(--line)"></div><div style="background:#ECECEC;height:38px;border:1px solid var(--line);border-top:none"></div><p class="s" style="margin-top:9px">Knockout</p></div>
         </div>
@@ -601,14 +812,119 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
         <table class="t sm" style="table-layout:auto">
           <tr><td style="width:34%"><b>Stroke weight</b></td><td>Increases below 32px; never scaled linearly</td></tr>
           <tr><td><b>Corner radius</b></td><td>Fixed ratio to mark height, not a fixed px value</td></tr>
-          <tr><td><b>Icon tile</b></td><td>Gradient permitted; the symbol inside stays flat</td></tr>
-          <tr><td><b>Reversed</b></td><td>Sky lightens to #8CC8EE on dark for equal optical weight</td></tr>
+          <tr><td><b>Icon tile</b></td><td>Gradient permitted on the tile; the symbol inside stays flat</td></tr>
+          <tr><td><b>Reversed</b></td><td>The primary lightens on dark grounds to hold equal optical weight</td></tr>
           <tr><td><b>One colour</b></td><td>Must be legible as a rubber stamp and as embroidery</td></tr>
         </table>
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">15</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">18</div>
+</div></div>
+
+<!-- ============ SYSTEM ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Guide</div>
+  <div class="stitle">System</div>
+  <div class="ssub">One mark, four jobs — the same identity behaving differently in each context</div>
+  <div class="body-area">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:26px;flex:1;min-height:0">
+      <div class="syscard"><div class="sys-art" style="background:#fff;border:1px solid var(--line)">
+        <div style="display:flex;align-items:center;gap:12px"><svg width="42" height="42" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="4.2" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg><span style="font-size:26px;font-weight:600;letter-spacing:-.02em">Brandname</span></div>
+      </div><h4>Primary lockup</h4><p class="s">Documents, decks, letterhead, the website header. The full statement of who the brand is.</p></div>
+      <div class="syscard"><div class="sys-art" style="background:#F6F6F6">
+        <div style="width:112px;height:112px;border-radius:50%;background:#141414;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px"><svg width="36" height="36" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg><span style="color:#fff;font-size:9px;letter-spacing:.16em">EST. 2026</span></div>
+      </div><h4>Badge</h4><p class="s">Packaging, stamps, uniforms, stickers. Contained, self-sufficient, works on any surface.</p></div>
+      <div class="syscard"><div class="sys-art" style="background:#141414">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:9px"><svg width="46" height="46" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg><span style="color:#fff;font-size:17px;font-weight:600;letter-spacing:.02em">Brandname</span></div>
+      </div><h4>Signage</h4><p class="s">Storefront, wayfinding, vehicle. Stacked and reversed so it reads at distance and at an angle.</p></div>
+      <div class="syscard"><div class="sys-art" style="background:#fff;border:1px solid var(--line)">
+        <div style="display:flex;align-items:center;gap:20px"><svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><svg width="17" height="17" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="7.5" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><svg width="12" height="12" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="9" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div>
+      </div><h4>Small scale</h4><p class="s">Favicon, app icon, notification. The cue is dropped and stroke weight increases — a separate drawing.</p></div>
+    </div>
+    <div class="card w" style="margin-top:22px;display:flex;align-items:center;gap:26px">
+      <div class="lbl" style="flex:none">The rule</div>
+      <p class="b" style="margin:0;font-size:15px">A brand does not have one logo, it has <b>a set of behaviours</b>. If a designer has to improvise when a new format appears, the system is incomplete — not the designer.</p>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">19</div>
+</div></div>
+
+<!-- ============ BRANDSCAPE ============ -->
+<div class="slide"><div class="canvas" style="padding:0">
+  <div class="chip">Guide</div>
+  <div style="padding:74px 84px 0"><div class="stitle">Brandscape</div><div class="ssub">The identity seen the way a customer meets it — across every surface at once</div></div>
+  <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);gap:12px;padding:28px 84px 62px;min-height:0">
+
+    <div style="grid-column:span 2;grid-row:span 2;background:#141414;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px">
+      <svg width="66" height="66" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg>
+      <span style="color:#fff;font-size:24px;font-weight:600">Brandname</span>
+      <span class="bslabel" style="color:rgba(255,255,255,.5)">STOREFRONT</span></div>
+
+    <div class="bstile" style="background:#F6F6F6"><div style="width:46px;height:62px;border:1.4px solid #B4B4B4;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div><span class="bslabel">PACKAGING</span></div>
+
+    <div class="bstile" style="background:#E8E4DC"><div style="width:78px;height:46px;background:#fff;display:flex;align-items:center;justify-content:center;gap:6px"><svg width="14" height="14" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="7" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><span style="font-size:9px;font-weight:600">Brandname</span></div><span class="bslabel">BUSINESS CARD</span></div>
+
+    <div class="bstile" style="background:#141414"><div style="width:54px;height:54px;border-radius:13px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="27" height="27" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="5" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div><span class="bslabel" style="color:rgba(255,255,255,.5)">APP ICON</span></div>
+
+    <div class="bstile" style="background:#F6F6F6"><div style="width:44px;height:66px;border:1.4px solid #141414;border-radius:7px;display:flex;flex-direction:column;padding:5px;gap:3px"><div style="height:5px;background:#141414;width:60%"></div><div style="height:3px;background:#D8D8D8"></div><div style="height:3px;background:#D8D8D8;width:70%"></div><div style="flex:1"></div><div style="height:8px;background:#141414"></div></div><span class="bslabel">MOBILE UI</span></div>
+
+    <div class="bstile" style="background:#C9C2B6"><div style="width:56px;height:70px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div><span class="bslabel">UNIFORM</span></div>
+
+    <div class="bstile" style="background:#fff;border:1px solid var(--line)"><div style="font-size:19px;font-weight:600;color:#141414">Aa Bb Cc</div><span class="bslabel">TYPEFACE</span></div>
+
+    <div style="grid-column:span 2;display:flex;flex-direction:column">
+      <div style="flex:1;display:flex">
+        <div style="flex:1;background:#141414"></div><div style="flex:1;background:#5A5A5A"></div><div style="flex:1;background:#8A8A8A"></div><div style="flex:1;background:#C9C2B6"></div><div style="flex:1;background:#E8E4DC"></div><div style="flex:1;background:#F6F6F6"></div>
+      </div>
+      <div style="padding:11px 0 0;text-align:center"><span class="bslabel">PALETTE</span></div>
+    </div>
+
+    <div class="bstile" style="background:#F6F6F6"><div style="width:84px;height:34px;border-radius:17px;background:#141414;display:flex;align-items:center;justify-content:center"><span style="color:#fff;font-size:10px;letter-spacing:.1em">THIS WAY</span></div><span class="bslabel">WAYFINDING</span></div>
+
+    <div class="bstile" style="background:#141414"><div style="width:78px;height:52px;border:1.4px solid rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div><span class="bslabel" style="color:rgba(255,255,255,.5)">SIGNAGE</span></div>
+
+    <div class="bstile" style="background:#E8E4DC"><div style="width:66px;height:56px;background:#fff;display:flex;flex-direction:column;padding:8px;gap:4px"><div style="height:4px;background:#141414;width:44%"></div><div style="height:2.5px;background:#D8D8D8"></div><div style="height:2.5px;background:#D8D8D8;width:80%"></div><div style="height:2.5px;background:#D8D8D8;width:62%"></div></div><span class="bslabel">STATIONERY</span></div>
+
+    <div class="bstile" style="background:#C9C2B6"><div style="width:52px;height:58px;background:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;position:relative"><div style="position:absolute;top:-9px;left:9px;right:9px;height:9px;border:1.4px solid #fff;border-bottom:none"></div><svg width="20" height="20" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="6" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div><span class="bslabel">TOTE</span></div>
+
+    <div class="bstile" style="background:#F6F6F6"><div style="width:74px;height:56px;background:#fff;border:1px solid var(--line);display:flex;flex-direction:column"><div style="height:16px;background:#141414;display:flex;align-items:center;padding:0 6px"><svg width="9" height="9" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="8" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div><div style="flex:1;padding:6px;display:flex;flex-direction:column;gap:3px"><div style="height:2.5px;background:#E4E4E4"></div><div style="height:2.5px;background:#E4E4E4;width:70%"></div></div></div><span class="bslabel">EMAIL</span></div>
+
+    <div class="bstile" style="background:#fff;border:1px solid var(--line)"><div style="width:56px;height:56px;background:#141414;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="5.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg></div><span class="bslabel">SOCIAL</span></div>
+
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">20</div>
+</div></div>
+
+<!-- ============ MODULES & FAMILY ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Guide</div>
+  <div class="stitle">Modules &amp; Family</div>
+  <div class="ssub">Two ways a parent mark extends into its modules</div>
+  <div class="body-area">
+    <div class="grid2" style="flex:1;min-height:0;gap:60px">
+      <div style="display:flex;flex-direction:column">
+        <div class="lbl" style="margin-bottom:24px">Model A — stacked descriptor</div>
+        <div style="display:flex;flex-direction:column;gap:30px;justify-content:center;flex:1">
+          <div class="modrow"><svg viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg><div><b>Brandname</b></div></div>
+          <div class="modrow"><svg viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg><div><b>Brandname</b><em style="color:#2FA36B">premium</em></div></div>
+          <div class="modrow"><svg viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="4.4" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg><div><b>Brandname</b><em style="color:#2B4FD8">finder</em></div></div>
+        </div>
+        <p class="s" style="margin-top:20px">The descriptor sits beneath the name in a lighter weight. Cheapest to run, and the module never competes with the parent. Best when modules are features rather than products.</p>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div class="lbl" style="margin-bottom:24px">Model B — paired sub-mark</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px 30px;justify-content:center;flex:1;align-content:center">
+          <div class="modpair"><div class="mp-top"><svg viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="5" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><b>Brandname</b></div><div class="mp-bot"><i style="background:#E8912A"></i><span>UNIT 42</span></div></div>
+          <div class="modpair"><div class="mp-top"><svg viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="5" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><b>Brandname</b></div><div class="mp-bot"><i style="background:#2B4FD8"></i><span>PRISMA</span></div></div>
+          <div class="modpair"><div class="mp-top"><svg viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="5" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><b>Brandname</b></div><div class="mp-bot"><i style="background:#E8C22A"></i><span>STRATA</span></div></div>
+          <div class="modpair"><div class="mp-top"><svg viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="5" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/></svg><b>Brandname</b></div><div class="mp-bot"><i style="background:#2FA36B"></i><span>CORTEX</span></div></div>
+        </div>
+        <p class="s" style="margin-top:20px">Each module gets its own name, colour chip and rule beneath the parent lockup. More expensive to run, but modules can be sold and marketed independently.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">21</div>
 </div></div>
 
 <!-- ============ DIVIDER · STYLESCAPE GUIDE ============ -->
@@ -633,21 +949,21 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       </div>
       <div style="display:flex;flex-direction:column;gap:20px;justify-content:center">
         <div class="tier" style="background:#0A2437">
-          <div class="tier-l"><b style="color:#8CC8EE">EXTREME</b><h4 style="color:#fff">High contrast, high confidence</h4><p style="color:#A9C9DF">Deep ground, bold weight, minimal colour. Reads as authority. Risk: can feel cold or corporate for a family product.</p></div>
+          <div class="tier-l"><b style="color:#8CC8EE">EXTREME</b><h4 style="color:#fff">High contrast, high confidence</h4><p style="color:#A9C9DF">Deep ground, bold weight, minimal colour. Reads as authority. Risk: can feel cold or corporate for a consumer product.</p></div>
           <div class="tier-r"><i style="background:#0A2437;border:1px solid #2C4E68"></i><i style="background:#123A56"></i><i style="background:#1E9BF0"></i><i style="background:#8CC8EE"></i><i style="background:#fff"></i></div>
         </div>
         <div class="tier" style="background:#E7F4FE;border:1px solid #BFE2FA">
-          <div class="tier-l"><b style="color:var(--harbour)">MID &nbsp;·&nbsp; RECOMMENDED</b><h4 style="color:var(--harbour)">Clear, warm, unhurried</h4><p style="color:#3A6A8C">Light ground, sky as the single carrier, generous white space, one warm accent. Professional first, cheerful second — the brief exactly.</p></div>
+          <div class="tier-l"><b style="color:var(--harbour)">MID &nbsp;·&nbsp; RECOMMENDED</b><h4 style="color:var(--harbour)">Clear, warm, unhurried</h4><p style="color:#3A6A8C">Light ground, one colour carrying the system, generous white space, a single warm accent. The tier most brands end up choosing.</p></div>
           <div class="tier-r"><i style="background:#0A4E7E"></i><i style="background:#1E9BF0"></i><i style="background:#8CC8EE"></i><i style="background:#FF8CA8"></i><i style="background:#fff;border:1px solid #BFE2FA"></i></div>
         </div>
         <div class="tier" style="background:#FFF7F9;border:1px solid #FFD3DF">
-          <div class="tier-l"><b style="color:#B4506B">LIGHT</b><h4 style="color:#A8455F">Soft, tactile, domestic</h4><p style="color:#9C5A6C">Blush-led, low contrast, rounded everything. Warmest and most personal. Risk: loses the clinical credibility the kickstart insisted on.</p></div>
+          <div class="tier-l"><b style="color:#B4506B">LIGHT</b><h4 style="color:#A8455F">Soft, tactile, domestic</h4><p style="color:#9C5A6C">Accent-led, low contrast, rounded everything. Warmest and most personal. Risk: gives away authority the category may require.</p></div>
           <div class="tier-r"><i style="background:#FF8CA8"></i><i style="background:#FFB9CA"></i><i style="background:#FFF0F4"></i><i style="background:#8CC8EE"></i><i style="background:#fff;border:1px solid #FFD3DF"></i></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">17</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">23</div>
 </div></div>
 
 <!-- ============ DIVIDER · BRAND FOUNDATION ============ -->
@@ -677,7 +993,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <tr><td><b>Risk</b></td><td>"My" is a crowded prefix in health apps. Trademark and app-store search clearance required before Phase 2 sign-off</td></tr>
     </table>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">19</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">25</div>
 </div></div>
 
 <!-- ============ WHY THE NAME ============ -->
@@ -714,7 +1030,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">20</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">26</div>
 </div></div>
 
 <!-- ============ BRAND POSITIONING ============ -->
@@ -740,7 +1056,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <tr><td><b>What it is not</b></td><td>Not a diagnosis tool · not a government portal · not a gaming or superhero experience · not an AI product</td></tr>
     </table>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">21</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">27</div>
 </div></div>
 
 <!-- ============ TAGLINE TEST ============ -->
@@ -768,7 +1084,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <p class="b" style="margin:0;font-size:15px"><b>"Your family's health, remembered"</b> as the primary line, with <b>"Be your own hero"</b> reserved for campaign and onboarding use where the name is already known. The final row is included to show the failure mode, not as a candidate.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">22</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">28</div>
 </div></div>
 
 <!-- ============ BRAND ARCHITECTURE 1 ============ -->
@@ -792,7 +1108,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <div class="card w"><div class="lbl" style="margin-bottom:10px">Open for Phase 2</div><p class="b" style="font-size:15px">Whether the endorsement reads <i>"MyHero — by Elite Care Clinic"</i> in the lockup itself, or only in the app store listing and clinic signage.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">23</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">29</div>
 </div></div>
 
 <!-- ============ BRAND ARCHITECTURE 2 — HIERARCHY ============ -->
@@ -831,7 +1147,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">24</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">30</div>
 </div></div>
 
 <!-- ============ CLOSEST COMPETITORS ============ -->
@@ -862,7 +1178,67 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <div class="card w"><div class="lbl" style="margin-bottom:10px">The gap MyHero occupies</div><p class="b" style="font-size:15px">Every competitor is either clinic-sourced <i>or</i> warm and readable. None are both. That intersection is the entire positioning.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">25</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">31</div>
+</div></div>
+
+<!-- ============ DIVIDER · REFERENCE ============ -->
+<div class="slide"><div class="canvas divider black"><span>Reference</span><small>MyHero · Client</small></div></div>
+
+<!-- ============ COMPETITOR REFERENCE ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Client</div>
+  <div class="stitle">Competitor Reference</div>
+  <div class="ssub">What to study in each, and what not to copy</div>
+  <div class="body-area">
+    <table class="t sm" style="flex:1">
+      <colgroup><col style="width:14%"><col style="width:16%"><col style="width:12%"><col style="width:29%"><col style="width:29%"></colgroup>
+      <tr><th>Reference</th><th>Category</th><th>Look at</th><th>What it does well</th><th>What to avoid taking</th></tr>
+      <tr class="hl"><td><b>Flo</b></td><td>Women's health</td><td>Tone &amp; onboarding</td><td>Explains intimate medical detail in plain, unembarrassed language. Never condescends.</td><td>Heavy AI promotion and the subscription pressure in onboarding.</td></tr>
+      <tr><td><b>Huckleberry</b></td><td>Paediatric sleep</td><td>Parent empathy</td><td>Speaks to exhausted parents without cheerleading. Copy assumes you are competent and tired.</td><td>Illustration style is close to the cartoon register ruled out at kickstart.</td></tr>
+      <tr><td><b>Calm</b></td><td>Wellness</td><td>Restraint</td><td>Enormous white space, one accent, almost no interface. Proof that calm is a layout decision.</td><td>Its content-first model — MyHero's home screen must lead with the record.</td></tr>
+      <tr><td><b>Oscar Health</b></td><td>Insurance</td><td>Warm clinical</td><td>Manages to look friendly while handling claims. Type and colour do the softening, not illustration.</td><td>American insurance framing; irrelevant to a clinic-sourced record.</td></tr>
+      <tr><td><b>MySejahtera</b></td><td>Public health</td><td>What to avoid</td><td>Total reach and recognition in the Malaysian market.</td><td class="no">The entire visual and tonal register — this is the "government portal" the kickstart ruled out.</td></tr>
+      <tr><td><b>Apple Health</b></td><td>Platform</td><td>Data density</td><td>Handles enormous quantities of data without feeling cluttered. Excellent typographic hierarchy.</td><td>Raw values shown first — MyHero leads with the plain-language line.</td></tr>
+      <tr><td><b>Clinic booklet</b></td><td>Paper</td><td>The real benchmark</td><td>Trusted, tactile, needs no login, understood by every grandparent.</td><td>Nothing — this is the thing to beat, not to imitate.</td></tr>
+    </table>
+    <div class="card w" style="margin-top:18px;display:flex;align-items:center;gap:26px">
+      <div class="lbl" style="flex:none">How to use this page</div>
+      <p class="b" style="margin:0;font-size:15px">These are references for <b>tone and behaviour</b>, not for visual style. Nothing on this list should be used as a source for the mark, the palette or the layout — those come from the stylescape.</p>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">33</div>
+</div></div>
+
+<!-- ============ CONTENT & DESIGN REFERENCE ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Client</div>
+  <div class="stitle">Content &amp; Design Reference</div>
+  <div class="ssub">The register to write in, and the register to design in</div>
+  <div class="body-area">
+    <div class="grid2" style="flex:1;min-height:0;gap:46px">
+      <div style="display:flex;flex-direction:column">
+        <div class="lbl" style="margin-bottom:18px">Content reference — how it should read</div>
+        <div style="display:flex;flex-direction:column;gap:14px;flex:1;justify-content:space-between">
+          <div class="quotecard"><p>"Your next scan is on Wednesday 3 September, 10:30am."</p><span>Weekday and month spelled out. No codes, no room numbers up front.</span></div>
+          <div class="quotecard"><p>"Everything in this test looked normal."</p><span>The answer first. Raw values are available underneath, never above.</span></div>
+          <div class="quotecard"><p>"Dr Amira would like to go through one of these with you at your next visit."</p><span>Names the person. Never alarms a parent a clinician has not yet spoken to.</span></div>
+          <div class="quotecard"><p>"Nothing here yet. Your clinic will add to this after your next visit."</p><span>Empty states explain what happens next, rather than reporting zero results.</span></div>
+          <div class="quotecard" style="border-color:#F8D2D1;background:#FEF3F3"><p style="color:#B7302C">"AI-generated clinical summary · 0 results returned · ⚠ ABNORMAL VALUE FLAGGED"</p><span style="color:#B7302C">All three break a rule: names the technology, reports like a database, alarms without a clinician.</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div class="lbl" style="margin-bottom:18px">Design reference — how it should look</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1">
+          <div class="refcard"><div class="rc-art" style="background:#fff;border:1px solid var(--line)"><div style="width:78%;height:8px;background:#E7F4FE"></div><div style="width:52%;height:8px;background:#F0F0F0;margin-top:8px"></div><div style="width:64%;height:8px;background:#F0F0F0;margin-top:8px"></div></div><h5>Air over density</h5><p class="s">If a screen feels busy the fix is more neutral, not less colour.</p></div>
+          <div class="refcard"><div class="rc-art" style="background:#E7F4FE"><div style="width:70%;height:34px;background:#fff;border-radius:6px"></div></div><h5>Cards, not tables</h5><p class="s">Dense tabular layouts are for the clinic-side view only.</p></div>
+          <div class="refcard"><div class="rc-art" style="background:#fff;border:1px solid var(--line)"><div style="font-size:26px;font-weight:600;color:var(--ink)">Aa</div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-3);margin-left:12px">12.4</div></div><h5>One family, one mono</h5><p class="s">Mono numerals only where digits must align in a column.</p></div>
+          <div class="refcard"><div class="rc-art" style="background:#fff;border:1px solid var(--line);gap:8px"><div style="width:26px;height:26px;border-radius:7px;background:#25C3A8"></div><div style="width:26px;height:26px;border-radius:7px;background:#FFB443"></div><div style="width:26px;height:26px;border-radius:7px;background:#FF8CA8"></div></div><h5>Colour carries meaning</h5><p class="s">Green clears, amber warns, blush celebrates. Blush is never an alert.</p></div>
+        </div>
+        <div class="card w" style="margin-top:16px"><p class="b" style="font-size:14.5px;margin:0">Full colour, typography and application specifications are held in the identity guidelines issued at v1.0 — this page fixes the register only.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">34</div>
 </div></div>
 
 <!-- ============ DIVIDER · STYLESCAPE ============ -->
@@ -898,7 +1274,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="4" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/></svg>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">27</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">36</div>
 </div></div>
 
 <!-- ============ DIVIDER · LOGO IDEATION ============ -->
@@ -929,7 +1305,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <p class="b" style="margin:0;font-size:15px"><b>One container plus one cue.</b> Elements 1, 5, 6 and 7 are containers; elements 2, 3 and 4 are cues. A mark takes exactly one from each group — two cues inside one container reads as clip art.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">29</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">38</div>
 </div></div>
 
 <!-- ============ COMBO / BUILD ============ -->
@@ -954,7 +1330,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
     </table>
     <p class="s" style="margin-top:16px">Rows 1–3 are carried forward as the three routes on the next page. Everything else is documented so the client can see what was considered and why it was set aside.</p>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">30</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">39</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 1 ============ -->
@@ -979,7 +1355,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
     </table>
     <p class="s" style="margin-top:18px;max-width:1200px">— The rounded shoulder is what keeps this route out of security-badge territory; a sharp shoulder reads as a bank.<br>— The cross must be optically centred, not mathematically centred, or it sits low inside the shield.<br>— Route four is carried forward alongside the plain cross version, since it survives the second-reading test.</p>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">31</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">40</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 2 ============ -->
@@ -1004,7 +1380,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
     </table>
     <p class="s" style="margin-top:18px;max-width:1200px">— The header bar is what makes the rectangle read as a record rather than as a generic app tile.<br>— Solid fill survives reduction; the outlined heart does not and should be dropped early.<br>— The spine variant is the only route in the whole set that references the physical booklet directly.</p>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">32</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">41</div>
 </div></div>
 
 <!-- ============ FOUNDER CONCEPT ============ -->
@@ -1031,7 +1407,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <div class="card"><div class="lbl" style="margin-bottom:12px">Status</div><p class="b" style="font-size:15px"><b>Concept only.</b> Presented so the founder's framing is on record before route selection. Not drawn as a finished mark and not one of the three carried routes.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">33</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">42</div>
 </div></div>
 
 <!-- ============ LOGO SYSTEM DRAFT ============ -->
@@ -1053,7 +1429,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
     </div>
     <p class="s" style="margin-top:18px">All nine drafts use placeholder geometry from Route A. Wordmark weight, the two-tone split and the endorsement variant are the three decisions to settle at Phase 2 — see the open items on the next page.</p>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">34</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">43</div>
 </div></div>
 
 <!-- ============ NEXT STEPS ============ -->
@@ -1082,7 +1458,7 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
       <p class="b" style="margin:0;font-size:15px">Every mark in this document is <b>provisional</b>. The clinic address on the cover is a placeholder pending confirmation, and Phase 2 dates are to be agreed with the team.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">35</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">44</div>
 </div></div>
 
 </div>
@@ -1104,10 +1480,78 @@ table.t.sm th{font-size:11px;padding:9px 11px;}
     host.appendChild(d);
   }
 })();
+var EXPORT = location.hash==='#export';
+if(EXPORT) document.body.classList.add('exporting');
+
 function fit(){
-  var s = location.hash==='#export' ? 1 : Math.min(1,(window.innerWidth-48)/1920);
-  document.documentElement.style.setProperty('--s', s);
+  var w = EXPORT ? 1920 : (window.innerWidth - (document.getElementById('nav')&&document.getElementById('nav').classList.contains('open') ? 340 : 48));
+  document.documentElement.style.setProperty('--s', EXPORT ? 1 : Math.min(1, w/1920));
 }
+
+// Build the page index from the slides themselves
+var slides = [].slice.call(document.querySelectorAll('.slide'));
+slides.forEach(function(sl,i){ sl.id = 'p'+(i+1); });
+
+if(!EXPORT){
+  var nav = document.createElement('nav');
+  nav.id='nav'; nav.setAttribute('aria-label','Page index');
+  var btn = document.createElement('button');
+  btn.id='navbtn'; btn.type='button'; btn.textContent='Contents';
+  btn.setAttribute('aria-expanded','false');
+
+  var html = '<h6>MyHero Brand Creation</h6>';
+  slides.forEach(function(sl,i){
+    var cv = sl.querySelector('.canvas');
+    var isDiv = cv.classList.contains('divider');
+    var t = isDiv ? cv.querySelector('span').textContent
+                  : (cv.querySelector('.stitle') ? cv.querySelector('.stitle').textContent.trim() : 'Cover');
+    var cls = isDiv ? (cv.classList.contains('blue') ? 'div-b' : 'div-k') : '';
+    html += '<a class="'+cls+'" href="#p'+(i+1)+'"><i>'+String(i+1).padStart(2,'0')+'</i><span>'+t+'</span></a>';
+  });
+  nav.innerHTML = html;
+  document.body.appendChild(nav);
+  document.body.appendChild(btn);
+
+  btn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(open));
+    btn.textContent = open ? 'Close' : 'Contents';
+    fit();
+  });
+
+  // highlight the page currently in view
+  var links = [].slice.call(nav.querySelectorAll('a'));
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i = slides.indexOf(e.target);
+      links.forEach(function(l,j){ l.classList.toggle('on', j===i); });
+      var on = links[i];
+      if(on && nav.classList.contains('open')){
+        var r = on.offsetTop - nav.clientHeight/2;
+        if(Math.abs(nav.scrollTop - r) > nav.clientHeight/2) nav.scrollTop = r;
+      }
+    });
+  }, {threshold:0.5});
+  slides.forEach(function(sl){ io.observe(sl); });
+
+  // arrow-key paging
+  document.addEventListener('keydown', function(e){
+    if(e.target.matches('input,textarea')) return;
+    var d = (e.key==='ArrowDown'||e.key==='ArrowRight'||e.key==='PageDown') ? 1
+          : (e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='PageUp') ? -1 : 0;
+    if(!d) return;
+    e.preventDefault();
+    var cur = 0, best = Infinity;
+    slides.forEach(function(sl,i){
+      var t = Math.abs(sl.getBoundingClientRect().top);
+      if(t < best){ best = t; cur = i; }
+    });
+    var next = Math.min(slides.length-1, Math.max(0, cur+d));
+    slides[next].scrollIntoView({behavior:'smooth', block:'start'});
+  });
+}
+
 fit(); window.addEventListener('resize', fit); window.addEventListener('hashchange', fit);
 </script>
 </body>

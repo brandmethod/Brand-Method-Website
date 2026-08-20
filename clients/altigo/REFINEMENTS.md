@@ -123,3 +123,12 @@ Two findings in my first pass were wrong — they were artefacts of a truncated 
 Known and accepted: 13 body paragraphs in narrow card columns still end on a 2–3 word
 line. Those columns are ~230px wide; at that measure it is a normal break and the lines
 are already balanced. Fixing them further would mean rewriting client copy.
+
+### Round 16 — Brand USP artwork and title mark
+- Replaced the three separate images (blue panel, escalator cutout, lift cutout) with the
+  single composite scene supplied by the client. It fills the right 980px of the slide,
+  bleeding off the top and right, anchored to the bottom so the tiled floor stays whole.
+- Text column pulled in (`frame right:1010px`) so the copy and page number stay clear of
+  the escalator.
+- Added a rising-arrow mark beside the Brand USP title, matching the treatment on
+  Our Objective (46px `hd-mark`, blue frame with a red arrow breaking out of it).

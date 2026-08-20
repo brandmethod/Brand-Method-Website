@@ -102,3 +102,24 @@ Two findings in my first pass were wrong — they were artefacts of a truncated 
 - Open judgement point for the client: right-aligned body copy reads cleanly at 2–3 lines.
   The two 5-line blocks (Our Objective, Our Track Record) are the only ones where the ragged
   left edge is noticeable — say the word and those two revert to left-aligned.
+
+### Round 15 — no short tail lines, bigger stat icons, tighter lists, tidier cards
+- `.lead-r` now balances as well as right-aligns. Every one of the 21 top-right
+  description blocks ends with at least 5 words on its last line (was as few as 2).
+  `text-wrap:balance` also replaces `pretty` on every other paragraph in the deck.
+- Standalone stat icons (`.tr-i`, `.cp-i`, `.gl-i`) go from 34px to 51px. Icons that
+  sit beside a title stay at the standardised 34px.
+- Maintenance Programme list gaps 98px → 78px; Safety & Compliance 66px → 53px.
+- Six-up card grids (Our Value, Our Activities, Our Achievements): rows cut from 254px
+  to 200px so the accent bars stop running past empty space, content stays top-aligned
+  so titles and copy line up across the row.
+- Tall card grids (Our Objective, Service Scope): rows capped at 300px / 400px so the
+  caption is no longer stranded at the bottom of a void.
+- Project references: `min-height` of two lines on `.prj h3`, so all five thumbnails
+  end at the same height and the number/title/location rows line up.
+- Brand USP lift moved right and up to sit against the wall panel.
+- `TIGO-R` now uses a non-breaking hyphen so the model name never splits across lines.
+
+Known and accepted: 13 body paragraphs in narrow card columns still end on a 2–3 word
+line. Those columns are ~230px wide; at that measure it is a normal break and the lines
+are already balanced. Fixing them further would mean rewriting client copy.

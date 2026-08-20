@@ -93,3 +93,12 @@ Source: `ALTIGO_Company_Profile_2026.html` · 41 pages, single edition (was 43) 
 Two findings in my first pass were wrong — they were artefacts of a truncated working copy:
 - All 46 images **do** have `alt` attributes.
 - `.prj-tag` **is** used (5 sector labels on the project references page).
+
+### Round 14 — right-aligned leads, lift against the wall
+- All 21 top-right description blocks now carry `.lead-r` (`text-align:right`), so every
+  one of them ends flush on the right alignment guide at x=1800 (verified 0px short).
+- Brand USP: the lift moved right to `right:36px` and up to `bottom:118px` at `height:516px`
+  so it sits against the wall panel instead of floating in the middle of the shaft space.
+- Open judgement point for the client: right-aligned body copy reads cleanly at 2–3 lines.
+  The two 5-line blocks (Our Objective, Our Track Record) are the only ones where the ragged
+  left edge is noticeable — say the word and those two revert to left-aligned.

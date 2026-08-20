@@ -9,6 +9,7 @@ altigo/passenger-elevator/
 ├─ index.html                                  ← the catalogue (open this)
 ├─ altigo-passenger-elevator-catalogue.html    ← single-file copy, everything inlined
 ├─ build-standalone.py                         ← regenerates the single-file copy
+├─ export-deck-pdf.py                          ← exports the 1920×1080 PDF
 ├─ README.md
 └─ assets/
    ├─ fonts/   Altigo Edge, Altigo Display, IBM Plex Sans, Inter
@@ -78,6 +79,18 @@ letterbox band carrying a printed footer (catalogue line + page number). On the
 cover and the dark pages the band is deep navy so it reads as a deliberate
 cinema bar rather than a gap. The screen folio is hidden when printing so the
 page number never appears twice.
+
+### The presentation-size PDF
+
+For a PDF at the catalogue's own page size — **1920 × 1080 px (1440 × 810 pt)**,
+full bleed, no letterbox bands and no printed footer:
+
+```bash
+python3 export-deck-pdf.py
+```
+
+A browser print dialog cannot be set to a custom 16:9 sheet, which is why this
+one runs headless rather than sitting behind the Print button.
 
 ---
 

@@ -1,4 +1,4 @@
-# MyHero — Brand Identity Book (v0.1)
+# MyHero — Brand Creation (v0.1)
 
 Brand creation deck for the MyHero / "My Health Record" app (Dr Amira · Elite Care Clinic).
 

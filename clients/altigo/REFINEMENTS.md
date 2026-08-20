@@ -136,3 +136,9 @@ are already balanced. Fixing them further would mean rewriting client copy.
   are gone (source trimmed to 1105x990 from 1189x1112), so the floor now meets the
   bottom edge of the slide on a clean straight line. Scene area widened to 1060px and
   the text column pulled to `right:1086px` to keep a gutter beside the page number.
+- Brand USP scene widened to 1060 -> 1100px and anchored flush left (`object-position:0%`),
+  so nothing is cropped off the escalator's tile apron; the trim now falls on the right,
+  which is plain wall. Text column pulled to `right:1120px` to clear it.
+- Page number moved out of the narrow footer to the slide's true bottom-right corner
+  (right:120px, bottom:62px), matching every other page's guide position, in white with
+  a soft shadow so it reads over the tiled floor.

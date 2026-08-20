@@ -221,8 +221,8 @@ strong,b{font-weight:600}
   --accent-2:#2F6BFF;
   --grad:linear-gradient(135deg,#0743C9,#2F6BFF);
 }
-.deck-nav{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:400;
-  display:flex;align-items:center;gap:9px;padding:11px 20px;max-width:calc(100vw - 40px);
+.deck-nav{position:fixed;left:0;top:0;z-index:400;
+  display:flex;align-items:center;gap:9px;padding:9px 16px;
   background:var(--nav-bg);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);
   box-shadow:0 14px 44px rgba(0,0,0,.5);border:1px solid var(--nav-line);border-radius:44px;user-select:none}
 .dn-arr{flex:none;width:30px;height:30px;border-radius:50%;border:none;background:rgba(255,255,255,.1);
@@ -244,7 +244,7 @@ strong,b{font-weight:600}
 .dn-dots.scrubbing{cursor:grabbing}
 .dn-sep{width:1px;height:20px;background:var(--nav-line);flex:none}
 .dn-name{font-family:'IN';font-size:12.5px;font-weight:500;color:rgba(255,255,255,.64);white-space:nowrap;
-  min-width:170px;text-align:center;letter-spacing:-.005em;transition:color .25s}
+  min-width:0;flex:0 1 auto;overflow:hidden;text-overflow:ellipsis;text-align:center;letter-spacing:-.005em;transition:color .25s}
 .dn-pg{font-family:'AX';font-size:12px;font-weight:700;color:rgba(255,255,255,.34);letter-spacing:.04em;
   min-width:52px;text-align:center;flex:none}
 .dn-pg em{color:var(--accent-2);font-style:normal;font-weight:700}
@@ -346,17 +346,9 @@ body.panning{cursor:grabbing}
   box-shadow:inset 0 0 0 1px rgba(0,224,255,.28)}
 
 /* ---------- hide bar ---------- */
-body.nav-hidden .deck-nav{opacity:0;pointer-events:none;transform:translate(-50%,150%)}
-body.nav-hidden .filmstrip{transform:translateY(calc(100% + 96px))}
-.deck-nav{transition:opacity .28s cubic-bezier(.4,0,.2,1),transform .28s cubic-bezier(.4,0,.2,1)}
-#navShow{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:399;
-  width:52px;height:7px;border-radius:99px;border:none;padding:0;cursor:pointer;
-  background:rgba(255,255,255,.26);opacity:0;pointer-events:none;transition:opacity .22s,background .18s}
-#navShow:hover{background:var(--accent-2)}
-body.nav-hidden #navShow{opacity:1;pointer-events:auto}
 
 /* ---------- thumb mode ---------- */
-html.thumbmode .deck-nav,html.thumbmode .filmstrip,html.thumbmode .nav-grid,html.thumbmode .guide-layer,html.thumbmode #navShow{display:none!important}
+html.thumbmode .deck-nav,html.thumbmode .filmstrip,html.thumbmode .nav-grid,html.thumbmode .guide-layer{display:none!important}
 html.thumbmode .anim{opacity:1!important;transform:none!important;transition:none!important}
 
 /* ---------- entrance motion (screen only) ---------- */
@@ -375,7 +367,7 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
 @page{size:1920px 1080px;margin:0}
 @media print{
   html,body{background:#fff;overflow:visible;height:auto}
-  .deck-nav,.filmstrip,.nav-grid,.guide-layer,#navShow{display:none!important}
+  .deck-nav,.filmstrip,.nav-grid,.guide-layer{display:none!important}
   .stage{position:static;background:transparent;overflow:visible}
   .scaler{position:static;transform:none!important;width:1920px;height:1080px;overflow:visible}
   .track{display:block;transform:none!important;transition:none!important}
@@ -2594,8 +2586,6 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
   </div>
 </div></div>
 
-<button id="navShow" title="Show the navigation bar (H)" aria-label="Show navigation bar"></button>
-
 <!-- ════════════════ UNIVERSAL DECK-NAV ·  ════════════════ -->
 <div class="deck-nav" id="deckNav">
   <button class="dn-arr" id="prevBtn" title="Previous page (&larr;)">&#8592;</button>
@@ -2617,7 +2607,6 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
   <button class="print-btn" id="guideBtn" title="Alignment guides &middot; margins, axes and baselines (A)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1.5" y="2.5" width="13" height="11" rx="1.5"/><path d="M8 2.5v11"/><path d="M1.5 8h13" stroke-dasharray="2 2"/></svg></button>
   <button class="print-btn" id="colsBtn" title="Column grid &middot; 12 columns (C)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M2 2.5v11M5.33 2.5v11M8 2.5v11M10.67 2.5v11M14 2.5v11"/></svg></button>
   <button class="print-btn" id="printBtn" title="Print / export PDF"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11H2a1 1 0 01-1-1V7a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-1 1h-2"/><path d="M4 1h8v5H4z"/><path d="M4 11h8v4H4z"/></svg></button>
-  <button class="print-btn" id="hideBtn" title="Hide the navigation bar (H)"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="8" cy="8" r="6"/><path d="M3.8 12.2 12.2 3.8"/></svg></button>
   <div class="dn-sep"></div>
   <button class="print-btn" id="menuBtn" title="Home &middot; back to cover"><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l6-5 6 5"/><path d="M3.5 6.2v7.3h9V6.2"/><path d="M6.5 13.5v-4h3v4"/></svg></button>
 </div>
@@ -2701,8 +2690,8 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
   dotRow.addEventListener('pointercancel',endScrub);
 
   /* ── zoom + pan, single owner of scaler.transform ── */
-  var _ox=0,_oy=0,_bs=1, Z=1,PX=0,PY=0, ZMIN=1,ZMAX=4;
-  function clampPan(){var vw=window.innerWidth,vh=window.innerHeight,dw=Z*_bs*W,dh=Z*_bs*H,baseX=Z*_ox,baseY=Z*_oy,
+  var _ox=0,_oy=0,_bs=1,_vh=0, Z=1,PX=0,PY=0, ZMIN=1,ZMAX=4;
+  function clampPan(){var vw=window.innerWidth,vh=_vh||window.innerHeight,dw=Z*_bs*W,dh=Z*_bs*H,baseX=Z*_ox,baseY=Z*_oy,
     maxX=-baseX,minX=vw-dw-baseX,maxY=-baseY,minY=vh-dh-baseY;
     if(minX>maxX){PX=(minX+maxX)/2;}else{PX=Math.min(maxX,Math.max(minX,PX));}
     if(minY>maxY){PY=(minY+maxY)/2;}else{PY=Math.min(maxY,Math.max(minY,PY));}}
@@ -2713,7 +2702,25 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
     scaler.style.transform='translate('+(PX+Z*_ox)+'px,'+(PY+Z*_oy)+'px) scale('+(Z*_bs)+')';
     updateZoomUI();
   }
-  function fit(){var vw=window.innerWidth,vh=window.innerHeight,s=Math.min(vw/W,vh/H);_bs=s;_ox=(vw-W*s)/2;_oy=(vh-H*s)/2;applyView();}
+  /* the bar is docked under the canvas, so its band is taken out of the
+     height the page is scaled into rather than laid over the slide */
+  var NAV_GAP=12, NAV_BAND=60;
+  function fit(){
+    var vw=window.innerWidth,vh=window.innerHeight;
+    var avail=Math.max(120,vh-NAV_BAND-NAV_GAP*2);
+    var s=Math.min(vw/W,avail/H);
+    _bs=s;_ox=(vw-W*s)/2;_oy=(avail-H*s)/2+NAV_GAP;_vh=H*s+2*_oy;
+    applyView();placeNav();
+  }
+  function placeNav(){
+    var cw=W*_bs, top=_oy+H*_bs+NAV_GAP;
+    deckNav.style.left=Math.round(_ox)+'px';
+    deckNav.style.width=Math.round(cw)+'px';
+    deckNav.style.top=Math.round(top)+'px';
+    var fs=document.getElementById('filmstrip');
+    if(fs){fs.style.bottom=Math.round(window.innerHeight-top+8)+'px';
+      fs.style.left=Math.round(_ox)+'px';fs.style.width=Math.round(cw)+'px';}
+  }
   window.addEventListener('resize',function(){fit();if(typeof drawGuides==='function')drawGuides();});fit();
   function resetZoom(){Z=1;PX=0;PY=0;applyView();}
   function zoomTo(z2,ax,ay){z2=Math.min(ZMAX,Math.max(ZMIN,z2));if(z2===Z)return;
@@ -2897,15 +2904,6 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
   guideBtn.addEventListener('click',function(){toggleGuides();});
   colsBtn.addEventListener('click',function(){toggleCols();});
 
-  /* ── hide bar ── */
-  var navShow=document.getElementById('navShow');
-  function setNavHidden(hidden){
-    document.body.classList.toggle('nav-hidden',hidden);
-    if(hidden&&filmstrip.classList.contains('open'))toggleStrip();
-  }
-  document.getElementById('hideBtn').addEventListener('click',function(){setNavHidden(true);});
-  navShow.addEventListener('click',function(){setNavHidden(false);});
-
   /* ── print · exports the edition currently on screen ── */
   document.getElementById('printBtn').addEventListener('click',function(){window.print();});
 
@@ -2934,7 +2932,6 @@ html.thumbmode .anim{opacity:1!important;transform:none!important;transition:non
     else if(e.key.toLowerCase()==='g'){toggleStrip();}
     else if(e.key.toLowerCase()==='a'){toggleGuides();}
     else if(e.key.toLowerCase()==='c'){toggleCols();}
-    else if(e.key.toLowerCase()==='h'){setNavHidden(!document.body.classList.contains('nav-hidden'));}
   });
   var tx0=null;
   document.addEventListener('touchstart',function(e){if(Z>1.001){tx0=null;return;}tx0=e.touches[0].clientX;},{passive:true});

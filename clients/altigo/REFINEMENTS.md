@@ -53,8 +53,13 @@ Source: `ALTIGO_Company_Profile_2026.html` · 41 pages, single edition (was 43) 
 - Heading marks beside Our Objective (burst), Our Aim (bullseye) and Our Value (diamond).
 - Numerals kept where they carry real sequence and the client asked for them: Our Objective,
   Our Achievements, and the chapter dividers.
-- Icon boxes run larger than the optical target because the drawn glyph fills roughly 70%
-  of its viewBox — 56px boxes on cards, 48px on the journey, 54px on the spec cells.
+- Every icon now sits **beside** its title on one line rather than floating above it, at a
+  single 44px across the whole book (38px only in the seven-up Product Journey columns).
+- **All numbering is gone.** 36 remaining numerals across Our Objective, Our Achievements,
+  Operating Footprint, Company Culture, Product Range I & II, Safety & Compliance,
+  EU Type Examination, Our Aim and Brand USP were replaced with icons from a shared
+  library, so the same concept always draws the same mark.
+- Cards top-align, so every icon row in a grid shares a line.
 
 ### Later client edits
 - Our Objective restored to the client's source wording (my earlier reframing reverted).

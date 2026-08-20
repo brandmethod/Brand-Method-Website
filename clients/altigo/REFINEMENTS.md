@@ -132,3 +132,7 @@ are already balanced. Fixing them further would mean rewriting client copy.
   the escalator.
 - Added a rising-arrow mark beside the Brand USP title, matching the treatment on
   Our Objective (46px `hd-mark`, blue frame with a red arrow breaking out of it).
+- Cropped the supplied scene: the ragged tile apron and the white corner below the lift
+  are gone (source trimmed to 1105x990 from 1189x1112), so the floor now meets the
+  bottom edge of the slide on a clean straight line. Scene area widened to 1060px and
+  the text column pulled to `right:1086px` to keep a gutter beside the page number.

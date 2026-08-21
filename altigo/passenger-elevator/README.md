@@ -175,8 +175,10 @@ Editorial changes were limited to correcting typography and obvious errors:
 - **Construction Parameters** keeps its three schematic drawings, but every
   dimension line, arrow and figure was stripped out of them (they were drawn in
   blue over black line art, so the annotations could be separated by colour).
-  The measurements live only in the wording beside the drawings; dimensioned
-  drawings are issued per project as separate documents
+  The parameter tables that listed shaft, car, building and machine-room
+  figures were removed too, so the page states the arrangement and nothing
+  project-specific. Dimensioned drawings and the civil-works package are issued
+  per project as separate documents
 
 **Contact details are unchanged** and now appear consistently on the cover and
 the back page:

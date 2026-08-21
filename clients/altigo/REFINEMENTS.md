@@ -142,3 +142,35 @@ are already balanced. Fixing them further would mean rewriting client copy.
 - Page number moved out of the narrow footer to the slide's true bottom-right corner
   (right:120px, bottom:62px), matching every other page's guide position, in white with
   a soft shadow so it reads over the tiled floor.
+
+## Round 17 — design uplift (client feedback: "quite normal", "backgrounds too simple")
+
+Direction confirmed with the agency: rhythm rebuild, existing photography only, supporting
+tints added. Client declined the three dark flips (p2, p8, p40) — those stay light.
+
+**System**
+- Palette gains `--ice #EDF2FF` (the middle surface), `--steel #C8D2E8` (hairlines, motif)
+  and `--hair` / `--sh-card`. Brand red, blue and navy untouched.
+- `--mist` deepened #F5F7FD → #E8EEFC. The old value sat ~4% off white, so cards never
+  registered as objects. This was the single biggest cause of the "too simple" read.
+- New `.t-ice` surface. It redefines `--mist`/`--paper` to white on itself, so every
+  existing panel component keeps a real tonal step with no per-component rewrite.
+- `.card` gains a steel hairline and a soft shadow on light surfaces; a hairline on dark.
+- Two background devices, both behind all content (z-index 0, frame is 4):
+  `.bg-shaft` — vertical rules on the deck's own 142px column guide, masked top and bottom.
+  `.bg-field` — a soft corner tint, four positions (`f-tl/tr/bl/br`) plus an `f-red` variant,
+  rotated page to page so neighbours never resolve the same way.
+
+**Rhythm** — 22 pages reassigned. Ice: 3, 6, 8, 12, 15, 22, 24, 28, 33, 39.
+Shaft: 3, 9, 16, 26. Field: 2, 4, 7, 13, 18, 23, 30, 32, 35.
+No two adjacent pages now share a surface, except where a content page is followed by a
+section divider (19/20 and 36/37), which is intentional.
+
+**Per page**
+- Testimonials: quote mark 52px → 78px, now a real design element.
+- Product Journey: rail 2px → 3px and opacity .38 → .62 so it carries the eye.
+- Market Statistics: the chart panel picks up the deepened mist automatically.
+
+Not yet done from the plan: enlarging the lobby photo on Our Aim, scaling the product
+photographs on Our Products, the certificate frame on EU Type Examination, and the steel
+rule on Company Info & History.

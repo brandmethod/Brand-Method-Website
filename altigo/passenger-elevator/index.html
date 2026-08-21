@@ -366,6 +366,18 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 .tint .dl.params div{border-top-color:#D3DCEA}
 .tint .tile .box{background:#fff}
 
+/* a coloured zone inside a light page — used where a long component list
+   would otherwise read as twenty white boxes in a row */
+.zone{position:absolute;overflow:hidden}
+.zone.deep{background:
+  radial-gradient(940px 640px at 86% -4%,#1D52E8 0%,transparent 62%),
+  linear-gradient(162deg,#062468 0%,#020C2E 100%)}
+.zone.deep .seclabel b{color:#9DBBFF}
+.zone.deep .seclabel i{background:rgba(255,255,255,.18)}
+.zone.deep .tile span{color:rgba(255,255,255,.72)}
+.zone .tile .box{background:#fff;box-shadow:0 14px 32px rgba(6,20,60,.14)}
+.zone.deep .tile .box{box-shadow:0 16px 36px rgba(0,0,0,.30)}
+
 /* ---------- 9e. THE ALTIGO CUT -----------------------------------------
    The slash through the O in the wordmark runs at 40 degrees from vertical,
    rising to the right. Every angled edge in the book is that same line, so
@@ -727,11 +739,11 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div class="wash"></div>
 
       <!-- the page is split by the mark's own slash: colour field left, photograph right -->
-      <div class="cut" style="clip-path:polygon(0 0,1546px 0,640px 1080px,0 1080px);background:
+      <div class="cut" style="clip-path:polygon(0 0,1676px 0,770px 1080px,0 1080px);background:
         radial-gradient(1100px 700px at 18% 8%,#1D52E8 0%,transparent 58%),
         linear-gradient(158deg,#062468 0%,#010A28 100%)"></div>
-      <div class="cut" style="clip-path:polygon(1572px 0,1578px 0,672px 1080px,666px 1080px);background:var(--red)"></div>
-      <div class="cut" style="clip-path:polygon(1590px 0,1600px 0,694px 1080px,684px 1080px);background:#1B57E8"></div>
+      <div class="cut" style="clip-path:polygon(1702px 0,1708px 0,802px 1080px,796px 1080px);background:var(--red)"></div>
+      <div class="cut" style="clip-path:polygon(1720px 0,1730px 0,824px 1080px,814px 1080px);background:#1B57E8"></div>
 
       <img class="logo" src="assets/img/logo-white.png" alt="ALTIGO">
       <div class="yr">2026</div>
@@ -756,8 +768,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide tint" data-title="Contents" data-sub="Catalogue index" data-folio="02">
     <div class="canvas">
       <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
-      <div class="cut" style="clip-path:polygon(420px 1080px,1326px 0,2086px 0,1180px 1080px);background:rgba(2,66,202,.055)"></div>
-
       <p class="kicker" style="position:absolute;left:88px;top:70px">THE CATALOGUE</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Contents</h2>
       <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
@@ -765,15 +775,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <nav class="toc" id="toc" style="position:absolute;left:88px;right:88px;top:280px;gap:0 32px"></nav>
-
-      <div style="position:absolute;left:976px;top:838px;width:856px;padding-top:28px;
-                  border-top:2px solid var(--blue)">
-        <p style="font-family:var(--display);font-weight:700;font-size:21px;color:var(--ink);margin-bottom:10px">
-          Seventeen pages, one range.</p>
-        <p style="font-size:15.5px;line-height:1.5;color:var(--ink-3);max-width:700px">
-          Cabin design and finishes, drive platforms, safety systems, the sightseeing, villa, medical, platform
-          and freight series, and the civil parameters a building needs at planning stage.</p>
-      </div>
 
       <span class="foliolabel">Passenger Elevator · 2026</span>
       <span class="folio">02</span>
@@ -881,14 +882,10 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div class="cut" style="clip-path:polygon(1946px 0,1956px 0,1040px 1080px,1050px 1080px);background:rgba(255,255,255,.16)"></div>
 
       <!-- the shaft runs the height of the page and off the bottom edge -->
-      <figure class="bleed" style="right:-118px;top:40px;width:470px;height:1046px">
+      <figure class="bleed" style="right:100px;top:40px;width:320px;height:1046px">
         <img src="assets/img/shaft-only.png" alt="Elevator shaft cutaway showing component positions"
              style="object-fit:contain;object-position:top center">
       </figure>
-      <div class="slash" style="right:0;top:0;width:300px;height:300px;overflow:hidden">
-        <i style="background:var(--red);width:10px;height:460px;left:150px;bottom:-90px"></i>
-        <i style="background:#2E6BFF;width:10px;height:460px;left:178px;bottom:-90px"></i>
-      </div>
 
       <p class="kicker" style="position:absolute;left:88px;top:78px">ENGINEERING · QUALITY</p>
 
@@ -903,8 +900,8 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         SIX SYSTEMS · ONE STANDARD</p>
 
       <!-- six components stated as a numbered row, no boxes -->
-      <div style="position:absolute;left:88px;right:400px;top:626px;bottom:96px;
-                  display:grid;grid-template-columns:repeat(6,1fr);gap:30px">
+      <div style="position:absolute;left:88px;right:440px;top:626px;bottom:96px;
+                  display:grid;grid-template-columns:repeat(6,1fr);gap:26px">
         <article class="spec-item"><span class="n">01</span>
           <div class="shot"><img src="assets/img/comp-traction.png" alt="Traction machine"></div>
           <h5>Traction Machine</h5><p>Safe operation for 20 years.</p></article>
@@ -1013,7 +1010,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <!-- the range runs edge to edge, uninterrupted -->
-      <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:448px">
+      <div class="strip" style="position:absolute;left:88px;right:88px;top:268px;height:448px;gap:32px">
         <figure><img src="assets/img/mr-1.jpg" alt="TIGO01-1710-2 cabin"></figure>
         <figure><img src="assets/img/mr-2.jpg" alt="TIGO01-XT-02 cabin"></figure>
         <figure><img src="assets/img/mr-3.jpg" alt="TIGO01-2201 cabin"></figure>
@@ -1086,7 +1083,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
                 letter-spacing:.26em;color:var(--red)"><span class="tick"></span>MACHINE ROOM LESS</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-      <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:448px">
+      <div class="strip" style="position:absolute;left:88px;right:88px;top:268px;height:448px;gap:32px">
         <figure><img src="assets/img/mrl-1.jpg" alt="TIGO01-1803-1 cabin"></figure>
         <figure><img src="assets/img/mrl-2.jpg" alt="TIGO01-226-2 cabin"></figure>
         <figure><img src="assets/img/mrl-3.jpg" alt="TIGO02-2418 cabin"></figure>
@@ -1240,7 +1237,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
                 letter-spacing:.26em;color:var(--red)"><span class="tick"></span>CAR DECORATION</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-      <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:448px">
+      <div class="strip" style="position:absolute;left:88px;right:88px;top:268px;height:448px;gap:32px">
         <figure><img src="assets/img/villa-1.jpg" alt="TIGO02-2408 cabin"></figure>
         <figure><img src="assets/img/villa-2.jpg" alt="TIGO02-2410 cabin"></figure>
         <figure><img src="assets/img/villa-3.jpg" alt="TIGO02-2412 cabin"></figure>
@@ -1599,53 +1596,51 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
                 letter-spacing:.26em;color:var(--red)"><span class="tick"></span>FLOORS · HANDRAILS · CEILINGS</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-      <div style="position:absolute;left:88px;right:88px;top:276px;bottom:96px;
-                  display:grid;grid-template-columns:856px 856px;gap:32px">
-
-        <div style="display:flex;flex-direction:column;gap:26px;min-height:0">
-          <section>
-            <div class="seclabel"><b>Floor series</b><i></i></div>
-            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-1.jpg" alt="TIGO07-28"></div><span>TIGO07-28</span></div>
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-2.jpg" alt="TIGO07-66"></div><span>TIGO07-66</span></div>
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-3.jpg" alt="TIGO07-24"></div><span>TIGO07-24</span></div>
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-4.jpg" alt="TIGO07-226"></div><span>TIGO07-226</span></div>
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-5.jpg" alt="TIGO07-31 / 31M"></div><span>TIGO07-31 / 31M</span></div>
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-6.jpg" alt="TIGO07-116"></div><span>TIGO07-116</span></div>
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-7.jpg" alt="TIGO07-1910P"></div><span>TIGO07-1910P</span></div>
-                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-8.jpg" alt="TIGO07-1225"></div><span>TIGO07-1225</span></div>
-            </div>
-          </section>
-          <section style="flex:1;min-height:0">
-            <div class="seclabel"><b>Handrail series</b><i></i></div>
-            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px 24px">
-                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-1.jpg" alt="TIGO06-01A"></div><span>TIGO06-01A</span></div>
-                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-2.jpg" alt="TIGO06-01"></div><span>TIGO06-01</span></div>
-                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-3.jpg" alt="TIGO06-12B"></div><span>TIGO06-12B</span></div>
-                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-4.jpg" alt="TIGO06-02"></div><span>TIGO06-02</span></div>
-                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-5.jpg" alt="TIGO06-16"></div><span>TIGO06-16</span></div>
-                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-6.jpg" alt="TIGO06-04"></div><span>TIGO06-04</span></div>
-            </div>
-          </section>
+      <!-- the ceilings carry their own field, so the page is not one grid of white boxes -->
+      <div class="zone deep" style="left:976px;right:0;top:250px;bottom:0;padding:44px 88px 60px 52px">
+        <div class="seclabel"><b>Ceiling series</b><i></i></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px 28px">
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-1.jpg" alt="TIGO04-17"></div><span>TIGO04-17</span></div>
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-2.jpg" alt="TIGO04-71"></div><span>TIGO04-71</span></div>
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-3.jpg" alt="TIGO04-507"></div><span>TIGO04-507</span></div>
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-4.jpg" alt="TIGO04-124"></div><span>TIGO04-124</span></div>
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-5.jpg" alt="TIGO04-1376"></div><span>TIGO04-1376</span></div>
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-6.jpg" alt="TIGO04-1378"></div><span>TIGO04-1378</span></div>
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-7.jpg" alt="TIGO04-254D"></div><span>TIGO04-254D</span></div>
+            <div class="tile"><div class="box" style="height:126px"><img src="assets/img/ceiling-8.jpg" alt="TIGO04-85"></div><span>TIGO04-85</span></div>
         </div>
+      </div>
 
-        <section style="display:flex;flex-direction:column;min-height:0">
-          <div class="seclabel"><b>Ceiling series</b><i></i></div>
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px 24px;flex:1">
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-1.jpg" alt="TIGO04-17"></div><span>TIGO04-17</span></div>
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-2.jpg" alt="TIGO04-71"></div><span>TIGO04-71</span></div>
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-3.jpg" alt="TIGO04-507"></div><span>TIGO04-507</span></div>
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-4.jpg" alt="TIGO04-124"></div><span>TIGO04-124</span></div>
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-5.jpg" alt="TIGO04-1376"></div><span>TIGO04-1376</span></div>
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-6.jpg" alt="TIGO04-1378"></div><span>TIGO04-1378</span></div>
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-7.jpg" alt="TIGO04-254D"></div><span>TIGO04-254D</span></div>
-                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-8.jpg" alt="TIGO04-85"></div><span>TIGO04-85</span></div>
+      <div style="position:absolute;left:88px;width:856px;top:276px;bottom:96px;
+                  display:flex;flex-direction:column;gap:28px">
+        <section>
+          <div class="seclabel"><b>Floor series</b><i></i></div>
+          <div class="zone" style="position:static;display:grid;grid-template-columns:repeat(4,1fr);gap:22px 20px">
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-1.jpg" alt="TIGO07-28"></div><span>TIGO07-28</span></div>
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-2.jpg" alt="TIGO07-66"></div><span>TIGO07-66</span></div>
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-3.jpg" alt="TIGO07-24"></div><span>TIGO07-24</span></div>
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-4.jpg" alt="TIGO07-226"></div><span>TIGO07-226</span></div>
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-5.jpg" alt="TIGO07-31 / 31M"></div><span>TIGO07-31 / 31M</span></div>
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-6.jpg" alt="TIGO07-116"></div><span>TIGO07-116</span></div>
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-7.jpg" alt="TIGO07-1910P"></div><span>TIGO07-1910P</span></div>
+            <div class="tile"><div class="box" style="height:112px"><img src="assets/img/floor-8.jpg" alt="TIGO07-1225"></div><span>TIGO07-1225</span></div>
           </div>
         </section>
-
+        <section style="flex:1;min-height:0">
+          <div class="seclabel"><b>Handrail series</b><i></i></div>
+          <div class="zone" style="position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:18px 24px">
+            <div class="tile"><div class="box" style="height:50px"><img src="assets/img/handrail-1.jpg" alt="TIGO06-01A"></div><span>TIGO06-01A</span></div>
+            <div class="tile"><div class="box" style="height:50px"><img src="assets/img/handrail-2.jpg" alt="TIGO06-01"></div><span>TIGO06-01</span></div>
+            <div class="tile"><div class="box" style="height:50px"><img src="assets/img/handrail-3.jpg" alt="TIGO06-12B"></div><span>TIGO06-12B</span></div>
+            <div class="tile"><div class="box" style="height:50px"><img src="assets/img/handrail-4.jpg" alt="TIGO06-02"></div><span>TIGO06-02</span></div>
+            <div class="tile"><div class="box" style="height:50px"><img src="assets/img/handrail-5.jpg" alt="TIGO06-16"></div><span>TIGO06-16</span></div>
+            <div class="tile"><div class="box" style="height:50px"><img src="assets/img/handrail-6.jpg" alt="TIGO06-04"></div><span>TIGO06-04</span></div>
+          </div>
+        </section>
       </div>
+
       <span class="foliolabel">Cabin · Component library</span>
-      <span class="folio">15</span>
+      <span class="folio" style="color:rgba(255,255,255,.85)">15</span>
     </div>
     <div class="printfoot"><span>Altigo · Passenger Elevator · Product Catalogue 2026</span><b>15</b></div>
   </section>

@@ -108,6 +108,11 @@ table.t th{background:var(--wash);border:1px solid var(--line);text-align:left;p
 table.t td{border:1px solid var(--line);padding:11px 13px;font-size:13.5px;line-height:1.5;color:var(--ink-2);font-weight:300;vertical-align:top;}
 table.t td b{font-weight:600;color:var(--ink);}
 table.t tr.hl td{background:#FFFBEB;}
+table.t.lg td{font-size:16.5px;padding:16px 20px;line-height:1.55;}
+table.t.lg th{font-size:13px;padding:15px 20px;}
+table.t.lg td b{font-size:17px;}
+.body-area.mid{justify-content:center;align-items:center;}
+.body-area.mid > *{width:100%;}
 table.t.sm td{font-size:12.5px;padding:9px 11px;}
 table.t.sm th{font-size:11px;padding:9px 11px;}
 .ti{width:15px;height:15px;flex:none;color:var(--sky);margin-right:9px;vertical-align:-3px;}
@@ -920,14 +925,14 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
   <div class="chip">Client</div>
   <div class="stitle"><span class="num">1</span>Sketch / Shape</div>
   <div class="ssub">Guardian — shield + cross</div>
-  <div class="body-area">
-    <div style="flex:none;display:flex;align-items:center;gap:74px;padding:16px 0 34px;padding-left:60px">
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M32 23v17M23.5 31.5h17" stroke-linecap="round"/></svg>
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><path d="M32 7 53 14.5v14c0 14-9 23-21 28.5-12-5.5-21-14.5-21-28.5v-14Z"/><path d="M32 24v15M25 31.5h14" stroke-linecap="round"/></svg>
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><path d="M11 14.5 32 7l21 7.5v17c0 12.6-8.4 21.8-21 26.2"/><path d="M11 14.5v17c0 12.6 8.4 21.8 21 26.2" stroke-dasharray="4 4"/><path d="M32 23v17M23.5 31.5h17" stroke-linecap="round"/></svg>
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M20 31.5h7l4-8 6 15 4-7h6" stroke-linecap="round"/></svg>
+  <div class="body-area mid">
+    <div style="flex:none;display:flex;align-items:center;justify-content:center;gap:120px;padding:0 0 54px">
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M32 23v17M23.5 31.5h17" stroke-linecap="round"/></svg>
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><path d="M32 7 53 14.5v14c0 14-9 23-21 28.5-12-5.5-21-14.5-21-28.5v-14Z"/><path d="M32 24v15M25 31.5h14" stroke-linecap="round"/></svg>
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><path d="M11 14.5 32 7l21 7.5v17c0 12.6-8.4 21.8-21 26.2"/><path d="M11 14.5v17c0 12.6 8.4 21.8 21 26.2" stroke-dasharray="4 4"/><path d="M32 23v17M23.5 31.5h17" stroke-linecap="round"/></svg>
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><path d="M32 7 53 14.5v16.8c0 12.6-8.4 21.8-21 26.2-12.6-4.4-21-13.6-21-26.2V14.5Z"/><path d="M20 31.5h7l4-8 6 15 4-7h6" stroke-linecap="round"/></svg>
     </div>
-    <table class="t sm" style="max-width:1200px">
+    <table class="t lg" style="max-width:1560px;margin:0 auto">
       <colgroup><col style="width:30%"><col style="width:28%"><col style="width:42%"></colgroup>
       <tr><th>Logo concept designed</th><th>Element table match</th><th>Alignment</th></tr>
       <tr><td><b>Rounded shield, equal cross</b></td><td>Shield + Cross</td><td>Communicates protection and medical safety; the most literal answer to the brief</td></tr>
@@ -935,7 +940,7 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
       <tr><td><b>Open left edge</b></td><td>Enclosure + Cross</td><td>Protection that is not closed off; suggests a record you can open</td></tr>
       <tr><td><b>Shield holding a pulse</b></td><td>Shield + Pulse</td><td>Adds proof of life to the container; strongest second reading of the four</td></tr>
     </table>
-    <p class="s" style="margin-top:18px;max-width:1200px">— The rounded shoulder is what keeps this route out of security-badge territory; a sharp shoulder reads as a bank.<br>— The cross must be optically centred, not mathematically centred, or it sits low inside the shield.<br>— Route four is carried forward alongside the plain cross version, since it survives the second-reading test.</p>
+    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">— The rounded shoulder is what keeps this route out of security-badge territory; a sharp shoulder reads as a bank.<br>— The cross must be optically centred, not mathematically centred, or it sits low inside the shield.<br>— Route four is carried forward alongside the plain cross version, since it survives the second-reading test.</p>
   </div>
   <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">49</div>
 </div></div>
@@ -945,14 +950,14 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
   <div class="chip">Client</div>
   <div class="stitle"><span class="num">2</span>Sketch / Shape</div>
   <div class="ssub">The Kept Record — card + heart</div>
-  <div class="body-area">
-    <div style="flex:none;display:flex;align-items:center;gap:74px;padding:16px 0 34px;padding-left:60px">
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><rect x="10" y="13" width="44" height="40" rx="9"/><path d="M10.5 24h43"/><path d="M32 46c-7.6-5.9-11.4-9.4-11.4-13.4 0-3.4 2.5-5.9 5.9-5.9 2.3 0 4.4 1.2 5.5 3.2 1.2-2 3.2-3.2 5.5-3.2 3.4 0 5.9 2.5 5.9 5.9 0 4-3.8 7.5-11.4 13.4Z" fill="#141414" stroke="none"/></svg>
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><rect x="10" y="13" width="44" height="40" rx="9"/><path d="M10.5 24h43"/><path d="M32 46c-7.6-5.9-11.4-9.4-11.4-13.4 0-3.4 2.5-5.9 5.9-5.9 2.3 0 4.4 1.2 5.5 3.2 1.2-2 3.2-3.2 5.5-3.2 3.4 0 5.9 2.5 5.9 5.9 0 4-3.8 7.5-11.4 13.4Z"/></svg>
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><path d="M10 22a9 9 0 0 1 9-9h26a9 9 0 0 1 9 9v22a9 9 0 0 1-9 9H19a9 9 0 0 1-9-9Z"/><path d="M22 13v40"/><path d="M34 44c-6-4.6-9-7.4-9-10.4 0-2.7 2-4.6 4.6-4.6 1.8 0 3.4 1 4.4 2.5 1-1.5 2.6-2.5 4.4-2.5 2.7 0 4.6 1.9 4.6 4.6 0 3-3 5.8-9 10.4Z" fill="#141414" stroke="none"/></svg>
-      <svg width="130" height="130" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="3" stroke-linejoin="round"><rect x="10" y="13" width="44" height="40" rx="9"/><path d="M10.5 24h43"/><path d="M19 36h7l3.5-7 5.5 13 3.5-6h7" stroke-linecap="round"/></svg>
+  <div class="body-area mid">
+    <div style="flex:none;display:flex;align-items:center;justify-content:center;gap:120px;padding:0 0 54px">
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><rect x="10" y="13" width="44" height="40" rx="9"/><path d="M10.5 24h43"/><path d="M32 46c-7.6-5.9-11.4-9.4-11.4-13.4 0-3.4 2.5-5.9 5.9-5.9 2.3 0 4.4 1.2 5.5 3.2 1.2-2 3.2-3.2 5.5-3.2 3.4 0 5.9 2.5 5.9 5.9 0 4-3.8 7.5-11.4 13.4Z" fill="#141414" stroke="none"/></svg>
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><rect x="10" y="13" width="44" height="40" rx="9"/><path d="M10.5 24h43"/><path d="M32 46c-7.6-5.9-11.4-9.4-11.4-13.4 0-3.4 2.5-5.9 5.9-5.9 2.3 0 4.4 1.2 5.5 3.2 1.2-2 3.2-3.2 5.5-3.2 3.4 0 5.9 2.5 5.9 5.9 0 4-3.8 7.5-11.4 13.4Z"/></svg>
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><path d="M10 22a9 9 0 0 1 9-9h26a9 9 0 0 1 9 9v22a9 9 0 0 1-9 9H19a9 9 0 0 1-9-9Z"/><path d="M22 13v40"/><path d="M34 44c-6-4.6-9-7.4-9-10.4 0-2.7 2-4.6 4.6-4.6 1.8 0 3.4 1 4.4 2.5 1-1.5 2.6-2.5 4.4-2.5 2.7 0 4.6 1.9 4.6 4.6 0 3-3 5.8-9 10.4Z" fill="#141414" stroke="none"/></svg>
+      <svg width="215" height="215" viewBox="0 0 64 64" fill="none" stroke="#141414" stroke-width="2.7" stroke-linejoin="round"><rect x="10" y="13" width="44" height="40" rx="9"/><path d="M10.5 24h43"/><path d="M19 36h7l3.5-7 5.5 13 3.5-6h7" stroke-linecap="round"/></svg>
     </div>
-    <table class="t sm" style="max-width:1200px">
+    <table class="t lg" style="max-width:1560px;margin:0 auto">
       <colgroup><col style="width:30%"><col style="width:28%"><col style="width:42%"></colgroup>
       <tr><th>Logo concept designed</th><th>Element table match</th><th>Alignment</th></tr>
       <tr><td><b>Card with solid heart</b></td><td>Record card + Heart</td><td>The file itself is the object of care; blush earns a home inside the mark</td></tr>
@@ -960,7 +965,7 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
       <tr><td><b>Spine-left, tab format</b></td><td>Bookmark + Heart</td><td>Reads as a kept booklet rather than a database — closest to the paper book it replaces</td></tr>
       <tr><td><b>Card holding a pulse</b></td><td>Record card + Pulse</td><td>Clearest statement that the record is current; least sentimental of the four</td></tr>
     </table>
-    <p class="s" style="margin-top:18px;max-width:1200px">— The header bar is what makes the rectangle read as a record rather than as a generic app tile.<br>— Solid fill survives reduction; the outlined heart does not and should be dropped early.<br>— The spine variant is the only route in the whole set that references the physical booklet directly.</p>
+    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">— The header bar is what makes the rectangle read as a record rather than as a generic app tile.<br>— Solid fill survives reduction; the outlined heart does not and should be dropped early.<br>— The spine variant is the only route in the whole set that references the physical booklet directly.</p>
   </div>
   <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">50</div>
 </div></div>
@@ -1019,8 +1024,8 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
   <div class="chip">Client</div>
   <div class="stitle">Next Steps</div>
   <div class="ssub">What closes this document at v1.0</div>
-  <div class="body-area">
-    <table class="t" style="flex:none">
+  <div class="body-area mid">
+    <table class="t lg" style="flex:none;max-width:1660px;margin:0 auto">
       <colgroup><col style="width:5%"><col style="width:24%"><col style="width:42%"><col style="width:15%"><col style="width:14%"></colgroup>
       <tr><th>#</th><th>Step</th><th>Detail</th><th>Owner</th><th>Status</th></tr>
       <tr class="hl"><td>1</td><td><b>Select a logo route</b></td><td>Client picks Guardian, Vital Shield or The Kept Record. Nothing downstream can begin until this lands</td><td>Dr Amira</td><td class="mid">Blocking</td></tr>

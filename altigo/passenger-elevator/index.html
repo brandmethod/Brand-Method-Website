@@ -393,6 +393,15 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 .plinth{position:absolute;left:0;right:0;bottom:0;height:128px;background:rgba(255,255,255,.06);
   clip-path:polygon(0 100%,107px 0,100% 0,calc(100% - 107px) 100%)}
 
+/* the card keeps its square edges; the caption bar under it carries the angle.
+   One bar per product — never on a secondary tile, or ten of them fight. */
+.capbar{position:relative;flex:none;height:52px;background:var(--blue);display:flex;align-items:center;
+  clip-path:polygon(44px 0,100% 0,100% 100%,0 100%);margin-bottom:18px}
+.capbar .code{font-family:var(--ui);font-weight:700;font-size:16px;letter-spacing:.01em;color:#fff;margin-left:60px}
+.capbar .n{margin-left:auto;margin-right:20px;font-family:var(--edge);font-size:11px;letter-spacing:.2em;
+  color:rgba(255,255,255,.62)}
+.deep .capbar{background:#1B57E8}
+
 /* ---------- 9d. EDITORIAL DEVICES --------------------------------------
    What made the book feel templated was not the colour — it was that every
    page repeated the same small headline in the same corner over the same
@@ -747,11 +756,12 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide tint" data-title="Contents" data-sub="Catalogue index" data-folio="02">
     <div class="canvas">
       <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
+      <div class="cut" style="clip-path:polygon(420px 1080px,1326px 0,2086px 0,1180px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">THE CATALOGUE</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Contents</h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· PASSENGER ELEVATOR 2026</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>PASSENGER ELEVATOR 2026</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <nav class="toc" id="toc" style="position:absolute;left:88px;right:88px;top:280px;gap:0 32px"></nav>
@@ -775,6 +785,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide" data-title="Company Introduction" data-sub="Who we are" data-folio="03">
     <div class="canvas">
       <div class="ground tint"></div>
+      <div class="cut" style="clip-path:polygon(560px 1080px,1466px 0,2226px 0,1320px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <!-- the cabin runs the full height of the page, off the right edge -->
       <figure class="bleed" style="right:0;top:0;width:900px;height:1080px">
@@ -818,11 +829,13 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide deep" data-title="Passenger Elevators Design" data-sub="The range" data-folio="04">
     <div class="canvas">
       <div class="ground deep"><span class="bloom"></span></div>
+      <div class="cut" style="clip-path:polygon(330px 1080px,1236px 0,1996px 0,1090px 1080px);background:linear-gradient(200deg,rgba(150,190,255,.13) 0%,rgba(120,175,255,.02) 70%)"></div>
+      <div class="cut" style="clip-path:polygon(2026px 0,2036px 0,1120px 1080px,1130px 1080px);background:rgba(255,255,255,.16)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">THE RANGE · DESIGN</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Elevator <em>car</em> design</h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:#FF8E7A">· TAILORED TO THE ARCHITECTURE</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:#FF8E7A"><span class="tick"></span>TAILORED TO THE ARCHITECTURE</p>
       <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:452px;
@@ -864,6 +877,8 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide deep" data-title="Core Safety &amp; Performance" data-sub="Engineering" data-folio="05">
     <div class="canvas">
       <div class="ground deep"><span class="bloom"></span></div>
+      <div class="cut" style="clip-path:polygon(250px 1080px,1156px 0,1916px 0,1010px 1080px);background:linear-gradient(200deg,rgba(150,190,255,.13) 0%,rgba(120,175,255,.02) 70%)"></div>
+      <div class="cut" style="clip-path:polygon(1946px 0,1956px 0,1040px 1080px,1050px 1080px);background:rgba(255,255,255,.16)"></div>
 
       <!-- the shaft runs the height of the page and off the bottom edge -->
       <figure class="bleed" style="right:-118px;top:40px;width:470px;height:1046px">
@@ -920,10 +935,11 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide" data-title="Two Configurations, Four Drive Platforms" data-sub="The range" data-folio="06">
     <div class="canvas">
       <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
+      <div class="cut" style="clip-path:polygon(500px 1080px,1406px 0,2166px 0,1260px 1080px);background:rgba(2,66,202,.055)"></div>
       <p class="kicker" style="position:absolute;left:88px;top:70px">THE RANGE</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px">Two <em>configurations</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· FOUR DRIVE PLATFORMS</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>FOUR DRIVE PLATFORMS</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <p class="p" style="position:absolute;left:88px;top:266px;width:1300px;font-size:18px">
@@ -987,12 +1003,13 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide" data-title="Car Decoration · With Machine Room" data-sub="Cabin" data-folio="07">
     <div class="canvas">
       <div class="ground tint"></div>
+      <div class="cut" style="clip-path:polygon(380px 1080px,1286px 0,2046px 0,1140px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <!-- masthead: the title keeps its own zone, never over the photography -->
       <p class="kicker" style="position:absolute;left:88px;top:70px">CABIN · WITH MACHINE ROOM</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px">Elevator car decoration</h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· WITH MACHINE ROOM</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>WITH MACHINE ROOM</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <!-- the range runs edge to edge, uninterrupted -->
@@ -1006,7 +1023,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div style="position:absolute;left:88px;right:88px;top:742px;bottom:112px;
                   display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO01-1710-2</span><span class="n">01</span></div>
+          <div class="capbar"><span class="code">TIGO01-1710-2</span><span class="n">01</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">XTQ04-261D</span></div>
           <div><span class="k">Rear wall</span><span class="v">Middle mirror stainless steel + hairline on both sides</span></div>
@@ -1017,7 +1034,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO01-XT-02</span><span class="n">02</span></div>
+          <div class="capbar"><span class="code">TIGO01-XT-02</span><span class="n">02</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Mirror stainless steel + LED light source</span></div>
           <div><span class="k">Rear wall</span><span class="v">Middle mirror stainless steel, etched + hairline</span></div>
@@ -1028,7 +1045,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO01-2201</span><span class="n">03</span></div>
+          <div class="capbar"><span class="code">TIGO01-2201</span><span class="n">03</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Matte stainless steel + acrylic light strip + LED</span></div>
           <div><span class="k">Rear wall</span><span class="v">Matte stainless steel + acrylic light strip + LED</span></div>
@@ -1039,7 +1056,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO01-2501</span><span class="n">04</span></div>
+          <div class="capbar"><span class="code">TIGO01-2501</span><span class="n">04</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Mirror stainless steel + downlight + LED + acrylic</span></div>
           <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel + art steel plate</span></div>
@@ -1061,11 +1078,12 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide" data-title="Car Decoration · Machine Room Less" data-sub="Cabin" data-folio="08">
     <div class="canvas">
       <div class="ground tint"></div>
+      <div class="cut" style="clip-path:polygon(620px 1080px,1526px 0,2286px 0,1380px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">CABIN · MACHINE ROOM LESS</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px">Car decoration</h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· MACHINE ROOM LESS</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>MACHINE ROOM LESS</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:448px">
@@ -1078,7 +1096,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div style="position:absolute;left:88px;right:88px;top:742px;bottom:112px;
                   display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO01-1803-1</span><span class="n">01</span></div>
+          <div class="capbar"><span class="code">TIGO01-1803-1</span><span class="n">01</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
           <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline both sides</span></div>
@@ -1089,7 +1107,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO01-226-2</span><span class="n">02</span></div>
+          <div class="capbar"><span class="code">TIGO01-226-2</span><span class="n">02</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
           <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline both sides</span></div>
@@ -1100,7 +1118,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO02-2418</span><span class="n">03</span></div>
+          <div class="capbar"><span class="code">TIGO02-2418</span><span class="n">03</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Porcelain white frosted steel + rose gold stainless steel + hidden light belt</span></div>
           <div><span class="k">Rear wall</span><span class="v">Rose gold stainless steel + gilt rock plate + rose stainless steel panel</span></div>
@@ -1111,7 +1129,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO01-2306</span><span class="n">04</span></div>
+          <div class="capbar"><span class="code">TIGO01-2306</span><span class="n">04</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
           <div><span class="k">Rear wall</span><span class="v">Plastic steel plate (ceramic milk white) + mirror stainless steel + hidden light</span></div>
@@ -1150,7 +1168,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <div class="pano-item">
           <div class="obj"><img src="assets/img/pano-1.png" alt="TIGO08-691"></div>
           <div class="cabin-spec">
-            <div class="id"><span class="code">TIGO08-691</span><span class="n">01</span></div>
+            <div class="capbar"><span class="code">TIGO08-691</span><span class="n">01</span></div>
             <div class="speclist">
               <div><span class="k">Ceiling</span><span class="v">Mirror stainless steel + acrylic</span></div>
               <div><span class="k">Rear wall</span><span class="v">Sightseeing glass</span></div>
@@ -1162,9 +1180,9 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         </div>
 
         <div class="pano-item">
-          <div class="obj"><img class="corner-cut" src="assets/img/pano-2.jpg" alt="TIGO01-XT-01"></div>
+          <div class="obj"><img src="assets/img/pano-2.jpg" alt="TIGO01-XT-01"></div>
           <div class="cabin-spec">
-            <div class="id"><span class="code">TIGO01-XT-01</span><span class="n">02</span></div>
+            <div class="capbar"><span class="code">TIGO01-XT-01</span><span class="n">02</span></div>
             <div class="speclist">
               <div><span class="k">Ceiling</span><span class="v">[XTQ04-88] Painted steel frame + 304 titanium gold hairline t0.7 + LED</span></div>
               <div><span class="k">Rear wall</span><span class="v">304 titanium gold hairline t1.2 + sightseeing glass (6+6)</span></div>
@@ -1178,7 +1196,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <div class="pano-item">
           <div class="obj"><img src="assets/img/pano-3.png" alt="TIGO08-611"></div>
           <div class="cabin-spec">
-            <div class="id"><span class="code">TIGO08-611</span><span class="n">03</span></div>
+            <div class="capbar"><span class="code">TIGO08-611</span><span class="n">03</span></div>
             <div class="speclist">
               <div><span class="k">Ceiling</span><span class="v">[XTQ04-08] Painted steel frame + mirror veneer t0.7 + acrylic + LED</span></div>
               <div><span class="k">Car wall</span><span class="v">Mirror stainless steel t1.2 + corner columns + 5 laminated glass (6+6)</span></div>
@@ -1192,7 +1210,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <div class="pano-item">
           <div class="obj"><img src="assets/img/pano-4.png" alt="TIGO08-1301"></div>
           <div class="cabin-spec">
-            <div class="id"><span class="code">TIGO08-1301</span><span class="n">04</span></div>
+            <div class="capbar"><span class="code">TIGO08-1301</span><span class="n">04</span></div>
             <div class="speclist">
               <div><span class="k">Ceiling</span><span class="v">[XTQ04-G1301] Painted steel frame + 304 short-hairline veneer + LED</span></div>
               <div><span class="k">Covers</span><span class="v">Long-hairline stainless steel, etched and sprayed gold sand</span></div>
@@ -1214,11 +1232,12 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide" data-title="Villa Elevator Car Decoration" data-sub="Residential" data-folio="10">
     <div class="canvas">
       <div class="ground tint"></div>
+      <div class="cut" style="clip-path:polygon(340px 1080px,1246px 0,2006px 0,1100px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">RESIDENTIAL · VILLA</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px">Villa elevator</h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· CAR DECORATION</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>CAR DECORATION</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:448px">
@@ -1231,7 +1250,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <div style="position:absolute;left:88px;right:88px;top:742px;bottom:112px;
                   display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO02-2408</span><span class="n">01</span></div>
+          <div class="capbar"><span class="code">TIGO02-2408</span><span class="n">01</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Matte stainless steel + acrylic + LED light source</span></div>
           <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel + matte stainless steel</span></div>
@@ -1241,7 +1260,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO02-2410</span><span class="n">02</span></div>
+          <div class="capbar"><span class="code">TIGO02-2410</span><span class="n">02</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + hairline stainless steel</span></div>
           <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline both sides</span></div>
@@ -1251,7 +1270,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO02-2412</span><span class="n">03</span></div>
+          <div class="capbar"><span class="code">TIGO02-2412</span><span class="n">03</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + stainless steel veneer + hidden light strip</span></div>
           <div><span class="k">Rear wall</span><span class="v">Gold-plated stainless steel + plastic-bonded steel plate + hidden light strip</span></div>
@@ -1261,7 +1280,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           </div>
         </div>
         <div class="cabin-spec">
-          <div class="id"><span class="code">TIGO02-2312</span><span class="n">04</span></div>
+          <div class="capbar"><span class="code">TIGO02-2312</span><span class="n">04</span></div>
           <div class="speclist">
           <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + stainless steel veneer + hidden light strip</span></div>
           <div><span class="k">Rear wall</span><span class="v">Gold-plated stainless steel + plastic-coated steel plate + hidden light strip</span></div>
@@ -1282,6 +1301,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide" data-title="Medical Elevator Series" data-sub="Healthcare" data-folio="11">
     <div class="canvas">
       <div class="ground tint"></div>
+      <div class="cut" style="clip-path:polygon(180px 1080px,1086px 0,1846px 0,940px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <figure class="bleed" style="right:0;top:0;width:760px;height:1080px">
         <img src="assets/img/medical-cabin.jpg" alt="TIGO02-2408 medical cabin">
@@ -1290,8 +1310,8 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <p class="kicker" style="position:absolute;left:88px;top:70px">PROTECT EVERY HEALTH JOURNEY</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1000px">
         Medical <em>elevator</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· SERIES</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>SERIES</p>
       <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <p class="p" style="position:absolute;left:88px;top:280px;width:960px;font-size:19px">
@@ -1306,14 +1326,10 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <div class="feature"><h4>Anti-interference design</h4><p>Full electromagnetic compatibility compliance prevents interference between precision medical equipment and the lift.</p></div>
       </div>
 
-      <div style="position:absolute;left:88px;top:730px;width:1000px;background:#fff;padding:28px 32px 26px;
+      <div style="position:absolute;left:88px;top:730px;width:1000px;background:#fff;
                   box-shadow:0 30px 70px rgba(6,20,60,.16)">
-        <div class="id" style="display:flex;align-items:baseline;justify-content:space-between;
-                    padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--line)">
-          <span class="code" style="font-family:var(--ui);font-weight:700;font-size:19px;color:var(--blue)">TIGO02-2408</span>
-          <span class="n" style="font-family:var(--edge);font-size:12px;letter-spacing:.18em;color:var(--ink-3)">CAR DESIGN</span>
-        </div>
-        <div class="speclist" style="grid-template-columns:1fr 1fr;gap:10px 36px">
+        <div class="capbar" style="margin-bottom:0"><span class="code">TIGO02-2408</span><span class="n">CAR DESIGN</span></div>
+        <div class="speclist" style="grid-template-columns:1fr 1fr;gap:10px 36px;padding:26px 32px 28px">
           <div><span class="k">Ceiling</span><span class="v">Matte stainless steel + acrylic + LED</span></div>
           <div><span class="k">Rear wall</span><span class="v">Mirror + matte stainless steel</span></div>
           <div><span class="k">Side wall</span><span class="v">Matte stainless steel</span></div>
@@ -1338,11 +1354,12 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide tint" data-title="Platform Elevator Series" data-sub="Accessibility" data-folio="12">
     <div class="canvas">
       <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
+      <div class="cut" style="clip-path:polygon(560px 1080px,1466px 0,2226px 0,1320px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">ACCESSIBILITY · PLATFORM LIFTS</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Platform <em>elevator</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· H SERIES &amp; L SERIES</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>H SERIES &amp; L SERIES</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div style="position:absolute;left:88px;top:276px;width:856px;bottom:96px;
@@ -1411,12 +1428,13 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
                   display:grid;grid-template-columns:412px 560px 264px 412px;gap:32px">
 
         <article class="stack">
-          <div class="seclabel"><b>Car design · TIGO01-H251-1</b><i></i></div>
-          <figure class="corner-cut" style="flex:1;min-height:0;background:#fff;display:flex;align-items:center;
+          <div class="seclabel"><b>Freight car</b><i></i></div>
+          <figure style="flex:1;min-height:0;background:#fff;display:flex;align-items:center;
                          justify-content:center;padding:14px;overflow:hidden">
             <img src="assets/img/freight-cabin.png" alt="TIGO01-H251-1 freight car" style="max-height:100%;width:auto">
           </figure>
-          <div class="speclist" style="margin-top:20px">
+          <div class="capbar" style="margin:0 0 16px"><span class="code">TIGO01-H251-1</span><span class="n">CAR DESIGN</span></div>
+          <div class="speclist">
             <div><span class="k">Car door</span><span class="v">Painted steel</span></div>
             <div><span class="k">Sill</span><span class="v">Aluminium alloy / solid sill</span></div>
             <div><span class="k">Floor</span><span class="v">Aluminium alloy · steel plate · cast iron</span></div>
@@ -1426,7 +1444,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <section class="stack">
           <div class="seclabel"><b>All-in-one control box</b><i></i></div>
           <div style="display:grid;grid-template-columns:264px 264px;gap:32px;flex:1;min-height:0">
-            <figure class="fill corner-cut" style="background:#fff"><img src="assets/img/freight-panel-1.png" alt="All-in-one control panel"></figure>
+            <figure class="fill" style="background:#fff"><img src="assets/img/freight-panel-1.png" alt="All-in-one control panel"></figure>
             <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;min-height:0">
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-disp-1.png" alt="Segment display"></div><span>Display</span></div>
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-btn-1.png" alt="Round button"></div><span>Button</span></div>
@@ -1437,7 +1455,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <section class="stack">
           <div class="seclabel"><b>Split panel</b><i></i></div>
           <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;flex:1;min-height:0">
-            <figure class="fill corner-cut" style="background:#fff"><img src="assets/img/freight-panel-2.png" alt="Split operation panel"></figure>
+            <figure class="fill" style="background:#fff"><img src="assets/img/freight-panel-2.png" alt="Split operation panel"></figure>
             <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-disp-2.jpg" alt="Blue display"></div><span>Display</span></div>
           </div>
         </section>
@@ -1445,7 +1463,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <section class="stack">
           <div class="seclabel"><b>Interior &amp; optional floor</b><i></i></div>
           <div style="display:grid;grid-template-rows:1fr 172px;gap:24px;flex:1;min-height:0">
-            <figure class="corner-cut" style="overflow:hidden"><img src="assets/img/freight-interior.jpg" alt="Freight car interior" style="width:100%;height:100%;object-fit:cover"></figure>
+            <figure style="overflow:hidden"><img src="assets/img/freight-interior.jpg" alt="Freight car interior" style="width:100%;height:100%;object-fit:cover"></figure>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:0">
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-plate-1.png" alt="Checkered plate 1"></div><span>Checkered plate 1</span></div>
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-plate-2.png" alt="Checkered plate 2"></div><span>Checkered plate 2</span></div>
@@ -1478,12 +1496,14 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide deep" data-title="Man Machine Series" data-sub="HOP &amp; LOP interface" data-folio="14">
     <div class="canvas">
       <div class="ground deep"><span class="bloom"></span></div>
+      <div class="cut" style="clip-path:polygon(300px 1080px,1206px 0,1966px 0,1060px 1080px);background:linear-gradient(200deg,rgba(150,190,255,.13) 0%,rgba(120,175,255,.02) 70%)"></div>
+      <div class="cut" style="clip-path:polygon(1996px 0,2006px 0,1090px 1080px,1100px 1080px);background:rgba(255,255,255,.16)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">INTERFACE · HOP &amp; LOP</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;color:#fff">
         Man machine <em>series</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:#FF8E7A">· 4.3&Prime; LED DISPLAY · TOUCH BUTTONS · GLASS PANEL</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:#FF8E7A"><span class="tick"></span>4.3&Prime; LED DISPLAY · TOUCH BUTTONS · GLASS PANEL</p>
       <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div style="position:absolute;left:88px;right:88px;top:276px;bottom:112px;
@@ -1571,11 +1591,12 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide tint" data-title="Fixture Design" data-sub="Component library" data-folio="15">
     <div class="canvas">
       <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
+      <div class="cut" style="clip-path:polygon(460px 1080px,1366px 0,2126px 0,1220px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">CABIN · COMPONENT LIBRARY</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Fixture <em>design</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· FLOORS · HANDRAILS · CEILINGS</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>FLOORS · HANDRAILS · CEILINGS</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div style="position:absolute;left:88px;right:88px;top:276px;bottom:96px;
@@ -1633,11 +1654,12 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide tint" data-title="Construction Parameters" data-sub="General parameters" data-folio="16">
     <div class="canvas">
       <div class="ground tint"></div>
+      <div class="cut" style="clip-path:polygon(240px 1080px,1146px 0,1906px 0,1000px 1080px);background:rgba(2,66,202,.055)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">CIVIL · GENERAL PARAMETERS</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1240px">Construction <em>parameters</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· SHAFT · CAR · MACHINE ROOM</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>SHAFT · CAR · MACHINE ROOM</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div style="position:absolute;left:88px;right:88px;top:276px;bottom:96px;
@@ -1724,6 +1746,10 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide deep" data-title="Contact Us" data-sub="Altigo Sdn. Bhd." data-folio="17">
     <div class="canvas">
       <div class="ground deep"><span class="bloom"></span><img class="mark-ghost" src="assets/img/logo-white.png" alt=""></div>
+      <div class="cut" style="clip-path:polygon(1920px 198px,1920px 1080px,1180px 1080px);background:
+        linear-gradient(212deg,#2D6BFF 0%,#0A3AC0 62%,#062A94 100%)"></div>
+      <div class="cut" style="clip-path:polygon(1920px 172px,1920px 165px,1160px 1080px,1148px 1080px);background:var(--red)"></div>
+      <div class="cut" style="clip-path:polygon(1920px 155px,1920px 141px,1140px 1080px,1118px 1080px);background:#4C86FF"></div>
 
       <img src="assets/img/logo-white.png" alt="ALTIGO" style="position:absolute;left:88px;top:72px;width:250px">
       <p style="position:absolute;right:88px;top:80px;font-family:var(--edge);font-size:18px;
@@ -1760,7 +1786,6 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
                 letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)">
         Altigo · Product Catalogue · Malaysia 2026</p>
 
-      <div class="corner"><i class="b"></i><i class="r"></i></div>
     </div>
     <div class="printfoot"><span>Altigo · Passenger Elevator · Product Catalogue 2026</span><b>17</b></div>
   </section>

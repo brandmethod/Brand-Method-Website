@@ -138,6 +138,21 @@ then content. Headlines are set in Altigo Display Black at 72–92 px with the
 second word in red, and **type never sits on photography** — images run
 full-bleed or in cards, captions and specs sit beside or below them.
 
+**The Altigo cut** — the slash through the O in the wordmark runs at **40° from
+vertical, rising to the right**. It was measured off the logo artwork, and it is
+the only angle in the book, so every diagonal belongs to the mark rather than to
+a template:
+
+| Device | Where |
+| --- | --- |
+| **The cut** | A colour field clipped to the angle. Splits the cover, closes the back page, and runs as a low-contrast sash behind every interior page — offset differently page to page so the book keeps a rhythm |
+| **The tick** | The accent mark under each headline is a short slash, not a horizontal tab |
+| **The caption bar** | Cards keep square edges; the blue bar beneath carries the model code with one angled end. **One bar per product** — never on a secondary tile, or ten of them fight |
+| **The corner** | The red/blue pair, used on the cover and to close a dark band |
+
+Cards are never cut into. Corner-cutting was tried and dropped — taking a bite
+out of ten cards on one page reads as damage, not as a system.
+
 ---
 
 ## Content

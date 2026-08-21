@@ -115,9 +115,17 @@ table.t td b{display:inline-flex;align-items:flex-start;}
 table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertical-align:-2px;}
 .sti{width:14px;height:14px;vertical-align:-2.5px;margin-right:6px;}
 .mk{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:7px;vertical-align:1px;}
-.ok{color:#1B8F76;font-weight:500;}
-.no{color:#C4403C;font-weight:500;}
-.mid{color:#B7861B;font-weight:500;}
+.ok,table.t td.ok{color:#1B8F76;font-weight:500;}
+.no,table.t td.no{color:#C4403C;font-weight:500;}
+.mid,table.t td.mid{color:#B7861B;font-weight:500;}
+/* rating scale — one hue per level, icon and label share it */
+table.t td.s-strong{color:#1B8F76;font-weight:500;}
+table.t td.s-implied{color:#2C7FC9;font-weight:500;}
+table.t td.s-moderate{color:#C08416;font-weight:500;}
+table.t td.s-weak{color:#C4403C;font-weight:500;}
+.s-strong .sti,.s-implied .sti,.s-moderate .sti,.s-weak .sti{opacity:1;}
+.legend{display:flex;align-items:center;gap:22px;}
+.legend span{display:inline-flex;align-items:center;font-size:12.5px;font-weight:500;}
 
 /* ---- misc blocks ---- */
 .card{border:1px solid var(--line);padding:22px 24px;}
@@ -421,18 +429,19 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
     <table class="t sm" style="flex:1">
       <colgroup><col style="width:22%"><col style="width:6%"><col style="width:9%"><col style="width:9%"><col style="width:9%"><col style="width:13%"><col style="width:16%"><col style="width:16%"></colgroup>
       <tr><th><svg class="ti"><use href="#i-tag"/></svg>Tagline</th><th><svg class="ti"><use href="#i-type"/></svg>Words</th><th><svg class="ti"><use href="#i-eye"/></svg>Clarity</th><th><svg class="ti"><use href="#i-lock"/></svg>Ownership</th><th><svg class="ti"><use href="#i-branch"/></svg>Longevity</th><th><svg class="ti"><use href="#i-wave"/></svg>Tone</th><th><svg class="ti"><use href="#i-check"/></svg>Pros</th><th><svg class="ti"><use href="#i-alert"/></svg>Cons</th></tr>
-      <tr class="hl"><td><b>Your family's health, remembered</b></td><td>4</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Warm, calm</td><td>Names the real job; works in store and on signage</td><td>Recommended</td></tr>
-      <tr><td>Be your own hero</td><td>4</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Empowering</td><td>Ties directly to the name</td><td>Slightly abstract about the product</td></tr>
-      <tr><td>Every visit, remembered</td><td>3</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Precise</td><td>Very short; concrete</td><td>Narrower than the product</td></tr>
-      <tr><td>The record that remembers for you</td><td>6</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td>Reassuring</td><td>Explains the benefit fully</td><td>Long for an app subtitle</td></tr>
-      <tr><td>Health records, made human</td><td>4</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Modern</td><td>Category plus differentiator</td><td>"Made human" is well used</td></tr>
-      <tr><td>Know where you stand</td><td>4</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Confident</td><td>Emotionally accurate</td><td>Could read as financial</td></tr>
-      <tr><td>One place for every appointment</td><td>5</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="no"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></svg>Weak</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td>Functional</td><td>Immediately understood</td><td>Describes a feature, not a brand</td></tr>
-      <tr><td>Care you can carry</td><td>4</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Warm</td><td>Alliterative, memorable</td><td>Vague about records</td></tr>
-      <tr><td>Because you'll be asked again</td><td>5</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="ok"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td>Knowing</td><td>Very true to the audience</td><td>Too clever for a health brand</td></tr>
-      <tr><td>Powered by intelligent records</td><td>4</td><td class="mid"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="no"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></svg>Weak</td><td class="no"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></svg>Weak</td><td>Technical</td><td>—</td><td class="no">Breaches the AI positioning rule</td></tr>
+      <tr class="hl"><td><b>Your family's health, remembered</b></td><td>4</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Warm, calm</td><td>Names the real job; works in store and on signage</td><td>Recommended</td></tr>
+      <tr><td>Be your own hero</td><td>4</td><td class="s-implied"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Empowering</td><td>Ties directly to the name</td><td>Slightly abstract about the product</td></tr>
+      <tr><td>Every visit, remembered</td><td>3</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-moderate"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Precise</td><td>Very short; concrete</td><td>Narrower than the product</td></tr>
+      <tr><td>The record that remembers for you</td><td>6</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-moderate"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td>Reassuring</td><td>Explains the benefit fully</td><td>Long for an app subtitle</td></tr>
+      <tr><td>Health records, made human</td><td>4</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-moderate"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Modern</td><td>Category plus differentiator</td><td>"Made human" is well used</td></tr>
+      <tr><td>Know where you stand</td><td>4</td><td class="s-implied"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="s-moderate"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Confident</td><td>Emotionally accurate</td><td>Could read as financial</td></tr>
+      <tr><td>One place for every appointment</td><td>5</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-weak"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></svg>Weak</td><td class="s-moderate"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td>Functional</td><td>Immediately understood</td><td>Describes a feature, not a brand</td></tr>
+      <tr><td>Care you can carry</td><td>4</td><td class="s-implied"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td>Warm</td><td>Alliterative, memorable</td><td>Vague about records</td></tr>
+      <tr><td>Because you'll be asked again</td><td>5</td><td class="s-implied"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="s-strong"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</td><td class="s-moderate"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</td><td>Knowing</td><td>Very true to the audience</td><td>Too clever for a health brand</td></tr>
+      <tr><td>Powered by intelligent records</td><td>4</td><td class="s-implied"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</td><td class="s-weak"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></svg>Weak</td><td class="s-weak"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></svg>Weak</td><td>Technical</td><td>—</td><td class="no">Breaches the AI positioning rule</td></tr>
     </table>
-    <div class="card w" style="margin-top:18px;display:flex;align-items:center;gap:26px">
+    <div class="legend" style="margin-top:16px"><div class="lbl" style="margin-right:4px">Scale</div><span class="s-strong" style="color:inherit"><span style="color:#1B8F76;display:inline-flex;align-items:center"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8.4 12.2 2.4 2.4 4.8-5.1"/></svg>Strong</span></span><span class="s-implied" style="color:inherit"><span style="color:#2C7FC9;display:inline-flex;align-items:center"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9" stroke-dasharray="3.2 3"/><path d="M8.4 12.2l2.4 2.4 4.8-5.1"/></svg>Implied</span></span><span class="s-moderate" style="color:inherit"><span style="color:#C08416;display:inline-flex;align-items:center"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.2 12h7.6"/></svg>Moderate</span></span><span class="s-weak" style="color:inherit"><span style="color:#C4403C;display:inline-flex;align-items:center"><svg class="sti" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></svg>Weak</span></span><span style="margin-left:auto;color:var(--ink-3);font-weight:300;font-size:12.5px">Colour and shape both carry the rating</span></div>
+    <div class="card w" style="margin-top:16px;display:flex;align-items:center;gap:26px">
       <div class="lbl" style="flex:none">Recommendation</div>
       <p class="b" style="margin:0;font-size:15px"><b>"Your family's health, remembered"</b> as the primary line, with <b>"Be your own hero"</b> reserved for campaign and onboarding use where the name is already known. The final row is included to show the failure mode, not as a candidate.</p>
     </div>
@@ -562,38 +571,6 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
   <div class="foot">MyHero Brand Creation</div><div class="pnum">37</div>
 </div></div>
 
-<!-- ============ CONTENT & DESIGN REFERENCE ============ -->
-<div class="slide"><div class="canvas">
-  <div class="chip">Client</div>
-  <div class="stitle">Content &amp; Design Reference</div>
-  <div class="ssub">The register to write in, and the register to design in</div>
-  <div class="body-area">
-    <div class="grid2" style="flex:1;min-height:0;gap:46px">
-      <div style="display:flex;flex-direction:column">
-        <div class="lbl" style="margin-bottom:18px">Content reference — how it should read</div>
-        <div style="display:flex;flex-direction:column;gap:14px;flex:1;justify-content:space-between">
-          <div class="quotecard"><p>"Your next scan is on Wednesday 3 September, 10:30am."</p><span>Weekday and month spelled out. No codes, no room numbers up front.</span></div>
-          <div class="quotecard"><p>"Everything in this test looked normal."</p><span>The answer first. Raw values are available underneath, never above.</span></div>
-          <div class="quotecard"><p>"Dr Amira would like to go through one of these with you at your next visit."</p><span>Names the person. Never alarms a parent a clinician has not yet spoken to.</span></div>
-          <div class="quotecard"><p>"Nothing here yet. Your clinic will add to this after your next visit."</p><span>Empty states explain what happens next, rather than reporting zero results.</span></div>
-          <div class="quotecard" style="border-color:#F8D2D1;background:#FEF3F3"><p style="color:#B7302C">"AI-generated clinical summary · 0 results returned · ⚠ ABNORMAL VALUE FLAGGED"</p><span style="color:#B7302C">All three break a rule: names the technology, reports like a database, alarms without a clinician.</span></div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column">
-        <div class="lbl" style="margin-bottom:18px">Design reference — how it should look</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1">
-          <div class="refcard"><div class="rc-art" style="background:#fff;border:1px solid var(--line)"><div style="width:78%;height:8px;background:#E7F4FE"></div><div style="width:52%;height:8px;background:#F0F0F0;margin-top:8px"></div><div style="width:64%;height:8px;background:#F0F0F0;margin-top:8px"></div></div><h5>Air over density</h5><p class="s">If a screen feels busy the fix is more neutral, not less colour.</p></div>
-          <div class="refcard"><div class="rc-art" style="background:#E7F4FE"><div style="width:70%;height:34px;background:#fff;border-radius:6px"></div></div><h5>Cards, not tables</h5><p class="s">Dense tabular layouts are for the clinic-side view only.</p></div>
-          <div class="refcard"><div class="rc-art" style="background:#fff;border:1px solid var(--line)"><div style="font-size:26px;font-weight:600;color:var(--ink)">Aa</div><div style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ink-3);margin-left:12px">12.4</div></div><h5>One family, one mono</h5><p class="s">Mono numerals only where digits must align in a column.</p></div>
-          <div class="refcard"><div class="rc-art" style="background:#fff;border:1px solid var(--line);gap:8px"><div style="width:26px;height:26px;border-radius:7px;background:#25C3A8"></div><div style="width:26px;height:26px;border-radius:7px;background:#FFB443"></div><div style="width:26px;height:26px;border-radius:7px;background:#FF8CA8"></div></div><h5>Colour carries meaning</h5><p class="s">Green clears, amber warns, blush celebrates. Blush is never an alert.</p></div>
-        </div>
-        <div class="card w" style="margin-top:16px"><p class="b" style="font-size:14.5px;margin:0">Full colour, typography and application specifications are held in the identity guidelines issued at v1.0 — this page fixes the register only.</p></div>
-      </div>
-    </div>
-  </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">38</div>
-</div></div>
-
 <!-- ============ DIVIDER · STYLESCAPE ============ -->
 <div class="slide"><div class="canvas divider black"><span>Stylescape</span><small>MyHero · Client</small></div></div>
 
@@ -627,7 +604,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
       <svg width="40" height="40" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="4" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/></svg>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">40</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">39</div>
 </div></div>
 
 <!-- ============ DIVIDER · LOGO IDEATION ============ -->
@@ -658,7 +635,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
       <p class="b" style="margin:0;font-size:15px"><b>One container plus one cue.</b> Elements 1, 5, 6 and 7 are containers; elements 2, 3 and 4 are cues. A mark takes exactly one from each group — two cues inside one container reads as clip art.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">42</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">41</div>
 </div></div>
 
 <!-- ============ COMBO / BUILD ============ -->
@@ -683,7 +660,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
     </table>
     <p class="s" style="margin-top:16px">Rows 1–3 are carried forward as the three routes on the next page. Everything else is documented so the client can see what was considered and why it was set aside.</p>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">43</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">42</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 1 ============ -->
@@ -708,7 +685,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
     </table>
     <p class="s" style="margin-top:18px;max-width:1200px">— The rounded shoulder is what keeps this route out of security-badge territory; a sharp shoulder reads as a bank.<br>— The cross must be optically centred, not mathematically centred, or it sits low inside the shield.<br>— Route four is carried forward alongside the plain cross version, since it survives the second-reading test.</p>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">44</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">43</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 2 ============ -->
@@ -733,7 +710,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
     </table>
     <p class="s" style="margin-top:18px;max-width:1200px">— The header bar is what makes the rectangle read as a record rather than as a generic app tile.<br>— Solid fill survives reduction; the outlined heart does not and should be dropped early.<br>— The spine variant is the only route in the whole set that references the physical booklet directly.</p>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">45</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">44</div>
 </div></div>
 
 <!-- ============ FOUNDER CONCEPT ============ -->
@@ -760,7 +737,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
       <div class="card"><div class="lbl" style="margin-bottom:12px">Status</div><p class="b" style="font-size:15px"><b>Concept only.</b> Presented so the founder's framing is on record before route selection. Not drawn as a finished mark and not one of the three carried routes.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">46</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">45</div>
 </div></div>
 
 <!-- ============ LOGO SYSTEM DRAFT ============ -->
@@ -782,7 +759,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
     </div>
     <p class="s" style="margin-top:18px">All nine drafts use placeholder geometry from Route A. Wordmark weight, the two-tone split and the endorsement variant are the three decisions to settle at Phase 2 — see the open items on the next page.</p>
   </div>
-  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">47</div>
+  <div class="foot">MyHero Brand Creation · In progress</div><div class="pnum">46</div>
 </div></div>
 
 <!-- ============ NEXT STEPS ============ -->
@@ -811,7 +788,7 @@ table.t th .ti{color:var(--ink-3);width:13px;height:13px;margin-right:7px;vertic
       <p class="b" style="margin:0;font-size:15px">Every mark in this document is <b>provisional</b>. The clinic address on the cover is a placeholder pending confirmation, and Phase 2 dates are to be agreed with the team.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation</div><div class="pnum">48</div>
+  <div class="foot">MyHero Brand Creation</div><div class="pnum">47</div>
 </div></div>
 
 </div>

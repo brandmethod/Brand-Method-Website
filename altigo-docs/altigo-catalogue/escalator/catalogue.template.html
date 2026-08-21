@@ -408,6 +408,8 @@ img{display:block;max-width:100%}
 
 /* ── 03 / 04 Three columns ─────────────────────────────────────────── */
 /* a photographic band, bled to both page edges out of the content column */
+.cflow{margin-top:auto;padding-top:34px}
+.cflow svg{display:block;width:100%;height:auto}
 .pband{position:relative;margin:auto calc(-1 * var(--m)) 0;height:322px;overflow:hidden}
 .pband img{display:block;width:100%;height:100%;object-fit:cover}
 .pband::after{content:'';position:absolute;inset:0;background:
@@ -446,7 +448,8 @@ img{display:block;max-width:100%}
    numbered key, rather than three equal columns of text with an icon each.  */
 .tsplit{display:grid;grid-template-columns:1fr 452px;gap:52px;flex:1;min-height:0;
   padding:34px 0 30px}
-.tdwg{position:relative;overflow:hidden;min-height:0}
+.tdwg{position:relative;display:flex;align-items:center;overflow:hidden;min-height:0}
+.tdwg svg{width:100%;height:auto}
 .tdwg img{display:block;width:100%;height:100%;object-fit:cover}
 .tlist{display:flex;flex-direction:column;justify-content:center}
 .titem{padding:20px 0;border-top:1px solid var(--rule-2);display:grid;
@@ -918,7 +921,25 @@ img{display:block;max-width:100%}
               <div class="spec"><span class="tag">RS485 / BAS</span></div>
             </div>
           </div>
-          <figure class="pband"><img src="{{ASSET:visual-control.jpg}}" alt="Escalator balustrade and step lighting in a transit concourse"><b>Human-centred &middot; lit, sensed and speed-matched</b></figure>
+          <figure class="cflow"><svg class="dwg on-dark" viewBox="0 0 1744 210" fill="none">
+              <text class="s" x="0" y="82">Mains supply</text>
+              <line class="dim" x1="150" y1="76" x2="291" y2="76"/><path class="dim" d="M286 71l5 5-5 5"/>
+              <rect class="fill2" x="300" y="44" width="250" height="66"/><text x="425" y="71" text-anchor="middle">VVVF CONVERTER</text><text class="s" x="425" y="93" text-anchor="middle">AC vector</text>
+              <line class="dim" x1="550" y1="76" x2="691" y2="76"/><path class="dim" d="M686 71l5 5-5 5"/>
+              <rect class="fill2" x="700" y="44" width="250" height="66"/><text x="825" y="71" text-anchor="middle">TRACTION MACHINE</text><text class="s" x="825" y="93" text-anchor="middle">ZC / CG26</text>
+              <line class="dim" x1="950" y1="76" x2="1091" y2="76"/><path class="dim" d="M1086 71l5 5-5 5"/>
+              <rect class="fill2" x="1100" y="44" width="250" height="66"/><text x="1225" y="71" text-anchor="middle">STEP &amp; HANDRAIL</text><text class="s" x="1225" y="93" text-anchor="middle">0.5 m/s</text>
+              <!-- regeneration returns to the grid -->
+              <path class="dim" d="M825 110v54H150v-46"/>
+              <path class="dim" d="M145 123l5-5 5 5"/>
+              <text class="s" x="490" y="182" text-anchor="middle">VLR regeneration to the grid</text>
+              <!-- control board sits across the chain and reports out -->
+              <rect class="fill" x="1450" y="44" width="250" height="66"/><text x="1575" y="71" text-anchor="middle">CPU + DSP BOARD</text><text class="s" x="1575" y="93" text-anchor="middle">Redundant</text>
+              <path class="dim" d="M1350 77h100"/>
+              <path class="dim" d="M1445 72l5 5-5 5"/>
+              <path class="dim" d="M1575 110v50h-150"/>
+              <text class="s" x="1420" y="166" text-anchor="end">RS485 / BAS</text>
+            </svg></figure>
           <div class="band flow">
             <div><div class="lab red">Step 01</div><h5>Sense</h5>
               <p>Entry sensors read passenger flow at both landings, continuously.</p></div>
@@ -949,7 +970,47 @@ img{display:block;max-width:100%}
              that saves space while raising drive efficiency.</p>
           <div class="tsplit">
           <figure class="tdwg">
-<img src="{{ASSET:visual-drive.jpg}}" alt="Escalator traction machine, reducer and step chain inside the truss"><span class="fig-tab">Drive &middot; traction machine &amp; step chain</span>
+<svg class="dwg" viewBox="0 44 1120 522" fill="none">
+              <polyline class="st" points="60,406 300,406 820,196 1060,196"/>
+              <polyline class="st" points="60,480 300,480 820,270 1060,270"/>
+              <line class="st" x1="60" y1="406" x2="60" y2="480"/>
+              <line class="st" x1="1060" y1="196" x2="1060" y2="270"/>
+              <path class="thin" d="M300 406L358 457M358 457L416 359M416 359L473 410M473 410L531 313M531 313L589 363M589 363L647 266M647 266L704 317M704 317L762 219M762 219L820 270"/>
+              <!-- step band, running the travel and turning at each landing -->
+              <polyline class="thin" points="76,426 300,426 820,216 920,216"/>
+              <polyline class="thin" points="76,442 300,442 820,232 920,232"/>
+              <path class="thin" d="M76 406v-11M85 406v-11M94 406v-11M103 406v-11M112 406v-11M121 406v-11M130 406v-11M139 406v-11M148 406v-11M157 406v-11"/><line class="st" x1="76" y1="406" x2="160" y2="406"/>
+              <path class="thin" d="M960 196v-11M969 196v-11M978 196v-11M987 196v-11M996 196v-11M1005 196v-11M1014 196v-11M1023 196v-11M1032 196v-11M1041 196v-11"/><line class="st" x1="960" y1="196" x2="1044" y2="196"/>
+              <!-- handrail loop, squared off at both newels -->
+              <polyline class="st" points="76,310 300,310 820,100 1044,100"/>
+              <line class="thin" x1="76" y1="310" x2="76" y2="395"/>
+              <line class="thin" x1="1044" y1="100" x2="1044" y2="185"/>
+              <circle class="fill2" cx="890" cy="100" r="20"/>
+              <!-- machine space inside the head of the truss -->
+              <rect class="fill2" x="852" y="210" width="80" height="46"/>
+              <rect class="fill"  x="942" y="214" width="54" height="38"/>
+              <circle class="fill" cx="1026" cy="233" r="25"/>
+              <!-- control cabinet standing on the upper landing -->
+              <rect class="fill" x="890" y="130" width="74" height="66"/>
+              <path class="thin" d="M902 146h50M902 160h50M902 174h30"/>
+              <!-- tension carriage in the lower pit -->
+              <rect class="fill2" x="92" y="424" width="86" height="40"/>
+              <circle class="fill" cx="135" cy="444" r="21"/>
+              <line class="thin" x1="866" y1="342" x2="892" y2="256"/><rect class="marker" x="854" y="342" width="24" height="24"/><text class="n" x="866" y="359" text-anchor="middle">A</text>
+              <line class="thin" x1="952" y1="402" x2="969" y2="252"/><rect class="marker" x="940" y="402" width="24" height="24"/><text class="n" x="952" y="419" text-anchor="middle">B</text>
+              <line class="thin" x1="1040" y1="342" x2="1030" y2="260"/><rect class="marker" x="1028" y="342" width="24" height="24"/><text class="n" x="1040" y="359" text-anchor="middle">C</text>
+              <line class="thin" x1="560" y1="290" x2="560" y2="322"/><rect class="marker" x="548" y="266" width="24" height="24"/><text class="n" x="560" y="283" text-anchor="middle">D</text>
+              <line class="thin" x1="842" y1="72" x2="876" y2="94"/><rect class="marker" x="818" y="54" width="24" height="24"/><text class="n" x="830" y="71" text-anchor="middle">E</text>
+              <line class="thin" x1="927" y1="106" x2="927" y2="130"/><rect class="marker" x="915" y="82" width="24" height="24"/><text class="n" x="927" y="99" text-anchor="middle">G</text>
+              <line class="thin" x1="292" y1="462" x2="180" y2="444"/><rect class="marker" x="292" y="450" width="24" height="24"/><text class="n" x="304" y="467" text-anchor="middle">F</text>
+              <rect class="marker" x="0" y="506" width="18" height="18"/><text class="n" x="9" y="520" text-anchor="middle" style="font-size:11px">A</text><text class="s" x="26" y="520">Traction machine</text><rect class="marker" x="180.4" y="506" width="18" height="18"/><text class="n" x="189.4" y="520" text-anchor="middle" style="font-size:11px">B</text><text class="s" x="206.4" y="520">ZC-toothed reducer</text><rect class="marker" x="375.6" y="506" width="18" height="18"/><text class="n" x="384.6" y="520" text-anchor="middle" style="font-size:11px">C</text><text class="s" x="401.6" y="520">Drive sprocket</text><rect class="marker" x="541.2" y="506" width="18" height="18"/><text class="n" x="550.2" y="520" text-anchor="middle" style="font-size:11px">D</text><text class="s" x="567.2" y="520">Step chain loop</text><rect class="marker" x="0" y="540" width="18" height="18"/><text class="n" x="9" y="554" text-anchor="middle" style="font-size:11px">E</text><text class="s" x="26" y="554">Handrail drive</text><rect class="marker" x="165.60000000000002" y="540" width="18" height="18"/><text class="n" x="174.60000000000002" y="554" text-anchor="middle" style="font-size:11px">F</text><text class="s" x="191.60000000000002" y="554">Tension carriage</text><rect class="marker" x="346.0" y="540" width="18" height="18"/><text class="n" x="355.0" y="554" text-anchor="middle" style="font-size:11px">G</text><text class="s" x="372.0" y="554">Control cabinet</text>
+            <line class="dim" x1="1096" y1="196" x2="1096" y2="406"/>
+              <path class="dim" d="M1090 202l6-6 6 6M1090 400l6 6 6-6"/>
+              <text class="v" x="1082" y="306" text-anchor="end">H</text>
+              <line class="dim" x1="60" y1="496" x2="1060" y2="496"/>
+              <path class="dim" d="M66 490l-6 6 6 6M1054 490l6 6 6-6"/>
+              <text class="v" x="560" y="488" text-anchor="middle">L</text>
+              </svg>
           </figure>
           <div class="tlist">
             <div class="titem"><span class="idx">01</span>

@@ -2,9 +2,9 @@
 
 Brand creation deck for the MyHero / "My Health Record" app (Dr Amira · Elite Care Clinic).
 
-- **Canvas:** 1920 × 1080 per page, 48 pages
+- **Canvas:** 1920 × 1080 per page, 49 pages
 - **Source:** `index.html` — open in a browser; pages scale to fit the window
-- **Exports:** `exports/01.png` … `exports/48.png` (full-resolution 1920 × 1080)
+- **Exports:** `exports/01.png` … `exports/49.png` (full-resolution 1920 × 1080)
 
 ## Structure
 Follows the Brand Method brand-creation format:

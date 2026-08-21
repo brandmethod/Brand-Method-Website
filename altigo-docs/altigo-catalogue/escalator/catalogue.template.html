@@ -268,29 +268,6 @@ img{display:block;max-width:100%}
 .foot b{font-family:var(--f-head);font-size:18px;font-weight:600;letter-spacing:.2em;
   color:#fff;font-variant-numeric:tabular-nums}
 
-/* ── the duotone band ──────────────────────────────────────────────────
-   The book's one colour device. Real Altigo installation photography, mapped
-   through a single navy→blue→light-blue ramp and run to the page edges, so a
-   page that would otherwise be white type on white carries a block of brand
-   colour. The ramp is baked into the asset (see tools_duotone.py), so a band
-   prints exactly as it appears on screen. A scrim at the foot of the band
-   carries the caption, and the header's red rule is repeated on its top edge
-   so the band reads as part of the page rather than a pasted-on picture.     */
-.duo{position:absolute;left:0;right:0;bottom:0;background-repeat:no-repeat;
-  background-size:cover;background-position:center;overflow:hidden}
-.duo::before{content:'';position:absolute;inset:0;background:
-  linear-gradient(var(--red),var(--red)) var(--m) 0/96px 4px no-repeat,
-  linear-gradient(180deg,transparent 28%,rgba(3,12,38,.88) 100%)}
-.duo b{position:absolute;left:var(--m);bottom:32px;font-family:var(--f-display);
-  font-size:13px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(255,255,255,.94)}
-.duo i{position:absolute;right:var(--m);bottom:32px;font-family:var(--f-label);
-  font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(255,255,255,.74);font-style:normal}
-.duo-a{height:268px;background-image:url({{ASSET:duo-band-a.jpg}})}
-.duo-b{height:300px;background-image:url({{ASSET:duo-band-b.jpg}})}
-.duo-c{height:268px;background-image:url({{ASSET:duo-band-c.jpg}})}
-.duo-d{height:244px;background-image:url({{ASSET:duo-band-d.jpg}})}
 
 /* the two brand devices carried over from the 2026 print edition */
 .corner{position:absolute;right:0;bottom:0;width:214px;height:214px;pointer-events:none;
@@ -371,15 +348,30 @@ img{display:block;max-width:100%}
 .cover-foot dd{font-family:var(--f-label);font-size:15px;font-weight:600;line-height:1.53;
   color:#fff;text-transform:uppercase;letter-spacing:.02em}
 
+/* ── Page type · split ──────────────────────────────────────────────
+   The header band is dropped and the page is cut vertically instead: a
+   full-bleed navy panel carrying a drawing on one side, title and content on
+   the other. Used where a page would otherwise be a list on white.          */
+.sp-panel{position:absolute;right:0;top:0;bottom:0;width:880px;overflow:hidden;
+  background:radial-gradient(ellipse 70% 46% at 84% 6%, rgba(120,170,255,.34), transparent 64%),
+    linear-gradient(196deg,#0B3096 0%,#08337F 54%,#0A2568 100%)}
+.sp-panel .gridlines{position:absolute;inset:0}
+.sp-panel > svg{position:absolute;left:112px;top:150px;width:656px}
+.sp-cap{position:absolute;left:112px;bottom:56px;font-family:var(--f-display);
+  font-size:13px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.9)}
+.sp-cap span{display:block;margin-top:10px;font-family:var(--f-label);font-size:13px;
+  font-weight:500;letter-spacing:.2em;color:rgba(255,255,255,.5)}
+.sp-year{position:absolute;right:112px;top:72px;font-family:var(--f-head);font-size:18px;
+  font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.68)}
+
 /* ── 02 Contents ───────────────────────────────────────────────────── */
 /* the house contents page: two 856 columns, rows on a 99px pitch, a rule
    above every row and one closing each column — as the sibling books.   */
-.toc{position:relative;top:-4px;display:grid;grid-template-columns:856px 856px;
-  gap:0 var(--gut);align-content:start}
-.toc-col{display:flex;flex-direction:column}
-.toc-row{display:flex;align-items:baseline;height:99px;padding-top:15px;
+.toc{position:relative;top:-4px;display:flex;flex-direction:column}
+.toc-row{display:flex;align-items:baseline;height:73px;padding-top:11px;
   border-top:1px solid var(--rule-2);box-sizing:border-box}
-.toc-col .toc-row:last-child{border-bottom:1px solid var(--rule-2);height:68px}
+.toc-row:last-child{border-bottom:1px solid var(--rule-2)}
 .toc-n{flex:none;width:76px;font-family:var(--f-label);font-size:14px;font-weight:700;
   letter-spacing:.18em;color:var(--red);font-variant-numeric:tabular-nums}
 .toc-t{font-family:var(--f-head);font-size:20px;font-weight:600;color:var(--ink)}
@@ -411,6 +403,8 @@ img{display:block;max-width:100%}
   text-transform:uppercase;padding:14px 26px}
 
 /* ── 03 / 04 Three columns ─────────────────────────────────────────── */
+.cflow{margin-top:auto;padding-top:34px}
+.cflow svg{display:block;width:100%;height:auto}
 .stack{display:flex;flex-direction:column;height:100%}
 .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)}
 .fcol{display:flex;flex-direction:column;padding-top:20px;border-top:2px solid var(--blue)}
@@ -436,6 +430,27 @@ img{display:block;max-width:100%}
 .stats b sub{font-size:18px;font-weight:700;vertical-align:baseline;margin-left:4px}
 .stats span{display:block;margin-top:12px;font-size:16px;line-height:1.5;color:var(--body)}
 
+/* ── Page type · diagram ────────────────────────────────────────────
+   A large original drawing carries the page and the copy runs beside it as a
+   numbered key, rather than three equal columns of text with an icon each.  */
+.tsplit{display:grid;grid-template-columns:1fr 452px;gap:52px;flex:1;min-height:0;
+  padding:34px 0 30px}
+.tdwg{position:relative;display:flex;align-items:center;min-height:0}
+.tdwg svg{width:100%;height:auto}
+.tlist{display:flex;flex-direction:column;justify-content:center}
+.titem{padding:20px 0;border-top:1px solid var(--rule-2);display:grid;
+  grid-template-columns:46px 1fr;column-gap:12px}
+.titem:first-child{border-top:2px solid var(--blue)}
+.titem .idx{grid-row:1 / 3}
+.titem h3{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);
+  margin-bottom:7px}
+.titem p{font-size:16px;line-height:1.5;color:var(--body)}
+.titem .tag{grid-column:2;margin-top:11px}
+.stage.dark .titem h3{color:#fff}
+.stage.dark .titem p{color:rgba(255,255,255,.74)}
+.stage.dark .titem{border-top-color:rgba(255,255,255,.24)}
+.stage.dark .titem:first-child{border-top-color:rgba(255,255,255,.52)}
+
 /* ── 05 The range · dark chapter page ──────────────────────────────── */
 .range{display:flex;flex-direction:column;height:100%}
 .rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut)}
@@ -445,6 +460,7 @@ img{display:block;max-width:100%}
   margin:12px 0 10px}
 .rcol > p{font-size:16px;line-height:1.5;color:rgba(255,255,255,.72);margin-bottom:10px}
 .riseviz{margin-top:auto;margin-bottom:14px}
+.riseviz svg{display:block;width:100%;height:auto;margin-top:12px}
 .rise-n{display:block;font-family:var(--f-head);font-size:44px;font-weight:600;color:#fff;
   letter-spacing:-.03em;line-height:1;margin:6px 0 14px}
 .rise-n sub{font-size:18px;font-weight:700;vertical-align:baseline;margin-left:5px;
@@ -466,12 +482,25 @@ img{display:block;max-width:100%}
 .rband p{font-size:16px;line-height:1.5;color:rgba(255,255,255,.7)}
 
 /* ── 06 Parts ──────────────────────────────────────────────────────── */
+/* the specification table runs beside a section through the machine, so the
+   page is a drawing and a table rather than a table alone                   */
+.psplit{display:grid;grid-template-columns:452px 1fr;gap:56px;flex:1;min-height:0}
+.pdwg{display:flex;flex-direction:column;min-height:0}
+.pdwg > .lab{padding-bottom:11px;border-bottom:1px solid var(--rule);margin-bottom:8px}
+.pdwg svg{flex:1;width:100%;min-height:0}
+.pkey{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:0 var(--gut);
+  margin-top:10px}
+.pkey li{display:flex;gap:11px;align-items:baseline;padding:7px 0;font-size:14px;
+  color:var(--body)}
+.pkey b{font-family:var(--f-label);font-size:12px;font-weight:700;color:#fff;
+  background:var(--red);min-width:19px;text-align:center;line-height:19px}
+.ptab{display:flex;flex-direction:column;min-height:0}
 .ptable{width:100%;border-collapse:collapse;margin-top:6px}
 .ptable th{text-align:left;padding:0 0 15px;border-bottom:2px solid var(--blue);
   font-family:var(--f-label);font-size:13px;font-weight:700;letter-spacing:.22em;
   text-transform:uppercase;color:var(--muted)}
 .ptable th:first-child{color:var(--blue)}
-.ptable td{padding:19px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:19px}
+.ptable td{padding:22px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:19px}
 .ptable td + td, .ptable th + th{padding-left:56px}
 .ptable .part{font-family:var(--f-head);font-weight:600;font-size:19px;color:var(--ink);width:28%}
 .ptable .std{width:34%;color:var(--body)}
@@ -523,8 +552,7 @@ img{display:block;max-width:100%}
 .dlist li em{color:var(--muted);font-size:14px}
 .dnote{margin-top:auto;padding-top:22px;font-size:16px;line-height:1.5;color:var(--muted)}
 .dnote b{color:var(--blue);font-weight:600}
-.dfig{position:absolute;right:0;top:212px;bottom:0;width:592px;overflow:hidden;
-  background:#0A2E86}
+.dfig{position:absolute;right:0;top:212px;bottom:0;width:592px;overflow:hidden}
 .dfig img{width:100%;height:100%;object-fit:cover;object-position:56% center}
 
 /* ── 09 Planning guide ─────────────────────────────────────────────── */
@@ -536,14 +564,19 @@ img{display:block;max-width:100%}
 .lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;height:100%;
   margin:0 calc(-1 * var(--m))}
 .lcol{display:flex;flex-direction:column;padding:0 22px}
-.lcol figure{margin:auto -22px 0;height:596px;overflow:hidden;background:#EDF0F5;
+.lcol .ldwg{width:100%;height:auto;margin:18px 0 0}
+.dwg .lr{stroke:var(--blue);stroke-width:3;fill:none;stroke-linejoin:miter}
+.dwg .lr.hi{stroke:var(--red)}
+.dwg .lrf{fill:var(--blue);stroke:none}
+.dwg .lrf.hi{fill:var(--red)}
+.lcol figure{margin:auto -22px 0;height:472px;overflow:hidden;background:#EDF0F5;
   margin-bottom:18px}
 .lcol figure img{width:100%;height:100%;object-fit:cover}
 .lcol h4{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);margin:8px 0 10px}
 .lcol p{font-size:16px;line-height:1.5;color:var(--body)}
 
 /* ── 10 Construction ───────────────────────────────────────────────── */
-.civil{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:300px 1fr;
+.civil{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:440px 1fr;
   gap:32px 24px;height:100%}
 .fig-elev{grid-column:1 / 3;grid-row:1}
 .fig-key {grid-column:3;grid-row:1 / 3;display:flex;flex-direction:column}
@@ -552,6 +585,11 @@ img{display:block;max-width:100%}
 .fig{display:flex;flex-direction:column;min-height:0}
 .fig > .lab{padding-bottom:11px;border-bottom:1px solid var(--rule);margin-bottom:10px}
 .fig svg{flex:1;width:100%;height:100%;min-height:0}
+/* Technical drawings. Every drawing in the book is original line work on this
+   one system: .st is the object outline, .fill/.fill2 are solid faces, .thin is
+   secondary structure, .dim is a dimension line and .dash is a hidden or centre
+   line. The .on-dark variant swaps the palette for white line on navy, so the
+   same drawing reads on either ground.                                       */
 .dwg .st{stroke:var(--blue);fill:none;stroke-width:2}
 .dwg .fill{fill:#fff;stroke:var(--blue);stroke-width:2}
 .dwg .fill2{fill:#EDF3FE;stroke:var(--blue);stroke-width:2}
@@ -562,6 +600,22 @@ img{display:block;max-width:100%}
 .dwg text.s{font-size:13px;fill:#6C7891}
 .dwg text.v{fill:var(--red);font-weight:700}
 .dwg text.sym{font-size:21px;font-weight:700;fill:var(--blue)}
+.dwg text.n{font-family:var(--f-label);font-size:13px;font-weight:700;fill:#fff}
+.dwg .marker{fill:var(--red)}
+.dwg .hi{stroke:var(--red);stroke-width:2.4;fill:none}
+.dwg .ghost{fill:#EDF3FE;stroke:none}
+.dwg.on-dark .st{stroke:rgba(255,255,255,.92)}
+.dwg.on-dark .fill{fill:rgba(255,255,255,.06);stroke:rgba(255,255,255,.92)}
+.dwg.on-dark .fill2{fill:rgba(255,255,255,.16);stroke:rgba(255,255,255,.92)}
+.dwg.on-dark .thin{stroke:rgba(255,255,255,.42)}
+.dwg.on-dark .dim{stroke:rgba(255,255,255,.7)}
+.dwg.on-dark .dash{stroke:rgba(255,255,255,.42)}
+.dwg.on-dark .ghost{fill:rgba(255,255,255,.07)}
+.dwg.on-dark text{fill:rgba(255,255,255,.9)}
+.dwg.on-dark text.s{fill:rgba(255,255,255,.56)}
+.dwg.on-dark text.sym{fill:#fff}
+.dwg.on-dark text.v{fill:#FF6A55}
+.dwg.on-dark .hi{stroke:#FF6A55}
 .keytab{list-style:none;font-size:16px}
 .keytab li{display:flex;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--rule)}
 .keytab b{font-family:var(--f-label);font-weight:700;color:var(--blue);min-width:24px;font-size:16px}
@@ -572,15 +626,14 @@ img{display:block;max-width:100%}
 
 /* ── Chapter divider ───────────────────────────────────────────────── */
 .chap{display:flex;flex-direction:column;height:100%}
-/* the right half of the divider is a duotone photograph, bled to all three
-   edges, so the chapter opens on a picture rather than on empty gradient */
-.chap-half{position:absolute;right:0;top:0;bottom:0;width:960px;overflow:hidden;
-  background:url({{ASSET:duo-half-rise.jpg}}) center/cover no-repeat}
-.chap-half::before{content:'';position:absolute;inset:0;background:
-  linear-gradient(90deg,rgba(6,26,84,.92) 0%,rgba(6,26,84,.18) 34%,transparent 62%)}
-.chap-half b{position:absolute;left:56px;bottom:44px;font-family:var(--f-display);
-  font-size:13px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;
-  color:rgba(255,255,255,.9)}
+/* the right half opens the chapter on a drawing rather than on empty gradient */
+.chap-dwg{position:absolute;right:112px;top:150px;bottom:120px;width:700px;
+  display:flex;flex-direction:column}
+.chap-dwg > .lab{padding-bottom:11px;margin-bottom:14px;
+  border-bottom:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.72)}
+.chap-dwg svg{flex:1;width:100%;min-height:0}
+.chap-dwg .cap{margin-top:14px;font-family:var(--f-label);font-size:13px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .chap-n{font-family:var(--f-head);font-size:19px;font-weight:700;letter-spacing:.3em;
   color:rgba(255,255,255,.5)}
 .chap h2{font-family:var(--f-head);font-size:76px;font-weight:600;line-height:1.02;
@@ -732,28 +785,41 @@ img{display:block;max-width:100%}
     <div class="stage">
       <div class="kicker">The Catalogue</div>
       <h2 class="title">CONTENTS</h2>
-      <div class="rule"></div><div class="hair"></div>
-      <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content" style="bottom:300px">
+      <div class="rule"></div>
+      <div class="hair" style="right:1008px"></div>
+      <div class="mark logo" role="img" aria-label="Altigo" style="right:auto;left:664px"></div>
+      <div class="sp-panel">
+        <div class="gridlines"></div>
+        <div class="sp-year">2026</div>
+<svg class="dwg on-dark" viewBox="-8 40 700 760" fill="none">
+          <rect class="ghost" x="0" y="120" width="620" height="13"/><line class="st" x1="0" y1="120" x2="620" y2="120"/><rect class="ghost" x="0" y="320" width="620" height="13"/><line class="st" x1="0" y1="320" x2="620" y2="320"/><rect class="ghost" x="0" y="520" width="620" height="13"/><line class="st" x1="0" y1="520" x2="620" y2="520"/><rect class="ghost" x="0" y="720" width="620" height="13"/><line class="st" x1="0" y1="720" x2="620" y2="720"/>
+          <polygon class="fill2" points="90,720 430,520 430,554 90,754"/><line class="thin" x1="90" y1="767" x2="430" y2="567"/><line class="st"   x1="90" y1="690" x2="430" y2="490"/><line class="thin" x1="90" y1="690" x2="90" y2="754"/><line class="thin" x1="430" y1="490" x2="430" y2="554"/><polygon class="fill2" points="530,520 190,320 190,354 530,554"/><line class="thin" x1="530" y1="567" x2="190" y2="367"/><line class="st"   x1="530" y1="490" x2="190" y2="290"/><line class="thin" x1="530" y1="490" x2="530" y2="554"/><line class="thin" x1="190" y1="290" x2="190" y2="354"/><polygon class="fill2" points="90,320 430,120 430,154 90,354"/><line class="thin" x1="90" y1="367" x2="430" y2="167"/><line class="st"   x1="90" y1="290" x2="430" y2="90"/><line class="thin" x1="90" y1="290" x2="90" y2="354"/><line class="thin" x1="430" y1="90" x2="430" y2="154"/>
+          <!-- rise dimension between two floors, and the standard incline angle -->
+          <line class="dim" x1="560" y1="720" x2="560" y2="533"/>
+          <path class="dim" d="M554 726l6-6 6 6M554 527l6 6 6-6"/>
+          <text class="v" x="572" y="640">H</text>
+          <path class="dash" d="M90 720h150"/>
+          <path class="dim" d="M168 720a78 78 0 0 0-5-46"/>
+          <text class="v" x="182" y="762">30°</text>
+          <text class="s" x="628" y="126" text-anchor="start">L4</text><text class="s" x="628" y="326" text-anchor="start">L3</text><text class="s" x="628" y="526" text-anchor="start">L2</text><text class="s" x="628" y="726" text-anchor="start">L1</text>
+        </svg>
+        <div class="sp-cap">Crisscross bank &middot; four levels<span>Section &middot; indicative</span></div>
+      </div>
+      <div class="content" style="right:1008px">
         <div class="toc">
-          <div class="toc-col">
           <div class="toc-row"><span class="toc-n">01</span><span class="toc-t">Company Introduction</span><span class="toc-k">Who we are</span><span class="toc-p">03</span></div>
           <div class="toc-row"><span class="toc-n">02</span><span class="toc-t">Intelligent Control &amp; Comfort</span><span class="toc-k">Technology</span><span class="toc-p">04</span></div>
           <div class="toc-row"><span class="toc-n">03</span><span class="toc-t">Technical Advantages</span><span class="toc-k">Engineering</span><span class="toc-p">05</span></div>
           <div class="toc-row"><span class="toc-n">04</span><span class="toc-t">Four Platforms, One Structure</span><span class="toc-k">The range</span><span class="toc-p">06</span></div>
           <div class="toc-row"><span class="toc-n">05</span><span class="toc-t">Standard &amp; Optional Parts</span><span class="toc-k">Components</span><span class="toc-p">07</span></div>
           <div class="toc-row"><span class="toc-n">06</span><span class="toc-t">Comprehensive Safety Guarantee</span><span class="toc-k">Safety</span><span class="toc-p">08</span></div>
-          </div>
-          <div class="toc-col">
           <div class="toc-row"><span class="toc-n">07</span><span class="toc-t">Safety &amp; Detection Devices</span><span class="toc-k">Protection</span><span class="toc-p">09</span></div>
           <div class="toc-row"><span class="toc-n">08</span><span class="toc-t">Planning &amp; Civil</span><span class="toc-k">The chapter</span><span class="toc-p">10</span></div>
           <div class="toc-row"><span class="toc-n">09</span><span class="toc-t">Logical Positioning, by Traffic</span><span class="toc-k">Planning guide</span><span class="toc-p">11</span></div>
           <div class="toc-row"><span class="toc-n">10</span><span class="toc-t">Construction Parameters</span><span class="toc-k">Civil</span><span class="toc-p">12</span></div>
           <div class="toc-row"><span class="toc-n">11</span><span class="toc-t">Contact Us</span><span class="toc-k">Altigo Sdn. Bhd.</span><span class="toc-p">13</span></div>
-          </div>
         </div>
       </div>
-      <div class="duo duo-a"><b>Altigo &middot; Vertical Mobility</b><i>Malaysia 2026</i></div>
     </div>
   </section>
 
@@ -836,6 +902,25 @@ img{display:block;max-width:100%}
               <div class="spec"><span class="tag">RS485 / BAS</span></div>
             </div>
           </div>
+          <figure class="cflow"><svg class="dwg on-dark" viewBox="0 0 1744 210" fill="none">
+              <text class="s" x="0" y="82">Mains supply</text>
+              <line class="dim" x1="150" y1="76" x2="291" y2="76"/><path class="dim" d="M286 71l5 5-5 5"/>
+              <rect class="fill2" x="300" y="44" width="250" height="66"/><text x="425" y="71" text-anchor="middle">VVVF CONVERTER</text><text class="s" x="425" y="93" text-anchor="middle">AC vector</text>
+              <line class="dim" x1="550" y1="76" x2="691" y2="76"/><path class="dim" d="M686 71l5 5-5 5"/>
+              <rect class="fill2" x="700" y="44" width="250" height="66"/><text x="825" y="71" text-anchor="middle">TRACTION MACHINE</text><text class="s" x="825" y="93" text-anchor="middle">ZC / CG26</text>
+              <line class="dim" x1="950" y1="76" x2="1091" y2="76"/><path class="dim" d="M1086 71l5 5-5 5"/>
+              <rect class="fill2" x="1100" y="44" width="250" height="66"/><text x="1225" y="71" text-anchor="middle">STEP &amp; HANDRAIL</text><text class="s" x="1225" y="93" text-anchor="middle">0.5 m/s</text>
+              <!-- regeneration returns to the grid -->
+              <path class="dim" d="M825 110v54H150v-46"/>
+              <path class="dim" d="M145 123l5-5 5 5"/>
+              <text class="s" x="490" y="182" text-anchor="middle">VLR regeneration to the grid</text>
+              <!-- control board sits across the chain and reports out -->
+              <rect class="fill" x="1450" y="44" width="250" height="66"/><text x="1575" y="71" text-anchor="middle">CPU + DSP BOARD</text><text class="s" x="1575" y="93" text-anchor="middle">Redundant</text>
+              <path class="dim" d="M1350 77h100"/>
+              <path class="dim" d="M1445 72l5 5-5 5"/>
+              <path class="dim" d="M1575 110v50h-150"/>
+              <text class="s" x="1420" y="166" text-anchor="end">RS485 / BAS</text>
+            </svg></figure>
           <div class="band flow">
             <div><div class="lab red">Step 01</div><h5>Sense</h5>
               <p>Entry sensors read passenger flow at both landings, continuously.</p></div>
@@ -859,40 +944,70 @@ img{display:block;max-width:100%}
       <h2 class="title">TECHNICAL ADVANTAGES</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content" style="bottom:332px">
+      <div class="content">
         <div class="stack">
-          <p class="lead" style="margin-bottom:46px">Environmental protection sits at the centre of
+          <p class="lead">Environmental protection sits at the centre of
              our engineering: a new <b>integrated converter and micro-computer control board</b>
              that saves space while raising drive efficiency.</p>
-          <div class="cols3">
-            <div class="fcol">
-              <div class="top"><span class="idx">01</span>
-                <span class="icon"><svg viewBox="0 0 24 24"><path d="M12 2.6 4 5.9v5.5c0 4.6 3.2 8.5 8 9.9 4.8-1.4 8-5.3 8-9.9V5.9z"/><path d="M8.7 11.9l2.4 2.4 4.4-4.6"/></svg></span></div>
+          <div class="tsplit">
+          <figure class="tdwg">
+<svg class="dwg" viewBox="0 44 1120 522" fill="none">
+              <polyline class="st" points="60,406 300,406 820,196 1060,196"/>
+              <polyline class="st" points="60,480 300,480 820,270 1060,270"/>
+              <line class="st" x1="60" y1="406" x2="60" y2="480"/>
+              <line class="st" x1="1060" y1="196" x2="1060" y2="270"/>
+              <path class="thin" d="M300 406L358 457M358 457L416 359M416 359L473 410M473 410L531 313M531 313L589 363M589 363L647 266M647 266L704 317M704 317L762 219M762 219L820 270"/>
+              <!-- step band, running the travel and turning at each landing -->
+              <polyline class="thin" points="76,426 300,426 820,216 920,216"/>
+              <polyline class="thin" points="76,442 300,442 820,232 920,232"/>
+              <path class="thin" d="M76 406v-11M85 406v-11M94 406v-11M103 406v-11M112 406v-11M121 406v-11M130 406v-11M139 406v-11M148 406v-11M157 406v-11"/><line class="st" x1="76" y1="406" x2="160" y2="406"/>
+              <path class="thin" d="M960 196v-11M969 196v-11M978 196v-11M987 196v-11M996 196v-11M1005 196v-11M1014 196v-11M1023 196v-11M1032 196v-11M1041 196v-11"/><line class="st" x1="960" y1="196" x2="1044" y2="196"/>
+              <!-- handrail loop, squared off at both newels -->
+              <polyline class="st" points="76,310 300,310 820,100 1044,100"/>
+              <line class="thin" x1="76" y1="310" x2="76" y2="395"/>
+              <line class="thin" x1="1044" y1="100" x2="1044" y2="185"/>
+              <circle class="fill2" cx="890" cy="100" r="20"/>
+              <!-- machine space inside the head of the truss -->
+              <rect class="fill2" x="852" y="210" width="80" height="46"/>
+              <rect class="fill"  x="942" y="214" width="54" height="38"/>
+              <circle class="fill" cx="1026" cy="233" r="25"/>
+              <!-- control cabinet standing on the upper landing -->
+              <rect class="fill" x="890" y="130" width="74" height="66"/>
+              <path class="thin" d="M902 146h50M902 160h50M902 174h30"/>
+              <!-- tension carriage in the lower pit -->
+              <rect class="fill2" x="92" y="424" width="86" height="40"/>
+              <circle class="fill" cx="135" cy="444" r="21"/>
+              <line class="thin" x1="866" y1="342" x2="892" y2="256"/><rect class="marker" x="854" y="342" width="24" height="24"/><text class="n" x="866" y="359" text-anchor="middle">A</text>
+              <line class="thin" x1="952" y1="402" x2="969" y2="252"/><rect class="marker" x="940" y="402" width="24" height="24"/><text class="n" x="952" y="419" text-anchor="middle">B</text>
+              <line class="thin" x1="1040" y1="342" x2="1030" y2="260"/><rect class="marker" x="1028" y="342" width="24" height="24"/><text class="n" x="1040" y="359" text-anchor="middle">C</text>
+              <line class="thin" x1="560" y1="290" x2="560" y2="322"/><rect class="marker" x="548" y="266" width="24" height="24"/><text class="n" x="560" y="283" text-anchor="middle">D</text>
+              <line class="thin" x1="842" y1="72" x2="876" y2="94"/><rect class="marker" x="818" y="54" width="24" height="24"/><text class="n" x="830" y="71" text-anchor="middle">E</text>
+              <line class="thin" x1="927" y1="106" x2="927" y2="130"/><rect class="marker" x="915" y="82" width="24" height="24"/><text class="n" x="927" y="99" text-anchor="middle">G</text>
+              <line class="thin" x1="292" y1="462" x2="180" y2="444"/><rect class="marker" x="292" y="450" width="24" height="24"/><text class="n" x="304" y="467" text-anchor="middle">F</text>
+              <rect class="marker" x="0" y="506" width="18" height="18"/><text class="n" x="9" y="520" text-anchor="middle" style="font-size:11px">A</text><text class="s" x="26" y="520">Traction machine</text><rect class="marker" x="180.4" y="506" width="18" height="18"/><text class="n" x="189.4" y="520" text-anchor="middle" style="font-size:11px">B</text><text class="s" x="206.4" y="520">ZC-toothed reducer</text><rect class="marker" x="375.6" y="506" width="18" height="18"/><text class="n" x="384.6" y="520" text-anchor="middle" style="font-size:11px">C</text><text class="s" x="401.6" y="520">Drive sprocket</text><rect class="marker" x="541.2" y="506" width="18" height="18"/><text class="n" x="550.2" y="520" text-anchor="middle" style="font-size:11px">D</text><text class="s" x="567.2" y="520">Step chain loop</text><rect class="marker" x="0" y="540" width="18" height="18"/><text class="n" x="9" y="554" text-anchor="middle" style="font-size:11px">E</text><text class="s" x="26" y="554">Handrail drive</text><rect class="marker" x="165.60000000000002" y="540" width="18" height="18"/><text class="n" x="174.60000000000002" y="554" text-anchor="middle" style="font-size:11px">F</text><text class="s" x="191.60000000000002" y="554">Tension carriage</text><rect class="marker" x="346.0" y="540" width="18" height="18"/><text class="n" x="355.0" y="554" text-anchor="middle" style="font-size:11px">G</text><text class="s" x="372.0" y="554">Control cabinet</text>
+            <line class="dim" x1="1096" y1="196" x2="1096" y2="406"/>
+              <path class="dim" d="M1090 202l6-6 6 6M1090 400l6 6 6-6"/>
+              <text class="v" x="1082" y="306" text-anchor="end">H</text>
+              <line class="dim" x1="60" y1="496" x2="1060" y2="496"/>
+              <path class="dim" d="M66 490l-6 6 6 6M1054 490l6 6 6-6"/>
+              <text class="v" x="560" y="488" text-anchor="middle">L</text>
+              </svg>
+          </figure>
+          <div class="tlist">
+            <div class="titem"><span class="idx">01</span>
               <h3>Multiple safety protection</h3>
-              <p>Safety devices are fitted at every component of the escalator. Rigorous device
-                 testing and powerful fault diagnosis in the control system raise overall safety
-                 performance across the whole travel.</p>
-              <div class="spec"><span class="tag">10 standard devices</span></div>
-            </div>
-            <div class="fcol">
-              <div class="top"><span class="idx">02</span>
-                <span class="icon"><svg viewBox="0 0 24 24"><path d="M2.4 15.4c2.6 0 2.6-4.4 5.2-4.4s2.6 4.4 5.2 4.4 2.6-4.4 5.2-4.4c1.3 0 1.95 1.1 2.6 2.2"/><path d="M2.4 20.2c2.6 0 2.6-3 5.2-3s2.6 3 5.2 3 2.6-3 5.2-3c1.3 0 1.95.75 2.6 1.5"/><path d="M12 3.2v4.2M9.4 5.2 12 2.6l2.6 2.6"/></svg></span></div>
+              <p>Safety devices are fitted at every component of the escalator. Rigorous device testing and powerful fault diagnosis in the control system raise overall safety performance across the whole travel.</p>
+              <span class="tag">10 standard devices</span></div>
+            <div class="titem"><span class="idx">02</span>
               <h3>Comfortable ride feeling</h3>
-              <p>An escalator-specific VVVF drive with new-generation AC vector and voltage-regulator
-                 speed control delivers smooth acceleration and deceleration, for a more stable and
-                 comfortable ride.</p>
-              <div class="spec"><span class="tag">VVVF · AC vector</span></div>
-            </div>
-            <div class="fcol">
-              <div class="top"><span class="idx">03</span>
-                <span class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.1 14.9a1.6 1.6 0 0 0 .32 1.77l.06.06a1.94 1.94 0 1 1-2.75 2.75l-.06-.06a1.6 1.6 0 0 0-1.77-.32 1.6 1.6 0 0 0-.97 1.47v.17a1.94 1.94 0 1 1-3.88 0v-.09a1.6 1.6 0 0 0-1.05-1.46 1.6 1.6 0 0 0-1.77.32l-.06.06a1.94 1.94 0 1 1-2.75-2.75l.06-.06a1.6 1.6 0 0 0 .32-1.77 1.6 1.6 0 0 0-1.47-.97H3.1a1.94 1.94 0 1 1 0-3.88h.09A1.6 1.6 0 0 0 4.65 9.1a1.6 1.6 0 0 0-.32-1.77l-.06-.06a1.94 1.94 0 1 1 2.75-2.75l.06.06a1.6 1.6 0 0 0 1.77.32h.08a1.6 1.6 0 0 0 .97-1.47V3.1a1.94 1.94 0 1 1 3.88 0v.09a1.6 1.6 0 0 0 .97 1.47 1.6 1.6 0 0 0 1.77-.32l.06-.06a1.94 1.94 0 1 1 2.75 2.75l-.06.06a1.6 1.6 0 0 0-.32 1.77v.08a1.6 1.6 0 0 0 1.47.97h.17a1.94 1.94 0 1 1 0 3.88h-.09a1.6 1.6 0 0 0-1.47.97z"/></svg></span></div>
+              <p>An escalator-specific VVVF drive with new-generation AC vector and voltage-regulator speed control delivers smooth acceleration and deceleration, for a more stable and comfortable ride.</p>
+              <span class="tag">VVVF · AC vector</span></div>
+            <div class="titem"><span class="idx">03</span>
               <h3>High-performance traction machine</h3>
-              <p>The ET125&nbsp;/&nbsp;ET160 ZC-toothed reducer is high-torque, compact, low-noise and
-                 steady. The CG26 worm-helical reducer combines worm and helical gearing for very
-                 high efficiency.</p>
-              <div class="spec"><span class="tag">ET125 / ET160 · CG26</span></div>
-            </div>
+              <p>The ET125&nbsp;/&nbsp;ET160 ZC-toothed reducer is high-torque, compact, low-noise and steady. The CG26 worm-helical reducer combines worm and helical gearing for very high efficiency.</p>
+              <span class="tag">ET125 / ET160 · CG26</span></div>
           </div>
+        </div>
           <div class="band stats">
             <div><b>&lt; 57<sub>dB</sub></b><span>Running noise,<br>commercial platform</span></div>
             <div><b>&gt; 92<sub>%</sub></b><span>CG26 worm-helical<br>reducer efficiency</span></div>
@@ -902,7 +1017,6 @@ img{display:block;max-width:100%}
           </div>
         </div>
       </div>
-      <div class="duo duo-b"><b>Drive &middot; Control &middot; Efficiency</b><i>Altigo 2026</i></div>
     </div>
   </section>
 
@@ -927,8 +1041,8 @@ img{display:block;max-width:100%}
               <div class="riseviz">
                 <div class="lab">Max rise</div>
                 <b class="rise-n">6<sub>m</sub></b>
-                <div class="rv-track"><i style="width:27%"></i></div>
-                <div class="rv-scale"><span>0</span><span>22 m</span></div>
+                <svg class="dwg on-dark" viewBox="0 0 260 116" fill="none"><line class="thin" x1="0" y1="84" x2="260" y2="84"/><line class="thin" x1="126" y1="16" x2="260" y2="16"/><line class="st" x1="8" y1="84" x2="126" y2="16"/><line class="dim" x1="146" y1="84" x2="146" y2="16"/><path class="dim" d="M141 21l5-5 5 5M141 79l5 5 5-5"/><text class="s" x="8" y="106">30° · 35°</text></svg>
+              
               </div>
               <dl>
                 <div class="rrow"><dt>Series</dt><dd>HD-B</dd></div>
@@ -943,8 +1057,8 @@ img{display:block;max-width:100%}
               <div class="riseviz">
                 <div class="lab">Max rise</div>
                 <b class="rise-n">12<sub>m</sub></b>
-                <div class="rv-track"><i style="width:55%"></i></div>
-                <div class="rv-scale"><span>0</span><span>22 m</span></div>
+                <svg class="dwg on-dark" viewBox="0 0 260 116" fill="none"><line class="thin" x1="0" y1="84" x2="260" y2="84"/><line class="thin" x1="126" y1="16" x2="260" y2="16"/><line class="st" x1="8" y1="84" x2="126" y2="16"/><line class="dim" x1="146" y1="84" x2="146" y2="16"/><path class="dim" d="M141 21l5-5 5 5M141 79l5 5 5-5"/><text class="s" x="8" y="106">30°</text></svg>
+              
               </div>
               <dl>
                 <div class="rrow"><dt>Series</dt><dd>HD-G</dd></div>
@@ -959,8 +1073,8 @@ img{display:block;max-width:100%}
               <div class="riseviz">
                 <div class="lab">Max rise</div>
                 <b class="rise-n">22<sub>m</sub></b>
-                <div class="rv-track"><i class="hi" style="width:100%"></i></div>
-                <div class="rv-scale"><span>0</span><span>22 m</span></div>
+                <svg class="dwg on-dark" viewBox="0 0 260 116" fill="none"><line class="thin" x1="0" y1="84" x2="260" y2="84"/><line class="thin" x1="126" y1="16" x2="260" y2="16"/><line class="st hi" x1="8" y1="84" x2="126" y2="16"/><line class="dim" x1="146" y1="84" x2="146" y2="16"/><path class="dim" d="M141 21l5-5 5 5M141 79l5 5 5-5"/><text class="s" x="8" y="106">30°</text></svg>
+              
               </div>
               <dl>
                 <div class="rrow"><dt>Series</dt><dd>MR · Traction 2:1</dd></div>
@@ -975,8 +1089,8 @@ img{display:block;max-width:100%}
               <div class="riseviz">
                 <div class="lab">Max rise</div>
                 <b class="rise-n">7.5<sub>m</sub></b>
-                <div class="rv-track"><i style="width:34%"></i></div>
-                <div class="rv-scale"><span>0</span><span>22 m</span></div>
+                <svg class="dwg on-dark" viewBox="0 0 260 116" fill="none"><line class="thin" x1="0" y1="84" x2="260" y2="84"/><line class="thin" x1="234" y1="36" x2="260" y2="36"/><line class="st" x1="8" y1="84" x2="234" y2="36"/><line class="dim" x1="254" y1="84" x2="254" y2="36"/><path class="dim" d="M249 41l5-5 5 5M249 79l5 5 5-5"/><text class="s" x="8" y="106">10° · 12°</text></svg>
+              
               </div>
               <dl>
                 <div class="rrow"><dt>Series</dt><dd>MR · Traction 2:1</dd></div>
@@ -1004,10 +1118,60 @@ img{display:block;max-width:100%}
       <h2 class="title">STANDARD &amp; OPTIONAL PARTS</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content" style="bottom:276px">
+      <div class="content" style="display:flex;flex-direction:column">
         <p class="lead" style="margin-bottom:32px">An escalator's function need not scale with its
            complexity. Our integrated structure keeps the equipment precise and efficient, and makes
            installation and commissioning simpler and faster.</p>
+        <div class="psplit">
+          <figure class="pdwg">
+            <div class="lab blue">Section &middot; balustrade, step &amp; truss</div>
+<svg class="dwg" viewBox="-6 76 452 580" fill="none">
+              <!-- truss box section -->
+              <rect class="fill" x="40" y="524" width="340" height="76"/>
+              <path class="thin" d="M40 542h340M40 582h340"/>
+              <!-- step, cleated, on its rollers -->
+              <rect class="fill2" x="90" y="470" width="240" height="54"/>
+              <line class="thin" x1="98" y1="470" x2="98" y2="458"/><line class="thin" x1="111" y1="470" x2="111" y2="458"/><line class="thin" x1="124" y1="470" x2="124" y2="458"/><line class="thin" x1="137" y1="470" x2="137" y2="458"/><line class="thin" x1="150" y1="470" x2="150" y2="458"/><line class="thin" x1="163" y1="470" x2="163" y2="458"/><line class="thin" x1="176" y1="470" x2="176" y2="458"/><line class="thin" x1="189" y1="470" x2="189" y2="458"/><line class="thin" x1="202" y1="470" x2="202" y2="458"/><line class="thin" x1="215" y1="470" x2="215" y2="458"/><line class="thin" x1="228" y1="470" x2="228" y2="458"/><line class="thin" x1="241" y1="470" x2="241" y2="458"/><line class="thin" x1="254" y1="470" x2="254" y2="458"/><line class="thin" x1="267" y1="470" x2="267" y2="458"/><line class="thin" x1="280" y1="470" x2="280" y2="458"/><line class="thin" x1="293" y1="470" x2="293" y2="458"/><line class="thin" x1="306" y1="470" x2="306" y2="458"/><line class="thin" x1="319" y1="470" x2="319" y2="458"/>
+              <circle class="fill" cx="118" cy="540" r="15"/>
+              <circle class="fill" cx="302" cy="540" r="15"/>
+              <!-- skirt panels -->
+              <rect class="fill" x="70" y="384" width="20" height="140"/>
+              <rect class="fill" x="330" y="384" width="20" height="140"/>
+              <!-- deck covers -->
+              <rect class="fill" x="56" y="368" width="48" height="16"/>
+              <rect class="fill" x="316" y="368" width="48" height="16"/>
+              <!-- balustrade glass -->
+              <rect class="fill2" x="74" y="152" width="12" height="216"/>
+              <rect class="fill2" x="334" y="152" width="12" height="216"/>
+              <polyline class="fill2" points="59,146 59,120 101,120 101,146 92,146 92,131 68,131 68,146"/><polyline class="fill2" points="319,146 319,120 361,120 361,146 352,146 352,131 328,131 328,146"/>
+              <!-- dimensions -->
+              <line class="dim" x1="80" y1="104" x2="340" y2="104"/>
+              <path class="dim" d="M86 98l-6 6 6 6M334 98l6 6-6 6"/>
+              <text class="v" x="210" y="92" text-anchor="middle">B</text>
+              <line class="dim" x1="90" y1="440" x2="330" y2="440"/>
+              <path class="dim" d="M96 434l-6 6 6 6M324 434l6 6-6 6"/>
+              <text class="v" x="210" y="432" text-anchor="middle">A</text>
+              <line class="dim" x1="40" y1="630" x2="380" y2="630"/>
+              <path class="dim" d="M46 624l-6 6 6 6M374 624l6 6-6 6"/>
+              <text class="v" x="210" y="652" text-anchor="middle">C</text>
+              <!-- part markers -->
+              <line class="thin" x1="388" y1="131" x2="362" y2="131"/><rect class="marker" x="388" y="119" width="24" height="24"/><text class="n" x="400" y="136" text-anchor="middle">A</text>
+              <line class="thin" x1="388" y1="256" x2="352" y2="256"/><rect class="marker" x="388" y="244" width="24" height="24"/><text class="n" x="400" y="261" text-anchor="middle">B</text>
+              <line class="thin" x1="388" y1="376" x2="368" y2="376"/><rect class="marker" x="388" y="364" width="24" height="24"/><text class="n" x="400" y="381" text-anchor="middle">C</text>
+              <line class="thin" x1="388" y1="452" x2="352" y2="446"/><rect class="marker" x="388" y="440" width="24" height="24"/><text class="n" x="400" y="457" text-anchor="middle">D</text>
+              <line class="thin" x1="388" y1="497" x2="336" y2="497"/><rect class="marker" x="388" y="485" width="24" height="24"/><text class="n" x="400" y="502" text-anchor="middle">E</text>
+              <line class="thin" x1="388" y1="562" x2="382" y2="562"/><rect class="marker" x="388" y="550" width="24" height="24"/><text class="n" x="400" y="567" text-anchor="middle">F</text>
+            </svg>
+            <ul class="pkey">
+            <li><b>A</b><span>Handrail</span></li>
+            <li><b>B</b><span>Balustrade glass</span></li>
+            <li><b>C</b><span>Deck cover</span></li>
+            <li><b>D</b><span>Skirt panel</span></li>
+            <li><b>E</b><span>Step, cleated</span></li>
+            <li><b>F</b><span>Truss box section</span></li>
+            </ul>
+          </figure>
+          <div class="ptab">
         <table class="ptable">
           <thead><tr><th>Part</th><th>Standard configuration</th><th>Optional configuration</th></tr></thead>
           <tbody>
@@ -1029,8 +1193,9 @@ img{display:block;max-width:100%}
         <p class="tnote"><b>Note</b> — step and pallet width, handrail and balustrade type are
            selected per project. Aluminium series and inclined stainless steel balustrade are
            available as options across the whole duty range.</p>
+          </div>
+        </div>
       </div>
-      <div class="duo duo-d"><b>Integrated Structure</b><i>Standard &amp; optional</i></div>
     </div>
   </section>
 
@@ -1138,7 +1303,7 @@ img{display:block;max-width:100%}
           </div>
         </div>
       </div>
-      <figure class="dfig"><img src="{{ASSET:duo-truss.jpg}}" alt="Altigo escalator truss and step assembly">
+      <figure class="dfig"><img src="{{ASSET:truss.jpg}}" alt="Altigo escalator truss and step assembly">
         <span class="fig-tab">Truss &middot; Step assembly</span></figure>
     </div>
   </section>
@@ -1147,8 +1312,39 @@ img{display:block;max-width:100%}
   <section class="slide" data-name="Planning &amp; Civil" data-bg="range">
     <div class="stage dark blue-bg">
       <div class="gridlines"></div>
-      <div class="chap-half"><b>Altigo &middot; Vertical Mobility</b></div>
       <div class="mark logo w" role="img" aria-label="Altigo"></div>
+      <div class="chap-dwg">
+        <div class="lab">Well opening &middot; plan</div>
+        <svg class="dwg on-dark" viewBox="0 0 700 720" fill="none">
+          <!-- slab opening -->
+          <rect class="thin" x="60" y="60" width="560" height="600"/>
+          <path class="ghost" d="M60 60h560v600H60z" opacity=".5"/>
+          <!-- truss footprint inside the opening -->
+          <rect class="fill" x="126" y="96" width="428" height="528"/>
+          <!-- balustrade / handrail centre lines -->
+          <path class="dash" d="M186 96v528M494 96v528"/>
+          <!-- step band -->
+          <rect class="fill2" x="222" y="150" width="236" height="420"/>
+          <path class="thin" d="M222 190h236M222 230h236M222 270h236M222 310h236
+                                M222 350h236M222 390h236M222 430h236M222 470h236M222 510h236"/>
+          <!-- support beams at both landings -->
+          <rect class="fill2" x="96" y="72" width="488" height="30"/>
+          <rect class="fill2" x="96" y="618" width="488" height="30"/>
+          <text class="s" x="600" y="92" text-anchor="end">R1</text>
+          <text class="s" x="600" y="640" text-anchor="end">R2</text>
+          <!-- dimensions -->
+          <line class="dim" x1="186" y1="42" x2="494" y2="42"/>
+          <path class="dim" d="M192 36l-6 6 6 6M488 36l6 6-6 6"/>
+          <text class="v" x="340" y="30" text-anchor="middle">B</text>
+          <line class="dim" x1="126" y1="690" x2="554" y2="690"/>
+          <path class="dim" d="M132 684l-6 6 6 6M548 684l6 6-6 6"/>
+          <text class="v" x="340" y="712" text-anchor="middle">C</text>
+          <line class="dim" x1="26" y1="60" x2="26" y2="660"/>
+          <path class="dim" d="M20 66l6-6 6 6M20 654l6 6 6-6"/>
+          <text class="v" x="8" y="366">D</text>
+        </svg>
+        <div class="cap">B handrail centres &middot; C truss width &middot; D clear well length</div>
+      </div>
       <div class="content" style="right:1004px">
         <div class="chap">
           <div>
@@ -1186,18 +1382,23 @@ img{display:block;max-width:100%}
         <div class="lgrid" style="height:calc(100% - 96px)">
           <div class="lcol"><div class="lab red">One-way</div><h4>Single unit</h4>
             <p>Links two levels. Best where traffic runs mainly one way; reversible by time of day.</p>
+            <svg class="dwg ldwg" viewBox="0 0 300 96" fill="none"><line class="thin" x1="6" y1="22" x2="294" y2="22"/><line class="thin" x1="6" y1="84" x2="294" y2="84"/><line class="lr" x1="74" y1="84" x2="214" y2="22"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(214 22) rotate(-23.9)"/></svg>
             <figure><img src="{{ASSET:layout-1.jpg}}" alt="Single unit — one-way"></figure></div>
           <div class="lcol"><div class="lab red">One-way</div><h4>Continuous</h4>
             <p>Stacked runs, same direction, no detour. Links three sales levels; needs more space.</p>
+            <svg class="dwg ldwg" viewBox="0 0 300 96" fill="none"><line class="thin" x1="6" y1="16" x2="294" y2="16"/><line class="thin" x1="6" y1="54" x2="294" y2="54"/><line class="thin" x1="6" y1="88" x2="294" y2="88"/><line class="lr" x1="40" y1="88" x2="136" y2="54"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(136 54) rotate(-19.5)"/><line class="lr" x1="136" y1="54" x2="168" y2="54"/><line class="lr" x1="168" y1="54" x2="264" y2="16"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(264 16) rotate(-21.6)"/></svg>
             <figure><img src="{{ASSET:layout-2.jpg}}" alt="Continuous — one-way"></figure></div>
           <div class="lcol"><div class="lab red">One-way</div><h4>Interrupted</h4>
             <p>Offset runs force a short walk between levels, leading shoppers past displays.</p>
+            <svg class="dwg ldwg" viewBox="0 0 300 96" fill="none"><line class="thin" x1="6" y1="16" x2="294" y2="16"/><line class="thin" x1="6" y1="54" x2="294" y2="54"/><line class="thin" x1="6" y1="88" x2="294" y2="88"/><line class="lr" x1="26" y1="88" x2="122" y2="54"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(122 54) rotate(-19.5)"/><line class="lr" x1="178" y1="54" x2="274" y2="16"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(274 16) rotate(-21.6)"/></svg>
             <figure><img src="{{ASSET:layout-3.jpg}}" alt="Interrupted — one-way"></figure></div>
           <div class="lcol"><div class="lab red">Two-way</div><h4>Parallel</h4>
             <p>Up and down side by side. For heavy two-way flow; economical with three or more units.</p>
+            <svg class="dwg ldwg" viewBox="0 0 300 96" fill="none"><line class="thin" x1="6" y1="22" x2="294" y2="22"/><line class="thin" x1="6" y1="84" x2="294" y2="84"/><line class="lr" x1="30" y1="84" x2="132" y2="22"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(132 22) rotate(-31.3)"/><line class="lr" x1="168" y1="84" x2="270" y2="22"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(168 84) rotate(148.7)"/></svg>
             <figure><img src="{{ASSET:layout-4.jpg}}" alt="Parallel — two-way"></figure></div>
           <div class="lcol"><div class="lab red">Two-way</div><h4>Crisscross</h4>
             <p>Compact X-banks for large stores and transit; minimises travel time between levels.</p>
+            <svg class="dwg ldwg" viewBox="0 0 300 96" fill="none"><line class="thin" x1="6" y1="16" x2="294" y2="16"/><line class="thin" x1="6" y1="54" x2="294" y2="54"/><line class="thin" x1="6" y1="88" x2="294" y2="88"/><line class="lr" x1="38" y1="88" x2="166" y2="54"/><path class="lrf" d="M0 0L-13 -6L-13 6Z" transform="translate(166 54) rotate(-14.9)"/><line class="lr hi" x1="266" y1="54" x2="138" y2="16"/><path class="lrf hi" d="M0 0L-13 -6L-13 6Z" transform="translate(138 16) rotate(-163.5)"/></svg>
             <figure><img src="{{ASSET:layout-5.jpg}}" alt="Crisscross — two-way"></figure></div>
         </div>
       </div>
@@ -1212,7 +1413,7 @@ img{display:block;max-width:100%}
       <h2 class="title">CONSTRUCTION PARAMETERS</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content" style="bottom:300px">
+      <div class="content">
         <div class="civil">
 
           <div class="fig fig-elev"><div class="lab blue">Escalator elevation &amp; civil envelope</div>
@@ -1311,7 +1512,6 @@ img{display:block;max-width:100%}
 
         </div>
       </div>
-      <div class="duo duo-c"><b>Planning &middot; Civil &middot; Installation</b><i>Altigo Malaysia</i></div>
     </div>
   </section>
 

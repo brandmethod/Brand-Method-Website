@@ -16,7 +16,6 @@ standard* below.
 | `index.html` | **The deliverable.** Single self-contained file — images and fonts inlined. Works offline, from `file://`, or hosted. |
 | `catalogue.template.html` | Source. Same file with `{{ASSET:name}}` tokens instead of base64 blobs. **Edit this one.** |
 | `build.py` | Inlines `assets/` + `fonts/` into `index.html`. |
-| `tools_duotone.py` | Bakes the duotone bands in `assets/` from the installation photography. |
 | `assets/` | Photography, logo and the safety diagram, extracted from the 2026 print PDF and optimised. |
 | `fonts/` | Self-hosted Latin `woff2` subsets, so the catalogue renders identically without a network connection. |
 | `pdf/` | Exports: A4 landscape and native 1920 × 1080, each in a Full and a Standard edition. |
@@ -104,46 +103,46 @@ everything else — page titles, body, figures and captions. Both are named firs
 in the font stacks, so a machine with the licensed brand fonts installed uses
 them; everyone else gets Outfit, which is metrically close.
 
-**The duotone band.** The book's one colour device, and the answer to pages
-that were white type on white. Real Altigo installation photography is stretched
-to the full luminance range and mapped through a single ramp — near-black navy in
-the shadows, brand blue through the midtones, a light blue in the highlights —
-then run to the page edges. A scrim at the foot of the band carries the caption,
-and the header's red rule is repeated on the band's top edge so it reads as part
-of the page rather than a pasted-on picture.
+**Original technical drawings.** The book carries ten of them, and they are what
+give each page its picture. All are inline SVG on one system — `.st` is the
+object outline, `.fill` / `.fill2` are solid faces, `.thin` is secondary
+structure, `.dim` is a dimension line, `.dash` a hidden or centre line, and the
+`.on-dark` variant swaps the palette to white line on navy so the same system
+works on either ground. Being vector, they stay sharp at any zoom and in both
+PDF exports, and they cost almost nothing in file size.
 
-The ramp is baked into the asset by `tools_duotone.py` rather than applied as a
-CSS filter or blend mode, so a band is identical on screen and in both PDF
-exports and stays sharp when Chrome rasterises the page. Each band tiles a
-different set of photographs, in a different order, cropped to a different part
-of the frame, so no two read as the same picture. Tile widths are kept at or
-below the source width — the installation photographs are 449 px wide, so a band
-is four or five tiles, never two or three. To change one, edit the call in
-`tools_duotone.py`, re-run it, then re-run `build.py`.
-
-**Colour on every page.** No page is white type on a white ground:
-
-| Page | What carries the colour |
+| Page | Drawing |
 |---|---|
-| 01 Cover | Full-bleed photograph under the brand gradient |
-| 02 Contents | Duotone band across the foot |
-| 03 Company Introduction | The photograph bleeds off the right and bottom edges |
-| 04 Intelligent Control | Dark page — brand gradient and grid texture |
-| 05 Technical Advantages | Duotone band across the foot |
-| 06 Four Platforms | Dark page |
-| 07 Standard & Optional Parts | Duotone band across the foot |
-| 08 Safety Guarantee | The eight details run edge to edge as two continuous bands |
-| 09 Safety & Detection Devices | Duotone truss, bled off the right and bottom edges |
-| 10 Planning & Civil | Dark page with a duotone half bled to three edges |
-| 11 Logical Positioning | The five layouts run edge to edge as one filmstrip to the page foot |
-| 12 Construction Parameters | Duotone band across the foot |
-| 13 Contact | Dark page |
+| 02 Contents | Crisscross bank, four levels — section |
+| 04 Intelligent Control | Signal flow: mains → converter → machine → step band, with the VLR return and the RS485 / BAS report |
+| 05 Technical Advantages | Drive train through the truss — machine space, step band, handrail loop, tension carriage, lettered A–G |
+| 06 Four Platforms | Four incline profiles, one per duty class, each drawn to its own angle |
+| 07 Standard & Optional Parts | Section through balustrade, step and truss, lettered A–F |
+| 10 Planning & Civil | Well opening — plan, with B, C and D dimensioned |
+| 11 Logical Positioning | Five arrangement diagrams — single, continuous, interrupted, parallel, crisscross |
+| 12 Construction Parameters | Elevation, cross-section and landing plan |
 
-Six pages are dark or half-dark, and no more than two light pages run together.
-Where photographs butt against each other — the layout strip on page 11, the
-detail bands on page 08 — the gutter is dropped to zero and the column padding is
-carried on the text instead, so the row reads as a single band of image rather
-than as separate framed pictures.
+Each drawing is specific to its page; none is reused. The lettered keys (A–G on
+page 05, A–F on page 07) are deliberately letters, not numbers, so they never
+collide with the numbered copy running beside them.
+
+**Photography: once each, never twice.** Every photograph in `assets/` appears
+on exactly one page — the cover shot on 01, the interior on 03, the truss on 09,
+the five installations on 11, the eight safety details on 08. Nothing is tiled,
+tinted or repeated to fill space; where a page needs a picture and has no
+photograph of its own, it gets a drawing.
+
+**Page types.** One header and one grid on every page is what made the earlier
+draft read flat, so the book now runs four architectures over the same brand
+system — same colours, same fonts, same type scale, same 88 px margins, same
+sharp corners:
+
+- **Statement** — full-bleed dark, oversized display type: 01, 10, 13.
+- **Split** — the header band is dropped and the page is cut vertically instead,
+  a full-bleed navy panel carrying a drawing against content on the other side: 02.
+- **Reference** — the standard header over a content grid: 03, 08, 09.
+- **Diagram** — a large drawing carries the page and the copy runs beside it as a
+  key: 05, 07, 11, 12. Pages 04 and 06 are the dark variant of the same idea.
 
 **Sharp corners, everywhere.** Nothing in the book is rounded. Every photograph,
 panel, drawing, label, badge, swatch and rule is a square corner; the radius
@@ -197,8 +196,8 @@ the exception — the catalogue line on the left, the year on the right, at
 
 **Rhythm and scale.** Thirteen pages, dark on 01, 04, 06, 10 and 13. Page 10 is
 a chapter divider that opens the planning and civil half; it carries the part
-title, the three governing civil figures, a contents list, and a duotone
-photograph filling its right half.
+title, the three governing civil figures, a contents list, and a well-opening
+plan drawn white on navy across its right half.
 
 Scale contrast is carried by the two dark display pages, where the house
 standard allows it: the cover title at 172 px over a full-bleed photograph and

@@ -103,7 +103,7 @@ everything else — page titles, body, figures and captions. Both are named firs
 in the font stacks, so a machine with the licensed brand fonts installed uses
 them; everyone else gets Outfit, which is metrically close.
 
-**Original technical drawings.** The book carries ten of them, and they are what
+**Original technical drawings.** The book carries eleven of them, and they are what
 give each page its picture. All are inline SVG on one system — `.st` is the
 object outline, `.fill` / `.fill2` are solid faces, `.thin` is secondary
 structure, `.dim` is a dimension line, `.dash` a hidden or centre line, and the
@@ -118,13 +118,16 @@ PDF exports, and they cost almost nothing in file size.
 | 05 Technical Advantages | Drive train through the truss — machine space, step band, handrail loop, tension carriage, lettered A–G |
 | 06 Four Platforms | Four incline profiles, one per duty class, each drawn to its own angle |
 | 07 Standard & Optional Parts | Section through balustrade, step and truss, lettered A–F |
+| 09 Safety & Detection Devices | Elevation showing where each of the ten standard devices sits |
 | 10 Planning & Civil | Well opening — plan, with B, C and D dimensioned |
 | 11 Logical Positioning | Five arrangement diagrams — single, continuous, interrupted, parallel, crisscross |
 | 12 Construction Parameters | Elevation, cross-section and landing plan |
 
 Each drawing is specific to its page; none is reused. The lettered keys (A–G on
 page 05, A–F on page 07) are deliberately letters, not numbers, so they never
-collide with the numbered copy running beside them.
+collide with the numbered copy running beside them. Page 09 is the exception and
+uses numbers on purpose: its pins are 01–10 precisely because they map to the
+numbered device list sitting directly above them.
 
 **Photography: once each, never twice.** Every photograph in `assets/` appears
 on exactly one page — the cover shot on 01, the interior on 03, the truss on 09,
@@ -140,9 +143,9 @@ sharp corners:
 - **Statement** — full-bleed dark, oversized display type: 01, 10, 13.
 - **Split** — the header band is dropped and the page is cut vertically instead,
   a full-bleed navy panel carrying a drawing against content on the other side: 02.
-- **Reference** — the standard header over a content grid: 03, 08, 09.
+- **Reference** — the standard header over a content grid: 03, 08.
 - **Diagram** — a large drawing carries the page and the copy runs beside it as a
-  key: 05, 07, 11, 12. Pages 04 and 06 are the dark variant of the same idea.
+  key: 05, 07, 09, 11, 12. Pages 04 and 06 are the dark variant of the same idea.
 
 **Sharp corners, everywhere.** Nothing in the book is rounded. Every photograph,
 panel, drawing, label, badge, swatch and rule is a square corner; the radius

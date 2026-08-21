@@ -539,13 +539,18 @@ img{display:block;max-width:100%}
 .sitem p{font-size:16px;line-height:1.5;color:var(--body)}
 
 /* ── 08 Devices ────────────────────────────────────────────────────── */
-.devs{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gut);height:100%}
+.devs{display:flex;flex-direction:column;height:100%}
+.drow{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gut)}
+/* the elevation runs the full width of the text column, under both lists */
+.delev{margin-top:auto;padding-top:26px;border-top:1px solid var(--rule)}
+.delev > .lab{margin-bottom:10px}
+.delev svg{display:block;width:100%;height:auto}
 .dcol{display:flex;flex-direction:column}
 .dhead{display:flex;align-items:baseline;justify-content:space-between;
   padding-bottom:15px;border-bottom:2px solid var(--blue);margin-bottom:4px}
 .dhead h3{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue)}
 .dlist{list-style:none}
-.dlist li{display:flex;align-items:baseline;gap:16px;padding:21px 0;
+.dlist li{display:flex;align-items:baseline;gap:16px;padding:10px 0;
   border-bottom:1px solid var(--rule);font-size:16px;color:var(--body)}
 .dlist li span{font-family:var(--f-label);font-size:12px;font-weight:700;color:var(--blue-pale);
   min-width:18px;letter-spacing:.06em}
@@ -1270,6 +1275,7 @@ img{display:block;max-width:100%}
       <div class="mark logo" role="img" aria-label="Altigo"></div>
       <div class="content" style="right:680px">
         <div class="devs">
+          <div class="drow">
           <div class="dcol">
             <div class="dhead"><h3>Standard devices</h3><span class="lab">10 fitted</span></div>
             <ul class="dlist">
@@ -1284,9 +1290,6 @@ img{display:block;max-width:100%}
               <li><span>09</span>Missing step detector</li>
               <li><span>10</span>Handrail anti-static device</li>
             </ul>
-            <p class="dnote">Every standard device is proven at the factory and again at
-              commissioning. Trips and fault states are reported through the
-              <b>RS485 / BAS link</b>, so building maintenance sees the cause, not just the stop.</p>
           </div>
           <div class="dcol">
             <div class="dhead"><h3>Optional devices</h3><span class="lab">8 available</span></div>
@@ -1300,7 +1303,33 @@ img{display:block;max-width:100%}
               <li><span>07</span>Skirt deflector device</li>
               <li><span>08</span>Anti-reverse protection</li>
             </ul>
+            <p class="dnote">Every standard device is proven at the factory and again at
+              commissioning. Trips and fault states are reported through the
+              <b>RS485 / BAS link</b>, so building maintenance sees the cause, not just the stop.</p>
           </div>
+          </div>
+          <figure class="delev">
+            <div class="lab blue">Where the standard devices sit &middot; elevation</div>
+<svg class="dwg" viewBox="0 8 1152 276" fill="none">
+              <polyline class="st" points="30,210 210,210 830,70 1010,70"/>
+              <polyline class="st" points="30,254 210,254 830,114 1010,114"/>
+              <line class="st" x1="30" y1="210" x2="30" y2="254"/>
+              <line class="st" x1="1010" y1="70" x2="1010" y2="114"/>
+              <path class="thin" d="M210 210L299 234M299 234L387 170M387 170L476 194M476 194L564 130M564 130L653 154M653 154L741 90M741 90L830 114"/>
+              <polyline class="thin" points="42,224 210,224 830,84 998,84"/>
+              <polyline class="thin" points="42,238 210,238 830,98 998,98"/>
+              <path class="thin" d="M42 210v-9M50 210v-9M58 210v-9M66 210v-9M74 210v-9M82 210v-9M90 210v-9M98 210v-9M106 210v-9"/><line class="st" x1="42" y1="210" x2="106" y2="210"/>
+              <path class="thin" d="M934 70v-9M942 70v-9M950 70v-9M958 70v-9M966 70v-9M974 70v-9M982 70v-9M990 70v-9M998 70v-9"/><line class="st" x1="934" y1="70" x2="998" y2="70"/>
+              <polyline class="st" points="42,158 210,158 830,18 998,18"/>
+              <line class="thin" x1="42" y1="158" x2="42" y2="201"/>
+              <line class="thin" x1="998" y1="18" x2="998" y2="61"/>
+              <rect class="fill2" x="856" y="84" width="70" height="30"/>
+              <rect class="fill" x="936" y="86" width="44" height="26"/>
+              <rect class="fill2" x="70" y="212" width="62" height="28"/>
+              <circle class="marker" cx="520" cy="152" r="12"/><text class="n" x="520" y="156" text-anchor="middle" style="font-size:11px">01</text><circle class="marker" cx="224" cy="200" r="12"/><text class="n" x="224" y="204" text-anchor="middle" style="font-size:11px">02</text><circle class="marker" cx="66" cy="150" r="12"/><text class="n" x="66" y="154" text-anchor="middle" style="font-size:11px">03</text><circle class="marker" cx="158" cy="150" r="12"/><text class="n" x="158" y="154" text-anchor="middle" style="font-size:11px">04</text><circle class="marker" cx="878" cy="96" r="12"/><text class="n" x="878" y="100" text-anchor="middle" style="font-size:11px">05</text><circle class="marker" cx="400" cy="190" r="12"/><text class="n" x="400" y="194" text-anchor="middle" style="font-size:11px">06</text><circle class="marker" cx="96" cy="222" r="12"/><text class="n" x="96" y="226" text-anchor="middle" style="font-size:11px">07</text><circle class="marker" cx="956" cy="96" r="12"/><text class="n" x="956" y="100" text-anchor="middle" style="font-size:11px">08</text><circle class="marker" cx="800" cy="96" r="12"/><text class="n" x="800" y="100" text-anchor="middle" style="font-size:11px">09</text><circle class="marker" cx="620" cy="60" r="12"/><text class="n" x="620" y="64" text-anchor="middle" style="font-size:11px">10</text>
+              <text class="s" x="1152" y="276" text-anchor="end">Standard devices &middot; indicative positions</text>
+            </svg>
+          </figure>
         </div>
       </div>
       <figure class="dfig"><img src="{{ASSET:truss.jpg}}" alt="Altigo escalator truss and step assembly">

@@ -2,9 +2,9 @@
 
 Brand creation deck for the MyHero / "My Health Record" app (Dr Amira · Elite Care Clinic).
 
-- **Canvas:** 1920 × 1080 per page, 44 pages
+- **Canvas:** 1920 × 1080 per page, 48 pages
 - **Source:** `index.html` — open in a browser; pages scale to fit the window
-- **Exports:** `exports/01.png` … `exports/44.png` (full-resolution 1920 × 1080)
+- **Exports:** `exports/01.png` … `exports/48.png` (full-resolution 1920 × 1080)
 
 ## Structure
 Follows the Brand Method brand-creation format:
@@ -23,13 +23,26 @@ Follows the Brand Method brand-creation format:
    founder concept, logo system drafts, next steps
 
 Blue dividers mark generic reference sections; black dividers mark MyHero-specific work.
-The guide sections are deliberately kept generic — they are standing reference material
-shown to inform the client, and carry no MyHero-specific commentary.
+The guide sections are the Brand Method guideline deck reproduced **verbatim** as page
+images in `guide/` (pages 02–25 of The Pause Brand Creation). They are standing reference
+material shown to inform the client and must not be edited — to update them, re-export the
+source PDF over `guide/g-NN.jpg` at 1920 × 1080. Page 01 of that PDF (Name Funnel) is
+covered by the built HTML page of the same name.
 
 ## Viewing and refining
 Open `index.html` in any browser. Pages scale to fit the window.
-**Contents** (bottom right) opens a jump-to-page index; arrow keys page through.
-Append `#export` to the URL to disable scaling and hide the viewer chrome.
+It opens as a **presentation** — one page at a time, scaled to fit the window.
+
+| Action | Control |
+| --- | --- |
+| Next / previous page | `→` `←` `↓` `↑` `Space` `PgUp` `PgDn`, or the Prev/Next buttons |
+| First / last page | `Home` / `End` |
+| Jump to any page | **Contents** button, bottom right |
+| Full screen | **Full** button, or `F` |
+| Link to one page | `index.html#p17` |
+
+Append `#export` to the URL to lay every page out at true 1920 × 1080 with no viewer
+chrome — this is the mode the PNG renderer uses.
 
 ## Status
 The **logo system is in progress**. All marks shown are placeholder geometry from the

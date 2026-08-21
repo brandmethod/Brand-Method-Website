@@ -282,6 +282,10 @@ img{display:block;max-width:100%}
 .content.bleed-r{right:0}
 
 .lead{font-size:19px;line-height:1.62;color:var(--body);max-width:1280px}
+/* the one lead in the book set as display type rather than as a paragraph */
+.lead.sing{font-family:var(--f-head);font-size:44px;font-weight:600;line-height:1.14;
+  letter-spacing:-.014em;color:var(--ink);max-width:none}
+.lead.sing b{color:var(--blue);font-weight:600}
 .lead b{color:var(--blue);font-weight:600}
 
 .lab{font-family:var(--f-label);font-size:13px;font-weight:700;letter-spacing:.22em;
@@ -383,8 +387,8 @@ img{display:block;max-width:100%}
 /* ── 03 Company introduction ───────────────────────────────────────── */
 /* two 856 columns: copy left, a contained photograph right with a caption tab */
 .intro-txt{display:flex;flex-direction:column}
-.intro-h{font-family:var(--f-head);font-size:30px;font-weight:700;color:var(--ink);
-  line-height:1.3;margin-bottom:32px}
+.intro-h{font-family:var(--f-head);font-size:76px;font-weight:600;color:var(--ink);
+  line-height:1.02;letter-spacing:-.022em;margin-bottom:38px}
 .intro-h b{color:var(--blue);font-weight:800}
 .intro-body{columns:1}
 .intro-body p{font-size:19px;line-height:1.76;margin-bottom:26px}
@@ -432,9 +436,9 @@ img{display:block;max-width:100%}
 /* five equal columns, like the planning gallery, align to the outer margins
    and the centre line rather than to column edges */
 .stats{grid-template-columns:repeat(5,1fr)}
-.stats b{display:block;font-family:var(--f-head);font-size:44px;font-weight:600;
+.stats b{display:block;font-family:var(--f-head);font-size:64px;font-weight:600;
   color:var(--blue);letter-spacing:-.042em;line-height:.94}
-.stats b sub{font-size:18px;font-weight:700;vertical-align:baseline;margin-left:4px}
+.stats b sub{font-size:22px;font-weight:700;vertical-align:baseline;margin-left:4px}
 .stats span{display:block;margin-top:12px;font-size:16px;line-height:1.5;color:var(--body)}
 
 /* ── Page type · diagram ────────────────────────────────────────────
@@ -468,9 +472,9 @@ img{display:block;max-width:100%}
 .rcol > p{font-size:16px;line-height:1.5;color:rgba(255,255,255,.72);margin-bottom:10px}
 .riseviz{margin-top:auto;margin-bottom:14px}
 .riseviz svg{display:block;width:100%;height:auto;margin-top:12px}
-.rise-n{display:block;font-family:var(--f-head);font-size:44px;font-weight:600;color:#fff;
+.rise-n{display:block;font-family:var(--f-head);font-size:72px;font-weight:600;color:#fff;
   letter-spacing:-.03em;line-height:1;margin:6px 0 14px}
-.rise-n sub{font-size:18px;font-weight:700;vertical-align:baseline;margin-left:5px;
+.rise-n sub{font-size:24px;font-weight:700;vertical-align:baseline;margin-left:5px;
   letter-spacing:0;color:rgba(255,255,255,.7)}
 .rv-track{height:6px;background:rgba(255,255,255,.2);overflow:hidden}
 .rv-track i{display:block;height:100%;background:#fff}
@@ -1164,7 +1168,7 @@ img{display:block;max-width:100%}
         <div class="safety">
           <div class="stop">
             <div>
-              <p class="lead" style="font-size:22px">From children to the elderly, a broad set of
+              <p class="lead sing">From children to the elderly, a broad set of
                  safety features helps <b>every passenger</b> get on and off safely.</p>
               <p style="margin-top:12px;font-size:17px;line-height:1.5;color:var(--muted)">
                  Numbers 1&ndash;8 mark where each feature sits on the unit.</p>

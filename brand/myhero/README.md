@@ -2,9 +2,9 @@
 
 Brand creation deck for the MyHero / "My Health Record" app (Dr Amira · Elite Care Clinic).
 
-- **Canvas:** 1920 × 1080 per page, 56 pages
+- **Canvas:** 1920 × 1080 per page, 58 pages
 - **Source:** `index.html` — open in a browser; pages scale to fit the window
-- **Exports:** `exports/01.png` … `exports/56.png` (full-resolution 1920 × 1080)
+- **Exports:** `exports/01.png` … `exports/58.png` (full-resolution 1920 × 1080)
 
 ## Structure
 Follows the Brand Method brand-creation format:
@@ -20,7 +20,7 @@ Follows the Brand Method brand-creation format:
 6. **Reference** *(black divider — client)* — competitor reference with interface slots and links
 7. **Stylescape** *(black divider — client)* — MID tier, recommended direction
 8. **Logo Ideation** *(black divider — client)* — concept/element, combo/build, sketch/shape,
-   four sketch/shape routes, three logo system drafts, next steps
+   four sketch/shape routes, three logo system drafts, asset mockups, next steps
 
 Blue dividers mark generic reference sections; black dividers mark MyHero-specific work.
 The guide sections are the Brand Method guideline deck reproduced **verbatim** as page

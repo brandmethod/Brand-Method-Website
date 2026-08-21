@@ -26,8 +26,7 @@ Blue dividers mark generic reference sections; black dividers mark MyHero-specif
 The guide sections are the Brand Method guideline deck reproduced **verbatim** as page
 images in `guide/` (pages 02–25 of The Pause Brand Creation). They are standing reference
 material shown to inform the client and must not be edited — to update them, re-export the
-source PDF over `guide/g-NN.jpg` at 1920 × 1080. Page 01 of that PDF (Name Funnel) is
-covered by the built HTML page of the same name.
+source PDF over `guide/g-NN.jpg` at 1920 × 1080. Pages 01–25 are all present.
 
 ## Viewing and refining
 Open `index.html` in any browser. Pages scale to fit the window.

@@ -275,6 +275,23 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
 .refcard2 .rc-good{font-size:12.5px;line-height:1.5;color:var(--ink-2);font-weight:300;margin-bottom:9px;}
 .refcard2 .rc-avoid{font-size:12.5px;line-height:1.5;color:var(--ink-3);font-weight:300;margin-top:auto;padding-top:9px;border-top:1px solid var(--line-2);}
 .refcard2 .rc-avoid.rc-hard{color:#C4403C;}
+.ss-heads{display:grid;grid-template-columns:298px 1fr;gap:16px;margin-bottom:8px;}
+.ss-headrow span{font-size:11.5px;color:var(--ink-3);font-weight:400;text-align:center;padding-bottom:4px;}
+.ss-row{display:grid;grid-template-columns:298px 1fr;gap:16px;margin-bottom:14px;height:232px;}
+.ss-row.ss-on .ss-label{outline:2px solid #1E9BF0;outline-offset:0;}
+.ss-label{padding:16px 18px;display:flex;flex-direction:column;position:relative;}
+.ss-tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.2em;font-weight:600;}
+.ss-rec{position:absolute;right:14px;top:15px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.14em;background:#1E9BF0;color:#fff;padding:3px 7px;}
+.ss-name{font-size:20px;font-weight:700;letter-spacing:-.02em;margin-top:7px;}
+.ss-line{font-size:13.5px;font-weight:400;margin-top:3px;}
+.ss-kw{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.14em;margin-top:11px;}
+.ss-note{font-size:12px;line-height:1.5;font-weight:300;margin-top:11px;}
+.ss-risk{font-size:11.5px;line-height:1.45;font-weight:400;margin-top:auto;padding-top:8px;}
+.ss-strip{display:grid;grid-template-columns:1.5fr 1.3fr 1fr 1.2fr 1fr;gap:6px;}
+.ss-cell{overflow:hidden;position:relative;box-shadow:inset 0 0 0 1px rgba(10,36,55,.07);}
+.ss-cell i{display:block;height:100%;}
+.ss-photo{flex:1;border:1.3px dashed;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:0;}
+.ss-photo span{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:0 6px;}
 .swatch-lg{height:132px;display:flex;align-items:flex-end;padding:14px;}
 </style>
 </head>
@@ -786,34 +803,52 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
 <!-- ============ STYLESCAPE REFERENCE (client-side reminder) ============ -->
 <div class="slide"><div class="canvas guidepage" data-title="Stylescape Reference" data-navcls=""><img src="guide/g-25.jpg" alt="Stylescape reference — three tiers" loading="lazy"></div></div>
 
-<!-- ============ STYLESCAPE — MID (RECOMMENDED) ============ -->
-<div class="slide"><div class="canvas" style="padding:0;background:#F7FBFE">
+<!-- ============ STYLESCAPE — MYHERO 3 TIERS ============ -->
+<div class="slide"><div class="canvas">
   <div class="chip">Client</div>
-  <div style="padding:74px 84px 0"><div class="stitle">Stylescape — Signature MyHero</div><div class="ssub">MID tier · recommended direction</div></div>
-  <div style="flex:1;display:grid;grid-template-columns:repeat(6,1fr);grid-template-rows:repeat(3,1fr);gap:14px;padding:30px 84px 62px;min-height:0">
-    <div style="grid-column:span 2;grid-row:span 2;background:linear-gradient(160deg,#1E9BF0,#0A4E7E);display:flex;flex-direction:column;justify-content:flex-end;padding:26px">
-      <svg width="52" height="52" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4" stroke-linejoin="round" style="margin-bottom:18px"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg>
-      <div style="color:#fff;font-size:26px;font-weight:600;line-height:1.25">Your family's health,<br>remembered</div>
-      <div style="color:rgba(255,255,255,.7);font-size:12px;margin-top:12px;letter-spacing:.1em;font-family:'JetBrains Mono',monospace">HERO SURFACE</div>
+  <div class="stitle">Stylescape — MyHero</div>
+  <div class="ssub">Three tiers of the same strategy. Pick a temperature, not a picture.</div>
+  <div class="body-area" style="padding-top:22px">
+    <div class="ss-heads">
+      <div></div>
+      <div class="ss-strip ss-headrow"><span>Colour + Texture</span><span>Hero + Art Direction</span><span>Font + Branding</span><span>App + Icon</span><span>Environment</span></div>
     </div>
-    <div style="background:#fff;padding:20px;display:flex;flex-direction:column"><div class="lbl" style="font-size:9.5px;margin-bottom:10px">NEXT VISIT</div><div style="font-size:15px;font-weight:600;color:var(--harbour);line-height:1.35">Wed 3 Sept<br>10:30am</div><div style="margin-top:auto;font-size:11.5px;color:var(--ink-3)">Dr Amira</div></div>
-    <div style="background:#E7F4FE;display:flex;align-items:center;justify-content:center"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#0A4E7E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 11h18"/></svg></div>
-    <div style="background:#0A2437;padding:20px;display:flex;align-items:flex-end"><div style="color:#8CC8EE;font-size:13px;line-height:1.5">Everything in this test looked normal.</div></div>
-    <div style="background:#fff;display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:600;color:var(--ink);letter-spacing:-.02em">Aa</div>
-    <div style="background:#FFF0F4;padding:20px;display:flex;flex-direction:column"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D45B7A" stroke-width="1.8" style="margin-bottom:12px"><path d="M12 20s-7-4.3-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.7-7 9-7 9z"/></svg><div style="font-size:13px;font-weight:600;color:#A8455F">First steps</div><div style="font-size:11.5px;color:#B4708A;margin-top:4px">12 August</div></div>
-    <div style="background:#fff;display:flex;align-items:center;justify-content:center;gap:9px"><svg width="26" height="26" viewBox="0 0 64 64" fill="none" stroke="#1E9BF0" stroke-width="4.4" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/></svg><span style="font-size:17px;font-weight:600;color:var(--ink)">MyHero</span></div>
-    <div style="background:#1E9BF0"></div><div style="background:#8CC8EE"></div><div style="background:#FF8CA8"></div><div style="background:#0A4E7E"></div>
-    <div style="background:#fff;padding:18px;font-size:11.5px;color:var(--ink-3);line-height:1.6">Generous white space is the loudest part of the system. When a screen feels busy, add neutral — not colour.</div>
-    <div style="background:#25C3A8;display:flex;align-items:center;justify-content:center"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M4 12l5 5L20 7"/></svg></div>
-    <div style="background:#fff;padding:18px;display:flex;flex-direction:column;justify-content:center;gap:9px">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--ink-3)">MRN 4471-0928</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--ink-3)">03 SEP 2026 · 10:30</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.12em;color:var(--ink-3)">WEIGHT 12.4 KG</div>
+    <div class="ss-row">
+      <div class="ss-label" style="background:#0A2437">
+        <div class="ss-tag" style="color:#8CC8EE">EXTREME</div>
+        <div class="ss-name" style="color:#fff">Clinical Authority</div>
+        <div class="ss-line" style="color:#A9C9DF">Trust before warmth</div>
+        <div class="ss-kw" style="color:#A9C9DF">PRECISE &nbsp;·&nbsp; INSTITUTIONAL &nbsp;·&nbsp; UNAMBIGUOUS</div>
+        <p class="ss-note" style="color:#A9C9DF">Deep ground, dense data, colour used only to signal. Reads as a hospital system.</p>
+        <p class="ss-risk" style="color:#8CC8EE">Risk — becomes the government portal the kickstart ruled out.</p>
+      </div>
+      <div class="ss-strip"><div class="ss-cell" style="background:#0A2437;padding:0"><div style="display:flex;height:100%"><i style="flex:2;background:#0A2437"></i><i style="flex:1;background:#0B3E68"></i><i style="flex:1;background:#0A4E7E"></i><i style="flex:1;background:#1E9BF0"></i><i style="flex:1;background:#E9EEF2"></i></div></div><div class="ss-cell" style="background:#0A2437;color:#fff;display:flex;flex-direction:column;padding:14px"><div class="ss-photo" style="border-color:rgba(255,255,255,.28)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span style="color:rgba(255,255,255,.34)">clinical photography</span></div><div style="font-size:15px;font-weight:600;line-height:1.25;margin-top:10px">Your record.<br>Complete and current.</div></div><div class="ss-cell" style="background:#0A2437;color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:8px"><div style="font-size:34px;font-weight:700;letter-spacing:-.04em">Aa</div><div style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.18em;color:#7FA8C4">TIGHT · MEDICAL</div></div><div class="ss-cell" style="background:#06182A;display:flex;align-items:center;justify-content:center;gap:14px"><div style="width:46px;height:46px;border-radius:11px;background:#0A4E7E;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.6" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg></div><div style="width:74px;height:52px;background:#0F2E45;padding:7px"><div style="height:4px;width:70%;background:#2C4E68"></div><div style="height:3px;width:90%;background:#1E3B52;margin-top:5px"></div><div style="height:3px;width:60%;background:#1E3B52;margin-top:4px"></div></div></div><div class="ss-cell" style="background:#0A2437;padding:14px;display:flex"><div class="ss-photo" style="border-color:rgba(255,255,255,.28)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span style="color:rgba(255,255,255,.34)">clinic corridor</span></div></div></div>
     </div>
-    <div style="background:#E7F4FE;display:flex;align-items:center;justify-content:center;gap:14px">
-      <svg width="16" height="16" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="7" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/></svg>
-      <svg width="26" height="26" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="5" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/></svg>
-      <svg width="40" height="40" viewBox="0 0 64 64" fill="none" stroke="#0A4E7E" stroke-width="4" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/></svg>
+    <div class="ss-row ss-on">
+      <div class="ss-label" style="background:#F2F9FE">
+        <div class="ss-tag" style="color:#0A4E7E">MID</div><span class="ss-rec">RECOMMENDED</span>
+        <div class="ss-name" style="color:#0A4E7E">Signature MyHero</div>
+        <div class="ss-line" style="color:#3A6A8C">Professional and cheerful</div>
+        <div class="ss-kw" style="color:#3A6A8C">WARM &nbsp;·&nbsp; CLEAR &nbsp;·&nbsp; CAPABLE</div>
+        <p class="ss-note" style="color:#3A6A8C">Light ground, sky carrying the system, generous white space, blush kept for milestones only.</p>
+        <p class="ss-risk" style="color:#0A4E7E">Professional first, cheerful second — the brief, exactly.</p>
+      </div>
+      <div class="ss-strip"><div class="ss-cell" style="padding:0"><div style="display:flex;height:100%"><i style="flex:2;background:#1E9BF0"></i><i style="flex:1;background:#0A4E7E"></i><i style="flex:1;background:#8CC8EE"></i><i style="flex:1;background:#FF8CA8"></i><i style="flex:1.4;background:#fff"></i></div></div><div class="ss-cell" style="background:linear-gradient(150deg,#2AA6F5,#0A4E7E);color:#fff;display:flex;flex-direction:column;padding:14px"><div class="ss-photo" style="border-color:rgba(255,255,255,.28)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.34)" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span style="color:rgba(255,255,255,.34)">parent + child, daylight</span></div><div style="font-size:15px;font-weight:600;line-height:1.25;margin-top:10px">Your family's health,<br>remembered</div></div><div class="ss-cell" style="background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px"><div style="font-size:34px;font-weight:600;letter-spacing:-.03em;color:#0A2437">Aa</div><div style="display:flex;align-items:center;gap:7px"><div style="width:19px;height:19px"><svg viewBox="0 0 64 64" fill="none" stroke="#1E9BF0" stroke-width="4.6" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg></div><span style="font-size:15px;font-weight:600;color:#0A2437">MyHero</span></div></div><div class="ss-cell" style="background:#E7F4FE;display:flex;align-items:center;justify-content:center;gap:14px"><div style="width:46px;height:46px;border-radius:12px;background:linear-gradient(145deg,#2AA6F5,#0A6EB4);display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.6" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg></div><div style="width:74px;height:52px;background:#fff;border-radius:6px;padding:8px"><div style="font-family:'JetBrains Mono',monospace;font-size:6.5px;letter-spacing:.1em;color:#6E8CA4">NEXT VISIT</div><div style="font-size:9px;font-weight:600;color:#0A4E7E;margin-top:3px">Wed 3 Sept</div><div style="height:3px;width:60%;background:#E7F4FE;margin-top:6px"></div></div></div><div class="ss-cell" style="background:#fff;padding:14px;display:flex"><div class="ss-photo" style="border-color:#D6D6D6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4C4C4" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span style="color:#C4C4C4">consult room, soft daylight</span></div></div></div>
+    </div>
+    <div class="ss-row">
+      <div class="ss-label" style="background:#FFF7F9">
+        <div class="ss-tag" style="color:#B4506B">LIGHT</div>
+        <div class="ss-name" style="color:#A8455F">Family Warmth</div>
+        <div class="ss-line" style="color:#9C5A6C">Cheerful before clinical</div>
+        <div class="ss-kw" style="color:#9C5A6C">SOFT &nbsp;·&nbsp; DOMESTIC &nbsp;·&nbsp; PERSONAL</div>
+        <p class="ss-note" style="color:#9C5A6C">Blush-led, rounded throughout, low contrast. Reads like something made for a home, not a clinic.</p>
+        <p class="ss-risk" style="color:#B4506B">Risk — gives away the clinical credibility the record depends on.</p>
+      </div>
+      <div class="ss-strip"><div class="ss-cell" style="padding:0"><div style="display:flex;height:100%"><i style="flex:2;background:#FF8CA8"></i><i style="flex:1;background:#FFB9CA"></i><i style="flex:1;background:#FFF0F4"></i><i style="flex:1;background:#8CC8EE"></i><i style="flex:1.4;background:#fff"></i></div></div><div class="ss-cell" style="background:#FFEFF3;color:#8E3550;display:flex;flex-direction:column;padding:14px"><div class="ss-photo" style="border-color:#D6D6D6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4C4C4" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span style="color:#C4C4C4">home, warm and tactile</span></div><div style="font-size:15px;font-weight:600;line-height:1.25;margin-top:10px">Every little<br>milestone, kept</div></div><div class="ss-cell" style="background:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:9px"><div style="font-size:34px;font-weight:500;letter-spacing:-.01em;color:#8E3550">Aa</div><div style="display:flex;align-items:center;gap:7px"><div style="width:19px;height:19px"><svg viewBox="0 0 64 64" fill="none" stroke="#FF8CA8" stroke-width="4.6" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg></div><span style="font-size:15px;font-weight:500;color:#8E3550">MyHero</span></div></div><div class="ss-cell" style="background:#FFF0F4;display:flex;align-items:center;justify-content:center;gap:14px"><div style="width:46px;height:46px;border-radius:15px;background:#FF8CA8;display:flex;align-items:center;justify-content:center"><svg viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.6" stroke-linejoin="round"><path d="M32 6 53.5 14.2v17.2c0 12.9-8.6 22.3-21.5 26.8C19.1 53.7 10.5 44.3 10.5 31.4V14.2Z"/><path d="M19 31h6.5l4-7.5 6 14 3.8-6.5H45" stroke-linecap="round"/></svg></div><div style="width:74px;height:52px;background:#fff;border-radius:12px;padding:8px"><div style="width:13px;height:13px;border-radius:50%;background:#FFD3DF"></div><div style="height:3px;width:70%;background:#FFEFF3;margin-top:7px"></div><div style="height:3px;width:50%;background:#FFEFF3;margin-top:4px"></div></div></div><div class="ss-cell" style="background:#fff;padding:14px;display:flex"><div class="ss-photo" style="border-color:#D6D6D6"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C4C4C4" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg><span style="color:#C4C4C4">nursery, natural light</span></div></div></div>
+    </div>
+    <div class="card w" style="margin-top:16px;display:flex;align-items:center;gap:26px">
+      <div class="lbl" style="flex:none">Decision</div>
+      <p class="b" style="margin:0;font-size:14.5px"><b>MID — Signature MyHero</b> is the recommended direction: professional first, cheerful second, exactly as agreed at kickstart. Photography is still to be shot or licensed — the slots above fix the brief for each frame, not the image.</p>
     </div>
   </div>
   <div class="foot">MyHero Brand Creation</div><div class="pnum">45</div>

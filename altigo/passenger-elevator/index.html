@@ -236,20 +236,23 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 .cover .bg{position:absolute;inset:0;overflow:hidden}
 .cover .bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
 .cover .wash{position:absolute;inset:0;background:
-  linear-gradient(180deg,rgba(2,25,88,.72) 0%,rgba(2,40,140,.55) 38%,rgba(2,30,105,.92) 100%),
-  linear-gradient(90deg,rgba(2,25,88,.88) 0%,rgba(2,25,88,.12) 62%)}
+  linear-gradient(180deg,rgba(2,25,88,.18) 0%,rgba(2,30,105,.10) 42%,rgba(1,16,47,.72) 100%)}
 .cover .logo{position:absolute;left:88px;top:72px;width:262px}
 .cover .yr{position:absolute;right:88px;top:74px;font-family:var(--edge);font-size:18px;letter-spacing:.3em;color:#fff}
 .cover h1{
-  position:absolute;left:88px;top:398px;
-  font-family:var(--edge);font-size:172px;line-height:.88;color:#fff;letter-spacing:-.012em;
+  position:absolute;left:88px;top:368px;
+  font-family:var(--edge);font-size:150px;line-height:.9;color:#fff;letter-spacing:-.012em;
 }
-.cover .eyebrow{position:absolute;left:88px;top:340px;font-family:var(--edge);font-size:17px;letter-spacing:.42em;color:#fff;opacity:.86}
+.cover .eyebrow{position:absolute;left:88px;top:296px;font-family:var(--edge);font-size:17px;letter-spacing:.42em;color:#fff;opacity:.86}
 .cover .prod{
-  position:absolute;left:88px;top:772px;display:inline-flex;align-items:center;
+  position:absolute;left:88px;top:684px;display:inline-flex;align-items:center;
   font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:.02em;color:#fff;text-transform:uppercase;
 }
-.cover .meta{position:absolute;left:88px;bottom:112px;display:grid;grid-template-columns:repeat(3,412px);gap:32px}
+/* the cut narrows the field towards the foot of the page, so the contact block
+   gets its own full-width footing instead of being crushed into the point */
+.coverbar{position:absolute;left:0;right:0;bottom:-4px;height:162px;background:#01102F;
+  display:flex;align-items:center}
+.cover .meta{margin-left:88px;display:grid;grid-template-columns:repeat(3,412px);gap:32px}
 .cover .meta dt{font-family:var(--ui);font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:9px}
 .cover .meta dd{font-family:var(--edge);font-size:15px;letter-spacing:.06em;color:#fff;line-height:1.5}
 .corner{position:absolute;right:0;bottom:0;width:330px;height:290px;overflow:hidden;pointer-events:none}
@@ -362,6 +365,33 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 .tint .seclabel i{background:#D3DCEA}
 .tint .dl.params div{border-top-color:#D3DCEA}
 .tint .tile .box{background:#fff}
+
+/* ---------- 9e. THE ALTIGO CUT -----------------------------------------
+   The slash through the O in the wordmark runs at 40 degrees from vertical,
+   rising to the right. Every angled edge in the book is that same line, so
+   the page splits, the image panels, the corner cuts and the accent tick all
+   belong to the mark rather than to a stock template.  --cut is dx per dy.  */
+:root{--cut:.839}
+
+/* a clipped colour field — the polygon is written in px per page, because the
+   pages are a fixed 1920x1080 and the angle has to survive exactly */
+.cut{position:absolute;inset:0;pointer-events:none}
+
+/* the accent mark: a short slash, not a horizontal tab */
+.tick{display:block;width:5px;height:30px;background:var(--red);transform:rotate(40deg);flex:none}
+.tickline{display:flex;align-items:center;gap:18px}
+
+/* one corner of a card taken off at the same angle */
+.corner-cut{clip-path:polygon(0 0,100% 0,100% calc(100% - 46px),calc(100% - 39px) 100%,0 100%)}
+.corner-cut-tl{clip-path:polygon(39px 0,100% 0,100% 100%,0 100%,0 46px)}
+
+/* an image panel that leans with the mark */
+.lean{overflow:hidden;clip-path:polygon(var(--lean) 0,100% 0,calc(100% - var(--lean)) 100%,0 100%)}
+.lean img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* a plinth for a cut-out object to stand on */
+.plinth{position:absolute;left:0;right:0;bottom:0;height:128px;background:rgba(255,255,255,.06);
+  clip-path:polygon(0 100%,107px 0,100% 0,calc(100% - 107px) 100%)}
 
 /* ---------- 9d. EDITORIAL DEVICES --------------------------------------
    What made the book feel templated was not the colour — it was that every
@@ -686,7 +716,14 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
     <div class="canvas">
       <div class="bg"><img src="assets/img/cover-bg.jpg" alt="Altigo elevator shaft, looking up"></div>
       <div class="wash"></div>
-      <div class="ground"><span class="bloom"></span></div>
+
+      <!-- the page is split by the mark's own slash: colour field left, photograph right -->
+      <div class="cut" style="clip-path:polygon(0 0,1546px 0,640px 1080px,0 1080px);background:
+        radial-gradient(1100px 700px at 18% 8%,#1D52E8 0%,transparent 58%),
+        linear-gradient(158deg,#062468 0%,#010A28 100%)"></div>
+      <div class="cut" style="clip-path:polygon(1572px 0,1578px 0,672px 1080px,666px 1080px);background:var(--red)"></div>
+      <div class="cut" style="clip-path:polygon(1590px 0,1600px 0,694px 1080px,684px 1080px);background:#1B57E8"></div>
+
       <img class="logo" src="assets/img/logo-white.png" alt="ALTIGO">
       <div class="yr">2026</div>
 
@@ -694,12 +731,14 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
       <h1>PRODUCT<br>CATALOGUE</h1>
       <div class="prod">Passenger Elevator</div>
 
-      <dl class="meta">
-        <div><dt>Company</dt><dd>ALTIGO SDN. BHD.<br>REG. 562238-H</dd></div>
-        <div><dt>Contact</dt><dd>+604-283 7005<br>+604-283 6772</dd></div>
-        <div><dt>Digital</dt><dd>WWW.AKKALLIANCE.COM<br>ALTIGOELEVATOR@GMAIL.COM</dd></div>
-      </dl>
-      <div class="corner"><i class="b"></i><i class="r"></i></div>
+      <!-- the contact block sits on its own footing so it is never squeezed by the cut -->
+      <div class="coverbar">
+        <dl class="meta">
+          <div><dt>Company</dt><dd>ALTIGO SDN. BHD.<br>REG. 562238-H</dd></div>
+          <div><dt>Contact</dt><dd>+604-283 7005<br>+604-283 6772</dd></div>
+          <div><dt>Digital</dt><dd>WWW.AKKALLIANCE.COM<br>ALTIGOELEVATOR@GMAIL.COM</dd></div>
+        </dl>
+      </div>
     </div>
     <div class="printfoot"><span>Altigo Sdn. Bhd. · Passenger Elevator · Product Catalogue</span><b>2026</b></div>
   </section>
@@ -744,7 +783,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
 
       <p class="kicker" style="position:absolute;left:88px;top:78px">THE COMPANY</p>
       <h2 class="h-mega" style="position:absolute;left:88px;top:124px;width:900px">
-        Company<br><em>introduction</em></h2>
+        Company<br>introduction</h2>
 
       <p class="lead" style="position:absolute;left:88px;top:352px;font-size:26px">Your journey, your way.</p>
 
@@ -1094,12 +1133,15 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide deep" data-title="Sightseeing Elevator Series" data-sub="Panoramic" data-folio="09">
     <div class="canvas">
       <div class="ground deep"><span class="bloom"></span></div>
+      <div class="cut" style="clip-path:polygon(150px 1080px,1056px 0,1900px 0,994px 1080px);
+                  background:linear-gradient(200deg,rgba(150,190,255,.13) 0%,rgba(120,175,255,.02) 70%)"></div>
+      <div class="cut" style="clip-path:polygon(1930px 0,1940px 0,1034px 1080px,1024px 1080px);background:rgba(255,255,255,.16)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">PANORAMIC · GLASS</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;color:#fff">
         Sightseeing <em>elevator</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:#FF8E7A">· PANORAMIC GLASS SERIES</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:#FF8E7A"><span class="tick"></span>PANORAMIC GLASS SERIES</p>
       <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <div style="position:absolute;left:88px;right:88px;top:272px;bottom:112px;
@@ -1120,7 +1162,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         </div>
 
         <div class="pano-item">
-          <div class="obj"><img src="assets/img/pano-2.jpg" alt="TIGO01-XT-01"></div>
+          <div class="obj"><img class="corner-cut" src="assets/img/pano-2.jpg" alt="TIGO01-XT-01"></div>
           <div class="cabin-spec">
             <div class="id"><span class="code">TIGO01-XT-01</span><span class="n">02</span></div>
             <div class="speclist">
@@ -1353,11 +1395,13 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <section class="slide tint" data-title="Freight Elevator Series" data-sub="Goods handling" data-folio="13">
     <div class="canvas">
       <div class="ground tint"></div>
+      <div class="cut" style="clip-path:polygon(300px 834px,999px 0,1760px 0,1061px 834px);
+                  background:rgba(2,66,202,.055)"></div>
 
       <p class="kicker" style="position:absolute;left:88px;top:70px">CARRYING THE MISSION OF TRANSPORTATION</p>
       <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Freight <em>elevator</em></h2>
-      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
-                letter-spacing:.26em;color:var(--red)">· GOODS HANDLING SERIES</p>
+      <p class="tickline" style="position:absolute;left:88px;top:190px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)"><span class="tick"></span>GOODS HANDLING SERIES</p>
       <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
       <p class="p" style="position:absolute;left:88px;top:262px;width:1200px;font-size:18px">
@@ -1368,7 +1412,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
 
         <article class="stack">
           <div class="seclabel"><b>Car design · TIGO01-H251-1</b><i></i></div>
-          <figure style="flex:1;min-height:0;background:#fff;display:flex;align-items:center;
+          <figure class="corner-cut" style="flex:1;min-height:0;background:#fff;display:flex;align-items:center;
                          justify-content:center;padding:14px;overflow:hidden">
             <img src="assets/img/freight-cabin.png" alt="TIGO01-H251-1 freight car" style="max-height:100%;width:auto">
           </figure>
@@ -1382,7 +1426,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <section class="stack">
           <div class="seclabel"><b>All-in-one control box</b><i></i></div>
           <div style="display:grid;grid-template-columns:264px 264px;gap:32px;flex:1;min-height:0">
-            <figure class="fill" style="background:#fff"><img src="assets/img/freight-panel-1.png" alt="All-in-one control panel"></figure>
+            <figure class="fill corner-cut" style="background:#fff"><img src="assets/img/freight-panel-1.png" alt="All-in-one control panel"></figure>
             <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;min-height:0">
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-disp-1.png" alt="Segment display"></div><span>Display</span></div>
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-btn-1.png" alt="Round button"></div><span>Button</span></div>
@@ -1393,7 +1437,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <section class="stack">
           <div class="seclabel"><b>Split panel</b><i></i></div>
           <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;flex:1;min-height:0">
-            <figure class="fill" style="background:#fff"><img src="assets/img/freight-panel-2.png" alt="Split operation panel"></figure>
+            <figure class="fill corner-cut" style="background:#fff"><img src="assets/img/freight-panel-2.png" alt="Split operation panel"></figure>
             <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-disp-2.jpg" alt="Blue display"></div><span>Display</span></div>
           </div>
         </section>
@@ -1401,7 +1445,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         <section class="stack">
           <div class="seclabel"><b>Interior &amp; optional floor</b><i></i></div>
           <div style="display:grid;grid-template-rows:1fr 172px;gap:24px;flex:1;min-height:0">
-            <figure style="overflow:hidden"><img src="assets/img/freight-interior.jpg" alt="Freight car interior" style="width:100%;height:100%;object-fit:cover"></figure>
+            <figure class="corner-cut" style="overflow:hidden"><img src="assets/img/freight-interior.jpg" alt="Freight car interior" style="width:100%;height:100%;object-fit:cover"></figure>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:0">
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-plate-1.png" alt="Checkered plate 1"></div><span>Checkered plate 1</span></div>
               <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-plate-2.png" alt="Checkered plate 2"></div><span>Checkered plate 2</span></div>
@@ -1410,7 +1454,9 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
         </section>
       </div>
 
-      <div class="band dark" style="position:absolute;left:0;right:0;bottom:0;height:246px;padding:34px 88px 0">
+      <div class="band dark" style="position:absolute;left:0;right:0;bottom:0;height:246px;padding:34px 88px 0;overflow:hidden">
+        <div class="corner" style="width:250px;height:246px"><i class="b"></i><i class="r"></i></div>
+        <div style="position:relative">
         <div class="seclabel" style="margin-right:56px"><b>Landing door colour — optional</b><i></i></div>
         <div class="swatches">
           <div class="swatch"><b style="background:#BCB9B5"></b><span>Shallow Gray</span><i>S501</i></div>
@@ -1419,6 +1465,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           <div class="swatch"><b style="background:#7DBA9D"></b><span>Light Green</span><i>S504</i></div>
           <div class="swatch"><b style="background:#006DB8"></b><span>Blue</span><i>S505</i></div>
           <div class="swatch"><b style="background:#28282A"></b><span>Matte Black</span><i>S506</i></div>
+        </div>
         </div>
       </div>
 

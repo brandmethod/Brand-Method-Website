@@ -234,7 +234,7 @@ within a couple of pixels. Coordinates are from the top-left of the page.
 |---|---|---|
 | Side margin | 88 px, both sides | — |
 | Gutter | 32 px; two columns of 856 px | — |
-| Logo | `x 88, y 72`, 262 × 55 on the cover, 250 × 53 elsewhere | — |
+| Logo | `x 88, y 72`, 250 × 52 | — |
 | Kicker | `x 88, y 71` | Ardela Edge X01 ExtraBold 16, red, letterspaced |
 | Page title | `x 88, y 108`, second line at 155 | Axiforma SemiBold 44, blue |
 | Red rule | `x 88, y 179`, 96 × 3 | — |
@@ -253,14 +253,26 @@ interior page: the diagonal red-and-blue corner stripe, the grid texture (which
 the dark pages also carry), and display type above 44 px. Interior pages carry no footer and no page number — the
 contents page is the only place page numbers appear.
 
-**The cover.** Year at `y 75` right-aligned; eyebrow at `y 341`; the title at
-`y 387` in Ardela 172 with a 151 px line pitch; the product line at `y 781` in
-Axiforma SemiBold 30; a three-column footer at `y 901` on 444 px centres, labels
-at 11 and values at 15 with a 23 px pitch.
+**The cover.** Rebuilt to the 2026 art direction. The photograph is no longer
+full bleed: it is cut to a wedge on the right, the diagonal running from
+`(1698, 0)` down to `(962, 880)`, with a 4 px red rule on the cut and a 9 px
+blue rule just inside it. Below `y 880` a solid `#01102F` band runs the full
+width and carries the three-column contact block — labels at `y 1000`, values
+at `y 1023` and `y 1046`. The ground is a navy gradient with a `#1340B5` glow
+off the top-left corner. Type: logo at `y 72`, year right-aligned, eyebrow at
+`y 300`, the title in Ardela 148 on a 136 px pitch with its caps landing at
+`y 400` and `y 536`, and the product line at `y 694` in Axiforma Bold 31.
 
-**The closing page.** Head at `y 171` in Axiforma SemiBold 76; red rule at
-`y 282`, 96 × 4; a two-column field grid at `x 88` and `x 680` starting at
-`y 399`, labels at 12 and values at 23; the running line and the year at `y 987`.
+**The closing page.** Kicker `GET IN TOUCH` in coral `#FF8E79`, then the head at
+98 px with `CONTACT` in white and `US` in the same coral — caps at `y 256`. No
+red rule. A two-column field grid at `x 88` and `x 680`, values landing at
+`y 513`, `y 644` and `y 754`/`y 789`. A `#1345CF` wedge fills the bottom-right
+corner, cut on the same diagonal as the cover and carrying the same blue and red
+rules. Year top-right; running line bottom-left at `y 996`.
+
+Both covers were matched to the supplied artwork by measuring ink positions off
+the reference rasters and diffing them against the rendered page, so every row
+lands within a pixel or two rather than by eye.
 
 **The contents page.** Two 856 px columns, one rule above each row on a 99 px
 pitch starting at `y 212`. Item number at the column edge in red, title 76 px in

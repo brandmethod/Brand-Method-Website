@@ -52,7 +52,7 @@
   --gut:32px;             /* column gutter */
   --r:0;                  /* sharp corners throughout — no rounding */
   --r-s:0;
-  --nav-accent:#2B62E8;   /* deck-nav accent — the brand blue, lifted for dark chrome */
+  --nav-accent:#2B62E8; --coral:#FF8E79;   /* deck-nav accent — the brand blue, lifted for dark chrome */
   --k:1;                  /* stage scale */
 }
 
@@ -260,11 +260,11 @@ img{display:block;max-width:100%}
 /* running footer — the same device on every page, set by the closing page */
 /* only the closing page carries a footer; interior pages have none */
 .foot{display:none}
-.slide[data-bg="contact"] .foot{position:absolute;left:var(--m);right:var(--m);top:987px;bottom:auto;
+.slide[data-bg="contact"] .foot{position:absolute;left:var(--m);right:var(--m);top:993px;bottom:auto;
   display:flex;justify-content:space-between;align-items:baseline}
 .foot span{font-family:var(--f-label);font-size:14px;font-weight:500;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted)}
-.slide[data-bg="contact"] .foot span{color:rgba(255,255,255,.62)}
+.slide[data-bg="contact"] .foot span{color:rgba(255,255,255,.8)}
 .foot b{font-family:var(--f-head);font-size:18px;font-weight:600;letter-spacing:.2em;
   color:#fff;font-variant-numeric:tabular-nums}
 
@@ -328,24 +328,30 @@ img{display:block;max-width:100%}
 .blue-bg{background:
   radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),
   linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)}
+.slide[data-bg="cover"] .stage{background:radial-gradient(ellipse 74% 44% at 20% -4%, #1440B8 0%, rgba(20,64,184,0) 66%),linear-gradient(180deg,#072256 0%,#04174A 46%,#01102F 100%)}
 
 /* ── 01 Cover ──────────────────────────────────────────────────────── */
-.cover-fig{position:absolute;inset:0;overflow:hidden}
-.cover-fig img{width:100%;height:100%;object-fit:cover;object-position:center 44%;
-  opacity:.74;mix-blend-mode:screen}
+/* The photograph is not full bleed. It is cut to a wedge on the right, the
+   diagonal running from (1698,0) down to (962,880) where the footer band
+   starts, with a red rule on the cut and a blue rule just inside it.       */
+.cover-fig{position:absolute;inset:0;overflow:hidden;
+  clip-path:polygon(88.65% 0, 100% 0, 100% 81.48%, 50.31% 81.48%)}
+.cover-fig img{position:absolute;top:0;left:23%;width:100%;height:100%;object-fit:cover;
+  opacity:.86;mix-blend-mode:screen}
 .cover-fig::after{content:'';position:absolute;inset:0;background:
-  linear-gradient(100deg,rgba(4,20,72,.9) 0%,rgba(4,20,72,.42) 46%,rgba(4,20,72,.06) 100%),
-  linear-gradient(180deg,transparent 52%,rgba(4,18,64,.8) 100%)}
-.cover-mark{position:absolute;left:var(--m);top:72px;width:262px;height:55px}
+  linear-gradient(118deg,rgba(4,20,72,.86) 0%,rgba(4,20,72,.36) 40%,rgba(4,20,72,.1) 100%)}
+.cover-rules{position:absolute;inset:0;pointer-events:none}
+.cover-band{position:absolute;left:0;right:0;top:880px;bottom:0;background:#01102F}
+.cover-mark{position:absolute;left:var(--m);top:69px;width:250px;height:52px}
 .cover-year{position:absolute;right:var(--m);top:75px;font-family:var(--f-head);font-size:18px;
   font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.72)}
-.cover-eyebrow{position:absolute;left:var(--m);top:341px;font-family:var(--f-label);font-size:17px;
-  font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.84)}
-.cover-h1{position:absolute;left:var(--m);top:417px;font-family:var(--f-display);
-  font-size:172px;font-weight:800;line-height:.878;letter-spacing:-.03em;color:#fff}
-.cover-sub{position:absolute;left:var(--m);top:781px}
-.cover-sub span{font-family:var(--f-head);font-size:30px;font-weight:600;letter-spacing:.1em;color:#fff}
-.cover-foot{position:absolute;left:var(--m);top:901px;width:1332px;display:grid;
+.cover-eyebrow{position:absolute;left:var(--m);top:294px;font-family:var(--f-label);font-size:17px;
+  font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.86)}
+.cover-h1{position:absolute;left:var(--m);top:385px;font-family:var(--f-display);
+  font-size:148px;font-weight:800;line-height:.919;letter-spacing:-.03em;color:#fff}
+.cover-sub{position:absolute;left:var(--m);top:684px}
+.cover-sub span{font-family:var(--f-head);font-size:31px;font-weight:700;letter-spacing:.09em;color:#fff}
+.cover-foot{position:absolute;left:var(--m);top:972px;width:1332px;display:grid;
   grid-template-columns:repeat(3,1fr);gap:0}
 .cover-foot dt{font-family:var(--f-label);font-size:11px;font-weight:500;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.52);margin-bottom:9px}
@@ -670,16 +676,20 @@ img{display:block;max-width:100%}
   color:rgba(255,255,255,.66)}
 
 /* ── 11 Contact ────────────────────────────────────────────────────── */
-.contact{background:
-  radial-gradient(ellipse 58% 62% at 8% 94%, rgba(90,150,255,.5), transparent 62%),
-  linear-gradient(178deg,#032B7C 0%,#023CB2 58%,#012E86 100%)}
-.c-mark{position:absolute;left:var(--m);top:72px;width:250px;height:53px}
-.c-h1{position:absolute;left:var(--m);top:180px;font-family:var(--f-head);
-  font-size:76px;font-weight:600;letter-spacing:-.014em;color:#fff;line-height:1}
-.c-rule{position:absolute;left:var(--m);top:282px;width:96px;height:4px;
-  background:var(--red)}
-.c-grid{position:absolute;left:var(--m);right:var(--m);top:399px;
-  display:grid;grid-template-columns:560px 1fr;gap:55px var(--gut)}
+.contact{background:radial-gradient(ellipse 52% 46% at 96% 6%, #2A55C0 0%, rgba(42,85,192,0) 64%),radial-gradient(ellipse 44% 40% at 2% 88%, #0B2E96 0%, rgba(11,46,150,0) 66%),linear-gradient(168deg,#062264 0%,#04194D 54%,#021440 100%)}
+/* the closing page carries a bright wedge out of the bottom-right corner,
+   the red and blue rules running along its cut                            */
+.c-wedge{position:absolute;inset:0;pointer-events:none}
+.c-mark{position:absolute;left:var(--m);top:80px;width:250px;height:50px}
+.c-year{position:absolute;right:var(--m);top:96px;font-family:var(--f-head);font-size:18px;
+  font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.72)}
+.c-kick{position:absolute;left:var(--m);top:221px;font-family:var(--f-display);font-size:16px;
+  font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--coral)}
+.c-h1{position:absolute;left:var(--m);top:241px;font-family:var(--f-head);
+  font-size:98px;font-weight:700;letter-spacing:-.018em;color:#fff;line-height:1}
+.c-h1 em{font-style:normal;color:var(--coral)}
+.c-grid{position:absolute;left:var(--m);right:var(--m);top:483px;
+  display:grid;grid-template-columns:560px 1fr;gap:48px var(--gut)}
 .c-grid > div{padding-top:0}
 .c-grid dt{font-family:var(--f-label);font-size:12px;font-weight:500;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.56);margin-bottom:7px}
@@ -687,7 +697,7 @@ img{display:block;max-width:100%}
   text-transform:uppercase;letter-spacing:.01em}
 .c-grid dd small{display:block;font-family:var(--f-label);font-size:14px;font-weight:400;
   letter-spacing:.12em;color:rgba(255,255,255,.6);margin-top:5px}
-.c-grid .wide{grid-column:1 / -1}
+.c-grid .wide{grid-column:1 / -1;margin-top:5px}
 
 /* ══ PRINT · A4 landscape ══════════════════════════════════════════════
    1920px × 0.584646 = 1122.5px = 297mm. One slide per page, centred;
@@ -716,16 +726,12 @@ img{display:block;max-width:100%}
      or Standard prints the deep-dive pages anyway */
   .app .slide.ed-off{display:none!important}
   .slide:last-child{page-break-after:auto;break-after:auto}
-  .slide[data-bg="cover"]{background-image:
-    radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),
-    linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)!important}
+  .slide[data-bg="cover"]{background-image:radial-gradient(ellipse 74% 44% at 20% -4%, #1440B8 0%, rgba(20,64,184,0) 66%),linear-gradient(180deg,#072256 0%,#04174A 46%,#01102F 100%)!important}
   .slide[data-bg="tech"],
   .slide[data-bg="range"]{background-image:
     radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),
     linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)!important}
-  .slide[data-bg="contact"]{background-image:
-    radial-gradient(ellipse 58% 62% at 8% 94%, rgba(90,150,255,.5), transparent 62%),
-    linear-gradient(178deg,#032B7C 0%,#023CB2 58%,#012E86 100%)!important}
+  .slide[data-bg="contact"]{background-image:radial-gradient(ellipse 52% 46% at 96% 6%, #2A55C0 0%, rgba(42,85,192,0) 64%),radial-gradient(ellipse 44% 40% at 2% 88%, #0B2E96 0%, rgba(11,46,150,0) 66%),linear-gradient(168deg,#062264 0%,#04194D 54%,#021440 100%)!important}
   .slide[data-bg] .stage{background:none!important}
   /* relative, not static — the stage stays the containing block for the chrome */
   .stage{position:relative!important;zoom:.584646!important;margin:0!important;flex:0 0 auto}
@@ -784,6 +790,11 @@ img{display:block;max-width:100%}
     <div class="stage dark blue-bg">
       <div class="gridlines"></div>
       <figure class="cover-fig"><img src="{{ASSET:cover-photo.jpeg}}" alt="Altigo escalator, glazed tunnel installation"></figure>
+      <svg class="cover-rules" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="1702" y1="0" x2="966" y2="880" stroke="#F61800" stroke-width="4"/>
+        <line x1="1721" y1="0" x2="985" y2="880" stroke="#2E6BFF" stroke-width="9"/>
+      </svg>
+      <div class="cover-band"></div>
       <div class="cover-mark logo w" role="img" aria-label="Altigo"></div>
       <div class="cover-year">2026</div>
       <div class="cover-eyebrow">Altigo · Vertical Mobility</div>
@@ -794,7 +805,6 @@ img{display:block;max-width:100%}
         <div><dt>Contact</dt><dd>+604-283 7005<br>+604-283 6772</dd></div>
         <div><dt>Digital</dt><dd>www.akkalliance.com<br>altigoelevator@gmail.com</dd></div>
       </dl>
-      <div class="corner"></div>
     </div>
   </section>
 
@@ -1503,9 +1513,15 @@ img{display:block;max-width:100%}
   <section class="slide" data-name="Contact" data-bg="contact">
     <div class="stage dark contact">
       <div class="gridlines"></div>
+      <svg class="c-wedge" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
+        <polygon points="2086,0 2400,0 2400,1080 1162,1080" fill="#1345CF"/>
+        <line x1="2060" y1="0" x2="1136" y2="1080" stroke="#2E6BFF" stroke-width="8"/>
+        <line x1="2080" y1="0" x2="1156" y2="1080" stroke="#F61800" stroke-width="4"/>
+      </svg>
       <div class="c-mark logo w" role="img" aria-label="Altigo"></div>
-      <h2 class="c-h1">CONTACT US</h2>
-      <div class="c-rule"></div>
+      <div class="c-year">2026</div>
+      <div class="c-kick">Get in touch</div>
+      <h2 class="c-h1">CONTACT <em>US</em></h2>
       <dl class="c-grid">
         <div><dt>Company</dt><dd>Altigo Sdn. Bhd.<small>REG. 562238-H</small></dd></div>
         <div><dt>Website</dt><dd>www.akkalliance.com</dd></div>
@@ -1513,8 +1529,7 @@ img{display:block;max-width:100%}
         <div><dt>Phone</dt><dd>+604-283 7005 / +604-283 6772</dd></div>
         <div class="wide"><dt>Address</dt><dd>No. 54-3-3, Wisma Sri Mata,<br>Jalan Van Praagh, 11600 Penang, Malaysia</dd></div>
       </dl>
-      <div class="foot"><span>Altigo · Product Catalogue · Malaysia 2026</span><b>2026</b></div>
-      <div class="corner"></div>
+      <div class="foot"><span>Altigo · Product Catalogue · Malaysia 2026</span></div>
     </div>
   </section>
 
@@ -1825,13 +1840,11 @@ img{display:block;max-width:100%}
       '.app .slide.ed-off{display:none!important}'+
       '.stage{zoom:1!important;position:relative!important;margin:0!important}'+
       '.slide[data-bg]{background:none!important}'+
-      '.slide[data-bg="cover"] .stage,.slide[data-bg="range"] .stage,'+
-        '.slide[data-bg="tech"] .stage{background:'+
+      '.slide[data-bg="range"] .stage,.slide[data-bg="tech"] .stage{background:'+
         'radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),'+
         'linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)!important}'+
-      '.slide[data-bg="contact"] .stage{background:'+
-        'radial-gradient(ellipse 58% 62% at 8% 94%, rgba(90,150,255,.5), transparent 62%),'+
-        'linear-gradient(178deg,#032B7C 0%,#023CB2 58%,#012E86 100%)!important}'+
+      '.slide[data-bg="cover"] .stage{background:radial-gradient(ellipse 74% 44% at 20% -4%, #1440B8 0%, rgba(20,64,184,0) 66%),linear-gradient(180deg,#072256 0%,#04174A 46%,#01102F 100%)!important}'+
+      '.slide[data-bg="contact"] .stage{background:radial-gradient(ellipse 52% 46% at 96% 6%, #2A55C0 0%, rgba(42,85,192,0) 64%),radial-gradient(ellipse 44% 40% at 2% 88%, #0B2E96 0%, rgba(11,46,150,0) 66%),linear-gradient(168deg,#062264 0%,#04194D 54%,#021440 100%)!important}'+
       '}';
     document.head.appendChild(st);
   }

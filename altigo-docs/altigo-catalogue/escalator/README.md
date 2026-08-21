@@ -16,6 +16,7 @@ standard* below.
 | `index.html` | **The deliverable.** Single self-contained file — images and fonts inlined. Works offline, from `file://`, or hosted. |
 | `catalogue.template.html` | Source. Same file with `{{ASSET:name}}` tokens instead of base64 blobs. **Edit this one.** |
 | `build.py` | Inlines `assets/` + `fonts/` into `index.html`. |
+| `tools_duotone.py` | Bakes the duotone bands in `assets/` from the installation photography. |
 | `assets/` | Photography, logo and the safety diagram, extracted from the 2026 print PDF and optimised. |
 | `fonts/` | Self-hosted Latin `woff2` subsets, so the catalogue renders identically without a network connection. |
 | `pdf/` | Exports: A4 landscape and native 1920 × 1080, each in a Full and a Standard edition. |
@@ -103,10 +104,53 @@ everything else — page titles, body, figures and captions. Both are named firs
 in the font stacks, so a machine with the licensed brand fonts installed uses
 them; everyone else gets Outfit, which is metrically close.
 
-**Sharp corners, everywhere.** Nothing in the deck is rounded. Every photograph,
-panel, drawing, tag, badge, swatch, rule and button is a square corner; the
-radius tokens `--r` and `--r-s` are both `0` and there is no `border-radius`
-left with a non-zero value. Nothing is italic or script either; `i`, `em`,
+**The duotone band.** The book's one colour device, and the answer to pages
+that were white type on white. Real Altigo installation photography is stretched
+to the full luminance range and mapped through a single ramp — near-black navy in
+the shadows, brand blue through the midtones, a light blue in the highlights —
+then run to the page edges. A scrim at the foot of the band carries the caption,
+and the header's red rule is repeated on the band's top edge so it reads as part
+of the page rather than a pasted-on picture.
+
+The ramp is baked into the asset by `tools_duotone.py` rather than applied as a
+CSS filter or blend mode, so a band is identical on screen and in both PDF
+exports and stays sharp when Chrome rasterises the page. Each band tiles a
+different set of photographs, in a different order, cropped to a different part
+of the frame, so no two read as the same picture. Tile widths are kept at or
+below the source width — the installation photographs are 449 px wide, so a band
+is four or five tiles, never two or three. To change one, edit the call in
+`tools_duotone.py`, re-run it, then re-run `build.py`.
+
+**Colour on every page.** No page is white type on a white ground:
+
+| Page | What carries the colour |
+|---|---|
+| 01 Cover | Full-bleed photograph under the brand gradient |
+| 02 Contents | Duotone band across the foot |
+| 03 Company Introduction | The photograph bleeds off the right and bottom edges |
+| 04 Intelligent Control | Dark page — brand gradient and grid texture |
+| 05 Technical Advantages | Duotone band across the foot |
+| 06 Four Platforms | Dark page |
+| 07 Standard & Optional Parts | Duotone band across the foot |
+| 08 Safety Guarantee | The eight details run edge to edge as two continuous bands |
+| 09 Safety & Detection Devices | Duotone truss, bled off the right and bottom edges |
+| 10 Planning & Civil | Dark page with a duotone half bled to three edges |
+| 11 Logical Positioning | The five layouts run edge to edge as one filmstrip to the page foot |
+| 12 Construction Parameters | Duotone band across the foot |
+| 13 Contact | Dark page |
+
+Six pages are dark or half-dark, and no more than two light pages run together.
+Where photographs butt against each other — the layout strip on page 11, the
+detail bands on page 08 — the gutter is dropped to zero and the column padding is
+carried on the text instead, so the row reads as a single band of image rather
+than as separate framed pictures.
+
+**Sharp corners, everywhere.** Nothing in the book is rounded. Every photograph,
+panel, drawing, label, badge, swatch and rule is a square corner; the radius
+tokens `--r` and `--r-s` are both `0`, and the icons' `rect` elements carry no
+`rx`. The only rounded thing in the file is the floating navigation pill, which
+is screen chrome rather than part of the catalogue and follows the supplied
+deck-nav component. Nothing is italic or script either; `i`, `em`,
 `cite` and `address` are all reset to `font-style: normal`. The only curves in
 the document belong to the Altigo mark itself and to the objects the technical
 drawings depict — the handrail section and the controller icon.
@@ -151,10 +195,10 @@ footer nor a page number; the body simply runs to `y 984`. The closing page is
 the exception — the catalogue line on the left, the year on the right, at
 `y 987`.
 
-**Rhythm and scale.** Thirteen pages, dark on 01, 06, 10 and 13 — roughly one
-dark page every four, so the deck never runs more than four white pages together.
-Page 10 is a chapter divider that opens the planning and civil half; it carries
-the part title, the three governing civil figures and a contents list.
+**Rhythm and scale.** Thirteen pages, dark on 01, 04, 06, 10 and 13. Page 10 is
+a chapter divider that opens the planning and civil half; it carries the part
+title, the three governing civil figures, a contents list, and a duotone
+photograph filling its right half.
 
 Scale contrast is carried by the two dark display pages, where the house
 standard allows it: the cover title at 172 px over a full-bleed photograph and
@@ -202,9 +246,9 @@ within a couple of pixels. Coordinates are from the top-left of the page.
 | Caption | 14 | Axiforma Regular |
 | Figure | 21 | Axiforma SemiBold |
 
-Three things are cover-only, and are deliberately absent from every interior
-page: the diagonal red-and-blue corner stripe, the grid texture, and display
-type above 44 px. Interior pages carry no footer and no page number — the
+Three things are cover-only, and are deliberately absent from every light
+interior page: the diagonal red-and-blue corner stripe, the grid texture (which
+the dark pages also carry), and display type above 44 px. Interior pages carry no footer and no page number — the
 contents page is the only place page numbers appear.
 
 **The cover.** Year at `y 75` right-aligned; eyebrow at `y 341`; the title at

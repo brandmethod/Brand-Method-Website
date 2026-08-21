@@ -268,6 +268,30 @@ img{display:block;max-width:100%}
 .foot b{font-family:var(--f-head);font-size:18px;font-weight:600;letter-spacing:.2em;
   color:#fff;font-variant-numeric:tabular-nums}
 
+/* ── the duotone band ──────────────────────────────────────────────────
+   The book's one colour device. Real Altigo installation photography, mapped
+   through a single navy→blue→light-blue ramp and run to the page edges, so a
+   page that would otherwise be white type on white carries a block of brand
+   colour. The ramp is baked into the asset (see tools_duotone.py), so a band
+   prints exactly as it appears on screen. A scrim at the foot of the band
+   carries the caption, and the header's red rule is repeated on its top edge
+   so the band reads as part of the page rather than a pasted-on picture.     */
+.duo{position:absolute;left:0;right:0;bottom:0;background-repeat:no-repeat;
+  background-size:cover;background-position:center;overflow:hidden}
+.duo::before{content:'';position:absolute;inset:0;background:
+  linear-gradient(var(--red),var(--red)) var(--m) 0/96px 4px no-repeat,
+  linear-gradient(180deg,transparent 28%,rgba(3,12,38,.88) 100%)}
+.duo b{position:absolute;left:var(--m);bottom:32px;font-family:var(--f-display);
+  font-size:13px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.94)}
+.duo i{position:absolute;right:var(--m);bottom:32px;font-family:var(--f-label);
+  font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.74);font-style:normal}
+.duo-a{height:268px;background-image:url({{ASSET:duo-band-a.jpg}})}
+.duo-b{height:300px;background-image:url({{ASSET:duo-band-b.jpg}})}
+.duo-c{height:268px;background-image:url({{ASSET:duo-band-c.jpg}})}
+.duo-d{height:244px;background-image:url({{ASSET:duo-band-d.jpg}})}
+
 /* the two brand devices carried over from the 2026 print edition */
 .corner{position:absolute;right:0;bottom:0;width:214px;height:214px;pointer-events:none;
   background:linear-gradient(135deg,
@@ -301,9 +325,22 @@ img{display:block;max-width:100%}
 .stage.dark .lead b{color:#fff}
 .stage.dark .lab{color:rgba(255,255,255,.6)}
 .stage.dark .lab.red{color:#FF6A55}
+.stage.dark .kicker{color:#FF6A55}
 .stage.dark .foot{border-top-color:rgba(255,255,255,.26)}
 .stage.dark .foot span{color:rgba(255,255,255,.7)}
 .stage.dark .foot b{color:#fff}
+.stage.dark .fcol{border-top-color:rgba(255,255,255,.52)}
+.stage.dark .fcol .icon{border-color:rgba(255,255,255,.3)}
+.stage.dark .fcol .icon svg{stroke:#fff}
+.stage.dark .fcol h3{color:#fff}
+.stage.dark .fcol p{color:rgba(255,255,255,.74)}
+.stage.dark .idx{color:rgba(255,255,255,.48)}
+.stage.dark .tag{color:rgba(255,255,255,.86)}
+.stage.dark .band{border-top-color:rgba(255,255,255,.52)}
+.stage.dark .stats b{color:#fff}
+.stage.dark .stats span{color:rgba(255,255,255,.72)}
+.stage.dark .flow h5{color:#fff}
+.stage.dark .flow p{color:rgba(255,255,255,.72)}
 .gridlines{position:absolute;inset:0;pointer-events:none;background-image:
   repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 80px),
   repeating-linear-gradient(0deg,  rgba(255,255,255,.05) 0 1px, transparent 1px 80px)}
@@ -353,19 +390,21 @@ img{display:block;max-width:100%}
 
 /* ── 03 Company introduction ───────────────────────────────────────── */
 /* two 856 columns: copy left, a contained photograph right with a caption tab */
-.intro{display:grid;grid-template-columns:1fr 856px;gap:var(--gut)}
 .intro-txt{display:flex;flex-direction:column}
-.intro-h{font-family:var(--f-head);font-size:22px;font-weight:700;color:var(--ink);
-  line-height:1.35;margin-bottom:26px}
+.intro-h{font-family:var(--f-head);font-size:30px;font-weight:700;color:var(--ink);
+  line-height:1.3;margin-bottom:32px}
 .intro-h b{color:var(--blue);font-weight:800}
-.intro-body{columns:2;column-gap:var(--gut);column-fill:balance}
-.intro-body p{font-size:19px;line-height:1.62;margin-bottom:18px}
+.intro-body{columns:1}
+.intro-body p{font-size:19px;line-height:1.76;margin-bottom:26px}
 .intro-body p b{color:var(--blue);font-weight:600}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);margin-top:auto}
 .pillar{padding-top:22px;border-top:2px solid var(--blue)}
 .pillar h4{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);margin:0 0 10px}
 .pillar p{font-size:16px;line-height:1.5;color:var(--body)}
-.intro-fig{position:relative;height:564px;overflow:hidden}
+/* the photograph is not in the text column — it runs off the right and bottom
+   page edges, so the page carries a full-height block of image instead of a
+   contained picture with white around it                                     */
+.intro-fig{position:absolute;right:0;top:212px;bottom:0;width:1040px;overflow:hidden}
 .intro-fig img{width:100%;height:100%;object-fit:cover;object-position:center 44%}
 .fig-tab{position:absolute;left:0;bottom:0;background:var(--blue);color:#fff;
   font-family:var(--f-label);font-size:13px;font-weight:600;letter-spacing:.16em;
@@ -432,14 +471,14 @@ img{display:block;max-width:100%}
   font-family:var(--f-label);font-size:13px;font-weight:700;letter-spacing:.22em;
   text-transform:uppercase;color:var(--muted)}
 .ptable th:first-child{color:var(--blue)}
-.ptable td{padding:32px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:19px}
+.ptable td{padding:19px 0;border-bottom:1px solid var(--rule);vertical-align:baseline;font-size:19px}
 .ptable td + td, .ptable th + th{padding-left:56px}
 .ptable .part{font-family:var(--f-head);font-weight:600;font-size:19px;color:var(--ink);width:28%}
 .ptable .std{width:34%;color:var(--body)}
 .ptable .opt{color:var(--blue);font-weight:600}
 .swatch{display:inline-flex;align-items:center;gap:10px;margin-right:26px;white-space:nowrap}
 .swatch i{width:17px;height:17px;display:block}
-.tnote{margin-top:40px;font-size:16px;line-height:1.5;color:var(--muted);max-width:118ch}
+.tnote{margin-top:30px;font-size:16px;line-height:1.5;color:var(--muted);max-width:118ch}
 .tnote b{color:var(--red);font-family:var(--f-label);font-size:12.5px;font-weight:700;
   letter-spacing:.2em;text-transform:uppercase}
 
@@ -448,17 +487,20 @@ img{display:block;max-width:100%}
 .stop{display:grid;grid-template-columns:1fr 780px;gap:60px;align-items:start}
 .sdiag{display:flex;justify-content:flex-end}
 .sdiag-fig{position:relative;display:inline-block;line-height:0}
-.sdiag-fig img{height:292px;width:auto;display:block}
+.sdiag-fig img{height:250px;width:auto;display:block}
 /* positions lifted from the 2026 print edition, as a fraction of the drawing */
 .callout{position:absolute;transform:translate(-50%,-50%);
   width:21px;height:21px;background:var(--red);color:#fff;
   display:flex;align-items:center;justify-content:center;
   font-family:var(--f-label);font-size:10.5px;font-weight:700;line-height:1;
   box-shadow:0 0 0 2px rgba(255,255,255,.92)}
-.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut);margin-top:auto}
-.sitem{display:flex;flex-direction:column}
-.sitem figure{height:112px;border-radius:var(--r-s);overflow:hidden;background:#F2F4F8;
-  margin-bottom:13px}
+/* the eight details run edge to edge in two continuous bands — the photographs
+   butt against each other with no gutter, as the layout strip on page 11 does  */
+.sgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 0;
+  margin:auto calc(-1 * var(--m)) 0}
+.sitem{display:flex;flex-direction:column;padding:0 22px}
+.sitem figure{height:152px;overflow:hidden;background:#F2F4F8;
+  margin:0 -22px 13px}
 .sitem figure img{width:100%;height:100%;object-fit:cover}
 .sitem .hd{display:flex;align-items:center;gap:11px;margin-bottom:7px}
 .sitem .hd b{width:26px;height:26px;background:var(--red);color:#fff;
@@ -468,28 +510,33 @@ img{display:block;max-width:100%}
 .sitem p{font-size:16px;line-height:1.5;color:var(--body)}
 
 /* ── 08 Devices ────────────────────────────────────────────────────── */
-.devs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);height:100%}
+.devs{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gut);height:100%}
 .dcol{display:flex;flex-direction:column}
 .dhead{display:flex;align-items:baseline;justify-content:space-between;
   padding-bottom:15px;border-bottom:2px solid var(--blue);margin-bottom:4px}
 .dhead h3{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue)}
 .dlist{list-style:none}
-.dlist li{display:flex;align-items:baseline;gap:16px;padding:11px 0;
+.dlist li{display:flex;align-items:baseline;gap:16px;padding:21px 0;
   border-bottom:1px solid var(--rule);font-size:16px;color:var(--body)}
 .dlist li span{font-family:var(--f-label);font-size:12px;font-weight:700;color:var(--blue-pale);
   min-width:18px;letter-spacing:.06em}
 .dlist li em{color:var(--muted);font-size:14px}
 .dnote{margin-top:auto;padding-top:22px;font-size:16px;line-height:1.5;color:var(--muted)}
 .dnote b{color:var(--blue);font-weight:600}
-.dfig{position:relative;height:100%;border-radius:var(--r);overflow:hidden}
+.dfig{position:absolute;right:0;top:212px;bottom:0;width:592px;overflow:hidden;
+  background:#0A2E86}
 .dfig img{width:100%;height:100%;object-fit:cover;object-position:56% center}
 
 /* ── 09 Planning guide ─────────────────────────────────────────────── */
 /* five equal columns cannot sit on a twelve-column grid; they align to the
    outer margins and the centre line instead */
-.lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--gut);height:100%}
-.lcol{display:flex;flex-direction:column}
-.lcol figure{height:352px;border-radius:var(--r-s);overflow:hidden;background:#EDF0F5;
+/* the five arrangements run as one strip, edge to edge and down to the foot of
+   the page — the photographs butt against each other with no gutter, so the row
+   reads as a single band of image rather than five floating pictures         */
+.lgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:0;height:100%;
+  margin:0 calc(-1 * var(--m))}
+.lcol{display:flex;flex-direction:column;padding:0 22px}
+.lcol figure{margin:auto -22px 0;height:596px;overflow:hidden;background:#EDF0F5;
   margin-bottom:18px}
 .lcol figure img{width:100%;height:100%;object-fit:cover}
 .lcol h4{font-family:var(--f-head);font-size:19px;font-weight:600;color:var(--blue);margin:8px 0 10px}
@@ -524,13 +571,22 @@ img{display:block;max-width:100%}
 .cnote + .cnote{margin-top:12px;padding-top:0}
 
 /* ── Chapter divider ───────────────────────────────────────────────── */
-.chap{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--gut);height:100%;align-content:start}
+.chap{display:flex;flex-direction:column;height:100%}
+/* the right half of the divider is a duotone photograph, bled to all three
+   edges, so the chapter opens on a picture rather than on empty gradient */
+.chap-half{position:absolute;right:0;top:0;bottom:0;width:960px;overflow:hidden;
+  background:url({{ASSET:duo-half-rise.jpg}}) center/cover no-repeat}
+.chap-half::before{content:'';position:absolute;inset:0;background:
+  linear-gradient(90deg,rgba(6,26,84,.92) 0%,rgba(6,26,84,.18) 34%,transparent 62%)}
+.chap-half b{position:absolute;left:56px;bottom:44px;font-family:var(--f-display);
+  font-size:13px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;
+  color:rgba(255,255,255,.9)}
 .chap-n{font-family:var(--f-head);font-size:19px;font-weight:700;letter-spacing:.3em;
   color:rgba(255,255,255,.5)}
 .chap h2{font-family:var(--f-head);font-size:76px;font-weight:600;line-height:1.02;
   letter-spacing:-.042em;color:#fff;margin:26px 0 34px}
 .chap .lede{font-size:19px;line-height:1.6;color:rgba(255,255,255,.82);max-width:22ch}
-.chap-toc{align-self:end;padding-top:24px;border-top:1px solid rgba(255,255,255,.3)}
+.chap-toc{margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.3)}
 .chap-toc li{list-style:none;display:flex;gap:22px;align-items:baseline;padding:17px 0;
   border-bottom:1px solid rgba(255,255,255,.16)}
 .chap-toc li b{font-family:var(--f-label);font-size:14px;font-weight:700;
@@ -592,6 +648,7 @@ img{display:block;max-width:100%}
   .slide[data-bg="cover"]{background-image:
     radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),
     linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)!important}
+  .slide[data-bg="tech"],
   .slide[data-bg="range"]{background-image:
     radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),
     linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)!important}
@@ -677,7 +734,7 @@ img{display:block;max-width:100%}
       <h2 class="title">CONTENTS</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content">
+      <div class="content" style="bottom:300px">
         <div class="toc">
           <div class="toc-col">
           <div class="toc-row"><span class="toc-n">01</span><span class="toc-t">Company Introduction</span><span class="toc-k">Who we are</span><span class="toc-p">03</span></div>
@@ -696,6 +753,7 @@ img{display:block;max-width:100%}
           </div>
         </div>
       </div>
+      <div class="duo duo-a"><b>Altigo &middot; Vertical Mobility</b><i>Malaysia 2026</i></div>
     </div>
   </section>
 
@@ -706,9 +764,8 @@ img{display:block;max-width:100%}
       <h2 class="title">COMPANY INTRODUCTION</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content" style="display:flex;flex-direction:column">
-        <div class="intro">
-          <div class="intro-txt">
+      <div class="content" style="display:flex;flex-direction:column;right:1104px">
+        <div class="intro-txt">
             <h3 class="intro-h">Moving people,<br><b>elevating places.</b></h3>
             <div class="intro-body">
             <p>Imagine stepping into a building where every ride is smooth, every moment
@@ -723,9 +780,6 @@ img{display:block;max-width:100%}
                or industrial — we deliver solutions that transform spaces and elevate lives.
                Trust us to move you forward, every day, with ease and confidence.</p>
             </div>
-          </div>
-          <figure class="intro-fig"><img src="{{ASSET:intro-photo.jpg}}" alt="Altigo escalator installation">
-            <span class="fig-tab">Altigo &middot; Vertical Mobility</span></figure>
         </div>
         <div class="pillars">
           <div class="pillar"><h4>Innovation</h4>
@@ -736,17 +790,19 @@ img{display:block;max-width:100%}
             <p>Lower running energy and a longer service life across the range.</p></div>
         </div>
       </div>
-      <div class="foot" style="right:850px"><span>Altigo · Escalator · 2026</span><b>02</b></div>
+      <figure class="intro-fig"><img src="{{ASSET:intro-photo.jpg}}" alt="Altigo escalator installation">
+        <span class="fig-tab">Altigo &middot; Vertical Mobility</span></figure>
     </div>
   </section>
 
   <!-- ══ 03 · INTELLIGENT CONTROL & COMFORT ══════════════════════════ -->
-  <section class="slide" data-name="Intelligent Control">
-    <div class="stage">
+  <section class="slide" data-name="Intelligent Control" data-bg="tech">
+    <div class="stage dark blue-bg">
+      <div class="gridlines"></div>
       <div class="kicker">Technology · Human-Centred</div>
       <h2 class="title">INTELLIGENT CONTROL &amp; COMFORT</h2>
       <div class="rule"></div><div class="hair"></div>
-      <div class="mark logo" role="img" aria-label="Altigo"></div>
+      <div class="mark logo w" role="img" aria-label="Altigo"></div>
       <div class="content">
         <div class="stack">
           <p class="lead" style="margin-bottom:46px">Built around human-centred design and refined
@@ -754,7 +810,7 @@ img{display:block;max-width:100%}
           <div class="cols3">
             <div class="fcol">
               <div class="top"><span class="idx">01</span>
-                <span class="icon"><svg viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11" rx="2.4"/><rect x="9.8" y="9.8" width="4.4" height="4.4" rx="1.4"/><path d="M9.5 3.4v3.1M14.5 3.4v3.1M9.5 17.5v3.1M14.5 17.5v3.1M3.4 9.5h3.1M3.4 14.5h3.1M17.5 9.5h3.1M17.5 14.5h3.1"/></svg></span></div>
+                <span class="icon"><svg viewBox="0 0 24 24"><rect x="6.5" y="6.5" width="11" height="11"/><rect x="9.8" y="9.8" width="4.4" height="4.4"/><path d="M9.5 3.4v3.1M14.5 3.4v3.1M9.5 17.5v3.1M14.5 17.5v3.1M3.4 9.5h3.1M3.4 14.5h3.1M17.5 9.5h3.1M17.5 14.5h3.1"/></svg></span></div>
               <h3>High-performance control system</h3>
               <p>A modular, compact and integrated controller runs more steadily and pushes energy
                  saving to its peak. CPU&nbsp;+&nbsp;DSP redundant architecture with built-in lightning
@@ -772,7 +828,7 @@ img{display:block;max-width:100%}
             </div>
             <div class="fcol">
               <div class="top"><span class="idx">03</span>
-                <span class="icon"><svg viewBox="0 0 24 24"><rect x="2.6" y="4" width="18.8" height="12.4" rx="2.6"/><path d="M8.4 20.4h7.2M12 16.4v4"/><path d="M6.4 12.4l2.6-3 2.4 2.2 2.6-3.6 1.9 2.4"/></svg></span></div>
+                <span class="icon"><svg viewBox="0 0 24 24"><rect x="2.6" y="4" width="18.8" height="12.4"/><path d="M8.4 20.4h7.2M12 16.4v4"/><path d="M6.4 12.4l2.6-3 2.4 2.2 2.6-3.6 1.9 2.4"/></svg></span></div>
               <h3>Convenient remote monitoring</h3>
               <p>An RS485&nbsp;/&nbsp;BAS interface links the escalator to your building management
                  system for real-time fault reporting — convenient for maintenance and ready for
@@ -803,7 +859,7 @@ img{display:block;max-width:100%}
       <h2 class="title">TECHNICAL ADVANTAGES</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content">
+      <div class="content" style="bottom:332px">
         <div class="stack">
           <p class="lead" style="margin-bottom:46px">Environmental protection sits at the centre of
              our engineering: a new <b>integrated converter and micro-computer control board</b>
@@ -846,7 +902,7 @@ img{display:block;max-width:100%}
           </div>
         </div>
       </div>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>04</b></div>
+      <div class="duo duo-b"><b>Drive &middot; Control &middot; Efficiency</b><i>Altigo 2026</i></div>
     </div>
   </section>
 
@@ -948,8 +1004,8 @@ img{display:block;max-width:100%}
       <h2 class="title">STANDARD &amp; OPTIONAL PARTS</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content">
-        <p class="lead" style="margin-bottom:40px">An escalator's function need not scale with its
+      <div class="content" style="bottom:276px">
+        <p class="lead" style="margin-bottom:32px">An escalator's function need not scale with its
            complexity. Our integrated structure keeps the equipment precise and efficient, and makes
            installation and commissioning simpler and faster.</p>
         <table class="ptable">
@@ -974,7 +1030,7 @@ img{display:block;max-width:100%}
            selected per project. Aluminium series and inclined stainless steel balustrade are
            available as options across the whole duty range.</p>
       </div>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>06</b></div>
+      <div class="duo duo-d"><b>Integrated Structure</b><i>Standard &amp; optional</i></div>
     </div>
   </section>
 
@@ -1047,7 +1103,7 @@ img{display:block;max-width:100%}
       <h2 class="title">SAFETY &amp; DETECTION DEVICES</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content">
+      <div class="content" style="right:680px">
         <div class="devs">
           <div class="dcol">
             <div class="dhead"><h3>Standard devices</h3><span class="lab">10 fitted</span></div>
@@ -1080,10 +1136,10 @@ img{display:block;max-width:100%}
               <li><span>08</span>Anti-reverse protection</li>
             </ul>
           </div>
-          <figure class="dfig"><img src="{{ASSET:truss.jpg}}" alt="Altigo escalator truss and step assembly"></figure>
         </div>
       </div>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>08</b></div>
+      <figure class="dfig"><img src="{{ASSET:duo-truss.jpg}}" alt="Altigo escalator truss and step assembly">
+        <span class="fig-tab">Truss &middot; Step assembly</span></figure>
     </div>
   </section>
 
@@ -1091,8 +1147,9 @@ img{display:block;max-width:100%}
   <section class="slide" data-name="Planning &amp; Civil" data-bg="range">
     <div class="stage dark blue-bg">
       <div class="gridlines"></div>
+      <div class="chap-half"><b>Altigo &middot; Vertical Mobility</b></div>
       <div class="mark logo w" role="img" aria-label="Altigo"></div>
-      <div class="content">
+      <div class="content" style="right:1004px">
         <div class="chap">
           <div>
             <div class="chap-n">Part Two</div>
@@ -1122,26 +1179,26 @@ img{display:block;max-width:100%}
       <h2 class="title">LOGICAL POSITIONING, BY TRAFFIC</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content">
+      <div class="content" style="bottom:0">
         <p class="lead" style="margin-bottom:34px">Arrangement follows the building — traffic volume,
            flow direction and footprint. <b>Five layouts</b> cover most cases, from a single run
            linking two levels to crisscross banks that move crowds through several floors at once.</p>
-        <div class="lgrid" style="height:calc(100% - 112px)">
-          <div class="lcol"><figure><img src="{{ASSET:layout-1.jpg}}" alt="Single unit — one-way"></figure>
-            <div class="lab red">One-way</div><h4>Single unit</h4>
-            <p>Links two levels. Best where traffic runs mainly one way; reversible by time of day.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-2.jpg}}" alt="Continuous — one-way"></figure>
-            <div class="lab red">One-way</div><h4>Continuous</h4>
-            <p>Stacked runs, same direction, no detour. Links three sales levels; needs more space.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-3.jpg}}" alt="Interrupted — one-way"></figure>
-            <div class="lab red">One-way</div><h4>Interrupted</h4>
-            <p>Offset runs force a short walk between levels, leading shoppers past displays.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-4.jpg}}" alt="Parallel — two-way"></figure>
-            <div class="lab red">Two-way</div><h4>Parallel</h4>
-            <p>Up and down side by side. For heavy two-way flow; economical with three or more units.</p></div>
-          <div class="lcol"><figure><img src="{{ASSET:layout-5.jpg}}" alt="Crisscross — two-way"></figure>
-            <div class="lab red">Two-way</div><h4>Crisscross</h4>
-            <p>Compact X-banks for large stores and transit; minimises travel time between levels.</p></div>
+        <div class="lgrid" style="height:calc(100% - 96px)">
+          <div class="lcol"><div class="lab red">One-way</div><h4>Single unit</h4>
+            <p>Links two levels. Best where traffic runs mainly one way; reversible by time of day.</p>
+            <figure><img src="{{ASSET:layout-1.jpg}}" alt="Single unit — one-way"></figure></div>
+          <div class="lcol"><div class="lab red">One-way</div><h4>Continuous</h4>
+            <p>Stacked runs, same direction, no detour. Links three sales levels; needs more space.</p>
+            <figure><img src="{{ASSET:layout-2.jpg}}" alt="Continuous — one-way"></figure></div>
+          <div class="lcol"><div class="lab red">One-way</div><h4>Interrupted</h4>
+            <p>Offset runs force a short walk between levels, leading shoppers past displays.</p>
+            <figure><img src="{{ASSET:layout-3.jpg}}" alt="Interrupted — one-way"></figure></div>
+          <div class="lcol"><div class="lab red">Two-way</div><h4>Parallel</h4>
+            <p>Up and down side by side. For heavy two-way flow; economical with three or more units.</p>
+            <figure><img src="{{ASSET:layout-4.jpg}}" alt="Parallel — two-way"></figure></div>
+          <div class="lcol"><div class="lab red">Two-way</div><h4>Crisscross</h4>
+            <p>Compact X-banks for large stores and transit; minimises travel time between levels.</p>
+            <figure><img src="{{ASSET:layout-5.jpg}}" alt="Crisscross — two-way"></figure></div>
         </div>
       </div>
       <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>10</b></div>
@@ -1155,7 +1212,7 @@ img{display:block;max-width:100%}
       <h2 class="title">CONSTRUCTION PARAMETERS</h2>
       <div class="rule"></div><div class="hair"></div>
       <div class="mark logo" role="img" aria-label="Altigo"></div>
-      <div class="content">
+      <div class="content" style="bottom:300px">
         <div class="civil">
 
           <div class="fig fig-elev"><div class="lab blue">Escalator elevation &amp; civil envelope</div>
@@ -1184,8 +1241,8 @@ img{display:block;max-width:100%}
 
           <div class="fig fig-cs"><div class="lab blue">Cross-section · widths</div>
             <svg class="dwg" viewBox="0 0 492 306" preserveAspectRatio="xMidYMid meet">
-              <rect class="fill" x="126" y="34" width="44" height="15" rx="7.5"/>
-              <rect class="fill" x="322" y="34" width="44" height="15" rx="7.5"/>
+              <rect class="fill" x="126" y="34" width="44" height="15"/>
+              <rect class="fill" x="322" y="34" width="44" height="15"/>
               <path class="st" d="M148 49 V132 M344 49 V132"/>
               <path class="fill2" d="M113 132 H379 V200 H113 Z"/>
               <path class="fill" d="M151 148 H341 V176 H151 Z"/>
@@ -1254,7 +1311,7 @@ img{display:block;max-width:100%}
 
         </div>
       </div>
-      <div class="foot"><span>Altigo · Product Catalogue · Escalator · Malaysia 2026</span><b>11</b></div>
+      <div class="duo duo-c"><b>Planning &middot; Civil &middot; Installation</b><i>Altigo Malaysia</i></div>
     </div>
   </section>
 
@@ -1584,7 +1641,8 @@ img{display:block;max-width:100%}
       '.app .slide.ed-off{display:none!important}'+
       '.stage{zoom:1!important;position:relative!important;margin:0!important}'+
       '.slide[data-bg]{background:none!important}'+
-      '.slide[data-bg="cover"] .stage,.slide[data-bg="range"] .stage{background:'+
+      '.slide[data-bg="cover"] .stage,.slide[data-bg="range"] .stage,'+
+        '.slide[data-bg="tech"] .stage{background:'+
         'radial-gradient(ellipse 60% 60% at 88% 4%, rgba(120,170,255,.4), transparent 62%),'+
         'linear-gradient(198deg,#0B3096 0%,#08337F 52%,#0A2568 100%)!important}'+
       '.slide[data-bg="contact"] .stage{background:'+

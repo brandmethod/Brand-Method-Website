@@ -118,10 +118,25 @@ edges.
 
 **Lines** — the original's stacked rules, boxed-in-boxed card borders and the
 repeated diagonal corner stripe on interior pages were removed, and so was every
-white rule and grid overlay on the dark pages. What remains: on light pages, one
-grey hairline under the page header with a short red tab and one hairline under
-each card title; on dark pages, the red tab alone. The red/blue diagonal appears
-only on the cover and the back page.
+white rule and grid overlay on the dark pages. What remains: short blue rules
+that open a spec block or a section label, and nothing else. Pills on the dark
+pages are filled rather than outlined. The red/blue diagonal appears only on the
+cover and the back page.
+
+**Page grounds** — the book no longer runs a row of plain white pages. Every
+page sits on one of three grounds:
+
+| Ground | Where | What it is |
+| --- | --- | --- |
+| `deep` | 04 Design · 05 Core Safety · 09 Sightseeing · 14 Man Machine · 17 Contact | Deep navy with a blue bloom — the chapter pages |
+| `tint` | 02 Contents · 03 Company · 06 Configurations · 12 Platform · 13 Freight · 15 Fixture · 16 Construction | A cool paper tint with a soft top-right light and a ghosted wordmark |
+| white | 07 · 08 · 10 · 11 — the cabin pages | Photography carries the page, so the ground stays out of the way |
+
+**Layout** — every interior page is built the same way: a masthead in the top
+zone (kicker · headline · Altigo Edge qualifier · wordmark right), then imagery,
+then content. Headlines are set in Altigo Display Black at 72–92 px with the
+second word in red, and **type never sits on photography** — images run
+full-bleed or in cards, captions and specs sit beside or below them.
 
 ---
 

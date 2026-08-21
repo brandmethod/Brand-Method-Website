@@ -15,6 +15,7 @@ Output: Altigo-Passenger-Elevator-Catalogue-1920x1080.pdf (in this folder)
 """
 
 import asyncio
+import os
 from pathlib import Path
 
 from playwright.async_api import async_playwright
@@ -38,8 +39,9 @@ EXPORT_CSS = """
 }
 """
 
-# Set this if Chromium lives somewhere Playwright does not look by default.
-CHROME = None
+# Set this if Chromium lives somewhere Playwright does not look by default;
+# leave it None and Playwright will use its own download.
+CHROME = os.environ.get("CHROME_PATH") or None
 
 
 async def main() -> None:

@@ -318,12 +318,50 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 .band.dark .seclabel i{background:rgba(255,255,255,.16)}
 
 
+/* configuration panel — the figures are the point, so they are set large */
+.cfg{background:#fff;padding:34px 34px 30px;display:flex;flex-direction:column;
+  box-shadow:0 22px 54px rgba(6,20,60,.10)}
+.cfg h3{font-family:var(--display);font-weight:700;font-size:27px;color:var(--ink);
+  text-transform:uppercase;letter-spacing:-.01em;margin:14px 0 12px}
+.cfg .cfg-note{font-size:16px;line-height:1.5;color:var(--ink-2)}
+.cfg-figs{margin-top:auto;padding-top:22px;display:grid;gap:0}
+.cfg-figs div{display:flex;justify-content:space-between;align-items:baseline;padding:12px 0;
+  border-top:1px solid var(--line-soft)}
+.cfg-figs div:first-child{border-top:1px solid var(--line)}
+.cfg-figs span{font-size:15px;color:var(--ink-3)}
+.cfg-figs b{font-family:var(--display);font-weight:900;font-size:26px;color:var(--blue);letter-spacing:-.01em}
+.cfg-figs i{font-family:var(--body);font-weight:600;font-style:normal;font-size:14px;color:var(--ink-3)}
+
+/* a cut-out lift stands on the ground, it does not need a frame */
+.pano-item{display:flex;flex-direction:column;min-height:0}
+.pano-item .obj{height:392px;flex:none;display:flex;align-items:center;justify-content:center;padding-bottom:24px}
+.pano-item .obj img{max-width:86%;max-height:100%;object-fit:contain}
+.deep .cabin-spec .id{border-top-color:rgba(255,255,255,.3)}
+.deep .cabin-spec .code{color:#fff}
+.deep .cabin-spec .n{color:rgba(255,255,255,.45)}
+.deep .speclist .k{color:rgba(255,255,255,.5)}
+.deep .speclist .v{color:rgba(255,255,255,.8)}
+.deep .tile span{color:rgba(255,255,255,.6)}
+
 /* spec column under a full-bleed strip — no box, just a rule and the list */
 .cabin-spec{display:flex;flex-direction:column;min-height:0}
 .cabin-spec .id{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
   padding-bottom:12px;margin-bottom:15px;border-top:2px solid var(--blue);padding-top:15px}
 .cabin-spec .code{font-family:var(--ui);font-weight:700;font-size:19px;color:var(--blue)}
 .cabin-spec .n{font-family:var(--edge);font-size:12px;letter-spacing:.18em;color:var(--ink-3);flex:none}
+
+/* a pill on a dark ground is a fill, not an outline — the white keylines
+   were reading as stray rules on the page */
+.deep .tag,.dark .tag{border-color:transparent;background:rgba(255,255,255,.10);color:#fff}
+.cover .bloom{opacity:.22}
+
+/* the tinted ground needs its own hairline, the grey one disappears into it */
+.tint .toc a{border-top-color:#D3DCEA;padding:23px 0}
+.tint .toc a:last-child{border-bottom-color:#D3DCEA}
+.tint .toc a:hover{background:linear-gradient(90deg,rgba(2,66,202,.07),transparent 60%)}
+.tint .seclabel i{background:#D3DCEA}
+.tint .dl.params div{border-top-color:#D3DCEA}
+.tint .tile .box{background:#fff}
 
 /* ---------- 9d. EDITORIAL DEVICES --------------------------------------
    What made the book feel templated was not the colour — it was that every
@@ -608,7 +646,8 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   }
   .slide:last-child{page-break-after:auto;break-after:auto}
   /* letterbox bands read as a deliberate cinema bar on the dark pages */
-  .slide.dark,.slide.cover{background:#01143F}
+  .slide.dark,.slide.deep,.slide.cover{background:#01143F}
+  .slide.tint{background:#E7EDF7}
   .canvas{
     position:absolute;left:0;width:1920px;height:1080px;transform-origin:top left;
     top:21.3mm;                                   /* fallback */
@@ -628,8 +667,8 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
     font-family:var(--ui);font-size:7.4pt;letter-spacing:.18em;text-transform:uppercase;color:#98A2B3;
   }
   .printfoot b{font-weight:600;color:var(--blue)}
-  .slide.dark .printfoot,.slide.cover .printfoot{color:rgba(255,255,255,.55)}
-  .slide.dark .printfoot b,.slide.cover .printfoot b{color:#fff}
+  .slide.dark .printfoot,.slide.deep .printfoot,.slide.cover .printfoot{color:rgba(255,255,255,.55)}
+  .slide.dark .printfoot b,.slide.deep .printfoot b,.slide.cover .printfoot b{color:#fff}
   .printhead{position:absolute;left:0;right:0;top:0;height:21.3mm;pointer-events:none}
   /* the printed page carries its own footer — drop the on-canvas folio to avoid a double number */
   .canvas .folio,.canvas .foliolabel{display:none}
@@ -647,6 +686,7 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
     <div class="canvas">
       <div class="bg"><img src="assets/img/cover-bg.jpg" alt="Altigo elevator shaft, looking up"></div>
       <div class="wash"></div>
+      <div class="ground"><span class="bloom"></span></div>
       <img class="logo" src="assets/img/logo-white.png" alt="ALTIGO">
       <div class="yr">2026</div>
 
@@ -665,17 +705,27 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   </section>
 
   <!-- ======================================================= 02 CONTENTS -->
-  <section class="slide" data-title="Contents" data-sub="Catalogue index" data-folio="02">
+  <section class="slide tint" data-title="Contents" data-sub="Catalogue index" data-folio="02">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">THE CATALOGUE</p>
-        <h2 class="h1">CONTENTS</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
-      <div class="body">
-        <nav class="toc" id="toc"></nav>
+      <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
+
+      <p class="kicker" style="position:absolute;left:88px;top:70px">THE CATALOGUE</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Contents</h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· PASSENGER ELEVATOR 2026</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
+
+      <nav class="toc" id="toc" style="position:absolute;left:88px;right:88px;top:280px;gap:0 32px"></nav>
+
+      <div style="position:absolute;left:976px;top:838px;width:856px;padding-top:28px;
+                  border-top:2px solid var(--blue)">
+        <p style="font-family:var(--display);font-weight:700;font-size:21px;color:var(--ink);margin-bottom:10px">
+          Seventeen pages, one range.</p>
+        <p style="font-size:15.5px;line-height:1.5;color:var(--ink-3);max-width:700px">
+          Cabin design and finishes, drive platforms, safety systems, the sightseeing, villa, medical, platform
+          and freight series, and the civil parameters a building needs at planning stage.</p>
       </div>
+
       <span class="foliolabel">Passenger Elevator · 2026</span>
       <span class="folio">02</span>
     </div>
@@ -726,45 +776,45 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   </section>
 
   <!-- =========================================== 04 PASSENGER ELEVATORS -->
-  <section class="slide dark" data-title="Passenger Elevators Design" data-sub="The range" data-folio="04">
+  <section class="slide deep" data-title="Passenger Elevators Design" data-sub="The range" data-folio="04">
     <div class="canvas">
-      <div style="position:absolute;inset:0;background:
-        radial-gradient(1200px 700px at 78% 10%,#1B57E8 0%,transparent 62%),
-        linear-gradient(160deg,#0242CA 0%,#012A8C 100%)"></div>
-      <header class="pagehead">
-        <p class="kicker">THE RANGE · DESIGN</p>
-        <h2 class="h1">PASSENGER ELEVATORS DESIGN</h2>
-        <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="width:200px;top:6px">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground deep"><span class="bloom"></span></div>
 
-      <div class="body">
-        <div style="display:grid;grid-template-columns:560px 1152px;gap:32px;height:100%">
-          <div style="display:flex;flex-direction:column">
-            <p class="lead" style="font-size:21px">Elegant car designs tailored to architectural concepts</p>
-            <p class="p" style="margin-top:18px;font-size:17px">From ceiling height and lighting to wall finishes,
-              colour schemes and flooring materials, every elevator car is designed to complement modern architectural
-              environments — refined, comfortable and visually harmonious.</p>
-            <p class="p" style="font-size:17px">Intuitive operating panels and clearly visible indicators enhance
-              usability, while smooth, reliable movement ensures a seamless experience. Designed with hygiene, convenience and
-              durability in mind, Altigo cars deliver functional excellence and elevated passenger comfort.</p>
-            <div class="tags" style="margin-top:auto">
-              <span class="tag">Bespoke interiors</span>
-              <span class="tag">Architectural finishes</span>
-              <span class="tag">Intuitive panels</span>
-              <span class="tag">Hygienic materials</span>
-              <span class="tag">Smooth &amp; quiet</span>
-              <span class="tag">LED ambience</span>
-            </div>
-          </div>
+      <p class="kicker" style="position:absolute;left:88px;top:70px">THE RANGE · DESIGN</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Elevator <em>car</em> design</h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:#FF8E7A">· TAILORED TO THE ARCHITECTURE</p>
+      <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-          <div style="display:grid;grid-template-columns:repeat(3,362px);gap:33px;min-height:0">
-            <figure style="overflow:hidden"><img src="assets/img/mr-3.jpg" alt="Cabin with acrylic light strips and matte stainless steel" style="width:100%;height:100%;object-fit:cover;object-position:center"></figure>
-            <figure style="overflow:hidden"><img src="assets/img/mrl-3.jpg" alt="Cabin in rose gold stainless steel with gilt rock panels" style="width:100%;height:100%;object-fit:cover;object-position:center"></figure>
-            <figure style="overflow:hidden"><img src="assets/img/villa-3.jpg" alt="Villa cabin in gold-plated stainless steel" style="width:100%;height:100%;object-fit:cover;object-position:center"></figure>
-          </div>
+      <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:452px;
+                  grid-template-columns:repeat(3,1fr)">
+        <figure><img src="assets/img/mr-3.jpg" alt="Cabin with acrylic light strips and matte stainless steel"></figure>
+        <figure><img src="assets/img/mrl-3.jpg" alt="Cabin in rose gold stainless steel with gilt rock panels"></figure>
+        <figure><img src="assets/img/villa-3.jpg" alt="Villa cabin in gold-plated stainless steel"></figure>
+      </div>
+
+      <div style="position:absolute;left:88px;top:756px;width:856px">
+        <p class="lead" style="font-size:23px;color:#fff">Elegant car designs tailored to architectural concepts.</p>
+        <p class="p" style="margin-top:16px;font-size:16.5px;color:rgba(255,255,255,.78)">From ceiling height and
+          lighting to wall finishes, colour schemes and flooring materials, every elevator car is designed to
+          complement modern architectural environments — refined, comfortable and visually harmonious.</p>
+      </div>
+
+      <div style="position:absolute;right:88px;top:756px;width:856px">
+        <p class="p" style="font-size:16.5px;color:rgba(255,255,255,.78)">Intuitive operating panels and clearly
+          visible indicators enhance usability, while smooth, reliable movement ensures a seamless experience.
+          Designed with hygiene, convenience and durability in mind, Altigo cars deliver functional excellence
+          and elevated passenger comfort.</p>
+        <div class="tags" style="margin-top:22px">
+          <span class="tag">Bespoke interiors</span>
+          <span class="tag">Architectural finishes</span>
+          <span class="tag">Intuitive panels</span>
+          <span class="tag">Hygienic materials</span>
+          <span class="tag">Smooth &amp; quiet</span>
+          <span class="tag">LED ambience</span>
         </div>
       </div>
+
       <span class="foliolabel">The Range · Design</span>
       <span class="folio">04</span>
     </div>
@@ -830,59 +880,64 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <!-- ============================================= 06 CONFIGURATIONS -->
   <section class="slide" data-title="Two Configurations, Four Drive Platforms" data-sub="The range" data-folio="06">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">THE RANGE</p>
-        <h2 class="h1 two">TWO CONFIGURATIONS,<br>FOUR DRIVE PLATFORMS.</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule" style="top:250px"></div>
+      <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
+      <p class="kicker" style="position:absolute;left:88px;top:70px">THE RANGE</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px">Two <em>configurations</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· FOUR DRIVE PLATFORMS</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-      <div class="body" style="top:288px">
-        <p class="p" style="max-width:1400px;font-size:18px">Altigo passenger lifts come in a <strong>machine room (MR)</strong>
-          configuration for mid- and high-rise buildings, and a <strong>machine-room-less (MRL)</strong> family for tighter shafts
-          and shorter rises. A <strong>compact ≤450 kg</strong> variant suits homes and low-traffic floors. All run 2:1 traction
-          reeving with centre-opening doors.</p>
+      <p class="p" style="position:absolute;left:88px;top:266px;width:1300px;font-size:18px">
+        Altigo passenger lifts come in a <strong>machine room (MR)</strong> configuration for mid- and high-rise
+        buildings, and a <strong>machine-room-less (MRL)</strong> family for tighter shafts and shorter rises. A
+        <strong>compact ≤450 kg</strong> variant suits homes and low-traffic floors. All run 2:1 traction reeving
+        with centre-opening doors.</p>
 
-        <div style="margin-top:38px;display:grid;grid-template-columns:repeat(3,560px);gap:32px;height:398px">
-          <article class="panel">
-            <p class="spec red">MR · TRACTION 2:1</p>
-            <h3>Machine Room</h3>
-            <p>Permanent magnet gearless traction across the full load range, with speeds up to 2.5 m/s for taller buildings.</p>
-            <div class="dl">
-              <div><span class="k">Load</span><span class="spec">630–2000 KG</span></div>
-              <div><span class="k">Speed</span><span class="spec">1.0–2.5 M/S</span></div>
-              <div><span class="k">Car height</span><span class="spec">2400 MM</span></div>
-            </div>
-          </article>
-          <article class="panel">
-            <p class="spec red">MRL · TRACTION 2:1</p>
-            <h3>Machine Room Less</h3>
-            <p>No separate machine room — the drive sits inside the shaft. Defined overhead (4350–4950) and pit (1500/1600) per speed.</p>
-            <div class="dl">
-              <div><span class="k">Load</span><span class="spec">630–1600 KG</span></div>
-              <div><span class="k">Speed</span><span class="spec">1.0 / 1.75 M/S</span></div>
-              <div><span class="k">Pit</span><span class="spec">1500 / 1600 MM</span></div>
-            </div>
-          </article>
-          <article class="panel">
-            <p class="spec red">COMPACT · ≤450 KG</p>
-            <h3>Compact / Home</h3>
-            <p>A small-footprint variant for residences and low-traffic floors, with a shallow pit and reduced overhead.</p>
-            <div class="dl">
-              <div><span class="k">Load</span><span class="spec">≤ 450 KG</span></div>
-              <div><span class="k">Pit</span><span class="spec">320 MM</span></div>
-              <div><span class="k">Overhead</span><span class="spec">4150 MM</span></div>
-            </div>
-          </article>
-        </div>
-
-        <div style="position:absolute;left:0;right:0;bottom:0;display:grid;grid-template-columns:repeat(4,412px);gap:32px">
-          <div class="feature"><h4>Smaller shaft</h4><p>Optimised structure leaves more car within a tight shaft.</p></div>
-          <div class="feature"><h4>2400 cabin</h4><p>Integrated ceiling car height across the range.</p></div>
-          <div class="feature"><h4>Powerloss levelling</h4><p>Emergency battery brings the car to the nearest floor and opens.</p></div>
-          <div class="feature"><h4>IoT monitored</h4><p>Cloud service watches operation 24/7 for fast maintenance.</p></div>
-        </div>
+      <div style="position:absolute;left:88px;right:88px;top:392px;height:396px;
+                  display:grid;grid-template-columns:repeat(3,1fr);gap:32px">
+        <article class="cfg">
+          <p class="spec red">MR · TRACTION 2:1</p>
+          <h3>Machine Room</h3>
+          <p class="cfg-note">Permanent magnet gearless traction across the full load range, with speeds up to
+            2.5 m/s for taller buildings.</p>
+          <div class="cfg-figs">
+            <div><span>Load</span><b>630–2000 <i>kg</i></b></div>
+            <div><span>Speed</span><b>1.0–2.5 <i>m/s</i></b></div>
+            <div><span>Car height</span><b>2400 <i>mm</i></b></div>
+          </div>
+        </article>
+        <article class="cfg">
+          <p class="spec red">MRL · TRACTION 2:1</p>
+          <h3>Machine Room Less</h3>
+          <p class="cfg-note">No separate machine room — the drive sits inside the shaft. Defined overhead
+            (4350–4950) and pit (1500/1600) per speed.</p>
+          <div class="cfg-figs">
+            <div><span>Load</span><b>630–1600 <i>kg</i></b></div>
+            <div><span>Speed</span><b>1.0 / 1.75 <i>m/s</i></b></div>
+            <div><span>Pit</span><b>1500 / 1600 <i>mm</i></b></div>
+          </div>
+        </article>
+        <article class="cfg">
+          <p class="spec red">COMPACT · ≤450 KG</p>
+          <h3>Compact / Home</h3>
+          <p class="cfg-note">A small-footprint variant for residences and low-traffic floors, with a shallow
+            pit and reduced overhead.</p>
+          <div class="cfg-figs">
+            <div><span>Load</span><b>≤ 450 <i>kg</i></b></div>
+            <div><span>Pit</span><b>320 <i>mm</i></b></div>
+            <div><span>Overhead</span><b>4150 <i>mm</i></b></div>
+          </div>
+        </article>
       </div>
+
+      <div style="position:absolute;left:88px;right:88px;bottom:104px;
+                  display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
+        <div class="feature"><h4>Smaller shaft</h4><p>Optimised structure leaves more car within a tight shaft.</p></div>
+        <div class="feature"><h4>2400 cabin</h4><p>Integrated ceiling car height across the range.</p></div>
+        <div class="feature"><h4>Powerloss levelling</h4><p>Emergency battery brings the car to the nearest floor and opens.</p></div>
+        <div class="feature"><h4>IoT monitored</h4><p>Cloud service watches operation 24/7 for fast maintenance.</p></div>
+      </div>
+
       <span class="foliolabel">The Range</span>
       <span class="folio">06</span>
     </div>
@@ -966,69 +1021,69 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <!-- ================================================ 08 CABIN · MRL -->
   <section class="slide" data-title="Car Decoration · Machine Room Less" data-sub="Cabin" data-folio="08">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">CABIN · MACHINE ROOM LESS</p>
-        <h2 class="h1">CAR DECORATION · MACHINE ROOM LESS</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground tint"></div>
 
-      <div class="body">
-        <div class="g4" style="height:100%">
-          <article class="card">
-            <div class="shot"><img src="assets/img/mrl-1.jpg" alt="TIGO01-1803-1 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO01-1803-1</span><span class="n">01</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline stainless steel both sides</span></div>
-              <div><span class="k">Side wall</span><span class="v">Mirror stainless steel centre + hairline stainless steel both sides</span></div>
-              <div><span class="k">Front wall</span><span class="v">Hairline stainless steel</span></div>
-              <div><span class="k">Light</span><span class="v">LED</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC</span></div>
-            </div>
+      <p class="kicker" style="position:absolute;left:88px;top:70px">CABIN · MACHINE ROOM LESS</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px">Car decoration</h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· MACHINE ROOM LESS</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
+
+      <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:448px">
+        <figure><img src="assets/img/mrl-1.jpg" alt="TIGO01-1803-1 cabin"></figure>
+        <figure><img src="assets/img/mrl-2.jpg" alt="TIGO01-226-2 cabin"></figure>
+        <figure><img src="assets/img/mrl-3.jpg" alt="TIGO02-2418 cabin"></figure>
+        <figure><img src="assets/img/mrl-4.jpg" alt="TIGO01-2306 cabin"></figure>
+      </div>
+
+      <div style="position:absolute;left:88px;right:88px;top:742px;bottom:112px;
+                  display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO01-1803-1</span><span class="n">01</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline both sides</span></div>
+          <div><span class="k">Side wall</span><span class="v">Mirror stainless steel centre + hairline both sides</span></div>
+          <div><span class="k">Front wall</span><span class="v">Hairline stainless steel</span></div>
+          <div><span class="k">Light</span><span class="v">LED</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC</span></div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot"><img src="assets/img/mrl-2.jpg" alt="TIGO01-226-2 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO01-226-2</span><span class="n">02</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline stainless steel both sides</span></div>
-              <div><span class="k">Side wall</span><span class="v">Mirror stainless steel centre + hairline stainless steel both sides</span></div>
-              <div><span class="k">Front wall</span><span class="v">Hairline stainless steel</span></div>
-              <div><span class="k">Light</span><span class="v">LED</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC</span></div>
-            </div>
+        </div>
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO01-226-2</span><span class="n">02</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline both sides</span></div>
+          <div><span class="k">Side wall</span><span class="v">Mirror stainless steel centre + hairline both sides</span></div>
+          <div><span class="k">Front wall</span><span class="v">Hairline stainless steel</span></div>
+          <div><span class="k">Light</span><span class="v">LED</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC</span></div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot"><img src="assets/img/mrl-3.jpg" alt="TIGO02-2418 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO02-2418</span><span class="n">03</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">Porcelain white frosted steel plate + rose gold stainless steel + hidden light belt</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Rose gold stainless steel + gilt rock plate + rose stainless steel panel</span></div>
-              <div><span class="k">Side wall</span><span class="v">Frosted steel + rose stainless steel + Changiris glass (arc R=100 mm)</span></div>
-              <div><span class="k">Front wall</span><span class="v">Rose gold hairline stainless steel</span></div>
-              <div><span class="k">Handrails</span><span class="v">Rose gold stainless steel, three sides</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC</span></div>
-            </div>
+        </div>
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO02-2418</span><span class="n">03</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">Porcelain white frosted steel + rose gold stainless steel + hidden light belt</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Rose gold stainless steel + gilt rock plate + rose stainless steel panel</span></div>
+          <div><span class="k">Side wall</span><span class="v">Frosted steel + rose stainless steel + Changiris glass (arc R=100 mm)</span></div>
+          <div><span class="k">Front wall</span><span class="v">Rose gold hairline stainless steel</span></div>
+          <div><span class="k">Handrails</span><span class="v">Rose gold stainless steel, three sides</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC</span></div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot"><img src="assets/img/mrl-4.jpg" alt="TIGO01-2306 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO01-2306</span><span class="n">04</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Plastic steel plate (ceramic milk white) + mirror stainless steel + painted strips + hidden light</span></div>
-              <div><span class="k">Side wall</span><span class="v">Rose gold hairline stainless steel</span></div>
-              <div><span class="k">Front wall</span><span class="v">Rose gold hairline stainless steel</span></div>
-              <div><span class="k">Light</span><span class="v">LED</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC</span></div>
-            </div>
+        </div>
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO01-2306</span><span class="n">04</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">443 hairline stainless steel + acrylic</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Plastic steel plate (ceramic milk white) + mirror stainless steel + hidden light</span></div>
+          <div><span class="k">Side wall</span><span class="v">Rose gold hairline stainless steel</span></div>
+          <div><span class="k">Front wall</span><span class="v">Rose gold hairline stainless steel</span></div>
+          <div><span class="k">Light</span><span class="v">LED</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC</span></div>
           </div>
-          </article>
         </div>
       </div>
+
       <span class="foliolabel">Cabin · Machine Room Less</span>
       <span class="folio">08</span>
     </div>
@@ -1036,74 +1091,77 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   </section>
 
   <!-- ============================================== 09 SIGHTSEEING -->
-  <section class="slide" data-title="Sightseeing Elevator Series" data-sub="Panoramic" data-folio="09">
+  <section class="slide deep" data-title="Sightseeing Elevator Series" data-sub="Panoramic" data-folio="09">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">PANORAMIC · GLASS</p>
-        <h2 class="h1">SIGHTSEEING ELEVATOR SERIES</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground deep"><span class="bloom"></span></div>
 
-      <div class="body">
-        <div class="g4" style="height:100%">
-          <article class="card">
-            <div class="shot">
-              <img src="assets/img/pano-1.png" alt="TIGO08-691" style="object-fit:contain;padding:14px"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO08-691</span><span class="n">01</span></div>
+      <p class="kicker" style="position:absolute;left:88px;top:70px">PANORAMIC · GLASS</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;color:#fff">
+        Sightseeing <em>elevator</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:#FF8E7A">· PANORAMIC GLASS SERIES</p>
+      <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
+
+      <div style="position:absolute;left:88px;right:88px;top:272px;bottom:112px;
+                  display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
+
+        <div class="pano-item">
+          <div class="obj"><img src="assets/img/pano-1.png" alt="TIGO08-691"></div>
+          <div class="cabin-spec">
+            <div class="id"><span class="code">TIGO08-691</span><span class="n">01</span></div>
             <div class="speclist">
               <div><span class="k">Ceiling</span><span class="v">Mirror stainless steel + acrylic</span></div>
               <div><span class="k">Rear wall</span><span class="v">Sightseeing glass</span></div>
               <div><span class="k">Side wall</span><span class="v">Hairline stainless steel + sightseeing glass</span></div>
               <div><span class="k">Front wall</span><span class="v">Hairline stainless steel</span></div>
-              <div><span class="k">Light</span><span class="v">LED</span></div>
               <div><span class="k">Floor</span><span class="v">XTQ07-311 B1-7705 (PVC)</span></div>
             </div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot">
-              <img src="assets/img/pano-2.jpg" alt="TIGO01-XT-01" style="object-fit:contain;padding:14px"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO01-XT-01</span><span class="n">02</span></div>
+        </div>
+
+        <div class="pano-item">
+          <div class="obj"><img src="assets/img/pano-2.jpg" alt="TIGO01-XT-01"></div>
+          <div class="cabin-spec">
+            <div class="id"><span class="code">TIGO01-XT-01</span><span class="n">02</span></div>
             <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">[XTQ04-88] Painted steel frame + 304 titanium gold hairline t0.7 + acrylic pendant + LED + emergency light</span></div>
-              <div><span class="k">Rear wall</span><span class="v">304 titanium gold hairline t1.2 + sightseeing glass (6+6); ridges clad in 304 t1.2</span></div>
+              <div><span class="k">Ceiling</span><span class="v">[XTQ04-88] Painted steel frame + 304 titanium gold hairline t0.7 + LED</span></div>
+              <div><span class="k">Rear wall</span><span class="v">304 titanium gold hairline t1.2 + sightseeing glass (6+6)</span></div>
               <div><span class="k">Side wall</span><span class="v">Mirror stainless steel centre + hairline both sides</span></div>
-              <div><span class="k">Front wall</span><span class="v">304 titanium gold hairline t1.22</span></div>
               <div><span class="k">Handrails</span><span class="v">[XTQ06-21] Mirror round pipe floor handrails</span></div>
               <div><span class="k">Floor</span><span class="v">[XTQ07-31] B1-7705 (PVC)</span></div>
             </div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot">
-              <img src="assets/img/pano-3.png" alt="TIGO08-611" style="object-fit:contain;padding:14px"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO08-611</span><span class="n">03</span></div>
+        </div>
+
+        <div class="pano-item">
+          <div class="obj"><img src="assets/img/pano-3.png" alt="TIGO08-611"></div>
+          <div class="cabin-spec">
+            <div class="id"><span class="code">TIGO08-611</span><span class="n">03</span></div>
             <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">[XTQ04-08] Painted steel frame + mirror veneer t0.7 + acrylic + LED downlight + emergency light; outer cover etched HM-95</span></div>
-              <div><span class="k">Car wall</span><span class="v">Mirror stainless steel t1.2 + corner columns + 5 pieces laminated glass (6+6)</span></div>
-              <div><span class="k">Side wall</span><span class="v">Mirror stainless steel t1.22 + separate control panel, right front</span></div>
+              <div><span class="k">Ceiling</span><span class="v">[XTQ04-08] Painted steel frame + mirror veneer t0.7 + acrylic + LED</span></div>
+              <div><span class="k">Car wall</span><span class="v">Mirror stainless steel t1.2 + corner columns + 5 laminated glass (6+6)</span></div>
               <div><span class="k">Front wall</span><span class="v">304 titanium gold hairline t1.22</span></div>
               <div><span class="k">Handrails</span><span class="v">[XTQ06-218] Mirror round tube floor support handrails</span></div>
-              <div><span class="k">Floor</span><span class="v">Golden Mouse KC-151A / KC-151G / HC-2005J (PVC) [XTQ07-60]</span></div>
+              <div><span class="k">Floor</span><span class="v">Golden Mouse KC-151A / KC-151G / HC-2005J (PVC)</span></div>
             </div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot">
-              <img src="assets/img/pano-4.png" alt="TIGO08-1301" style="object-fit:contain;padding:14px"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO08-1301</span><span class="n">04</span></div>
+        </div>
+
+        <div class="pano-item">
+          <div class="obj"><img src="assets/img/pano-4.png" alt="TIGO08-1301"></div>
+          <div class="cabin-spec">
+            <div class="id"><span class="code">TIGO08-1301</span><span class="n">04</span></div>
             <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">[XTQ04-G1301] Painted steel frame + 304 short-hairline veneer + acrylic + LED + emergency light</span></div>
-              <div><span class="k">Covers</span><span class="v">Long-hairline stainless steel, steel etching and sprayed gold sand; 304 short-hair inside ridges</span></div>
-              <div><span class="k">Car wall</span><span class="v">Glass column clad in 304 long-hairline stainless steel + laminated glass 6+6</span></div>
+              <div><span class="k">Ceiling</span><span class="v">[XTQ04-G1301] Painted steel frame + 304 short-hairline veneer + LED</span></div>
+              <div><span class="k">Covers</span><span class="v">Long-hairline stainless steel, etched and sprayed gold sand</span></div>
+              <div><span class="k">Car wall</span><span class="v">Glass column clad in 304 long-hairline steel + laminated glass 6+6</span></div>
               <div><span class="k">Handrails</span><span class="v">[XTQ06-26C] Mirror stainless steel round pipes</span></div>
-              <div><span class="k">Floor</span><span class="v">[XTQ07-G1301] TM-1325 Jasper White + 7702 Big Flower Green (PVC)</span></div>
+              <div><span class="k">Floor</span><span class="v">[XTQ07-G1301] TM-1325 + 7702 (PVC)</span></div>
             </div>
           </div>
-          </article>
         </div>
       </div>
+
       <span class="foliolabel">Panoramic · Glass</span>
       <span class="folio">09</span>
     </div>
@@ -1113,65 +1171,65 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <!-- ==================================================== 10 VILLA -->
   <section class="slide" data-title="Villa Elevator Car Decoration" data-sub="Residential" data-folio="10">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">RESIDENTIAL · VILLA</p>
-        <h2 class="h1">VILLA ELEVATOR CAR DECORATION</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground tint"></div>
 
-      <div class="body">
-        <div class="g4" style="height:100%">
-          <article class="card">
-            <div class="shot"><img src="assets/img/villa-1.jpg" alt="TIGO02-2408 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO02-2408</span><span class="n">01</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">Matte stainless steel + acrylic + LED light source</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel + matte stainless steel</span></div>
-              <div><span class="k">Side wall</span><span class="v">Matte stainless steel</span></div>
-              <div><span class="k">Front wall</span><span class="v">Matte stainless steel</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
-            </div>
+      <p class="kicker" style="position:absolute;left:88px;top:70px">RESIDENTIAL · VILLA</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px">Villa elevator</h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· CAR DECORATION</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
+
+      <div class="strip" style="position:absolute;left:0;right:0;top:268px;height:448px">
+        <figure><img src="assets/img/villa-1.jpg" alt="TIGO02-2408 cabin"></figure>
+        <figure><img src="assets/img/villa-2.jpg" alt="TIGO02-2410 cabin"></figure>
+        <figure><img src="assets/img/villa-3.jpg" alt="TIGO02-2412 cabin"></figure>
+        <figure><img src="assets/img/villa-4.jpg" alt="TIGO02-2312 cabin"></figure>
+      </div>
+
+      <div style="position:absolute;left:88px;right:88px;top:742px;bottom:112px;
+                  display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO02-2408</span><span class="n">01</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">Matte stainless steel + acrylic + LED light source</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel + matte stainless steel</span></div>
+          <div><span class="k">Side wall</span><span class="v">Matte stainless steel</span></div>
+          <div><span class="k">Front wall</span><span class="v">Matte stainless steel</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot"><img src="assets/img/villa-2.jpg" alt="TIGO02-2410 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO02-2410</span><span class="n">02</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + hairline stainless steel</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline both sides</span></div>
-              <div><span class="k">Side wall</span><span class="v">Hairline stainless steel</span></div>
-              <div><span class="k">Front wall</span><span class="v">Hairline stainless steel</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
-            </div>
+        </div>
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO02-2410</span><span class="n">02</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + hairline stainless steel</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel, etched centre + hairline both sides</span></div>
+          <div><span class="k">Side wall</span><span class="v">Hairline stainless steel</span></div>
+          <div><span class="k">Front wall</span><span class="v">Hairline stainless steel</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot"><img src="assets/img/villa-3.jpg" alt="TIGO02-2412 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO02-2412</span><span class="n">03</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + stainless steel veneer + hidden light strip</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Gold-plated stainless steel + plastic-bonded steel plate + hidden light strip</span></div>
-              <div><span class="k">Side wall</span><span class="v">Gold-plated stainless steel + plastic-coated steel plate</span></div>
-              <div><span class="k">Front wall</span><span class="v">Gold-plated stainless steel</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
-            </div>
+        </div>
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO02-2412</span><span class="n">03</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + stainless steel veneer + hidden light strip</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Gold-plated stainless steel + plastic-bonded steel plate + hidden light strip</span></div>
+          <div><span class="k">Side wall</span><span class="v">Gold-plated stainless steel + plastic-coated steel plate</span></div>
+          <div><span class="k">Front wall</span><span class="v">Gold-plated stainless steel</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
           </div>
-          </article>
-          <article class="card">
-            <div class="shot"><img src="assets/img/villa-4.jpg" alt="TIGO02-2312 cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO02-2312</span><span class="n">04</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + stainless steel veneer + hidden light strip</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Gold-plated stainless steel + plastic-coated steel plate + hidden light strip</span></div>
-              <div><span class="k">Side wall</span><span class="v">Gold-plated stainless steel + plastic-coated steel plate</span></div>
-              <div><span class="k">Front wall</span><span class="v">Gold-plated stainless steel</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
-            </div>
+        </div>
+        <div class="cabin-spec">
+          <div class="id"><span class="code">TIGO02-2312</span><span class="n">04</span></div>
+          <div class="speclist">
+          <div><span class="k">Ceiling</span><span class="v">Acrylic + LED light source + stainless steel veneer + hidden light strip</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Gold-plated stainless steel + plastic-coated steel plate + hidden light strip</span></div>
+          <div><span class="k">Side wall</span><span class="v">Gold-plated stainless steel + plastic-coated steel plate</span></div>
+          <div><span class="k">Front wall</span><span class="v">Gold-plated stainless steel</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
           </div>
-          </article>
         </div>
       </div>
+
       <span class="foliolabel">Residential · Villa</span>
       <span class="folio">10</span>
     </div>
@@ -1181,100 +1239,110 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   <!-- ================================================== 11 MEDICAL -->
   <section class="slide" data-title="Medical Elevator Series" data-sub="Healthcare" data-folio="11">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">PROTECT EVERY HEALTH JOURNEY</p>
-        <h2 class="h1">MEDICAL ELEVATOR SERIES</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground tint"></div>
 
-      <div class="body">
-        <div style="display:grid;grid-template-columns:856px 856px;gap:32px;height:100%">
-          <div style="display:flex;flex-direction:column;gap:34px">
-            <p class="p" style="font-size:19px">Altigo medical lifts are purpose-designed for hospitals, clinics,
-              rehabilitation centres and nursing homes. Safety and hygiene are the primary considerations — making every move one
-              of care and warmth.</p>
+      <figure class="bleed" style="right:0;top:0;width:760px;height:1080px">
+        <img src="assets/img/medical-cabin.jpg" alt="TIGO02-2408 medical cabin">
+      </figure>
 
-            <div style="display:grid;grid-template-columns:412px 412px;gap:52px 32px;flex:1;align-content:space-between">
-              <div class="feature"><h4>Safe, comfortable, stable</h4><p>Purpose-built structure and controls for uninterrupted, reassuring transport of patients and staff.</p></div>
-              <div class="feature"><h4>Large space for easy access</h4><p>Wide, deep cabins account for special-needs groups, letting beds and medical equipment enter and exit smoothly.</p></div>
-              <div class="feature"><h4>Priority emergency call</h4><p>A low-mounted emergency button lets passengers call for priority response — easy for wheelchair users and children to reach.</p></div>
-              <div class="feature"><h4>Anti-interference design</h4><p>Full electromagnetic compatibility compliance prevents interference between precision medical equipment and the lift.</p></div>
-            </div>
+      <p class="kicker" style="position:absolute;left:88px;top:70px">PROTECT EVERY HEALTH JOURNEY</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1000px">
+        Medical <em>elevator</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· SERIES</p>
+      <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-            <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:auto">
-              <span class="tag ink">Hospitals</span><span class="tag ink">Clinics</span>
-              <span class="tag ink">Rehabilitation</span><span class="tag ink">Nursing homes</span>
-              <span class="tag ink">EMC compliant</span>
-            </div>
-          </div>
+      <p class="p" style="position:absolute;left:88px;top:280px;width:960px;font-size:19px">
+        Altigo medical lifts are purpose-designed for hospitals, clinics, rehabilitation centres and nursing homes.
+        Safety and hygiene are the primary considerations — making every move one of care and warmth.</p>
 
-          <article class="card">
-            <div class="shot"><img src="assets/img/medical-cabin.jpg" alt="TIGO02-2408 medical cabin"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO02-2408</span><span class="n">CAR DESIGN</span></div>
-            <div class="speclist" style="grid-template-columns:1fr">
-              <div><span class="k">Ceiling</span><span class="v">Matte stainless steel + acrylic + LED light source</span></div>
-              <div><span class="k">Rear wall</span><span class="v">Mirror stainless steel + matte stainless steel</span></div>
-              <div><span class="k">Side wall</span><span class="v">Matte stainless steel</span></div>
-              <div><span class="k">Front wall</span><span class="v">Matte stainless steel</span></div>
-              <div><span class="k">Light</span><span class="v">LED</span></div>
-              <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
-            </div>
-          </div>
-          </article>
+      <div style="position:absolute;left:88px;top:412px;width:1000px;
+                  display:grid;grid-template-columns:1fr 1fr;gap:44px 40px">
+        <div class="feature"><h4>Safe, comfortable, stable</h4><p>Purpose-built structure and controls for uninterrupted, reassuring transport of patients and staff.</p></div>
+        <div class="feature"><h4>Large space for easy access</h4><p>Wide, deep cabins account for special-needs groups, letting beds and medical equipment enter and exit smoothly.</p></div>
+        <div class="feature"><h4>Priority emergency call</h4><p>A low-mounted emergency button lets passengers call for priority response — easy for wheelchair users and children to reach.</p></div>
+        <div class="feature"><h4>Anti-interference design</h4><p>Full electromagnetic compatibility compliance prevents interference between precision medical equipment and the lift.</p></div>
+      </div>
+
+      <div style="position:absolute;left:88px;top:730px;width:1000px;background:#fff;padding:28px 32px 26px;
+                  box-shadow:0 30px 70px rgba(6,20,60,.16)">
+        <div class="id" style="display:flex;align-items:baseline;justify-content:space-between;
+                    padding-bottom:12px;margin-bottom:14px;border-bottom:1px solid var(--line)">
+          <span class="code" style="font-family:var(--ui);font-weight:700;font-size:19px;color:var(--blue)">TIGO02-2408</span>
+          <span class="n" style="font-family:var(--edge);font-size:12px;letter-spacing:.18em;color:var(--ink-3)">CAR DESIGN</span>
+        </div>
+        <div class="speclist" style="grid-template-columns:1fr 1fr;gap:10px 36px">
+          <div><span class="k">Ceiling</span><span class="v">Matte stainless steel + acrylic + LED</span></div>
+          <div><span class="k">Rear wall</span><span class="v">Mirror + matte stainless steel</span></div>
+          <div><span class="k">Side wall</span><span class="v">Matte stainless steel</span></div>
+          <div><span class="k">Front wall</span><span class="v">Matte stainless steel</span></div>
+          <div><span class="k">Light</span><span class="v">LED</span></div>
+          <div><span class="k">Floor</span><span class="v">PVC parquet</span></div>
         </div>
       </div>
-      <span class="foliolabel">Protect every health journey</span>
-      <span class="folio">11</span>
+
+      <div style="position:absolute;left:88px;bottom:96px;display:flex;gap:12px;flex-wrap:wrap">
+        <span class="tag ink">Hospitals</span><span class="tag ink">Clinics</span>
+        <span class="tag ink">Rehabilitation</span><span class="tag ink">Nursing homes</span>
+        <span class="tag ink">EMC compliant</span>
+      </div>
+
+      <span class="folio" style="color:#fff">11</span>
     </div>
     <div class="printfoot"><span>Altigo · Passenger Elevator · Product Catalogue 2026</span><b>11</b></div>
   </section>
 
   <!-- ================================================= 12 PLATFORM -->
-  <section class="slide" data-title="Platform Elevator Series" data-sub="Accessibility" data-folio="12">
+  <section class="slide tint" data-title="Platform Elevator Series" data-sub="Accessibility" data-folio="12">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">ACCESSIBILITY · PLATFORM LIFTS</p>
-        <h2 class="h1">PLATFORM ELEVATOR SERIES</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
 
-      <div class="body">
-        <div style="display:grid;grid-template-columns:856px 856px;gap:32px;height:100%">
+      <p class="kicker" style="position:absolute;left:88px;top:70px">ACCESSIBILITY · PLATFORM LIFTS</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Platform <em>elevator</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· H SERIES &amp; L SERIES</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-          <section class="stack">
-            <div class="seclabel"><b>Platform lift · H series</b><i></i></div>
-            <div style="display:grid;grid-template-columns:412px 412px;gap:32px;flex:1;min-height:0">
-              <div style="display:flex;flex-direction:column;justify-content:space-between">
-                <div class="feature"><h4>High shaft utilisation</h4><p>The X-series footprint is 150 mm larger inside than the E-series — more usable car within the same shaft.</p></div>
-                <div class="feature"><h4>New gantry crane type</h4><p>More uniform force distribution · more stable operation · three-sided opening achievable.</p></div>
-                <div class="feature"><h4>No-pit MRL</h4><p>Pit depth 120 mm · overhead height 2600 mm.</p></div>
-                <div class="feature"><h4>After-sales guarantee</h4><p>Four maintenance services per year · five-year warranty.</p></div>
-              </div>
-              <figure style="background:var(--paper-2);display:flex;align-items:center;justify-content:center;padding:16px;overflow:hidden">
-                <img src="assets/img/platform-a.png" alt="Platform lift H series structures" style="max-height:100%;width:auto">
-              </figure>
-            </div>
-          </section>
-
-          <section class="stack">
-            <div class="seclabel"><b>Platform lift · L series</b><i></i></div>
-            <p class="p" style="font-size:17px;max-width:800px">Small space, grand layout. Enter the PLUS era of the platform
-              lift — boundaryless aesthetics blended into a luxurious lifestyle, with finishes that disappear into the
-              architecture.</p>
-            <figure style="flex:1;min-height:0;margin-top:22px;background:var(--paper-2);display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden">
-              <img src="assets/img/platform-b.png" alt="Platform lift L series finishes" style="max-height:100%;width:auto">
-            </figure>
-            <div class="dl" style="margin-top:26px">
-              <div><span class="k">Pit depth</span><span class="spec">120 MM</span></div>
-              <div><span class="k">Overhead height</span><span class="spec">2600 MM</span></div>
-              <div><span class="k">Warranty</span><span class="spec">5 YEARS · 4 SERVICES / YR</span></div>
-            </div>
-          </section>
-
+      <div style="position:absolute;left:88px;top:276px;width:856px;bottom:96px;
+                  display:flex;flex-direction:column">
+        <div class="seclabel"><b>H series · high shaft utilisation</b><i></i></div>
+        <div style="display:grid;grid-template-columns:412px 412px;gap:32px;flex:1;min-height:0">
+          <div style="display:flex;flex-direction:column;justify-content:space-between">
+            <div class="feature"><h4>High shaft utilisation</h4><p>The X-series footprint is 150 mm larger inside than the E-series — more usable car within the same shaft.</p></div>
+            <div class="feature"><h4>New gantry crane type</h4><p>More uniform force distribution · more stable operation · three-sided opening achievable.</p></div>
+            <div class="feature"><h4>No-pit MRL</h4><p>Pit depth 120 mm · overhead height 2600 mm.</p></div>
+            <div class="feature"><h4>After-sales guarantee</h4><p>Four maintenance services per year · five-year warranty.</p></div>
+          </div>
+          <figure style="background:#fff;display:flex;align-items:center;justify-content:center;padding:18px;
+                         overflow:hidden;box-shadow:0 22px 54px rgba(6,20,60,.10)">
+            <img src="assets/img/platform-a.png" alt="Platform lift H series structures" style="max-height:100%;width:auto">
+          </figure>
         </div>
       </div>
+
+      <div style="position:absolute;right:88px;top:276px;width:856px;bottom:96px;
+                  display:flex;flex-direction:column">
+        <div class="seclabel"><b>L series · the PLUS era</b><i></i></div>
+        <figure style="flex:1;min-height:0;background:#fff;display:flex;align-items:center;
+                       justify-content:center;padding:18px;overflow:hidden;
+                       box-shadow:0 22px 54px rgba(6,20,60,.10)">
+          <img src="assets/img/platform-b.png" alt="Platform lift L series finishes"
+               style="max-width:100%;max-height:100%;width:auto;object-fit:contain">
+        </figure>
+        <div>
+          <p class="p" style="font-size:16.5px;margin-top:24px">Small space, grand layout. Boundaryless aesthetics
+            blended into a luxurious lifestyle, with finishes that disappear into the architecture.</p>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:20px">
+            <div class="spec-item"><p style="color:var(--ink-3);min-height:0">Pit depth</p>
+              <b style="font-family:var(--display);font-weight:900;font-size:26px;color:var(--blue)">120 mm</b></div>
+            <div class="spec-item"><p style="color:var(--ink-3);min-height:0">Overhead height</p>
+              <b style="font-family:var(--display);font-weight:900;font-size:26px;color:var(--blue)">2600 mm</b></div>
+            <div class="spec-item"><p style="color:var(--ink-3);min-height:0">Warranty</p>
+              <b style="font-family:var(--display);font-weight:900;font-size:26px;color:var(--blue)">5 years</b></div>
+          </div>
+        </div>
+      </div>
+
       <span class="foliolabel">Accessibility · Platform lifts</span>
       <span class="folio">12</span>
     </div>
@@ -1282,180 +1350,170 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   </section>
 
   <!-- ================================================== 13 FREIGHT -->
-  <section class="slide" data-title="Freight Elevator Series" data-sub="Goods handling" data-folio="13">
+  <section class="slide tint" data-title="Freight Elevator Series" data-sub="Goods handling" data-folio="13">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">CARRYING THE MISSION OF TRANSPORTATION</p>
-        <h2 class="h1">FREIGHT ELEVATOR SERIES</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground tint"></div>
 
-      <div class="body">
-        <p class="p" style="font-size:19px;margin-bottom:24px">Bringing smoothness and efficiency to every corner of the building.</p>
+      <p class="kicker" style="position:absolute;left:88px;top:70px">CARRYING THE MISSION OF TRANSPORTATION</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Freight <em>elevator</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· GOODS HANDLING SERIES</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-        <div style="display:grid;grid-template-columns:412px 560px 264px 412px;gap:32px;height:540px">
+      <p class="p" style="position:absolute;left:88px;top:262px;width:1200px;font-size:18px">
+        Bringing smoothness and efficiency to every corner of the building.</p>
 
-          <article class="card">
-            <div class="shot">
-              <img src="assets/img/freight-cabin.png" alt="TIGO01-H251-1 freight car" style="object-fit:contain;padding:12px"></div>
-            <div class="facts"><div class="id"><span class="code">TIGO01-H251-1</span><span class="n">CAR DESIGN</span></div>
-            <div class="speclist">
-              <div><span class="k">Ceiling</span><span class="v">TQ04-H17 painted steel (light grey) + acrylic + injection-moulded parts</span></div>
-              <div><span class="k">Ventilation</span><span class="v">Fan</span></div>
-              <div><span class="k">Sill</span><span class="v">Aluminium alloy plate bent / solid sill</span></div>
-              <div><span class="k">Car door</span><span class="v">Painted steel</span></div>
-              <div><span class="k">COP / call box</span><span class="v">Hairline stainless steel</span></div>
-              <div><span class="k">Floor</span><span class="v">Aluminium alloy / steel plate bending / cast iron</span></div>
+      <div style="position:absolute;left:88px;right:88px;top:322px;height:452px;
+                  display:grid;grid-template-columns:412px 560px 264px 412px;gap:32px">
+
+        <article class="stack">
+          <div class="seclabel"><b>Car design · TIGO01-H251-1</b><i></i></div>
+          <figure style="flex:1;min-height:0;background:#fff;display:flex;align-items:center;
+                         justify-content:center;padding:14px;overflow:hidden">
+            <img src="assets/img/freight-cabin.png" alt="TIGO01-H251-1 freight car" style="max-height:100%;width:auto">
+          </figure>
+          <div class="speclist" style="margin-top:20px">
+            <div><span class="k">Car door</span><span class="v">Painted steel</span></div>
+            <div><span class="k">Sill</span><span class="v">Aluminium alloy / solid sill</span></div>
+            <div><span class="k">Floor</span><span class="v">Aluminium alloy · steel plate · cast iron</span></div>
+          </div>
+        </article>
+
+        <section class="stack">
+          <div class="seclabel"><b>All-in-one control box</b><i></i></div>
+          <div style="display:grid;grid-template-columns:264px 264px;gap:32px;flex:1;min-height:0">
+            <figure class="fill" style="background:#fff"><img src="assets/img/freight-panel-1.png" alt="All-in-one control panel"></figure>
+            <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;min-height:0">
+              <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-disp-1.png" alt="Segment display"></div><span>Display</span></div>
+              <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-btn-1.png" alt="Round button"></div><span>Button</span></div>
             </div>
           </div>
-          </article>
+        </section>
 
-          <section class="stack">
-            <div class="seclabel"><b>All-in-one control box</b><i></i></div>
-            <div style="display:grid;grid-template-columns:264px 264px;gap:32px;flex:1;min-height:0">
-              <figure class="fill"><img src="assets/img/freight-panel-1.png" alt="All-in-one control panel"></figure>
-              <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;min-height:0">
-                <div class="tile"><div class="box" style="flex:1;min-height:0"><img src="assets/img/freight-disp-1.png" alt="Segment display"></div><span>Display</span></div>
-                <div class="tile"><div class="box" style="flex:1;min-height:0"><img src="assets/img/freight-btn-1.png" alt="Round button"></div><span>Button</span></div>
-              </div>
-            </div>
-          </section>
-
-          <section class="stack">
-            <div class="seclabel"><b>Split panel</b><i></i></div>
-            <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;flex:1;min-height:0">
-              <figure class="fill"><img src="assets/img/freight-panel-2.png" alt="Split operation panel"></figure>
-              <div class="tile"><div class="box" style="flex:1;min-height:0"><img src="assets/img/freight-disp-2.jpg" alt="Blue display"></div><span>Display</span></div>
-            </div>
-          </section>
-
-          <section class="stack">
-            <div class="seclabel"><b>Interior &amp; optional floor</b><i></i></div>
-            <div style="display:grid;grid-template-rows:1fr 190px;gap:24px;flex:1;min-height:0">
-              <figure style="overflow:hidden"><img src="assets/img/freight-interior.jpg" alt="Freight car interior" style="width:100%;height:100%;object-fit:cover"></figure>
-              <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:0">
-                <div class="tile"><div class="box" style="flex:1;min-height:0"><img src="assets/img/freight-plate-1.png" alt="Checkered plate 1"></div><span>Checkered plate 1</span></div>
-                <div class="tile"><div class="box" style="flex:1;min-height:0"><img src="assets/img/freight-plate-2.png" alt="Checkered plate 2"></div><span>Checkered plate 2</span></div>
-              </div>
-            </div>
-          </section>
-        </div>
-
-        <div style="position:absolute;left:0;right:0;bottom:0">
-          <div class="seclabel"><b>Landing door colour — optional</b><i></i></div>
-          <div class="swatches">
-            <div class="swatch"><b style="background:#BCB9B5"></b><span>Shallow Gray</span><i>S501</i></div>
-            <div class="swatch"><b style="background:#FEF1C2"></b><span>Ivory Yellow</span><i>S502</i></div>
-            <div class="swatch"><b style="background:#D6BEA0"></b><span>Bone Color</span><i>S503</i></div>
-            <div class="swatch"><b style="background:#7DBA9D"></b><span>Light Green</span><i>S504</i></div>
-            <div class="swatch"><b style="background:#006DB8"></b><span>Blue</span><i>S505</i></div>
-            <div class="swatch"><b style="background:#28282A"></b><span>Matte Black</span><i>S506</i></div>
+        <section class="stack">
+          <div class="seclabel"><b>Split panel</b><i></i></div>
+          <div style="display:grid;grid-template-rows:1fr 1fr;gap:24px;flex:1;min-height:0">
+            <figure class="fill" style="background:#fff"><img src="assets/img/freight-panel-2.png" alt="Split operation panel"></figure>
+            <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-disp-2.jpg" alt="Blue display"></div><span>Display</span></div>
           </div>
+        </section>
+
+        <section class="stack">
+          <div class="seclabel"><b>Interior &amp; optional floor</b><i></i></div>
+          <div style="display:grid;grid-template-rows:1fr 172px;gap:24px;flex:1;min-height:0">
+            <figure style="overflow:hidden"><img src="assets/img/freight-interior.jpg" alt="Freight car interior" style="width:100%;height:100%;object-fit:cover"></figure>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;min-height:0">
+              <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-plate-1.png" alt="Checkered plate 1"></div><span>Checkered plate 1</span></div>
+              <div class="tile"><div class="box" style="flex:1;min-height:0;background:#fff"><img src="assets/img/freight-plate-2.png" alt="Checkered plate 2"></div><span>Checkered plate 2</span></div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div class="band dark" style="position:absolute;left:0;right:0;bottom:0;height:246px;padding:34px 88px 0">
+        <div class="seclabel" style="margin-right:56px"><b>Landing door colour — optional</b><i></i></div>
+        <div class="swatches">
+          <div class="swatch"><b style="background:#BCB9B5"></b><span>Shallow Gray</span><i>S501</i></div>
+          <div class="swatch"><b style="background:#FEF1C2"></b><span>Ivory Yellow</span><i>S502</i></div>
+          <div class="swatch"><b style="background:#D6BEA0"></b><span>Bone Color</span><i>S503</i></div>
+          <div class="swatch"><b style="background:#7DBA9D"></b><span>Light Green</span><i>S504</i></div>
+          <div class="swatch"><b style="background:#006DB8"></b><span>Blue</span><i>S505</i></div>
+          <div class="swatch"><b style="background:#28282A"></b><span>Matte Black</span><i>S506</i></div>
         </div>
       </div>
-      <span class="foliolabel">Carrying the mission of transportation</span>
-      <span class="folio">13</span>
+
+      <span class="folio" style="color:rgba(255,255,255,.85);bottom:auto;top:846px">13</span>
     </div>
     <div class="printfoot"><span>Altigo · Passenger Elevator · Product Catalogue 2026</span><b>13</b></div>
   </section>
 
   <!-- ============================================== 14 MAN MACHINE -->
-  <section class="slide" data-title="Man Machine Series" data-sub="HOP &amp; LOP interface" data-folio="14">
+  <section class="slide deep" data-title="Man Machine Series" data-sub="HOP &amp; LOP interface" data-folio="14">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">INTERFACE · HOP &amp; LOP</p>
-        <h2 class="h1">MAN MACHINE SERIES</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground deep"><span class="bloom"></span></div>
 
-      <div class="body">
-        <div style="display:grid;grid-template-columns:1004px 708px;gap:32px;height:100%">
+      <p class="kicker" style="position:absolute;left:88px;top:70px">INTERFACE · HOP &amp; LOP</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;color:#fff">
+        Man machine <em>series</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:#FF8E7A">· 4.3&Prime; LED DISPLAY · TOUCH BUTTONS · GLASS PANEL</p>
+      <img class="mark" src="assets/img/logo-white.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-          <div style="display:flex;flex-direction:column;justify-content:space-between">
-            <section>
-              <div class="seclabel"><b>Glass series HOP</b><i></i><span class="micro" style="font-size:14px">4.3″ LED display · touch buttons · glass panel</span></div>
-              <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:20px">
-                <div class="tile"><div class="box" style="height:230px;background:#fff"><img src="assets/img/hop-1.png" alt="HOP black"></div></div>
-                <div class="tile"><div class="box" style="height:230px;background:#fff"><img src="assets/img/hop-2.png" alt="HOP white"></div></div>
-                <div class="tile"><div class="box" style="height:230px;background:#fff"><img src="assets/img/hop-3.png" alt="HOP green"></div></div>
-                <div class="tile"><div class="box" style="height:230px;background:#fff"><img src="assets/img/hop-4.png" alt="HOP pink"></div></div>
-                <div class="tile"><div class="box" style="height:230px;background:#fff"><img src="assets/img/hop-5.png" alt="HOP amber"></div></div>
-                <div class="tile"><div class="box" style="height:230px;background:#fff"><img src="assets/img/hop-6.png" alt="HOP blue"></div></div>
-              </div>
-            </section>
+      <div style="position:absolute;left:88px;right:88px;top:276px;bottom:112px;
+                  display:grid;grid-template-columns:1004px 708px;gap:32px">
 
-            <section>
-              <div class="seclabel"><b>Hairline stainless steel LOP series</b><i></i><span class="micro" style="font-size:14px">4.3″ LED display · touch buttons · glass panel</span></div>
-              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px">
-                <div class="tile"><div class="box" style="height:214px;background:#fff"><img src="assets/img/lop-1.png" alt="LOP 1"></div></div>
-                <div class="tile"><div class="box" style="height:214px;background:#fff"><img src="assets/img/lop-2.png" alt="LOP 2"></div></div>
-                <div class="tile"><div class="box" style="height:214px;background:#fff"><img src="assets/img/lop-3.png" alt="LOP 3"></div></div>
-                <div class="tile"><div class="box" style="height:214px;background:#fff"><img src="assets/img/lop-4.png" alt="LOP 4"></div></div>
-                <div class="tile"><div class="box" style="height:214px;background:#fff"><img src="assets/img/lop-5.png" alt="LOP 5"></div></div>
-              </div>
-            </section>
-
-            <section style="display:grid;grid-template-columns:repeat(4,229px);gap:24px">
-              <div>
-                <p class="spec" style="margin-bottom:10px">PANEL MATERIAL</p>
-                <p class="micro">1. Stainless steel hairline<br>2. Mirror stainless steel<br>3. Titanium stainless steel hairline</p>
-              </div>
-              <div>
-                <p class="spec" style="margin-bottom:10px">HOP PANEL</p>
-                <p class="micro">1. Stainless steel hairline<br>2. Mirror stainless steel<br>3. Titanium stainless steel hairline</p>
-              </div>
-              <div>
-                <p class="spec" style="margin-bottom:10px">BUTTON</p>
-                <p class="micro">Emits white light (optional red). Panel: hairline / mirror 304 stainless steel.</p>
-              </div>
-              <div>
-                <p class="spec" style="margin-bottom:10px">CALL STYLE</p>
-                <p class="micro">1. Display: LED display screen<br>2. Button panel: hairline / mirror 304 stainless steel</p>
-              </div>
-            </section>
-          </div>
-
-          <div style="display:grid;grid-template-columns:436px 240px;gap:32px;height:772px">
-            <div style="display:flex;flex-direction:column;justify-content:space-between">
-              <section>
-                <div class="seclabel"><b>Integrated operation panel</b><i></i></div>
-                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
-                  <div class="tile"><div class="box" style="height:86px"><img src="assets/img/ui-disp-1.jpg" alt="Display"></div><span>Display</span></div>
-                  <div class="tile"><div class="box" style="height:86px;background:#fff"><img src="assets/img/ui-sqbtn.jpg" alt="Square button"></div><span>Button</span></div>
-                  <div class="tile"><div class="box" style="height:86px"><img src="assets/img/ui-ad-1.jpg" alt="Media display"></div><span>Media display</span></div>
-                  <div class="tile"><div class="box" style="height:86px"><img src="assets/img/ui-disp-3.jpg" alt="Blue display"></div><span>Display</span></div>
-                </div>
-              </section>
-
-              <section>
-                <div class="seclabel"><b>Optional button</b><i></i></div>
-                <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
-                  <div class="tile"><div class="box" style="height:78px;background:#fff"><img src="assets/img/btn-dr32a.png" alt="DR32A"></div><span>DR32A</span></div>
-                  <div class="tile"><div class="box" style="height:78px;background:#fff"><img src="assets/img/btn-dr32a-b.png" alt="DR32A (B)"></div><span>DR32A (B)</span></div>
-                  <div class="tile"><div class="box" style="height:78px;background:#fff"><img src="assets/img/btn-xbr27dk.png" alt="XBR27D (K)"></div><span>XBR27D (K)</span></div>
-                  <div class="tile"><div class="box" style="height:78px;background:#fff"><img src="assets/img/btn-dr32a-2.png" alt="DR32A"></div><span>DR32A</span></div>
-                  <div class="tile"><div class="box" style="height:78px;background:#fff"><img src="assets/img/btn-xbr27db.png" alt="XBR27D (B)"></div><span>XBR27D (B)</span></div>
-                </div>
-              </section>
-
-              <section>
-                <div class="seclabel"><b>Optional LOP style</b><i></i></div>
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end">
-                  <div class="tile"><div class="box" style="height:130px;background:#fff"><img src="assets/img/lop-style.png" alt="XHB23-B"></div><span>Type XHB23-B</span></div>
-                  <div class="tile"><div class="box" style="height:130px;background:#fff;padding:18px"><img src="assets/img/btn-dr32a-b.png" alt="Button"></div><span>Button</span></div>
-                </div>
-              </section>
+        <div style="display:flex;flex-direction:column;justify-content:space-between;min-height:0">
+          <section>
+            <div class="seclabel"><b>Glass series HOP</b><i></i></div>
+            <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:20px">
+              <div class="tile"><div class="box" style="height:220px;background:rgba(255,255,255,.05)"><img src="assets/img/hop-1.png" alt="HOP black"></div></div>
+              <div class="tile"><div class="box" style="height:220px;background:rgba(255,255,255,.05)"><img src="assets/img/hop-2.png" alt="HOP white"></div></div>
+              <div class="tile"><div class="box" style="height:220px;background:rgba(255,255,255,.05)"><img src="assets/img/hop-3.png" alt="HOP green"></div></div>
+              <div class="tile"><div class="box" style="height:220px;background:rgba(255,255,255,.05)"><img src="assets/img/hop-4.png" alt="HOP pink"></div></div>
+              <div class="tile"><div class="box" style="height:220px;background:rgba(255,255,255,.05)"><img src="assets/img/hop-5.png" alt="HOP amber"></div></div>
+              <div class="tile"><div class="box" style="height:220px;background:rgba(255,255,255,.05)"><img src="assets/img/hop-6.png" alt="HOP blue"></div></div>
             </div>
+          </section>
 
-            <figure class="fill" style="height:772px;padding:18px">
-              <img src="assets/img/cop-main.png" alt="Full-height car operating panel">
-            </figure>
+          <section>
+            <div class="seclabel"><b>Hairline stainless steel LOP series</b><i></i></div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px">
+              <div class="tile"><div class="box" style="height:200px;background:rgba(255,255,255,.05)"><img src="assets/img/lop-1.png" alt="LOP 1"></div></div>
+              <div class="tile"><div class="box" style="height:200px;background:rgba(255,255,255,.05)"><img src="assets/img/lop-2.png" alt="LOP 2"></div></div>
+              <div class="tile"><div class="box" style="height:200px;background:rgba(255,255,255,.05)"><img src="assets/img/lop-3.png" alt="LOP 3"></div></div>
+              <div class="tile"><div class="box" style="height:200px;background:rgba(255,255,255,.05)"><img src="assets/img/lop-4.png" alt="LOP 4"></div></div>
+              <div class="tile"><div class="box" style="height:200px;background:rgba(255,255,255,.05)"><img src="assets/img/lop-5.png" alt="LOP 5"></div></div>
+            </div>
+          </section>
+
+          <section style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+            <div><p class="spec" style="margin-bottom:10px;color:#9DBBFF">PANEL MATERIAL</p>
+              <p class="micro">1. Stainless steel hairline<br>2. Mirror stainless steel<br>3. Titanium stainless steel hairline</p></div>
+            <div><p class="spec" style="margin-bottom:10px;color:#9DBBFF">HOP PANEL</p>
+              <p class="micro">1. Stainless steel hairline<br>2. Mirror stainless steel<br>3. Titanium stainless steel hairline</p></div>
+            <div><p class="spec" style="margin-bottom:10px;color:#9DBBFF">BUTTON</p>
+              <p class="micro">Emits white light (optional red). Panel: hairline / mirror 304 stainless steel.</p></div>
+            <div><p class="spec" style="margin-bottom:10px;color:#9DBBFF">CALL STYLE</p>
+              <p class="micro">1. Display: LED display screen<br>2. Button panel: hairline / mirror 304 stainless steel</p></div>
+          </section>
+        </div>
+
+        <div style="display:grid;grid-template-columns:436px 240px;gap:32px;min-height:0">
+          <div style="display:flex;flex-direction:column;justify-content:space-between;min-height:0">
+            <section>
+              <div class="seclabel"><b>Integrated operation panel</b><i></i></div>
+              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+                <div class="tile"><div class="box" style="height:86px;background:rgba(255,255,255,.05)"><img src="assets/img/ui-disp-1.jpg" alt="Display"></div><span>Display</span></div>
+                <div class="tile"><div class="box" style="height:86px;background:rgba(255,255,255,.05)"><img src="assets/img/ui-sqbtn.jpg" alt="Square button"></div><span>Button</span></div>
+                <div class="tile"><div class="box" style="height:86px;background:rgba(255,255,255,.05)"><img src="assets/img/ui-ad-1.jpg" alt="Media display"></div><span>Media display</span></div>
+                <div class="tile"><div class="box" style="height:86px;background:rgba(255,255,255,.05)"><img src="assets/img/ui-disp-3.jpg" alt="Blue display"></div><span>Display</span></div>
+              </div>
+            </section>
+            <section>
+              <div class="seclabel"><b>Optional button</b><i></i></div>
+              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px">
+                <div class="tile"><div class="box" style="height:78px;background:rgba(255,255,255,.05)"><img src="assets/img/btn-dr32a.png" alt="DR32A"></div><span>DR32A</span></div>
+                <div class="tile"><div class="box" style="height:78px;background:rgba(255,255,255,.05)"><img src="assets/img/btn-dr32a-b.png" alt="DR32A (B)"></div><span>DR32A (B)</span></div>
+                <div class="tile"><div class="box" style="height:78px;background:rgba(255,255,255,.05)"><img src="assets/img/btn-xbr27dk.png" alt="XBR27D (K)"></div><span>XBR27D (K)</span></div>
+                <div class="tile"><div class="box" style="height:78px;background:rgba(255,255,255,.05)"><img src="assets/img/btn-dr32a-2.png" alt="DR32A"></div><span>DR32A</span></div>
+                <div class="tile"><div class="box" style="height:78px;background:rgba(255,255,255,.05)"><img src="assets/img/btn-xbr27db.png" alt="XBR27D (B)"></div><span>XBR27D (B)</span></div>
+              </div>
+            </section>
+            <section>
+              <div class="seclabel"><b>Optional LOP style</b><i></i></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:end">
+                <div class="tile"><div class="box" style="height:130px;background:rgba(255,255,255,.05)"><img src="assets/img/lop-style.png" alt="XHB23-B"></div><span>Type XHB23-B</span></div>
+                <div class="tile"><div class="box" style="height:130px;background:rgba(255,255,255,.05);padding:18px"><img src="assets/img/btn-dr32a-b.png" alt="Button"></div><span>Button</span></div>
+              </div>
+            </section>
           </div>
 
+          <figure class="fill" style="padding:18px;min-height:0">
+            <img src="assets/img/cop-main.png" alt="Full-height car operating panel">
+          </figure>
         </div>
       </div>
+
       <span class="foliolabel">Interface · HOP &amp; LOP</span>
       <span class="folio">14</span>
     </div>
@@ -1463,61 +1521,60 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   </section>
 
   <!-- ================================================== 15 FIXTURES -->
-  <section class="slide" data-title="Fixture Design" data-sub="Component library" data-folio="15">
+  <section class="slide tint" data-title="Fixture Design" data-sub="Component library" data-folio="15">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">CABIN · COMPONENT LIBRARY</p>
-        <h2 class="h1">FIXTURE DESIGN</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground tint"><img class="mark-ghost" src="assets/img/logo-color.png" alt=""></div>
 
-      <div class="body">
-        <div style="display:grid;grid-template-columns:856px 856px;gap:32px;height:100%">
+      <p class="kicker" style="position:absolute;left:88px;top:70px">CABIN · COMPONENT LIBRARY</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1100px">Fixture <em>design</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· FLOORS · HANDRAILS · CEILINGS</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-          <div style="display:flex;flex-direction:column;gap:26px">
-            <section>
-              <div class="seclabel"><b>Floor series</b><i></i></div>
-              <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-1.jpg" alt="TIGO07-28"></div><span>TIGO07-28</span></div>
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-2.jpg" alt="TIGO07-66"></div><span>TIGO07-66</span></div>
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-3.jpg" alt="TIGO07-24"></div><span>TIGO07-24</span></div>
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-4.jpg" alt="TIGO07-226"></div><span>TIGO07-226</span></div>
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-5.jpg" alt="TIGO07-31"></div><span>TIGO07-31 / 31M</span></div>
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-6.jpg" alt="TIGO07-116"></div><span>TIGO07-116</span></div>
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-7.jpg" alt="TIGO07-1910P"></div><span>TIGO07-1910P</span></div>
-                <div class="tile"><div class="box" style="height:150px"><img src="assets/img/floor-8.jpg" alt="TIGO07-1225"></div><span>TIGO07-1225</span></div>
-              </div>
-            </section>
+      <div style="position:absolute;left:88px;right:88px;top:276px;bottom:96px;
+                  display:grid;grid-template-columns:856px 856px;gap:32px">
 
-            <section style="flex:1">
-              <div class="seclabel"><b>Handrail series</b><i></i></div>
-              <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px 24px">
-                <div class="tile"><div class="box" style="height:64px;background:#fff"><img src="assets/img/handrail-1.jpg" alt="TIGO06-01A"></div><span>TIGO06-01A</span></div>
-                <div class="tile"><div class="box" style="height:64px;background:#fff"><img src="assets/img/handrail-2.jpg" alt="TIGO06-01"></div><span>TIGO06-01</span></div>
-                <div class="tile"><div class="box" style="height:64px;background:#fff"><img src="assets/img/handrail-3.jpg" alt="TIGO06-12B"></div><span>TIGO06-12B</span></div>
-                <div class="tile"><div class="box" style="height:64px;background:#fff"><img src="assets/img/handrail-4.jpg" alt="TIGO06-02"></div><span>TIGO06-02</span></div>
-                <div class="tile"><div class="box" style="height:64px;background:#fff"><img src="assets/img/handrail-5.jpg" alt="TIGO06-16"></div><span>TIGO06-16</span></div>
-                <div class="tile"><div class="box" style="height:64px;background:#fff"><img src="assets/img/handrail-6.jpg" alt="TIGO06-04"></div><span>TIGO06-04</span></div>
-              </div>
-            </section>
-          </div>
-
-          <section style="display:flex;flex-direction:column">
-            <div class="seclabel"><b>Ceiling series</b><i></i></div>
-            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px 24px;flex:1">
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-1.jpg" alt="TIGO04-17"></div><span>TIGO04-17</span></div>
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-2.jpg" alt="TIGO04-71"></div><span>TIGO04-71</span></div>
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-3.jpg" alt="TIGO04-507"></div><span>TIGO04-507</span></div>
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-4.jpg" alt="TIGO04-124"></div><span>TIGO04-124</span></div>
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-5.jpg" alt="TIGO04-1376"></div><span>TIGO04-1376</span></div>
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-6.jpg" alt="TIGO04-1378"></div><span>TIGO04-1378</span></div>
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-7.jpg" alt="TIGO04-254D"></div><span>TIGO04-254D</span></div>
-              <div class="tile"><div class="box" style="height:140px;background:#fff"><img src="assets/img/ceiling-8.jpg" alt="TIGO04-85"></div><span>TIGO04-85</span></div>
+        <div style="display:flex;flex-direction:column;gap:26px;min-height:0">
+          <section>
+            <div class="seclabel"><b>Floor series</b><i></i></div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-1.jpg" alt="TIGO07-28"></div><span>TIGO07-28</span></div>
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-2.jpg" alt="TIGO07-66"></div><span>TIGO07-66</span></div>
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-3.jpg" alt="TIGO07-24"></div><span>TIGO07-24</span></div>
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-4.jpg" alt="TIGO07-226"></div><span>TIGO07-226</span></div>
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-5.jpg" alt="TIGO07-31 / 31M"></div><span>TIGO07-31 / 31M</span></div>
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-6.jpg" alt="TIGO07-116"></div><span>TIGO07-116</span></div>
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-7.jpg" alt="TIGO07-1910P"></div><span>TIGO07-1910P</span></div>
+                <div class="tile"><div class="box" style="height:112px;background:#fff"><img src="assets/img/floor-8.jpg" alt="TIGO07-1225"></div><span>TIGO07-1225</span></div>
             </div>
           </section>
-
+          <section style="flex:1;min-height:0">
+            <div class="seclabel"><b>Handrail series</b><i></i></div>
+            <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:18px 24px">
+                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-1.jpg" alt="TIGO06-01A"></div><span>TIGO06-01A</span></div>
+                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-2.jpg" alt="TIGO06-01"></div><span>TIGO06-01</span></div>
+                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-3.jpg" alt="TIGO06-12B"></div><span>TIGO06-12B</span></div>
+                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-4.jpg" alt="TIGO06-02"></div><span>TIGO06-02</span></div>
+                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-5.jpg" alt="TIGO06-16"></div><span>TIGO06-16</span></div>
+                <div class="tile"><div class="box" style="height:50px;background:#fff"><img src="assets/img/handrail-6.jpg" alt="TIGO06-04"></div><span>TIGO06-04</span></div>
+            </div>
+          </section>
         </div>
+
+        <section style="display:flex;flex-direction:column;min-height:0">
+          <div class="seclabel"><b>Ceiling series</b><i></i></div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:22px 24px;flex:1">
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-1.jpg" alt="TIGO04-17"></div><span>TIGO04-17</span></div>
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-2.jpg" alt="TIGO04-71"></div><span>TIGO04-71</span></div>
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-3.jpg" alt="TIGO04-507"></div><span>TIGO04-507</span></div>
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-4.jpg" alt="TIGO04-124"></div><span>TIGO04-124</span></div>
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-5.jpg" alt="TIGO04-1376"></div><span>TIGO04-1376</span></div>
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-6.jpg" alt="TIGO04-1378"></div><span>TIGO04-1378</span></div>
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-7.jpg" alt="TIGO04-254D"></div><span>TIGO04-254D</span></div>
+                <div class="tile"><div class="box" style="height:118px;background:#fff"><img src="assets/img/ceiling-8.jpg" alt="TIGO04-85"></div><span>TIGO04-85</span></div>
+          </div>
+        </section>
+
       </div>
       <span class="foliolabel">Cabin · Component library</span>
       <span class="folio">15</span>
@@ -1526,86 +1583,89 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   </section>
 
   <!-- ============================================= 16 CONSTRUCTION -->
-  <section class="slide" data-title="Construction Parameters" data-sub="General parameters" data-folio="16">
+  <section class="slide tint" data-title="Construction Parameters" data-sub="General parameters" data-folio="16">
     <div class="canvas">
-      <header class="pagehead">
-        <p class="kicker">CIVIL · GENERAL PARAMETERS</p>
-        <h2 class="h1">CONSTRUCTION PARAMETERS</h2>
-        <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO">
-      </header>
-      <div class="headrule"></div>
+      <div class="ground tint"></div>
 
-      <div class="body">
-        <div style="display:grid;grid-template-columns:412px 412px 856px;gap:32px;height:100%">
+      <p class="kicker" style="position:absolute;left:88px;top:70px">CIVIL · GENERAL PARAMETERS</p>
+      <h2 class="h-mega sm" style="position:absolute;left:88px;top:106px;width:1240px">Construction <em>parameters</em></h2>
+      <p style="position:absolute;left:88px;top:196px;font-family:var(--edge);font-size:19px;
+                letter-spacing:.26em;color:var(--red)">· SHAFT · CAR · MACHINE ROOM</p>
+      <img class="mark" src="assets/img/logo-color.png" alt="ALTIGO" style="right:88px;top:64px;width:196px">
 
-          <section class="stack">
-            <div class="seclabel"><b>Elevator shaft · section</b><i></i></div>
-            <figure class="dwg" style="flex:1;min-height:0">
-              <img src="assets/img/dwg-shaft.png" alt="Elevator shaft, section view">
+      <div style="position:absolute;left:88px;right:88px;top:276px;bottom:96px;
+                  display:grid;grid-template-columns:412px 412px 856px;gap:32px">
+
+        <section class="stack">
+          <div class="seclabel"><b>Elevator shaft · section</b><i></i></div>
+          <figure class="dwg" style="flex:1;min-height:0;background:#fff;padding:18px;
+                       box-shadow:0 22px 54px rgba(6,20,60,.09)">
+            <img src="assets/img/dwg-shaft.png" alt="Elevator shaft, section view">
+          </figure>
+        </section>
+
+        <section class="stack" style="gap:26px">
+          <div style="display:flex;flex-direction:column;flex:1;min-height:0">
+            <div class="seclabel"><b>Machine room · plan</b><i></i></div>
+            <figure class="dwg" style="flex:1;min-height:0;background:#fff;padding:16px;
+                         box-shadow:0 22px 54px rgba(6,20,60,.09)">
+              <img src="assets/img/dwg-machine.png" alt="Machine room arrangement plan">
             </figure>
-          </section>
+          </div>
+          <div style="display:flex;flex-direction:column;flex:1;min-height:0">
+            <div class="seclabel"><b>Shaft layout · plan</b><i></i></div>
+            <figure class="dwg" style="flex:1;min-height:0;background:#fff;padding:16px;
+                         box-shadow:0 22px 54px rgba(6,20,60,.09)">
+              <img src="assets/img/dwg-layout.png" alt="Shaft layout, plan view">
+            </figure>
+          </div>
+        </section>
 
-          <section class="stack" style="gap:26px">
-            <div style="display:flex;flex-direction:column;flex:1;min-height:0">
-              <div class="seclabel"><b>Machine room · plan</b><i></i></div>
-              <figure class="dwg" style="flex:1;min-height:0">
-                <img src="assets/img/dwg-machine.png" alt="Machine room arrangement plan">
-              </figure>
-            </div>
-            <div style="display:flex;flex-direction:column;flex:1;min-height:0">
-              <div class="seclabel"><b>Shaft layout · plan</b><i></i></div>
-              <figure class="dwg" style="flex:1;min-height:0">
-                <img src="assets/img/dwg-layout.png" alt="Shaft layout, plan view">
-              </figure>
-            </div>
-          </section>
+        <section class="stack">
+          <p class="p" style="font-size:17px">Indicative dimensions for a typical machine-room configuration.
+            The drawings are schematic and not to scale — they show the arrangement, while the figures below give
+            a working envelope at planning stage.</p>
 
-          <section class="stack">
-            <p class="p" style="font-size:17px">Indicative dimensions for a typical machine-room configuration.
-              The drawings are schematic and not to scale — they show the arrangement, while the figures below give
-              a working envelope at planning stage.</p>
-
-            <div style="display:grid;grid-template-columns:412px 412px;gap:34px 32px;margin-top:30px">
-              <div>
-                <div class="seclabel"><b>Shaft</b><i></i></div>
-                <div class="dl params tight">
-                  <div><span class="k">Shaft width</span><b>2100 mm</b></div>
-                  <div><span class="k">Net shaft depth</span><b>1750 mm</b></div>
-                  <div><span class="k">Overhead</span><b>4500 mm</b></div>
-                  <div><span class="k">Pit depth</span><b>1500 mm</b></div>
-                </div>
-              </div>
-              <div>
-                <div class="seclabel"><b>Car</b><i></i></div>
-                <div class="dl params tight">
-                  <div><span class="k">Net car width</span><b>1600 mm</b></div>
-                  <div><span class="k">Net car depth</span><b>1400 mm</b></div>
-                  <div><span class="k">Car height (HEG)</span><b>2200 mm</b></div>
-                  <div><span class="k">Net door width</span><b>900 mm</b></div>
-                </div>
-              </div>
-              <div>
-                <div class="seclabel"><b>Building</b><i></i></div>
-                <div class="dl params tight">
-                  <div><span class="k">Top floor height</span><b>3450 mm</b></div>
-                  <div><span class="k">Travel height (floor to floor)</span><b>2400 mm</b></div>
-                </div>
-              </div>
-              <div>
-                <div class="seclabel"><b>Machine room</b><i></i></div>
-                <div class="dl params tight">
-                  <div><span class="k">Net machine room width</span><b>2700 mm</b></div>
-                  <div><span class="k">Net machine room depth</span><b>4200 mm</b></div>
-                </div>
+          <div style="display:grid;grid-template-columns:412px 412px;gap:30px 32px;margin-top:28px">
+            <div>
+              <div class="seclabel"><b>Shaft</b><i></i></div>
+              <div class="dl params tight">
+                <div><span class="k">Shaft width</span><b>2100 mm</b></div>
+                <div><span class="k">Net shaft depth</span><b>1750 mm</b></div>
+                <div><span class="k">Overhead</span><b>4500 mm</b></div>
+                <div><span class="k">Pit depth</span><b>1500 mm</b></div>
               </div>
             </div>
+            <div>
+              <div class="seclabel"><b>Car</b><i></i></div>
+              <div class="dl params tight">
+                <div><span class="k">Net car width</span><b>1600 mm</b></div>
+                <div><span class="k">Net car depth</span><b>1400 mm</b></div>
+                <div><span class="k">Car height (HEG)</span><b>2200 mm</b></div>
+                <div><span class="k">Net door width</span><b>900 mm</b></div>
+              </div>
+            </div>
+            <div>
+              <div class="seclabel"><b>Building</b><i></i></div>
+              <div class="dl params tight">
+                <div><span class="k">Top floor height</span><b>3450 mm</b></div>
+                <div><span class="k">Travel height (floor to floor)</span><b>2400 mm</b></div>
+              </div>
+            </div>
+            <div>
+              <div class="seclabel"><b>Machine room</b><i></i></div>
+              <div class="dl params tight">
+                <div><span class="k">Net machine room width</span><b>2700 mm</b></div>
+                <div><span class="k">Net machine room depth</span><b>4200 mm</b></div>
+              </div>
+            </div>
+          </div>
 
-            <p class="micro" style="margin-top:auto">Dimensioned shaft sections, machine-room arrangement drawings
-              and the full civil-works package are issued separately for each project — matched to the load, speed
-              and travel height specified. Final values are confirmed per project.</p>
-          </section>
+          <p class="micro" style="margin-top:auto">Dimensioned shaft sections, machine-room arrangement drawings
+            and the full civil-works package are issued separately for each project — matched to the load, speed
+            and travel height specified. Final values are confirmed per project.</p>
+        </section>
 
-        </div>
       </div>
       <span class="foliolabel">Civil · General parameters</span>
       <span class="folio">16</span>
@@ -1614,42 +1674,44 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
   </section>
 
   <!-- ================================================== 17 CONTACT -->
-  <section class="slide dark" data-title="Contact Us" data-sub="Altigo Sdn. Bhd." data-folio="17">
+  <section class="slide deep" data-title="Contact Us" data-sub="Altigo Sdn. Bhd." data-folio="17">
     <div class="canvas">
-      <div style="position:absolute;inset:0;background:
-        radial-gradient(1100px 760px at 16% 82%,#2A63F0 0%,transparent 60%),
-        linear-gradient(150deg,#0242CA 0%,#012160 100%)"></div>
-      <img src="assets/img/logo-white.png" alt="ALTIGO" style="position:absolute;left:88px;top:72px;width:250px">
-      <h2 class="h1" style="position:absolute;left:88px;top:170px;font-size:76px;color:#fff;margin:0">CONTACT US</h2>
-      <div style="position:absolute;left:88px;top:282px;width:96px;height:4px;background:var(--red)"></div>
+      <div class="ground deep"><span class="bloom"></span><img class="mark-ghost" src="assets/img/logo-white.png" alt=""></div>
 
-      <dl style="position:absolute;left:88px;top:398px;display:grid;grid-template-columns:560px 560px;gap:56px 32px">
+      <img src="assets/img/logo-white.png" alt="ALTIGO" style="position:absolute;left:88px;top:72px;width:250px">
+      <p style="position:absolute;right:88px;top:80px;font-family:var(--edge);font-size:18px;
+                letter-spacing:.3em;color:rgba(255,255,255,.8)">2026</p>
+
+      <p class="kicker" style="position:absolute;left:88px;top:214px;color:#FF8E7A">GET IN TOUCH</p>
+      <h2 class="h-mega" style="position:absolute;left:88px;top:252px;width:1100px">Contact <em>us</em></h2>
+
+      <dl style="position:absolute;left:88px;top:474px;display:grid;grid-template-columns:560px 560px;gap:52px 32px">
         <div>
-          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:12px">Company</dt>
+          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px">Company</dt>
           <dd style="font-family:var(--edge);font-size:23px;letter-spacing:.03em;color:#fff">ALTIGO SDN. BHD.</dd>
           <dd style="font-family:var(--ui);font-size:14px;letter-spacing:.1em;color:rgba(255,255,255,.66);margin-top:8px">REG. 562238-H</dd>
         </div>
         <div>
-          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:12px">Website</dt>
+          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px">Website</dt>
           <dd style="font-family:var(--edge);font-size:23px;letter-spacing:.03em;color:#fff">WWW.AKKALLIANCE.COM</dd>
         </div>
         <div>
-          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:12px">Email</dt>
+          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px">Email</dt>
           <dd style="font-family:var(--edge);font-size:23px;letter-spacing:.03em;color:#fff">ALTIGOELEVATOR@GMAIL.COM</dd>
         </div>
         <div>
-          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:12px">Phone</dt>
+          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px">Phone</dt>
           <dd style="font-family:var(--edge);font-size:23px;letter-spacing:.03em;color:#fff">+604-283 7005 / +604-283 6772</dd>
         </div>
         <div style="grid-column:1 / -1">
-          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.58);margin-bottom:12px">Address</dt>
+          <dt style="font-family:var(--ui);font-size:12px;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:12px">Address</dt>
           <dd style="font-family:var(--edge);font-size:23px;letter-spacing:.03em;color:#fff;line-height:1.5">NO. 54-3-3, WISMA SRI MATA,<br>JALAN VAN PRAAGH, 11600 PENANG, MALAYSIA</dd>
         </div>
       </dl>
 
-      <p style="position:absolute;left:88px;bottom:72px;font-family:var(--ui);font-weight:600;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)">
+      <p style="position:absolute;left:88px;bottom:72px;font-family:var(--ui);font-weight:600;font-size:14px;
+                letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)">
         Altigo · Product Catalogue · Malaysia 2026</p>
-      <p style="position:absolute;right:88px;bottom:72px;font-family:var(--edge);font-size:18px;letter-spacing:.3em;color:#fff">2026</p>
 
       <div class="corner"><i class="b"></i><i class="r"></i></div>
     </div>

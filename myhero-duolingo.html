@@ -373,6 +373,19 @@ table.t td.s-none{color:var(--ink-3);font-weight:400;}
 .dmasc{border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;align-items:center;
        justify-content:center;gap:10px;padding:16px 10px;}
 .dmasc span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:center;}
+/* achievement medallion + tier bar */
+.dmedal{width:74px;height:74px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex:none;box-shadow:0 4px 0 rgba(0,0,0,.14);}
+.dmedal.lock{background:#EDEDED;box-shadow:0 4px 0 #DEDEDE;}
+.dach{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;}
+.dach b{font-family:'Nunito',sans-serif;font-weight:800;font-size:12.5px;color:#0A2437;line-height:1.2;}
+.dach span{font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+.dach .bar{width:78%;height:6px;border-radius:4px;background:#EDEDED;overflow:hidden;}
+.dach .bar i{display:block;height:100%;background:#1E9BF0;border-radius:4px;}
+/* streak week row */
+.dweek{display:flex;gap:8px;}
+.dweek span{width:29px;height:29px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:800;font-size:11.5px;color:#B4B4B4;border:2px solid #E5E5E5;}
+.dweek span.on{background:#FF7A29;border-color:#FF7A29;color:#fff;}
+.dweek span.today{border-color:#1E9BF0;color:#1E9BF0;}
 /* colour-in-use tile (no span rules, so buttons keep their own type) */
 .duse{border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:20px 14px;}
 .duse em{font-family:'JetBrains Mono',monospace;font-size:9px;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:center;}
@@ -1164,7 +1177,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><th>#</th><th>Combo name</th><th>Combination</th><th>Meaning / metaphor</th><th>Why it could work for MyHero</th></tr>
       <tr class="hl"><td>1</td><td><b>Hero</b></td><td>Character head + squircle</td><td>The one who never forgets</td><td>The full Duolingo model: a character in a tile. Strongest recall, strongest app icon, largest build cost</td></tr>
       <tr class="hl"><td>2</td><td><b>Badge Node</b></td><td>Shield + tick, drawn as a node</td><td>A step completed, a child protected</td><td>Keeps the master direction's shield alive and gamifies it honestly &mdash; survives one-colour print</td></tr>
-      <tr class="hl"><td>3</td><td><b>Care Streak</b></td><td>Heart + flame</td><td>Care kept up</td><td>Warmest and most product-native, and the route that most needs the guardrails on page 62</td></tr>
+      <tr class="hl"><td>3</td><td><b>Care Streak</b></td><td>Heart + flame</td><td>Care kept up</td><td>Warmest and most product-native, and the route that most needs the guardrails on page 66</td></tr>
       <tr><td>4</td><td><b>Monogram Tile</b></td><td>Letter M + squircle</td><td>MyHero, on your home screen</td><td>The route that needs no character; quiet, cheap to build, forgettable next to the other three</td></tr>
       <tr><td>5</td><td><b>Talking Hero</b></td><td>Character + speech bubble</td><td>A companion who tells you what's next</td><td>Excellent for notifications and empty states; too busy to be the primary mark</td></tr>
       <tr><td>6</td><td><b>Path Shield</b></td><td>Shield + path node</td><td>Protection, one step at a time</td><td>Clear system idea; reads as a map pin before it reads as health</td></tr>
@@ -1248,7 +1261,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><td><b>Heart with a flame tip</b></td><td>Heart + Flame</td><td>Care first, streak second. The correct priority, and the warmer of the two lockups</td></tr>
       <tr><td><b>Heart holding a pulse</b></td><td>Heart + Pulse</td><td>The master direction's route, carried across unchanged as the control for comparison</td></tr>
     </table>
-    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; A flame in the logo makes the streak permanent, and <b>a permanent streak in a health product is a permanent obligation</b>. That is the case against this route, stated plainly.<br>&mdash; Route three carries forward only as a secondary device for the streak counter, not as a candidate for the primary mark.<br>&mdash; If the client is drawn to this route, page 62 should be read first &mdash; it is the page that decides whether a streak is safe here at all.</p>
+    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; A flame in the logo makes the streak permanent, and <b>a permanent streak in a health product is a permanent obligation</b>. That is the case against this route, stated plainly.<br>&mdash; Route three carries forward only as a secondary device for the streak counter, not as a candidate for the primary mark.<br>&mdash; If the client is drawn to this route, page 66 should be read first &mdash; it is the page that decides whether a streak is safe here at all.</p>
   </div>
   <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">53</div>
 </div></div>
@@ -1559,6 +1572,294 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
   <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">59</div>
 </div></div>
 
+<!-- ============ THE HEALTH PATH ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Client</div>
+  <div class="stitle">The Health Path</div>
+  <div class="ssub">Duolingo's single strongest screen, translated node by node &mdash; the schedule as a place you are inside</div>
+  <div class="body-area">
+    <div style="display:grid;grid-template-columns:300px 1fr;gap:34px;flex:1;min-height:0">
+
+      <div style="display:flex;align-items:center;justify-content:center">
+        <div class="dev dev-lg"><div class="dev-notch"></div><div class="dev-scr duo" style="background:#fff;padding:22px 17px 15px">
+          <div style="display:flex;align-items:center;gap:11px">
+            <span class="dpill" style="color:#FF7A29;font-size:15px"><svg width="18" height="18" viewBox="0 0 64 64" fill="#FF7A29"><path d="M32 6c9 10 15 16 15 25a15 15 0 0 1-30 0c0-5 2-8 5-12 1 4 3 6 5.5 6 3.5 0 5-3.5 5-8 0-4-1-7-.5-11Z"/></svg>12</span>
+            <span class="dpill" style="color:#1E9BF0;font-size:15px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1E9BF0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.7 5.6 6.1.9-4.4 4.3 1 6.2-5.4-2.9-5.4 2.9 1-6.2L3.2 10l6.1-.9L12 3.5Z"/></svg>340</span>
+            <span style="margin-left:auto;width:27px;height:27px;border-radius:50%;background:#E7F4FE;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 64 64" fill="none" stroke="#1E9BF0" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round"><path d="M20 19c-5-4-12-2-12 5.5S13 37 20 35"/><path d="M44 19c5-4 12-2 12 5.5S51 37 44 35"/><rect x="19" y="11" width="26" height="28" rx="13"/><circle cx="26.5" cy="24.5" r="3.2" fill="#1E9BF0" stroke="none"/><circle cx="37.5" cy="24.5" r="3.2" fill="#1E9BF0" stroke="none"/></svg></span>
+          </div>
+          <div style="background:#1E9BF0;box-shadow:0 4px 0 #0A6EB4;border-radius:14px;padding:9px 12px;margin-top:11px;display:flex;align-items:center;gap:9px">
+            <div style="flex:1"><div style="font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:.13em;color:rgba(255,255,255,.78)">AISYAH &middot; SECTION 1, UNIT 3</div><div class="duo-b" style="font-size:16px;color:#fff;margin-top:2px">The first year</div></div>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </div>
+          <div class="dpath" style="margin-top:13px;gap:6px;flex:1;justify-content:flex-start">
+            <div class="dnode done" style="width:42px;height:42px;margin-right:40px"><svg width="19" height="19" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M32 8 51 15v15.5c0 12-8 20.5-19 24.5-11-4-19-12.5-19-24.5V15Z"/><path d="M23 31.5 29.5 38 42 25"/></svg></div>
+            <div class="seg" style="height:12px;margin-right:40px"></div>
+            <div class="dnode done" style="width:42px;height:42px;margin-right:4px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.4"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+            <div class="seg" style="height:12px;margin-right:4px"></div>
+            <div class="dnode" style="width:42px;height:42px;background:#8CC8EE;box-shadow:0 5px 0 #6BAAD2;margin-left:36px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg></div>
+            <div class="seg" style="height:12px;margin-left:36px"></div>
+            <div style="display:flex;align-items:center;gap:9px;margin-right:22px">
+              <div class="dnode now" style="width:52px;height:52px;box-shadow:0 6px 0 #D65C12"><svg width="24" height="24" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"><path d="M32 8 51 15v15.5c0 12-8 20.5-19 24.5-11-4-19-12.5-19-24.5V15Z"/><path d="M23 31.5 29.5 38 42 25"/></svg></div>
+              <span class="duo-b" style="font-size:11px;color:#0A4E7E;line-height:1.25">Month 6<br><span style="font-weight:400;color:#6E8CA4">Wed 3 Sept</span></span>
+            </div>
+            <div class="seg" style="height:12px;margin-right:22px"></div>
+            <div class="dnode lock" style="width:42px;height:42px;margin-right:44px"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.7 5.6 6.1.9-4.4 4.3 1 6.2-5.4-2.9-5.4 2.9 1-6.2L3.2 10l6.1-.9L12 3.5Z"/></svg></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-top:10px;border-top:2px solid #F0F0F0">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1E9BF0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10V20h13V10"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8C8C8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8C8C8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.4"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8C8C8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>
+          </div>
+        </div></div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;min-height:0">
+        <div class="lbl" style="margin-bottom:13px">Node vocabulary &mdash; six types, and nothing else may become a node</div>
+        <table class="t sm tight" style="flex:none">
+          <colgroup><col style="width:11%"><col style="width:19%"><col style="width:34%"><col style="width:36%"></colgroup>
+          <tr><th>Node</th><th>Type</th><th>What it is</th><th>Rule</th></tr>
+          <tr class="hl"><td><span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:#1E9BF0;align-items:center;justify-content:center"><svg width="14" height="14" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"><path d="M32 8 51 15v15.5c0 12-8 20.5-19 24.5-11-4-19-12.5-19-24.5V15Z"/><path d="M23 31.5 29.5 38 42 25"/></svg></span></td><td><b>Vaccination</b></td><td>One dose on the childhood schedule</td><td>The only node type the clinic can complete</td></tr>
+          <tr><td><span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:#1E9BF0;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.4"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span></td><td><b>Visit</b></td><td>A scheduled appointment or check-up</td><td>Carries the date and the clinician, never a countdown</td></tr>
+          <tr><td><span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:#8CC8EE;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/></svg></span></td><td><b>Result</b></td><td>A test result waiting to be read</td><td>Opens a plain clinical page &mdash; no game chrome past this point</td></tr>
+          <tr><td><span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:#FF8CA8;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3.5 2.7 5.6 6.1.9-4.4 4.3 1 6.2-5.4-2.9-5.4 2.9 1-6.2L3.2 10l6.1-.9L12 3.5Z"/></svg></span></td><td><b>Milestone</b></td><td>First steps, first tooth &mdash; logged by the parent</td><td>Optional forever. A blank milestone is not an incomplete one</td></tr>
+          <tr><td><span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:#25C3A8;align-items:center;justify-content:center"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 12h18M12 8v12"/><path d="M12 8c-1-3-6-4-6-1s4 1 6 1Zm0 0c1-3 6-4 6-1s-4 1-6 1Z"/></svg></span></td><td><b>Reward</b></td><td>The sticker handed over at the desk</td><td>Physical, given by a person &mdash; never bought, never virtual</td></tr>
+          <tr><td><span style="display:inline-flex;width:26px;height:26px;border-radius:50%;background:#E7F4FE;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 64 64" fill="none" stroke="#1E9BF0" stroke-width="4.6" stroke-linejoin="round" stroke-linecap="round"><path d="M20 19c-5-4-12-2-12 5.5S13 37 20 35"/><path d="M44 19c5-4 12-2 12 5.5S51 37 44 35"/><rect x="19" y="11" width="26" height="28" rx="13"/><circle cx="26.5" cy="24.5" r="3.2" fill="#1E9BF0" stroke="none"/><circle cx="37.5" cy="24.5" r="3.2" fill="#1E9BF0" stroke="none"/></svg></span></td><td><b>Checkpoint</b></td><td>The end of an age stage</td><td>The only place Hero stands on the path itself</td></tr>
+        </table>
+        <div class="lbl" style="margin:20px 0 12px">Four states</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;flex:1;min-height:0">
+          <div class="duse" style="gap:13px"><div class="dnode done"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div><em>Done &middot; mint</em></div>
+          <div class="duse" style="gap:13px"><div class="dnode now"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8v5M12 21.2v-2.6M5 6l2.8 2.8M19 6l-2.8 2.8"/><circle cx="12" cy="14" r="3.6"/></svg></div><em>Now &middot; flame</em></div>
+          <div class="duse" style="gap:13px"><div class="dnode" style="background:#8CC8EE;box-shadow:0 5px 0 #6BAAD2"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></div><em>Upcoming &middot; sky</em></div>
+          <div class="duse" style="gap:13px"><div class="dnode lock"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><em>Locked &middot; grey</em></div>
+        </div>
+        <div class="grid2" style="gap:22px;margin-top:18px;flex:none">
+          <div class="card" style="padding:18px 20px"><div class="lbl" style="margin-bottom:10px">What locked must mean</div><p class="b" style="font-size:14px"><b>Done</b> mint &middot; <b>now</b> flame &middot; <b>upcoming</b> sky &middot; <b>locked</b> grey. Locked describes <b>the future only</b> &mdash; a date that has not arrived. It may never mean "you have not earned this", and every past node stays tappable for as long as the record exists.</p></div>
+          <div class="card" style="border-color:#F0C9C7;background:#FDF7F7;padding:18px 20px"><div class="lbl" style="margin-bottom:10px;color:#C4403C">A missed node is grey, never red</div><p class="b" style="font-size:14px">Duolingo's path punishes a gap. Here a dose that was not given is marked <b>"not given"</b> in grey with a rebook action &mdash; no red, no broken chain, no gap in the line. The path records what happened; it does not judge it.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">60</div>
+</div></div>
+
+<!-- ============ ACHIEVEMENTS & RECORDS ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Client</div>
+  <div class="stitle">Achievements &amp; Records</div>
+  <div class="ssub">The awards wall from the reference, rebuilt on one rule: you cannot win a badge for being healthy</div>
+  <div class="body-area">
+    <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:32px;flex:1;min-height:0">
+
+      <div style="display:flex;flex-direction:column;min-height:0">
+        <div class="lbl" style="margin-bottom:14px">Awards &mdash; tiered, cumulative, never withdrawn</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px 18px;flex:1;min-height:0">
+
+          <div class="dach"><div class="dmedal" style="background:#1E9BF0"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-3Z"/><path d="m8.6 11.8 2.4 2.4 4.4-4.6"/></svg></div><b>Day One</b><div class="bar"><i style="width:100%"></i></div><span>Complete</span></div>
+          <div class="dach"><div class="dmedal" style="background:#25C3A8"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.6"/><path d="m8 14-2 7 6-3 6 3-2-7"/></svg></div><b>First Course</b><div class="bar"><i style="width:100%"></i></div><span>Complete</span></div>
+          <div class="dach"><div class="dmedal" style="background:#FF8CA8"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-7.5-9.6A4.4 4.4 0 0 1 12 7.6a4.4 4.4 0 0 1 7.5 2.8c0 5-7.5 9.6-7.5 9.6Z"/></svg></div><b>Memory Keeper</b><div class="bar"><i style="width:68%"></i></div><span>17 of 25</span></div>
+          <div class="dach"><div class="dmedal" style="background:#B07BE8"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V9l8-5 8 5v11"/><path d="M4 20h16M9.5 20v-5h5v5"/></svg></div><b>Growth Tracker</b><div class="bar"><i style="width:50%"></i></div><span>6 of 12</span></div>
+
+          <div class="dach"><div class="dmedal" style="background:#FF7A29"><svg width="34" height="34" viewBox="0 0 64 64" fill="#fff"><path d="M32 6c9 10 15 16 15 25a15 15 0 0 1-30 0c0-5 2-8 5-12 1 4 3 6 5.5 6 3.5 0 5-3.5 5-8 0-4-1-7-.5-11Z"/></svg></div><b>Kept Current</b><div class="bar"><i style="width:40%"></i></div><span>12 of 30 days</span></div>
+          <div class="dach"><div class="dmedal" style="background:#0A4E7E"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.8 19a6.2 6.2 0 0 1 12.4 0"/><path d="M17 5.4a3.2 3.2 0 0 1 0 6.2"/><path d="M18.2 14.2A6.2 6.2 0 0 1 21.4 19"/></svg></div><b>Safe Hands</b><div class="bar"><i style="width:100%"></i></div><span>Complete</span></div>
+          <div class="dach"><div class="dmedal lock"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B4B4B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><b style="color:#A8A8A8">School Ready</b><div class="bar"><i style="width:0"></i></div><span>Locked</span></div>
+          <div class="dach"><div class="dmedal lock"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B4B4B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><b style="color:#A8A8A8">Ten Years Kept</b><div class="bar"><i style="width:0"></i></div><span>Locked</span></div>
+
+          <div class="dach"><div class="dmedal" style="background:#8CC8EE"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.2"/><circle cx="8.5" cy="10" r="1.7"/><path d="m4 17 5-4.5 4 3.5 3-2.5 4 3.5"/></svg></div><b>Photo Album</b><div class="bar"><i style="width:32%"></i></div><span>16 of 50</span></div>
+          <div class="dach"><div class="dmedal" style="background:#0A6EB4"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="9" r="2.8"/><circle cx="17" cy="9" r="2.8"/><path d="M2.5 19a4.5 4.5 0 0 1 9 0M12.5 19a4.5 4.5 0 0 1 9 0"/></svg></div><b>Family Linked</b><div class="bar"><i style="width:100%"></i></div><span>Complete</span></div>
+          <div class="dach"><div class="dmedal lock"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B4B4B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><b style="color:#A8A8A8">Teen Handover</b><div class="bar"><i style="width:0"></i></div><span>At age 13</span></div>
+          <div class="dach"><div class="dmedal lock"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B4B4B4" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2.6"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div><b style="color:#A8A8A8">Complete History</b><div class="bar"><i style="width:0"></i></div><span>Locked</span></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;min-height:0">
+        <div>
+          <div class="lbl" style="margin-bottom:14px">Records &mdash; private to the family, never shared or compared</div>
+          <div class="dcard duo" style="padding:16px 18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+              <div><div class="duo-b" style="font-size:23px;color:#FF7A29">12</div><div style="font-size:11px;color:#6E8CA4">longest streak, days</div></div>
+              <div><div class="duo-b" style="font-size:23px;color:#0A4E7E">17</div><div style="font-size:11px;color:#6E8CA4">milestones kept</div></div>
+              <div><div class="duo-b" style="font-size:23px;color:#0A4E7E">9</div><div style="font-size:11px;color:#6E8CA4">visits recorded</div></div>
+              <div><div class="duo-b" style="font-size:23px;color:#25C3A8">3y 2m</div><div style="font-size:11px;color:#6E8CA4">on record</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="border-color:#F0C9C7;background:#FDF7F7;padding:18px 20px;flex:1;display:flex;flex-direction:column;justify-content:center">
+          <div class="lbl" style="margin-bottom:11px;color:#C4403C">The rule that shapes every badge</div>
+          <p class="b" style="font-size:14.5px;margin-bottom:11px">Every award above is earned by <b>keeping the record</b> &mdash; logging, attending, sharing, remembering. Not one of them is earned by a clinical outcome.</p>
+          <p class="b" style="font-size:14.5px">There is no badge for a normal test result and no badge for a child who is never ill. <b>That is not an achievement, it is luck</b> &mdash; and awarding it would tell every other parent something cruel and untrue.</p>
+        </div>
+        <div class="card" style="padding:18px 20px;flex:1;display:flex;flex-direction:column;justify-content:center">
+          <div class="lbl" style="margin-bottom:11px">Nothing is ever taken back</div>
+          <p class="b" style="font-size:14.5px">Duolingo's awards can regress when you lapse. Here a badge earned is <b>permanent</b>, and a tier in progress never falls &mdash; it simply waits. A parent must never open this screen and find they have lost ground on their child's health.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">61</div>
+</div></div>
+
+<!-- ============ CARE STREAK SYSTEM ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Client</div>
+  <div class="stitle">Care Streak System</div>
+  <div class="ssub">The most powerful screen in the reference, and the three things that had to come off it</div>
+  <div class="body-area">
+    <div style="display:grid;grid-template-columns:1fr 1.35fr;gap:34px;flex:1;min-height:0">
+
+      <div style="display:flex;flex-direction:column;min-height:0">
+        <div class="lbl" style="margin-bottom:14px">The MyHero version</div>
+        <div class="dcard duo" style="flex:1;width:100%;max-width:334px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:26px 24px;border-width:2px">
+          <svg width="58" height="58" viewBox="0 0 64 64" fill="#FF7A29"><path d="M32 6c9 10 15 16 15 25a15 15 0 0 1-30 0c0-5 2-8 5-12 1 4 3 6 5.5 6 3.5 0 5-3.5 5-8 0-4-1-7-.5-11Z"/></svg>
+          <div style="text-align:center">
+            <div class="duo-b" style="font-size:62px;color:#FF7A29;line-height:1">12</div>
+            <div class="duo-b" style="font-size:19px;color:#D65C12;margin-top:2px">day streak</div>
+          </div>
+          <div class="dweek">
+            <span class="on">M</span><span class="on">T</span><span class="on">W</span><span class="on">T</span><span class="today">F</span><span>S</span><span>S</span>
+          </div>
+          <div style="background:#F2F9FE;border-radius:13px;padding:12px 15px;text-align:center;width:100%">
+            <div class="duo-b" style="font-size:13.5px;color:#0A4E7E">Aisyah's record is up to date</div>
+            <div style="font-size:11.5px;color:#4B7C9E;line-height:1.45;margin-top:3px">Nothing needs doing today.</div>
+          </div>
+          <span class="dbtn" style="width:100%">Continue</span>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;min-height:0">
+        <div class="lbl" style="margin-bottom:14px">What came off the reference screen, and why</div>
+        <div style="display:flex;flex-direction:column;gap:15px;flex:1;min-height:0">
+
+          <div class="card" style="border-color:#F0C9C7;background:#FDF7F7;padding:16px 19px;flex:none;display:flex;gap:18px;align-items:center">
+            <div style="flex:none;width:26px;height:26px;border-radius:8px;background:#E0433F;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="m5.6 5.6 12.8 12.8M18.4 5.6 5.6 18.4"/></svg></div>
+            <div>
+              <p class="s" style="font-style:italic;color:#A8756F;margin-bottom:5px">"You extended your streak earlier than 69.2% of learners"</p>
+              <p class="b" style="font-size:14px"><b>The percentile line.</b> A parent must never be ranked against other parents on their child's health. The MyHero line says what is true of this child and stops there.</p>
+            </div>
+          </div>
+
+          <div class="card" style="border-color:#F0C9C7;background:#FDF7F7;padding:16px 19px;flex:none;display:flex;gap:18px;align-items:center">
+            <div style="flex:none;width:26px;height:26px;border-radius:8px;background:#E0433F;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="m5.6 5.6 12.8 12.8M18.4 5.6 5.6 18.4"/></svg></div>
+            <div>
+              <p class="s" style="font-style:italic;color:#A8756F;margin-bottom:5px">"Your streak is frozen &mdash; buy another freeze"</p>
+              <p class="b" style="font-size:14px"><b>The streak freeze.</b> Selling relief from a worry the product manufactured is bad enough in a language app. Attached to a child's vaccinations it is indefensible.</p>
+            </div>
+          </div>
+
+          <div class="card" style="border-color:#F0C9C7;background:#FDF7F7;padding:16px 19px;flex:none;display:flex;gap:18px;align-items:center">
+            <div style="flex:none;width:26px;height:26px;border-radius:8px;background:#E0433F;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="m5.6 5.6 12.8 12.8M18.4 5.6 5.6 18.4"/></svg></div>
+            <div>
+              <p class="s" style="font-style:italic;color:#A8756F;margin-bottom:5px">The crying mascot on a broken streak</p>
+              <p class="b" style="font-size:14px"><b>The grief state.</b> The reference board is full of it, and it is the single most copied thing about Duolingo. Hero never cries. A lapsed streak resets to zero in grey, with one line: <b>"Streak restarted."</b></p>
+            </div>
+          </div>
+
+          <div class="card" style="padding:18px 20px;flex:none;margin-top:auto">
+            <div class="lbl" style="margin-bottom:14px">What a lapsed streak looks like instead</div>
+            <div style="display:flex;align-items:center;gap:22px">
+              <div class="dcard duo" style="flex:none;width:206px;padding:14px 16px;display:flex;align-items:center;gap:13px;background:#FAFAFA;border-color:#E5E5E5">
+                <svg width="30" height="30" viewBox="0 0 64 64" fill="#D2D2D2"><path d="M32 6c9 10 15 16 15 25a15 15 0 0 1-30 0c0-5 2-8 5-12 1 4 3 6 5.5 6 3.5 0 5-3.5 5-8 0-4-1-7-.5-11Z"/></svg>
+                <div><div class="duo-b" style="font-size:22px;color:#8A8A8A;line-height:1">0</div><div style="font-size:11.5px;color:#8A8A8A">Streak restarted</div></div>
+              </div>
+              <p class="s" style="flex:1">Grey, factual, and gone by the next screen. <b style="color:var(--ink)">No sad face, no broken-heart graphic, no apology and no offer to buy it back.</b> The count starts again because the calendar did, not because the parent failed.</p>
+            </div>
+          </div>
+          <div class="card w" style="padding:18px 20px;flex:none">
+            <div class="lbl" style="margin-bottom:10px">What the streak may count</div>
+            <p class="b" style="font-size:14px">Days the record was <b>opened and kept current</b> &mdash; a milestone logged, a result read, a photo added. It may never count doses taken, symptoms logged for a chronic condition, or appointments attended, and it may never appear on a screen that also carries clinical data.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">62</div>
+</div></div>
+
+<!-- ============ WIDGET & LOCK SCREEN FAMILY ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Client</div>
+  <div class="stitle">Widget &amp; Lock Screen Family</div>
+  <div class="ssub">The reference builds a whole widget grid on the mascot's mood. So does this &mdash; with one state doing the opposite.</div>
+  <div class="body-area">
+    <div class="lbl" style="margin-bottom:14px">Four states by proximity &mdash; colour and copy change, and Hero changes with them</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;height:296px;flex:none">
+
+      <div class="duse" style="background:#F1FBF8;border-color:#C9EDE4;gap:14px">
+        <div class="duo" style="width:132px;height:132px;border-radius:26px;background:#25C3A8;padding:15px;display:flex;flex-direction:column;box-shadow:0 5px 0 #16A088">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3.8" stroke-linejoin="round" stroke-linecap="round"><path d="M20 19c-5-4-12-2-12 5.5S13 37 20 35"/><path d="M44 19c5-4 12-2 12 5.5S51 37 44 35"/><rect x="19" y="11" width="26" height="28" rx="13"/><path d="M32 39v8.5c0 4.6 3.4 7.5 7.4 7.5 3.3 0 5.6-2.2 5.6-5.2"/><path d="M23.5 25.5c1.5 2 4 2 5.5 0M35 25.5c1.5 2 4 2 5.5 0"/></svg>
+          <div class="duo-b" style="font-size:15px;color:#fff;line-height:1.2;margin-top:auto">All up<br>to date</div>
+        </div>
+        <em style="font-family:'JetBrains Mono',monospace;font-size:9px;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:center">Nothing due<br>Hero asleep</em>
+      </div>
+
+      <div class="duse" style="background:#F2F9FE;border-color:#CFE6F7;gap:14px">
+        <div class="duo" style="width:132px;height:132px;border-radius:26px;background:#1E9BF0;padding:15px;display:flex;flex-direction:column;box-shadow:0 5px 0 #0A6EB4">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3.8" stroke-linejoin="round" stroke-linecap="round"><path d="M20 19c-5-4-12-2-12 5.5S13 37 20 35"/><path d="M44 19c5-4 12-2 12 5.5S51 37 44 35"/><rect x="19" y="11" width="26" height="28" rx="13"/><path d="M32 39v8.5c0 4.6 3.4 7.5 7.4 7.5 3.3 0 5.6-2.2 5.6-5.2"/><circle cx="26.5" cy="24.5" r="3" fill="#fff" stroke="none"/><circle cx="37.5" cy="24.5" r="3" fill="#fff" stroke="none"/></svg>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.13em;color:rgba(255,255,255,.8);margin-top:auto">MONTH 6</div>
+          <div class="duo-b" style="font-size:15px;color:#fff;line-height:1.2">Wed<br>3 Sept</div>
+        </div>
+        <em style="font-family:'JetBrains Mono',monospace;font-size:9px;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:center">Due this month<br>Hero resting</em>
+      </div>
+
+      <div class="duse" style="background:#FFF9F0;border-color:#F7DFBC;gap:14px">
+        <div class="duo" style="width:132px;height:132px;border-radius:26px;background:#FFB443;padding:15px;display:flex;flex-direction:column;box-shadow:0 5px 0 #D8912E">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3.8" stroke-linejoin="round" stroke-linecap="round"><path d="M20 19c-5-4-12-2-12 5.5S13 37 20 35"/><path d="M44 19c5-4 12-2 12 5.5S51 37 44 35"/><rect x="19" y="11" width="26" height="28" rx="13"/><path d="M32 39v8.5c0 4.6 3.4 7.5 7.4 7.5 3.3 0 5.6-2.2 5.6-5.2"/><circle cx="26.5" cy="24.5" r="3" fill="#fff" stroke="none"/><circle cx="37.5" cy="24.5" r="3" fill="#fff" stroke="none"/><path d="M46 12h9M50.5 7.5v9"/></svg>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.13em;color:rgba(255,255,255,.85);margin-top:auto">THIS WEEK</div>
+          <div class="duo-b" style="font-size:15px;color:#fff;line-height:1.2">Wed<br>10:30am</div>
+        </div>
+        <em style="font-family:'JetBrains Mono',monospace;font-size:9px;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);text-align:center">Due this week<br>Hero reminding</em>
+      </div>
+
+      <div class="duse" style="background:#FDF4F4;border-color:#F0C9C7;gap:14px">
+        <div class="duo" style="width:132px;height:132px;border-radius:26px;background:#fff;border:2.5px solid #E0433F;padding:15px;display:flex;flex-direction:column">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" stroke="#1E9BF0" stroke-width="3.8" stroke-linejoin="round" stroke-linecap="round"><path d="M20 19c-5-4-12-2-12 5.5S13 37 20 35"/><path d="M44 19c5-4 12-2 12 5.5S51 37 44 35"/><rect x="19" y="11" width="26" height="28" rx="13"/><path d="M32 39v8.5c0 4.6 3.4 7.5 7.4 7.5 3.3 0 5.6-2.2 5.6-5.2"/><circle cx="26.5" cy="24.5" r="3" fill="#1E9BF0" stroke="none"/><circle cx="37.5" cy="24.5" r="3" fill="#1E9BF0" stroke="none"/></svg>
+          <div style="font-family:'JetBrains Mono',monospace;font-size:7.5px;letter-spacing:.13em;color:#E0433F;margin-top:auto">OVERDUE</div>
+          <div class="duo-b" style="font-size:14px;color:#0A2437;line-height:1.2">Month 6<br><span style="font-weight:400;font-size:11px;color:#6E8CA4">Tap to rebook</span></div>
+        </div>
+        <em style="font-family:'JetBrains Mono',monospace;font-size:9px;font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:#C4403C;text-align:center">Overdue<br>Hero unchanged</em>
+      </div>
+    </div>
+
+    <div class="lbl" style="margin:22px 0 12px">Sizes &mdash; the same state, at the three sizes the platform allows</div>
+    <div style="display:grid;grid-template-columns:1fr 1.5fr 1.5fr;gap:20px;flex:1;min-height:0">
+      <div class="duse" style="gap:13px">
+        <div class="duo" style="width:86px;height:86px;border-radius:20px;background:#1E9BF0;box-shadow:0 4px 0 #0A6EB4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px">
+          <svg width="27" height="27" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="4.4" stroke-linejoin="round" stroke-linecap="round"><path d="M20 20c-5-3.5-11-1.5-11 5S14 36 20 34"/><path d="M44 20c5-3.5 11-1.5 11 5S50 36 44 34"/><rect x="19" y="12" width="26" height="27" rx="13"/><circle cx="26.5" cy="25" r="3.4" fill="#fff" stroke="none"/><circle cx="37.5" cy="25" r="3.4" fill="#fff" stroke="none"/></svg>
+          <div class="duo-b" style="font-size:13px;color:#fff">3 Sept</div>
+        </div>
+        <em>Small &middot; date only</em>
+      </div>
+      <div class="duse" style="gap:13px">
+        <div class="duo" style="width:100%;max-width:238px;border-radius:20px;background:#1E9BF0;box-shadow:0 4px 0 #0A6EB4;padding:14px 16px;display:flex;align-items:center;gap:13px">
+          <svg width="34" height="34" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="3.8" stroke-linejoin="round" stroke-linecap="round"><path d="M20 19c-5-4-12-2-12 5.5S13 37 20 35"/><path d="M44 19c5-4 12-2 12 5.5S51 37 44 35"/><rect x="19" y="11" width="26" height="28" rx="13"/><path d="M32 39v8.5c0 4.6 3.4 7.5 7.4 7.5 3.3 0 5.6-2.2 5.6-5.2"/><circle cx="26.5" cy="24.5" r="3" fill="#fff" stroke="none"/><circle cx="37.5" cy="24.5" r="3" fill="#fff" stroke="none"/></svg>
+          <div style="flex:1">
+            <div style="font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:.13em;color:rgba(255,255,255,.8)">MONTH 6 &middot; NEXT VISIT</div>
+            <div class="duo-b" style="font-size:15px;color:#fff;line-height:1.2">Wed 3 Sept, 10:30</div>
+            <div style="font-size:10.5px;color:rgba(255,255,255,.85)">Dr Amira &middot; Elite Care</div>
+          </div>
+        </div>
+        <em>Medium &middot; adds the action</em>
+      </div>
+      <div class="duse" style="gap:13px">
+        <div class="duo" style="width:100%;max-width:238px;border-radius:20px;background:#101820;padding:16px;display:flex;align-items:center;gap:13px">
+          <div style="width:42px;height:42px;border-radius:50%;border:2.5px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;flex:none"><svg width="22" height="22" viewBox="0 0 64 64" fill="none" stroke="#fff" stroke-width="5.4" stroke-linejoin="round" stroke-linecap="round"><path d="M20 20c-5-3.5-11-1.5-11 5S14 36 20 34"/><path d="M44 20c5-3.5 11-1.5 11 5S50 36 44 34"/><rect x="19" y="12" width="26" height="27" rx="13"/><circle cx="26.5" cy="25" r="3.4" fill="#fff" stroke="none"/><circle cx="37.5" cy="25" r="3.4" fill="#fff" stroke="none"/></svg></div>
+          <div><div class="duo-b" style="font-size:14px;color:#fff">Wed 3 Sept</div><div style="font-size:10.5px;color:rgba(255,255,255,.6)">Month 6 &middot; 10:30am</div></div>
+        </div>
+        <em>Lock screen &middot; monochrome by platform rule</em>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr 1.3fr;gap:22px;margin-top:22px;flex:none">
+      <div class="card" style="padding:18px 20px">
+        <div class="lbl" style="margin-bottom:9px">Why the reference ships dozens of these</div>
+        <p class="b" style="font-size:14px">The board is a wall of the same owl in different states, and that is the insight worth taking: <b>the widget is the highest-frequency brand surface there is</b> &mdash; seen every day, opened almost never.</p>
+      </div>
+      <div class="card" style="padding:18px 20px"><div class="lbl" style="margin-bottom:9px">Three sizes, one decision</div><p class="b" style="font-size:14px">The medium widget adds the date and the action. <b>No size ever shows a streak count</b> &mdash; a number on a home screen is a demand, and this surface is not opted into.</p></div>
+      <div class="card" style="border-color:#BFE2FA;background:#F7FBFE;padding:18px 20px"><div class="lbl" style="margin-bottom:9px;color:var(--harbour)">Why the overdue state keeps Hero calm</div><p class="b" style="font-size:14px">Every other state changes his face. <b>The overdue one deliberately does not.</b> The reference board is full of a sad mascot doing exactly this job &mdash; and a parent glancing at a home screen after a hard week does not need a cartoon to be disappointed in them. The colour carries the urgency; the character stays kind.</p></div>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">63</div>
+</div></div>
+
 <!-- ============ ASSET MOCKUPS · CLINIC & PRINT ============ -->
 <div class="slide"><div class="canvas">
   <div class="chip">Client</div>
@@ -1631,7 +1932,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:14.5px">Two rules survive from the master direction and one is new. <b>The mark must still work in one-colour print, embroidery and on a laminated badge</b> &mdash; which is why the staff badge uses Badge Node and the uniform uses the silhouette. The new rule: <b>the immunisation certificate carries no character, no colour coding and no progress language</b>, because it is a document a second doctor may have to read.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">60</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">64</div>
 </div></div>
 
 <!-- ============ MOTION & GAMIFICATION SYSTEM ============ -->
@@ -1645,13 +1946,13 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
         <table class="t sm tight" style="flex:1">
           <colgroup><col style="width:4%"><col style="width:20%"><col style="width:26%"><col style="width:31%"><col style="width:19%"></colgroup>
           <tr><th>#</th><th>Duolingo mechanic</th><th>What it does there</th><th>MyHero equivalent</th><th>Verdict</th></tr>
-          <tr class="hl"><td>1</td><td><b>Lesson path</b></td><td>Turns a syllabus into a place you are inside</td><td><b>Health Path</b> &mdash; the immunisation and checkup schedule, node by node</td><td class="v-yes">Adopt in full</td></tr>
+          <tr class="hl"><td>1</td><td><b>Lesson path</b></td><td>Turns a syllabus into a place you are inside</td><td><b>Health Path</b> &mdash; the schedule, node by node (page 60)</td><td class="v-yes">Adopt in full</td></tr>
           <tr class="hl"><td>2</td><td><b>Unit banner</b></td><td>Names where you are and what comes next</td><td>Age stage &mdash; newborn, first year, toddler, school</td><td class="v-yes">Adopt in full</td></tr>
-          <tr class="hl"><td>3</td><td><b>Achievements</b></td><td>Rewards the long arc, not the daily grind</td><td><b>Milestone badges</b> &mdash; full course complete, first steps, first tooth</td><td class="v-yes">Adopt in full</td></tr>
+          <tr class="hl"><td>3</td><td><b>Achievements</b></td><td>Rewards the long arc, not the daily grind</td><td><b>Milestone badges</b> &mdash; the awards wall (page 61)</td><td class="v-yes">Adopt in full</td></tr>
           <tr><td>4</td><td><b>Celebration screen</b></td><td>Marks the end of an effort with a real reward</td><td>Shown when a visit is recorded, never when one is due</td><td class="v-yes">Adopt in full</td></tr>
           <tr><td>5</td><td><b>Mascot notifications</b></td><td>A character makes the reminder personal</td><td>Hero signs every reminder &mdash; warm, factual, no countdown</td><td class="v-yes">Adopt, rewrite voice</td></tr>
           <tr><td>6</td><td><b>XP</b></td><td>Converts activity into visible progress</td><td><b>Care Points</b> for logging and attending &mdash; never displayed to anyone else</td><td class="v-care">Adapt, private only</td></tr>
-          <tr><td>7</td><td><b>Streak</b></td><td>The single strongest retention mechanic in consumer software</td><td><b>Care Streak</b> on keeping the record current &mdash; never on treatment or attendance</td><td class="v-care">Adapt, with rules</td></tr>
+          <tr><td>7</td><td><b>Streak</b></td><td>The single strongest retention mechanic in consumer software</td><td><b>Care Streak</b> on keeping the record current, never on treatment (page 62)</td><td class="v-care">Adapt, with rules</td></tr>
           <tr><td>8</td><td><b>Daily quests</b></td><td>Manufactures a reason to open the app</td><td>A single "today" card, and only when something is genuinely due</td><td class="v-care">Adapt, heavily</td></tr>
           <tr><td>9</td><td><b>Streak freeze</b></td><td>Sells relief from the guilt it created</td><td>&mdash;</td><td class="v-no">Refuse</td></tr>
           <tr><td>10</td><td><b>Hearts / lives</b></td><td>Limits play to create scarcity</td><td>&mdash;</td><td class="v-no">Refuse</td></tr>
@@ -1685,7 +1986,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">61</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">65</div>
 </div></div>
 
 <!-- ============ GUARDRAILS ============ -->
@@ -1725,7 +2026,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:15.5px">Before any mechanic ships, ask one question: <b>would this still feel right to a parent whose child is seriously ill?</b> A path, a badge and a warm reminder pass. A lost streak, a league place and a countdown do not. If a feature only works for the healthy majority, it does not belong in a medical record.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">62</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">66</div>
 </div></div>
 
 <!-- ============ NEXT STEPS ============ -->
@@ -1739,7 +2040,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><th>#</th><th>Step</th><th>Detail</th><th>Owner</th><th>Status</th></tr>
       <tr class="hl"><td>1</td><td><b>Choose a direction</b></td><td>Master document or this one. They are alternatives, not layers &mdash; the two cannot be merged without losing what makes either work</td><td>Dr Amira</td><td class="mid">Blocking</td></tr>
       <tr class="hl"><td>2</td><td><b>Answer the mascot question</b></td><td>A character is a permanent commitment. Yes gives routes 1&ndash;3; no leaves route 4 and the shape language only</td><td>Dr Amira</td><td class="mid">Blocking</td></tr>
-      <tr class="hl"><td>3</td><td><b>Sign off the guardrails</b></td><td>Page 62 becomes a written product rule, not a design preference. Without it the mechanics drift back toward the extreme tier within one release</td><td>Joint</td><td class="mid">Blocking</td></tr>
+      <tr class="hl"><td>3</td><td><b>Sign off the guardrails</b></td><td>Page 66 becomes a written product rule, not a design preference. Without it the mechanics drift back toward the extreme tier within one release</td><td>Joint</td><td class="mid">Blocking</td></tr>
       <tr><td>4</td><td><b>Trademark &amp; store clearance</b></td><td>Search "MyHero" in the relevant classes, and clear the character separately &mdash; a mascot needs its own protection</td><td>Client / legal</td><td>Not started</td></tr>
       <tr><td>5</td><td><b>Draw the character properly</b></td><td>Full turnaround, expression set, four size bands and the motion rig. The largest single piece of work in this direction</td><td>Brand Method</td><td>Awaiting step 2</td></tr>
       <tr><td>6</td><td><b>Build the UI kit</b></td><td>Buttons, cards, nodes, path, celebration and the plain clinical surfaces &mdash; both halves, or the guardrails cannot hold</td><td>Brand Method</td><td>Phase 2</td></tr>
@@ -1756,7 +2057,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:14.5px">Every mark, character and screen here is <b>provisional</b>. Hero is a sketch, not a finished character; Nunito stands in for a rounded face still to be licensed or drawn; the schedule on the path is illustrative and must be checked against the current Malaysian childhood immunisation programme before any build.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">63</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">67</div>
 </div></div>
 </div>
 <script>

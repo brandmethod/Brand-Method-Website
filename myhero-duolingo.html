@@ -38,7 +38,20 @@ body{background:#3A3A3A;font-family:'Poppins',system-ui,-apple-system,sans-serif
 
 .canvas.guidepage{padding:0;}
 .canvas.guidepage img{width:1920px;height:1080px;display:block;object-fit:cover;}
-.canvas.guidepage .gph{width:1920px;height:1080px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:#F7F7F7;}
+.gph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;background:#F7F7F7;text-align:center;padding:24px;}
+.canvas.guidepage .gph{width:1920px;height:1080px;}
+.canvas.refpage .rimg{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding-top:26px;}
+.canvas.refpage .rimg img{max-width:100%;max-height:100%;object-fit:contain;display:block;}
+.canvas.refpage .rimg .gph{width:100%;height:100%;}
+.rslot{display:flex;flex-direction:column;min-height:0;}
+.rslot .rs-shot{flex:1;min-height:0;border:1.4px dashed #D0D0D0;background:#FBFBFB;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:12px;}
+.rslot .rs-shot img{width:100%;height:100%;object-fit:cover;display:block;}
+.rslot .rs-shot .gph{width:100%;height:100%;gap:0;background:#FBFBFB;}
+.rslot .rs-shot .gph span,.rslot .rs-shot .gph em{display:none;}
+.rslot .rs-shot .gph b{font-size:11px;font-weight:400;letter-spacing:.13em;color:#BDBDBD;padding:0 14px;line-height:1.7;}
+.rslot b{font-size:13.5px;font-weight:600;letter-spacing:-.01em;display:block;margin-bottom:3px;}
+.rslot em{font-size:11.5px;font-style:normal;color:var(--ink-3);font-weight:300;display:block;line-height:1.5;}
+.rslot i{font-family:'JetBrains Mono',monospace;font-size:10px;font-style:normal;letter-spacing:.08em;color:var(--sky);display:block;margin-top:7px;}
 .gph span{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:#B8B8B8;}
 .gph b{font-size:46px;font-weight:400;letter-spacing:.045em;text-transform:uppercase;color:#8A8A8A;text-align:center;padding:0 120px;line-height:1.2;}
 .gph em{font-family:'JetBrains Mono',monospace;font-size:12px;font-style:normal;letter-spacing:.1em;color:#C6C6C6;}
@@ -440,7 +453,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
   <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:80px">
     <div style="max-width:560px">
       <p style="font-size:13.5px;line-height:1.75;color:#9A9A9A;font-weight:300">Transforms brand strategy into a tangible, ownable identity system. It defines the creative concept, logo, and visual expression combining strategy, storytelling, and design precision to create a brand that connects and endures.</p>
-      <p style="font-size:13.5px;line-height:1.75;color:#9A9A9A;font-weight:300;margin-top:14px"><b style="color:#6A6A6A;font-weight:600">Version B.</b> Pages 1&ndash;44 are unchanged from the master document. From page 45 the stylescape, logo ideation and asset system are rebuilt in a single alternate direction &mdash; the Duolingo model of a warm, gamified, mascot-led product brand.</p>
+      <p style="font-size:13.5px;line-height:1.75;color:#9A9A9A;font-weight:300;margin-top:14px"><b style="color:#6A6A6A;font-weight:600">Version B.</b> Pages 1&ndash;44 are unchanged from the master document. From page 45 the reference, stylescape, logo ideation and asset system are rebuilt in a single alternate direction &mdash; the Duolingo model of a warm, gamified, mascot-led product brand.</p>
       <div style="font-size:11px;letter-spacing:.18em;color:#C4C4C4;text-transform:uppercase;margin-top:22px">MyHero Brand Creation &nbsp;·&nbsp; Duolingo Direction</div>
     </div>
     <div style="text-align:right;max-width:430px">
@@ -922,6 +935,74 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
 <!-- ============ STYLESCAPE REFERENCE (client-side reminder) ============ -->
 <div class="slide"><div class="canvas guidepage" data-title="Stylescape Reference" data-navcls=""><img src="guide/g-25.jpg" alt="Stylescape reference — three tiers" loading="lazy"></div></div>
 
+<!-- ============ DUOLINGO REFERENCE BOARD ============ -->
+<div class="slide"><div class="canvas refpage" data-title="Duolingo Reference Board">
+  <div class="chip">Client supplied</div>
+  <div class="stitle">Reference &nbsp;·&nbsp; Duolingo</div>
+  <div class="ssub">The board this direction is built from. Everything from here on traces back to a screen on this page.</div>
+  <div class="rimg"><img src="reference/r-board.jpg" alt="Duolingo reference board supplied by the client" data-ph="Duolingo reference board &mdash; the full collection as supplied"></div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">45</div>
+</div></div>
+
+<!-- ============ REFERENCE BREAKDOWN ============ -->
+<div class="slide"><div class="canvas">
+  <div class="chip">Client</div>
+  <div class="stitle">Reference &nbsp;·&nbsp; What We Took, and Where It Went</div>
+  <div class="ssub">Eight screens off the board, each traced to the page of this document that answers it</div>
+  <div class="body-area">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:1fr;gap:22px;flex:1;min-height:0">
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-01.jpg" alt="Duolingo lesson path" data-ph="Lesson path &middot; Duolingo 101"></div>
+        <b>The lesson path</b><em>Unit banner, node chain, checkpoints and the jump-to-current arrow</em><i>&rarr; page 62 &middot; The Health Path</i>
+      </div>
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-02.jpg" alt="Duolingo awards wall" data-ph="Awards wall &middot; medallion grid"></div>
+        <b>The awards wall</b><em>Round medallions in a dense grid, each with a tier count</em><i>&rarr; page 63 &middot; Achievements</i>
+      </div>
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-03.jpg" alt="Duolingo personal records panel" data-ph="Personal Records panel"></div>
+        <b>Personal Records</b><em>Longest streak, most XP, highest league &mdash; the private stats panel</em><i>&rarr; page 63 &middot; Records</i>
+      </div>
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-04.jpg" alt="Duolingo streak celebration screen" data-ph="1111 day streak &middot; week row"></div>
+        <b>The streak screen</b><em>Flame numeral, the seven-day week row, and the percentile line</em><i>&rarr; page 64 &middot; Care Streak</i>
+      </div>
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-05.jpg" alt="Duolingo widget grid" data-ph="Widget grid &middot; owl states"></div>
+        <b>The widget grid</b><em>Dozens of tiles, one mascot, a different state on each</em><i>&rarr; page 65 &middot; Widget Family</i>
+      </div>
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-06.jpg" alt="Duolingo streak widget cards" data-ph="Streak widgets &middot; 74 / 4 / 0 / 623 days"></div>
+        <b>Streak widgets by mood</b><em>Four colours, four owl expressions, four streak lengths</em><i>&rarr; page 65 &middot; States</i>
+      </div>
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-07.jpg" alt="Duo mascot expression set including the crying owl" data-ph="Duo expression set &middot; incl. the crying owl"></div>
+        <b>The expression set</b><em>The full emotional range, the crying state included</em><i>&rarr; page 57 &middot; Mascot &nbsp;/&nbsp; page 68 &middot; refused</i>
+      </div>
+
+      <div class="rslot">
+        <div class="rs-shot"><img src="reference/r-08.jpg" alt="Duolingo app icon variants and merchandise" data-ph="Icon variants &amp; merchandise"></div>
+        <b>Icons and merch</b><em>The icon in many colourways, and the mark on a shirt</em><i>&rarr; page 60 &middot; Scale &nbsp;/&nbsp; page 66 &middot; Print</i>
+      </div>
+    </div>
+
+    <div class="card w" style="margin-top:20px;display:flex;align-items:center;gap:26px">
+      <div class="lbl" style="flex:none">How this board was read</div>
+      <p class="b" style="margin:0;font-size:14.5px">Duolingo's board is a <b>system</b>, not a style &mdash; the same character, the same 5px underside and the same four states, repeated across every surface until the product is recognisable from a home-screen tile. That repetition is the thing worth taking.</p>
+      <div style="width:1px;align-self:stretch;background:var(--line);flex:none"></div>
+      <p class="b" style="margin:0;font-size:14.5px;flex:none;max-width:560px">What is <b>not</b> taken is on page 68: the leagues, the hearts, the purchasable streak freeze and the crying owl. <b>Three of those four appear on this very board</b> &mdash; they are the most visible part of the reference and the part a medical record cannot use.</p>
+    </div>
+  </div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">46</div>
+</div></div>
+
 <!-- ============ STYLESCAPE — MYHERO × DUOLINGO · 3 TIERS ============ -->
 <div class="slide"><div class="canvas">
   <div class="chip">Client</div>
@@ -1029,7 +1110,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">45</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">47</div>
 </div></div>
 
 <!-- ============ COLOUR SYSTEM ============ -->
@@ -1069,7 +1150,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <div class="card" style="border-color:#BFE2FA;background:#F7FBFE"><div class="lbl" style="margin-bottom:11px;color:var(--harbour)">Contrast floor</div><p class="b" style="font-size:14.5px">Sky on white is 3.1:1 &mdash; strong enough for a large chunky button, <b>not for body text</b>. Clinical copy is always Ink; sky is a surface colour, not a reading colour.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">46</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">48</div>
 </div></div>
 
 <!-- ============ TYPE & SHAPE SYSTEM ============ -->
@@ -1134,7 +1215,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">47</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">49</div>
 </div></div>
 
 <!-- ============ DIVIDER · LOGO IDEATION ============ -->
@@ -1167,7 +1248,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:15px"><b>One character, one container, one cue &mdash; and the cue is optional.</b> Elements 2 and 5 are containers; 3, 4, 6, 7 and 8 are cues. Duo works because it is an owl in a green square and nothing else; the moment a second cue is added the mark stops being a character and becomes a diagram.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">49</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">51</div>
 </div></div>
 
 <!-- ============ COMBO / BUILD ============ -->
@@ -1181,7 +1262,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><th>#</th><th>Combo name</th><th>Combination</th><th>Meaning / metaphor</th><th>Why it could work for MyHero</th></tr>
       <tr class="hl"><td>1</td><td><b>Hero</b></td><td>Character head + squircle</td><td>The one who never forgets</td><td>The full Duolingo model: a character in a tile. Strongest recall, strongest app icon, largest build cost</td></tr>
       <tr class="hl"><td>2</td><td><b>Badge Node</b></td><td>Shield + tick, drawn as a node</td><td>A step completed, a child protected</td><td>Keeps the master direction's shield alive and gamifies it honestly &mdash; survives one-colour print</td></tr>
-      <tr class="hl"><td>3</td><td><b>Care Streak</b></td><td>Heart + flame</td><td>Care kept up</td><td>Warmest and most product-native, and the route that most needs the guardrails on page 66</td></tr>
+      <tr class="hl"><td>3</td><td><b>Care Streak</b></td><td>Heart + flame</td><td>Care kept up</td><td>Warmest and most product-native, and the route that most needs the guardrails on page 68</td></tr>
       <tr><td>4</td><td><b>Monogram Tile</b></td><td>Letter M + squircle</td><td>MyHero, on your home screen</td><td>The route that needs no character; quiet, cheap to build, forgettable next to the other three</td></tr>
       <tr><td>5</td><td><b>Talking Hero</b></td><td>Character + speech bubble</td><td>A companion who tells you what's next</td><td>Excellent for notifications and empty states; too busy to be the primary mark</td></tr>
       <tr><td>6</td><td><b>Path Shield</b></td><td>Shield + path node</td><td>Protection, one step at a time</td><td>Clear system idea; reads as a map pin before it reads as health</td></tr>
@@ -1192,7 +1273,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
     </table>
     <p class="s" style="margin-top:16px">Rows 1&ndash;4 are carried forward as the four routes on the next pages. Row 5 survives as a secondary device for notifications and empty states, not as a mark.</p>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">50</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">52</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 1 · HERO ============ -->
@@ -1215,9 +1296,9 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><td><b>Head inside the tile</b></td><td>Character + Squircle</td><td>The app icon in its final form &mdash; the character is cropped by the tile rather than floating in it</td></tr>
       <tr><td><b>Raised trunk, with cue</b></td><td>Character + Cross</td><td>Celebration pose plus the medical cue; the expressive variant, not the locked mark</td></tr>
     </table>
-    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; The elephant is chosen for a reason the client can repeat in one line: <b>an elephant never forgets, and MyHero remembers your family's health.</b><br>&mdash; The owl is unavailable in this category for obvious reasons; the ears are what keep this from reading as any other rounded animal mark.<br>&mdash; Eyes carry the entire emotional range, so they are drawn as two solid circles and never as detailed features &mdash; that is what makes the expression set on page 55 buildable.</p>
+    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; The elephant is chosen for a reason the client can repeat in one line: <b>an elephant never forgets, and MyHero remembers your family's health.</b><br>&mdash; The owl is unavailable in this category for obvious reasons; the ears are what keep this from reading as any other rounded animal mark.<br>&mdash; Eyes carry the entire emotional range, so they are drawn as two solid circles and never as detailed features &mdash; that is what makes the expression set on page 57 buildable.</p>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">51</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">53</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 2 · BADGE NODE ============ -->
@@ -1242,7 +1323,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
     </table>
     <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; This is the only route of the four that <b>needs no character</b> and survives embroidery, one-colour print and a laminated badge without redrawing.<br>&mdash; The tick has to be drawn heavier than it looks correct at full size, or it disappears first at 16px.<br>&mdash; Route two is carried forward: making the logo and the completed node the same shape means every finished step on a child's schedule is a small appearance of the brand.</p>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">52</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">54</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 3 · CARE STREAK ============ -->
@@ -1265,9 +1346,9 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><td><b>Heart with a flame tip</b></td><td>Heart + Flame</td><td>Care first, streak second. The correct priority, and the warmer of the two lockups</td></tr>
       <tr><td><b>Heart holding a pulse</b></td><td>Heart + Pulse</td><td>The master direction's route, carried across unchanged as the control for comparison</td></tr>
     </table>
-    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; A flame in the logo makes the streak permanent, and <b>a permanent streak in a health product is a permanent obligation</b>. That is the case against this route, stated plainly.<br>&mdash; Route three carries forward only as a secondary device for the streak counter, not as a candidate for the primary mark.<br>&mdash; If the client is drawn to this route, page 66 should be read first &mdash; it is the page that decides whether a streak is safe here at all.</p>
+    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; A flame in the logo makes the streak permanent, and <b>a permanent streak in a health product is a permanent obligation</b>. That is the case against this route, stated plainly.<br>&mdash; Route three carries forward only as a secondary device for the streak counter, not as a candidate for the primary mark.<br>&mdash; If the client is drawn to this route, page 68 should be read first &mdash; it is the page that decides whether a streak is safe here at all.</p>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">53</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">55</div>
 </div></div>
 
 <!-- ============ SKETCH / SHAPE 4 · MONOGRAM TILE ============ -->
@@ -1290,9 +1371,9 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><td><b>M with a cross above</b></td><td>Letter M + Cross</td><td>Restores the category cue at the cost of the tile's simplicity; the compromise version</td></tr>
       <tr><td><b>M as a run of nodes</b></td><td>Letter M + Path node</td><td>Every vertex of the letterform is a path node &mdash; the monogram carries the schedule idea</td></tr>
     </table>
-    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; This route exists so the client has a way to take the <b>shape language without the mascot commitment</b> &mdash; the buttons, the path, the cards and the tone all still work.<br>&mdash; It is also the cheapest to build and the fastest to clear at trademark, since there is no character to protect.<br>&mdash; Route four is the correct answer only if the answer to the mascot question on page 55 is no.</p>
+    <p class="s" style="margin:26px auto 0;max-width:1560px;font-size:16px;line-height:1.8">&mdash; This route exists so the client has a way to take the <b>shape language without the mascot commitment</b> &mdash; the buttons, the path, the cards and the tone all still work.<br>&mdash; It is also the cheapest to build and the fastest to clear at trademark, since there is no character to protect.<br>&mdash; Route four is the correct answer only if the answer to the mascot question on page 57 is no.</p>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">54</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">56</div>
 </div></div>
 
 <!-- ============ MASCOT SYSTEM ============ -->
@@ -1362,12 +1443,12 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
         </div>
         <div class="card" style="border-color:#F0DFC0;background:#FEFBF4;padding:20px 22px;flex:1;display:flex;flex-direction:column;justify-content:center">
           <div class="lbl" style="margin-bottom:11px;color:#B7861B">The decision this page asks for</div>
-          <p class="b" style="font-size:14.5px">A character is a permanent commitment: an illustration library, a motion set, and a voice that has to be maintained for as long as the product exists. <b>Route 4 on page 54 is the version of this direction without that commitment</b> &mdash; it should be chosen deliberately, not by default.</p>
+          <p class="b" style="font-size:14.5px">A character is a permanent commitment: an illustration library, a motion set, and a voice that has to be maintained for as long as the product exists. <b>Route 4 on page 56 is the version of this direction without that commitment</b> &mdash; it should be chosen deliberately, not by default.</p>
         </div>
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">55</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">57</div>
 </div></div>
 
 <!-- ============ LOGO SYSTEM DRAFT 1 ============ -->
@@ -1389,7 +1470,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
     </div>
     <p class="s" style="margin-top:18px">Every draft uses Nunito Extrabold as a stand-in. The three decisions to settle are the same three as the master direction &mdash; weight, the two-tone split and the endorsement lockup &mdash; plus one that only exists here: <b>whether the character appears in the logo at all, or only in the product</b>. Duolingo keeps Duo out of the wordmark; that restraint is worth copying.</p>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">56</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">58</div>
 </div></div>
 
 <!-- ============ LOGO SYSTEM DRAFT 2 ============ -->
@@ -1446,7 +1527,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:15px">Compare down the columns, not across the rows. <b>Hero wins the app icon and loses the 20px row</b> &mdash; at that size the face is gone and only a rounded blob remains, which is exactly the trade Duolingo accepted. Badge Node is the only route that holds all four rows and still prints in one colour.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">57</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">59</div>
 </div></div>
 
 <!-- ============ LOGO SYSTEM DRAFT 3 ============ -->
@@ -1479,7 +1560,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <div class="card" style="border-color:#BFE2FA;background:#F7FBFE"><div class="lbl" style="margin-bottom:11px;color:var(--harbour)">Still provisional</div><p class="b" style="font-size:14.5px">Hero is standing in so the system can be specified before the route is chosen. <b>The behaviour on this page holds whichever route wins</b> &mdash; only the geometry changes.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">58</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">60</div>
 </div></div>
 
 <!-- ============ ASSET MOCKUPS · DIGITAL ============ -->
@@ -1573,7 +1654,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:14.5px">The path screen is the whole argument for this direction: <b>a parent can see, in one glance, exactly where their child is and what is next</b> &mdash; something a list of appointments has never managed. The notification is the counter-argument, and it is why it is written without a streak, a countdown or a guilt line.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">59</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">61</div>
 </div></div>
 
 <!-- ============ THE HEALTH PATH ============ -->
@@ -1644,7 +1725,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">60</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">62</div>
 </div></div>
 
 <!-- ============ ACHIEVEMENTS & RECORDS ============ -->
@@ -1700,7 +1781,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">61</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">63</div>
 </div></div>
 
 <!-- ============ CARE STREAK SYSTEM ============ -->
@@ -1776,7 +1857,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">62</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">64</div>
 </div></div>
 
 <!-- ============ WIDGET & LOCK SCREEN FAMILY ============ -->
@@ -1861,7 +1942,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <div class="card" style="border-color:#BFE2FA;background:#F7FBFE;padding:18px 20px"><div class="lbl" style="margin-bottom:9px;color:var(--harbour)">Why the overdue state keeps Hero calm</div><p class="b" style="font-size:14px">Every other state changes his face. <b>The overdue one deliberately does not.</b> The reference board is full of a sad mascot doing exactly this job &mdash; and a parent glancing at a home screen after a hard week does not need a cartoon to be disappointed in them. The colour carries the urgency; the character stays kind.</p></div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">63</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">65</div>
 </div></div>
 
 <!-- ============ ASSET MOCKUPS · CLINIC & PRINT ============ -->
@@ -1936,7 +2017,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:14.5px">Two rules survive from the master direction and one is new. <b>The mark must still work in one-colour print, embroidery and on a laminated badge</b> &mdash; which is why the staff badge uses Badge Node and the uniform uses the silhouette. The new rule: <b>the immunisation certificate carries no character, no colour coding and no progress language</b>, because it is a document a second doctor may have to read.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">64</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction &middot; In progress</div><div class="pnum">66</div>
 </div></div>
 
 <!-- ============ MOTION & GAMIFICATION SYSTEM ============ -->
@@ -1950,13 +2031,13 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
         <table class="t sm tight" style="flex:1">
           <colgroup><col style="width:4%"><col style="width:20%"><col style="width:26%"><col style="width:31%"><col style="width:19%"></colgroup>
           <tr><th>#</th><th>Duolingo mechanic</th><th>What it does there</th><th>MyHero equivalent</th><th>Verdict</th></tr>
-          <tr class="hl"><td>1</td><td><b>Lesson path</b></td><td>Turns a syllabus into a place you are inside</td><td><b>Health Path</b> &mdash; the schedule, node by node (page 60)</td><td class="v-yes">Adopt in full</td></tr>
+          <tr class="hl"><td>1</td><td><b>Lesson path</b></td><td>Turns a syllabus into a place you are inside</td><td><b>Health Path</b> &mdash; the schedule, node by node (page 62)</td><td class="v-yes">Adopt in full</td></tr>
           <tr class="hl"><td>2</td><td><b>Unit banner</b></td><td>Names where you are and what comes next</td><td>Age stage &mdash; newborn, first year, toddler, school</td><td class="v-yes">Adopt in full</td></tr>
-          <tr class="hl"><td>3</td><td><b>Achievements</b></td><td>Rewards the long arc, not the daily grind</td><td><b>Milestone badges</b> &mdash; the awards wall (page 61)</td><td class="v-yes">Adopt in full</td></tr>
+          <tr class="hl"><td>3</td><td><b>Achievements</b></td><td>Rewards the long arc, not the daily grind</td><td><b>Milestone badges</b> &mdash; the awards wall (page 63)</td><td class="v-yes">Adopt in full</td></tr>
           <tr><td>4</td><td><b>Celebration screen</b></td><td>Marks the end of an effort with a real reward</td><td>Shown when a visit is recorded, never when one is due</td><td class="v-yes">Adopt in full</td></tr>
           <tr><td>5</td><td><b>Mascot notifications</b></td><td>A character makes the reminder personal</td><td>Hero signs every reminder &mdash; warm, factual, no countdown</td><td class="v-yes">Adopt, rewrite voice</td></tr>
           <tr><td>6</td><td><b>XP</b></td><td>Converts activity into visible progress</td><td><b>Care Points</b> for logging and attending &mdash; never displayed to anyone else</td><td class="v-care">Adapt, private only</td></tr>
-          <tr><td>7</td><td><b>Streak</b></td><td>The single strongest retention mechanic in consumer software</td><td><b>Care Streak</b> on keeping the record current, never on treatment (page 62)</td><td class="v-care">Adapt, with rules</td></tr>
+          <tr><td>7</td><td><b>Streak</b></td><td>The single strongest retention mechanic in consumer software</td><td><b>Care Streak</b> on keeping the record current, never on treatment (page 64)</td><td class="v-care">Adapt, with rules</td></tr>
           <tr><td>8</td><td><b>Daily quests</b></td><td>Manufactures a reason to open the app</td><td>A single "today" card, and only when something is genuinely due</td><td class="v-care">Adapt, heavily</td></tr>
           <tr><td>9</td><td><b>Streak freeze</b></td><td>Sells relief from the guilt it created</td><td>&mdash;</td><td class="v-no">Refuse</td></tr>
           <tr><td>10</td><td><b>Hearts / lives</b></td><td>Limits play to create scarcity</td><td>&mdash;</td><td class="v-no">Refuse</td></tr>
@@ -1990,7 +2071,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       </div>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">65</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">67</div>
 </div></div>
 
 <!-- ============ GUARDRAILS ============ -->
@@ -2030,7 +2111,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:15.5px">Before any mechanic ships, ask one question: <b>would this still feel right to a parent whose child is seriously ill?</b> A path, a badge and a warm reminder pass. A lost streak, a league place and a countdown do not. If a feature only works for the healthy majority, it does not belong in a medical record.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">66</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">68</div>
 </div></div>
 
 <!-- ============ NEXT STEPS ============ -->
@@ -2044,7 +2125,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <tr><th>#</th><th>Step</th><th>Detail</th><th>Owner</th><th>Status</th></tr>
       <tr class="hl"><td>1</td><td><b>Choose a direction</b></td><td>Master document or this one. They are alternatives, not layers &mdash; the two cannot be merged without losing what makes either work</td><td>Dr Amira</td><td class="mid">Blocking</td></tr>
       <tr class="hl"><td>2</td><td><b>Answer the mascot question</b></td><td>A character is a permanent commitment. Yes gives routes 1&ndash;3; no leaves route 4 and the shape language only</td><td>Dr Amira</td><td class="mid">Blocking</td></tr>
-      <tr class="hl"><td>3</td><td><b>Sign off the guardrails</b></td><td>Page 66 becomes a written product rule, not a design preference. Without it the mechanics drift back toward the extreme tier within one release</td><td>Joint</td><td class="mid">Blocking</td></tr>
+      <tr class="hl"><td>3</td><td><b>Sign off the guardrails</b></td><td>Page 68 becomes a written product rule, not a design preference. Without it the mechanics drift back toward the extreme tier within one release</td><td>Joint</td><td class="mid">Blocking</td></tr>
       <tr><td>4</td><td><b>Trademark &amp; store clearance</b></td><td>Search "MyHero" in the relevant classes, and clear the character separately &mdash; a mascot needs its own protection</td><td>Client / legal</td><td>Not started</td></tr>
       <tr><td>5</td><td><b>Draw the character properly</b></td><td>Full turnaround, expression set, four size bands and the motion rig. The largest single piece of work in this direction</td><td>Brand Method</td><td>Awaiting step 2</td></tr>
       <tr><td>6</td><td><b>Build the UI kit</b></td><td>Buttons, cards, nodes, path, celebration and the plain clinical surfaces &mdash; both halves, or the guardrails cannot hold</td><td>Brand Method</td><td>Phase 2</td></tr>
@@ -2061,7 +2142,7 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
       <p class="b" style="margin:0;font-size:14.5px">Every mark, character and screen here is <b>provisional</b>. Hero is a sketch, not a finished character; Nunito stands in for a rounded face still to be licensed or drawn; the schedule on the path is illustrative and must be checked against the current Malaysian childhood immunisation programme before any build.</p>
     </div>
   </div>
-  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">67</div>
+  <div class="foot">MyHero Brand Creation &middot; Duolingo Direction</div><div class="pnum">69</div>
 </div></div>
 </div>
 <script>
@@ -2087,18 +2168,19 @@ table.t td.v-no{color:#C4403C;font-weight:600;}
   function placeholder(img){
     var cv = img.parentNode; if (!cv || cv.querySelector('.gph')) return;
     var box = document.createElement('div'); box.className = 'gph';
-    var a = document.createElement('span'); a.textContent = 'Brand Method guideline';
-    var b = document.createElement('b');    b.textContent = cv.getAttribute('data-title') || 'Guideline page';
-    var c = document.createElement('em');   c.textContent = img.getAttribute('src') + ' not found — place the guide folder beside this file';
+    var ph = img.getAttribute('data-ph');
+    var a = document.createElement('span'); a.textContent = ph ? 'Client reference' : 'Brand Method guideline';
+    var b = document.createElement('b');    b.innerHTML = ph || (cv.getAttribute('data-title') || 'Guideline page');
+    var c = document.createElement('em');   c.textContent = img.getAttribute('src') + ' not found — place the image beside this file';
     box.appendChild(a); box.appendChild(b); box.appendChild(c);
     cv.replaceChild(box, img);
   }
   function scan(){
-    [].forEach.call(document.querySelectorAll('.canvas.guidepage img'), function(img){
+    [].forEach.call(document.querySelectorAll('.canvas.guidepage img, img[data-ph]'), function(img){
       if (img.complete && img.naturalWidth === 0) placeholder(img);
     });
   }
-  [].forEach.call(document.querySelectorAll('.canvas.guidepage img'), function(img){
+  [].forEach.call(document.querySelectorAll('.canvas.guidepage img, img[data-ph]'), function(img){
     img.loading = 'eager';                       // lazy images never fire error while off-screen
     img.addEventListener('error', function(){ placeholder(img); });
     if (img.complete && img.naturalWidth === 0) placeholder(img);

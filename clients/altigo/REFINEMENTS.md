@@ -240,3 +240,23 @@ Bug found and fixed while doing this: Operating Footprint's fourth card was a da
 card. The round-18 tile reset stripped its background and forced ice, leaving white text on
 a light tile. It is now `tw-n`. Added `contrast.js` to the harness to catch this class of
 fault, though it reports false positives on semi-transparent tiles over dark pages.
+
+### Round 20 — imagery reworked after "too childish"
+The soft radial photo wash behind the titles was removed. A blurred-edge photo blob floating
+behind type reads as a PowerPoint effect, and the agency was right to reject it.
+
+Two intermediate attempts also failed and were discarded:
+- Photo tiles inside the wall with a heavy navy overlay — the overlay had to be so strong for
+  white text that the photograph was invisible, so it read as a plain navy tile.
+- The same with `background-blend-mode:luminosity` — crushed the image to near black.
+
+The working answer is the opposite of a wash: imagery at full strength, hard edged, with no
+type over it. A photographic band now sits flush on top of the tile wall, running from just
+under the lead down to the wall's top edge, bleeding off the right of the page with a short
+white fade on its left. 11 pages carry one.
+
+Fitted per page rather than by a single rule:
+- `b1` (wall at 420) and `b2` (wall at 436) set the band's top and height.
+- `lowlead` on Our Track Record, whose five-line lead and caption leave only 88px.
+- `narrow` on What Our Clients Say, whose 118px title runs to x=1049 and would sit under it.
+Added `titlew.js` and `bandfit.js` to the harness to measure these rather than guess.

@@ -10,6 +10,7 @@ fonts/                              # webfont
 build.mjs                           # index.html -> PDF
 rescale.py                          # normalises page boxes to 1440 x 810 pt
 qa.mjs                              # fails loudly on any content overflowing a slide
+make-chapter-visuals.py             # duotones the chapter / texture images
 make-artifact.py                    # inlines every asset as a data URI
 assemble-artifact.py                # wraps the slides in the web viewer shell
 preview-artifact.mjs                # screenshots the viewer in light / dark / mobile
@@ -47,7 +48,9 @@ Brand identity is unchanged and was lifted directly from the previous edition:
 - **Colour** — exact hex values carried over: `#EA1701`, `#0743C9`, `#7FA8FF`,
   `#2A2A70`, `#1A1C41`, `#0A0D2C`, `#F5F7FD`, text `#4C5580` / `#5A628C`.
 - **Photography** — every photograph, portrait and the EUROCERT certificate
-  reused, re-encoded (13.5 MB of PNG → 3.1 MB of JPEG, no visible loss).
+  reused, re-encoded (13.5 MB of PNG → 3.1 MB of JPEG, no visible loss). The
+  chapter and texture images are also ALTIGO's own photographs, duotoned (see
+  **Chapter visuals** below) — no stock or generated imagery anywhere.
 - **Structure** — same 41 pages in the same order, same folio numbers, so this
   drops in against the old file page for page.
 
@@ -86,6 +89,36 @@ in a real two-column masthead, with a hairline closing the band.
   panels with room to read.
 - Icons redrawn as inline SVG (were small rasters) so they stay sharp at any zoom
   and in print.
+
+**Chapter visuals.** The eight chapter dividers were flat gradient with roughly
+40% of the slide empty — the weakest pages in the deck, and eight near-identical
+ones at that. Each now opens on its own full-bleed image so the chapters are
+distinguishable at a glance and the deck has a rhythm. Every image is one of
+ALTIGO's own photographs put through a duotone ramp (deep navy shadows → brand
+blue midtones → pale blue highlights) with a highlight roll-off, so eight
+unrelated photographs read as one art-directed set and tie to the palette. The
+composition is bottom-anchored on a baseline rather than floated mid-slide.
+
+Two plain dark interior pages (25 Maintenance Programme, 34 Safety & Compliance)
+carry the same treatment at low opacity as background texture.
+
+To swap any of them, drop a replacement into `assets/`, edit `CHAPTERS` at the
+top of `make-chapter-visuals.py`, and re-run it:
+
+```bash
+python3 make-chapter-visuals.py && node build.mjs
+```
+
+| Chapter | Source photograph |
+|---|---|
+| 00 Company Overview | `photo-aim.jpg` |
+| 01 Brand Identity | `cover-technician.jpg` |
+| 02 Market & Performance | `photo-kl-skyline.jpg` |
+| 03 Products & Services | `prod-escalator.jpg` |
+| 04 Client Testimonials | `proj-ferringhi-mutiara.jpg` |
+| 05 Our Activities | `photo-usp.jpg` |
+| 06 Achievements & Certifications | `prod-passenger.jpg` |
+| 07 Project References & Contact | `proj-rawang-perdana.jpg` |
 
 **Copy** — corrected and made consistent, no claims added or removed:
 - p13 "Two decades of experience" contradicted the "25 years / twenty five years"

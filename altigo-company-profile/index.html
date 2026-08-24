@@ -300,16 +300,28 @@ h1 .r{font-style:normal;color:var(--red-600)}
 .cover-title span{display:block;color:var(--blue-300)}
 
 /* ============================ CHAPTER DIVIDER ============================ */
-.ch-num{font-size:150px;line-height:.82;font-weight:800;letter-spacing:-.05em;color:var(--blue-300);opacity:.9}
-.ch-title{font-size:52px;line-height:1.04;font-weight:800;letter-spacing:-.025em;color:#fff;margin-top:6px}
+/* Photo-led. The 2025 edition ran these as flat gradient with roughly 40% of
+   the slide empty; each chapter now opens on its own duotoned image so the
+   deck has a visual rhythm and you can tell chapters apart at a glance. */
+.ch-photo{position:absolute;inset:0;overflow:hidden}
+.ch-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.ch-photo::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(96deg,rgba(8,11,34,.97) 0%,rgba(9,13,40,.93) 34%,rgba(10,15,48,.62) 60%,rgba(12,20,66,.42) 100%),
+    linear-gradient(0deg,rgba(7,10,30,.72) 0%,rgba(7,10,30,0) 42%);
+}
+.ch-rule{width:64px;height:3px;background:var(--red-400);margin-bottom:26px}
+.ch-num{font-size:172px;line-height:.78;font-weight:800;letter-spacing:-.055em;color:var(--blue-300);opacity:.95}
+.ch-title{font-size:54px;line-height:1.03;font-weight:800;letter-spacing:-.026em;color:#fff;margin-top:4px}
 .ch-deck{font-size:16.5px;line-height:1.58;color:rgba(255,255,255,.72);max-width:520px;margin-top:16px;font-weight:500}
 .ch-list{list-style:none;display:flex;flex-direction:column}
 .ch-list li{
   display:flex;align-items:baseline;gap:16px;
-  padding:13px 0;border-top:1px solid var(--line-dark-soft);
-  font-size:16px;font-weight:700;color:#fff;letter-spacing:-.006em;
+  padding:14px 0;border-top:1px solid rgba(255,255,255,.14);
+  font-size:16.5px;font-weight:700;color:#fff;letter-spacing:-.006em;
 }
-.ch-list li:last-child{border-bottom:1px solid var(--line-dark-soft)}
+.ch-list li:last-child{border-bottom:1px solid rgba(255,255,255,.14)}
 .ch-list li b{font-size:10px;font-weight:800;letter-spacing:.16em;color:var(--red-400);width:20px;flex:none}
 
 /* ============================ TOC ============================ */
@@ -706,14 +718,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 05 · CHAPTER 00 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch00.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">00</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">00</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Company Overview</h2>
         <p class="ch-deck">Who we are, what drives us and where we are going — the foundations
           that every ALTIGO project is built on.</p>
@@ -1018,14 +1032,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 10 · CHAPTER 01 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch01.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">01</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">01</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Brand Identity</h2>
         <p class="ch-deck">What sets ALTIGO apart, the values we hold and the people who carry
           them into every building we serve.</p>
@@ -1406,14 +1422,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 17 · CHAPTER 02 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch02.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">02</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">02</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Market &amp; Performance</h2>
         <p class="ch-deck">The demand behind vertical transportation and the sectors we build for.</p>
       </div>
@@ -1577,14 +1595,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 20 · CHAPTER 03 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch03.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">03</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">03</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Products &amp; Services</h2>
         <p class="ch-deck">Five product families and one service model that runs from the first site
           meeting to the twentieth year of operation.</p>
@@ -1882,6 +1902,10 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 25 · MAINTENANCE -->
 <section class="page dark">
+  <div style="position:absolute;inset:0;overflow:hidden">
+    <img src="assets/texture-maintenance.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.5">
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,11,34,.95) 0%,rgba(9,13,42,.9) 46%,rgba(11,18,60,.78) 100%)"></div>
+  </div>
   <div class="rail rail-top">
     <div class="eyebrow">03<span class="sep">·</span><span class="dim">PRODUCTS &amp; SERVICES</span></div>
     <div class="eyebrow-r">MAINTENANCE PROGRAMME</div>
@@ -2036,14 +2060,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 27 · CHAPTER 04 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch04.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">04</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">04</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Client Testimonials</h2>
         <p class="ch-deck">The clearest measure of our work is what the people responsible for these
           buildings say once the contract is running.</p>
@@ -2122,14 +2148,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 29 · CHAPTER 05 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch05.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">05</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">05</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Our Activities</h2>
         <p class="ch-deck">How we keep our engineers current, our clients informed and our safety
           practice under constant review.</p>
@@ -2206,14 +2234,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 31 · CHAPTER 06 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch06.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">06</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">06</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Achievements<br>&amp; Certifications</h2>
         <p class="ch-deck">The record we have built and the independent approvals that stand behind it.</p>
       </div>
@@ -2356,6 +2386,10 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 34 · SAFETY & COMPLIANCE -->
 <section class="page dark">
+  <div style="position:absolute;inset:0;overflow:hidden">
+    <img src="assets/texture-safety.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.5">
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,11,34,.95) 0%,rgba(9,13,42,.9) 46%,rgba(11,18,60,.78) 100%)"></div>
+  </div>
   <div class="rail rail-top">
     <div class="eyebrow">06<span class="sep">·</span><span class="dim">ACHIEVEMENTS &amp; CERTIFICATIONS</span></div>
     <div class="eyebrow-r">SAFETY &amp; COMPLIANCE</div>
@@ -2536,14 +2570,16 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 37 · CHAPTER 07 -->
 <section class="page dark">
+  <div class="ch-photo"><img src="assets/chapter-ch07.jpg" alt=""></div>
   <div class="rail rail-top">
     <div class="eyebrow">CHAPTER<span class="sep">·</span><span class="dim">07</span></div>
     <div class="eyebrow-r">ALTIGO ELEVATOR · COMPANY PROFILE</div>
   </div>
   <div class="wrap">
-    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 460px;column-gap:80px;align-items:center">
+    <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">07</div>
+        <div class="ch-rule"></div>
         <h2 class="ch-title">Project References<br>&amp; Contact</h2>
         <p class="ch-deck">Recent work, the company record behind it and the people to speak to when
           you are ready to start.</p>

@@ -77,7 +77,7 @@ for i, s in enumerate(slides):
         f'</section>'
     )
 
-open(os.path.join(R, "artifact-body.html"), "w", encoding="utf-8").write("")
+
 print("slides:", len(slides))
 print("font b64 KB:", len(font)//1024)
 print("unique images:", len(seen), "| inlined KB:", sum(len(v) for v in seen.values())//1024)

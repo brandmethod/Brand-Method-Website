@@ -10,6 +10,9 @@ fonts/                              # webfont
 build.mjs                           # index.html -> PDF
 rescale.py                          # normalises page boxes to 1440 x 810 pt
 qa.mjs                              # fails loudly on any content overflowing a slide
+make-artifact.py                    # inlines every asset as a data URI
+assemble-artifact.py                # wraps the slides in the web viewer shell
+preview-artifact.mjs                # screenshots the viewer in light / dark / mobile
 ALTIGO_Company_Profile_2026.pdf     # output, 41 pages, 1440 x 810 pt
 ```
 
@@ -23,6 +26,18 @@ node qa.mjs              # overflow / clipping check — should report 0 issues
 ```
 
 `CHROME_PATH` overrides the Chromium binary if the bundled path is wrong.
+
+### Single-file web viewer
+
+```bash
+python3 make-artifact.py && python3 assemble-artifact.py   # -> altigo-profile-viewer.html
+node preview-artifact.mjs                                  # visual check, reports h-overflow
+```
+
+Produces one self-contained HTML file (~5 MB) with every image and the font
+inlined as data URIs — no `assets/` folder needed, opens offline by
+double-clicking, and works as an emailable link-free handoff. It is gitignored
+because it is fully regenerable from `index.html`.
 
 ## What was kept
 

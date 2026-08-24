@@ -1,3 +1,8 @@
 node_modules/
 out/
 *.tmp
+.preview.html
+prev-*.png
+# generated, ~5 MB of inlined base64 — rebuild with: python3 make-artifact.py && python3 assemble-artifact.py
+altigo-profile-viewer.html
+.artifact-parts.json

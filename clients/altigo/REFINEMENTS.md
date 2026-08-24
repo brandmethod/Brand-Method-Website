@@ -260,3 +260,34 @@ Fitted per page rather than by a single rule:
 - `lowlead` on Our Track Record, whose five-line lead and caption leave only 88px.
 - `narrow` on What Our Clients Say, whose 118px title runs to x=1049 and would sit under it.
 Added `titlew.js` and `bandfit.js` to the harness to measure these rather than guess.
+
+## Round 21 — full redesign · architectural quiet
+
+Direction confirmed with the agency after two rejected rounds. The diagnosis that finally
+held: the deck's cheapness was not layout, it was the **blue gradient fills**. Gradient boxes
+plus an icon on every card is the default look of a template, and no amount of rearranging
+fixes that while the gradients are still there.
+
+**Palette** — warm architectural ground replaces blue-white, and every decorative gradient
+becomes a flat solid.
+  --paper  #FFFFFF -> #F5F4F1   warm off-white
+  --mist   #F5F7FD -> #ECEAE4   warm secondary
+  --navy   #2A2A70 -> #1B1F4B
+  --ink    #1A1C41 -> #14172E   flat dark ground
+  --rule   #D6D3CB              new · the deck is drawn, not filled
+  --grad-deep / --grad-band -> flat #14172E / #1B1F4B
+Brand red and blue are unchanged; they are now used sparingly rather than everywhere.
+
+**Structure** — the tile walls lose their fills. Cells are separated by hairlines with one
+solid navy block per page, so colour is an accent rather than a pattern. Heavy 3px accent
+borders drop to 1px. The 14 radial `.glow` elements are gone — they were the last gradient
+on the dark pages.
+
+**Type** — one scale for the whole deck. Page titles 118px -> 76px, tighter tracking, and the
+`.tw` override is deleted so no page shouts louder than another. Icons 34px -> 26px.
+
+**Removed** — the photographic bands from round 20. They belonged to the previous direction
+and read as a floating strip against a drawn grid. Stripping them plus the unused photo-tile
+rules took 199KB of dead CSS and orphaned base64 out of the file.
+
+Deck is back to 2.34MB, down from 2.54MB.

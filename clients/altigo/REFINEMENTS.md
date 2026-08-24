@@ -200,3 +200,28 @@ Two rules learned while building:
 Implementation note: the card grids had to be extracted with balanced-tag matching, not
 regex. A non-greedy `</div>\s*</div>\s*</div>` pattern runs past the footer into the next
 slide and silently nests 35 of the 41 sections inside each other.
+
+### Round 18b — tile wall rolled out across the deck
+
+Extended to every page built from a uniform cell grid. Contents, titles, icons and colours
+are untouched: the converter keeps each cell's inner HTML verbatim and only replaces the
+gapped container with a full-bleed gapless wall, adding a tile background class per cell.
+
+Now on 12 pages:
+- 3x2 walls  — 13 Our Value, 30 Our Activities, 33 Our Achievements, 28 What Our Clients Say
+- 4 across   — 09 Operating Footprint, 12 The ALTIGO Difference, 24 Service Scope,
+               32 Our Track Record
+- 5 across   — 04 Company at a Glance, 06 Our Objective
+- 3 across   — 15 Company Culture
+- 4x2 dark   — 19 Target Market (white-overlay tiles, not paper tones)
+
+Left alone deliberately: the diagram and photo pages (16 Organisation Chart, 18 Market
+Statistics, 26 Product Journey, 21/22/23 product pages, 35 EU Type Examination,
+36 Certified Performance Range, 38 Latest Projects, 40 Contact) — their structure already
+carries them, and a tile wall would fight the artwork.
+
+Rules that had to be learned:
+- Component CSS out-specifies `.tw-grid > *`, so the reset is written `.tw-grid.tw-grid > *`.
+- Outer tiles must not be white or the wall reads as inset.
+- Quote tiles carry more copy and need their own tighter padding, or they run into the footer.
+- Company Culture top-aligns rather than centres, so its three titles stay on one line.

@@ -1,0 +1,16 @@
+{
+  "name": "altigo-company-profile",
+  "version": "2026.1.0",
+  "description": "ALTIGO Elevator Sdn Bhd — Company Profile 2026 (41-slide deck, HTML source)",
+  "scripts": {
+    "build": "node build.mjs",
+    "png": "node build.mjs --png",
+    "qa": "node qa.mjs"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "playwright-core": "^1.62.1"
+  },
+  "private": true,
+  "type": "module"
+}

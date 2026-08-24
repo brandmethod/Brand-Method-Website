@@ -145,13 +145,11 @@ body{
 .dark .masthead{border-bottom-color:var(--line-dark-soft)}
 
 .chip{
-  display:inline-flex;align-items:center;gap:8px;
+  display:inline-flex;align-items:center;
   font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   color:var(--red-600);margin-bottom:11px;
 }
-.chip::before{content:"";width:16px;height:1.5px;background:var(--red-600);display:block}
 .dark .chip{color:var(--red-400)}
-.dark .chip::before{background:var(--red-400)}
 
 h1{
   font-size:47px;line-height:1.03;font-weight:800;letter-spacing:-.021em;
@@ -225,14 +223,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
 .card .hd{display:flex;flex-direction:column;align-items:flex-start;gap:13px;margin-bottom:13px}
 .card .hd.side{flex-direction:row;align-items:flex-start;gap:16px;margin-bottom:0}
 .card .hd.side>div{flex:1;min-width:0}
-/* index numeral — gives a tall card a top anchor so a full-height panel
-   reads as composed rather than half-empty */
-.card .idx{
-  font-size:40px;font-weight:800;line-height:1;letter-spacing:-.04em;
-  color:var(--blue-600);opacity:.17;font-variant-numeric:tabular-nums;
-}
-.card.red .idx{color:var(--red-600);opacity:.19}
-.dark .card .idx{color:var(--blue-300);opacity:.3}
 .card .ft{margin-top:auto;padding-top:14px}
 
 /* Void control. The 2025 edition top-aligned card content inside
@@ -316,7 +306,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     linear-gradient(96deg,rgba(8,11,34,.97) 0%,rgba(9,13,40,.93) 34%,rgba(10,15,48,.62) 60%,rgba(12,20,66,.42) 100%),
     linear-gradient(0deg,rgba(7,10,30,.72) 0%,rgba(7,10,30,0) 42%);
 }
-.ch-rule{width:64px;height:3px;background:var(--red-400);margin-bottom:26px}
 .ch-num{font-size:172px;line-height:.78;font-weight:800;letter-spacing:-.055em;color:var(--blue-300);opacity:.95}
 .ch-title{font-size:54px;line-height:1.03;font-weight:800;letter-spacing:-.026em;color:#fff;margin-top:4px}
 .ch-deck{font-size:16.5px;line-height:1.58;color:rgba(255,255,255,.72);max-width:520px;margin-top:16px;font-weight:500}
@@ -656,10 +645,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
     </div>
 
     <div class="band grid g5 fit">
-      <div class="card spread" style="min-height:344px">
+      <div class="card spread" style="min-height:296px">
         <div>
-          <div class="idx">01</div>
-          <div class="hd" style="margin:20px 0 0"><svg class="ico ico-b"><use href="#i-calendar"/></svg><div class="kicker b">Founded</div></div>
+          <div class="hd" style="margin:0"><svg class="ico ico-b"><use href="#i-calendar"/></svg><div class="kicker b">Founded</div></div>
         </div>
         <div>
           <div class="h3" style="font-size:40px;letter-spacing:-.028em;line-height:1.06">2001</div>
@@ -669,8 +657,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div class="card red spread">
         <div>
-          <div class="idx">02</div>
-          <div class="hd" style="margin:20px 0 0"><svg class="ico ico-r"><use href="#i-file"/></svg><div class="kicker">Registration</div></div>
+          <div class="hd" style="margin:0"><svg class="ico ico-r"><use href="#i-file"/></svg><div class="kicker">Registration</div></div>
         </div>
         <div>
           <div class="h3" style="font-size:30px;letter-spacing:-.028em;line-height:1.06">562238-H</div>
@@ -680,8 +667,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div class="card spread">
         <div>
-          <div class="idx">03</div>
-          <div class="hd" style="margin:20px 0 0"><svg class="ico ico-b"><use href="#i-lift"/></svg><div class="kicker b">Service</div></div>
+          <div class="hd" style="margin:0"><svg class="ico ico-b"><use href="#i-lift"/></svg><div class="kicker b">Service</div></div>
         </div>
         <div>
           <div class="h3" style="font-size:27px;letter-spacing:-.028em;line-height:1.06">Escalator<br>&amp; Lift</div>
@@ -691,8 +677,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div class="card red spread">
         <div>
-          <div class="idx">04</div>
-          <div class="hd" style="margin:20px 0 0"><svg class="ico ico-r"><use href="#i-shield-check"/></svg><div class="kicker">Certification</div></div>
+          <div class="hd" style="margin:0"><svg class="ico ico-r"><use href="#i-shield-check"/></svg><div class="kicker">Certification</div></div>
         </div>
         <div>
           <div class="h3" style="font-size:27px;letter-spacing:-.028em;line-height:1.06">DOSH<br>Certified</div>
@@ -702,8 +687,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div class="card spread">
         <div>
-          <div class="idx">05</div>
-          <div class="hd" style="margin:20px 0 0"><svg class="ico ico-b"><use href="#i-pin"/></svg><div class="kicker b">Presence</div></div>
+          <div class="hd" style="margin:0"><svg class="ico ico-b"><use href="#i-pin"/></svg><div class="kicker b">Presence</div></div>
         </div>
         <div>
           <div class="h3" style="font-size:27px;letter-spacing:-.028em;line-height:1.06">Three<br>States</div>
@@ -732,7 +716,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">00</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Company Overview</h2>
         <p class="ch-deck">Who we are, what drives us and where we are going — the foundations
           that every ALTIGO project is built on.</p>
@@ -760,16 +743,15 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">01 · Objective</div><h1>Our <em>Objective</em></h1></div>
+      <div><div class="chip">Objective</div><h1>Our <em>Objective</em></h1></div>
       <p class="deck">To achieve excellence in vertical transportation by ensuring the safety,
         reliability and efficiency of every project — through proactive maintenance,
         advanced technology and a strong emphasis on customer satisfaction.</p>
     </div>
     <div class="band grid g5 fit">
-      <div class="card spread" style="min-height:344px">
+      <div class="card spread" style="min-height:296px">
         <div>
-          <div class="idx">01</div>
-          <svg class="ico ico-lg ico-b" style="margin:20px 0 0"><use href="#i-globe"/></svg>
+          <svg class="ico ico-lg ico-b" style="margin:0"><use href="#i-globe"/></svg>
         </div>
         <div>
           <div class="h3">Global<br>Collaborations</div>
@@ -778,10 +760,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <div class="tag">Worldwide Network</div>
         </div>
       </div>
-      <div class="card red spread" style="min-height:344px">
+      <div class="card red spread" style="min-height:296px">
         <div>
-          <div class="idx">02</div>
-          <svg class="ico ico-lg ico-r" style="margin:20px 0 0"><use href="#i-users"/></svg>
+          <svg class="ico ico-lg ico-r" style="margin:0"><use href="#i-users"/></svg>
         </div>
         <div>
           <div class="h3">Expert<br>Team</div>
@@ -790,10 +771,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <div class="tag">Certified Engineers</div>
         </div>
       </div>
-      <div class="card spread" style="min-height:344px">
+      <div class="card spread" style="min-height:296px">
         <div>
-          <div class="idx">03</div>
-          <svg class="ico ico-lg ico-b" style="margin:20px 0 0"><use href="#i-trend"/></svg>
+          <svg class="ico ico-lg ico-b" style="margin:0"><use href="#i-trend"/></svg>
         </div>
         <div>
           <div class="h3">Raising<br>Standards</div>
@@ -802,10 +782,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <div class="tag">Better Buildings</div>
         </div>
       </div>
-      <div class="card red spread" style="min-height:344px">
+      <div class="card red spread" style="min-height:296px">
         <div>
-          <div class="idx">04</div>
-          <svg class="ico ico-lg ico-r" style="margin:20px 0 0"><use href="#i-handshake"/></svg>
+          <svg class="ico ico-lg ico-r" style="margin:0"><use href="#i-handshake"/></svg>
         </div>
         <div>
           <div class="h3">Client<br>Connections</div>
@@ -814,10 +793,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <div class="tag">Long Term Trust</div>
         </div>
       </div>
-      <div class="card spread" style="min-height:344px">
+      <div class="card spread" style="min-height:296px">
         <div>
-          <div class="idx">05</div>
-          <svg class="ico ico-lg ico-b" style="margin:20px 0 0"><use href="#i-shield"/></svg>
+          <svg class="ico ico-lg ico-b" style="margin:0"><use href="#i-shield"/></svg>
         </div>
         <div>
           <div class="h3">Safety<br>Compliance</div>
@@ -848,7 +826,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap" style="right:auto;width:718px">
     <div class="masthead" style="grid-template-columns:1fr;column-gap:0">
-      <div><div class="chip">02 · Aim</div><h1>Our <em>Aim</em></h1></div>
+      <div><div class="chip">Aim</div><h1>Our <em>Aim</em></h1></div>
     </div>
     <div class="band" style="justify-content:center">
       <p style="font-size:19px;line-height:1.56;font-weight:600;color:var(--navy-700);letter-spacing:-.008em">
@@ -889,7 +867,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">03 · Direction</div><h1>Vision &amp; <span class="r">Mission</span></h1></div>
+      <div><div class="chip">Direction</div><h1>Vision &amp; <span class="r">Mission</span></h1></div>
       <p class="deck">Where we intend to be, and the standard we hold ourselves to on the way there.</p>
     </div>
     <div class="band grid g2 fit">
@@ -957,7 +935,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">04 · Footprint</div><h1>Operating <em>Footprint</em></h1></div>
+      <div><div class="chip">Footprint</div><h1>Operating <em>Footprint</em></h1></div>
       <p class="deck">Three operating bases across Peninsular Malaysia keep our engineers within
         reach of every site we maintain, with a regional ambition across Southeast Asia
         and the Middle East.</p>
@@ -1046,7 +1024,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">01</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Brand Identity</h2>
         <p class="ch-deck">What sets ALTIGO apart, the values we hold and the people who carry
           them into every building we serve.</p>
@@ -1080,7 +1057,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap" style="right:auto;width:756px">
     <div class="masthead" style="grid-template-columns:1fr;column-gap:0">
-      <div><div class="chip">01 · Unique Selling Proposition</div><h1>Brand <em>USP</em></h1></div>
+      <div><div class="chip">Unique Selling Proposition</div><h1>Brand <em>USP</em></h1></div>
     </div>
     <div class="band" style="justify-content:center">
       <p style="font-size:17px;line-height:1.56;font-weight:600;color:var(--navy-700);letter-spacing:-.006em">
@@ -1127,14 +1104,13 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">02 · Differentiators</div><h1>The ALTIGO <em>Difference</em></h1></div>
+      <div><div class="chip">Differentiators</div><h1>The ALTIGO <em>Difference</em></h1></div>
       <p class="deck">Four positions that separate a specialist from a supplier, and that clients
         return to us for after the first contract ends.</p>
     </div>
     <div class="band grid g4 fit">
-      <div class="card spread" style="min-height:396px">
-        <div><div class="idx">01</div>
-          <svg class="ico ico-lg ico-b" style="margin:18px 0 0"><use href="#i-crosshair"/></svg></div>
+      <div class="card spread" style="min-height:290px">
+        <div><svg class="ico ico-lg ico-b" style="margin:0"><use href="#i-crosshair"/></svg></div>
         <div>
           <div class="h3">One accountable partner</div>
           <p class="p-sm" style="margin-top:12px">Consultation, supply, installation, testing, maintenance
@@ -1143,9 +1119,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <hr class="rule" style="margin:16px 0 11px"><div class="tag">Single point of responsibility</div>
         </div>
       </div>
-      <div class="card red spread" style="min-height:396px">
-        <div><div class="idx">02</div>
-          <svg class="ico ico-lg ico-r" style="margin:18px 0 0"><use href="#i-award"/></svg></div>
+      <div class="card red spread" style="min-height:290px">
+        <div><svg class="ico ico-lg ico-r" style="margin:0"><use href="#i-award"/></svg></div>
         <div>
           <div class="h3">Certified engineering</div>
           <p class="p-sm" style="margin-top:12px">Systems manufactured by Stade at certified facilities,
@@ -1154,9 +1129,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <hr class="rule" style="margin:16px 0 11px"><div class="tag">EN 81-20 &amp; EN 81-50</div>
         </div>
       </div>
-      <div class="card spread" style="min-height:396px">
-        <div><div class="idx">03</div>
-          <svg class="ico ico-lg ico-b" style="margin:18px 0 0"><use href="#i-alert-shield"/></svg></div>
+      <div class="card spread" style="min-height:290px">
+        <div><svg class="ico ico-lg ico-b" style="margin:0"><use href="#i-alert-shield"/></svg></div>
         <div>
           <div class="h3">Prevention before repair</div>
           <p class="p-sm" style="margin-top:12px">Structured preventive schedules and rapid response keep
@@ -1165,9 +1139,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <hr class="rule" style="margin:16px 0 11px"><div class="tag">Planned maintenance</div>
         </div>
       </div>
-      <div class="card red spread" style="min-height:396px">
-        <div><div class="idx">04</div>
-          <svg class="ico ico-lg ico-r" style="margin:18px 0 0"><use href="#i-globe"/></svg></div>
+      <div class="card red spread" style="min-height:290px">
+        <div><svg class="ico ico-lg ico-r" style="margin:0"><use href="#i-globe"/></svg></div>
         <div>
           <div class="h3">Local depth, global standard</div>
           <p class="p-sm" style="margin-top:12px">Engineers trained locally and internationally through our
@@ -1193,43 +1166,43 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">03 · Values</div><h1>Our <em>Values</em></h1></div>
+      <div><div class="chip">Values</div><h1>Our <em>Values</em></h1></div>
       <p class="deck">Six principles that decide how we quote, how we install and how we answer
         the phone at seven in the morning.</p>
     </div>
     <div class="band grid g3 fit" style="row-gap:24px">
       <div class="card">
-        <div><div class="hd"><svg class="ico ico-b"><use href="#i-shield"/></svg><div class="kicker b">01</div></div>
+        <div><div class="hd"><svg class="ico ico-b"><use href="#i-shield"/></svg></div>
           <div class="h3">Safety Without Compromise</div></div>
         <p class="p-sm" style="margin-top:12px">Every system we design and install is held to the strictest safety benchmarks.
           Safety is the foundation every decision is built on.</p>
       </div>
       <div class="card red">
-        <div><div class="hd"><svg class="ico ico-r"><use href="#i-gear"/></svg><div class="kicker">02</div></div>
+        <div><div class="hd"><svg class="ico ico-r"><use href="#i-gear"/></svg></div>
           <div class="h3">Engineering Excellence</div></div>
         <p class="p-sm" style="margin-top:12px">We leverage advanced technology from our global partnership with Stade to
           deliver precise, durable, purpose built systems.</p>
       </div>
       <div class="card">
-        <div><div class="hd"><svg class="ico ico-b"><use href="#i-refresh"/></svg><div class="kicker b">03</div></div>
+        <div><div class="hd"><svg class="ico ico-b"><use href="#i-refresh"/></svg></div>
           <div class="h3">End to End Service</div></div>
         <p class="p-sm" style="margin-top:12px">From consultation to installation, maintenance and modernisation, we are with
           our clients for the full lifecycle of every system.</p>
       </div>
       <div class="card red">
-        <div><div class="hd"><svg class="ico ico-r"><use href="#i-clock"/></svg><div class="kicker">04</div></div>
+        <div><div class="hd"><svg class="ico ico-r"><use href="#i-clock"/></svg></div>
           <div class="h3">Proactive Reliability</div></div>
         <p class="p-sm" style="margin-top:12px">Prevention is better than repair. Our maintenance philosophy keeps systems
           running and downtime near zero.</p>
       </div>
       <div class="card">
-        <div><div class="hd"><svg class="ico ico-b"><use href="#i-users"/></svg><div class="kicker b">05</div></div>
+        <div><div class="hd"><svg class="ico ico-b"><use href="#i-users"/></svg></div>
           <div class="h3">People First Thinking</div></div>
         <p class="p-sm" style="margin-top:12px">Twenty five years of experience and a culture of continuous learning meet
           every client with expertise and genuine dedication.</p>
       </div>
       <div class="card red">
-        <div><div class="hd"><svg class="ico ico-r"><use href="#i-link"/></svg><div class="kicker">06</div></div>
+        <div><div class="hd"><svg class="ico ico-r"><use href="#i-link"/></svg></div>
           <div class="h3">Long Term Partnerships</div></div>
         <p class="p-sm" style="margin-top:12px">We measure success by trust earned over years of consistent delivery,
           transparent communication and accountability.</p>
@@ -1260,7 +1233,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
   <div class="wrap" style="right:auto;width:520px">
     <div class="masthead" style="grid-template-columns:1fr;column-gap:0;border-bottom-color:var(--line-dark-soft)">
-      <div><div class="chip">04 · Leadership</div><h1>People Behind<br>the <em>Brand</em></h1></div>
+      <div><div class="chip">Leadership</div><h1>People Behind<br>the <em>Brand</em></h1></div>
     </div>
     <div class="band" style="justify-content:flex-start">
       <p class="deck" style="padding-top:0">Two generations of leadership, one standard. The company was
@@ -1293,14 +1266,13 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">05 · Culture</div><h1>Company <em>Culture</em></h1></div>
+      <div><div class="chip">Culture</div><h1>Company <em>Culture</em></h1></div>
       <p class="deck">Our culture is rooted in innovation, safety and excellence — and it shows up in
         how we treat both our clients and each other.</p>
     </div>
     <div class="band grid g3 fit">
-      <div class="card spread" style="min-height:352px">
-        <div><div class="idx">01</div>
-          <svg class="ico ico-lg ico-b" style="margin:18px 0 0"><use href="#i-award"/></svg></div>
+      <div class="card spread" style="min-height:290px">
+        <div><svg class="ico ico-lg ico-b" style="margin:0"><use href="#i-award"/></svg></div>
         <div>
           <div class="h3" style="font-size:23px">Rooted in Excellence</div>
           <p class="p-sm" style="margin-top:13px">Our culture is rooted in innovation, safety and excellence.
@@ -1308,9 +1280,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
             industry. Every choice is driven by integrity and an unwavering commitment to quality.</p>
         </div>
       </div>
-      <div class="card red spread" style="min-height:352px">
-        <div><div class="idx">02</div>
-          <svg class="ico ico-lg ico-r" style="margin:18px 0 0"><use href="#i-users"/></svg></div>
+      <div class="card red spread" style="min-height:290px">
+        <div><svg class="ico ico-lg ico-r" style="margin:0"><use href="#i-users"/></svg></div>
         <div>
           <div class="h3" style="font-size:23px">People Centric Approach</div>
           <p class="p-sm" style="margin-top:13px">Our people are our priority. We nurture talent and create a
@@ -1318,9 +1289,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
             communication and a shared commitment to exceptional service.</p>
         </div>
       </div>
-      <div class="card spread" style="min-height:352px">
-        <div><div class="idx">03</div>
-          <svg class="ico ico-lg ico-b" style="margin:18px 0 0"><use href="#i-heart"/></svg></div>
+      <div class="card spread" style="min-height:290px">
+        <div><svg class="ico ico-lg ico-b" style="margin:0"><use href="#i-heart"/></svg></div>
         <div>
           <div class="h3" style="font-size:23px">United by Purpose</div>
           <p class="p-sm" style="margin-top:13px">We are more than a business. We are a family united by a
@@ -1345,7 +1315,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">06 · Structure</div><h1>Organisation <em>Chart</em></h1></div>
+      <div><div class="chip">Structure</div><h1>Organisation <em>Chart</em></h1></div>
       <p class="deck">Two generations of leadership at the top and a deliberately flat structure beneath
         it, so a client's issue reaches the person who can resolve it without travelling through layers.</p>
     </div>
@@ -1386,31 +1356,31 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <!-- departments -->
       <div class="grid g5" style="flex:0 0 auto;gap:20px;align-content:start">
         <div class="card" style="padding:22px 20px 20px">
-          <div class="hd" style="margin-bottom:8px"><div class="kicker b">01</div></div>
+          <div class="hd" style="margin-bottom:8px"></div>
           <div class="h4">Engineering<br>&amp; Technical</div>
           <ul class="bul" style="margin-top:13px">
             <li>Senior Engineer</li><li>Project Engineer</li><li>Design &amp; Specification</li><li>Technical Documentation</li></ul>
         </div>
         <div class="card red" style="padding:22px 20px 20px">
-          <div class="hd" style="margin-bottom:8px"><div class="kicker">02</div></div>
+          <div class="hd" style="margin-bottom:8px"></div>
           <div class="h4">Projects<br>&amp; Installation</div>
           <ul class="bul r" style="margin-top:13px">
             <li>Installation Supervisor</li><li>Installation Technician</li><li>Site Safety Supervisor</li><li>Project Coordinator</li></ul>
         </div>
         <div class="card" style="padding:22px 20px 20px">
-          <div class="hd" style="margin-bottom:8px"><div class="kicker b">03</div></div>
+          <div class="hd" style="margin-bottom:8px"></div>
           <div class="h4">Service<br>&amp; Maintenance</div>
           <ul class="bul" style="margin-top:13px">
             <li>Service Supervisor</li><li>Maintenance Technician</li><li>Customer Support Executive</li><li>Call Out Response Team</li></ul>
         </div>
         <div class="card red" style="padding:22px 20px 20px">
-          <div class="hd" style="margin-bottom:8px"><div class="kicker">04</div></div>
+          <div class="hd" style="margin-bottom:8px"></div>
           <div class="h4">Sales &amp; Business<br>Development</div>
           <ul class="bul r" style="margin-top:13px">
             <li>Sales Manager</li><li>Account Executive</li><li>Tender &amp; Estimation</li><li>Client Servicing</li></ul>
         </div>
         <div class="card" style="padding:22px 20px 20px">
-          <div class="hd" style="margin-bottom:8px"><div class="kicker b">05</div></div>
+          <div class="hd" style="margin-bottom:8px"></div>
           <div class="h4">Finance<br>&amp; Administration</div>
           <ul class="bul" style="margin-top:13px">
             <li>Accounts Executive</li><li>HR &amp; Admin Executive</li><li>Spare Parts &amp; Logistics</li><li>Procurement</li></ul>
@@ -1436,7 +1406,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">02</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Market &amp; Performance</h2>
         <p class="ch-deck">The demand behind vertical transportation and the sectors we build for.</p>
       </div>
@@ -1461,7 +1430,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">01 · Demand</div><h1>Market <span class="r">Statistics</span></h1></div>
+      <div><div class="chip">Demand</div><h1>Market <span class="r">Statistics</span></h1></div>
       <p class="deck">Demand for lifts and escalators has climbed steadily for two decades, driven by
         density above ground and ageing equipment below it.</p>
     </div>
@@ -1568,7 +1537,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">02 · Sectors</div><h1>Target <em>Market</em></h1></div>
+      <div><div class="chip">Sectors</div><h1>Target <em>Market</em></h1></div>
       <p class="deck">Eight sectors, each with its own traffic pattern, compliance burden and tolerance
         for downtime. We specify for the building, not for the catalogue.</p>
     </div>
@@ -1609,7 +1578,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">03</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Products &amp; Services</h2>
         <p class="ch-deck">Five product families and one service model that runs from the first site
           meeting to the twentieth year of operation.</p>
@@ -1638,7 +1606,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">01 · Range</div><h1>Our <em>Products</em></h1></div>
+      <div><div class="chip">Range</div><h1>Our <em>Products</em></h1></div>
       <p class="deck">Five product families covering every vertical movement requirement in a modern
         building, from a private residence to a public terminal. Passenger systems are built on the
         EU type examined <strong>TIGO-R</strong> platform.</p>
@@ -1706,7 +1674,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">02 · Detail</div><h1>Vertical Transport<br>for <em>People</em></h1></div>
+      <div><div class="chip">Detail</div><h1>Vertical Transport<br>for <em>People</em></h1></div>
       <p class="deck">Passenger and home systems, where ride quality, finish and quiet operation are
         judged every day by the people who use them.</p>
     </div>
@@ -1766,7 +1734,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">02 · Detail</div><h1>Movement at <em>Volume</em></h1></div>
+      <div><div class="chip">Detail</div><h1>Movement at <em>Volume</em></h1></div>
       <p class="deck">High duty systems for crowds, vehicles and freight, where continuous operation
         and load capacity decide the specification.</p>
     </div>
@@ -1833,15 +1801,14 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">03 · Services</div><h1>Service <em>Scope</em></h1></div>
+      <div><div class="chip">Services</div><h1>Service <em>Scope</em></h1></div>
       <p class="deck">Four services, one accountable team. Most clients begin with one and stay with
         us for the rest of the building's life.</p>
     </div>
     <div class="band grid g4 fit">
       <div class="card spread" style="min-height:400px">
         <div>
-          <div class="idx">01</div>
-          <svg class="ico ico-lg ico-b" style="margin:18px 0 14px"><use href="#i-compass"/></svg>
+          <svg class="ico ico-lg ico-b" style="margin:0 0 14px"><use href="#i-compass"/></svg>
           <div class="h3">Consultation<br>&amp; Design</div>
           <p class="p-sm" style="margin-top:12px">We meet the design and building team early to match the
             system to the building's traffic, shaft, energy targets and architecture, before drawings
@@ -1855,8 +1822,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div class="card red spread" style="min-height:400px">
         <div>
-          <div class="idx">02</div>
-          <svg class="ico ico-lg ico-r" style="margin:18px 0 14px"><use href="#i-wrench"/></svg>
+          <svg class="ico ico-lg ico-r" style="margin:0 0 14px"><use href="#i-wrench"/></svg>
           <div class="h3">Supply<br>&amp; Installation</div>
           <p class="p-sm" style="margin-top:12px">Certified systems manufactured by Stade, installed by our
             own certified technicians in full DOSH compliance, then tested and commissioned before
@@ -1870,8 +1836,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div class="card spread" style="min-height:400px">
         <div>
-          <div class="idx">03</div>
-          <svg class="ico ico-lg ico-b" style="margin:18px 0 14px"><use href="#i-cal-check"/></svg>
+          <svg class="ico ico-lg ico-b" style="margin:0 0 14px"><use href="#i-cal-check"/></svg>
           <div class="h3">Preventive<br>Maintenance</div>
           <p class="p-sm" style="margin-top:12px">Structured schedules, planned parts replacement and rapid
             response, so building managers are told about a problem before residents are.</p>
@@ -1884,8 +1849,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div class="card red spread" style="min-height:400px">
         <div>
-          <div class="idx">04</div>
-          <svg class="ico ico-lg ico-r" style="margin:18px 0 14px"><use href="#i-refresh"/></svg>
+          <svg class="ico ico-lg ico-r" style="margin:0 0 14px"><use href="#i-refresh"/></svg>
           <div class="h3">Modernisation<br>&amp; Upgrades</div>
           <p class="p-sm" style="margin-top:12px">System upgrades that extend operational life, improve
             energy efficiency and safety ratings, and bring an ageing lift back to a current standard.</p>
@@ -1917,7 +1881,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">04 · Uptime</div><h1>Maintenance <em>Programme</em></h1></div>
+      <div><div class="chip">Uptime</div><h1>Maintenance <em>Programme</em></h1></div>
       <p class="deck">Prevention is better than repair. Our maintenance philosophy keeps systems
         running and downtime near zero.</p>
     </div>
@@ -1981,7 +1945,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">05 · Process</div><h1>Product <em>Journey</em></h1></div>
+      <div><div class="chip">Process</div><h1>Product <em>Journey</em></h1></div>
       <p class="deck">Seven stages from the first site meeting to the twentieth year of operation,
         each one owned by the same team.</p>
     </div>
@@ -2074,7 +2038,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">04</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Client Testimonials</h2>
         <p class="ch-deck">The clearest measure of our work is what the people responsible for these
           buildings say once the contract is running.</p>
@@ -2099,7 +2062,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">01 · Voices</div><h1>What Our Clients <em>Say</em></h1></div>
+      <div><div class="chip">Voices</div><h1>What Our Clients <em>Say</em></h1></div>
       <div style="display:flex;gap:40px;padding-top:9px">
         <div class="stat"><div class="n" style="font-size:36px">98<em>%</em></div><div class="l">Client Satisfaction</div></div>
         <div class="stat blue"><div class="n" style="font-size:36px">200<em>+</em></div><div class="l">Projects Delivered</div></div>
@@ -2162,7 +2125,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">05</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Our Activities</h2>
         <p class="ch-deck">How we keep our engineers current, our clients informed and our safety
           practice under constant review.</p>
@@ -2187,43 +2149,43 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">01 · Activities</div><h1>Our <em>Activities</em></h1></div>
+      <div><div class="chip">Activities</div><h1>Our <em>Activities</em></h1></div>
       <p class="deck">Six programmes that keep our capability, our compliance and our community
         commitments moving forward together.</p>
     </div>
     <div class="band grid g3 fit" style="row-gap:24px">
       <div class="card" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-b"><use href="#i-book"/></svg><div class="kicker b">01</div></div>
+        <div class="hd"><svg class="ico ico-b"><use href="#i-book"/></svg></div>
         <div class="h3">Technical Training &amp; Development</div>
         <p class="p-sm" style="margin-top:12px">Engineers undergo structured training locally and through
           Stade's international programmes.</p>
       </div>
       <div class="card red" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-r"><use href="#i-present"/></svg><div class="kicker">02</div></div>
+        <div class="hd"><svg class="ico ico-r"><use href="#i-present"/></svg></div>
         <div class="h3">Industry Conferences &amp; Exhibitions</div>
         <p class="p-sm" style="margin-top:12px">We participate in vertical transportation events across
           Southeast Asia.</p>
       </div>
       <div class="card" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-b"><use href="#i-msg"/></svg><div class="kicker b">03</div></div>
+        <div class="hd"><svg class="ico ico-b"><use href="#i-msg"/></svg></div>
         <div class="h3">Client Engagement &amp; Education</div>
         <p class="p-sm" style="margin-top:12px">Consultation sessions and technical seminars help clients
           make informed decisions.</p>
       </div>
       <div class="card red" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-r"><use href="#i-megaphone"/></svg><div class="kicker">04</div></div>
+        <div class="hd"><svg class="ico ico-r"><use href="#i-megaphone"/></svg></div>
         <div class="h3">Safety Campaigns &amp; Reviews</div>
         <p class="p-sm" style="margin-top:12px">Regular safety workshops and on site assessments keep teams
           aligned with DOSH standards.</p>
       </div>
       <div class="card" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-b"><use href="#i-leaf"/></svg><div class="kicker b">05</div></div>
+        <div class="hd"><svg class="ico ico-b"><use href="#i-leaf"/></svg></div>
         <div class="h3">Corporate Social Responsibility</div>
         <p class="p-sm" style="margin-top:12px">Environmental initiatives, educational support and
           sustainability focused practices.</p>
       </div>
       <div class="card red" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-r"><use href="#i-heart"/></svg><div class="kicker">06</div></div>
+        <div class="hd"><svg class="ico ico-r"><use href="#i-heart"/></svg></div>
         <div class="h3">Employee Wellbeing</div>
         <p class="p-sm" style="margin-top:12px">Health programmes, team development and a culture where
           excellence and wellbeing meet.</p>
@@ -2248,7 +2210,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">06</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Achievements<br>&amp; Certifications</h2>
         <p class="ch-deck">The record we have built and the independent approvals that stand behind it.</p>
       </div>
@@ -2276,13 +2237,13 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">01 · Record</div><h1>Our Track <em>Record</em></h1></div>
+      <div><div class="chip">Record</div><h1>Our Track <em>Record</em></h1></div>
       <p class="deck">Since 2001, ALTIGO has earned the trust of property developers, facility managers
         and building owners across Malaysia — not through promises, but through consistent delivery
         and a zero compromise approach to quality and safety.</p>
     </div>
     <div class="band grid g4 fit">
-      <div class="card spread" style="min-height:336px">
+      <div class="card spread" style="min-height:300px">
         <div><svg class="ico ico-lg ico-b"><use href="#i-building"/></svg></div>
         <div>
           <div class="stat"><div class="n" style="font-size:52px">200<em>+</em></div>
@@ -2291,7 +2252,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <p class="p-sm">Nationwide installations across residential, commercial and public buildings.</p>
         </div>
       </div>
-      <div class="card red spread" style="min-height:336px">
+      <div class="card red spread" style="min-height:300px">
         <div><svg class="ico ico-lg ico-r"><use href="#i-award"/></svg></div>
         <div>
           <div class="stat"><div class="n" style="font-size:52px">98<em>%</em></div>
@@ -2300,7 +2261,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <p class="p-sm">A satisfaction rate reflecting strong long term relationships and repeat contracts.</p>
         </div>
       </div>
-      <div class="card spread" style="min-height:336px">
+      <div class="card spread" style="min-height:300px">
         <div><svg class="ico ico-lg ico-b"><use href="#i-shield-check"/></svg></div>
         <div>
           <div class="stat"><div class="n" style="font-size:46px">DOSH</div>
@@ -2309,7 +2270,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <p class="p-sm">Qualified supplier, installer and maintenance provider under Malaysian regulation.</p>
         </div>
       </div>
-      <div class="card red spread" style="min-height:336px">
+      <div class="card red spread" style="min-height:300px">
         <div><svg class="ico ico-lg ico-r"><use href="#i-trend"/></svg></div>
         <div>
           <div class="stat"><div class="n" style="font-size:52px">25</div>
@@ -2339,43 +2300,43 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">02 · Achievements</div><h1>Our <span class="r">Achievements</span></h1></div>
+      <div><div class="chip">Achievements</div><h1>Our <span class="r">Achievements</span></h1></div>
       <p class="deck">Six areas where independent recognition, technical capability and service
         discipline reinforce one another.</p>
     </div>
     <div class="band grid g3 fit" style="row-gap:24px">
       <div class="card" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-b"><use href="#i-shield-check"/></svg><div class="kicker b">01</div></div>
+        <div class="hd"><svg class="ico ico-b"><use href="#i-shield-check"/></svg></div>
         <div class="h3">Certified by DOSH</div>
         <p class="p-sm" style="margin-top:12px">Approved by Malaysia's Department of Occupational Safety and
           Health to the strictest safety benchmarks.</p>
       </div>
       <div class="card red" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-r"><use href="#i-globe"/></svg><div class="kicker">02</div></div>
+        <div class="hd"><svg class="ico ico-r"><use href="#i-globe"/></svg></div>
         <div class="h3">Global Partnership</div>
         <p class="p-sm" style="margin-top:12px">Globally certified Stade technology, backed by local knowledge
           and service depth.</p>
       </div>
       <div class="card" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-b"><use href="#i-refresh"/></svg><div class="kicker b">03</div></div>
+        <div class="hd"><svg class="ico ico-b"><use href="#i-refresh"/></svg></div>
         <div class="h3">Modernisation Projects</div>
         <p class="p-sm" style="margin-top:12px">System upgrades improving energy efficiency, safety ratings
           and operational performance.</p>
       </div>
       <div class="card red" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-r"><use href="#i-award"/></svg><div class="kicker">04</div></div>
+        <div class="hd"><svg class="ico ico-r"><use href="#i-award"/></svg></div>
         <div class="h3">Industry Recognition</div>
         <p class="p-sm" style="margin-top:12px">Recognised for technical service, safety leadership and
           client satisfaction.</p>
       </div>
       <div class="card" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-b"><use href="#i-cal-check"/></svg><div class="kicker b">05</div></div>
+        <div class="hd"><svg class="ico ico-b"><use href="#i-cal-check"/></svg></div>
         <div class="h3">Preventive Maintenance</div>
         <p class="p-sm" style="margin-top:12px">Structured schedules and rapid response that eliminate
           surprises and downtime.</p>
       </div>
       <div class="card red" style="min-height:186px">
-        <div class="hd"><svg class="ico ico-r"><use href="#i-users"/></svg><div class="kicker">06</div></div>
+        <div class="hd"><svg class="ico ico-r"><use href="#i-users"/></svg></div>
         <div class="h3">Skilled Technical Team</div>
         <p class="p-sm" style="margin-top:12px">Engineers trained locally and internationally, continuously
           upskilled.</p>
@@ -2401,7 +2362,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">03 · Compliance</div><h1>Safety &amp; <em>Compliance</em></h1></div>
+      <div><div class="chip">Compliance</div><h1>Safety &amp; <em>Compliance</em></h1></div>
       <p class="deck">Safety is not a department at ALTIGO. It is the constraint every other decision
         is designed around.</p>
     </div>
@@ -2465,7 +2426,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead" style="grid-template-columns:minmax(0,1fr) 348px">
-      <div><div class="chip">04 · Certification</div>
+      <div><div class="chip">Certification</div>
         <h1>Certified to the <em>European<br>Lift Directive</em> 2014/33/EU</h1></div>
       <p class="deck">The TIGO-R passenger lift platform supplied by ALTIGO has undergone EU Type
         Examination by <strong>EUROCERT S.A.</strong>, an accredited European Notified Body (No. 1128),
@@ -2520,7 +2481,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">05 · Specification</div><h1>Certified<br>Performance <em>Range</em></h1></div>
+      <div><div class="chip">Specification</div><h1>Certified<br>Performance <em>Range</em></h1></div>
       <p class="deck">The examined operating envelope of the TIGO-R traction drive passenger lift
         platform, as certified under the European Lift Directive.</p>
     </div>
@@ -2584,7 +2545,6 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="padding-top:0;display:grid;grid-template-columns:minmax(0,1fr) 430px;column-gap:80px;align-items:end;padding-bottom:6px">
       <div>
         <div class="ch-num">07</div>
-        <div class="ch-rule"></div>
         <h2 class="ch-title">Project References<br>&amp; Contact</h2>
         <p class="ch-deck">Recent work, the company record behind it and the people to speak to when
           you are ready to start.</p>
@@ -2611,7 +2571,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">01 · Portfolio</div><h1>Latest Project <em>References</em></h1></div>
+      <div><div class="chip">Portfolio</div><h1>Latest Project <em>References</em></h1></div>
       <p class="deck">Recent installation and maintenance engagements across Penang and Selangor,
         spanning residential, institutional and industrial buildings.</p>
     </div>
@@ -2621,8 +2581,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <img src="assets/proj-ferringhi-mutiara.jpg" alt="Ferringhi Mutiara, Batu Ferringhi, Penang">
           <span class="badge">Residential</span></div>
         <div style="padding-top:14px">
-          <div class="kicker b" style="font-size:8.5px">01</div>
-          <div class="h4" style="margin-top:7px">Ferringhi Mutiara</div>
+          <div class="h4">Ferringhi Mutiara</div>
           <p class="p-sm" style="margin-top:6px">Batu Ferringhi, Penang</p>
         </div>
       </div>
@@ -2631,8 +2590,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <img src="assets/proj-united-hokkien.jpg" alt="United Hokkien Cemeteries, Mount Erskine, Penang">
           <span class="badge b">Institutional</span></div>
         <div style="padding-top:14px">
-          <div class="kicker b" style="font-size:8.5px">02</div>
-          <div class="h4" style="margin-top:7px">United Hokkien Cemeteries</div>
+          <div class="h4">United Hokkien Cemeteries</div>
           <p class="p-sm" style="margin-top:6px">Mount Erskine, Penang</p>
         </div>
       </div>
@@ -2641,8 +2599,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <img src="assets/proj-rawang-perdana.jpg" alt="Rawang Perdana 2 Industrial Park, Rawang, Selangor">
           <span class="badge">Industrial</span></div>
         <div style="padding-top:14px">
-          <div class="kicker b" style="font-size:8.5px">03</div>
-          <div class="h4" style="margin-top:7px">Rawang Perdana 2 Industrial Park</div>
+          <div class="h4">Rawang Perdana 2 Industrial Park</div>
           <p class="p-sm" style="margin-top:6px">Rawang, Selangor</p>
         </div>
       </div>
@@ -2651,8 +2608,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <img src="assets/proj-menta-usj.jpg" alt="Menta Land USJ Heights 5, Subang Jaya, Selangor">
           <span class="badge">Residential</span></div>
         <div style="padding-top:14px">
-          <div class="kicker b" style="font-size:8.5px">04</div>
-          <div class="h4" style="margin-top:7px">Menta Land USJ Heights 5</div>
+          <div class="h4">Menta Land USJ Heights 5</div>
           <p class="p-sm" style="margin-top:6px">Subang Jaya, Selangor</p>
         </div>
       </div>
@@ -2661,8 +2617,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <img src="assets/proj-kwong-waai-siew.jpg" alt="Kwong Waai Siew Association, Bukit Mertajam, Penang">
           <span class="badge b">Institutional</span></div>
         <div style="padding-top:14px">
-          <div class="kicker b" style="font-size:8.5px">05</div>
-          <div class="h4" style="margin-top:7px">Kwong Waai Siew Association</div>
+          <div class="h4">Kwong Waai Siew Association</div>
           <p class="p-sm" style="margin-top:6px">Bukit Mertajam, Penang</p>
         </div>
       </div>
@@ -2683,7 +2638,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
   </div>
   <div class="wrap">
     <div class="masthead">
-      <div><div class="chip">02 · Company</div><h1>Company <em>Info</em> &amp; History</h1></div>
+      <div><div class="chip">Company</div><h1>Company <em>Info</em> &amp; History</h1></div>
       <p class="deck">The registered facts, and the twenty five years of practice behind them.</p>
     </div>
     <div class="band" style="display:grid;grid-template-columns:320px minmax(0,1fr);column-gap:64px">
@@ -2761,7 +2716,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="masthead" style="grid-template-columns:1fr;column-gap:0">
       <div>
         <img src="assets/logo-wordmark-colour.png" alt="ALTIGO" style="height:34px;display:block;margin-bottom:22px">
-        <div class="chip">03 · Get in touch</div>
+        <div class="chip">Get in touch</div>
         <h1>Contact <span class="r">Information</span></h1>
       </div>
     </div>

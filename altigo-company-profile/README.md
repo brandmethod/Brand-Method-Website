@@ -128,6 +128,15 @@ python3 make-chapter-visuals.py && node build.mjs
 | 06 Achievements & Certifications | `prod-passenger.jpg` |
 | 07 Project References & Contact | `proj-rawang-perdana.jpg` |
 
+**Decorative numbering removed.** The deck was numbering things twice over: a
+large faded numeral on every card, a second small numeral under the icon inside
+the same card, and a third in the section chip above the page title ("01 ·
+Objective"). None of it carried information the reader needed, so all three are
+gone, along with the short red dash before the chip and the red rule under each
+chapter numeral. Numbering that *does* carry information is kept: chapter
+numerals, the table of contents, page folios, and the seven-stage labels on the
+Product Journey, where the order is the point.
+
 **Copy** — corrected and made consistent, no claims added or removed:
 - p13 "Two decades of experience" contradicted the "25 years / twenty five years"
   used throughout → "Twenty five years".

@@ -24,7 +24,8 @@ CHAPTERS = [
 ]
 # low-opacity background texture for the two plain dark interior pages
 TEXTURES = [("texture-maintenance", "prod-cargo.jpg"),
-            ("texture-safety",      "prod-parking.jpg")]
+            ("texture-safety",      "prod-parking.jpg"),
+            ("texture-market",      "photo-target-market.jpg")]
 
 STOPS = [(0, (6, 9, 26)), (70, (14, 20, 54)), (140, (32, 50, 112)),
          (200, (84, 116, 186)), (255, (176, 198, 238))]

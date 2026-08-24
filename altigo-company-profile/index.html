@@ -55,6 +55,7 @@
   --font:'Axiforma','Jakarta','Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
 
   /* ---- Layout ---- */
+  --ico:60px;            /* one standard icon size, used everywhere */
   --mx:90px;             /* page side margin */
   --top:52px;            /* eyebrow baseline band */
   --bot:56px;            /* footer band */
@@ -190,9 +191,11 @@ h1 .r{font-style:normal;color:var(--red-600)}
 .dark .tag{color:rgba(255,255,255,.5)}
 
 /* ============================ ICONS ============================ */
-.ico{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;
+.ico{width:var(--ico);height:var(--ico);stroke:currentColor;fill:none;stroke-width:1.2;
      stroke-linecap:round;stroke-linejoin:round;flex:none;display:block}
-.ico-lg{width:26px;height:26px;stroke-width:1.5}
+/* .ico-lg is retained so existing markup keeps working; it is now the same
+   size as .ico — every icon in the document is var(--ico). */
+.ico-lg{width:var(--ico);height:var(--ico)}
 .ico-r{color:var(--red-600)} .ico-b{color:var(--blue-600)}
 .dark .ico-r{color:var(--red-400)} .dark .ico-b{color:var(--blue-300)}
 #sprite{display:none}
@@ -216,10 +219,12 @@ h1 .r{font-style:normal;color:var(--red-600)}
 }
 .card.red{border-top-color:var(--red-600)}
 .paper .card{background:var(--white)}
-.dark .card{background:rgba(255,255,255,.055);border-top-color:var(--blue-300)}
+.dark .card{background:rgba(9,13,40,.58);border-top-color:var(--blue-300)}
 .dark .card.red{border-top-color:var(--red-400)}
 
-.card .hd{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.card .hd{display:flex;flex-direction:column;align-items:flex-start;gap:13px;margin-bottom:13px}
+.card .hd.side{flex-direction:row;align-items:flex-start;gap:16px;margin-bottom:0}
+.card .hd.side>div{flex:1;min-width:0}
 /* index numeral — gives a tall card a top anchor so a full-height panel
    reads as composed rather than half-empty */
 .card .idx{
@@ -835,9 +840,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <section class="page">
   <div style="position:absolute;inset:0 0 0 58%;overflow:hidden">
     <img src="assets/photo-aim.jpg" alt="Modern lift interior" style="width:100%;height:100%;object-fit:cover">
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.35) 16%,rgba(255,255,255,0) 46%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.82) 3%,rgba(255,255,255,.32) 9%,rgba(255,255,255,0) 20%)"></div>
   </div>
-  <div class="rail rail-top" style="right:auto;width:1260px">
+  <div class="rail rail-top" style="right:auto;width:718px">
     <div class="eyebrow">00<span class="sep">·</span><span class="dim">COMPANY OVERVIEW</span></div>
     <div class="eyebrow-r">OUR AIM</div>
   </div>
@@ -1001,7 +1006,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
       <div style="background:linear-gradient(150deg,var(--navy-900) 0%,#1B2560 52%,var(--blue-600) 100%);color:#fff;padding:22px 22px 20px;display:flex;flex-direction:column;justify-content:space-between">
         <div>
-          <div class="hd" style="display:flex;align-items:center;gap:10px;margin-bottom:11px">
+          <div class="hd" style="margin-bottom:12px">
             <svg class="ico" style="color:var(--blue-300)"><use href="#i-globe"/></svg>
             <div class="kicker" style="color:var(--blue-300)">Regional Ambition</div>
           </div>
@@ -1067,9 +1072,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <section class="page">
   <div style="position:absolute;inset:0 0 0 60%;overflow:hidden">
     <img src="assets/photo-usp.jpg" alt="Lift installation detail" style="width:100%;height:100%;object-fit:cover">
-    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,#fff 6%,rgba(255,255,255,.55) 22%,rgba(255,255,255,0) 58%)"></div>
+    <div style="position:absolute;inset:0;background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.82) 3%,rgba(255,255,255,.32) 9%,rgba(255,255,255,0) 20%)"></div>
   </div>
-  <div class="rail rail-top" style="right:auto;width:1260px">
+  <div class="rail rail-top" style="right:auto;width:756px">
     <div class="eyebrow">01<span class="sep">·</span><span class="dim">BRAND IDENTITY</span></div>
     <div class="eyebrow-r">BRAND USP</div>
   </div>
@@ -1090,17 +1095,17 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </p>
       <div style="margin-top:28px;display:flex;flex-direction:column;gap:0">
         <div style="display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line)">
-          <svg class="ico ico-b" style="margin-top:2px"><use href="#i-crosshair"/></svg>
+          <svg class="ico ico-b"><use href="#i-crosshair"/></svg>
           <div><div class="h4">Twenty five years of specialist focus</div>
             <p class="p-sm" style="margin-top:5px">Lifts and escalators only, since 2001. No adjacent trades, no divided attention.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line)">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-award"/></svg>
+          <svg class="ico ico-r"><use href="#i-award"/></svg>
           <div><div class="h4">Globally certified technology</div>
             <p class="p-sm" style="margin-top:5px">Stade manufactured systems, examined by an accredited European notified body.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-          <svg class="ico ico-b" style="margin-top:2px"><use href="#i-refresh"/></svg>
+          <svg class="ico ico-b"><use href="#i-refresh"/></svg>
           <div><div class="h4">One team for the full lifecycle</div>
             <p class="p-sm" style="margin-top:5px">Consultation, installation, maintenance and modernisation under one accountability.</p></div>
         </div>
@@ -1465,19 +1470,19 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <!-- drivers -->
       <div style="display:flex;flex-direction:column;justify-content:space-between">
         <div class="card" style="padding:18px 20px">
-          <div class="hd" style="margin-bottom:8px"><svg class="ico ico-b"><use href="#i-bars"/></svg>
-            <div class="h4">Urbanisation</div></div>
-          <p class="p-sm">High rise development fuels sustained demand across every urban market we serve.</p>
+          <div class="hd side"><svg class="ico ico-b"><use href="#i-bars"/></svg>
+            <div><div class="h4">Urbanisation</div>
+              <p class="p-sm" style="margin-top:6px">High rise development fuels sustained demand across every urban market we serve.</p></div></div>
         </div>
         <div class="card red" style="padding:18px 20px">
-          <div class="hd" style="margin-bottom:8px"><svg class="ico ico-r"><use href="#i-wrench"/></svg>
-            <div class="h4">Maintenance Needs</div></div>
-          <p class="p-sm">Ageing infrastructure drives recurring service and modernisation requirements.</p>
+          <div class="hd side"><svg class="ico ico-r"><use href="#i-wrench"/></svg>
+            <div><div class="h4">Maintenance Needs</div>
+              <p class="p-sm" style="margin-top:6px">Ageing infrastructure drives recurring service and modernisation requirements.</p></div></div>
         </div>
         <div class="card" style="padding:18px 20px">
-          <div class="hd" style="margin-bottom:8px"><svg class="ico ico-b"><use href="#i-trend"/></svg>
-            <div class="h4">Rapid Acceleration</div></div>
-          <p class="p-sm">The mid 2010s boom steepened the demand curve and it has not flattened since.</p>
+          <div class="hd side"><svg class="ico ico-b"><use href="#i-trend"/></svg>
+            <div><div class="h4">Rapid Acceleration</div>
+              <p class="p-sm" style="margin-top:6px">The mid 2010s boom steepened the demand curve and it has not flattened since.</p></div></div>
         </div>
       </div>
 
@@ -1554,8 +1559,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <!-- ============================================================ 19 · TARGET MARKET -->
 <section class="page dark">
   <div style="position:absolute;inset:0;overflow:hidden">
-    <img src="assets/photo-target-market.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.2">
-    <div style="position:absolute;inset:0;background:linear-gradient(120deg,rgba(10,13,44,.96) 0%,rgba(19,26,72,.9) 52%,rgba(11,74,214,.62) 100%)"></div>
+    <img src="assets/texture-market.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.9">
+    <div style="position:absolute;inset:0;background:linear-gradient(118deg,rgba(8,11,34,.88) 0%,rgba(12,18,56,.76) 48%,rgba(11,40,120,.56) 100%)"></div>
   </div>
   <div class="rail rail-top">
     <div class="eyebrow">02<span class="sep">·</span><span class="dim">MARKET &amp; PERFORMANCE</span></div>
@@ -1643,7 +1648,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile" style="height:296px;flex:none"><img src="assets/prod-passenger.jpg" alt="Passenger elevator interior">
           <span class="badge b">01</span></div>
         <div style="padding-top:14px">
-          <div class="hd" style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+          <div class="hd" style="margin-bottom:10px">
             <svg class="ico ico-b"><use href="#i-lift"/></svg><div class="h4">Passenger Elevators</div></div>
           <p class="p-sm">Safe, smooth and efficient vertical transport for residential, commercial and public buildings.</p>
         </div>
@@ -1652,7 +1657,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile" style="height:296px;flex:none"><img src="assets/prod-home-lift.jpg" alt="Panoramic home lift">
           <span class="badge">02</span></div>
         <div style="padding-top:14px">
-          <div class="hd" style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+          <div class="hd" style="margin-bottom:10px">
             <svg class="ico ico-r"><use href="#i-home"/></svg><div class="h4">Home Lifts</div></div>
           <p class="p-sm">Crafted for private homes and smaller structures, convenience blended with luxury.</p>
         </div>
@@ -1661,7 +1666,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile" style="height:296px;flex:none"><img src="assets/prod-escalator.jpg" alt="Escalators in a public building">
           <span class="badge b">03</span></div>
         <div style="padding-top:14px">
-          <div class="hd" style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+          <div class="hd" style="margin-bottom:10px">
             <svg class="ico ico-b"><use href="#i-escalator"/></svg><div class="h4">Escalators</div></div>
           <p class="p-sm">Engineered for high traffic environments, moving large groups smoothly and reliably.</p>
         </div>
@@ -1670,7 +1675,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile" style="height:296px;flex:none"><img src="assets/prod-parking.jpg" alt="Automated parking system">
           <span class="badge">04</span></div>
         <div style="padding-top:14px">
-          <div class="hd" style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+          <div class="hd" style="margin-bottom:10px">
             <svg class="ico ico-r"><use href="#i-car"/></svg><div class="h4">Automated Parking</div></div>
           <p class="p-sm">Optimise space, improve vehicle accessibility and boost parking efficiency.</p>
         </div>
@@ -1679,7 +1684,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile" style="height:296px;flex:none"><img src="assets/prod-cargo.jpg" alt="Cargo lift loading">
           <span class="badge b">05</span></div>
         <div style="padding-top:14px">
-          <div class="hd" style="display:flex;align-items:center;gap:9px;margin-bottom:7px">
+          <div class="hd" style="margin-bottom:10px">
             <svg class="ico ico-b"><use href="#i-box"/></svg><div class="h4">Cargo Lifts</div></div>
           <p class="p-sm">Robust freight solutions for moving heavy goods safely between floors.</p>
         </div>
@@ -1709,7 +1714,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <div style="display:grid;grid-template-columns:216px minmax(0,1fr);min-height:404px;background:var(--white);border-top:2.5px solid var(--blue-600)">
         <div class="tile"><img src="assets/prod-passenger.jpg" alt="Passenger elevator interior"></div>
         <div style="padding:24px 26px;display:flex;flex-direction:column">
-          <div class="hd" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div class="hd" style="margin-bottom:12px">
             <svg class="ico ico-b"><use href="#i-lift"/></svg><div class="h3">Passenger Elevators</div></div>
           <p class="p-sm">Safe, smooth and efficient vertical transport for residential, commercial and
             public buildings. Specified around the building's traffic profile rather than a fixed
@@ -1728,7 +1733,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <div style="display:grid;grid-template-columns:216px minmax(0,1fr);min-height:404px;background:var(--white);border-top:2.5px solid var(--red-600)">
         <div class="tile"><img src="assets/prod-home-lift.jpg" alt="Panoramic home lift"></div>
         <div style="padding:24px 26px;display:flex;flex-direction:column">
-          <div class="hd" style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+          <div class="hd" style="margin-bottom:12px">
             <svg class="ico ico-r"><use href="#i-home"/></svg><div class="h3">Home Lifts</div></div>
           <p class="p-sm">Crafted for private homes and smaller structures, convenience blended with
             luxury. Compact shafts and quiet drives allow a lift to be added to an existing residence
@@ -1769,7 +1774,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <div style="display:flex;flex-direction:column;min-height:436px;background:var(--paper);border-top:2.5px solid var(--blue-600)">
         <div class="tile" style="height:186px;flex:none"><img src="assets/prod-escalator.jpg" alt="Escalators"></div>
         <div style="padding:20px 22px;display:flex;flex-direction:column;flex:1">
-          <div class="hd" style="display:flex;align-items:center;gap:10px;margin-bottom:11px">
+          <div class="hd" style="margin-bottom:12px">
             <svg class="ico ico-b"><use href="#i-escalator"/></svg><div class="h3">Escalators</div></div>
           <p class="p-sm">Engineered for high traffic environments, moving large groups smoothly and
             reliably through malls, terminals and public buildings.</p>
@@ -1784,7 +1789,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <div style="display:flex;flex-direction:column;min-height:436px;background:var(--paper);border-top:2.5px solid var(--red-600)">
         <div class="tile" style="height:186px;flex:none"><img src="assets/prod-parking.jpg" alt="Automated parking"></div>
         <div style="padding:20px 22px;display:flex;flex-direction:column;flex:1">
-          <div class="hd" style="display:flex;align-items:center;gap:10px;margin-bottom:11px">
+          <div class="hd" style="margin-bottom:12px">
             <svg class="ico ico-r"><use href="#i-car"/></svg><div class="h3">Automated Parking</div></div>
           <p class="p-sm">Optimise space, improve vehicle accessibility and boost parking efficiency
             on constrained urban sites.</p>
@@ -1799,7 +1804,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <div style="display:flex;flex-direction:column;min-height:436px;background:var(--paper);border-top:2.5px solid var(--blue-600)">
         <div class="tile" style="height:186px;flex:none"><img src="assets/prod-cargo.jpg" alt="Cargo lift"></div>
         <div style="padding:20px 22px;display:flex;flex-direction:column;flex:1">
-          <div class="hd" style="display:flex;align-items:center;gap:10px;margin-bottom:11px">
+          <div class="hd" style="margin-bottom:12px">
             <svg class="ico ico-b"><use href="#i-box"/></svg><div class="h3">Cargo Lifts</div></div>
           <p class="p-sm">Robust freight solutions for moving heavy goods safely between floors in
             warehouses, factories and back of house areas.</p>
@@ -1903,8 +1908,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <!-- ============================================================ 25 · MAINTENANCE -->
 <section class="page dark">
   <div style="position:absolute;inset:0;overflow:hidden">
-    <img src="assets/texture-maintenance.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.5">
-    <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,11,34,.95) 0%,rgba(9,13,42,.9) 46%,rgba(11,18,60,.78) 100%)"></div>
+    <img src="assets/texture-maintenance.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.9">
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,11,34,.94) 0%,rgba(9,13,42,.9) 38%,rgba(10,16,50,.72) 62%,rgba(11,18,60,.5) 100%)"></div>
   </div>
   <div class="rail rail-top">
     <div class="eyebrow">03<span class="sep">·</span><span class="dim">PRODUCTS &amp; SERVICES</span></div>
@@ -1919,25 +1924,25 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="display:grid;grid-template-columns:minmax(0,1fr) 440px;column-gap:56px">
       <div style="display:flex;flex-direction:column;justify-content:space-between">
         <div style="display:flex;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line-dark-soft)">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-clipboard"/></svg>
+          <svg class="ico ico-r"><use href="#i-clipboard"/></svg>
           <div><div class="h4">Scheduled Inspection</div>
             <p class="p-sm" style="margin-top:6px">Planned visits on a fixed cycle, with mechanical, electrical
               and safety gear checked against a written schedule rather than by memory.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line-dark-soft)">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-file"/></svg>
+          <svg class="ico ico-r"><use href="#i-file"/></svg>
           <div><div class="h4">Condition Reporting</div>
             <p class="p-sm" style="margin-top:6px">Findings written up after every visit, so building owners see
               the state of the asset and can budget replacement rather than absorb a surprise.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line-dark-soft)">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-wrench"/></svg>
+          <svg class="ico ico-r"><use href="#i-wrench"/></svg>
           <div><div class="h4">Planned Parts Replacement</div>
             <p class="p-sm" style="margin-top:6px">Wear components changed on schedule, before failure. Genuine
               parts sourced through our Stade partnership.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding-top:20px">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-zap"/></svg>
+          <svg class="ico ico-r"><use href="#i-zap"/></svg>
           <div><div class="h4">Rapid Response</div>
             <p class="p-sm" style="margin-top:6px">Three operating bases keep an engineer within reach when a
               call comes in, with entrapment calls treated as the first priority.</p></div>
@@ -2387,8 +2392,8 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <!-- ============================================================ 34 · SAFETY & COMPLIANCE -->
 <section class="page dark">
   <div style="position:absolute;inset:0;overflow:hidden">
-    <img src="assets/texture-safety.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.5">
-    <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,11,34,.95) 0%,rgba(9,13,42,.9) 46%,rgba(11,18,60,.78) 100%)"></div>
+    <img src="assets/texture-safety.jpg" alt="" style="width:100%;height:100%;object-fit:cover;opacity:.9">
+    <div style="position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,11,34,.94) 0%,rgba(9,13,42,.9) 38%,rgba(10,16,50,.72) 62%,rgba(11,18,60,.5) 100%)"></div>
   </div>
   <div class="rail rail-top">
     <div class="eyebrow">06<span class="sep">·</span><span class="dim">ACHIEVEMENTS &amp; CERTIFICATIONS</span></div>
@@ -2403,26 +2408,26 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="band" style="display:grid;grid-template-columns:minmax(0,1fr) 456px;column-gap:56px">
       <div style="display:flex;flex-direction:column;justify-content:space-between">
         <div style="display:flex;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line-dark-soft)">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-shield-check"/></svg>
+          <svg class="ico ico-r"><use href="#i-shield-check"/></svg>
           <div><div class="h4">DOSH Registration and Inspection</div>
             <p class="p-sm" style="margin-top:6px">Every installation is registered and inspected under Malaysia's
               Department of Occupational Safety and Health, and we hold the certification required to
               supply, install and maintain.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line-dark-soft)">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-book-open"/></svg>
+          <svg class="ico ico-r"><use href="#i-book-open"/></svg>
           <div><div class="h4">European Design Standards</div>
             <p class="p-sm" style="margin-top:6px">Our supplied passenger lift platform conforms to
               EN 81-20:2020 and EN 81-50:2020, examined under the European Lift Directive 2014/33/EU.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding:20px 0;border-bottom:1px solid var(--line-dark-soft)">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-users"/></svg>
+          <svg class="ico ico-r"><use href="#i-users"/></svg>
           <div><div class="h4">Certified Installation Teams</div>
             <p class="p-sm" style="margin-top:6px">Installation and servicing are carried out by our own certified
               technicians, not subcontracted labour, so responsibility never moves off our team.</p></div>
         </div>
         <div style="display:flex;gap:16px;padding-top:20px">
-          <svg class="ico ico-r" style="margin-top:2px"><use href="#i-clipboard"/></svg>
+          <svg class="ico ico-r"><use href="#i-clipboard"/></svg>
           <div><div class="h4">Documented Testing and Handover</div>
             <p class="p-sm" style="margin-top:6px">Performance and safety testing is completed and recorded before
               a system is handed over as fully operational.</p></div>
@@ -2764,7 +2769,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
       <div class="card" style="padding:22px 24px">
         <div class="kicker b" style="margin-bottom:14px">Head Office · Penang</div>
         <div style="display:flex;gap:13px;align-items:flex-start">
-          <svg class="ico ico-b" style="margin-top:2px"><use href="#i-pin"/></svg>
+          <svg class="ico ico-b"><use href="#i-pin"/></svg>
           <div class="h4" style="font-weight:700;font-size:14px;line-height:1.55">No. 54-3-3, Wisma Sri Mata, Jalan Van Praagh,<br>11600 Penang, Malaysia</div>
         </div>
         <hr class="rule" style="margin:16px 0 14px">
@@ -2776,10 +2781,11 @@ h1 .r{font-style:normal;color:var(--red-600)}
       </div>
 
       <div class="card red" style="padding:22px 24px">
-        <div class="hd" style="margin-bottom:11px">
-          <svg class="ico ico-r"><use href="#i-headset"/></svg><div class="kicker">Customer Support</div></div>
-        <p class="p-sm">For immediate assistance with lift and escalator services, maintenance or
-          repair enquiries, please contact our dedicated customer support team.</p>
+        <div class="hd side" style="margin-bottom:14px">
+          <svg class="ico ico-r"><use href="#i-headset"/></svg>
+          <div><div class="kicker">Customer Support</div>
+            <p class="p-sm" style="margin-top:8px">For immediate assistance with lift and escalator services,
+              maintenance or repair enquiries, please contact our dedicated customer support team.</p></div></div>
         <hr class="rule" style="margin:16px 0 14px">
         <div style="display:grid;grid-template-columns:110px 1fr;row-gap:9px;align-items:center">
           <div class="tag">Penang</div><div class="h4" style="font-size:13.5px">+604 283 7005</div>

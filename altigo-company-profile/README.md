@@ -88,7 +88,15 @@ in a real two-column masthead, with a hairline closing the band.
 - p26 — the seven-stage journey was cramped into a thin strip; stages are now
   panels with room to read.
 - Icons redrawn as inline SVG (were small rasters) so they stay sharp at any zoom
-  and in print.
+  and in print, and standardised to a single 60px size via the `--ico` token —
+  the previous edition mixed sizes. At that size an icon needs its own line, so
+  card headers stack (icon above label); dense blocks that cannot afford the
+  extra height use `.hd.side`, which keeps the same 60px icon in a left column.
+- Photographs on the split-layout pages (07 Our Aim, 11 Brand USP) were washed
+  out by a fade that ran across half the panel; it now feathers only the seam.
+  Background imagery on 19, 25 and 34 was effectively invisible under a
+  near-opaque wash and is now legible, with dark-page cards given enough weight
+  to read as panels over it.
 
 **Chapter visuals.** The eight chapter dividers were flat gradient with roughly
 40% of the slide empty — the weakest pages in the deck, and eight near-identical

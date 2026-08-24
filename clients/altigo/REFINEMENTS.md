@@ -318,3 +318,17 @@ Footprint (skyline, run tight because it carries four entries with sub-lists).
 These pages no longer use `.frame`; each composes its own rail, legal line and page number,
 so the old skeleton is genuinely gone rather than restyled. Copy, titles and icons are
 untouched. `paall.js` checks every rebuilt page for column overflow and legal-line clashes.
+
+## Round 23 — reverted
+
+Reverted the deck to commit 4926b4a, the last state before the design work of rounds 17-22.
+That work — the tinting pass, tile walls, background washes, photographic bands, the flat
+architectural palette and the three page architectures — is all discarded from the working
+file. It remains in git history if any of it is ever wanted back.
+
+The deck is now the version carrying only the work the agency directed and approved:
+content, icon system, alignment, spacing, the Brand USP scene, corner page numbers, the
+right-aligned leads and the tail-line fixes.
+
+Note: the pristine uploaded file was never committed — the first commit (2efa503) already
+contained a refinement pass — so 4926b4a is the earliest meaningful restore point.

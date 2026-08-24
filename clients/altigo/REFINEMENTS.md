@@ -225,3 +225,18 @@ Rules that had to be learned:
 - Outer tiles must not be white or the wall reads as inset.
 - Quote tiles carry more copy and need their own tighter padding, or they run into the footer.
 - Company Culture top-aligns rather than centres, so its three titles stay on one line.
+
+### Round 19 — background washes
+Four photographs already in the deck (lift shaft, lobby, escalator scene, KL skyline) are
+downscaled to 1120px, re-encoded at ~22-56KB each and embedded once as CSS classes, so one
+copy serves every page that uses it. Applied to 14 pages, chosen by section.
+
+On opacity: 50% across the whole page made body copy unreadable — the first attempt put the
+skyline over the whole table of contents and the shaft photo over the Track Record caption.
+The wash is still at 50%, but confined to the display-title block (900x376 from y=64), where
+only 118px type sits over it. Small copy and the top rail stay clear.
+
+Bug found and fixed while doing this: Operating Footprint's fourth card was a dark accent
+card. The round-18 tile reset stripped its background and forced ice, leaving white text on
+a light tile. It is now `tw-n`. Added `contrast.js` to the harness to catch this class of
+fault, though it reports false positives on semi-transparent tiles over dark pages.

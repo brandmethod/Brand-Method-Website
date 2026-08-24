@@ -174,3 +174,29 @@ section divider (19/20 and 36/37), which is intentional.
 Not yet done from the plan: enlarging the lobby photo on Our Aim, scaling the product
 photographs on Our Products, the certificate frame on EU Type Examination, and the steel
 rule on Company Info & History.
+
+## Round 18 — tile wall (option B)
+
+Round 17 was reverted in full. The agency's read was correct: deepening the card fill by 4%
+and adding 15%-opacity corner tints was invisible at any real viewing size, and greying the
+cards made crisp white pages look duller. The diagnosis was wrong — the deck's problem is
+composition (a small title, a small paragraph, and boxes floating in a page that is ~60%
+empty white), not surface tone. Kept from round 17: the enlarged testimonial quote mark and
+the strengthened product journey rail, both of which were real.
+
+**Tile wall** — the approved direction. Card grids become full-bleed, gapless tile walls
+running edge to edge, with tiles alternating white / ice #E4EBFB / navy gradient. The page
+title goes to 118px so the top of the page is no longer empty.
+
+Applied to 5 pages:
+- 13 Our Value, 30 Our Activities, 33 Our Achievements — 3x2, navy on the anti-diagonal
+- 06 Our Objective — 5 across, 24 Service Scope — 4 across
+
+Two rules learned while building:
+- Outer tiles must not be white or the wall reads as inset rather than full bleed.
+- Single-row tiles centre their content with the caption on a rule directly beneath it;
+  pinning the caption to the tile floor strands a void under short copy.
+
+Implementation note: the card grids had to be extracted with balanced-tag matching, not
+regex. A non-greedy `</div>\s*</div>\s*</div>` pattern runs past the footer into the next
+slide and silently nests 35 of the 41 sections inside each other.

@@ -291,3 +291,30 @@ and read as a floating strip against a drawn grid. Stripping them plus the unuse
 rules took 199KB of dead CSS and orphaned base64 out of the file.
 
 Deck is back to 2.34MB, down from 2.54MB.
+
+## Round 22 — page architectures
+
+The agency's question was "why do you always do the same things". It was accurate. Rounds
+17-21 all changed CSS properties on one page skeleton — rail, title top left, description top
+right, grid of cells, footer. Colours, spacing, fills and type size moved; the bones never
+did. That is repainting, not redesigning.
+
+Ten pages are now rebuilt from the structure up, into three architectures that share nothing
+with each other:
+
+**A · editorial index** — title sits low on the left against a vertical spine, content runs as
+a numbered ruled list in the right two thirds, top-left quadrant deliberately empty. No cells,
+no fills. On Our Value, Our Activities, Our Achievements, The ALTIGO Difference, Our Objective
+and Service Scope. Service Scope carries the most copy so its list runs in two columns.
+
+**B · one figure** — a single statistic at 300px carries the page; the remaining figures recede
+into a quiet ruled column; the page title drops to a small line. Our Track Record on the flat
+dark ground, Company at a Glance on paper.
+
+**C · split** — a photograph holds a full-bleed 768px with the title inside it at the foot;
+content runs as a ruled list in the right column. Company Culture (lobby) and Operating
+Footprint (skyline, run tight because it carries four entries with sub-lists).
+
+These pages no longer use `.frame`; each composes its own rail, legal line and page number,
+so the old skeleton is genuinely gone rather than restyled. Copy, titles and icons are
+untouched. `paall.js` checks every rebuilt page for column overflow and legal-line clashes.

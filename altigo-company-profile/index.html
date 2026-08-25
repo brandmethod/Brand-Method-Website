@@ -280,6 +280,18 @@ h1 .r{font-style:normal;color:var(--red-600)}
 .callout .p{color:rgba(255,255,255,.78);font-size:12.8px}
 .dark .callout{background:rgba(255,255,255,.07);border-left:2.5px solid var(--red-400)}
 
+/* ---- leadership name plate ---- */
+.plate{
+  position:absolute;left:50%;bottom:86px;transform:translateX(-50%);
+  min-width:280px;padding:13px 24px 15px;text-align:center;white-space:nowrap;
+  background:rgba(8,11,34,.72);
+  border-top:2.5px solid var(--red-600);
+}
+.plate.blue{border-top-color:var(--blue-300)}
+.plate-role{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red-400)}
+.plate.blue .plate-role{color:var(--blue-300)}
+.plate-name{font-size:20px;font-weight:800;color:#fff;margin-top:8px;letter-spacing:-.012em}
+
 /* ============================ LOGO ============================ */
 .wordmark{height:44px;display:block}
 .mark{height:26px;width:26px;display:block}
@@ -306,9 +318,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
     linear-gradient(96deg,rgba(8,11,34,.97) 0%,rgba(9,13,40,.93) 34%,rgba(10,15,48,.62) 60%,rgba(12,20,66,.42) 100%),
     linear-gradient(0deg,rgba(7,10,30,.72) 0%,rgba(7,10,30,0) 42%);
 }
-.ch-num{font-size:172px;line-height:.78;font-weight:800;letter-spacing:-.055em;color:var(--blue-300);opacity:.95}
-.ch-title{font-size:54px;line-height:1.03;font-weight:800;letter-spacing:-.026em;color:#fff;margin-top:4px}
-.ch-deck{font-size:16.5px;line-height:1.58;color:rgba(255,255,255,.72);max-width:520px;margin-top:16px;font-weight:500}
+.ch-num{font-size:172px;line-height:.78;font-weight:800;letter-spacing:-.055em;color:var(--blue-300);opacity:.95;margin-bottom:26px}
+.ch-title{font-size:54px;line-height:1.06;font-weight:800;letter-spacing:-.026em;color:#fff;margin-top:0}
+.ch-deck{font-size:16.5px;line-height:1.58;color:rgba(255,255,255,.72);max-width:520px;margin-top:24px;font-weight:500}
 .ch-list{list-style:none;display:flex;flex-direction:column}
 .ch-list li{
   display:flex;align-items:baseline;gap:16px;
@@ -1252,47 +1264,44 @@ h1 .r{font-style:normal;color:var(--red-600)}
     <div class="eyebrow-r">PEOPLE BEHIND THE BRAND</div>
   </div>
 
-  <div class="wrap">
-    <div class="masthead">
-      <div><div class="chip">Leadership</div><h1>People Behind the <em>Brand</em></h1></div>
-      <p class="deck">Two generations of leadership, one standard. The company was founded on
-        engineering discipline and is carried forward with the same conviction.</p>
-    </div>
-
-    <!-- Portraits share a baseline: each figure is image-over-caption and the
-         row aligns on flex-end, so the captions line up and the images sit on
-         one line above them. The founder leads at 1.3x the executive. -->
-    <div class="band" style="padding-top:6px">
-      <div style="display:flex;align-items:flex-end;justify-content:center;
-                  gap:104px;flex:1;min-height:0;--h:462px">
-        <figure style="display:flex;flex-direction:column;align-items:center">
-          <img src="assets/leader-founder.png" alt="Mr. Ang Kam Keong"
-               style="height:var(--h);width:auto;display:block">
-          <figcaption style="width:100%;padding-top:18px;margin-top:18px;
-                             border-top:1px solid rgba(255,255,255,.2);text-align:center">
-            <div class="kicker" style="color:var(--red-400)">Founder &amp; Managing Director</div>
-            <div style="font-size:22px;font-weight:800;color:#fff;margin-top:9px;letter-spacing:-.014em">Mr. Ang Kam Keong</div>
-          </figcaption>
-        </figure>
-
-        <figure style="display:flex;flex-direction:column;align-items:center">
-          <img src="assets/leader-executive.png" alt="Mr. Ang Tse Wei, Melvin"
-               style="height:calc(var(--h) / 1.3);width:auto;display:block">
-          <figcaption style="width:100%;padding-top:18px;margin-top:18px;
-                             border-top:1px solid rgba(255,255,255,.2);text-align:center">
-            <div class="kicker" style="color:var(--blue-300)">Executive Director</div>
-            <div style="font-size:22px;font-weight:800;color:#fff;margin-top:9px;letter-spacing:-.014em">Mr. Ang Tse Wei, Melvin</div>
-          </figcaption>
-        </figure>
-      </div>
+  <!-- Portraits run off the bottom edge at full size. Both cut-outs are
+       normalised to one head width by make-portraits.py, so the founder
+       reading larger here is a deliberate 1.18x, not a mismatched crop. -->
+  <div style="position:absolute;left:462px;bottom:0;width:567px;height:620px">
+    <img src="assets/leader-founder.png" alt="Mr. Ang Kam Keong"
+         style="width:100%;height:100%;object-fit:contain;object-position:bottom;display:block">
+    <div class="plate">
+      <div class="plate-role">Founder &amp; Managing Director</div>
+      <div class="plate-name">Mr. Ang Kam Keong</div>
     </div>
   </div>
 
-  <div class="rail rail-bot">
+  <div style="position:absolute;left:962px;bottom:0;width:476px;height:520px">
+    <img src="assets/leader-executive.png" alt="Mr. Ang Tse Wei, Melvin"
+         style="width:100%;height:100%;object-fit:contain;object-position:bottom;display:block">
+    <div class="plate blue">
+      <div class="plate-role">Executive Director</div>
+      <div class="plate-name">Mr. Ang Tse Wei, Melvin</div>
+    </div>
+  </div>
+
+  <div class="wrap" style="right:auto;width:392px">
+    <div class="band" style="padding-top:0;justify-content:center">
+      <div class="chip">Leadership</div>
+      <h1 style="font-size:52px;line-height:1.04">People Behind<br>the <em>Brand</em></h1>
+      <p class="deck" style="padding-top:22px">Two generations of leadership, one standard. The
+        company was founded on engineering discipline and is carried forward with the same
+        conviction.</p>
+    </div>
+  </div>
+
+  <!-- the portraits bleed to the bottom edge, so the footer line stays in the
+       clear left column rather than running across a grey suit -->
+  <div class="rail rail-bot" style="right:auto;width:392px">
     <div class="foot-brand">ALTIGO ELEVATOR SDN BHD</div>
-    <div class="foot-note">© 2026 ALTIGO Elevator Sdn Bhd · All rights reserved · Confidential document prepared for authorised client and partner use.</div>
-    <div class="folio">14</div>
+    <div class="foot-note">© 2026 · Confidential</div>
   </div>
+  <div class="folio" style="position:absolute;right:var(--mx);bottom:var(--bot)">14</div>
 </section>
 
 <!-- ============================================================ 15 · CULTURE -->

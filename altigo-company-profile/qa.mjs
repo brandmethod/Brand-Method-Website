@@ -13,6 +13,8 @@ const bad = await pg.evaluate(() => {
     s.querySelectorAll('*').forEach(el=>{
       const r=el.getBoundingClientRect();
       if(r.width===0||r.height===0) return;
+      // full-bleed art is meant to run past the trim; everything else is a bug
+      if(el.closest('[data-bleed]')) return;
       const over=[];
       if(r.bottom > pr.bottom+0.5) over.push('bottom+'+Math.round(r.bottom-pr.bottom));
       if(r.top    < pr.top-0.5)    over.push('top-'+Math.round(pr.top-r.top));

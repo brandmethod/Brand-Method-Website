@@ -245,6 +245,11 @@ table.spec td:last-child{text-align:right;font-variant-numeric:tabular-nums;font
 .film .miss span{display:block;margin-top:8px;font-family:'IN';font-weight:400;font-size:15px;
   line-height:1.5;color:rgba(255,255,255,.62)}
 .film.no-file .miss{display:block}
+.film .misslink{display:none;margin-top:16px;font-family:'IN';font-weight:700;font-size:14px;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;text-decoration:none;
+  padding:12px 22px;background:var(--orange);border-radius:0}
+.film .misslink:hover{background:var(--orange-lt)}
+.film.no-file.has-link .misslink{display:inline-block}
 .film.no-file .ring,.film.no-file .play{display:none}
 .film.no-file{cursor:default!important}
 .film-alt{display:none}
@@ -1811,7 +1816,7 @@ body.mode-scroll #sweep{display:none}
                src="Waterbay_Film_02.mp4"></video>
         <div class="ring"></div><div class="play"></div>
         <div class="cap" style="left:28px;bottom:24px"><span class="lbl">Film &nbsp;·&nbsp; Mobile Dental Care Revolution &nbsp;·&nbsp; 01:13</span></div>
-        <div class="miss"><b>Film not found beside this deck</b><span>Keep Waterbay_Film_02.mp4 in the same folder as this file</span></div>
+        <div class="miss"><b>Film not found beside this deck</b><span>Keep Waterbay_Film_02.mp4 in the same folder as this file</span><a class="misslink" target="_blank" rel="noopener">Watch it online</a></div>
         <div class="grad"></div>
       </div>
       </div>
@@ -2397,13 +2402,26 @@ body.mode-scroll #sweep{display:none}
   /* ---------------------------------------------------------------
      10 · embedded film
   --------------------------------------------------------------- */
+  /* The film travels as a separate file beside this html. Paste a share
+     link below and the "not found" frame gains a button that opens the
+     film online instead, for anyone who receives the html on its own.
+     Leave it empty and the frame simply names the file it wants. */
+  var FILM_URL = '';
+
   document.querySelectorAll('.film video.vid').forEach(function(v){
     var film = v.closest('.film');
     film.style.cursor = 'pointer';
     /* the mp4 travels beside the html, not inside it. if it is not there,
        mark the frame so nobody clicks a play button that cannot play. */
     var slide = v.closest('.slide');
-    function missing(){ film.classList.add('no-file'); if(slide) slide.classList.add('no-film'); }
+    function missing(){
+      film.classList.add('no-file');
+      if(slide) slide.classList.add('no-film');
+      if(FILM_URL){
+        var a = film.querySelector('.misslink');
+        if(a){ a.href = FILM_URL; film.classList.add('has-link'); }
+      }
+    }
     function check(){ if(v.error || v.networkState === 3) missing(); }
     v.addEventListener('error', missing);
     v.addEventListener('loadedmetadata', function(){
@@ -2412,7 +2430,10 @@ body.mode-scroll #sweep{display:none}
     check();
     setTimeout(check, 1500);
     film.addEventListener('click', function(e){
-      if(film.classList.contains('no-file')) return;
+      if(film.classList.contains('no-file')){
+        if(FILM_URL && e.target.className !== 'misslink') window.open(FILM_URL, '_blank', 'noopener');
+        return;
+      }
       if(e.target === v && v.hasAttribute('controls')) return;
       if(v.paused){
         v.setAttribute('controls',''); film.classList.add('playing');

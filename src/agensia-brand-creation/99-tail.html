@@ -1,0 +1,153 @@
+</div>
+<script>
+// Logo exploration grid · one idea, systematically varied
+(function(){
+  var host=document.getElementById('explore'); if(!host) return;
+  var cols=['#0B0C0A','#8AD000','#6FA800','#5A5B5B','#B9BDB1','#8AD000','#0B0C0A','#5A5B5B'];
+  for(var i=0;i<24;i++){
+    var c=cols[i%8], rot=(i%3-1)*8, passes=3+(i%4)*2, sq=(i%7===0), gap=1.9+(i%3)*0.7;
+    var s='';
+    for(var p=0;p<passes;p++){
+      var r=9+p*gap*2.1, o=(1-p/(passes+1)).toFixed(2);
+      s+='<circle cx="32" cy="32" r="'+r.toFixed(1)+'" stroke="'+c+'" stroke-width="'+(sq?1.6:1.1)+'" opacity="'+o+'"/>';
+    }
+    var d=document.createElement('div');
+    d.style.cssText='aspect-ratio:1;border:1px solid #E8EBE2;display:flex;align-items:center;justify-content:center;';
+    d.innerHTML='<svg width="62%" height="62%" viewBox="0 0 64 64" fill="none" style="transform:rotate('+rot+'deg)">'+s+
+      (i%5!==4?'<path d="M32 44 24 26h16Z" fill="'+c+'" opacity=".9"/>':'<circle cx="32" cy="32" r="4.5" fill="'+c+'"/>')+
+      '</svg>';
+    host.appendChild(d);
+  }
+})();
+var EXPORT = location.hash === '#export';
+var slides = [].slice.call(document.querySelectorAll('.slide'));
+slides.forEach(function(sl, i){ sl.id = 'p' + (i + 1); });
+
+if (EXPORT) {
+  // Export view: every slide laid out at true size, no chrome. Used by the PNG renderer.
+  document.body.classList.add('exporting');
+  document.documentElement.style.setProperty('--s', 1);
+} else {
+  document.body.classList.add('deckmode');
+
+  var idx = 0;
+
+  function fit(){
+    var pad = 56;
+    var navW = nav.classList.contains('open') ? 290 : 0;
+    var s = Math.min((window.innerWidth - navW - pad) / 1920, (window.innerHeight - pad) / 1080);
+    document.documentElement.style.setProperty('--s', Math.max(0.1, s));
+    deckEl.style.paddingRight = navW + 'px';
+  }
+
+  function show(i, push){
+    idx = Math.min(slides.length - 1, Math.max(0, i));
+    slides.forEach(function(sl, j){ sl.classList.toggle('active', j === idx); });
+    links.forEach(function(l, j){ l.classList.toggle('on', j === idx); });
+    counter.innerHTML = '<b>' + String(idx + 1).padStart(2, '0') + '</b> / ' + slides.length;
+    prevBtn.disabled = idx === 0;
+    nextBtn.disabled = idx === slides.length - 1;
+    bar.style.width = ((idx + 1) / slides.length * 100) + '%';
+    if (nav.classList.contains('open')) {
+      var on = links[idx];
+      if (on) nav.scrollTop = on.offsetTop - nav.clientHeight / 2;
+    }
+    if (push) history.replaceState(null, '', '#p' + (idx + 1));
+  }
+
+  var deckEl = document.getElementById('deck');
+
+  // --- page index ---
+  var nav = document.createElement('nav');
+  nav.id = 'nav'; nav.setAttribute('aria-label', 'Page index');
+  var html = '<h6>Agensia Brand Creation</h6>';
+  slides.forEach(function(sl, i){
+    var cv = sl.querySelector('.canvas');
+    var isDiv = cv.classList.contains('divider');
+    var t, cls;
+    if (cv.dataset.title) { t = cv.dataset.title; cls = cv.dataset.navcls || ''; }
+    else if (isDiv) { t = cv.querySelector('span').textContent; cls = cv.classList.contains('blue') ? 'div-b' : 'div-k'; }
+    else { t = cv.querySelector('.stitle') ? cv.querySelector('.stitle').textContent.trim() : 'Cover'; cls = ''; }
+    html += '<a class="' + cls + '" href="#p' + (i + 1) + '"><i>' + String(i + 1).padStart(2, '0') + '</i><span>' + t + '</span></a>';
+  });
+  nav.innerHTML = html;
+  document.body.appendChild(nav);
+  var links = [].slice.call(nav.querySelectorAll('a'));
+  links.forEach(function(l, j){
+    l.addEventListener('click', function(e){ e.preventDefault(); show(j, true); });
+  });
+
+  // --- controls ---
+  var ctl = document.createElement('div');
+  ctl.id = 'ctl';
+  ctl.innerHTML = '<button type="button" data-a="prev" aria-label="Previous page">&#8592; Prev</button>' +
+                  '<span class="count"></span>' +
+                  '<button type="button" data-a="next" aria-label="Next page">Next &#8594;</button>' +
+                  '<span class="sep"></span>' +
+                  '<button type="button" data-a="toc">Contents</button>' +
+                  '<button type="button" data-a="full" aria-label="Toggle full screen">Full</button>';
+  document.body.appendChild(ctl);
+
+  var bar = document.createElement('div'); bar.id = 'bar'; document.body.appendChild(bar);
+  var counter = ctl.querySelector('.count');
+  var prevBtn = ctl.querySelector('[data-a=prev]');
+  var nextBtn = ctl.querySelector('[data-a=next]');
+  var tocBtn  = ctl.querySelector('[data-a=toc]');
+
+  ctl.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    var a = b.dataset.a;
+    if (a === 'prev') show(idx - 1, true);
+    else if (a === 'next') show(idx + 1, true);
+    else if (a === 'toc') {
+      var open = nav.classList.toggle('open');
+      tocBtn.textContent = open ? 'Close' : 'Contents';
+      fit(); show(idx, false);
+    }
+    else if (a === 'full') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen().catch(function(){});
+    }
+  });
+
+  // --- keyboard ---
+  document.addEventListener('keydown', function(e){
+    if (e.target.matches('input,textarea')) return;
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'ArrowDown' || k === 'PageDown' || k === ' ') { e.preventDefault(); show(idx + 1, true); }
+    else if (k === 'ArrowLeft' || k === 'ArrowUp' || k === 'PageUp') { e.preventDefault(); show(idx - 1, true); }
+    else if (k === 'Home') { e.preventDefault(); show(0, true); }
+    else if (k === 'End')  { e.preventDefault(); show(slides.length - 1, true); }
+    else if (k === 'f' || k === 'F') {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else document.documentElement.requestFullscreen().catch(function(){});
+    }
+    else if (k === 'Escape' && nav.classList.contains('open')) {
+      nav.classList.remove('open'); tocBtn.textContent = 'Contents'; fit();
+    }
+    wake();
+  });
+
+  // --- auto-hide the controls while presenting ---
+  var idleTimer;
+  function wake(){
+    ctl.classList.remove('idle');
+    clearTimeout(idleTimer);
+    idleTimer = setTimeout(function(){
+      if (!nav.classList.contains('open')) ctl.classList.add('idle');
+    }, 2600);
+  }
+  document.addEventListener('mousemove', wake);
+  ctl.addEventListener('mouseenter', function(){ clearTimeout(idleTimer); ctl.classList.remove('idle'); });
+
+  // --- deep link on load (#p12) ---
+  var m = /^#p(\d+)$/.exec(location.hash);
+  window.addEventListener('resize', fit);
+  document.addEventListener('fullscreenchange', fit);
+  fit();
+  show(m ? parseInt(m[1], 10) - 1 : 0, false);
+  wake();
+}
+</script>
+</body>
+</html>

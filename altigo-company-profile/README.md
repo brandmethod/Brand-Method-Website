@@ -11,6 +11,7 @@ build.mjs                           # index.html -> PDF
 rescale.py                          # normalises page boxes to 1440 x 810 pt
 qa.mjs                              # fails loudly on any content overflowing a slide
 make-chapter-visuals.py             # duotones the chapter / texture images
+make-portraits.py                   # normalises the two leadership cut-outs
 make-artifact.py                    # inlines every asset as a data URI
 assemble-artifact.py                # wraps the slides in the web viewer shell
 preview-artifact.mjs                # screenshots the viewer in light / dark / mobile

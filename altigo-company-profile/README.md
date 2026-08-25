@@ -49,7 +49,11 @@ Brand identity is unchanged and was lifted directly from the previous edition:
 - **Colour** — exact hex values carried over: `#EA1701`, `#0743C9`, `#7FA8FF`,
   `#2A2A70`, `#1A1C41`, `#0A0D2C`, `#F5F7FD`, text `#4C5580` / `#5A628C`.
 - **Photography** — every photograph, portrait and the EUROCERT certificate
-  reused, re-encoded (13.5 MB of PNG → 3.1 MB of JPEG, no visible loss). The
+  reused, re-encoded (13.5 MB of PNG → ~3 MB, no visible loss). Note that
+  `photo-usp` carries a soft mask in the source PDF: the area left of the
+  escalator is *transparent*, not black, and it is kept as `photo-usp.webp` so
+  that alpha survives. Converting it to JPEG flattens that region to solid black,
+  which is very obvious once the photograph sits on a white page. The
   chapter and texture images are also ALTIGO's own photographs, duotoned (see
   **Chapter visuals** below) — no stock or generated imagery anywhere.
 - **Structure** — same 41 pages in the same order, same folio numbers, so this

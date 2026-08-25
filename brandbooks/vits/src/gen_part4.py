@@ -4,8 +4,8 @@ COPY = ("&copy; 2026 Vit Makanan (Kuala Lumpur) Sdn Bhd. All rights reserved. "
         "Confidential and proprietary. Internal and authorised partner use only.")
 
 def footer(ref, n, ground=""):
-    fm = mark(18, RED, GOLD, "#fff" if ground in ("ink","red") else INK)
-    return (f'<div class="ftr"><div class="fl">{fm}<span class="fname">VIT&rsquo;S</span>'
+    fm = mark(44, "#fff" if ground == "red" else RED, RED if ground == "red" else "#fff")
+    return (f'<div class="ftr"><div class="fl">{fm}'
             f'<span>Brand Book &nbsp;V1.0 Draft</span></div>'
             f'<div class="fc">{COPY}</div>'
             f'<div class="fr"><span>{ref}</span><span class="fpg">{n:02d}</span></div></div>')
@@ -42,7 +42,7 @@ def divider(num, title, blurb, rows, name, group):
     inner = (f'<div class="cv" style="padding-bottom:64px">'
              f'<div class="top"><span><b>{num} &middot; {title.upper()}</b></span>'
              f'<span>Section {num}</span></div><div class="hair"></div></div>'
-             f'<div class="dv-mark">{symbol(560, "rgba(255,255,255,.9)", "rgba(240,168,30,.9)")}</div>'
+             f'<div class="dv-mark">{badge(880, "#fff")}</div>'
              f'<div class="dv-wrap"><div class="dv-n rv" style="--d:60ms">{num}</div>'
              f'<div class="dv-t rv" style="--d:130ms">{title}</div>'
              f'<div class="dv-b rv" style="--d:200ms">{blurb}</div></div>'

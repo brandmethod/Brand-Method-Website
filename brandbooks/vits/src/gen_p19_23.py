@@ -87,8 +87,8 @@ sheet("3.8 Colour in Use", "03 Visual", "03 &middot; Visual Identity", "3.8 &mid
 
 # ==================================================== 21 TYPOGRAPHY
 _faces = [("Archivo","Display","800 Expanded, 700",
-   "Headlines, the wordmark, pack front of face and any type over 30px. Set expanded at 112 to 118 per cent "
-   "width; it is what gives the brand its shelf voice.", "var(--fd)", "800", "112%"),
+   "Headlines, pack front of face and any type over 30px. Set expanded at 112 to 118 per cent "
+   "width. It also stands in for the wordmark inside the mark, which is a custom drawing and not this typeface.", "var(--fd)", "800", "112%"),
   ("Figtree","Text","400, 500, 600",
    "Body copy, decks, pack back of face, long form. Warm humanist proportions that stay legible at "
    "6pt on film.", "var(--ft)", "500", "100%"),

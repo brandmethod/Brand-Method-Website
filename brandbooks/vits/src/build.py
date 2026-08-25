@@ -14,12 +14,9 @@ assert N == 30, f"expected 30 pages, got {N}"
 engine = open(os.path.join(B,"engine.js"), encoding="utf-8").read()
 engine = engine.replace("<script>\n","",1).replace("</script>","")
 
-FONTS = ("https://fonts.googleapis.com/css2?"
-  "family=Archivo:wdth,wght@62..125,400..900&"
-  "family=Figtree:wght@300..900&"
-  "family=JetBrains+Mono:wght@400..700&"
-  "family=Noto+Sans+SC:wght@400..700&"
-  "family=Noto+Naskh+Arabic:wght@400..700&display=swap")
+# Fonts are embedded as woff2 data URIs rather than linked, so the book renders
+# identically offline, inside the artifact sandbox, and in print to PDF.
+FONTS_CSS = open(os.path.join(B, "fonts", "embedded.css"), encoding="utf-8").read()
 
 NAV = '''
 <div class="nav" id="nav">
@@ -80,9 +77,7 @@ html = f'''<!DOCTYPE html>
 <title>Vit&rsquo;s Brand Book</title>
 <meta name="description" content="The Vit's Noodles brand book - brand, verbal identity, visual identity and application. Wireframe draft edition V1.0.">
 <style id="psize">@page{{size:1920px 1080px;margin:0}}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="{FONTS}">
+<style>{FONTS_CSS}</style>
 <style>{CSS}{CHROME_CSS}</style>
 </head>
 <body>

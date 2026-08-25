@@ -33,7 +33,7 @@ sheet("4.1 Packaging System", "04 Application", "04 &middot; Application", "4.1 
         align-items:center;justify-content:center;flex:none;position:relative">
         <span style="position:absolute;left:8px;top:6px;font-family:var(--fm);font-size:10.5px;
           color:var(--ink54)">1</span>
-        <span style="display:flex;flex-direction:column;align-items:center;gap:6px">{mark(36)}{wordmark(19)}</span>
+        {mark(150)}
       </div>
       <div style="height:38px;background:{RED};flex:none;display:flex;align-items:center;
         padding:0 12px;position:relative">
@@ -103,7 +103,7 @@ sheet("4.2 Stationery", "04 Application", "04 &middot; Application", "4.2 &middo
     <div style="flex:1;min-height:0;background:var(--paper);border:1px solid var(--ink14);
       padding:30px 34px;display:flex;flex-direction:column">
       <div style="display:flex;align-items:flex-start;justify-content:space-between">
-        {lockup(40, 28)}
+        {mark(110)}
         <span style="font-family:var(--fm);font-size:9.5px;letter-spacing:.12em;color:var(--ink54);
           text-align:right;line-height:1.9">VIT MAKANAN (KL) SDN BHD<br>25143-H</span></div>
       <div style="height:3px;background:{RED};margin-top:16px;flex:none"></div>
@@ -124,7 +124,7 @@ sheet("4.2 Stationery", "04 Application", "04 &middot; Application", "4.2 &middo
         <span class="mono s acc" style="margin-bottom:12px">Business card, face</span>
         <div style="flex:1;min-height:0;background:var(--paper);border:1px solid var(--ink14);
           padding:26px 28px;display:flex;flex-direction:column;justify-content:space-between">
-          <div>{lockup(34, 24)}</div>
+          <div>{mark(96)}</div>
           <div><div style="font-family:var(--fd);font-weight:800;font-size:19px;letter-spacing:-.012em">
             Name Surname</div>
             <div style="font-family:var(--ft);font-size:14px;color:var(--ink72);margin-top:3px">Role, Department</div>
@@ -136,9 +136,9 @@ sheet("4.2 Stationery", "04 Application", "04 &middot; Application", "4.2 &middo
         <span class="mono s acc" style="margin-bottom:12px">Business card, reverse</span>
         <div style="flex:1;min-height:0;background:{RED};display:flex;align-items:center;
           justify-content:center;position:relative;overflow:hidden">
-          <div style="position:absolute;right:-70px;bottom:-60px;opacity:.20">{symbol(280, STEAM, "rgba(250,244,233,.6)")}</div>
+          <div style="position:absolute;right:-90px;bottom:-50px;opacity:.20">{badge(340, STEAM)}</div>
           <span style="position:relative;display:flex;flex-direction:column;align-items:center;gap:14px">
-            {mark(52, "#fff", "#fff", "#fff")}
+            {mark(150, "#fff", RED)}
             <span style="font-family:var(--fd);font-weight:800;font-stretch:110%;font-size:16.5px;
               color:#fff;text-align:center;line-height:1.5">The only one.<br>Since 1975.</span></span></div>
       </div>
@@ -147,7 +147,7 @@ sheet("4.2 Stationery", "04 Application", "04 &middot; Application", "4.2 &middo
       <span class="mono s acc" style="margin-bottom:12px">Compliment slip, DL</span>
       <div style="flex:1;min-height:0;background:var(--paper);border:1px solid var(--ink14);
         padding:24px 30px;display:flex;align-items:center;justify-content:space-between">
-        {lockup(38, 26)}
+        {mark(104)}
         <span style="font-family:var(--fd);font-weight:800;font-size:24px;letter-spacing:-.014em;
           color:var(--ink54)">With compliments</span>
         <span style="font-family:var(--fm);font-size:10.5px;letter-spacing:.1em;color:var(--ink54);
@@ -168,8 +168,7 @@ sheet("4.3 Retail and Shelf", "04 Application", "04 &middot; Application", "4.3 
       {"".join(f'''<div style="flex:1;display:flex;flex-direction:column;gap:6px;background:{STEAM};
         border:1px solid rgba(25,20,16,.12);padding:12px 10px">
         <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex:none">
-          {mark(24)}<span style="font-family:var(--fd);font-weight:800;font-stretch:115%;font-size:12.5px;
-          color:{INK}">VIT&rsquo;S</span></div>
+          {mark(74)}</div>
         <div style="height:22px;background:{c};display:flex;align-items:center;justify-content:center;
           flex:none;margin-top:2px"><span style="font-family:var(--fd);font-weight:800;font-size:11px;
           color:#fff;letter-spacing:.02em">{n.upper()}</span></div>
@@ -185,7 +184,7 @@ sheet("4.3 Retail and Shelf", "04 Application", "04 &middot; Application", "4.3 
       <div style="flex:1;min-height:0;background:#D9C9A8;border:1px solid var(--ink14);
         padding:18px 22px;display:flex;flex-direction:column;justify-content:space-between">
         <div style="display:flex;align-items:center;justify-content:space-between">
-          {lockup(30, 21, INK, INK, INK, INK)}
+          {mark(84, INK)}
           <span style="font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:rgba(25,20,16,.62)">
             1&nbsp;PLATE&nbsp;/&nbsp;INK</span></div>
         <div style="font-family:var(--fm);font-size:11.5px;letter-spacing:.11em;color:rgba(25,20,16,.72);
@@ -196,7 +195,7 @@ sheet("4.3 Retail and Shelf", "04 Application", "04 &middot; Application", "4.3 
       <span class="mono s acc" style="margin-bottom:12px">Shelf wobbler</span>
       <div style="flex:1;min-height:0;background:{RED};display:flex;flex-direction:column;
         align-items:center;justify-content:center;gap:10px;text-align:center;padding:16px">
-        {mark(38, "#fff", "#fff", "#fff")}
+        {mark(110, "#fff", RED)}
         <span style="font-family:var(--fd);font-weight:800;font-stretch:112%;font-size:21px;
           color:#fff;line-height:1.2">Halal since 1980</span>
         <span style="font-family:var(--ft);font-size:13.5px;color:rgba(255,255,255,.84)">Made in Rawang</span></div>
@@ -212,7 +211,8 @@ sheet("4.3 Retail and Shelf", "04 Application", "04 &middot; Application", "4.3 
 # ============================================= 28 DIGITAL AND SOCIAL
 sheet("4.4 Digital and Social", "04 Application", "04 &middot; Application", "4.4 &middot; Digital and Social",
   "Digital and Social",
-  "The mark shrinks a long way online. Below 28 px the symbol replaces the lockup, without exception.",
+  "The mark shrinks a long way online. At 46px the keyline goes; below that the badge stops "
+  "working and an interim icon takes over until a real one is drawn.",
   f'''<div style="display:grid;grid-template-columns:1.45fr 1fr;gap:50px;height:100%">
   <div style="display:flex;flex-direction:column;gap:24px">
     <div class="rv" style="--d:200ms;flex:none;display:flex;flex-direction:column">
@@ -220,7 +220,7 @@ sheet("4.4 Digital and Social", "04 Application", "04 &middot; Application", "4.
       <div style="background:var(--paper);border:1px solid var(--ink14)">
         <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 24px;
           border-bottom:1px solid var(--ink14)">
-          {lockup(30, 21)}
+          {mark(84)}
           <div style="display:flex;align-items:center;gap:22px">
             {"".join(f'<span style="font-family:var(--ft);font-weight:500;font-size:13.5px;color:var(--ink72)">{x}</span>' for x in ["Products","About","OEM","Private Label","Blog"])}
             <span style="font-family:var(--ft);font-weight:600;font-size:13px;color:#fff;
@@ -238,7 +238,7 @@ sheet("4.4 Digital and Social", "04 Application", "04 &middot; Application", "4.
         <span class="mono s dim" style="font-size:11px">{cap}</span></div>'''
         for bg, jc, inner, cap in [
           (RED, "space-between",
-           f'{mark(30, "#fff", "#fff", "#fff")}<span style="font-family:var(--fd);font-weight:800;'
+           f'{mark(96, "#fff", RED)}<span style="font-family:var(--fd);font-weight:800;'
            f'font-stretch:110%;font-size:23px;color:#fff;line-height:1.16">Fifty years of the everyday bowl.</span>',
            "1:1 statement post"),
           (INK, "space-between",
@@ -249,7 +249,7 @@ sheet("4.4 Digital and Social", "04 Application", "04 &middot; Application", "4.
           (PAPER, "space-between",
            f'<span style="font-family:var(--fd);font-weight:800;font-size:19px;letter-spacing:-.012em;'
            f'line-height:1.25;color:{INK}">Halal since 1980. Not because anyone asked.</span>'
-           f'<div style="display:flex;align-items:center;gap:9px">{mark(22)}'
+           f'<div style="display:flex;align-items:center;gap:9px">{mark(70)}'
            f'<span style="font-family:var(--fm);font-size:10.5px;letter-spacing:.1em;color:var(--ink54)">@VITSNOODLES</span></div>',
            "1:1 editorial post")])}
     </div>
@@ -257,16 +257,23 @@ sheet("4.4 Digital and Social", "04 Application", "04 &middot; Application", "4.
   <div style="display:flex;flex-direction:column;gap:24px">
     <div class="rv" style="--d:340ms;flex:none">
       <span class="mono s acc">Avatars and icons</span>
-      <div style="display:flex;align-items:flex-end;gap:22px;margin-top:14px;background:var(--paper);
+      <div style="display:flex;align-items:flex-end;gap:26px;margin-top:14px;background:var(--paper);
         border:1px solid var(--ink14);padding:22px 24px">
         {"".join(f'''<div style="display:flex;flex-direction:column;align-items:center;gap:9px">
-          <div style="width:{s}px;height:{s}px;border-radius:50%;background:{RED};display:flex;
-            align-items:center;justify-content:center">{symbol(int(s*0.6), "#fff", "#fff")}</div>
-          <span class="mono s dim" style="font-size:10.5px">{s}</span></div>''' for s in [76, 52, 36, 28])}
-        <div style="display:flex;flex-direction:column;align-items:center;gap:9px">
-          <div style="width:32px;height:32px;background:{RED};display:flex;align-items:center;
-            justify-content:center">{symbol(20, "#fff", "#fff")}</div>
-          <span class="mono s dim" style="font-size:10.5px">Favicon</span></div></div>
+          <div style="width:{d}px;height:{d}px;border-radius:50%;background:{RED};display:flex;
+            align-items:center;justify-content:center;overflow:hidden">{mark(int(d*0.88), RED, "#fff")}</div>
+          <span class="mono s dim" style="font-size:10.5px">{d} px</span></div>''' for d in [86, 60])}
+        <div style="width:1px;align-self:stretch;background:var(--ink14);margin:0 6px"></div>
+        {"".join(f'''<div style="display:flex;flex-direction:column;align-items:center;gap:9px">
+          <div style="width:{d}px;height:{d}px;border-radius:{r};background:{RED};display:flex;
+            align-items:center;justify-content:center">
+            <span style="font-family:var(--fd);font-weight:900;font-stretch:102%;
+              font-size:{int(d*0.68)}px;color:#fff;line-height:1">V</span></div>
+          <span class="mono s dim" style="font-size:10.5px">{lab}</span></div>'''
+          for d, r, lab in [(44, "50%", "44 px"), (32, "7px", "App"), (24, "4px", "Favicon")])}</div>
+      <div style="font-size:16px;line-height:24px;color:var(--ink72);margin-top:12px">
+        The badge survives to about 60px in a circle. Under that it is the interim <b>V</b> tile,
+        which is a holding device and not an approved mark. A proper icon is on the list on 5.1.</div>
     </div>
     <div class="rv" style="--d:400ms;flex:1;min-height:0;display:flex;flex-direction:column">
       <span class="mono s acc">Email signature, Arial, no images</span>
@@ -306,7 +313,7 @@ sheet("5.1 Contacts and Legal", "05 Close", "05 &middot; Close", "5.1 &middot; C
     <div style="flex:1"></div>
     <div style="border:1px solid var(--ink14);background:var(--paper);padding:36px 40px;
       display:flex;align-items:center;justify-content:space-between;gap:34px;margin-top:34px">
-      {lockup(78, 54)}
+      {mark(210)}
       <span style="text-align:right"><span class="mono s acc">Master files</span>
         <span style="display:block;font-size:17px;line-height:26px;color:var(--ink72);
           margin-top:9px;max-width:260px">Vector artwork, colour profiles and the licensed font
@@ -348,9 +355,9 @@ sheet("5.1 Contacts and Legal", "05 Close", "05 &middot; Close", "5.1 &middot; C
 n = len(PAGES) + 1
 raw("Back Cover", "Back", ground="ink", inner=f'''
 <div style="position:absolute;right:-160px;top:50%;transform:translateY(-50%);opacity:.09;z-index:1">
-  {symbol(760, "#fff", GOLD)}</div>
+  {badge(900, "#fff")}</div>
 <div class="cv" style="justify-content:center;z-index:3">
-  <div class="rv" style="--d:60ms">{lockup(96, 66, "#fff", RED, GOLD, "#fff")}</div>
+  <div class="rv" style="--d:60ms">{mark(300, tm=True)}</div>
   <div class="rv" style="--d:130ms;font-family:var(--fd);font-weight:800;font-stretch:114%;
     font-size:80px;line-height:1.05;letter-spacing:-.028em;color:#fff;margin-top:40px;max-width:1100px">
     The only one.<br>Since 1975.</div>

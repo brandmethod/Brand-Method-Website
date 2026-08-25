@@ -2,11 +2,11 @@
 raw("Cover", "Front", ground="steam", inner=f'''
 <div style="position:absolute;right:0;top:0;bottom:0;width:612px;background:{RED};z-index:1;
   display:flex;align-items:center;justify-content:center;overflow:hidden">
-  <div style="opacity:.30;transform:translateX(40px)">{symbol(660, STEAM, "rgba(250,244,233,.55)")}</div>
+  <div style="opacity:.22;transform:translateX(30px)">{badge(700, STEAM)}</div>
 </div>
 <div class="cv" style="padding:64px 120px 96px;width:1308px">
   <div class="rv mono s acc" style="--d:60ms;letter-spacing:.18em">Client level &middot; Brand identity</div>
-  <div class="rv" style="--d:110ms;margin-top:26px">{lockup(96, 66)}</div>
+  <div class="rv" style="--d:110ms;margin-top:26px">{mark(300, tm=True)}</div>
   <h1 class="rv" style="--d:170ms;font-family:var(--fd);font-weight:800;font-stretch:118%;
     font-size:132px;line-height:.94;letter-spacing:-.032em;margin:44px 0 0">Brand Book</h1>
   <div class="rv" style="--d:230ms;font-size:23px;line-height:36px;color:var(--ink72);
@@ -53,7 +53,7 @@ sheet("0.1 Introduction", "00 Essentials", "00 &middot; Essentials", "0.1 &middo
     margin-top:44px;border-top:1px solid var(--ink14);
     border-bottom:1px solid var(--ink14);margin-bottom:40px">
     <div style="display:flex;flex-direction:column;gap:14px">
-      <span class="mono s dim">The mark</span>{lockup(76, 52)}</div>
+      <span class="mono s dim">The mark</span>{mark(200)}</div>
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="mono s dim">Five colours</span>
       <div style="display:flex;gap:10px">

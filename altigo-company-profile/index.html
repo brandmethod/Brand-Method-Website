@@ -350,15 +350,35 @@ h1 .r{font-style:normal;color:var(--red-600)}
 .paper .org-node{background:var(--white);box-shadow:0 1px 0 var(--line-soft),0 8px 22px rgba(20,26,72,.05)}
 
 /* ============================ TIMELINE ============================ */
+/* The track has to belong to the stages, not float above them: each marker
+   sits over the centre of its own card and drops a connector into it, and the
+   spine runs only between the first and last marker. Colour walks blue to red
+   across the seven stages so the run of the process is visible at a glance. */
 .tl{position:relative;display:grid;grid-template-columns:repeat(7,1fr);gap:14px;flex:1;min-height:0}
-.tl-spine{position:absolute;left:0;right:0;top:7px;height:2px;background:var(--line)}
-.tl-spine i{position:absolute;left:0;top:0;height:2px;background:linear-gradient(90deg,var(--blue-600),var(--red-600));width:100%}
-.tl-step{display:flex;flex-direction:column;min-height:0}
-.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--white);border:3.5px solid var(--blue-600);margin-bottom:20px;flex:none}
-.tl-step:last-child .tl-dot{border-color:var(--red-600)}
-.tl-card{background:var(--paper);border-top:2px solid var(--blue-600);padding:17px 16px 15px;
-         flex:1;min-height:0;display:flex;flex-direction:column}
-.tl-step:last-child .tl-card{border-top-color:var(--red-600)}
+.tl-spine{position:absolute;top:7px;height:2px;background:var(--line);
+  left:calc((100% - 84px) / 14);right:calc((100% - 84px) / 14)}
+.tl-spine i{position:absolute;inset:0;background:linear-gradient(90deg,var(--blue-600),var(--red-600))}
+.tl-step{display:flex;flex-direction:column;align-items:center;min-height:0}
+.tl-dot{position:relative;width:16px;height:16px;border-radius:50%;
+  background:var(--white);border:3.5px solid var(--blue-600);margin-bottom:22px;flex:none}
+.tl-dot::after{content:"";position:absolute;left:50%;top:100%;transform:translateX(-1px);
+  width:2px;height:22px;background:currentColor;opacity:.45}
+.tl-card{text-align:left;background:var(--paper);border-top:2.5px solid var(--blue-600);padding:17px 16px 15px;
+         flex:1;min-height:0;display:flex;flex-direction:column;width:100%}
+.tl-step:nth-child(2) .tl-dot{border-color:#0743C9;color:#0743C9}
+.tl-step:nth-child(2) .tl-card{border-top-color:#0743C9}
+.tl-step:nth-child(3) .tl-dot{border-color:#2F3CA8;color:#2F3CA8}
+.tl-step:nth-child(3) .tl-card{border-top-color:#2F3CA8}
+.tl-step:nth-child(4) .tl-dot{border-color:#573487;color:#573487}
+.tl-step:nth-child(4) .tl-card{border-top-color:#573487}
+.tl-step:nth-child(5) .tl-dot{border-color:#7E2D65;color:#7E2D65}
+.tl-step:nth-child(5) .tl-card{border-top-color:#7E2D65}
+.tl-step:nth-child(6) .tl-dot{border-color:#A62644;color:#A62644}
+.tl-step:nth-child(6) .tl-card{border-top-color:#A62644}
+.tl-step:nth-child(7) .tl-dot{border-color:#CE1E23;color:#CE1E23}
+.tl-step:nth-child(7) .tl-card{border-top-color:#CE1E23}
+.tl-step:nth-child(8) .tl-dot{border-color:#EA1701;color:#EA1701}
+.tl-step:nth-child(8) .tl-card{border-top-color:#EA1701}
 
 /* ============================ CHART ============================ */
 .chart{position:relative;flex:1;min-height:0;background:linear-gradient(180deg,rgba(7,67,201,.05),rgba(7,67,201,0));}
@@ -388,13 +408,13 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></symbol>
 <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 20v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></symbol>
 <symbol id="i-trend" viewBox="0 0 24 24"><path d="M22 7l-8.5 8.5-4-4L2 19"/><path d="M16 7h6v6"/></symbol>
-<symbol id="i-handshake" viewBox="0 0 24 24"><path d="M11 17l2 2 4-4"/><path d="M2 12l4-4 5 5-2 2-4-4"/><path d="M22 12l-4-4-5 5"/><path d="M6 8V6h5M18 8V6h-5"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 24 24"><circle cx="7" cy="8.6" r="2.6"/><path d="M2.6 19.2c0-2.5 2-4.4 4.4-4.4s4.4 1.9 4.4 4.4"/><circle cx="17" cy="8.6" r="2.6"/><path d="M12.6 19.2c0-2.5 2-4.4 4.4-4.4s4.4 1.9 4.4 4.4"/><path d="M9.3 4.7a5.8 5.8 0 0 1 5.4 0"/></symbol>
 <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8.2-8 9-4.5-.8-8-4-8-9V6z"/></symbol>
 <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8.2-8 9-4.5-.8-8-4-8-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
 <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
 <symbol id="i-cal-check" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M9 15l2 2 4-4"/></symbol>
 <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
-<symbol id="i-lift" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M12 3v18M8.2 9.5 9.6 8l1.4 1.5M13 14.5 14.4 16l1.4-1.5"/></symbol>
+<symbol id="i-lift" viewBox="0 0 24 24"><rect x="4.2" y="3" width="15.6" height="18" rx="1.6"/><path d="M12 3v18"/><path d="M6.6 11.6 8.4 9.4l1.8 2.2"/><path d="M13.8 12.4l1.8 2.2 1.8-2.2"/></symbol>
 <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.8"/></symbol>
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></symbol>
 <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.6"/><circle cx="12" cy="12" r="1"/></symbol>
@@ -416,7 +436,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="14" r="4.5"/><path d="M11.4 11 20 2.5M17 5.5 19.5 8M14.5 8 17 10.5"/></symbol>
 <symbol id="i-ruler" viewBox="0 0 24 24"><path d="M15.5 2.5 21.5 8.5 8.5 21.5 2.5 15.5z"/><path d="M8 10l2 2M11 7l2 2M5 13l2 2"/></symbol>
 <symbol id="i-bag" viewBox="0 0 24 24"><path d="M4 8h16l-1.3 12.2H5.3z"/><path d="M8.5 8V6a3.5 3.5 0 0 1 7 0v2"/></symbol>
-<symbol id="i-escalator" viewBox="0 0 24 24"><path d="M3 19h4.5L17 6h4"/><path d="M3 15.5h3.5M8.5 12.5H12M14 9h3.5"/><path d="M17.5 3 21 6l-3.5 3"/></symbol>
+<symbol id="i-escalator" viewBox="0 0 24 24"><path d="M2.6 20.8h3.6v-3.5h3.6v-3.5h3.6v-3.5h3.6V6.8h3.4"/><path d="M2.6 16.1 20.4 2.1"/><path d="M17.4 2.1h3v3"/></symbol>
 <symbol id="i-car" viewBox="0 0 24 24"><path d="M4 15.5 5.6 9.4A2 2 0 0 1 7.5 8h9a2 2 0 0 1 1.9 1.4L20 15.5"/><path d="M3 15.5h18v3.5H3z"/><circle cx="7" cy="19" r="1.2"/><circle cx="17" cy="19" r="1.2"/></symbol>
 <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 21v-8"/></symbol>
 <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4M9 12l2 2 4-4"/></symbol>
@@ -442,6 +462,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <symbol id="i-headset" viewBox="0 0 24 24"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M4 14h2.5v5H5.5A1.5 1.5 0 0 1 4 17.5zM20 14h-2.5v5h1A1.5 1.5 0 0 0 20 17.5z"/><path d="M17.5 19v.5a2.5 2.5 0 0 1-2.5 2.5h-3"/></symbol>
 <symbol id="i-factory" viewBox="0 0 24 24"><path d="M3 21V9l5 3.5V9l5 3.5V9l5 3.5V21z"/><path d="M3 21h18M18 9V4h3v5"/></symbol>
 <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5 21V4h14l-3 5 3 5H5"/></symbol>
+<symbol id="i-home-lift" viewBox="0 0 24 24"><path d="M2.8 10.4 12 3.1l9.2 7.3"/><path d="M5.4 9V20.9h13.2V9"/><rect x="9.9" y="12.4" width="4.2" height="8.5"/><path d="M9.9 16.9h4.2"/><path d="M11.1 15.3 12 14.2l.9 1.1"/></symbol>
+<symbol id="i-parking" viewBox="0 0 24 24"><path d="M4.4 15.2 5.6 11.7A1.7 1.7 0 0 1 7.2 10.5h6.4a1.7 1.7 0 0 1 1.6 1.2l1.2 3.5"/><path d="M3.7 15.2h13.8v3.2H3.7z"/><circle cx="6.9" cy="18.4" r="1"/><circle cx="14.3" cy="18.4" r="1"/><path d="M20.6 5.4v13.2"/><path d="M18.9 7.1 20.6 5.2l1.7 1.9"/><path d="M18.9 16.9 20.6 18.8l1.7-1.9"/></symbol>
+<symbol id="i-cargo" viewBox="0 0 24 24"><path d="M8 8.2h8v6.6H8z"/><path d="M8 11.5h8"/><path d="M4.8 17.8h14.4"/><path d="M4.8 17.8v2.8M19.2 17.8v2.8"/><path d="M12 5.8V2.9"/><path d="M10.3 4.6 12 2.8l1.7 1.8"/></symbol>
 </defs></svg>
 
 <!-- ============================================================ 01 · COVER -->
@@ -1236,30 +1259,29 @@ h1 .r{font-style:normal;color:var(--red-600)}
         engineering discipline and is carried forward with the same conviction.</p>
     </div>
 
-    <div class="band" style="padding-top:14px">
-      <!-- both cut-outs are normalised to the same head size and crop depth
-           (make-portraits.py), so they read as one photograph -->
-      <div style="display:grid;grid-template-columns:repeat(2,300px);justify-content:center;
-                  column-gap:96px;align-items:stretch;flex:1;min-height:0">
-        <figure style="display:flex;flex-direction:column;min-height:0">
-          <div style="flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center">
-            <img src="assets/leader-founder.png" alt="Mr. Ang Kam Keong"
-                 style="max-height:100%;width:auto;display:block;object-fit:contain;object-position:bottom">
-          </div>
-          <figcaption style="padding-top:20px;border-top:1px solid rgba(255,255,255,.18);margin-top:20px;text-align:center">
+    <!-- Portraits share a baseline: each figure is image-over-caption and the
+         row aligns on flex-end, so the captions line up and the images sit on
+         one line above them. The founder leads at 1.3x the executive. -->
+    <div class="band" style="padding-top:6px">
+      <div style="display:flex;align-items:flex-end;justify-content:center;
+                  gap:104px;flex:1;min-height:0;--h:462px">
+        <figure style="display:flex;flex-direction:column;align-items:center">
+          <img src="assets/leader-founder.png" alt="Mr. Ang Kam Keong"
+               style="height:var(--h);width:auto;display:block">
+          <figcaption style="width:100%;padding-top:18px;margin-top:18px;
+                             border-top:1px solid rgba(255,255,255,.2);text-align:center">
             <div class="kicker" style="color:var(--red-400)">Founder &amp; Managing Director</div>
-            <div style="font-size:21px;font-weight:800;color:#fff;margin-top:9px;letter-spacing:-.014em">Mr. Ang Kam Keong</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;margin-top:9px;letter-spacing:-.014em">Mr. Ang Kam Keong</div>
           </figcaption>
         </figure>
 
-        <figure style="display:flex;flex-direction:column;min-height:0">
-          <div style="flex:1;min-height:0;display:flex;align-items:flex-end;justify-content:center">
-            <img src="assets/leader-executive.png" alt="Mr. Ang Tse Wei, Melvin"
-                 style="max-height:100%;width:auto;display:block;object-fit:contain;object-position:bottom">
-          </div>
-          <figcaption style="padding-top:20px;border-top:1px solid rgba(255,255,255,.18);margin-top:20px;text-align:center">
+        <figure style="display:flex;flex-direction:column;align-items:center">
+          <img src="assets/leader-executive.png" alt="Mr. Ang Tse Wei, Melvin"
+               style="height:calc(var(--h) / 1.3);width:auto;display:block">
+          <figcaption style="width:100%;padding-top:18px;margin-top:18px;
+                             border-top:1px solid rgba(255,255,255,.2);text-align:center">
             <div class="kicker" style="color:var(--blue-300)">Executive Director</div>
-            <div style="font-size:21px;font-weight:800;color:#fff;margin-top:9px;letter-spacing:-.014em">Mr. Ang Tse Wei, Melvin</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;margin-top:9px;letter-spacing:-.014em">Mr. Ang Tse Wei, Melvin</div>
           </figcaption>
         </figure>
       </div>
@@ -1641,7 +1663,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <span class="badge">02</span></div>
         <div style="padding-top:14px">
           <div class="hd" style="margin-bottom:10px">
-            <svg class="ico ico-r"><use href="#i-home"/></svg><div class="h4">Home Lifts</div></div>
+            <svg class="ico ico-r"><use href="#i-home-lift"/></svg><div class="h4">Home Lifts</div></div>
           <p class="p-sm">Crafted for private homes and smaller structures, convenience blended with luxury.</p>
         </div>
       </div>
@@ -1659,7 +1681,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <span class="badge">04</span></div>
         <div style="padding-top:14px">
           <div class="hd" style="margin-bottom:10px">
-            <svg class="ico ico-r"><use href="#i-car"/></svg><div class="h4">Automated Parking</div></div>
+            <svg class="ico ico-r"><use href="#i-parking"/></svg><div class="h4">Automated Parking</div></div>
           <p class="p-sm">Optimise space, improve vehicle accessibility and boost parking efficiency.</p>
         </div>
       </div>
@@ -1668,7 +1690,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
           <span class="badge b">05</span></div>
         <div style="padding-top:14px">
           <div class="hd" style="margin-bottom:10px">
-            <svg class="ico ico-b"><use href="#i-box"/></svg><div class="h4">Cargo Lifts</div></div>
+            <svg class="ico ico-b"><use href="#i-cargo"/></svg><div class="h4">Cargo Lifts</div></div>
           <p class="p-sm">Robust freight solutions for moving heavy goods safely between floors.</p>
         </div>
       </div>
@@ -1717,7 +1739,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile"><img src="assets/prod-home-lift.jpg" alt="Panoramic home lift"></div>
         <div style="padding:24px 26px;display:flex;flex-direction:column">
           <div class="hd" style="margin-bottom:12px">
-            <svg class="ico ico-r"><use href="#i-home"/></svg><div class="h3">Home Lifts</div></div>
+            <svg class="ico ico-r"><use href="#i-home-lift"/></svg><div class="h3">Home Lifts</div></div>
           <p class="p-sm">Crafted for private homes and smaller structures, convenience blended with
             luxury. Compact shafts and quiet drives allow a lift to be added to an existing residence
             with minimal structural disruption.</p>
@@ -1773,7 +1795,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile" style="height:186px;flex:none"><img src="assets/prod-parking.jpg" alt="Automated parking"></div>
         <div style="padding:20px 22px;display:flex;flex-direction:column;flex:1">
           <div class="hd" style="margin-bottom:12px">
-            <svg class="ico ico-r"><use href="#i-car"/></svg><div class="h3">Automated Parking</div></div>
+            <svg class="ico ico-r"><use href="#i-parking"/></svg><div class="h3">Automated Parking</div></div>
           <p class="p-sm">Optimise space, improve vehicle accessibility and boost parking efficiency
             on constrained urban sites.</p>
           <div style="margin-top:auto;padding-top:16px">
@@ -1788,7 +1810,7 @@ h1 .r{font-style:normal;color:var(--red-600)}
         <div class="tile" style="height:186px;flex:none"><img src="assets/prod-cargo.jpg" alt="Cargo lift"></div>
         <div style="padding:20px 22px;display:flex;flex-direction:column;flex:1">
           <div class="hd" style="margin-bottom:12px">
-            <svg class="ico ico-b"><use href="#i-box"/></svg><div class="h3">Cargo Lifts</div></div>
+            <svg class="ico ico-b"><use href="#i-cargo"/></svg><div class="h3">Cargo Lifts</div></div>
           <p class="p-sm">Robust freight solutions for moving heavy goods safely between floors in
             warehouses, factories and back of house areas.</p>
           <div style="margin-top:auto;padding-top:16px">

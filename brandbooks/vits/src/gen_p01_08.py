@@ -11,17 +11,17 @@ raw("Cover", "Front", ground="steam", inner=f'''
     font-size:132px;line-height:.94;letter-spacing:-.032em;margin:44px 0 0">Brand Book</h1>
   <div class="rv" style="--d:230ms;font-size:23px;line-height:36px;color:var(--ink72);
     max-width:640px;margin-top:26px;text-wrap:balance">
-    The controlled reference for the Vit&rsquo;s identity &mdash; who we are, how we speak,
+    The controlled reference for the Vit&rsquo;s identity: who we are, how we speak,
     and how the mark, palette and typography are applied.</div>
   <div style="flex:1"></div>
   <div class="rv" style="--d:300ms;display:flex;gap:0;border-top:1px solid var(--ink14);padding-top:22px">
     {"".join(f"""<div style="flex:1"><div class="mono s dim">{k}</div>
-      <div style="font-family:var(--fd);font-weight:800;font-size:17px;margin-top:7px">{v}</div></div>"""
+      <div style="font-family:var(--fd);font-weight:800;font-size:18.5px;margin-top:7px">{v}</div></div>"""
       for k, v in [("Brand owner","Vit Makanan (KL) Sdn Bhd"),("Prepared by","Brand Method"),
                    ("Edition","V1.0 &nbsp;Wireframe draft"),("Issued","August 2026")])}
   </div>
 </div>
-<div style="position:absolute;left:120px;bottom:40px;z-index:4;font-family:var(--fm);font-size:10.5px;
+<div style="position:absolute;left:120px;bottom:40px;z-index:4;font-family:var(--fm);font-size:12px;
   letter-spacing:.16em;text-transform:uppercase;color:var(--ink54)">{COPY}</div>''')
 
 # ================================================== 02 INTRODUCTION
@@ -45,7 +45,7 @@ sheet("0.1 Introduction", "00 Essentials", "00 &middot; Essentials", "0.1 &middo
   {"".join(f"""<div class="rv" style="--d:{220+i*55}ms;border-top:1px solid var(--ink14);padding-top:18px">
     <div class="mono s dim">{n}</div>
     <h3 style="font-family:var(--fd);font-weight:800;font-size:19px;letter-spacing:-.012em;margin:9px 0 0">{t}</h3>
-    <p style="font-size:16.5px;line-height:26px;color:var(--ink72);margin-top:9px">{b}</p></div>"""
+    <p style="font-size:18px;line-height:28px;color:var(--ink72);margin-top:9px">{b}</p></div>"""
     for i, (n, t, b) in enumerate(_notes))}
   </div>
   <div class="rv" style="--d:420ms;flex:1;min-height:0;display:grid;
@@ -59,14 +59,14 @@ sheet("0.1 Introduction", "00 Essentials", "00 &middot; Essentials", "0.1 &middo
       <div style="display:flex;gap:10px">
       {"".join(f"""<div style="flex:1"><div style="height:62px;background:{c};
         {'border:1px solid var(--ink14);' if c == STEAM else ''}"></div>
-        <div class="mono s dim" style="margin-top:7px;font-size:9px">{n}</div></div>"""
+        <div class="mono s dim" style="margin-top:7px;font-size:10.5px">{n}</div></div>"""
         for n, c in [("Red",RED),("Gold",GOLD),("Ink",INK),("Steam",STEAM),("Broth",BROTH)])}</div></div>
     <div style="display:flex;flex-direction:column;gap:14px">
       <span class="mono s dim">Three faces</span>
       <div style="display:flex;gap:26px;align-items:baseline">
       {"".join(f"""<div><div style="font-family:{ff};font-weight:{w};font-stretch:{st};
         font-size:40px;line-height:1;letter-spacing:-.01em">Aa</div>
-        <div class="mono s dim" style="margin-top:9px;font-size:9px">{n}</div></div>"""
+        <div class="mono s dim" style="margin-top:9px;font-size:10.5px">{n}</div></div>"""
         for n, ff, w, st in [("Archivo","var(--fd)","800","112%"),("Figtree","var(--ft)","500","100%"),
                              ("JB Mono","var(--fm)","500","100%")])}</div></div>
   </div>
@@ -92,7 +92,7 @@ _toc = [("01","Brand",[("1.1","Company Introduction","05"),("1.2","Positioning a
 def _col(num, title, rows, d):
     r = "".join(f'''<div style="display:flex;align-items:baseline;gap:12px;padding:9px 0;
       border-top:1px solid var(--ink08)"><span class="mono s dim" style="width:34px;flex:none">{a}</span>
-      <span style="flex:1;font-size:16px;line-height:23px">{b}</span>
+      <span style="flex:1;font-size:17.5px;line-height:25px">{b}</span>
       <span class="mono s dim" style="flex:none">{c}</span></div>''' for a, b, c in rows)
     return f'''<div class="rv" style="--d:{d}ms">
       <div style="display:flex;align-items:baseline;gap:12px;padding-bottom:13px">

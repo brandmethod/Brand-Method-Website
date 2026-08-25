@@ -4,8 +4,8 @@ Structure mirrors the Agensia Brand Book page system: 1920x1080 sheets,
 mono topbar, hairline, title/lead head, body, footer. Palette, typography
 and marks are Vit's own."""
 
-RED="#D8232A"; GOLD="#F0A81E"; INK="#191410"; STEAM="#FAF4E9"; BROTH="#8A7360"; PAPER="#FFFFFF"
-REDD="#B01B22"   # deeper red for small type on light grounds
+RED="#EC1F28"; GOLD="#F0A81E"; INK="#191410"; STEAM="#FAF4E9"; BROTH="#8A7360"; PAPER="#FFFFFF"
+REDD="#C4141C"   # deeper red for small type on light grounds
 
 def mark(w=60, red=RED, gold=GOLD, bowl=INK, crest=None):
     """The Vit's phoenix rising from the bowl. Square 120x120 artboard."""

@@ -1,4 +1,4 @@
-# Vit's Noodles — Brand Book
+# Vit's Noodles Brand Book
 
 Edition **V1.0 · Wireframe draft**. Thirty pages, 1920 × 1080, built on the same page
 system as the Agensia Brand Book: mono topbar, hairline rule, title/lead head, body,
@@ -8,7 +8,7 @@ footer, plus the shared deck shell (paging, zoom, all-pages grid, print/export).
 
 | File | What it is |
 |---|---|
-| `vits-brand-book.html` | The deck. Open in any browser — no build step, no server. |
+| `vits-brand-book.html` | The deck. Open in any browser no build step, no server. |
 | `Vits_Brand_Book_V1.0_Draft.pdf` | 30 pages, 16:9 (1440 × 810 pt), fonts embedded. |
 | `src/` | The generator the HTML is built from. |
 
@@ -31,28 +31,31 @@ window; `#p14` in the URL jumps to a page.
 
 ## Identity as drafted
 
-**Mark** — a phoenix rising as steam from a bowl. The phoenix carries the name
+**Mark** a phoenix rising as steam from a bowl. The phoenix carries the name
 (Mandarin *Wei Yi*, 唯一, "the only one"); the bowl carries the category. Drawn
 original for this edition as a placeholder for whatever vector master Vit's holds.
 
-**Palette** — Vit's Red `#D8232A`, Golden Wheat `#F0A81E`, Soy Ink `#191410`,
-Steam `#FAF4E9`, Broth `#8A7360`. Contrast ratios on page 3.8 are measured, not
-estimated.
+**Palette** Vit's Red `#EC1F28`, Golden Wheat `#F0A81E`, Soy Ink `#191410`,
+Steam `#FAF4E9`, Broth `#8A7360`, plus Deep Red `#C4141C` for small type on light
+grounds. The signature red is sampled from the client's own logo file. Contrast
+ratios on page 3.8 are measured, not estimated: white on the red clears large text
+only (4.4:1), which is why nothing under 18px sits on it.
 
-**Type** — Archivo (display, 800 expanded), Figtree (text), JetBrains Mono (data),
+**Type** Archivo (display, 800 expanded), Figtree (text), JetBrains Mono (data),
 Arial (documents and email). Noto Sans SC and Noto Naskh Arabic carry the Chinese
 and Arabic variants on page 3.11. All are SIL Open Font Licence, so packaging
 artwork and partner co-branding carry no per-seat cost.
 
-## Status — read before using anything here
+## Status read before using anything here
 
 This edition is a **wireframe draft**. Structure, hierarchy and copy are proposed
 for review.
 
-- The mark, palette and typeface selection are a **design proposal**. They have not
-  been reconciled against the artwork Vit's currently holds. No file here is a
-  production master.
-- Every dashed frame is a **placeholder** — photography and art direction pending.
+- The **red is real**: `#EC1F28` is sampled from `Vits-Logo.png` in the client's
+  Drive. That file is a **single colour red** mark, so the two colour mark drawn
+  here is a proposal, not a reproduction, and must be redrawn against the held
+  vector master. No file here is a production master.
+- Every dashed frame is a **placeholder** photography and art direction pending.
 - Brand facts (founded 1975, halal certified 1980, Rawang plant, 30+ export markets,
   FSSC 22000 / HACCP / GMP / SMETA, company and contact details) are drawn from
   Vit's published material and should be confirmed by the client before sign-off.

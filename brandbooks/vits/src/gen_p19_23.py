@@ -1,5 +1,5 @@
 # ================================================= 19 COLOUR PALETTE
-_pal = [("Vit&rsquo;s Red", RED, "#fff", "216, 35, 42", "0, 84, 81, 15",
+_pal = [("Vit&rsquo;s Red", RED, "#fff", "236, 31, 40", "0, 87, 83, 7",
    "The signature. Packaging field, the mark, and one call to action per surface."),
   ("Golden Wheat", GOLD, INK, "240, 168, 30", "0, 30, 88, 6",
    "Wheat, heat and the crest. Flavour banding and the single warm accent."),
@@ -8,7 +8,8 @@ _pal = [("Vit&rsquo;s Red", RED, "#fff", "216, 35, 42", "0, 84, 81, 15",
   ("Steam", STEAM, INK, "250, 244, 233", "0, 2, 7, 2",
    "The default light ground. An off white carrying a trace of the gold."),
   ("Broth", BROTH, "#fff", "138, 115, 96", "0, 17, 30, 46",
-   "Quiet panels and photographic grounds. Large type only &mdash; see 3.8.")]
+   "Quiet panels and photographic grounds. Large type only. See 3.8.")]
+_deep = ("Deep Red", REDD, "196, 20, 28", "0, 90, 86, 23")
 sheet("3.7 Colour Palette", "03 Visual", "03 &middot; Visual Identity", "3.7 &middot; Colour Palette",
   "Colour Palette",
   "Five values carry the system. Red is the field, gold is the accent, and gold is rationed.",
@@ -20,18 +21,22 @@ sheet("3.7 Colour Palette", "03 Visual", "03 &middot; Visual Identity", "3.7 &mi
       <div style="position:absolute;left:20px;bottom:16px;font-family:var(--fd);font-weight:800;
         font-size:20px;letter-spacing:-.014em;color:{fg}">{name}</div></div>
     <div style="padding:15px 18px 17px;background:var(--paper)">
-      <div class="mono" style="font-weight:700;font-size:14px;letter-spacing:.04em">{hexv.upper()}</div>
+      <div class="mono" style="font-weight:700;font-size:15px;letter-spacing:.04em">{hexv.upper()}</div>
       <div class="mono s dim" style="margin-top:8px;line-height:1.85;letter-spacing:.05em">
         RGB {rgb}<br>CMYK {cmyk}<br>PANTONE To be matched</div>
-      <div style="font-size:14.5px;line-height:22px;color:var(--ink72);margin-top:10px">{note}</div>
+      <div style="font-size:16px;line-height:24px;color:var(--ink72);margin-top:10px;min-height:72px">{note}</div>
     </div></div>''' for i, (name, hexv, fg, rgb, cmyk, note) in enumerate(_pal))}
   </div>
   <div class="rv" style="--d:480ms;flex:none;margin-top:22px;padding-top:16px;
     border-top:1px solid var(--ink14);display:flex;gap:20px">
+    <span class="mono s acc" style="flex:none">Deep Red {REDD}</span>
+    <span style="font-size:17px;line-height:26px;color:var(--ink72);flex:none;max-width:300px">
+    A darkened tint of the signature, for small type and rules on light grounds where the
+    signature red will not carry. Never a fill.</span>
     <span class="mono s acc" style="flex:none">Spot colour</span>
-    <span style="font-size:15.5px;line-height:24px;color:var(--ink72)">CMYK breakdowns above are
+    <span style="font-size:17px;line-height:26px;color:var(--ink72)">CMYK breakdowns above are
     process conversions. Pantone references are to be matched against a printed pack under D50 before
-    this edition is signed off &mdash; food packaging red shifts badly across substrates, and the
+    this edition is signed off. Food packaging red shifts badly across substrates, and the
     flexo result on film will not match the litho result on carton without a spot.</span></div>
   </div>''', ground="steam")
 
@@ -42,10 +47,10 @@ _pairs = [("Ink on Paper", PAPER, INK, "18.3 : 1", "AAA", True),
   ("Ink on Steam", STEAM, INK, "16.7 : 1", "AAA", True),
   ("Steam on Ink", INK, STEAM, "16.7 : 1", "AAA", True),
   ("Ink on Gold", GOLD, INK, "9.0 : 1", "AAA", True),
-  ("Paper on Red", RED, PAPER, "5.0 : 1", "AA", True),
-  ("Red on Steam", STEAM, RED, "4.6 : 1", "AA", True),
+  ("Paper on Red", RED, PAPER, "4.4 : 1", "AA 18px+", False),
+  ("Red on Steam", STEAM, REDD, "5.5 : 1", "AA", True),
   ("Broth on Steam", STEAM, BROTH, "4.1 : 1", "24px+ only", False),
-  ("Gold on Steam", STEAM, GOLD, "1.8 : 1", "Refused", False)]
+  ("Gold on Steam", STEAM, GOLD, "1.9 : 1", "Refused", False)]
 sheet("3.8 Colour in Use", "03 Visual", "03 &middot; Visual Identity", "3.8 &middot; Colour in Use",
   "Colour in Use",
   "Proportion first, then the pairings that are cleared to carry type.",
@@ -54,10 +59,10 @@ sheet("3.8 Colour in Use", "03 Visual", "03 &middot; Visual Identity", "3.8 &mid
     {"".join(f'<div style="flex:{p};background:{bg}"></div>' for p, _, bg, _fg in _prop)}</div>
   <div class="rv" style="--d:240ms;display:flex;margin-top:12px">
     {"".join(f'''<div style="flex:{p}"><div style="font-family:var(--fd);font-weight:800;
-      font-size:17px">{p}%</div><div class="mono s dim" style="margin-top:4px">{n}</div></div>'''
+      font-size:18.5px">{p}%</div><div class="mono s dim" style="margin-top:4px">{n}</div></div>'''
       for p, n, _bg, _fg in _prop)}</div>
   <div class="rv" style="--d:300ms;margin-top:30px"><span class="mono s acc">Cleared pairings
-    &nbsp;&mdash;&nbsp; WCAG 2.1 contrast, measured</span></div>
+    &nbsp;&middot;&nbsp; WCAG 2.1 contrast, measured</span></div>
   <div class="rv" style="--d:340ms;margin-top:14px;flex:1;min-height:0">
     <div style="display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;
       gap:16px;height:100%">
@@ -67,23 +72,25 @@ sheet("3.8 Colour in Use", "03 Visual", "03 &middot; Visual Identity", "3.8 &mid
         <span style="font-family:var(--fd);font-weight:800;font-stretch:112%;font-size:26px;
           letter-spacing:-.014em;color:{fg}">VIT&rsquo;S</span></div>
       <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline">
-        <span class="mono s dim" style="font-size:10.5px">{label}</span>
-        <span class="mono s" style="color:{REDD if ok else BROTH};font-size:10.5px;white-space:nowrap">{ratio}
+        <span class="mono s dim" style="font-size:12px">{label}</span>
+        <span class="mono s" style="color:{REDD if ok else BROTH};font-size:12px;white-space:nowrap">{ratio}
           &nbsp;{grade}</span></div></div>'''
       for label, bg, fg, ratio, grade, ok in _pairs)}</div></div>
   <div class="rv" style="--d:520ms;flex:none;margin-top:20px;padding-top:15px;
     border-top:1px solid var(--ink14);display:flex;gap:20px">
-    <span class="mono s acc" style="flex:none">Gold is not a text colour</span>
-    <span style="font-size:15.5px;line-height:24px;color:var(--ink72)">Golden Wheat reaches 1.8 : 1 on
-    Steam. It carries shapes, rules and bands &mdash; never body copy on a light ground. On Ink it is
-    cleared at 9.0 : 1 and may set type freely.</span></div></div>''')
+    <span class="mono s acc" style="flex:none">Two standing rules</span>
+    <span style="font-size:17px;line-height:26px;color:var(--ink72)">Golden Wheat reaches 1.9 : 1 on
+    Steam, so it carries shapes, rules and bands, never body copy on a light ground. On Ink it is
+    cleared at 9.0 : 1 and may set type freely. White on Vit&rsquo;s Red reaches 4.4 : 1, which
+    clears large text only, so nothing under 18px sits on the red. Small red type on a light ground
+    uses Deep Red #C4141C at 5.5 : 1.</span></div></div>''')
 
 # ==================================================== 21 TYPOGRAPHY
 _faces = [("Archivo","Display","800 Expanded, 700",
-   "Headlines, the wordmark, pack front-of-face and any type over 30px. Set expanded at 112&ndash;118% "
+   "Headlines, the wordmark, pack front of face and any type over 30px. Set expanded at 112 to 118 per cent "
    "width; it is what gives the brand its shelf voice.", "var(--fd)", "800", "112%"),
   ("Figtree","Text","400, 500, 600",
-   "Body copy, decks, pack back-of-face, long-form. Warm humanist proportions that stay legible at "
+   "Body copy, decks, pack back of face, long form. Warm humanist proportions that stay legible at "
    "6pt on film.", "var(--ft)", "500", "100%"),
   ("JetBrains Mono","Data","500, 700",
    "Labels, batch codes, weights, nutritional panels, specifications. Anything that must line up in "
@@ -101,15 +108,15 @@ sheet("3.9 Typography", "03 Visual", "03 &middot; Visual Identity", "3.9 &middot
       <div class="mono s dim" style="margin-top:7px">{role} &nbsp;&middot;&nbsp; {wts}</div></div>
     <div style="font-family:{ff};font-weight:{w};font-stretch:{st};font-size:52px;line-height:1;
       letter-spacing:-.02em;white-space:nowrap;overflow:hidden">Aa Bb &nbsp;Mi Segera &nbsp;1975</div>
-    <div style="font-size:15px;line-height:23px;color:var(--ink72)">{note}</div></div>'''
+    <div style="font-size:16.5px;line-height:25px;color:var(--ink72)">{note}</div></div>'''
     for i, (fam, role, wts, note, ff, w, st) in enumerate(_faces))}
   <div class="rv" style="--d:520ms;flex:none;margin-top:14px;padding-top:15px;
     border-top:1px solid var(--ink14);display:flex;gap:20px">
     <span class="mono s acc" style="flex:none">Licensing</span>
-    <span style="font-size:15.5px;line-height:24px;color:var(--ink72)">Archivo, Figtree and JetBrains
+    <span style="font-size:17px;line-height:26px;color:var(--ink72)">Archivo, Figtree and JetBrains
     Mono are all offered under the SIL Open Font Licence, so packaging artwork, web embedding and
-    partner co-branding carry no per-seat cost. Confirm the licence text ships with any file handed
-    to a co-packer.</span></div></div>''', ground="steam")
+    partner branding carry no per seat cost. Confirm the licence text ships with any file handed
+    to a contract packer.</span></div></div>''', ground="steam")
 
 # ==================================================== 22 TYPE SCALE
 _scale = [("Display","Archivo 800 Exp","132 / 124","-3.2%","Cover and back cover only",56),
@@ -122,15 +129,15 @@ _scale = [("Display","Archivo 800 Exp","132 / 124","-3.2%","Cover and back cover
   ("Label","JetBrains Mono 500","10.5 / 18","+17%","Topbars, footers, all uppercase",11)]
 sheet("3.10 Type Scale", "03 Visual", "03 &middot; Visual Identity", "3.10 &middot; Type Scale",
   "Type Scale",
-  "Eight steps. Everything in this book is set from them &mdash; nothing is sized by eye.",
+  "Eight steps. Everything in this book is set from them. Nothing is sized by eye.",
   f'''<div style="display:grid;grid-template-columns:1.02fr 1fr;gap:64px;height:100%">
   <div class="rv" style="--d:200ms">
     <table class="tb"><thead><tr><th>Step</th><th>Face</th><th>Size / Leading</th>
       <th>Tracking</th></tr></thead><tbody>
-      {"".join(f'''<tr><td class="k">{n}</td><td class="mono" style="font-size:12.5px;
+      {"".join(f'''<tr><td class="k">{n}</td><td class="mono" style="font-size:13.5px;
         letter-spacing:.03em;text-transform:none">{f}</td>
-        <td class="mono" style="font-size:12.5px;letter-spacing:.03em">{s}</td>
-        <td class="mono" style="font-size:12.5px;letter-spacing:.03em">{t}</td></tr>'''
+        <td class="mono" style="font-size:13.5px;letter-spacing:.03em">{s}</td>
+        <td class="mono" style="font-size:13.5px;letter-spacing:.03em">{t}</td></tr>'''
         for n, f, s, t, _u, _px in _scale)}</tbody></table></div>
   <div class="rv" style="--d:280ms;display:flex;flex-direction:column;justify-content:space-between">
     {"".join(f'''<div style="display:flex;align-items:baseline;gap:20px;padding:9px 0;
@@ -165,15 +172,15 @@ sheet("3.11 Language Variants", "03 Visual", "03 &middot; Visual Identity", "3.1
       <div class="mono s dim" style="margin-top:7px">{role}</div></div>
     <div dir="{d}" style="font-family:{ff};font-size:34px;line-height:1.45;color:var(--ink);
       {'text-align:right;' if d == 'rtl' else ''}">{txt}</div>
-    <div style="font-size:15px;line-height:23px;color:var(--ink72)">{use}</div></div>'''
+    <div style="font-size:16.5px;line-height:25px;color:var(--ink72)">{use}</div></div>'''
     for i, (name, role, txt, ff, d, use) in enumerate(_langs))}
   <div class="rv" style="--d:500ms;flex:none;margin-top:16px;padding-top:15px;
     border-top:1px solid var(--ink14);display:grid;grid-template-columns:1fr 1fr;gap:44px">
     <div style="display:flex;gap:18px"><span class="mono s acc" style="flex:none">Typefaces</span>
-      <span style="font-size:15px;line-height:23px;color:var(--ink72)">Chinese sets in Noto Sans SC,
+      <span style="font-size:16.5px;line-height:25px;color:var(--ink72)">Chinese sets in Noto Sans SC,
       Arabic in Noto Naskh Arabic. Both are matched to Figtree at optical size, not at nominal
       point size.</span></div>
     <div style="display:flex;gap:18px"><span class="mono s acc" style="flex:none">Regulatory</span>
-      <span style="font-size:15px;line-height:23px;color:var(--ink72)">Label language, halal marking
+      <span style="font-size:16.5px;line-height:25px;color:var(--ink72)">Label language, halal marking
       and ingredient declaration follow the destination market&rsquo;s own rules. This page governs
       typography only, never legal compliance.</span></div></div></div>''', ground="steam")

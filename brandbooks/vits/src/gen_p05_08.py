@@ -1,11 +1,11 @@
 # ============================================ 05 COMPANY INTRODUCTION
 _spec = [("Legal entity","Vit Makanan (Kuala Lumpur) Sdn Bhd &nbsp;(25143-H)"),
-         ("Founded","1975 &mdash; noodle making begins in Selayang"),
+         ("Founded","1975, noodle making begins in Selayang"),
          ("Head office and plant","Rawang, Selangor, Malaysia"),
          ("Facility","105,000 sq ft, Taman Industri Integrasi Rawang"),
          ("Markets","Malaysia nationwide, plus 30+ export countries"),
          ("Certification","HALAL Malaysia, FSSC 22000, ISO 22000, HACCP, GMP, SMETA"),
-         ("Categories","Instant noodles, fresh and air-dried noodles, OEM and private label")]
+         ("Categories","Instant noodles, fresh and air dried noodles, OEM and private label")]
 _chapters = [("1975","A kitchen in Selayang","A passion for making noodles becomes a business."),
   ("1980","Halal by choice","Certification sought and obtained, so every Malaysian could eat it."),
   ("Growth","Rawang, 105,000 sq ft","The plant moves to meet rising international demand."),
@@ -19,10 +19,10 @@ sheet("1.1 Company Introduction", "01 Brand", "01 &middot; Brand", "1.1 &middot;
   <div style="display:grid;grid-template-columns:1.05fr 1fr;gap:70px">
     <div class="rv" style="--d:200ms">
       <p class="p">Vit&rsquo;s began in 1975 as a passion for making noodles. From a small kitchen in
-      Selayang it has grown into a leading Malaysian halal-certified noodle brand, exporting to more
+      Selayang it has grown into a leading Malaysian halal certified noodle brand, exporting to more
       than thirty countries.</p>
-      <p class="p">The name comes from the Mandarin <b style="color:var(--ink)">Wei Yi</b> &mdash;
-      <i>the only one</i>. The phoenix that carries it stands for power, renewal and longevity.
+      <p class="p">The name comes from the Mandarin <b style="color:var(--ink)">Wei Yi</b>,
+      meaning <i>the only one</i>. The phoenix that carries it stands for power, renewal and longevity.
       Vit&rsquo;s intends to be Malaysia&rsquo;s one and only noodle expert of choice.</p>
       <div style="display:flex;margin-top:38px;border-top:1px solid var(--ink14);padding-top:26px">
       {"".join(f'''<div style="flex:1;{'border-left:1px solid var(--ink14);padding-left:26px;' if i else 'padding-right:26px;'}">
@@ -45,7 +45,7 @@ sheet("1.1 Company Introduction", "01 Brand", "01 &middot; Brand", "1.1 &middot;
       <div class="mono s" style="color:{REDD};padding-left:0">{y}</div>
       <div style="font-family:var(--fd);font-weight:800;font-size:18px;letter-spacing:-.01em;
         margin-top:8px;line-height:1.25">{t}</div>
-      <div style="font-size:15px;line-height:23px;color:var(--ink72);margin-top:7px">{b}</div></div>'''
+      <div style="font-size:16.5px;line-height:25px;color:var(--ink72);margin-top:7px">{b}</div></div>'''
       for y, t, b in _chapters)}</div></div></div>''')
 
 # =========================================== 06 POSITIONING AND SCRIPT
@@ -59,7 +59,7 @@ sheet("1.2 Positioning and Script", "01 Brand", "01 &middot; Brand", "1.2 &middo
     <div style="font-family:var(--fd);font-weight:800;font-stretch:107%;font-size:40px;line-height:1.24;
       letter-spacing:-.018em;margin-top:18px;max-width:1480px;text-wrap:balance">
       For every household that wants a good bowl without a second thought, Vit&rsquo;s is
-      Malaysia&rsquo;s noodle expert &mdash; halal since 1980, made in Rawang to global food safety
+      Malaysia&rsquo;s noodle expert: halal since 1980, made in Rawang to global food safety
       standard, and trusted in more than thirty countries.</div>
   </div>
   <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:60px;flex:1;min-height:0">
@@ -71,21 +71,21 @@ sheet("1.2 Positioning and Script", "01 Brand", "01 &middot; Brand", "1.2 &middo
       <p class="p">We took halal certification in 1980, before anyone asked us to, because a bowl of
       noodles should be something every Malaysian can share. Everything we make is built to FSSC 22000,
       HACCP and GMP standard.</p>
-      <p class="p">We make our own brands, and we make other people&rsquo;s &mdash; OEM and private
-      label, from air-dried to fresh noodle. If it is a noodle, we know how to make it well.&rdquo;</p>
+      <p class="p">We make our own brands, and we make other people&rsquo;s too: OEM and private
+      label, from air dried to fresh noodle. If it is a noodle, we know how to make it well.&rdquo;</p>
     </div>
     <div class="rv" style="--d:340ms;display:flex;flex-direction:column;gap:20px">
     {"".join(f'''<div class="card" style="padding:22px 26px">
       <div class="mono s acc">{k}</div>
-      <p style="margin-top:9px;font-size:16.5px;line-height:26px">{v}</p></div>'''
+      <p style="margin-top:9px;font-size:18px;line-height:28px">{v}</p></div>'''
       for k, v in [("Who it is for",
         "Malaysian households first. Then distributors, retailers and OEM partners who need a "
         "manufacturer that will not embarrass them."),
         ("What we make",
-        "Instant, fresh and air-dried noodles under Vit&rsquo;s, and under partner brands through "
+        "Instant, fresh and air dried noodles under Vit&rsquo;s, and under partner brands through "
         "OEM and private label."),
         ("Why it matters",
-        "Halal, safe and consistent is not a claim here. It is audited &mdash; FSSC 22000, HACCP, "
+        "Halal, safe and consistent is not a claim here. It is audited: FSSC 22000, HACCP, "
         "GMP and SMETA.")])}</div>
   </div></div>''', ground="steam")
 
@@ -94,11 +94,11 @@ _mission = [("01","Make it halal, always",
    "Certification since 1980 is not a market tactic. It is the condition of being on every "
    "Malaysian table, whatever the faith of the household."),
   ("02","Hold the standard",
-   "FSSC 22000 and ISO 22000 food safety management, critical-control monitoring at every "
+   "FSSC 22000 and ISO 22000 food safety management, critical control monitoring at every "
    "production stage, facilities aligned to Ministry of Health requirements."),
   ("03","Carry Malaysia outward",
-   "Export the authentic taste of Malaysia &mdash; Penang white curry, asam laksa, Hokkien mee "
-   "&mdash; to Asia, the Middle East, Europe and beyond."),
+   "Export the authentic taste of Malaysia, from Penang white curry to asam laksa "
+   "and Hokkien mee, out to Asia, the Middle East, Europe and beyond."),
   ("04","Make it for others too",
    "OEM and private label built to the same standard as our own brands, for partners worldwide.")]
 sheet("1.3 Vision and Mission", "01 Brand", "01 &middot; Brand", "1.3 &middot; Vision and Mission",
@@ -109,7 +109,7 @@ sheet("1.3 Vision and Mission", "01 Brand", "01 &middot; Brand", "1.3 &middot; V
     align-items:start;border-bottom:1px solid var(--ink14);padding-bottom:32px">
     <div class="mono s acc" style="padding-top:14px">Vision</div>
     <div style="font-family:var(--fd);font-weight:800;font-stretch:106%;font-size:42px;line-height:1.22;
-      letter-spacing:-.02em;text-wrap:balance">Shared prosperity through something simple &mdash;
+      letter-spacing:-.02em;text-wrap:balance">Shared prosperity through something simple:
       a bowl of noodles welcome in every Malaysian home, regardless of race or religion.</div>
   </div>
   <div class="rv" style="--d:270ms"><div class="mono s acc">Mission</div></div>
@@ -120,7 +120,7 @@ sheet("1.3 Vision and Mission", "01 Brand", "01 &middot; Brand", "1.3 &middot; V
   </div></div>''')
 
 # ============================================= 08 VALUES AND CULTURE
-_values = [("Wei Yi &mdash; the only one",
+_values = [("Wei Yi, the only one",
    "The name is a standard, not a boast. If a competitor can do it the same way, we have not "
    "finished the job."),
   ("Halal by conviction",
@@ -133,7 +133,7 @@ _values = [("Wei Yi &mdash; the only one",
    "A bowl that works for every household in a multiracial country. No formulation that quietly "
    "excludes someone."),
   ("Made to standard",
-   "Audited, not asserted. FSSC 22000, HACCP, GMP, SMETA &mdash; and the paperwork to show any "
+   "Audited, not asserted. FSSC 22000, HACCP, GMP and SMETA, with the paperwork to show any "
    "buyer who asks.")]
 sheet("1.4 Values and Culture", "01 Brand", "01 &middot; Brand", "1.4 &middot; Values and Culture",
   "Values and Culture",
@@ -145,7 +145,7 @@ sheet("1.4 Values and Culture", "01 Brand", "01 &middot; Brand", "1.4 &middot; V
     <div style="height:6px;background:{RED};width:44px;flex:none"></div>
     <div style="font-family:var(--fd);font-weight:800;font-size:25px;line-height:1.22;
       letter-spacing:-.014em;margin-top:24px;text-wrap:balance">{t}</div>
-    <div style="font-size:16.5px;line-height:27px;color:var(--ink72);margin-top:16px">{b}</div>
+    <div style="font-size:18px;line-height:29px;color:var(--ink72);margin-top:16px">{b}</div>
     <div style="flex:1"></div>
     <div class="mono s dim" style="margin-top:24px">Value {i+1:02d}</div></div>'''
     for i, (t, b) in enumerate(_values))}</div>''', ground="steam")

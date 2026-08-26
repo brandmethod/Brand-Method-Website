@@ -10,6 +10,7 @@ fonts/                              # webfont
 build.mjs                           # index.html -> PDF
 rescale.py                          # normalises page boxes to 1440 x 810 pt
 qa.mjs                              # fails loudly on any content overflowing a slide
+widows.mjs                          # finds paragraphs with a stranded last line
 make-chapter-visuals.py             # duotones the chapter / texture images
 make-portraits.py                   # normalises the two leadership cut-outs
 make-artifact.py                    # inlines every asset as a data URI
@@ -25,6 +26,7 @@ npm install
 node build.mjs           # writes ALTIGO_Company_Profile_2026.pdf
 node build.mjs --png     # writes out/pNN.png for visual checking
 node qa.mjs              # overflow / clipping check — should report 0 issues
+node widows.mjs          # reports body copy whose last line holds <=3 words
 ```
 
 `CHROME_PATH` overrides the Chromium binary if the bundled path is wrong.

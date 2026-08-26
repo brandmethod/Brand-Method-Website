@@ -5,7 +5,8 @@
   "scripts": {
     "build": "node build.mjs",
     "png": "node build.mjs --png",
-    "qa": "node qa.mjs"
+    "qa": "node qa.mjs",
+    "widows": "node widows.mjs"
   },
   "license": "ISC",
   "dependencies": {

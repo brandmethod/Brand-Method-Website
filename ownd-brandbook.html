@@ -1152,6 +1152,20 @@ body.agrid #agrid{display:block}
 .g-emb{background:linear-gradient(135deg,#E14E20 0%,#FF6D33 100%)}
 .g-dwn{background:linear-gradient(135deg,#FF6D33 0%,#FF927B 100%)}
 
+/* ── ASSET LAYER ───────────────────────────────────────────────────────────
+   Every frame in this book is drawn in SVG/CSS so the document is complete on
+   its own. Where the OWND library supplies real artwork, an .imgl layer sits
+   over the drawing and takes the frame; if the file is not there the layer
+   removes itself and the drawing stands in. Paths match the OWND asset
+   library exactly, so dropping img/ownd/ beside this file is the only step. */
+.imgl{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2;display:block}
+.imgl.fit{object-fit:contain;padding:8%}
+.imgl.fit-tight{object-fit:contain;padding:2%}
+.ph .imgl{z-index:0}
+.ph .cap,.ph .tagno{z-index:3}
+.ptile .imgl{z-index:1}
+.ptile .cap{z-index:3}
+
 /* portrait format frames shrink inside a flex column instead of overrunning it */
 .fmt.tall{flex:1 1 auto;min-height:0;max-height:100%}
 /* a panel tile that fills the row height rather than dictating it */
@@ -1271,6 +1285,7 @@ body.agrid #agrid{display:block}
       </div>
     </div>
     <div style="flex:1;position:relative;overflow:hidden;background:var(--navy)">
+      <img class="imgl" src="img/ownd/hero-stack.jpg" alt="OWND modular carry-on"><div style="position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(20,18,16,.55),transparent 46%)"></div>
       <div style="position:absolute;inset:0;background:
         radial-gradient(ellipse 72% 62% at 50% 96%,rgba(255,109,51,.55),transparent 66%),
         linear-gradient(180deg,rgba(20,18,16,.2),rgba(20,18,16,.7))"></div>
@@ -2311,7 +2326,7 @@ body.agrid #agrid{display:block}
   <div class="s-body" style="display:flex;flex-direction:column">
     <div data-r="1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)">
       <div style="display:flex;flex-direction:column;min-height:0">
-        <div class="mock" style="flex:1;min-height:280px;background:linear-gradient(160deg,#E8E0D9,#CFC4BA);position:relative;overflow:hidden">
+        <div class="mock" style="flex:1;min-height:280px;background:linear-gradient(160deg,#E8E0D9,#CFC4BA);position:relative;overflow:hidden"><img class="imgl" src="img/ownd/photo-motion.jpg" alt="Urban motion">
           <svg viewBox="0 0 400 300" style="position:absolute;inset:0;width:100%;height:100%" fill="none" aria-hidden="true">
             <path d="M0 240H400" stroke="rgba(27,23,20,.18)" stroke-width="1"/>
             <rect x="150" y="120" width="100" height="120" rx="8" fill="#FF6D33" opacity=".92"/>
@@ -2323,7 +2338,7 @@ body.agrid #agrid{display:block}
         <div class="mock-cap"><span>Mood &middot; urban motion</span><b>01</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
-        <div class="mock" style="flex:1;min-height:280px;background:var(--navy);position:relative;overflow:hidden">
+        <div class="mock" style="flex:1;min-height:280px;background:var(--navy);position:relative;overflow:hidden"><img class="imgl" src="img/ownd/hero-close.jpg" alt="The system, close">
           <svg viewBox="0 0 400 300" style="position:absolute;inset:0;width:100%;height:100%" fill="none" aria-hidden="true">
             <g stroke="rgba(255,255,255,.12)" stroke-width="1"><path d="M0 60H400M0 120H400M0 180H400M0 240H400"/></g>
             <rect x="96" y="96" width="90" height="112" rx="7" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="1.6"/>
@@ -2335,7 +2350,7 @@ body.agrid #agrid{display:block}
         <div class="mock-cap"><span>Presence &middot; the system</span><b>02</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
-        <div class="mock" style="flex:1;min-height:280px;background:linear-gradient(200deg,#FAF7F4,#EDE6E0);position:relative;overflow:hidden">
+        <div class="mock" style="flex:1;min-height:280px;background:linear-gradient(200deg,#FAF7F4,#EDE6E0);position:relative;overflow:hidden"><img class="imgl" src="img/ownd/flatlay.jpg" alt="Matte detail">
           <svg viewBox="0 0 400 300" style="position:absolute;inset:0;width:100%;height:100%" fill="none" aria-hidden="true">
             <circle cx="200" cy="150" r="72" fill="none" stroke="#FF6D33" stroke-width="22"/>
             <circle cx="200" cy="150" r="108" fill="none" stroke="rgba(27,23,20,.14)" stroke-width="1" stroke-dasharray="5 7"/>
@@ -2616,19 +2631,19 @@ body.agrid #agrid{display:block}
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
         <div class="mock" style="flex:1;display:flex;align-items:center;justify-content:center;padding:26px;background:var(--ink)">
-          <div class="wm" style="width:86%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
+          <div class="wm" data-wm="white" style="width:86%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
         </div>
         <div class="mock-cap"><span>Reversed &middot; white on Ink</span><b>02</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
         <div class="mock" style="flex:1;display:flex;align-items:center;justify-content:center;padding:26px;background:var(--red)">
-          <div class="wm" style="width:86%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
+          <div class="wm" data-wm="white" style="width:86%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
         </div>
         <div class="mock-cap"><span>Reversed &middot; white on Monarch</span><b>03</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
         <div class="mock" style="flex:1;display:flex;align-items:center;justify-content:center;padding:26px;background:var(--pastel)">
-          <div class="wm" style="width:86%;color:var(--ink)"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
+          <div class="wm" data-wm="ink" style="width:86%;color:var(--ink)"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
         </div>
         <div class="mock-cap"><span>Mono &middot; Ink on Pastel</span><b>04</b></div>
       </div>
@@ -3230,14 +3245,14 @@ body.agrid #agrid{display:block}
   <div class="s-body" style="display:flex;flex-direction:column">
     <div data-r="1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut)">
       <div style="display:flex;flex-direction:column;min-height:0">
-        <div class="ph" style="flex:1;min-height:230px;background:linear-gradient(165deg,#D9CFC6,#B7A99D);position:relative">
+        <div class="ph" style="flex:1;min-height:230px;background:linear-gradient(165deg,#D9CFC6,#B7A99D);position:relative"><img class="imgl" src="img/ownd/photo-motion.jpg" alt="Traveler in transit">
           <svg viewBox="0 0 400 260" style="position:absolute;inset:0;width:100%;height:100%" fill="none" aria-hidden="true"><path d="M0 214H400" stroke="rgba(27,23,20,.2)"/><rect x="168" y="112" width="76" height="102" rx="7" fill="#FF6D33"/><path d="M206 112V96M194 96h24" stroke="rgba(27,23,20,.35)" stroke-width="1.6"/><ellipse cx="214" cy="220" rx="72" ry="8" fill="rgba(27,23,20,.16)"/></svg>
           <div class="cap"><em>DO</em> &middot; Clean architectural ground, one accent</div>
         </div>
         <div class="mock-cap"><span>Movement &middot; in transit</span><b>01</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
-        <div class="ph" style="flex:1;min-height:230px;background:linear-gradient(180deg,#EDE6E0,#D2C7BD);position:relative">
+        <div class="ph" style="flex:1;min-height:230px;background:linear-gradient(180deg,#EDE6E0,#D2C7BD);position:relative"><img class="imgl" src="img/ownd/flatlay-tall.jpg" alt="Panel mid-swap">
           <svg viewBox="0 0 400 260" style="position:absolute;inset:0;width:100%;height:100%" fill="none" aria-hidden="true">
             <rect x="90" y="80" width="94" height="120" rx="8" fill="none" stroke="rgba(27,23,20,.5)" stroke-width="1.6"/>
             <rect x="216" y="80" width="94" height="120" rx="8" fill="#FF6D33" opacity=".9"/>
@@ -3249,7 +3264,7 @@ body.agrid #agrid{display:block}
         <div class="mock-cap"><span>The system &middot; product truth</span><b>02</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
-        <div class="ph no" style="flex:1;min-height:230px;background:repeating-linear-gradient(45deg,#9aa2ad 0 12px,#c4ccd6 12px 24px);position:relative">
+        <div class="ph no" style="flex:1;min-height:230px;background:repeating-linear-gradient(45deg,#9aa2ad 0 12px,#c4ccd6 12px 24px);position:relative"><img class="imgl" src="img/ownd/photo-group.jpg" alt="Rejected: cluttered">
           <span class="tagno">REJECTED</span>
           <div class="cap">Cluttered, off palette, competing accents</div>
         </div>
@@ -3453,6 +3468,7 @@ body.agrid #agrid{display:block}
   <div class="s-body g-64">
     <div class="stack" data-r="1">
       <div class="mock" style="flex:1;min-height:340px;background:var(--white);position:relative;overflow:hidden">
+        <img class="imgl fit" src="img/ownd/product/hero-real.png" alt="OWND modular build">
         <svg viewBox="0 0 620 400" style="width:100%;height:100%" fill="none" aria-label="Exploded modular build">
           <g stroke="rgba(27,23,20,.15)" stroke-width="1" stroke-dasharray="5 6"><path d="M60 40V360M560 40V360M40 200H580"/></g>
           <rect x="188" y="70" width="180" height="240" rx="16" fill="#F3ECE6" stroke="rgba(27,23,20,.55)" stroke-width="1.6"/>
@@ -3497,6 +3513,7 @@ body.agrid #agrid{display:block}
   <div class="s-body g-58">
     <div class="stack" data-r="1">
       <div class="mock" style="flex:1;min-height:330px;background:var(--white);position:relative">
+        <img class="imgl fit" src="img/ownd/product/human-ref.png" alt="Human reference, 170 cm">
         <svg viewBox="0 0 560 380" style="width:100%;height:100%" fill="none" aria-label="Dimension drawing">
           <rect x="180" y="60" width="200" height="250" rx="16" fill="#FAF7F4" stroke="rgba(27,23,20,.6)" stroke-width="1.6"/>
           <rect x="206" y="86" width="148" height="198" rx="10" fill="none" stroke="#FF6D33" stroke-width="1.6"/>
@@ -3549,18 +3566,18 @@ body.agrid #agrid{display:block}
   </header>
   <div class="s-body" style="display:flex;flex-direction:column">
     <div class="lab-h" data-r="1"><span class="n">1</span> Panel editions &middot; swap the face, keep the case</div>
-    <div data-r="1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut);margin-top:16px;flex:1;min-height:0">
-      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#E14E20,#FF927B)"></div><div class="cap"><b>Anime</b><span>Tokyo Mission</span></div></div>
-      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#1B1714,#671301)"></div><div class="cap"><b>Creative</b><span>Pop Art &middot; Iconic Faces</span></div></div>
-      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#FF6D33,#671301)"></div><div class="cap"><b>Find Your Identity</b><span>Collab Edition</span></div></div>
-      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#F7ECE4,#FF927B)"></div><div class="cap"><b>Painting</b><span>Abstract &middot; Brushwork</span></div></div>
+    <div data-r="1" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut);margin-top:16px;flex:1.25;min-height:200px">
+      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#E14E20,#FF927B)"></div><img class="imgl" src="img/ownd/product/panel-anime.png" alt="Anime edition panel"><div class="cap"><b>Anime</b><span>Tokyo Mission</span></div></div>
+      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#1B1714,#671301)"></div><img class="imgl" src="img/ownd/product/panel-creative.png" alt="Creative edition panel"><div class="cap"><b>Creative</b><span>Pop Art &middot; Iconic Faces</span></div></div>
+      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#FF6D33,#671301)"></div><img class="imgl" src="img/ownd/product/panel-fyi.png" alt="Find Your Identity panel"><div class="cap"><b>Find Your Identity</b><span>Collab Edition</span></div></div>
+      <div class="ptile fit"><div class="fill" style="background:linear-gradient(150deg,#F7ECE4,#FF927B)"></div><img class="imgl" src="img/ownd/product/panel-painting.png" alt="Painting edition panel"><div class="cap"><b>Painting</b><span>Abstract &middot; Brushwork</span></div></div>
     </div>
     <div class="lab-h" data-r="2" style="margin-top:28px;flex:none"><span class="n">2</span> Essentials &amp; companions</div>
-    <div data-r="2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut);margin-top:16px">
-      <div class="panel"><div class="lab">Duffel</div><p class="sm" style="margin-top:8px">Weekender in matching Signal Orange.</p></div>
-      <div class="panel"><div class="lab">Backpack</div><p class="sm" style="margin-top:8px">Everyday carry, laptop-ready.</p></div>
-      <div class="panel"><div class="lab">Neck pillow</div><p class="sm" style="margin-top:8px">Packable in-flight comfort.</p></div>
-      <div class="panel"><div class="lab">VEXI</div><p class="sm" style="margin-top:8px">The OWND mascot &amp; keychain.</p></div>
+    <div data-r="2" style="display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gut);margin-top:16px;flex:1;min-height:150px">
+      <div class="panel" style="display:flex;flex-direction:column"><div class="lab">Duffel</div><div class="mock" style="position:relative;overflow:hidden;flex:1;min-height:0;margin-top:10px;background:var(--paper);display:grid;place-items:center"><img class="imgl fit-tight" src="img/ownd/product/duffel.png" alt="Duffel"><svg viewBox="0 0 120 90" style="width:56%;position:relative" fill="none" aria-hidden="true"><rect x="18" y="34" width="84" height="40" rx="14" fill="#FF6D33"/><path d="M44 34V26h32v8" stroke="rgba(27,23,20,.45)" stroke-width="2"/><path d="M18 54h84" stroke="rgba(255,255,255,.5)" stroke-width="2"/></svg></div><p class="sm" style="margin-top:10px">Weekender in matching Signal Orange.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column"><div class="lab">Backpack</div><div class="mock" style="position:relative;overflow:hidden;flex:1;min-height:0;margin-top:10px;background:var(--paper);display:grid;place-items:center"><img class="imgl fit-tight" src="img/ownd/product/backpack.png" alt="Backpack"><svg viewBox="0 0 120 90" style="width:56%;position:relative" fill="none" aria-hidden="true"><rect x="34" y="26" width="52" height="56" rx="12" fill="#FF6D33"/><path d="M46 26a14 14 0 0 1 28 0" stroke="rgba(27,23,20,.45)" stroke-width="2"/><rect x="46" y="52" width="28" height="18" rx="4" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/></svg></div><p class="sm" style="margin-top:10px">Everyday carry, laptop-ready.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column"><div class="lab">Neck pillow</div><div class="mock" style="position:relative;overflow:hidden;flex:1;min-height:0;margin-top:10px;background:var(--paper);display:grid;place-items:center"><img class="imgl fit-tight" src="img/ownd/product/pillow.png" alt="Neck pillow"><svg viewBox="0 0 120 90" style="width:56%;position:relative" fill="none" aria-hidden="true"><path d="M60 30a26 26 0 0 1 26 26v6H74v-6a14 14 0 0 0-28 0v6H34v-6a26 26 0 0 1 26-26z" fill="#FF6D33"/></svg></div><p class="sm" style="margin-top:10px">Packable in-flight comfort.</p></div>
+      <div class="panel" style="display:flex;flex-direction:column"><div class="lab">VEXI</div><div class="mock" style="position:relative;overflow:hidden;flex:1;min-height:0;margin-top:10px;background:var(--paper);display:grid;place-items:center"><img class="imgl fit-tight" src="img/ownd/product/vexi.png" alt="VEXI"><svg viewBox="0 0 120 90" style="width:56%;position:relative" fill="none" aria-hidden="true"><circle cx="60" cy="46" r="24" fill="#FF6D33"/><circle cx="52" cy="42" r="3.4" fill="#fff"/><circle cx="68" cy="42" r="3.4" fill="#fff"/><path d="M52 54a10 10 0 0 0 16 0" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M60 70v10" stroke="rgba(27,23,20,.4)" stroke-width="2"/><circle cx="60" cy="84" r="4" fill="none" stroke="rgba(27,23,20,.4)" stroke-width="2"/></svg></div><p class="sm" style="margin-top:10px">The OWND mascot &amp; keychain.</p></div>
     </div>
     <div class="panel tint" data-r="3" style="margin-top:24px;flex:none">
       <p class="sm">The system extends past the case, but the rules do not change: matte finish, one monarch accent, and the ring on the smallest surfaces. <b>A companion product never becomes a sub-brand</b> &mdash; see Brand architecture (4.3).</p>
@@ -3675,7 +3692,7 @@ body.agrid #agrid{display:block}
           <div class="wm" style="width:92px"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
           <div class="lk"><b>System</b><b>Panels</b><b>Care</b><b>Story</b><b>Build Your System</b></div>
         </div>
-        <div style="flex:1;position:relative;background:var(--paper);display:flex;align-items:center;padding:0 34px;overflow:hidden;min-height:180px">
+        <div style="flex:1;position:relative;background:var(--paper);display:flex;align-items:center;padding:0 34px;overflow:hidden;min-height:180px"><img class="imgl" src="img/ownd/web-desktop.jpg" alt="ownd.travel homepage">
           <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,109,51,.14) 1px,transparent 1.6px);background-size:20px 20px"></div>
           <div style="position:relative;max-width:52%">
             <div class="mono" style="font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--red)">Modular Travel System</div>
@@ -3784,7 +3801,7 @@ body.agrid #agrid{display:block}
         <div style="flex:1;min-height:0;display:flex;justify-content:center"><div class="phone" style="flex:none">
           <div class="st"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
           <div class="hd"><div class="av"><svg viewBox="0 0 120 120" style="width:17px" fill="none"><circle cx="60" cy="60" r="40" stroke="#fff" stroke-width="20"/></svg></div><div><div class="nm">OWND</div><div class="hl">@ownd.travel</div></div></div>
-          <div class="gr"><i class="o"></i><i class="k"></i><i></i><i class="p"></i><i></i><i class="o"></i><i></i><i class="k"></i><i></i><i class="o"></i><i class="p"></i><i></i></div>
+          <div class="gr"><i class="o"><img class="imgl" src="img/ownd/photo-pink.jpg" alt=""></i><i class="k"><img class="imgl" src="img/ownd/editorial.jpg" alt=""></i><i><img class="imgl" src="img/ownd/photo-seated.jpg" alt=""></i><i class="p"><img class="imgl" src="img/ownd/photo-motion.jpg" alt=""></i><i><img class="imgl" src="img/ownd/flatlay.jpg" alt=""></i><i class="o"><img class="imgl" src="img/ownd/hero-close.jpg" alt=""></i><i><img class="imgl" src="img/ownd/photo-night.jpg" alt=""></i><i class="k"><img class="imgl" src="img/ownd/stack-tall.jpg" alt=""></i><i><img class="imgl" src="img/ownd/photo-airport.jpg" alt=""></i><i class="o"><img class="imgl" src="img/ownd/flatlay-tall.jpg" alt=""></i><i class="p"><img class="imgl" src="img/ownd/photo-stairs.jpg" alt=""></i><i><img class="imgl" src="img/ownd/hero-stack.jpg" alt=""></i></div>
         </div></div>
         <div style="flex:none">
           <div class="kv">
@@ -3804,7 +3821,7 @@ body.agrid #agrid{display:block}
           <div class="st"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
           <div style="height:52px;background:linear-gradient(120deg,#1B1714,#671301);position:relative;flex:none"><div style="position:absolute;right:-14px;bottom:-24px;width:70px;height:70px;border-radius:50%;border:11px solid rgba(255,109,51,.35)"></div></div>
           <div class="hd"><div class="av"><svg viewBox="0 0 120 120" style="width:17px" fill="none"><circle cx="60" cy="60" r="40" stroke="#fff" stroke-width="20"/></svg></div><div><div class="nm">OWND</div><div class="hl">@owndtravel</div></div></div>
-          <div class="gr" style="grid-template-columns:1fr"><i class="o"></i><i></i><i class="k"></i></div>
+          <div class="gr" style="grid-template-columns:1fr"><i class="o"><img class="imgl" src="img/ownd/photo-airport.jpg" alt=""></i><i><img class="imgl" src="img/ownd/photo-group.jpg" alt=""></i><i class="k"><img class="imgl" src="img/ownd/photo-night.jpg" alt=""></i></div>
         </div></div>
         <div style="flex:none">
           <div class="kv">
@@ -3823,7 +3840,7 @@ body.agrid #agrid{display:block}
         <div style="flex:1;min-height:0;display:flex;justify-content:center"><div class="phone" style="flex:none;background:var(--navy)">
           <div class="st" style="color:rgba(255,255,255,.6)"><span>9:41</span><span>&#9679;&#9679;&#9679;</span></div>
           <div class="hd" style="border-color:rgba(255,255,255,.1)"><div class="av"><svg viewBox="0 0 120 120" style="width:17px" fill="none"><circle cx="60" cy="60" r="40" stroke="#fff" stroke-width="20"/></svg></div><div><div class="nm" style="color:#fff">OWND</div><div class="hl">@ownd</div></div></div>
-          <div class="gr" style="gap:2px"><i class="o"></i><i class="k"></i><i class="p"></i><i class="k"></i><i class="o"></i><i></i><i class="k"></i><i class="o"></i><i class="k"></i></div>
+          <div class="gr" style="gap:2px"><i class="o"><img class="imgl" src="img/ownd/photo-stairs.jpg" alt=""></i><i class="k"><img class="imgl" src="img/ownd/stack-tall.jpg" alt=""></i><i class="p"><img class="imgl" src="img/ownd/photo-motion.jpg" alt=""></i><i class="k"><img class="imgl" src="img/ownd/editorial.jpg" alt=""></i><i class="o"><img class="imgl" src="img/ownd/photo-pink.jpg" alt=""></i><i><img class="imgl" src="img/ownd/hero-close.jpg" alt=""></i><i class="k"><img class="imgl" src="img/ownd/photo-seated.jpg" alt=""></i><i class="o"><img class="imgl" src="img/ownd/flatlay.jpg" alt=""></i><i class="k"><img class="imgl" src="img/ownd/photo-night.jpg" alt=""></i></div>
         </div></div>
         <div style="flex:none">
           <div class="kv">
@@ -3999,7 +4016,7 @@ body.agrid #agrid{display:block}
         </div>
         <div>
           <div class="fmt mock" style="--ar:90/54;background:linear-gradient(135deg,#E14E20,#FF6D33);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
-            <div class="wm" style="width:56%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
+            <div class="wm" data-wm="white" style="width:56%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
             <div class="mono" style="font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)">ownd.travel</div>
           </div>
           <div class="mock-cap"><span>Card back &middot; Ember</span><b>350GSM MATTE</b></div>
@@ -4112,22 +4129,22 @@ body.agrid #agrid{display:block}
     <div data-r="1" style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gut);flex:1">
       <div style="display:flex;flex-direction:column;min-height:0">
         <div class="mock" style="flex:1;min-height:230px;background:var(--paper);display:flex;align-items:center;justify-content:center;gap:20px;padding:20px">
-          <svg viewBox="0 0 160 190" style="width:44%" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#1B1714"/><circle cx="58" cy="72" r="10" stroke="#FF6D33" stroke-width="4.6"/></svg>
-          <svg viewBox="0 0 160 190" style="width:44%" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#1B1714"/><g transform="translate(38,66)"><circle cx="9" cy="9" r="7.4" fill="none" stroke="#FF6D33" stroke-width="3.4"/><text x="21" y="16" font-family="Archivo, sans-serif" font-size="20" font-weight="900" letter-spacing="-1" fill="#FF6D33">WND</text></g></svg>
+          <span style="position:relative;display:block;width:44%;aspect-ratio:160/190"><img class="imgl fit-tight" src="img/ownd/tee-ink-front.webp" alt="Crew tee front"><svg viewBox="0 0 160 190" style="width:100%;position:relative" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#1B1714"/><circle cx="58" cy="72" r="10" stroke="#FF6D33" stroke-width="4.6"/></svg></span>
+          <span style="position:relative;display:block;width:44%;aspect-ratio:160/190"><img class="imgl fit-tight" src="img/ownd/tee-ink-back.webp" alt="Crew tee back"><svg viewBox="0 0 160 190" style="width:100%;position:relative" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#1B1714"/><g transform="translate(38,66)"><circle cx="9" cy="9" r="7.4" fill="none" stroke="#FF6D33" stroke-width="3.4"/><text x="21" y="16" font-family="Archivo, sans-serif" font-size="20" font-weight="900" letter-spacing="-1" fill="#FF6D33">WND</text></g></svg></span>
         </div>
         <div class="mock-cap"><span>Crew tee &middot; Ink</span><b>FRONT &amp; BACK</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
         <div class="mock" style="flex:1;min-height:230px;background:var(--paper);display:flex;align-items:center;justify-content:center;gap:20px;padding:20px">
-          <svg viewBox="0 0 160 190" style="width:44%" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#FF6D33"/><circle cx="58" cy="72" r="10" stroke="#fff" stroke-width="4.6"/></svg>
-          <svg viewBox="0 0 160 190" style="width:44%" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#FF6D33"/><g transform="translate(38,66)"><circle cx="9" cy="9" r="7.4" fill="none" stroke="#fff" stroke-width="3.4"/><text x="21" y="16" font-family="Archivo, sans-serif" font-size="20" font-weight="900" letter-spacing="-1" fill="#fff">WND</text></g></svg>
+          <span style="position:relative;display:block;width:44%;aspect-ratio:160/190"><img class="imgl fit-tight" src="img/ownd/tee-monarch-front.webp" alt="Event tee front"><svg viewBox="0 0 160 190" style="width:100%;position:relative" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#FF6D33"/><circle cx="58" cy="72" r="10" stroke="#fff" stroke-width="4.6"/></svg></span>
+          <span style="position:relative;display:block;width:44%;aspect-ratio:160/190"><img class="imgl fit-tight" src="img/ownd/tee-monarch-back.webp" alt="Event tee back"><svg viewBox="0 0 160 190" style="width:100%;position:relative" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#FF6D33"/><g transform="translate(38,66)"><circle cx="9" cy="9" r="7.4" fill="none" stroke="#fff" stroke-width="3.4"/><text x="21" y="16" font-family="Archivo, sans-serif" font-size="20" font-weight="900" letter-spacing="-1" fill="#fff">WND</text></g></svg></span>
         </div>
         <div class="mock-cap"><span>Event tee &middot; Monarch</span><b>FRONT &amp; BACK</b></div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
         <div class="mock" style="flex:1;min-height:230px;background:var(--paper);display:flex;align-items:center;justify-content:center;gap:20px;padding:20px">
-          <svg viewBox="0 0 160 190" style="width:44%" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#fff" stroke="rgba(27,23,20,.25)" stroke-width="1.4"/><circle cx="58" cy="72" r="10" stroke="#FF6D33" stroke-width="4.6"/></svg>
-          <svg viewBox="0 0 160 190" style="width:44%" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#fff" stroke="rgba(27,23,20,.25)" stroke-width="1.4"/><g transform="translate(38,66)"><circle cx="9" cy="9" r="7.4" fill="none" stroke="#1B1714" stroke-width="3.4"/><text x="21" y="16" font-family="Archivo, sans-serif" font-size="20" font-weight="900" letter-spacing="-1" fill="#1B1714">WND</text></g></svg>
+          <span style="position:relative;display:block;width:44%;aspect-ratio:160/190"><img class="imgl fit-tight" src="img/ownd/tee-white-front.webp" alt="Studio tee front"><svg viewBox="0 0 160 190" style="width:100%;position:relative" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#fff" stroke="rgba(27,23,20,.25)" stroke-width="1.4"/><circle cx="58" cy="72" r="10" stroke="#FF6D33" stroke-width="4.6"/></svg></span>
+          <span style="position:relative;display:block;width:44%;aspect-ratio:160/190"><img class="imgl fit-tight" src="img/ownd/tee-white-back.webp" alt="Studio tee back"><svg viewBox="0 0 160 190" style="width:100%;position:relative" fill="none" aria-hidden="true"><path d="M52 18L26 34l-12 34 24 10v92h84V78l24-10-12-34L108 18a28 28 0 0 1-56 0z" fill="#fff" stroke="rgba(27,23,20,.25)" stroke-width="1.4"/><g transform="translate(38,66)"><circle cx="9" cy="9" r="7.4" fill="none" stroke="#1B1714" stroke-width="3.4"/><text x="21" y="16" font-family="Archivo, sans-serif" font-size="20" font-weight="900" letter-spacing="-1" fill="#1B1714">WND</text></g></svg></span>
         </div>
         <div class="mock-cap"><span>Studio tee &middot; white</span><b>FRONT &amp; BACK</b></div>
       </div>
@@ -4155,7 +4172,7 @@ body.agrid #agrid{display:block}
       <div style="display:grid;grid-template-columns:1fr 1.9fr;gap:20px;flex:1;min-height:0">
         <div style="display:flex;flex-direction:column;min-height:0">
           <div class="fmt tall mock" style="--ar:850/2000;background:var(--red);padding:20px 16px;display:flex;flex-direction:column;position:relative;overflow:hidden">
-            <div class="wm" style="width:64%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
+            <div class="wm" data-wm="white" style="width:64%;color:#fff"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
             <div style="font-family:var(--fd);font-weight:900;font-size:22px;line-height:1;letter-spacing:-.035em;color:#fff;margin-top:20px">Own the<br>way you<br>move</div>
             <div class="push" style="padding-top:14px"><div class="mono" style="font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.9)">ownd.travel</div></div>
             <div style="position:absolute;right:-40px;bottom:-58px;width:150px;height:150px;border-radius:50%;border:24px solid rgba(255,255,255,.14)"></div>
@@ -4168,8 +4185,8 @@ body.agrid #agrid{display:block}
               <div style="font-family:var(--fd);font-weight:900;font-size:36px;line-height:1;letter-spacing:-.04em;color:#fff">One shell,<br><span style="color:var(--red)">endless builds</span></div>
               <div class="mono" style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-top:14px">ownd.travel</div>
             </div>
-            <svg viewBox="0 0 200 220" style="width:26%" fill="none" aria-hidden="true"><rect x="50" y="26" width="100" height="140" rx="12" fill="#FF6D33"/><circle cx="72" cy="182" r="12" stroke="rgba(255,255,255,.5)" stroke-width="1.6"/><circle cx="128" cy="182" r="12" stroke="rgba(255,255,255,.5)" stroke-width="1.6"/></svg>
-            <div class="wm" style="position:absolute;right:22px;bottom:16px;width:78px;color:rgba(255,255,255,.65)"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
+            <span style="position:relative;display:block;width:26%;aspect-ratio:200/220"><img class="imgl fit-tight" src="img/ownd/panels-trio.jpg" alt="Panel trio"><svg viewBox="0 0 200 220" style="width:100%;position:relative" fill="none" aria-hidden="true"><rect x="50" y="26" width="100" height="140" rx="12" fill="#FF6D33"/><circle cx="72" cy="182" r="12" stroke="rgba(255,255,255,.5)" stroke-width="1.6"/><circle cx="128" cy="182" r="12" stroke="rgba(255,255,255,.5)" stroke-width="1.6"/></svg></span>
+            <div class="wm" data-wm="white" style="position:absolute;right:22px;bottom:16px;width:78px;color:rgba(255,255,255,.65)"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
           </div>
           <div class="mock-cap"><span>Billboard &middot; one line, one image</span><b>16:9</b></div>
         </div>
@@ -4227,7 +4244,7 @@ body.agrid #agrid{display:block}
         <div class="statement">OWND <em>it.</em></div>
         <p style="margin-top:16px">The launch platform in two words. Every asset answers one question &mdash; <b>what does it mean to own the way you move</b> &mdash; then hands the answer to the configurator.</p>
       </div>
-      <div class="mock" style="background:var(--navy);padding:34px 38px;position:relative;overflow:hidden;min-height:220px;display:flex;flex-direction:column;justify-content:center">
+      <div class="mock" style="background:var(--navy);padding:34px 38px;position:relative;overflow:hidden;min-height:220px;display:flex;flex-direction:column;justify-content:center"><img class="imgl" src="img/ownd/teaser/his-something.jpg" alt="Teaser key visual"><div style="position:absolute;inset:0;z-index:3;background:linear-gradient(90deg,rgba(20,18,16,.86),rgba(20,18,16,.42))"></div>
         <div style="position:absolute;right:-60px;top:-70px;width:230px;height:230px;border-radius:50%;border:34px solid rgba(255,109,51,.22)"></div>
         <div class="mono" style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--red);position:relative">The claim</div>
         <div style="font-family:var(--fd);font-weight:900;font-size:72px;line-height:.92;letter-spacing:-.045em;color:#fff;margin-top:10px;position:relative">OWND it.</div>
@@ -4886,7 +4903,7 @@ body.agrid #agrid{display:block}
     <div class="stack" data-r="2" style="justify-content:center">
       <div class="mock navy" style="min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;position:relative;overflow:hidden">
         <div style="position:absolute;inset:0;background:radial-gradient(ellipse 62% 58% at 50% 62%,rgba(255,109,51,.28),transparent 70%)"></div>
-        <div class="wm" style="width:52%;color:#fff;position:relative"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
+        <div class="wm" data-wm="white" style="width:52%;color:#fff;position:relative"><svg viewBox="0 0 430 112"><circle cx="56" cy="56" r="39" fill="none" stroke="currentColor" stroke-width="18"/><text x="108" y="93" font-family="Archivo, sans-serif" font-size="108" font-weight="900" letter-spacing="-5" fill="currentColor">WND</text></svg></div>
         <div class="mono" style="font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.6);position:relative">Modular Travel System</div>
       </div>
       <div class="mock-cap"><span>Brand OS v3.1 &middot; edition 1.0</span><b>2026</b></div>
@@ -5965,6 +5982,66 @@ Object.keys(INFO).forEach(function(id){
  el.addEventListener('mouseleave',function(){tip.classList.remove('on');});
 });
 })();
+</script>
+<script id="owndAssets">
+/* ==========================================================================
+   OWND asset layer
+   --------------------------------------------------------------------------
+   The book ships complete with drawn constructions. This script upgrades it
+   to the real OWND library when that library is present beside the file:
+
+     img/ownd/ownd-logo.png · ownd-logo-white.png · ownd-logo-ink.png
+     img/ownd/*.jpg · img/ownd/product/*.png · img/ownd/teaser/*.jpg
+     img/ownd/tee-*.webp
+
+   Nothing here is required. With no library the drawings stay and the book
+   reads exactly as published.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  /* -- photo layers: drop any that cannot load, so the drawing shows through */
+  function prune(im) { if (im.parentNode) im.parentNode.removeChild(im); }
+  function watch(im) {
+    if (im.complete) { if (!im.naturalWidth) prune(im); return; }
+    im.addEventListener('error', function () { prune(im); });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('img.imgl'), watch);
+
+  /* -- wordmark: swap the drawn mark for the real artwork when it exists ---- */
+  var LOGO = {
+    primary: 'img/ownd/ownd-logo.png',
+    white:   'img/ownd/ownd-logo-white.png',
+    ink:     'img/ownd/ownd-logo-ink.png'
+  };
+
+  /* A cached file can finish loading before a listener attached after .src
+     would ever run, so settle both paths through one helper that also checks
+     the already-complete case. */
+  function load(src, ok, fail) {
+    var im = new Image();
+    function done() { (im.naturalWidth ? ok : fail)(im); }
+    im.addEventListener('load', done);
+    im.addEventListener('error', function () { fail(im); });
+    im.src = src;
+    if (im.complete) done();
+  }
+
+  function upgrade(w) {
+    var v = w.getAttribute('data-wm') || 'primary';
+    load(LOGO[v] || LOGO.primary, function (im) {
+      im.alt = 'OWND';
+      im.style.cssText = 'display:block;width:100%;height:auto';
+      w.innerHTML = '';
+      w.appendChild(im);
+    }, function () { /* the drawn mark stays */ });
+  }
+
+  load(LOGO.primary, function () {
+    Array.prototype.forEach.call(document.querySelectorAll('.wm'), upgrade);
+  }, function () { /* no library beside the file: the book is already complete */ });
+})();
+
 </script>
 <script id="owndRefit">
 /* the dock grows a second row of page dots after first fit(); re-measure so the

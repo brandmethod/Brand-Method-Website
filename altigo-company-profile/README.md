@@ -13,6 +13,7 @@ qa.mjs                              # fails loudly on any content overflowing a 
 widows.mjs                          # finds paragraphs with a stranded last line
 make-chapter-visuals.py             # duotones the chapter / texture images
 make-portraits.py                   # normalises the two leadership cut-outs
+make-usp-wall.py                    # 1px wall strip behind the Brand USP photo
 make-artifact.py                    # inlines every asset as a data URI
 assemble-artifact.py                # wraps the slides in the web viewer shell
 preview-artifact.mjs                # screenshots the viewer in light / dark / mobile
@@ -143,6 +144,15 @@ gone, along with the short red dash before the chip and the red rule under each
 chapter numeral. Numbering that *does* carry information is kept: chapter
 numerals, the table of contents, page folios, and the seven-stage labels on the
 Product Journey, where the order is the point.
+
+**Brand USP wall.** The photograph is 1.116 wide, so filling a full-height
+column always cropped the escalator; it sits at its own aspect in the bottom
+corner instead. That leaves white above it, and the cut-out is transparent to
+the left of the escalator. Rather than pick a flat blue, `make-usp-wall.py`
+takes the photograph's own top row, fills the transparent part of that row
+from its nearest opaque neighbour, and saves it one pixel tall. Stretched
+behind the photo it carries each wall panel upward in exactly the colour
+sitting next to it, so the join is invisible.
 
 **Copy** — corrected and made consistent, no claims added or removed:
 - p13 "Two decades of experience" contradicted the "25 years / twenty five years"

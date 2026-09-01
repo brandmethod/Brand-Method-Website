@@ -1089,10 +1089,12 @@ h1 .r{font-style:normal;color:var(--red-600)}
 
 <!-- ============================================================ 11 · BRAND USP -->
 <section class="page">
-  <!-- A brand blue field carries the photograph's own wall colour up the
-       column, so the transparent part of the cut-out reads as wall rather
-       than as a hole in the page. -->
-  <div style="position:absolute;right:0;top:0;bottom:0;width:652px;background:var(--blue-600)"></div>
+  <!-- photo-usp-wall.png is the photograph's own top row, one pixel tall
+       (make-usp-wall.py). Stretched behind the photo it carries each wall
+       panel upward in exactly the blue sitting next to it, so the white above
+       the photo and the transparent part of the cut-out both read as wall. -->
+  <div style="position:absolute;right:0;top:0;bottom:0;width:652px;
+              background:url('assets/photo-usp-wall.png') 0 0/100% 100% no-repeat"></div>
   <!-- shown whole: the photograph is 1.116 wide, so filling a full-height
        column would cut the escalator off. Placed at its own aspect, flush to
        the page corner, nothing is cropped. -->

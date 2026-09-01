@@ -147,12 +147,14 @@ Product Journey, where the order is the point.
 
 **Brand USP wall.** The photograph is 1.116 wide, so filling a full-height
 column always cropped the escalator; it sits at its own aspect in the bottom
-corner instead. That leaves white above it, and the cut-out is transparent to
-the left of the escalator. Rather than pick a flat blue, `make-usp-wall.py`
-takes the photograph's own top row, fills the transparent part of that row
-from its nearest opaque neighbour, and saves it one pixel tall. Stretched
-behind the photo it carries each wall panel upward in exactly the colour
-sitting next to it, so the join is invisible.
+corner instead, which leaves a band above it. Rather than pick a flat blue,
+`make-usp-wall.py` takes the photograph's own top row and saves it one pixel
+tall. Stretched behind the photo it carries each wall panel upward in exactly
+the colour sitting next to it, so the join is invisible. Alpha is carried
+through too, so the wall stops where the cut-out starts and the page shows
+through beside the escalator, the way it does in the photograph itself. Only
+the hairline of matting on the right border is squared off, since stretched to
+the width of the page it would read as a pale sliver.
 
 **Copy** — corrected and made consistent, no claims added or removed:
 - p13 "Two decades of experience" contradicted the "25 years / twenty five years"

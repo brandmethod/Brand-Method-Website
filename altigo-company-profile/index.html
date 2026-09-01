@@ -1091,8 +1091,9 @@ h1 .r{font-style:normal;color:var(--red-600)}
 <section class="page">
   <!-- photo-usp-wall.png is the photograph's own top row, one pixel tall
        (make-usp-wall.py). Stretched behind the photo it carries each wall
-       panel upward in exactly the blue sitting next to it, so the white above
-       the photo and the transparent part of the cut-out both read as wall. -->
+       panel upward in exactly the blue sitting next to it, and keeps the
+       cut-out's alpha, so the wall reaches the top edge and the page still
+       shows through beside the escalator. -->
   <div style="position:absolute;right:0;top:0;bottom:0;width:652px;
               background:url('assets/photo-usp-wall.png') 0 0/100% 100% no-repeat"></div>
   <!-- shown whole: the photograph is 1.116 wide, so filling a full-height

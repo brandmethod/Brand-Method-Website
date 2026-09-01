@@ -41,6 +41,16 @@ def sub_img(m):
     return 'src="%s"' % seen[rel]
 body = re.sub(r'src="(assets/[^"]+)"', sub_img, body)
 
+def sub_css_url(m):
+    rel = m.group(1)
+    if rel not in seen:
+        seen[rel] = data_uri(rel)
+    return "url('%s')" % seen[rel]
+# backgrounds set in inline styles need the same treatment as <img src>,
+# otherwise the published page keeps a relative path with nothing behind it
+body = re.sub(r"url\('(assets/[^']+)'\)", sub_css_url, body)
+assert "assets/" not in body, "an asset reference was left unresolved"
+
 logo_colour = seen["assets/logo-wordmark-colour.png"]
 logo_white  = seen["assets/logo-wordmark-white.png"]
 

@@ -183,7 +183,7 @@ the `@font-face` block at the top of `index.html`. The stack is already
 
 ## One thing worth raising
 
-The profile lists **altigo@gmail.com** as the contact address on the cover, the
+The profile lists **ALTIGOELEVATOR@GMAIL.COM** as the contact address on the cover, the
 contact page and the back cover. On a document that leans on DOSH certification
 and EU type examination for credibility, a free mailbox undercuts the rest of the
 page. A domain address (e.g. `enquiry@altigo.com.my`) would be a cheap upgrade.

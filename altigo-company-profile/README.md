@@ -158,7 +158,9 @@ the width of the page it would read as a pale sliver.
 
 **Copy** — corrected and made consistent, no claims added or removed:
 - p13 "Two decades of experience" contradicted the "25 years / twenty five years"
-  used throughout → "Twenty five years".
+  used throughout → "Twenty five years". At the client's instruction this later
+  became "More than twenty five years" everywhere, with the year stats set as
+  "25+" to match; the company was established 22 October 2001.
 - p11 folio rendered as `1111` (duplicated element) → `11`.
 - Footer text alternated between "Confidential." and the longer authorised-use
   line → one form throughout.

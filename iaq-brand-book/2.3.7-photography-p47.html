@@ -1,0 +1,483 @@
+<title>Photography Spread 2.3.7</title>
+<!--
+  IAQ BRAND IDENTITY — BRAND OS V3.1
+  Section 2.3.7 Imagery · Photography · Page 47
+
+  WHAT CHANGED FROM THE PUBLISHED VERSION
+  ---------------------------------------
+  Frame B (centre) — was: posed staff lineup in an empty white room, IAQ wordmark
+  composited onto the wall. That file is IAQ-PRJ-001 and it also carries the Projects
+  registry card 1, the Services proof strip and the Markets semiconductor slot, and its
+  twin carries IAQ-PRJ-012. It broke four rules printed on this same page.
+
+  Frame B is now the cleanroom terminal-filter installation frame — already in the
+  library, currently used on the About page behind the 1994 story copy.
+
+  Caption B — was "THE TEAM, ON SITE". Now "TERMINAL FILTER INSTALLATION", which
+  satisfies the CAPTION FORMAT panel on this page (location · sector · class).
+  The principle tag "REAL DELIVERY" is unchanged so the three tags still read
+  COMPOSED WIDE / REAL DELIVERY / DRAWINGS & SYSTEMS.
+
+  BEFORE YOU SHIP
+  ---------------
+  1. Drop the three assets into ./img/ using the filenames in the <img src> below.
+  2. Swap --font-display / --font-text for the licensed brand faces (one line each).
+     The Google faces loaded here are stand-ins matched by eye to the spread.
+  3. Page is drawn at a fixed 1600 x 1000 and scaled to fit, so it stays print-exact.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+  /* ------------------------------------------------------------------
+     TOKENS — the book page is a printed surface and commits to one
+     visual world, so it stays white on every host theme by design.
+     ------------------------------------------------------------------ */
+  :root {
+    --paper:        #FFFFFF;
+    --stage:        #0A0D11;
+    --ink:          #171C23;
+    --ink-body:     #2B333B;
+    --ink-mute:     #97A0A8;
+    --ink-caption:  #A7AFB6;
+    --iaq-red:      #DE2027;
+    --check:        #1E9E5A;
+    --rule:         #DCE0E4;
+    --rule-soft:    #EBEEF0;
+    --slot:         #EDF1F3;
+
+    /* swap these two for the licensed brand faces */
+    --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --font-text:    "Manrope", "Helvetica Neue", Arial, sans-serif;
+    --font-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--stage);
+    color: var(--ink);
+    font-family: var(--font-text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .stage {
+    display: flex;
+    justify-content: center;
+    padding: 28px 16px 40px;
+    overflow-x: auto;
+  }
+
+  /* ---- the page itself: fixed drawing size, scaled to fit ---- */
+  .page-fit { transform-origin: top center; }
+
+  .page {
+    width: 1600px;
+    height: 1000px;
+    background: var(--paper);
+    padding: 70px 80px 56px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  /* =========================  MASTHEAD  ========================= */
+  .masthead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  .section-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+    color: var(--iaq-red);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+  }
+  .section-tag::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    background: var(--iaq-red);
+    display: block;
+  }
+
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 76px;
+    line-height: .95;
+    letter-spacing: -.032em;
+    color: var(--ink);
+    margin: 14px 0 0;
+  }
+
+  .masthead-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 8px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+  .masthead-right .principle { color: var(--ink-mute); }
+  .masthead-right .absolute  { color: var(--iaq-red); font-weight: 600; }
+
+  .masthead-rule {
+    height: 1px;
+    background: var(--rule);
+    margin: 26px 0 0;
+  }
+
+  /* =========================  PLATES  ========================= */
+  .plates {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 26px;
+    margin-top: 34px;
+  }
+
+  figure {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .frame {
+    position: relative;
+    height: 300px;
+    background: var(--slot);
+    overflow: hidden;
+  }
+  .frame img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* the DO chip sits on the plate, top-left, flush */
+  .chip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background: var(--iaq-red);
+    color: #FFFFFF;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    padding: 4px 8px 3px;
+  }
+
+  /* visible only while the asset is missing — it names what belongs here */
+  .slot-note {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 6px;
+    padding: 18px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    line-height: 1.65;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    color: #7E8790;
+  }
+  .slot-note b { color: #4A535B; font-weight: 600; display: block; }
+  .slot-note .filename { color: var(--iaq-red); text-transform: none; letter-spacing: .02em; }
+
+  .plate-rule {
+    height: 1px;
+    background: var(--rule);
+    margin-top: 14px;
+  }
+
+  figcaption {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 9px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+  }
+  figcaption .subject   { color: var(--ink-caption); }
+  figcaption .principle { color: var(--iaq-red); font-weight: 600; white-space: nowrap; }
+
+  /* =========================  RULES BLOCK  ========================= */
+  .rules {
+    display: grid;
+    grid-template-columns: 1.28fr 1.28fr 1fr;
+    gap: 0 64px;
+    margin-top: 36px;
+  }
+
+  .col-head {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+  .col-head.red { color: var(--iaq-red); }
+
+  ul.checks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  ul.checks li {
+    display: grid;
+    grid-template-columns: 15px 1fr;
+    gap: 12px;
+    align-items: start;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--ink-body);
+  }
+  .box {
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+    display: grid;
+    place-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    font-family: var(--font-mono);
+    line-height: 1;
+  }
+  .box.do    { border: 1px solid var(--check);   color: var(--check); }
+  .box.never { border: 1px solid var(--iaq-red); color: var(--iaq-red); }
+
+  /* caption-format panel */
+  .caption-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .caption-panel .line-1 {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .caption-panel .line-2 {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-caption);
+  }
+  .caption-panel .gloss {
+    margin-top: 16px;
+    font-size: 16px;
+    line-height: 1.45;
+    color: var(--ink-body);
+  }
+  .caption-panel .gloss strong { color: var(--ink); font-weight: 700; display: block; margin-top: 2px; }
+
+  /* =========================  LIBRARY RULE  ========================= */
+  .library {
+    display: grid;
+    grid-template-columns: 225px minmax(0, 700px);
+    gap: 0 24px;
+    align-items: start;
+    margin-top: 40px;
+  }
+  .library p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-body);
+    text-wrap: pretty;
+  }
+
+  /* =========================  COLOPHON  ========================= */
+  .colophon {
+    margin-top: auto;
+    padding-top: 22px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+    color: var(--ink-caption);
+  }
+  .colophon .folio {
+    color: var(--iaq-red);
+    font-weight: 700;
+    font-size: 12px;
+    margin-left: 12px;
+  }
+</style>
+
+<div class="stage">
+  <div class="page-fit" id="fit">
+    <div class="page">
+
+      <header class="masthead">
+        <div>
+          <p class="section-tag">Visual Identity · 2.3.7 Imagery</p>
+          <h1>Photography</h1>
+        </div>
+        <div class="masthead-right">
+          <span class="principle">Cool, neutral, composed</span>
+          <span class="absolute">Never a client name</span>
+        </div>
+      </header>
+      <div class="masthead-rule"></div>
+
+      <div class="plates">
+
+        <!-- PLATE A — unchanged. Facilities aerial at dusk, also the About page hero. -->
+        <figure>
+          <div class="frame">
+            <span class="chip">DO</span>
+            <div class="slot-note">
+              <b>Plate A</b>
+              <span>Facilities aerial, dusk — cooling towers, ridge line behind</span>
+              <span class="filename">img/facilities-engineering-detail.jpg</span>
+            </div>
+            <img src="img/facilities-engineering-detail.jpg" alt="Engineering facility at dusk, wide aerial" onerror="this.remove()">
+          </div>
+          <div class="plate-rule"></div>
+          <figcaption>
+            <span class="subject">Facilities &amp; engineering detail</span>
+            <span class="principle">Composed wide</span>
+          </figcaption>
+        </figure>
+
+        <!-- PLATE B — REPLACED. Was the posed staff lineup (IAQ-PRJ-001).
+             Source the new frame from the About page, "The story" band:
+             gowned technicians working overhead into ceiling equipment. -->
+        <figure>
+          <div class="frame">
+            <span class="chip">DO</span>
+            <div class="slot-note">
+              <b>Plate B — replacement</b>
+              <span>Gowned technicians working overhead at ceiling level, under work lights. Source: About page, “The story” band</span>
+              <span class="filename">img/cleanroom-terminal-filter-install.jpg</span>
+            </div>
+            <img src="img/cleanroom-terminal-filter-install.jpg" alt="Technicians in white coveralls and hoods installing ceiling-level cleanroom equipment" onerror="this.remove()">
+          </div>
+          <div class="plate-rule"></div>
+          <figcaption>
+            <span class="subject">Terminal filter installation</span>
+            <span class="principle">Real delivery</span>
+          </figcaption>
+        </figure>
+
+        <!-- PLATE C — unchanged. Drawing set with pen, overhead. -->
+        <figure>
+          <div class="frame">
+            <span class="chip">DO</span>
+            <div class="slot-note">
+              <b>Plate C</b>
+              <span>Drawing set, overhead, pen at rest on the sheet</span>
+              <span class="filename">img/drawings-and-systems.jpg</span>
+            </div>
+            <img src="img/drawings-and-systems.jpg" alt="Engineering drawing set photographed from above with a pen resting on it" onerror="this.remove()">
+          </div>
+          <div class="plate-rule"></div>
+          <figcaption>
+            <span class="subject">The work itself</span>
+            <span class="principle">Drawings &amp; systems</span>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <div class="rules">
+
+        <div>
+          <h2 class="col-head">Treatment</h2>
+          <ul class="checks">
+            <li><span class="box do" aria-hidden="true">✓</span><span>Cool, neutral grade; whites stay clean, never warm</span></li>
+            <li><span class="box do" aria-hidden="true">✓</span><span>Composed, wide, engineered frames; order over drama</span></li>
+            <li><span class="box do" aria-hidden="true">✓</span><span>Captioned by location and sector in mono type</span></li>
+            <li><span class="box do" aria-hidden="true">✓</span><span>Red appears only as a leader line or caption accent</span></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="col-head">Never</h2>
+          <ul class="checks">
+            <li><span class="box never" aria-hidden="true">✕</span><span>Client names, logos or signage in any public frame</span></li>
+            <li><span class="box never" aria-hidden="true">✕</span><span>Generic stock imagery standing in for real IAQ work</span></li>
+            <li><span class="box never" aria-hidden="true">✕</span><span>Glossy over-styled renders, effects without function</span></li>
+            <li><span class="box never" aria-hidden="true">✕</span><span>Posed team lineups standing in for the work itself</span></li>
+          </ul>
+        </div>
+
+        <div class="caption-panel">
+          <h2 class="col-head red">Caption format</h2>
+          <span class="line-1">300mm wafer-fab cleanroom</span>
+          <span class="line-2">Dholera, India · Semiconductor · ISO Class 5</span>
+          <p class="gloss">
+            Location · sector · class.
+            <strong>The client is never named.</strong>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="library">
+        <h2 class="col-head red" style="margin:0">The library rule</h2>
+        <p>Approved photography lives in the master library, captioned at the point of approval. An image without a caption is not approved for publication, and an unapproved image never ships to a public surface. One caption, one project — a frame that fits any job is not a record of any of them.</p>
+      </div>
+
+      <div class="colophon">
+        <span>Brand OS v3.1 · IAQ Brand Identity</span>
+        <span>© 2026 IAQ Technology Sdn. Bhd. <b class="folio">47</b></span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // Draw the page at its true 1600 x 1000 and scale it down to whatever
+  // the viewport allows, so the spread stays print-exact at any width.
+  (function () {
+    var fit = document.getElementById('fit');
+    var PAGE_W = 1600, PAGE_H = 1000;
+
+    function apply() {
+      var available = fit.parentElement.clientWidth;
+      var scale = Math.min(1, available / PAGE_W);
+      fit.style.transform = 'scale(' + scale + ')';
+      fit.style.height = (PAGE_H * scale) + 'px';
+    }
+
+    apply();
+    window.addEventListener('resize', apply);
+  })();
+</script>

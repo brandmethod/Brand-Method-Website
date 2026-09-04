@@ -489,10 +489,19 @@ body.spread .wrap{display:grid;grid-template-columns:repeat(2,auto);justify-cont
 .tocx.tight .tocs{padding-bottom:4px;margin-bottom:3px}
 .tocx.tight .tocg{margin-bottom:5px}
 /* card icons */
-.gic{width:26px;height:26px;stroke:var(--red);fill:none;stroke-width:1.5;stroke-linejoin:round;display:block;margin-bottom:11px}
-.gcell .gic{margin-bottom:10px}
-.pil .gic{margin-bottom:10px}
-.pg.airy .gic{width:26px;height:26px}
+.gic{width:42px;height:42px;stroke:var(--red);fill:none;stroke-width:1.7;stroke-linejoin:round;display:block;margin-bottom:12px}
+.gcell .gic{margin-bottom:11px}
+.pil .gic{width:48px;height:48px;margin-bottom:12px}
+.pg.airy .gic{width:44px;height:44px}
+/* sector icons already sitting in cards, matched to the card set */
+.gcell > .ic{width:42px;height:42px;stroke-width:1.7;margin-bottom:11px}
+/* business-unit and pillar marks lead their blocks */
+.bu .ic,.pil .ic{width:48px;height:48px;stroke-width:1.7}
+/* three-across grids carry a slightly smaller mark so nine cards still fit the frame */
+.grid[style*="1fr 1fr 1fr"] .gic,.grid[style*="1fr 1fr 1fr"] > .gcell > .ic{width:34px;height:34px;margin-bottom:9px}
+.grid[style*="1fr 1fr 1fr"] .gcell{padding:13px 15px}
+/* process steps: scaled and brought onto the brand red */
+.stp .ic{width:32px;height:32px;stroke:var(--red);stroke-width:1.6}
 /* project reference tables */
 .prjh{display:grid;grid-template-columns:1.15fr 2.15fr .62fr;gap:14px;padding-bottom:6px;border-bottom:1px solid var(--red);
  font-family:var(--fm);font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--red)}

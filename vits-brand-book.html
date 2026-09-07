@@ -177,7 +177,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 #dock:hover,#dock:focus-within,#dock.awake{opacity:1}
 #dock .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.5);white-space:nowrap}
-#dock .cnt{font-size:11px;letter-spacing:.06em;color:#fff}
+#dock .cnt{font-size:11px;letter-spacing:.06em;color:#fff;white-space:nowrap}
 #dock .cnt b{color:var(--red);font-weight:700}
 #dock .sep{width:1px;height:18px;background:rgba(255,255,255,.16)}
 .dbtn{width:32px;height:32px;display:flex;align-items:center;justify-content:center;
@@ -2971,7 +2971,7 @@ body.agrid #agrid{display:block}
     counter.innerHTML = '<b>' + String(cur + 1).padStart(2, '0') + '</b> / ' + total;
     document.getElementById('btn-prev').disabled = (cur === 0);
     document.getElementById('btn-next').disabled = (cur === total - 1);
-    if (history.replaceState) history.replaceState(null, '', '#' + (cur + 1));
+    try { history.replaceState(null, '', '#' + (cur + 1)); } catch (err) {}
     if (hint) hint.style.opacity = cur === 0 ? '1' : '0';
   }
 
@@ -3004,8 +3004,12 @@ body.agrid #agrid{display:block}
     else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'p') { e.preventDefault(); exportPDF(); }
     else if (e.key === 'Escape') closeIndex();
     else if (e.key.toLowerCase() === 'f') {
-      if (!document.fullscreenElement) document.documentElement.requestFullscreen();
-      else document.exitFullscreen();
+      try {
+        if (!document.fullscreenElement) {
+          var fs = document.documentElement.requestFullscreen();
+          if (fs && fs.catch) fs.catch(function () {});
+        } else { document.exitFullscreen(); }
+      } catch (err) {}
     }
   });
 

@@ -436,6 +436,23 @@ strong{font-weight:700;color:var(--ink)}
 .toc-mini span{font-size:16px;font-weight:500;color:var(--steel);line-height:1.3}
 .toc-mini u{margin-left:auto;font-family:var(--fm);font-size:11px;color:var(--mist);
   text-decoration:none;flex:none}
+
+/* -- table of contents · the full-page setting ----------------------------- */
+.toc{display:flex;flex-direction:column;gap:34px}
+.toc-grp{break-inside:avoid}
+.toc-h{display:flex;align-items:baseline;gap:14px;padding-bottom:9px}
+.toc-h .n{font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold);flex:none}
+.toc-h .t{font-family:var(--fd);font-weight:800;font-size:23px;letter-spacing:-.012em;color:#fff}
+.toc-h .w{font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+          color:var(--gold);margin-left:4px}
+.toc-r{display:flex;align-items:baseline;gap:16px;padding:9px 0;
+       border-top:1px solid rgba(255,255,255,.11)}
+.toc-r b{font-family:var(--fm);font-size:11.5px;font-weight:600;letter-spacing:.04em;
+         color:rgba(255,255,255,.42);flex:none;width:34px}
+.toc-r span{font-size:18px;font-weight:500;color:rgba(255,255,255,.88);line-height:1.3}
+.toc-r i{flex:1;height:1px;background:rgba(255,255,255,.13);transform:translateY(-4px)}
+.toc-r u{font-family:var(--fm);font-size:12px;font-weight:600;color:rgba(255,255,255,.52);
+         text-decoration:none;flex:none;font-variant-numeric:tabular-nums}
 .slide.dark .toc-mini li{border-top-color:rgba(255,255,255,.1)}
 .slide.dark .toc-mini span{color:rgba(255,255,255,.82)}
 .slide.dark .toc-mini b,.slide.dark .toc-mini u{color:rgba(255,255,255,.42)}
@@ -514,18 +531,10 @@ strong{font-weight:700;color:var(--ink)}
 .divider .dfoot{position:absolute;bottom:30px;left:var(--pad-x);right:var(--pad-x);z-index:5;
   display:flex;justify-content:space-between;gap:32px;font-family:var(--fm);font-size:11.5px;
   letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.dfoot .dfoot-r{display:flex;align-items:baseline;gap:28px}
 /* one white hairline motif per divider, top right */
 .dviz{position:absolute;right:112px;top:132px;width:600px;z-index:2;pointer-events:none;opacity:.95}
 .dviz svg{width:100%;display:block}
-/* the section index on the divider */
-/* the section index lives in the empty left column: the line art owns the right */
-.didx{position:absolute;left:var(--pad-x);bottom:92px;z-index:5;width:360px;
-  display:flex;flex-direction:column;gap:0}
-.didx div{display:flex;gap:14px;align-items:baseline;padding:6px 0;
-  border-top:1px solid rgba(255,255,255,.22)}
-.didx .n{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.06em;
-  color:rgba(255,255,255,.72);flex:none;width:34px}
-.didx .s{font-size:15.5px;font-weight:500;color:#fff;line-height:1.35}
 
 /* -- STATEMENT · the counterweight to specification pages ------------------ */
 .statement{font-family:var(--fd);font-weight:700;font-size:96px;line-height:.94;
@@ -681,7 +690,7 @@ body.agrid #agrid{display:block}
     <span>0.0 &middot; Essentials &middot; Cover</span><span>Brand Identity Book</span>
   </div>
 
-  <div style="position:absolute;left:112px;top:116px;width:1230px;z-index:3">
+  <div style="position:absolute;left:112px;top:116px;width:1160px;z-index:3">
     <!-- master mark -->
     <svg viewBox="0 0 1000 655" width="212" height="139" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vit&rsquo;s" style="display:block;margin-bottom:30px">
       <path id="cvb" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/>
@@ -689,7 +698,7 @@ body.agrid #agrid{display:block}
       <text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text>
     </svg>
 
-    <div style="font-family:var(--fd);font-size:94px;font-weight:800;font-stretch:106%;letter-spacing:-.035em;
+    <div style="font-family:var(--fd);font-size:112px;font-weight:800;font-stretch:106%;letter-spacing:-.035em;
                 line-height:.94;color:var(--ink);white-space:nowrap">
       BRAND <span style="color:var(--red)">IDENTITY BOOK</span></div>
 
@@ -707,45 +716,6 @@ body.agrid #agrid{display:block}
       <span style="font:600 11.5px/1 var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--signal);border:1.5px solid rgba(236,31,40,.4);padding:8px 12px;white-space:nowrap">OEM &amp; Private Label</span>
       <span style="font:600 11.5px/1 var(--fm);letter-spacing:.1em;text-transform:uppercase;color:var(--signal);border:1.5px solid rgba(236,31,40,.4);padding:8px 12px;white-space:nowrap">30+ Export Markets</span>
     </div>
-  </div>
-
-  <!-- right column · the record, and the dimension run that measures the frame -->
-  <div style="position:absolute;right:112px;top:152px;z-index:3;width:392px">
-    <div style="display:flex;align-items:center;gap:16px;font-family:var(--fm);font-size:11.5px;font-weight:600;
-                letter-spacing:.18em;text-transform:uppercase;color:#A2907F;white-space:nowrap">
-      <span>1920</span>
-      <i style="position:relative;flex:1;height:1px;background:rgba(236,31,40,.75)">
-        <b style="position:absolute;left:0;top:-4px;width:1px;height:9px;background:var(--red)"></b>
-        <b style="position:absolute;right:0;top:-4px;width:1px;height:9px;background:var(--red)"></b>
-      </i>
-      <span>1080</span>
-    </div>
-
-    <div style="margin-top:64px;border-top:2px solid var(--ink);padding-top:20px">
-      <div style="font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.18em;
-                  text-transform:uppercase;color:var(--signal);margin-bottom:4px">The record</div>
-      <div style="display:flex;flex-direction:column">
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(25,20,16,.09)">
-          <span style="font-size:16px;font-weight:600;color:var(--ink)">Founded</span>
-          <span style="font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)">1975 &middot; Selayang</span></div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(25,20,16,.09)">
-          <span style="font-size:16px;font-weight:600;color:var(--ink)">Halal certified</span>
-          <span style="font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--signal)">Since 1980</span></div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(25,20,16,.09)">
-          <span style="font-size:16px;font-weight:600;color:var(--ink)">Plant</span>
-          <span style="font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A7360">105,000 sq ft</span></div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(25,20,16,.09)">
-          <span style="font-size:16px;font-weight:600;color:var(--ink)">Markets</span>
-          <span style="font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A7360">Malaysia + 30</span></div>
-        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:11px 0;border-top:1px solid rgba(25,20,16,.09)">
-          <span style="font-size:16px;font-weight:600;color:var(--ink)">Standard</span>
-          <span style="font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#8A7360">FSSC 22000</span></div>
-      </div>
-    </div>
-
-    <div style="margin-top:44px;font-family:var(--fd);font-weight:800;font-size:38px;line-height:1.12;
-                letter-spacing:-.028em;color:var(--ink);font-stretch:104%">The only one.<br><span style="color:var(--red)">Since 1975.</span></div>
-    <div style="margin-top:12px;font-family:var(--fm);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#A2907F">Wei Yi &middot; &#21807;&#19968;</div>
   </div>
 
   <!-- bottom band -->
@@ -776,164 +746,105 @@ body.agrid #agrid{display:block}
 <!-- ================================================================
      02 · CONTENTS + HOW TO USE
      ================================================================ -->
-<section class="slide dark" data-sec="0.0" data-secname="Essentials" data-title="Contents &middot; How to Use This Book">
+<section class="slide dark" data-sec="0.0" data-secname="Essentials" data-title="Table of Contents &amp; How to Use This Book">
   <header class="s-head">
     <div class="row">
       <div>
         <div class="eyebrow" data-r="1">0.1 &middot; Essentials</div>
-        <h1 class="s-title" data-r="1">Contents, and how to use this book</h1>
+        <h1 class="s-title" data-r="1" style="font-size:56px">Table of contents &amp; how to use this book</h1>
       </div>
       <div class="s-meta" data-r="1">TWENTY PAGES &middot; FIVE SECTIONS<br><b>READ THIS PAGE FIRST</b></div>
     </div>
     <div class="rule"></div>
   </header>
 
-  <div class="s-body" style="grid-template-columns:1.5fr 1fr;gap:72px">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px 56px;align-content:start;grid-template-rows:auto auto auto 1fr" data-r="2">
+  <div class="s-body" style="grid-template-rows:auto 1fr;gap:0">
 
-      <div>
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
-          <span style="font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold)">01</span>
-          <span style="font-family:var(--fd);font-weight:800;font-size:21px;color:#fff;letter-spacing:-.01em">Brand</span>
+    <div data-r="2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:72px;align-items:start">
+      <div class="toc">
+        <div class="toc-grp">
+          <div class="toc-h"><span class="n">01</span><span class="t">Brand</span></div>
+          <div class="toc-r"><b>1.1</b><span>Company Introduction</span><i></i><u>04</u></div>
+          <div class="toc-r"><b>1.2</b><span>Positioning &amp; Script</span><i></i><u>05</u></div>
+          <div class="toc-r"><b>1.3</b><span>Vision &amp; Mission</span><i></i><u>06</u></div>
+          <div class="toc-r"><b>1.4</b><span>Values &amp; Culture</span><i></i><u>07</u></div>
         </div>
-        <ul class="toc-mini">
-          <li><b>1.1</b><span>Company Introduction</span><u>04</u></li>
-          <li><b>1.2</b><span>Positioning &amp; Script</span><u>05</u></li>
-          <li><b>1.3</b><span>Vision &amp; Mission</span><u>06</u></li>
-          <li><b>1.4</b><span>Values &amp; Culture</span><u>07</u></li>
-        </ul>
-      </div>
-
-      <div>
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
-          <span style="font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold)">02</span>
-          <span style="font-family:var(--fd);font-weight:800;font-size:21px;color:#fff;letter-spacing:-.01em">Verbal Identity</span>
-        </div>
-        <ul class="toc-mini">
-          <li><b>2.1</b><span>Messaging Pillars</span><u>08</u></li>
-          <li><b>2.2</b><span>Voice &amp; Character</span><u>09</u></li>
-        </ul>
-      </div>
-
-      <div style="grid-column:1/-1">
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
-          <span style="font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold)">03</span>
-          <span style="font-family:var(--fd);font-weight:800;font-size:21px;color:#fff;letter-spacing:-.01em">Visual Identity</span>
-          <span style="font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-left:6px">The working section</span>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0 56px">
-          <ul class="toc-mini">
-            <li><b>3.1</b><span>Logo System &middot; Overview &amp; Anatomy</span><u>11</u></li>
-            <li><b>3.2</b><span>Logo Formats &amp; Backgrounds</span><u>12</u></li>
-            <li><b>3.3</b><span>Clearspace &amp; Minimum Size</span><u>13</u></li>
-          </ul>
-          <ul class="toc-mini">
-            <li><b>3.4</b><span>Logo Don&rsquo;ts</span><u>14</u></li>
-            <li><b>3.5</b><span>Colour System</span><u>15</u></li>
-            <li><b>3.6</b><span>Typography &amp; Language</span><u>16</u></li>
-          </ul>
+        <div class="toc-grp">
+          <div class="toc-h"><span class="n">02</span><span class="t">Verbal Identity</span></div>
+          <div class="toc-r"><b>2.1</b><span>Messaging Pillars</span><i></i><u>08</u></div>
+          <div class="toc-r"><b>2.2</b><span>Voice &amp; Character</span><i></i><u>09</u></div>
         </div>
       </div>
-
-      <div>
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
-          <span style="font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold)">04</span>
-          <span style="font-family:var(--fd);font-weight:800;font-size:21px;color:#fff;letter-spacing:-.01em">Applications</span>
+      <div class="toc">
+        <div class="toc-grp">
+          <div class="toc-h"><span class="n">03</span><span class="t">Visual Identity</span><span class="w">The working section</span></div>
+          <div class="toc-r"><b>3.1</b><span>Logo System &middot; Overview &amp; Anatomy</span><i></i><u>11</u></div>
+          <div class="toc-r"><b>3.2</b><span>Logo Formats &amp; Backgrounds</span><i></i><u>12</u></div>
+          <div class="toc-r"><b>3.3</b><span>Clearspace &amp; Minimum Size</span><i></i><u>13</u></div>
+          <div class="toc-r"><b>3.4</b><span>Logo Don&rsquo;ts</span><i></i><u>14</u></div>
+          <div class="toc-r"><b>3.5</b><span>Colour System</span><i></i><u>15</u></div>
+          <div class="toc-r"><b>3.6</b><span>Typography &amp; Language</span><i></i><u>16</u></div>
         </div>
-        <ul class="toc-mini">
-          <li><b>4.1</b><span>Packaging System</span><u>18</u></li>
-          <li><b>4.2</b><span>Retail, Shelf &amp; Stationery</span><u>19</u></li>
-        </ul>
       </div>
-
-      <div>
-        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
-          <span style="font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold)">05</span>
-          <span style="font-family:var(--fd);font-weight:800;font-size:21px;color:#fff;letter-spacing:-.01em">Close</span>
+      <div class="toc">
+        <div class="toc-grp">
+          <div class="toc-h"><span class="n">04</span><span class="t">Applications</span></div>
+          <div class="toc-r"><b>4.1</b><span>Packaging System</span><i></i><u>18</u></div>
+          <div class="toc-r"><b>4.2</b><span>Retail, Shelf &amp; Stationery</span><i></i><u>19</u></div>
         </div>
-        <ul class="toc-mini">
-          <li><b>5.1</b><span>Digital, Governance &amp; Close</span><u>20</u></li>
-        </ul>
-      </div>
-
-
-      <!-- the system at a glance -->
-      <div style="grid-column:1/-1;margin-top:auto;padding-top:26px;border-top:2px solid var(--red);
-                  display:grid;grid-template-columns:auto auto auto 1fr;gap:0 52px;align-items:flex-start">
-        <div>
-          <div class="lab-q" style="font-size:10px;margin-bottom:12px">The mark</div>
-          <svg viewBox="0 0 1000 655" width="104" height="68" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vit&rsquo;s" style="display:block">
-            <path id="tocb" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/>
-            <use href="#tocb" fill="none" stroke="#fff" stroke-width="11"/>
-            <text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text>
-          </svg>
-        </div>
-
-        <div>
-          <div class="lab-q" style="font-size:10px;margin-bottom:12px">Five colours</div>
-          <div style="display:flex;gap:8px">
-            <div style="text-align:center"><span style="display:block;width:38px;height:38px;background:#EC1F28"></span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:6px">RED</span></div>
-            <div style="text-align:center"><span style="display:block;width:38px;height:38px;background:#F0A81E"></span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:6px">GOLD</span></div>
-            <div style="text-align:center"><span style="display:block;width:38px;height:38px;background:#191410;box-shadow:0 0 0 1px rgba(255,255,255,.25)"></span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:6px">INK</span></div>
-            <div style="text-align:center"><span style="display:block;width:38px;height:38px;background:#FAF4E9"></span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:6px">STEAM</span></div>
-            <div style="text-align:center"><span style="display:block;width:38px;height:38px;background:#8A7360"></span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:6px">BROTH</span></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="lab-q" style="font-size:10px;margin-bottom:12px">Three faces</div>
-          <div style="display:flex;gap:22px;align-items:flex-end">
-            <div><span style="display:block;font-family:var(--fd);font-weight:800;font-stretch:112%;font-size:30px;color:#fff;line-height:1">Aa</span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:7px">ARCHIVO</span></div>
-            <div><span style="display:block;font-family:var(--fb);font-weight:500;font-size:30px;color:#fff;line-height:1">Aa</span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:7px">FIGTREE</span></div>
-            <div><span style="display:block;font-family:var(--fm);font-weight:500;font-size:30px;color:#fff;line-height:1">Aa</span>
-              <span style="display:block;font-family:var(--fm);font-size:8.5px;letter-spacing:.06em;color:rgba(255,255,255,.5);margin-top:7px">JB MONO</span></div>
-          </div>
-        </div>
-
-        <div style="text-align:right">
-          <div class="lab-q" style="font-size:10px;margin-bottom:12px">Brand promise</div>
-          <div style="font-family:var(--fd);font-weight:800;font-size:29px;line-height:1.18;letter-spacing:-.024em;
-                      color:#fff;font-stretch:104%">The only one.<br><span style="color:var(--gold)">Since 1975.</span></div>
+        <div class="toc-grp">
+          <div class="toc-h"><span class="n">05</span><span class="t">Close</span></div>
+          <div class="toc-r"><b>5.1</b><span>Digital, Governance &amp; Close</span><i></i><u>20</u></div>
         </div>
       </div>
     </div>
 
-    <!-- how to use -->
-    <div class="stack" data-r="3" style="border-left:1px solid rgba(255,255,255,.14);padding-left:48px">
-      <div class="lab-h" style="margin-bottom:-6px">The rules of use</div>
-      <div>
-        <div class="tick" style="color:rgba(255,255,255,.78)">Read Section 01 first. Every visual rule that follows carries the story in Brand &mdash; a layout that looks right but says the wrong thing has still failed</div>
-        <div class="tick" style="color:rgba(255,255,255,.78)">Work from Section 03. Mark, colour and type are specified with values you can copy straight into a file</div>
-        <div class="tick" style="color:rgba(255,255,255,.78)">Check 3.4 before you ship. The Don&rsquo;ts page is short on purpose: if your artwork appears there, change it</div>
-        <div class="tick" style="color:rgba(255,255,255,.78)">Nothing ships off-system. Type, colour, spacing and grid come from Section 03, never re-invented per artwork</div>
-        <div class="tick" style="color:rgba(255,255,255,.78)">The mark is never redrawn or rebuilt. Vector masters are released by Brand Governance &mdash; see 5.1</div>
-      </div>
-      <div class="panel" style="border-top:2px solid var(--gold);padding-top:18px;margin-top:6px">
+    <!-- the rules band sits on the page floor, so the contents above can breathe -->
+    <div data-r="3" style="align-self:end;border-top:2px solid var(--red);padding-top:26px;
+                           display:grid;grid-template-columns:repeat(4,1fr) 1.15fr;gap:44px">
+        <div>
+          <div style="display:flex;gap:12px;align-items:baseline">
+            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">01</span>
+            <h5 class="h-xs" style="font-size:17px;color:#fff">Read Section 01 first</h5>
+          </div>
+          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">Every visual rule that follows carries the story in Brand. A layout that looks right but says the wrong thing has still failed.</p>
+        </div>
+        <div>
+          <div style="display:flex;gap:12px;align-items:baseline">
+            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">02</span>
+            <h5 class="h-xs" style="font-size:17px;color:#fff">Work from Section 03</h5>
+          </div>
+          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">Mark, colour and type are specified with values you can copy straight into a file.</p>
+        </div>
+        <div>
+          <div style="display:flex;gap:12px;align-items:baseline">
+            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">03</span>
+            <h5 class="h-xs" style="font-size:17px;color:#fff">Check 3.4 before you ship</h5>
+          </div>
+          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">The Don&rsquo;ts page is short on purpose. If your artwork appears there, change it.</p>
+        </div>
+        <div>
+          <div style="display:flex;gap:12px;align-items:baseline">
+            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">04</span>
+            <h5 class="h-xs" style="font-size:17px;color:#fff">Nothing ships off-system</h5>
+          </div>
+          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">Type, colour, spacing and grid come from Section 03, and the mark is never redrawn.</p>
+        </div>
+      <div style="border-left:1px solid rgba(255,255,255,.16);padding-left:44px">
         <div class="lab" style="color:var(--gold)">Status of this edition</div>
-        <p class="sm" style="color:rgba(255,255,255,.7);margin-top:10px">V1.0 is a <strong style="color:#fff">wireframe draft</strong>.
-          Structure, hierarchy and copy are proposed for review. Pages carrying a dashed frame are holding
-          positions for art direction that has not been commissioned yet. No file in this edition is a
-          production master.</p>
+        <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">V1.0 is a
+          <strong style="color:#fff">wireframe draft</strong>. Pages carrying a dashed frame are holding positions
+          for art direction not yet commissioned. No file here is a production master.</p>
       </div>
     </div>
   </div>
 
   <footer class="s-foot">
-    <span>Brand OS &middot; Vit&rsquo;s Brand Identity</span>
+    <span>Brand OS &middot; Vit&rsquo;s Brand Identity &middot; The rules of use</span>
     <span class="pg">&copy; 2026 Vit Makanan (KL) Sdn Bhd<b>02</b></span>
   </footer>
 </section>
 
-<!-- ================================================================
-     03 · DIVIDER 01 — BRAND
-     ================================================================ -->
 <section class="slide divider" data-sec="1.0" data-secname="Brand" data-title="01 &middot; Brand — Divider">
   <div class="dmeta"><span>Vit&rsquo;s &middot; Brand Identity Book</span><span>Section <b>01</b> &middot; Brand</span></div>
 
@@ -977,16 +888,8 @@ body.agrid #agrid{display:block}
     <div class="num-xl">01</div>
   </div>
 
-  <div class="didx" data-r="4" style="bottom:auto;top:404px">
-    <div><span class="n">1.1</span><span class="s">Company Introduction</span></div>
-    <div><span class="n">1.2</span><span class="s">Positioning &amp; Script</span></div>
-    <div><span class="n">1.3</span><span class="s">Vision &amp; Mission</span></div>
-    <div><span class="n">1.4</span><span class="s">Values &amp; Culture</span></div>
-    <div><span class="n">2.1</span><span class="s">Messaging Pillars</span></div>
-    <div><span class="n">2.2</span><span class="s">Voice &amp; Character</span></div>
-  </div>
 
-  <div class="dfoot"><span>Brand OS &middot; V1.0</span><span>Pages 04 &rarr; 09</span><span>03</span></div>
+  <div class="dfoot"><span>Brand OS &middot; V1.0</span><span class="dfoot-r"><span>Pages 04 &rarr; 09</span><span>03</span></span></div>
 </section>
 
 <!-- ================================================================
@@ -1004,74 +907,73 @@ body.agrid #agrid{display:block}
     <div class="rule"></div>
   </header>
 
-  <div class="s-body g-75" style="gap:64px">
+  <div class="s-body" style="grid-template-rows:auto 1fr;gap:0">
 
-    <div class="stack" data-r="2" style="justify-content:space-between">
-      <p class="lead">Vit&rsquo;s began in 1975 as a passion for making noodles. From a small kitchen in Selayang
-        it has grown into a leading Malaysian halal-certified noodle brand, exporting to more than thirty countries.</p>
-      <p>The name comes from the Mandarin <strong>Wei Yi</strong>, meaning <strong>the only one</strong>. The phoenix
-        that carries it stands for power, renewal and longevity. Vit&rsquo;s intends to be Malaysia&rsquo;s one and
-        only noodle expert of choice.</p>
+    <div style="display:grid;grid-template-columns:1.4239fr 1fr;gap:72px;align-items:start" data-r="2">
+      <div>
+        <p class="lead">Vit&rsquo;s began in 1975 as a passion for making noodles. From a small kitchen in Selayang
+          it has grown into a leading Malaysian halal-certified noodle brand, exporting to more than thirty countries.</p>
+        <p style="margin-top:20px">The name comes from the Mandarin <strong>Wei Yi</strong>, meaning
+          <strong>the only one</strong> &mdash; a standard, not a boast. The phoenix that carries it stands for
+          power, renewal and longevity. Vit&rsquo;s intends to be Malaysia&rsquo;s one and only noodle expert of choice.</p>
 
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:4px">
-        <div class="stat hot"><div class="n">50<em>+</em></div><div class="l">Years in<br>the category</div></div>
-        <div class="stat"><div class="n">30<em>+</em></div><div class="l">Export<br>markets</div></div>
-        <div class="stat"><div class="n">105<em>k</em></div><div class="l">Sq ft plant<br>in Rawang</div></div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:36px">
+          <div class="stat hot"><div class="n">50<em>+</em></div><div class="l">Years in<br>the category</div></div>
+          <div class="stat"><div class="n">30<em>+</em></div><div class="l">Export<br>markets</div></div>
+          <div class="stat"><div class="n">105<em>k</em></div><div class="l">Sq ft plant<br>in Rawang</div></div>
+        </div>
       </div>
 
-      <div class="push">
-        <div class="lab-h">Five chapters</div>
-        <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:2px solid var(--ink)">
-          <div style="padding:14px 18px 0 0;border-right:1px solid var(--hair-2)">
-            <div class="lab" style="font-size:11px">1975</div>
-            <h5 class="h-xs" style="margin-top:8px;font-size:16px">A kitchen in Selayang</h5>
-            <p class="xs" style="margin-top:6px">A passion for making noodles becomes a business.</p></div>
-          <div style="padding:14px 18px 0;border-right:1px solid var(--hair-2)">
-            <div class="lab" style="font-size:11px">1980</div>
-            <h5 class="h-xs" style="margin-top:8px;font-size:16px">Halal by choice</h5>
-            <p class="xs" style="margin-top:6px">Certification sought and obtained, so every Malaysian could eat it.</p></div>
-          <div style="padding:14px 18px 0;border-right:1px solid var(--hair-2)">
-            <div class="lab" style="font-size:11px">Growth</div>
-            <h5 class="h-xs" style="margin-top:8px;font-size:16px">Rawang, 105,000 sq ft</h5>
-            <p class="xs" style="margin-top:6px">The plant moves to meet rising international demand.</p></div>
-          <div style="padding:14px 18px 0;border-right:1px solid var(--hair-2)">
-            <div class="lab" style="font-size:11px">Standard</div>
-            <h5 class="h-xs" style="margin-top:8px;font-size:16px">HACCP, GMP, FSSC</h5>
-            <p class="xs" style="margin-top:6px">Food safety anchored to global benchmarks at every stage.</p></div>
-          <div style="padding:14px 0 0 18px">
-            <div class="lab" style="font-size:11px">Today</div>
-            <h5 class="h-xs" style="margin-top:8px;font-size:16px">30+ countries</h5>
-            <p class="xs" style="margin-top:6px">Asia, the Middle East, Europe and beyond.</p></div>
+      <div>
+        <div class="lab-h" style="margin-bottom:6px">The record</div>
+        <div class="kv" style="--kvpad:10px">
+          <div><span class="k">Legal entity</span><span class="v">Vit Makanan (KL) Sdn Bhd &middot; 25143-H</span></div>
+          <div><span class="k">Founded</span><span class="v hot">1975 &middot; Selayang</span></div>
+          <div><span class="k">HQ &amp; plant</span><span class="v">Rawang, Selangor</span></div>
+          <div><span class="k">Facility</span><span class="v">105,000 sq ft</span></div>
+          <div><span class="k">Markets</span><span class="v hot">Malaysia + 30 export</span></div>
+          <div><span class="k">Categories</span><span class="v">Instant &middot; Fresh &middot; Air-dried</span></div>
+          <div><span class="k">Also</span><span class="v">OEM &amp; private label</span></div>
+        </div>
+
+        <div class="lab-h" style="margin-top:26px;margin-bottom:12px">Certification</div>
+        <div class="chips">
+          <span class="chip on">HALAL Malaysia</span><span class="chip">FSSC 22000</span>
+          <span class="chip">ISO 22000</span><span class="chip">HACCP</span>
+          <span class="chip">GMP</span><span class="chip">SMETA</span>
         </div>
       </div>
     </div>
 
-    <div class="stack" data-r="3">
-      <div class="lab-h" style="margin-bottom:-6px">The record</div>
-      <div class="kv" style="--kvpad:10px">
-        <div><span class="k">Legal entity</span><span class="v">Vit Makanan (KL) Sdn Bhd &middot; 25143-H</span></div>
-        <div><span class="k">Founded</span><span class="v hot">1975 &middot; Selayang</span></div>
-        <div><span class="k">HQ &amp; plant</span><span class="v">Rawang, Selangor</span></div>
-        <div><span class="k">Facility</span><span class="v">105,000 sq ft</span></div>
-        <div><span class="k">Markets</span><span class="v hot">Malaysia + 30 export</span></div>
-        <div><span class="k">Categories</span><span class="v">Instant &middot; Fresh &middot; Air-dried</span></div>
-        <div><span class="k">Also</span><span class="v">OEM &amp; private label</span></div>
-      </div>
-
-      <div class="lab-h" style="margin-top:12px;margin-bottom:-6px">Certification</div>
-      <div class="chips">
-        <span class="chip on">HALAL Malaysia</span>
-        <span class="chip">FSSC 22000</span>
-        <span class="chip">ISO 22000</span>
-        <span class="chip">HACCP</span>
-        <span class="chip">GMP</span>
-        <span class="chip">SMETA</span>
-      </div>
-
-      <div class="panel tint push">
-        <div class="lab">Wei Yi &middot; &#21807;&#19968;</div>
-        <p class="sm" style="margin-top:10px">The name is a standard, not a boast. If a competitor can do it the
-          same way, the job is not finished.</p>
+    <!-- the timeline runs the full measure and sits on the page floor -->
+    <div data-r="3" style="align-self:end">
+      <div class="lab-h" style="margin-bottom:0">Five chapters</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:2px solid var(--ink)">
+        <div style="padding:18px 34px 0 0;border-right:1px solid var(--hair-2);">
+          <div class="lab" style="font-size:11px">1975</div>
+          <h5 class="h-xs" style="margin-top:10px;font-size:18px">A kitchen in Selayang</h5>
+          <p class="sm" style="margin-top:8px">A passion for making noodles becomes a business.</p>
+        </div>
+        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);">
+          <div class="lab" style="font-size:11px">1980</div>
+          <h5 class="h-xs" style="margin-top:10px;font-size:18px">Halal by choice</h5>
+          <p class="sm" style="margin-top:8px">Certification sought and obtained, so every Malaysian could eat it.</p>
+        </div>
+        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);">
+          <div class="lab" style="font-size:11px">Growth</div>
+          <h5 class="h-xs" style="margin-top:10px;font-size:18px">Rawang, 105,000 sq ft</h5>
+          <p class="sm" style="margin-top:8px">The plant moves to meet rising international demand.</p>
+        </div>
+        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);">
+          <div class="lab" style="font-size:11px">Standard</div>
+          <h5 class="h-xs" style="margin-top:10px;font-size:18px">HACCP, GMP, FSSC</h5>
+          <p class="sm" style="margin-top:8px">Food safety anchored to global benchmarks at every stage.</p>
+        </div>
+        <div style="padding:18px 0 0 34px;">
+          <div class="lab" style="font-size:11px">Today</div>
+          <h5 class="h-xs" style="margin-top:10px;font-size:18px">30+ countries</h5>
+          <p class="sm" style="margin-top:8px">Asia, the Middle East, Europe and beyond.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1082,9 +984,6 @@ body.agrid #agrid{display:block}
   </footer>
 </section>
 
-<!-- ================================================================
-     05 · 1.2 POSITIONING & SCRIPT
-     ================================================================ -->
 <section class="slide paper" data-sec="1.0" data-secname="Brand" data-title="Positioning &amp; Script &middot; What We Say First">
   <header class="s-head">
     <div class="row">
@@ -1503,16 +1402,8 @@ body.agrid #agrid{display:block}
     <div class="num-xl">03</div>
   </div>
 
-  <div class="didx" data-r="4" style="bottom:auto;top:404px">
-    <div><span class="n">3.1</span><span class="s">Logo System &middot; Overview &amp; Anatomy</span></div>
-    <div><span class="n">3.2</span><span class="s">Logo Formats &amp; Backgrounds</span></div>
-    <div><span class="n">3.3</span><span class="s">Clearspace &amp; Minimum Size</span></div>
-    <div><span class="n">3.4</span><span class="s">Logo Don&rsquo;ts</span></div>
-    <div><span class="n">3.5</span><span class="s">Colour System</span></div>
-    <div><span class="n">3.6</span><span class="s">Typography &amp; Language</span></div>
-  </div>
 
-  <div class="dfoot"><span>Brand OS &middot; V1.0</span><span>Pages 11 &rarr; 16</span><span>10</span></div>
+  <div class="dfoot"><span>Brand OS &middot; V1.0</span><span class="dfoot-r"><span>Pages 11 &rarr; 16</span><span>10</span></span></div>
 </section>
 
 <!-- ================================================================
@@ -2354,13 +2245,8 @@ body.agrid #agrid{display:block}
     <div class="num-xl">04</div>
   </div>
 
-  <div class="didx" data-r="4" style="bottom:auto;top:404px">
-    <div><span class="n">4.1</span><span class="s">Packaging System</span></div>
-    <div><span class="n">4.2</span><span class="s">Retail, Shelf &amp; Stationery</span></div>
-    <div><span class="n">5.1</span><span class="s">Digital, Governance &amp; Close</span></div>
-  </div>
 
-  <div class="dfoot"><span>Brand OS &middot; V1.0</span><span>Pages 18 &rarr; 20</span><span>17</span></div>
+  <div class="dfoot"><span>Brand OS &middot; V1.0</span><span class="dfoot-r"><span>Pages 18 &rarr; 20</span><span>17</span></span></div>
 </section>
 
 <!-- ================================================================

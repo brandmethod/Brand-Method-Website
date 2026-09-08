@@ -94,8 +94,8 @@
   /* --- Brand palette · locked, do not extend ------------------------------ */
   --red:    #EC1F28;   /* Vit's Red      · the signature, the field           */
   --signal: #C4141C;   /* Deep Red       · text-safe red, small type + rules  */
-  --gold:   #F0A81E;   /* Golden Wheat   · rationed accent                    */
-  --goldD:  #B87C08;   /* Gold, darkened · gold type on light grounds         */
+  --gold:   #F0C31E;   /* Golden Wheat   · rationed accent                    */
+  --goldD:  #A88508;   /* Gold, darkened · gold type on light grounds         */
   --ink:    #191410;   /* Soy Ink        · headlines, body, dark grounds      */
   --steam:  #FAF4E9;   /* Steam          · locked brand ground               */
   --paper:  #FFFFFF;   /* true white     · mocks and swatch fields only      */
@@ -104,9 +104,6 @@
   --mist:   #8A7360;
 
   /* --- Derived surfaces (tints of the locked palette only) ---------------- */
-  /* The colour page runs on Steam carrying a 20% wash of Golden Wheat. A derived
-     surface: locked Steam is unchanged, and is what that page's swatch states. */
-  --ident:   #F8E5C0;
   --ink-2:   #221B15;
   --hair:    rgba(25,20,16,.14);
   --hair-2:  rgba(25,20,16,.075);
@@ -254,7 +251,7 @@ body.zoomed #stage:active{cursor:grabbing}
 .slide:not(.cover):not(.divider){
   background:
     radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.05), transparent 62%),
-    radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.07), transparent 60%),
+    radial-gradient(60% 52% at 2% 108%, rgba(240,195,30,.07), transparent 60%),
     var(--steam);
 }
 .slide.paper:not(.cover):not(.divider){
@@ -262,15 +259,6 @@ body.zoomed #stage:active{cursor:grabbing}
     radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.045), transparent 62%),
     radial-gradient(60% 52% at 2% 108%, rgba(138,115,96,.06), transparent 60%),
     var(--paper);
-}
-
-/* The colour identity carries the gold wash. Same luminous ground as the rest
-   of the book, pitched further into Golden Wheat. */
-.slide.warm:not(.cover):not(.divider):not(.dark){
-  background:
-    radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.05), transparent 62%),
-    radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.14), transparent 60%),
-    var(--ident);
 }
 
 /* -- header ---------------------------------------------------------------- */
@@ -289,7 +277,7 @@ h1.s-title .lt{color:var(--mist);font-weight:700}
 .rule{position:relative;height:1px;background:var(--hair)}
 .rule::before{content:'';position:absolute;left:0;top:0;height:2px;width:88px;background:var(--red)}
 /* Gold enters as a band, never as type on a light ground: the book's own contrast
-   table refuses gold text on Steam at 1.9:1. */
+   table refuses gold text on Steam at 1.5:1. */
 .rule::after{content:'';position:absolute;left:96px;top:0;height:2px;width:26px;background:var(--gold)}
 
 /* dark pages · must out-specify the luminous-ground rule above */
@@ -299,7 +287,7 @@ h1.s-title .lt{color:var(--mist);font-weight:700}
 .slide.dark .s-foot{color:rgba(255,255,255,.6)}
 .slide.dark .s-foot .pg b{color:var(--gold)}
 /* On Ink, Deep Red drops to ~2:1 — so the text-safe accent role passes to Golden
-   Wheat, which the colour page clears at 9.0:1. Rebinding the token carries that
+   Wheat, which the colour page clears at 10.9:1. Rebinding the token carries that
    rule into every inline use on a dark page. */
 .slide.dark{--signal:var(--gold)}
 .slide.dark .eyebrow{color:var(--gold)}
@@ -371,7 +359,7 @@ strong{font-weight:700;color:var(--ink)}
 .panel{position:relative;padding:22px 0 0;background:transparent;border:none}
 .panel.flat{padding:18px 0 0}
 .panel.tint{background:rgba(236,31,40,.05);border:none;padding:22px 26px}
-.panel.gold{background:rgba(240,168,30,.09);border:none;padding:22px 26px}
+.panel.gold{background:rgba(240,195,30,.09);border:none;padding:22px 26px}
 .panel.hold{background:rgba(25,20,16,.04);padding:24px 26px}
 .panel .pn{position:absolute;top:0;right:0;padding:6px 9px;font-family:var(--fm);
   font-size:11.5px;letter-spacing:.1em;color:var(--mist)}
@@ -1538,7 +1526,7 @@ body.agrid #agrid{display:block}
                 stroke-width="3" stroke-dasharray="14 12"/>
 
           <!-- quarter divisions: the X unit is one of these -->
-          <g stroke="rgba(240,168,30,.55)" stroke-width="2.5">
+          <g stroke="rgba(240,195,30,.55)" stroke-width="2.5">
             <path d="M0 163.75H1000M0 327.5H1000M0 491.25H1000"/>
           </g>
           <g stroke="rgba(25,20,16,.13)" stroke-width="2.5">
@@ -1576,10 +1564,10 @@ body.agrid #agrid{display:block}
           <text x="1108" y="340" fill="#191410" font-family="JetBrains Mono" font-size="34" font-weight="700">655</text>
 
           <!-- the X unit, called out on the gold division -->
-          <g stroke="#B87C08" stroke-width="2.5">
+          <g stroke="#A88508" stroke-width="2.5">
             <path d="M-70 0V163.75M-82 0h24M-82 163.75h24"/>
           </g>
-          <text x="-96" y="96" text-anchor="end" fill="#B87C08" font-family="JetBrains Mono"
+          <text x="-96" y="96" text-anchor="end" fill="#A88508" font-family="JetBrains Mono"
                 font-size="34" font-weight="700">X</text>
         </svg>
       </div>
@@ -1712,9 +1700,9 @@ body.agrid #agrid{display:block}
         </div>
       </div>
       <div style="display:flex;flex-direction:column;min-height:0">
-        <div class="mock" style="flex:1;background:#F0A81E;display:flex;align-items:center;justify-content:center;position:relative;min-height:0"><span style="position:absolute;top:8px;left:10px;z-index:2;width:20px;height:20px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:12px;font-weight:700;color:#C4141C;box-shadow:0 0 0 1px rgba(25,20,16,.14)">&#10005;</span><svg viewBox="0 0 1000 655" width="130" height="85" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vit&rsquo;s" style="display:block;flex:none"><path id="gb5" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><use href="#gb5" fill="none" stroke="#fff" stroke-width="11"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></div>
+        <div class="mock" style="flex:1;background:#F0C31E;display:flex;align-items:center;justify-content:center;position:relative;min-height:0"><span style="position:absolute;top:8px;left:10px;z-index:2;width:20px;height:20px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:12px;font-weight:700;color:#C4141C;box-shadow:0 0 0 1px rgba(25,20,16,.14)">&#10005;</span><svg viewBox="0 0 1000 655" width="130" height="85" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vit&rsquo;s" style="display:block;flex:none"><path id="gb5" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><use href="#gb5" fill="none" stroke="#fff" stroke-width="11"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></div>
         <div style="padding-top:9px">
-          <div style="font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mist)">Golden Wheat <span style="font-weight:500;opacity:.7">#F0A81E</span></div>
+          <div style="font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mist)">Golden Wheat <span style="font-weight:500;opacity:.7">#F0C31E</span></div>
           <p class="xs" style="margin-top:4px">Conditional: flavour bands only, never with the ink variant.</p>
         </div>
       </div>
@@ -1887,7 +1875,7 @@ body.agrid #agrid{display:block}
 <!-- ================================================================
      16 · 3.5 COLOUR SYSTEM
      ================================================================ -->
-<section class="slide warm" data-sec="3.0" data-secname="Visual Identity" data-title="Colour System &middot; Palette, Proportion &amp; Cleared Pairings">
+<section class="slide" data-sec="3.0" data-secname="Visual Identity" data-title="Colour System &middot; Palette, Proportion &amp; Cleared Pairings">
   <header class="s-head" style="margin-bottom:30px">
     <div class="row">
       <div>
@@ -1911,10 +1899,10 @@ body.agrid #agrid{display:block}
         </div>
       </div>
       <div class="sw">
-        <div class="chipbox" style="background:#F0A81E"><span class="hexo">#F0A81E</span></div>
+        <div class="chipbox" style="background:#F0C31E"><span class="hexo">#F0C31E</span></div>
         <div class="meta">
           <div class="nm">Golden Wheat</div>
-          <div class="sp">RGB 240, 168, 30<br>CMYK 0, 30, 88, 6<br>PANTONE <span style="color:var(--signal)">To be matched</span></div>
+          <div class="sp">RGB 240, 195, 30<br>CMYK 0, 19, 88, 6<br>PANTONE <span style="color:var(--signal)">To be matched</span></div>
           <div class="ds">Wheat, heat and the crest. Flavour banding and the single warm accent.</div>
         </div>
       </div>
@@ -1950,7 +1938,7 @@ body.agrid #agrid{display:block}
         <span style="flex:42;background:#FAF4E9;color:#191410">42% &nbsp;STEAM &amp; PAPER</span>
         <span style="flex:26;background:#EC1F28;color:#fff">26% &nbsp;RED</span>
         <span style="flex:20;background:#191410;color:#fff">20% &nbsp;INK</span>
-        <span style="flex:8;background:#F0A81E;color:#191410">8%</span>
+        <span style="flex:8;background:#F0C31E;color:#191410">8%</span>
         <span style="flex:4;background:#8A7360;color:#fff">4%</span>
       </div>
     </div>
@@ -1993,12 +1981,12 @@ body.agrid #agrid{display:block}
           </div>
         </div>
         <div style="display:flex;flex-direction:column;border:1px solid var(--hair)">
-          <div style="background:#F0A81E;color:#191410;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:20px 12px;
+          <div style="background:#F0C31E;color:#191410;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:20px 12px;
                       font-family:var(--fd);font-weight:800;font-size:30px;letter-spacing:-.01em">VIT&rsquo;S</div>
           <div style="padding:11px 12px;background:var(--paper);border-top:1px solid var(--hair)">
             <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Ink on Gold</div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:6px">
-              <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">9.0 : 1</span>
+              <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">10.9 : 1</span>
               <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#417A2E">AAA</span>
             </div>
           </div>
@@ -2021,7 +2009,7 @@ body.agrid #agrid{display:block}
             <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Paper on Red</div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:6px">
               <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">4.4 : 1</span>
-              <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#B87C08">AA &middot; 18px+</span>
+              <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#A88508">AA &middot; 18px+</span>
             </div>
           </div>
         </div>
@@ -2032,17 +2020,17 @@ body.agrid #agrid{display:block}
             <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Broth on Steam</div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:6px">
               <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">4.1 : 1</span>
-              <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#B87C08">24px+ only</span>
+              <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#A88508">24px+ only</span>
             </div>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;border:1px solid var(--hair)">
-          <div style="background:#FAF4E9;color:#F0A81E;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:20px 12px;
+          <div style="background:#FAF4E9;color:#F0C31E;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:20px 12px;
                       font-family:var(--fd);font-weight:800;font-size:30px;letter-spacing:-.01em">VIT&rsquo;S</div>
           <div style="padding:11px 12px;background:var(--paper);border-top:1px solid var(--hair)">
             <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Gold on Steam</div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:6px">
-              <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">1.9 : 1</span>
+              <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">1.5 : 1</span>
               <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#C4141C">Refused</span>
             </div>
           </div>

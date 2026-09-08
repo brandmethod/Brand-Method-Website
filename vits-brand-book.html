@@ -94,8 +94,8 @@
   /* --- Brand palette · locked, do not extend ------------------------------ */
   --red:    #EC1F28;   /* Vit's Red      · the signature, the field           */
   --signal: #C4141C;   /* Deep Red       · text-safe red, small type + rules  */
-  --gold:   #FFDE21;   /* Golden Wheat   · rationed accent                    */
-  --goldD:  #9D8914;   /* Gold, darkened · gold type on light grounds         */
+  --mustard: #FFDE21;  /* Mustard Yellow · rationed accent                     */
+  --mustardD:#9D8914;  /* Mustard, deep  · mustard type on light grounds       */
   --ink:    #191410;   /* Soy Ink        · headlines, body, dark grounds      */
   --steam:  #FAF4E9;   /* Steam          · locked brand ground               */
   --paper:  #FFFFFF;   /* true white     · mocks and swatch fields only      */
@@ -276,28 +276,28 @@ h1.s-title .lt{color:var(--mist);font-weight:700}
 .s-head .rule{margin-top:24px}
 .rule{position:relative;height:1px;background:var(--hair)}
 .rule::before{content:'';position:absolute;left:0;top:0;height:2px;width:88px;background:var(--red)}
-/* Gold enters as a band, never as type on a light ground: the book's own contrast
-   table refuses gold text on Steam at 1.2:1. */
-.rule::after{content:'';position:absolute;left:96px;top:0;height:2px;width:26px;background:var(--gold)}
+/* Mustard enters as a band, never as type on a light ground: the book's own
+   contrast table refuses mustard text on Steam at 1.2:1. */
+.rule::after{content:'';position:absolute;left:96px;top:0;height:2px;width:26px;background:var(--mustard)}
 
 /* dark pages · must out-specify the luminous-ground rule above */
 .slide.dark:not(.cover):not(.divider){background:var(--ink)}
 .slide.dark .s-title,.slide.dark h2,.slide.dark h3,.slide.dark h4{color:#fff}
 .slide.dark .rule{background:rgba(255,255,255,.16)}
 .slide.dark .s-foot{color:rgba(255,255,255,.6)}
-.slide.dark .s-foot .pg b{color:var(--gold)}
+.slide.dark .s-foot .pg b{color:var(--mustard)}
 /* On Ink, Deep Red drops to ~2:1 — so the text-safe accent role passes to Golden
-   Wheat, which the colour page clears at 13.7:1. Rebinding the token carries that
+   Yellow, which the colour page clears at 13.7:1. Rebinding the token carries that
    rule into every inline use on a dark page. */
-.slide.dark{--signal:var(--gold)}
-.slide.dark .eyebrow{color:var(--gold)}
-.slide.dark .eyebrow::before{background:var(--gold)}
+.slide.dark{--signal:var(--mustard)}
+.slide.dark .eyebrow{color:var(--mustard)}
+.slide.dark .eyebrow::before{background:var(--mustard)}
 .slide.dark .s-meta{color:rgba(255,255,255,.55)}
-.slide.dark .s-meta b{color:var(--gold)}
+.slide.dark .s-meta b{color:var(--mustard)}
 .slide.dark p,.slide.dark li{color:rgba(255,255,255,.72)}
 .slide.dark .lead{color:rgba(255,255,255,.9)}
 .slide.dark .lab-h{color:rgba(255,255,255,.62)}
-.slide.dark .lab{color:var(--gold)}
+.slide.dark .lab{color:var(--mustard)}
 .slide.dark strong{color:#fff}
 
 /* -- body ------------------------------------------------------------------ */
@@ -359,7 +359,7 @@ strong{font-weight:700;color:var(--ink)}
 .panel{position:relative;padding:22px 0 0;background:transparent;border:none}
 .panel.flat{padding:18px 0 0}
 .panel.tint{background:rgba(236,31,40,.05);border:none;padding:22px 26px}
-.panel.gold{background:rgba(255,222,33,.09);border:none;padding:22px 26px}
+.panel.mustard{background:rgba(255,222,33,.09);border:none;padding:22px 26px}
 .panel.hold{background:rgba(25,20,16,.04);padding:24px 26px}
 .panel .pn{position:absolute;top:0;right:0;padding:6px 9px;font-family:var(--fm);
   font-size:11.5px;letter-spacing:.1em;color:var(--mist)}
@@ -391,7 +391,7 @@ strong{font-weight:700;color:var(--ink)}
 .slide.dark .kv div{border-top-color:rgba(255,255,255,.1)}
 .slide.dark .kv .k{color:#fff}
 .slide.dark .kv .v{color:rgba(255,255,255,.55)}
-.slide.dark .kv .v.hot{color:var(--gold)}
+.slide.dark .kv .v.hot{color:var(--mustard)}
 
 /* -- do / don't ------------------------------------------------------------ */
 .tick,.cross{display:flex;gap:10px;align-items:flex-start;font-size:17.5px;line-height:1.5;
@@ -461,7 +461,7 @@ strong{font-weight:700;color:var(--ink)}
           width:20px;text-align:right;font-variant-numeric:tabular-nums}
 .mt-r .st{flex:none;width:12px;text-align:center;font-size:11.5px;line-height:1.3}
 .mt-r .st.ok{color:#4FB477}
-.mt-r .st.wip{color:var(--gold);font-weight:700}
+.mt-r .st.wip{color:var(--mustard);font-weight:700}
 .mt-r .t{font-size:16px;font-weight:500;color:rgba(255,255,255,.87);line-height:1.35}
 .mt-r .t.div{color:rgba(255,255,255,.5);font-weight:400}
 
@@ -471,7 +471,7 @@ strong{font-weight:700;color:var(--ink)}
 .mt-key span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
 .mt-key i{font-style:normal;font-size:11px}
 .mt-key i.ok{color:#4FB477}
-.mt-key i.wip{color:var(--gold);font-weight:700}
+.mt-key i.wip{color:var(--mustard);font-weight:700}
 .slide.dark .toc-mini span{color:rgba(255,255,255,.82)}
 .slide.dark .toc-mini b,.slide.dark .toc-mini u{color:rgba(255,255,255,.42)}
 
@@ -534,7 +534,7 @@ strong{font-weight:700;color:var(--ink)}
 .divider .dmeta{position:absolute;top:58px;left:var(--pad-x);right:var(--pad-x);z-index:5;
   display:flex;justify-content:space-between;gap:32px;font-family:var(--fm);font-size:12px;
   font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)}
-.divider .dmeta b{color:var(--gold);font-weight:700}
+.divider .dmeta b{color:var(--mustard);font-weight:700}
 .divider .inner{position:relative;z-index:4;max-width:1000px}
 .divider h2{font-family:var(--fd);font-weight:800;font-size:112px;line-height:.86;
   letter-spacing:-.042em;font-stretch:106%}
@@ -550,7 +550,7 @@ strong{font-weight:700;color:var(--ink)}
   display:flex;justify-content:space-between;gap:32px;font-family:var(--fm);font-size:11.5px;
   letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.72)}
 .dfoot .dfoot-r{display:flex;align-items:baseline;gap:28px}
-.dfoot .dfoot-r span:last-child{color:var(--gold);font-weight:700}
+.dfoot .dfoot-r span:last-child{color:var(--mustard);font-weight:700}
 /* one white hairline motif per divider, top right */
 .dviz{position:absolute;right:112px;top:132px;width:600px;z-index:2;pointer-events:none;opacity:.95}
 .dviz svg{width:100%;display:block}
@@ -1071,7 +1071,7 @@ body.agrid #agrid{display:block}
     <div data-r="2" style="display:grid;grid-template-columns:150px 1fr;gap:56px;align-items:start">
       <div>
         <div class="lab">The vision</div>
-        <div style="height:3px;background:var(--gold);width:44px;margin-top:14px"></div>
+        <div style="height:3px;background:var(--mustard);width:44px;margin-top:14px"></div>
       </div>
       <p class="statement" style="font-size:58px;max-width:none;line-height:1.02">Shared prosperity through
         something simple: a bowl of noodles <em>welcome in every Malaysian home</em>, regardless of race or religion.</p>
@@ -1091,7 +1091,7 @@ body.agrid #agrid{display:block}
           </div>
         </div>
         <div style="display:flex;flex-direction:column;padding:24px 36px 0 36px;
-                    border-right:1px solid var(--hair-2);border-top:2px solid var(--gold)">
+                    border-right:1px solid var(--hair-2);border-top:2px solid var(--mustard)">
           <div style="font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--signal)">02</div>
           <h4 class="h-sm" style="margin-top:14px">Hold the standard</h4>
           <p class="sm" style="margin-top:14px">FSSC 22000 and ISO 22000 food safety management, with critical control monitoring at every production stage.</p>
@@ -1487,8 +1487,8 @@ body.agrid #agrid{display:block}
         </div>
       </div>
 
-      <div style="border-top:2px solid var(--gold);padding-top:20px">
-        <div class="lab" style="color:var(--goldD)">One mark, used whole</div>
+      <div style="border-top:2px solid var(--mustard);padding-top:20px">
+        <div class="lab" style="color:var(--mustardD)">One mark, used whole</div>
         <p class="sm" style="margin-top:10px">The badge carries the name inside it, so there is no separate symbol
           and no separate wordmark to place. How it is built is on the next page.</p>
       </div>
@@ -1563,7 +1563,7 @@ body.agrid #agrid{display:block}
           </g>
           <text x="1108" y="340" fill="#191410" font-family="JetBrains Mono" font-size="34" font-weight="700">655</text>
 
-          <!-- the X unit, called out on the gold division -->
+          <!-- the X unit, called out on the mustard division -->
           <g stroke="#9D8914" stroke-width="2.5">
             <path d="M-70 0V163.75M-82 0h24M-82 163.75h24"/>
           </g>
@@ -1702,7 +1702,7 @@ body.agrid #agrid{display:block}
       <div style="display:flex;flex-direction:column;min-height:0">
         <div class="mock" style="flex:1;background:#FFDE21;display:flex;align-items:center;justify-content:center;position:relative;min-height:0"><span style="position:absolute;top:8px;left:10px;z-index:2;width:20px;height:20px;background:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--fm);font-size:12px;font-weight:700;color:#C4141C;box-shadow:0 0 0 1px rgba(25,20,16,.14)">&#10005;</span><svg viewBox="0 0 1000 655" width="130" height="85" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vit&rsquo;s" style="display:block;flex:none"><path id="gb5" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><use href="#gb5" fill="none" stroke="#fff" stroke-width="11"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></div>
         <div style="padding-top:9px">
-          <div style="font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mist)">Golden Wheat <span style="font-weight:500;opacity:.7">#FFDE21</span></div>
+          <div style="font-family:var(--fm);font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--mist)">Mustard Yellow <span style="font-weight:500;opacity:.7">#FFDE21</span></div>
           <p class="xs" style="margin-top:4px">Conditional: flavour bands only, never with the ink variant.</p>
         </div>
       </div>
@@ -1773,12 +1773,12 @@ body.agrid #agrid{display:block}
                     background:var(--ink);border:1px solid var(--ink);padding:22px 24px">
         <div style="display:flex;flex-direction:column;align-items:center;gap:9px">
           <div style="height:76px;display:flex;align-items:center"><svg viewBox="0 0 1000 655" width="110" height="72" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vit&rsquo;s" style="display:block;flex:none"><path id="lb110" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><use href="#lb110" fill="none" stroke="#fff" stroke-width="11"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></div>
-          <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--gold)">110 px</div>
+          <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--mustard)">110 px</div>
           <div style="font-family:var(--fm);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center;line-height:1.5">Keyline clean</div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:9px">
           <div style="height:76px;display:flex;align-items:center"><svg viewBox="0 0 1000 655" width="74" height="48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vit&rsquo;s" style="display:block;flex:none"><path id="lb74" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><use href="#lb74" fill="none" stroke="#fff" stroke-width="11"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></div>
-          <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--gold)">74 px</div>
+          <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--mustard)">74 px</div>
           <div style="font-family:var(--fm);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center;line-height:1.5">Keyline tight</div>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;gap:9px">
@@ -1882,7 +1882,7 @@ body.agrid #agrid{display:block}
         <div class="eyebrow" data-r="1">3.6 &middot; Visual Identity</div>
         <h1 class="s-title" data-r="1">Colour system</h1>
       </div>
-      <div class="s-meta" data-r="1">FIVE VALUES &middot; ONE ACCENT, RATIONED<br><b>RED IS THE FIELD &middot; GOLD IS THE ACCENT</b></div>
+      <div class="s-meta" data-r="1">FIVE VALUES &middot; ONE ACCENT, RATIONED<br><b>RED IS THE FIELD &middot; MUSTARD IS THE ACCENT</b></div>
     </div>
     <div class="rule"></div>
   </header>
@@ -1901,9 +1901,9 @@ body.agrid #agrid{display:block}
       <div class="sw">
         <div class="chipbox" style="background:#FFDE21"><span class="hexo">#FFDE21</span></div>
         <div class="meta">
-          <div class="nm">Golden Wheat</div>
+          <div class="nm">Mustard Yellow</div>
           <div class="sp">RGB 255, 222, 33<br>CMYK 0, 13, 87, 0<br>PANTONE <span style="color:var(--signal)">To be matched</span></div>
-          <div class="ds">Wheat, heat and the crest. Flavour banding and the single warm accent.</div>
+          <div class="ds">Heat and the crest. Flavour banding and the single warm accent.</div>
         </div>
       </div>
       <div class="sw">
@@ -1919,7 +1919,7 @@ body.agrid #agrid{display:block}
         <div class="meta">
           <div class="nm">Steam</div>
           <div class="sp">RGB 250, 244, 233<br>CMYK 0, 2, 7, 2<br>PANTONE <span style="color:var(--signal)">To be matched</span></div>
-          <div class="ds">The default light ground. An off-white carrying a trace of the gold.</div>
+          <div class="ds">The default light ground. An off-white carrying a trace of the mustard.</div>
         </div>
       </div>
       <div class="sw">
@@ -1984,7 +1984,7 @@ body.agrid #agrid{display:block}
           <div style="background:#FFDE21;color:#191410;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:20px 12px;
                       font-family:var(--fd);font-weight:800;font-size:30px;letter-spacing:-.01em">VIT&rsquo;S</div>
           <div style="padding:11px 12px;background:var(--paper);border-top:1px solid var(--hair)">
-            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Ink on Gold</div>
+            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Ink on Mustard</div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:6px">
               <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">13.7 : 1</span>
               <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#417A2E">AAA</span>
@@ -2028,7 +2028,7 @@ body.agrid #agrid{display:block}
           <div style="background:#FAF4E9;color:#FFDE21;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:20px 12px;
                       font-family:var(--fd);font-weight:800;font-size:30px;letter-spacing:-.01em">VIT&rsquo;S</div>
           <div style="padding:11px 12px;background:var(--paper);border-top:1px solid var(--hair)">
-            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Gold on Steam</div>
+            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);line-height:1.5">Mustard on Steam</div>
             <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-top:6px">
               <span style="font-family:var(--fm);font-size:13px;font-weight:700;color:var(--ink)">1.2 : 1</span>
               <span style="font-family:var(--fm);font-size:9.5px;font-weight:700;letter-spacing:.08em;color:#C4141C">Refused</span>
@@ -2369,10 +2369,10 @@ body.agrid #agrid{display:block}
       <div class="lab-h" style="margin-bottom:6px">Flavour register &middot; draft</div>
         <div style="flex:1;min-height:0;display:flex;align-items:center;gap:18px;
                     padding:12px 0;border-top:1px solid var(--hair-2)">
-          <span style="width:44px;height:44px;background:#C8961E;flex:none"></span>
+          <span style="width:44px;height:44px;background:#FFDE21;flex:none"></span>
           <div style="min-width:0">
             <div style="font-size:18px;font-weight:600;color:var(--ink);line-height:1.2">Chicken</div>
-            <div style="font-family:var(--fm);font-size:12px;color:var(--mist);margin-top:4px">#C8961E</div></div>
+            <div style="font-family:var(--fm);font-size:12px;color:var(--mist);margin-top:4px">#FFDE21</div></div>
         </div>
         <div style="flex:1;min-height:0;display:flex;align-items:center;gap:18px;
                     padding:12px 0;border-top:1px solid var(--hair-2)">
@@ -2411,7 +2411,7 @@ body.agrid #agrid{display:block}
         </div>
       <div style="flex:none;padding-top:26px;margin-top:14px;border-top:2px solid var(--ink)">
         <div class="lab-q" style="margin-bottom:12px">Separation on shelf</div>
-        <div style="display:flex;gap:4px;height:40px"><span style="flex:1;background:#C8961E"></span><span style="flex:1;background:#EC1F28"></span><span style="flex:1;background:#E2571F"></span><span style="flex:1;background:#8E2A4E"></span><span style="flex:1;background:#3F7A3A"></span><span style="flex:1;background:#1F5B7A"></span></div>
+        <div style="display:flex;gap:4px;height:40px"><span style="flex:1;background:#FFDE21"></span><span style="flex:1;background:#EC1F28"></span><span style="flex:1;background:#E2571F"></span><span style="flex:1;background:#8E2A4E"></span><span style="flex:1;background:#3F7A3A"></span><span style="flex:1;background:#1F5B7A"></span></div>
       </div>
     </div>
   </div>
@@ -2443,7 +2443,7 @@ body.agrid #agrid{display:block}
         <div style="flex:1;display:flex;gap:10px;min-height:0;background:var(--steam);padding:16px;border:1px solid var(--hair)">
             <div style="flex:1;background:var(--paper);border:1px solid var(--hair);display:flex;flex-direction:column">
               <div style="padding:14px 0 8px;display:flex;justify-content:center"><svg viewBox="0 0 1000 655" width="58" height="38" xmlns="http://www.w3.org/2000/svg" aria-label="Vit&rsquo;s" role="img" style="display:block;flex:none"><path id="shChicken" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><use href="#shChicken" fill="none" stroke="#fff" stroke-width="11"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></div>
-              <div style="background:#C8961E;color:#fff;font-family:var(--fm);font-size:10px;font-weight:700;
+              <div style="background:#FFDE21;color:#191410;font-family:var(--fm);font-size:10px;font-weight:700;
                           letter-spacing:.06em;text-align:center;padding:5px 2px">CHICKEN</div>
               <div style="flex:1;margin:9px;border:1px dashed rgba(138,115,96,.5);display:flex;align-items:center;
                           justify-content:center;font-family:var(--fm);font-size:9px;letter-spacing:.08em;
@@ -2607,14 +2607,14 @@ body.agrid #agrid{display:block}
             <span style="transform:scale(.88);transform-origin:left center"><svg viewBox="0 0 1000 655" width="72" height="47" xmlns="http://www.w3.org/2000/svg" aria-label="Vit&rsquo;s" role="img" style="display:block;flex:none"><path id="dg1" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><use href="#dg1" fill="none" stroke="#fff" stroke-width="11"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></span>
             <span class="lk" style="color:rgba(255,255,255,.62);font-size:12px">
               <b style="font-weight:500">Products</b><b style="font-weight:500">About</b><b style="font-weight:500">OEM</b>
-              <b style="font-weight:500">Private Label</b><b style="color:var(--gold);font-weight:600">Contact</b></span>
+              <b style="font-weight:500">Private Label</b><b style="color:var(--mustard);font-weight:600">Contact</b></span>
           </div>
           <div class="hold-frame" style="height:132px;border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.03)">
             <span style="color:rgba(255,255,255,.5)">Hero &middot; bowl photography<br>art direction pending</span>
           </div>
           <div style="padding:18px 20px">
             <div style="font-family:var(--fd);font-weight:800;font-size:26px;color:#fff;letter-spacing:-.02em">Fifty years of the everyday bowl.</div>
-            <div style="font-family:var(--fm);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:10px">vitsnoodles.com</div>
+            <div style="font-family:var(--fm);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mustard);margin-top:10px">vitsnoodles.com</div>
           </div>
         </div>
       </div>
@@ -2626,13 +2626,13 @@ body.agrid #agrid{display:block}
             <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
               <div style="width:92px;height:92px;border-radius:50%;background:var(--red);display:flex;
                           align-items:center;justify-content:center;overflow:hidden;flex:none"><span style="transform:scale(.64)"><svg viewBox="0 0 1000 655" width="92" height="60" xmlns="http://www.w3.org/2000/svg" aria-label="Vit&rsquo;s" role="img" style="display:block;flex:none"><path id="av1" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></span></div>
-              <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--gold)">92 px</div>
+              <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--mustard)">92 px</div>
               <div style="font-family:var(--fm);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center;line-height:1.5">Badge holds</div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
               <div style="width:64px;height:64px;border-radius:50%;background:var(--red);display:flex;
                           align-items:center;justify-content:center;overflow:hidden;flex:none"><span style="transform:scale(.62)"><svg viewBox="0 0 1000 655" width="64" height="42" xmlns="http://www.w3.org/2000/svg" aria-label="Vit&rsquo;s" role="img" style="display:block;flex:none"><path id="av2" d="M10 300 C10 130 210 10 500 10 C790 10 990 130 990 300 C990 450 915 570 800 640 C690 600 600 578 500 578 C400 578 310 600 200 640 C85 570 10 450 10 300 Z" fill="#EC1F28"/><text x="502" y="472" text-anchor="middle" fill="#fff" font-family="Archivo" style="font-weight:900;font-size:350px;font-stretch:102%;letter-spacing:-5px">Vit&#8217;s</text></svg></span></div>
-              <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--gold)">64 px</div>
+              <div style="font-family:var(--fm);font-size:11px;font-weight:700;color:var(--mustard)">64 px</div>
               <div style="font-family:var(--fm);font-size:9px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5);text-align:center;line-height:1.5">Lower limit</div>
             </div>
             <div style="display:flex;flex-direction:column;align-items:center;gap:8px">
@@ -2658,7 +2658,7 @@ body.agrid #agrid{display:block}
       </div>
 
       <div class="panel" style="border-top:1px solid rgba(255,255,255,.16);padding-top:16px">
-        <div class="lab" style="color:var(--gold)">Email signature &middot; Arial, no images</div>
+        <div class="lab" style="color:var(--mustard)">Email signature &middot; Arial, no images</div>
         <p class="sm" style="margin-top:9px;color:rgba(255,255,255,.66)"><strong style="color:#fff">No image files.</strong>
           Signatures are live text so they survive forwarding, corporate filters and dark mode. Never paste the
           lockup as a picture.</p>
@@ -2686,27 +2686,27 @@ body.agrid #agrid{display:block}
       <div>
         <div class="lab-h" style="margin-bottom:4px">Before V2.0 is signed off</div>
           <div style="display:flex;gap:12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)">
-            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--gold);width:20px;margin-top:3px">01</span>
+            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--mustard);width:20px;margin-top:3px">01</span>
             <span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.8)">Redraw the mark against the held asset.</span>
           </div>
           <div style="display:flex;gap:12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)">
-            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--gold);width:20px;margin-top:3px">02</span>
+            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--mustard);width:20px;margin-top:3px">02</span>
             <span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.8)">Match Pantone references on a printed pack under D50.</span>
           </div>
           <div style="display:flex;gap:12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)">
-            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--gold);width:20px;margin-top:3px">03</span>
+            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--mustard);width:20px;margin-top:3px">03</span>
             <span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.8)">Confirm the wordmark typeface, or commission the drawing.</span>
           </div>
           <div style="display:flex;gap:12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)">
-            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--gold);width:20px;margin-top:3px">04</span>
+            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--mustard);width:20px;margin-top:3px">04</span>
             <span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.8)">Lock the flavour register against the current retail range.</span>
           </div>
           <div style="display:flex;gap:12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)">
-            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--gold);width:20px;margin-top:3px">05</span>
+            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--mustard);width:20px;margin-top:3px">05</span>
             <span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.8)">Draw a dedicated square icon for app and favicon use.</span>
           </div>
           <div style="display:flex;gap:12px;padding:5px 0;border-top:1px solid rgba(255,255,255,.12)">
-            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--gold);width:20px;margin-top:3px">06</span>
+            <span style="flex:none;font-family:var(--fm);font-size:10.5px;font-weight:700;color:var(--mustard);width:20px;margin-top:3px">06</span>
             <span style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.8)">Commission the photography the wireframes leave open.</span>
           </div>
       </div>

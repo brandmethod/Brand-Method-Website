@@ -104,11 +104,11 @@
   --mist:   #8A7360;
 
   /* --- Derived surfaces (tints of the locked palette only) ---------------- */
-  /* The book's own ground is Steam carrying a 20% wash of Golden Wheat, and
-     Paper the same wash at half strength. Both are derived surfaces: the locked
-     Steam and Paper values are unchanged and are what the palette page states. */
-  --ground:  #F8E5C0;
-  --ground-2:#FDF1D3;
+  /* Section 03 runs on Steam carrying a 20% wash of Golden Wheat, and Paper the
+     same wash at half strength, so the identity pages read warm against the rest
+     of the book. Derived surfaces: locked Steam and Paper are unchanged. */
+  --ident:   #F8E5C0;
+  --ident-2: #FDF1D3;
   --ink-2:   #221B15;
   --hair:    rgba(25,20,16,.14);
   --hair-2:  rgba(25,20,16,.075);
@@ -159,7 +159,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 /* The stage is ALWAYS exactly 1920 x 1080. JS scales it to fit. */
 #stage{
   position:relative;width:var(--W);height:var(--H);flex:none;
-  transform-origin:center center;background:var(--ground);overflow:hidden;
+  transform-origin:center center;background:var(--steam);overflow:hidden;
   box-shadow:0 40px 120px -30px rgba(0,0,0,.7),0 0 0 1px rgba(255,255,255,.06);
 }
 
@@ -245,7 +245,7 @@ body.zoomed #stage:active{cursor:grabbing}
 .slide{
   position:absolute;inset:0;width:var(--W);height:var(--H);
   padding:var(--pad-t) var(--pad-x) var(--pad-b);
-  display:flex;flex-direction:column;background:var(--ground);
+  display:flex;flex-direction:column;background:var(--steam);
   opacity:0;visibility:hidden;pointer-events:none;
   transform:translate3d(0,0,0);will-change:transform,opacity;overflow:hidden;
 }
@@ -256,14 +256,30 @@ body.zoomed #stage:active{cursor:grabbing}
 .slide:not(.cover):not(.divider){
   background:
     radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.05), transparent 62%),
-    radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.14), transparent 60%),
-    var(--ground);
+    radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.07), transparent 60%),
+    var(--steam);
 }
 .slide.paper:not(.cover):not(.divider){
   background:
     radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.045), transparent 62%),
+    radial-gradient(60% 52% at 2% 108%, rgba(138,115,96,.06), transparent 60%),
+    var(--paper);
+}
+
+/* Section 03 · the identity pages carry the gold wash. Same luminous ground as
+   the rest of the book, pitched further into Golden Wheat so the logo, colour
+   and type spreads read as one warm run. */
+.slide[data-sec="3.0"]:not(.cover):not(.divider):not(.dark){
+  background:
+    radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.05), transparent 62%),
+    radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.14), transparent 60%),
+    var(--ident);
+}
+.slide.paper[data-sec="3.0"]:not(.cover):not(.divider):not(.dark){
+  background:
+    radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.045), transparent 62%),
     radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.11), transparent 60%),
-    var(--ground-2);
+    var(--ident-2);
 }
 
 /* -- header ---------------------------------------------------------------- */
@@ -485,7 +501,7 @@ strong{font-weight:700;color:var(--ink)}
 .mock.ink{background:var(--ink);border-color:rgba(255,255,255,.16)}
 .mock.red{background:var(--red);border-color:rgba(255,255,255,.2)}
 .mock .bar{height:26px;display:flex;align-items:center;gap:8px;padding:0 10px;
-  background:#F2DEB8;border-bottom:1px solid var(--hair);
+  background:#F2EBDF;border-bottom:1px solid var(--hair);
   font-family:var(--fm);font-size:9.5px;color:var(--mist);letter-spacing:.06em}
 .mock .bar b{display:block;width:6px;height:6px;border-radius:50%;background:#D4C6B4}
 .mock .nav{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;
@@ -510,7 +526,7 @@ strong{font-weight:700;color:var(--ink)}
 .mis .lbl{position:absolute;left:0;right:0;bottom:0;padding:7px 9px;background:var(--steam);
   border-top:1px solid var(--hair);font-family:var(--fm);font-size:10.5px;letter-spacing:.09em;
   text-transform:uppercase;color:var(--steel);line-height:1.4}
-.m-busy{background:repeating-linear-gradient(45deg,#DDC498 0 10px,#F2DEB8 10px 20px)}
+.m-busy{background:repeating-linear-gradient(45deg,#D9CBB6 0 10px,#F2EBDF 10px 20px)}
 
 /* -- type specimen --------------------------------------------------------- */
 .spec{padding-top:14px;display:flex;flex-direction:column;height:100%}
@@ -531,9 +547,7 @@ strong{font-weight:700;color:var(--ink)}
    6. SPECIALS
    ========================================================================== */
 /* -- COVER ----------------------------------------------------------------- */
-.cover{padding:0;overflow:hidden;background:
-  radial-gradient(64% 54% at 4% 96%, rgba(240,168,30,.16), transparent 62%),
-  var(--ground-2)}
+.cover{padding:0;overflow:hidden;background:var(--paper)}
 
 /* -- DIVIDER --------------------------------------------------------------- */
 .divider{background:var(--red);color:#fff;overflow:hidden;
@@ -1926,7 +1940,7 @@ body.agrid #agrid{display:block}
         <div class="meta">
           <div class="nm">Steam</div>
           <div class="sp">RGB 250, 244, 233<br>CMYK 0, 2, 7, 2<br>PANTONE <span style="color:var(--signal)">To be matched</span></div>
-          <div class="ds">The default light ground. Document pages carry it washed with 20% Golden Wheat.</div>
+          <div class="ds">The default light ground. An off-white carrying a trace of the gold.</div>
         </div>
       </div>
       <div class="sw">

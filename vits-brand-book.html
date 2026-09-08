@@ -1066,59 +1066,61 @@ body.agrid #agrid{display:block}
     <div class="rule"></div>
   </header>
 
-  <div class="s-body" style="grid-template-rows:auto 1fr;gap:52px">
+  <div class="s-body" style="grid-template-rows:1fr auto;gap:40px">
 
-    <div data-r="2" style="display:grid;grid-template-columns:150px 1fr;gap:56px;align-items:start">
-      <div>
-        <div class="lab">The vision</div>
-        <div style="height:3px;background:var(--mustard);width:44px;margin-top:14px"></div>
+    <!-- the two intents, one window each -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:56px;min-height:0">
+
+      <div data-r="2" style="display:flex;flex-direction:column;min-height:0">
+        <div style="display:flex;justify-content:flex-end;font-family:var(--fm);font-size:12px;
+                    color:var(--mist);padding-bottom:10px">1</div>
+        <div class="hold-frame" style="height:348px;flex:none">
+          <span>Vision image<br>photography to be shot</span>
+        </div>
+        <div class="lab" style="margin-top:24px">Vision</div>
+        <h3 class="h-md" style="margin-top:12px">A bowl welcome in every Malaysian home</h3>
+        <p style="margin-top:14px">Shared prosperity through something simple: a bowl of noodles welcome in
+          every Malaysian home, regardless of race or religion.</p>
+        <div style="margin-top:20px"><span class="chip on">Regardless of race or religion</span></div>
       </div>
-      <p class="statement" style="font-size:58px;max-width:none;line-height:1.02">Shared prosperity through
-        something simple: a bowl of noodles <em>welcome in every Malaysian home</em>, regardless of race or religion.</p>
+
+      <div data-r="3" style="display:flex;flex-direction:column;min-height:0">
+        <div style="display:flex;justify-content:flex-end;font-family:var(--fm);font-size:12px;
+                    color:var(--mist);padding-bottom:10px">2</div>
+        <div class="hold-frame" style="height:348px;flex:none">
+          <span>Mission image<br>photography to be shot</span>
+        </div>
+        <div class="lab" style="margin-top:24px">Mission</div>
+        <h3 class="h-md" style="margin-top:12px">Halal always, held to standard, carried outward</h3>
+        <p style="margin-top:14px">Certified halal since 1980, audited to FSSC 22000 and ISO 22000, shipped into
+          thirty and more markets, and built the same for a partner&rsquo;s pack.</p>
+        <div style="margin-top:20px"><span class="chip on">One standard, whoever&rsquo;s name is on the pack</span></div>
+      </div>
+
     </div>
 
-    <div data-r="3" style="display:flex;flex-direction:column;min-height:0">
-      <div class="lab-h" style="margin-bottom:6px">The mission &middot; how the vision gets kept</div>
-      <div style="flex:1;display:grid;grid-template-columns:repeat(4,1fr);gap:0;min-height:0">
-        <div style="display:flex;flex-direction:column;padding:24px 36px 0 0;
-                    border-right:1px solid var(--hair-2);border-top:2px solid var(--ink)">
+    <div data-r="4">
+      <div class="lab-h" style="margin-bottom:0">The mission &middot; four commitments</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:14px">
+        <div style="padding:18px 34px 0 0;border-right:1px solid var(--hair-2);border-top:2px solid var(--ink)">
           <div style="font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--signal)">01</div>
-          <h4 class="h-sm" style="margin-top:14px">Make it halal, always</h4>
-          <p class="sm" style="margin-top:14px">Certification since 1980 is not a market tactic. It is the condition of being on every Malaysian table, whatever the faith of the household.</p>
-          <div class="push" style="padding-top:22px">
-            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)">Certified</div>
-            <div style="font-family:var(--fd);font-weight:800;font-size:21px;color:var(--ink);margin-top:6px;letter-spacing:-.01em">1980</div>
-          </div>
+          <h5 class="h-xs" style="margin-top:11px">Make it halal, always</h5>
+          <p class="sm" style="margin-top:9px">Certified since 1980, the condition of being on every Malaysian table.</p>
         </div>
-        <div style="display:flex;flex-direction:column;padding:24px 36px 0 36px;
-                    border-right:1px solid var(--hair-2);border-top:2px solid var(--mustard)">
+        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);border-top:2px solid var(--mustard)">
           <div style="font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--signal)">02</div>
-          <h4 class="h-sm" style="margin-top:14px">Hold the standard</h4>
-          <p class="sm" style="margin-top:14px">FSSC 22000 and ISO 22000 food safety management, with critical control monitoring at every production stage.</p>
-          <div class="push" style="padding-top:22px">
-            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)">Audited to</div>
-            <div style="font-family:var(--fd);font-weight:800;font-size:21px;color:var(--ink);margin-top:6px;letter-spacing:-.01em">FSSC 22000</div>
-          </div>
+          <h5 class="h-xs" style="margin-top:11px">Hold the standard</h5>
+          <p class="sm" style="margin-top:9px">FSSC 22000 and ISO 22000, monitored at every production stage.</p>
         </div>
-        <div style="display:flex;flex-direction:column;padding:24px 36px 0 36px;
-                    border-right:1px solid var(--hair-2);border-top:2px solid var(--ink)">
+        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);border-top:2px solid var(--ink)">
           <div style="font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--signal)">03</div>
-          <h4 class="h-sm" style="margin-top:14px">Carry Malaysia outward</h4>
-          <p class="sm" style="margin-top:14px">Export the authentic taste of Malaysia, from Penang white curry to asam laksa and Hokkien mee, out to Asia, the Middle East and Europe.</p>
-          <div class="push" style="padding-top:22px">
-            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)">Shipping to</div>
-            <div style="font-family:var(--fd);font-weight:800;font-size:21px;color:var(--ink);margin-top:6px;letter-spacing:-.01em">30+ markets</div>
-          </div>
+          <h5 class="h-xs" style="margin-top:11px">Carry Malaysia outward</h5>
+          <p class="sm" style="margin-top:9px">Penang white curry to asam laksa, out to thirty and more markets.</p>
         </div>
-        <div style="display:flex;flex-direction:column;padding:24px 0 0 36px;
-                    border-top:2px solid var(--ink)">
+        <div style="padding:18px 0 0 34px;border-top:2px solid var(--ink)">
           <div style="font-family:var(--fm);font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--signal)">04</div>
-          <h4 class="h-sm" style="margin-top:14px">Make it for others too</h4>
-          <p class="sm" style="margin-top:14px">OEM and private label built to the same standard as our own brands. The buyer&rsquo;s name on the pack changes nothing inside it.</p>
-          <div class="push" style="padding-top:22px">
-            <div style="font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--mist)">Also made</div>
-            <div style="font-family:var(--fd);font-weight:800;font-size:21px;color:var(--ink);margin-top:6px;letter-spacing:-.01em">For partners</div>
-          </div>
+          <h5 class="h-xs" style="margin-top:11px">Make it for others too</h5>
+          <p class="sm" style="margin-top:9px">OEM and private label built to the standard of our own brands.</p>
         </div>
       </div>
     </div>

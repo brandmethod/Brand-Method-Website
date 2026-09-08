@@ -78,7 +78,7 @@
    --------------------------------------------------------------------------
    1.  TOKENS          locked palette, type, space, stage
    2.  RESET / STAGE   fixed 1920 x 1080, JS-scaled
-   3.  CHROME          progress / dock / index / hint
+   3.  CHROME          progress / dock / index
    4.  SLIDE SHELL     head · body · foot
    5.  PRIMITIVES      the kit
    6.  SPECIALS        cover · divider · specimens · mockups
@@ -175,6 +175,17 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   backdrop-filter:blur(14px);opacity:.78;transition:opacity .3s var(--e-out);
 }
 #dock:hover,#dock:focus-within,#dock.awake{opacity:1}
+/* Narrow screens: drop the book title and the alignment-grid tool, tighten the
+   rest, so the bar stays one row instead of piling up over the page. */
+@media (max-width:900px){
+  #dock{gap:10px;padding:6px 7px 6px 10px}
+  #dock .lab,#dock #btn-grid,#dock #btn-index{display:none}
+  #dock .sep:first-of-type{display:none}
+}
+@media (max-width:520px){
+  #dock{gap:7px}
+  #dock .zpct{min-width:46px;padding:0 5px}
+}
 #dock .lab{font-size:10px;letter-spacing:.14em;text-transform:uppercase;
   color:rgba(255,255,255,.5);white-space:nowrap}
 #dock .cnt{font-size:11px;letter-spacing:.06em;color:#fff;white-space:nowrap}
@@ -214,9 +225,6 @@ body.zoomed #stage:active{cursor:grabbing}
 #index .close{position:absolute;top:38px;right:52px;color:rgba(255,255,255,.6);font-size:11px;letter-spacing:.14em}
 #index .close:hover{color:#fff}
 
-#hint{right:22px;bottom:22px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.3);text-align:right;line-height:1.9;pointer-events:none;transition:opacity .6s}
-#hint kbd{font-family:var(--fm);border:1px solid rgba(255,255,255,.2);padding:1px 5px;color:rgba(255,255,255,.55)}
 
 #toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,14px);
   background:var(--ink);color:#fff;padding:15px 22px;max-width:520px;z-index:60;
@@ -573,7 +581,7 @@ strong{font-weight:700;color:var(--ink)}
   body{background:#fff;overflow:visible}
   #viewport{position:static;display:block;perspective:none}
   #stage{width:1920px;height:1080px;transform:none!important;box-shadow:none;overflow:visible}
-  .chrome,#index,#hint,#toast,#agrid{display:none!important}
+  .chrome,#index,#toast,#agrid{display:none!important}
   .slide{position:relative;inset:auto;opacity:1!important;visibility:visible!important;
     animation:none!important;page-break-after:always;break-after:page}
   .slide [data-r]{opacity:1!important;animation:none!important;transform:none!important}
@@ -635,10 +643,6 @@ body.agrid #agrid{display:block}
   <button class="dbtn" id="btn-print" title="Download PDF"><svg viewBox="0 0 24 24"><path d="M12 4v10.5M7.5 10l4.5 4.5 4.5-4.5"/><path d="M4.5 19.5h15"/></svg></button>
 </div>
 
-<div class="chrome" id="hint">
-  <kbd>&larr;</kbd> <kbd>&rarr;</kbd> turn page &nbsp;&middot;&nbsp; <kbd>+</kbd> <kbd>&minus;</kbd> zoom &nbsp;&middot;&nbsp; <kbd>G</kbd> index &nbsp;&middot;&nbsp; <kbd>F</kbd> fullscreen<br>
-  1920 &times; 1080 &middot; scroll, swipe or click to advance
-</div>
 
 <div id="index">
   <h3>Contents</h3>
@@ -2852,7 +2856,6 @@ body.agrid #agrid{display:block}
   var indexBox = document.getElementById('index');
   var indexWrap= document.querySelector('#index .wrap');
   var dock     = document.getElementById('dock');
-  var hint     = document.getElementById('hint');
   var zIn      = document.getElementById('z-in');
   var zOut     = document.getElementById('z-out');
   var zFit     = document.getElementById('z-fit');
@@ -2893,7 +2896,7 @@ body.agrid #agrid{display:block}
     if (vis(el)) bot += el.getBoundingClientRect().height;
     el = document.getElementById('progress');
     if (vis(el)) top += el.getBoundingClientRect().height;
-    return { bot: bot + 14, top: top + 14, side: 16 };
+    return { bot: bot + 12, top: top + 10, side: 6 };
   }
 
   function fit() {
@@ -2972,7 +2975,6 @@ body.agrid #agrid{display:block}
     document.getElementById('btn-prev').disabled = (cur === 0);
     document.getElementById('btn-next').disabled = (cur === total - 1);
     try { history.replaceState(null, '', '#' + (cur + 1)); } catch (err) {}
-    if (hint) hint.style.opacity = cur === 0 ? '1' : '0';
   }
 
   /* ---------------------------------------------------------- build index */

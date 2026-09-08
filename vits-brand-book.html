@@ -104,11 +104,9 @@
   --mist:   #8A7360;
 
   /* --- Derived surfaces (tints of the locked palette only) ---------------- */
-  /* Section 03 runs on Steam carrying a 20% wash of Golden Wheat, and Paper the
-     same wash at half strength, so the identity pages read warm against the rest
-     of the book. Derived surfaces: locked Steam and Paper are unchanged. */
+  /* The colour page runs on Steam carrying a 20% wash of Golden Wheat. A derived
+     surface: locked Steam is unchanged, and is what that page's swatch states. */
   --ident:   #F8E5C0;
-  --ident-2: #FDF1D3;
   --ink-2:   #221B15;
   --hair:    rgba(25,20,16,.14);
   --hair-2:  rgba(25,20,16,.075);
@@ -266,20 +264,13 @@ body.zoomed #stage:active{cursor:grabbing}
     var(--paper);
 }
 
-/* Section 03 · the identity pages carry the gold wash. Same luminous ground as
-   the rest of the book, pitched further into Golden Wheat so the logo, colour
-   and type spreads read as one warm run. */
-.slide[data-sec="3.0"]:not(.cover):not(.divider):not(.dark){
+/* The colour identity carries the gold wash. Same luminous ground as the rest
+   of the book, pitched further into Golden Wheat. */
+.slide.warm:not(.cover):not(.divider):not(.dark){
   background:
     radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.05), transparent 62%),
     radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.14), transparent 60%),
     var(--ident);
-}
-.slide.paper[data-sec="3.0"]:not(.cover):not(.divider):not(.dark){
-  background:
-    radial-gradient(72% 56% at 86% -12%, rgba(236,31,40,.045), transparent 62%),
-    radial-gradient(60% 52% at 2% 108%, rgba(240,168,30,.11), transparent 60%),
-    var(--ident-2);
 }
 
 /* -- header ---------------------------------------------------------------- */
@@ -1896,7 +1887,7 @@ body.agrid #agrid{display:block}
 <!-- ================================================================
      16 · 3.5 COLOUR SYSTEM
      ================================================================ -->
-<section class="slide" data-sec="3.0" data-secname="Visual Identity" data-title="Colour System &middot; Palette, Proportion &amp; Cleared Pairings">
+<section class="slide warm" data-sec="3.0" data-secname="Visual Identity" data-title="Colour System &middot; Palette, Proportion &amp; Cleared Pairings">
   <header class="s-head" style="margin-bottom:30px">
     <div class="row">
       <div>

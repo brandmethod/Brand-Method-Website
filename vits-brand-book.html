@@ -437,23 +437,38 @@ strong{font-weight:700;color:var(--ink)}
 .toc-mini u{margin-left:auto;font-family:var(--fm);font-size:11px;color:var(--mist);
   text-decoration:none;flex:none}
 
-/* -- table of contents · the full-page setting ----------------------------- */
-.toc{display:flex;flex-direction:column;gap:44px}
-.toc-grp{break-inside:avoid}
-.toc-h{display:flex;align-items:baseline;gap:14px;padding-bottom:9px}
-.toc-h .n{font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold);flex:none}
-.toc-h .t{font-family:var(--fd);font-weight:800;font-size:23px;letter-spacing:-.012em;color:#fff}
-.toc-h .w{font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-          color:var(--gold);margin-left:4px}
-.toc-r{display:flex;align-items:baseline;gap:16px;padding:15px 0;
-       border-top:1px solid rgba(255,255,255,.11)}
-.toc-r b{font-family:var(--fm);font-size:11.5px;font-weight:600;letter-spacing:.04em;
-         color:rgba(255,255,255,.42);flex:none;width:34px}
-.toc-r span{font-size:18px;font-weight:500;color:rgba(255,255,255,.88);line-height:1.3}
-.toc-r i{flex:1;height:1px;background:rgba(255,255,255,.13);transform:translateY(-4px)}
-.toc-r u{font-family:var(--fm);font-size:12px;font-weight:600;color:rgba(255,255,255,.52);
-         text-decoration:none;flex:none;font-variant-numeric:tabular-nums}
-.slide.dark .toc-mini li{border-top-color:rgba(255,255,255,.1)}
+/* -- master table of contents · the IAQ Brand OS setting --------------------- */
+.mtoc{display:grid;grid-template-columns:repeat(3,1fr);gap:0 56px;align-content:start}
+.mtoc-col{display:flex;flex-direction:column;gap:32px}
+
+.mt-sec{display:flex;align-items:flex-start;gap:13px}
+.mt-sec .num{font-family:var(--fm);font-size:18px;font-weight:700;color:var(--red);line-height:1;padding-top:7px;flex:none}
+.mt-sec .ico{width:29px;height:29px;flex:none;border:1px solid rgba(255,255,255,.26);
+             display:flex;align-items:center;justify-content:center;margin-top:1px}
+.mt-sec .ico svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:1.5;
+                 stroke-linecap:round;stroke-linejoin:round}
+.mt-sec .nm{font-family:var(--fd);font-weight:800;font-size:25px;letter-spacing:-.018em;
+            color:#fff;line-height:1.12;flex:1;padding-top:2px}
+.mt-sec .rg{font-family:var(--fm);font-size:10.5px;letter-spacing:.06em;color:rgba(255,255,255,.42);
+            white-space:nowrap;padding-top:9px;flex:none}
+
+.mt-list{display:flex;flex-direction:column;margin-top:12px}
+.mt-r{display:flex;align-items:baseline;gap:12px;padding:5.5px 0}
+.mt-r .pg{font-family:var(--fm);font-size:11px;color:rgba(255,255,255,.4);flex:none;
+          width:20px;text-align:right;font-variant-numeric:tabular-nums}
+.mt-r .st{flex:none;width:12px;text-align:center;font-size:11.5px;line-height:1.3}
+.mt-r .st.ok{color:#4FB477}
+.mt-r .st.wip{color:var(--gold);font-weight:700}
+.mt-r .t{font-size:16px;font-weight:500;color:rgba(255,255,255,.87);line-height:1.35}
+.mt-r .t.div{color:rgba(255,255,255,.5);font-weight:400}
+
+.mt-key{display:flex;gap:26px;align-items:center;margin-left:48px;margin-right:auto;
+        font-family:var(--fm);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+        color:rgba(255,255,255,.5)}
+.mt-key span{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.mt-key i{font-style:normal;font-size:11px}
+.mt-key i.ok{color:#4FB477}
+.mt-key i.wip{color:var(--gold);font-weight:700}
 .slide.dark .toc-mini span{color:rgba(255,255,255,.82)}
 .slide.dark .toc-mini b,.slide.dark .toc-mini u{color:rgba(255,255,255,.42)}
 
@@ -750,7 +765,7 @@ body.agrid #agrid{display:block}
   <header class="s-head">
     <div class="row">
       <div>
-        <div class="eyebrow" data-r="1">0.1 &middot; Essentials</div>
+        <div class="eyebrow" data-r="1">Vit&rsquo;s Brand Identity Book</div>
         <h1 class="s-title" data-r="1">Table of contents</h1>
       </div>
       <div class="s-meta" data-r="1">TWENTY PAGES &middot; FIVE SECTIONS<br><b>SECTION 03 IS THE WORKING REFERENCE</b></div>
@@ -759,48 +774,102 @@ body.agrid #agrid{display:block}
   </header>
 
   <div class="s-body" style="align-content:start">
-    <div data-r="2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:72px;align-items:start">
-      <div class="toc">
-        <div class="toc-grp">
-          <div class="toc-h"><span class="n">01</span><span class="t">Brand</span></div>
-          <div class="toc-r"><b>1.1</b><span>Company Introduction</span><i></i><u>04</u></div>
-          <div class="toc-r"><b>1.2</b><span>Positioning &amp; Script</span><i></i><u>05</u></div>
-          <div class="toc-r"><b>1.3</b><span>Vision &amp; Mission</span><i></i><u>06</u></div>
-          <div class="toc-r"><b>1.4</b><span>Values &amp; Culture</span><i></i><u>07</u></div>
+    <div class="mtoc" data-r="2">
+      <div class="mtoc-col">
+        <div>
+          <div class="mt-sec">
+            <span class="num">0</span>
+            <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3h10v13H3z"/><path d="M6 7h4M6 10h4"/></svg></span>
+            <span class="nm">Essentials</span>
+            <span class="rg">01 &rarr; 02</span>
+          </div>
+          <div class="mt-list">
+            <div class="mt-r"><span class="pg">01</span><span class="st wip">?</span><span class="t">Cover</span></div>
+            <div class="mt-r"><span class="pg">02</span><span class="st ok">&#10003;</span><span class="t">Table of contents</span></div>
+          </div>
         </div>
-        <div class="toc-grp">
-          <div class="toc-h"><span class="n">02</span><span class="t">Verbal Identity</span></div>
-          <div class="toc-r"><b>2.1</b><span>Messaging Pillars</span><i></i><u>08</u></div>
-          <div class="toc-r"><b>2.2</b><span>Voice &amp; Character</span><i></i><u>09</u></div>
+        <div>
+          <div class="mt-sec">
+            <span class="num">1</span>
+            <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 6.5h11a5.5 5.5 0 0 1-11 0Z"/><path d="M6 3.5c0-1 1-1 1-2M9.5 3.5c0-1 1-1 1-2"/></svg></span>
+            <span class="nm">Brand</span>
+            <span class="rg">03 &rarr; 07</span>
+          </div>
+          <div class="mt-list">
+            <div class="mt-r"><span class="pg">03</span><span class="st ok">&#10003;</span><span class="t div">Section divider</span></div>
+            <div class="mt-r"><span class="pg">04</span><span class="st ok">&#10003;</span><span class="t">Company introduction</span></div>
+            <div class="mt-r"><span class="pg">05</span><span class="st ok">&#10003;</span><span class="t">Positioning &amp; script</span></div>
+            <div class="mt-r"><span class="pg">06</span><span class="st ok">&#10003;</span><span class="t">Vision &amp; mission</span></div>
+            <div class="mt-r"><span class="pg">07</span><span class="st ok">&#10003;</span><span class="t">Values &amp; culture</span></div>
+          </div>
+        </div>
+        <div>
+          <div class="mt-sec">
+            <span class="num">2</span>
+            <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 3.5h11v8h-7l-4 3Z"/><path d="M5.5 7h5"/></svg></span>
+            <span class="nm">Verbal identity</span>
+            <span class="rg">08 &rarr; 09</span>
+          </div>
+          <div class="mt-list">
+            <div class="mt-r"><span class="pg">08</span><span class="st ok">&#10003;</span><span class="t">Messaging pillars</span></div>
+            <div class="mt-r"><span class="pg">09</span><span class="st ok">&#10003;</span><span class="t">Voice &amp; character</span></div>
+          </div>
         </div>
       </div>
-      <div class="toc">
-        <div class="toc-grp">
-          <div class="toc-h"><span class="n">03</span><span class="t">Visual Identity</span><span class="w">The working section</span></div>
-          <div class="toc-r"><b>3.1</b><span>Logo System &middot; Overview &amp; Anatomy</span><i></i><u>11</u></div>
-          <div class="toc-r"><b>3.2</b><span>Logo Formats &amp; Backgrounds</span><i></i><u>12</u></div>
-          <div class="toc-r"><b>3.3</b><span>Clearspace &amp; Minimum Size</span><i></i><u>13</u></div>
-          <div class="toc-r"><b>3.4</b><span>Logo Don&rsquo;ts</span><i></i><u>14</u></div>
-          <div class="toc-r"><b>3.5</b><span>Colour System</span><i></i><u>15</u></div>
-          <div class="toc-r"><b>3.6</b><span>Typography &amp; Language</span><i></i><u>16</u></div>
+      <div class="mtoc-col">
+        <div>
+          <div class="mt-sec">
+            <span class="num">3</span>
+            <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8c0-3 2.7-5 6-5s6 2 6 5c0 2.4-1.4 4-3.2 5-1-.5-1.8-.7-2.8-.7s-1.8.2-2.8.7C3.4 12 2 10.4 2 8Z"/></svg></span>
+            <span class="nm">Visual identity</span>
+            <span class="rg">10 &rarr; 16</span>
+          </div>
+          <div class="mt-list">
+            <div class="mt-r"><span class="pg">10</span><span class="st ok">&#10003;</span><span class="t div">Section divider</span></div>
+            <div class="mt-r"><span class="pg">11</span><span class="st ok">&#10003;</span><span class="t">Logo system &middot; Overview &amp; anatomy</span></div>
+            <div class="mt-r"><span class="pg">12</span><span class="st ok">&#10003;</span><span class="t">Logo formats &amp; backgrounds</span></div>
+            <div class="mt-r"><span class="pg">13</span><span class="st ok">&#10003;</span><span class="t">Clearspace &amp; minimum size</span></div>
+            <div class="mt-r"><span class="pg">14</span><span class="st ok">&#10003;</span><span class="t">Logo don&rsquo;ts</span></div>
+            <div class="mt-r"><span class="pg">15</span><span class="st ok">&#10003;</span><span class="t">Colour system</span></div>
+            <div class="mt-r"><span class="pg">16</span><span class="st ok">&#10003;</span><span class="t">Typography &amp; language</span></div>
+          </div>
         </div>
       </div>
-      <div class="toc">
-        <div class="toc-grp">
-          <div class="toc-h"><span class="n">04</span><span class="t">Applications</span></div>
-          <div class="toc-r"><b>4.1</b><span>Packaging System</span><i></i><u>18</u></div>
-          <div class="toc-r"><b>4.2</b><span>Retail, Shelf &amp; Stationery</span><i></i><u>19</u></div>
+      <div class="mtoc-col">
+        <div>
+          <div class="mt-sec">
+            <span class="num">4</span>
+            <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h8v11H4z"/><path d="M4 6h8M6.5 10h3"/></svg></span>
+            <span class="nm">Applications</span>
+            <span class="rg">17 &rarr; 19</span>
+          </div>
+          <div class="mt-list">
+            <div class="mt-r"><span class="pg">17</span><span class="st ok">&#10003;</span><span class="t div">Section divider</span></div>
+            <div class="mt-r"><span class="pg">18</span><span class="st wip">?</span><span class="t">Packaging system</span></div>
+            <div class="mt-r"><span class="pg">19</span><span class="st wip">?</span><span class="t">Retail, shelf &amp; stationery</span></div>
+          </div>
         </div>
-        <div class="toc-grp">
-          <div class="toc-h"><span class="n">05</span><span class="t">Close</span></div>
-          <div class="toc-r"><b>5.1</b><span>Digital, Governance &amp; Close</span><i></i><u>20</u></div>
+        <div>
+          <div class="mt-sec">
+            <span class="num">5</span>
+            <span class="ico"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.8 14 5v6l-6 3.2L2 11V5Z"/><path d="M5.6 8l1.7 1.8L10.6 6"/></svg></span>
+            <span class="nm">Close</span>
+            <span class="rg">20</span>
+          </div>
+          <div class="mt-list">
+            <div class="mt-r"><span class="pg">20</span><span class="st wip">?</span><span class="t">Digital, governance &amp; close</span></div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
   <footer class="s-foot">
-    <span>Brand OS &middot; Vit&rsquo;s Brand Identity</span>
+    <span>Brand OS V1.0 &middot; Vit&rsquo;s Brand Identity</span>
+    <span class="mt-key">
+      <span><i class="ok">&#10003;</i> Drafted</span>
+      <span><i class="wip">?</i> Awaiting art direction</span>
+    </span>
     <span class="pg">&copy; 2026 Vit Makanan (KL) Sdn Bhd<b>02</b></span>
   </footer>
 </section>

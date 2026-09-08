@@ -438,14 +438,14 @@ strong{font-weight:700;color:var(--ink)}
   text-decoration:none;flex:none}
 
 /* -- table of contents · the full-page setting ----------------------------- */
-.toc{display:flex;flex-direction:column;gap:34px}
+.toc{display:flex;flex-direction:column;gap:44px}
 .toc-grp{break-inside:avoid}
 .toc-h{display:flex;align-items:baseline;gap:14px;padding-bottom:9px}
 .toc-h .n{font-family:var(--fm);font-size:14px;font-weight:700;color:var(--gold);flex:none}
 .toc-h .t{font-family:var(--fd);font-weight:800;font-size:23px;letter-spacing:-.012em;color:#fff}
 .toc-h .w{font-family:var(--fm);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
           color:var(--gold);margin-left:4px}
-.toc-r{display:flex;align-items:baseline;gap:16px;padding:9px 0;
+.toc-r{display:flex;align-items:baseline;gap:16px;padding:15px 0;
        border-top:1px solid rgba(255,255,255,.11)}
 .toc-r b{font-family:var(--fm);font-size:11.5px;font-weight:600;letter-spacing:.04em;
          color:rgba(255,255,255,.42);flex:none;width:34px}
@@ -746,20 +746,19 @@ body.agrid #agrid{display:block}
 <!-- ================================================================
      02 · CONTENTS + HOW TO USE
      ================================================================ -->
-<section class="slide dark" data-sec="0.0" data-secname="Essentials" data-title="Table of Contents &amp; How to Use This Book">
+<section class="slide dark" data-sec="0.0" data-secname="Essentials" data-title="Table of Contents">
   <header class="s-head">
     <div class="row">
       <div>
         <div class="eyebrow" data-r="1">0.1 &middot; Essentials</div>
-        <h1 class="s-title" data-r="1" style="font-size:56px">Table of contents &amp; how to use this book</h1>
+        <h1 class="s-title" data-r="1">Table of contents</h1>
       </div>
-      <div class="s-meta" data-r="1">TWENTY PAGES &middot; FIVE SECTIONS<br><b>READ THIS PAGE FIRST</b></div>
+      <div class="s-meta" data-r="1">TWENTY PAGES &middot; FIVE SECTIONS<br><b>SECTION 03 IS THE WORKING REFERENCE</b></div>
     </div>
     <div class="rule"></div>
   </header>
 
-  <div class="s-body" style="grid-template-rows:auto 1fr;gap:0">
-
+  <div class="s-body" style="align-content:center">
     <div data-r="2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:72px;align-items:start">
       <div class="toc">
         <div class="toc-grp">
@@ -798,49 +797,10 @@ body.agrid #agrid{display:block}
         </div>
       </div>
     </div>
-
-    <!-- the rules band sits on the page floor, so the contents above can breathe -->
-    <div data-r="3" style="align-self:end;border-top:2px solid var(--red);padding-top:26px;
-                           display:grid;grid-template-columns:repeat(4,1fr) 1.15fr;gap:44px">
-        <div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">01</span>
-            <h5 class="h-xs" style="font-size:17px;color:#fff">Read Section 01 first</h5>
-          </div>
-          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">Every visual rule that follows carries the story in Brand. A layout that looks right but says the wrong thing has still failed.</p>
-        </div>
-        <div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">02</span>
-            <h5 class="h-xs" style="font-size:17px;color:#fff">Work from Section 03</h5>
-          </div>
-          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">Mark, colour and type are specified with values you can copy straight into a file.</p>
-        </div>
-        <div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">03</span>
-            <h5 class="h-xs" style="font-size:17px;color:#fff">Check 3.4 before you ship</h5>
-          </div>
-          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">The Don&rsquo;ts page is short on purpose. If your artwork appears there, change it.</p>
-        </div>
-        <div>
-          <div style="display:flex;gap:12px;align-items:baseline">
-            <span style="font-family:var(--fm);font-size:11.5px;font-weight:700;color:var(--gold);flex:none">04</span>
-            <h5 class="h-xs" style="font-size:17px;color:#fff">Nothing ships off-system</h5>
-          </div>
-          <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">Type, colour, spacing and grid come from Section 03, and the mark is never redrawn.</p>
-        </div>
-      <div style="border-left:1px solid rgba(255,255,255,.16);padding-left:44px">
-        <div class="lab" style="color:var(--gold)">Status of this edition</div>
-        <p class="xs" style="margin-top:8px;color:rgba(255,255,255,.66)">V1.0 is a
-          <strong style="color:#fff">wireframe draft</strong>. Pages carrying a dashed frame are holding positions
-          for art direction not yet commissioned. No file here is a production master.</p>
-      </div>
-    </div>
   </div>
 
   <footer class="s-foot">
-    <span>Brand OS &middot; Vit&rsquo;s Brand Identity &middot; The rules of use</span>
+    <span>Brand OS &middot; Vit&rsquo;s Brand Identity</span>
     <span class="pg">&copy; 2026 Vit Makanan (KL) Sdn Bhd<b>02</b></span>
   </footer>
 </section>
@@ -907,7 +867,7 @@ body.agrid #agrid{display:block}
     <div class="rule"></div>
   </header>
 
-  <div class="s-body" style="grid-template-rows:auto 1fr;gap:0">
+  <div class="s-body" style="align-content:start">
 
     <div style="display:grid;grid-template-columns:1.4239fr 1fr;gap:72px;align-items:start" data-r="2">
       <div>
@@ -945,37 +905,6 @@ body.agrid #agrid{display:block}
       </div>
     </div>
 
-    <!-- the timeline runs the full measure and sits on the page floor -->
-    <div data-r="3" style="align-self:end">
-      <div class="lab-h" style="margin-bottom:0">Five chapters</div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:2px solid var(--ink)">
-        <div style="padding:18px 34px 0 0;border-right:1px solid var(--hair-2);">
-          <div class="lab" style="font-size:11px">1975</div>
-          <h5 class="h-xs" style="margin-top:10px;font-size:18px">A kitchen in Selayang</h5>
-          <p class="sm" style="margin-top:8px">A passion for making noodles becomes a business.</p>
-        </div>
-        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);">
-          <div class="lab" style="font-size:11px">1980</div>
-          <h5 class="h-xs" style="margin-top:10px;font-size:18px">Halal by choice</h5>
-          <p class="sm" style="margin-top:8px">Certification sought and obtained, so every Malaysian could eat it.</p>
-        </div>
-        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);">
-          <div class="lab" style="font-size:11px">Growth</div>
-          <h5 class="h-xs" style="margin-top:10px;font-size:18px">Rawang, 105,000 sq ft</h5>
-          <p class="sm" style="margin-top:8px">The plant moves to meet rising international demand.</p>
-        </div>
-        <div style="padding:18px 34px 0 34px;border-right:1px solid var(--hair-2);">
-          <div class="lab" style="font-size:11px">Standard</div>
-          <h5 class="h-xs" style="margin-top:10px;font-size:18px">HACCP, GMP, FSSC</h5>
-          <p class="sm" style="margin-top:8px">Food safety anchored to global benchmarks at every stage.</p>
-        </div>
-        <div style="padding:18px 0 0 34px;">
-          <div class="lab" style="font-size:11px">Today</div>
-          <h5 class="h-xs" style="margin-top:10px;font-size:18px">30+ countries</h5>
-          <p class="sm" style="margin-top:8px">Asia, the Middle East, Europe and beyond.</p>
-        </div>
-      </div>
-    </div>
   </div>
 
   <footer class="s-foot">

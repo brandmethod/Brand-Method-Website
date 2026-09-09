@@ -112,7 +112,7 @@ raw_slide('''  <div class="cover-media"><img src="img/infineon-kulim.jpg" alt="I
   <div class="cover-copy">
     <img class="logo" src="img/iaq-logo.png" alt="IAQ">
     <div class="cover-body">
-      <h1 class="cover-title">Engineering the facilities<br>advanced industry runs on.</h1>
+      <h1 class="cover-title">Engineering the facilities<br>advanced industry<br>runs on.</h1>
       <p class="stand">EPCM, EPCC and Energy Facility Management for cleanroom-critical
       industries — semiconductor, data centre, EV battery, pharmaceutical and energy.
       Established 1994.</p>

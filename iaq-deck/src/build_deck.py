@@ -23,7 +23,7 @@ def chrome(part_idx, num, foot):
 
 
 def slide(body, *, part_idx=None, num='', title='', note='', foot='',
-          dark=False, bare=False, cls='', fill=False):
+          dark=False, bare=False, cls='', fill=False, rows=False):
     """Standard content slide: top line, numbered header block, content, footer."""
     i = len(slides) + 1
     tab, part, dots, foot = chrome(part_idx, num, foot or (PARTS[part_idx] if part_idx is not None else 'IAQ Group'))
@@ -39,7 +39,7 @@ def slide(body, *, part_idx=None, num='', title='', note='', foot='',
     <div class="tl-l">{tab}<span class="tl-part">{esc(part)}</span></div>
     <div class="tl-r">IAQ Group // Company Deck</div>
   </div>{head}
-  <div class="canvas{' fill' if fill else ''}">{body}
+  <div class="canvas{' fill' if fill else ''}{' rows' if rows else ''}">{body}
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">{i:02d} / TOTAL</span></div>
@@ -155,7 +155,7 @@ for pn, pname, pnote, secs in contents_parts:
 slide(f'<div class="contents">{cols}\n    </div>',
       num='', title='Contents',
       note='Three parts. Every section is numbered, named and opens with a one-line summary.',
-      foot='Contents', fill=True)
+      foot='Contents', fill=True, rows=True)
 
 # ================================================================ PART 01
 def divider(part_idx, num, name, note, img, bullets):
@@ -206,7 +206,7 @@ slide('''
       </div>
     </div>''',
       part_idx=0, num='01.1', title='About IAQ',
-      note='Who we are, what we build, and the models we deliver under.', fill=True)
+      note='Who we are, what we build, and the models we deliver under.', fill=True, rows=True)
 
 # ---------------------------------------------------------------- 01.2 GLANCE
 stats = [('32', '', 'Years Experience'), ('450', '', 'Employees'),
@@ -264,7 +264,7 @@ for k, (a, b, name, items) in enumerate(eras, start=1):
       </div>'''
 slide(f'<div class="eras">{era_html}\n    </div>',
       part_idx=0, num='01.3', title='Milestones',
-      note='Landmark projects from 1994 to 2026, grouped into five eras of growth.', fill=True)
+      note='Landmark projects from 1994 to 2026, grouped into five eras of growth.', fill=True, rows=True)
 
 # ---------------------------------------------------------------- 01.4 FOOTPRINT
 markets = [
@@ -288,7 +288,7 @@ slide(f'''
       <div class="mrows">{m_html}</div>
     </div>''',
       part_idx=0, num='01.4', title='Global Footprint',
-      note='Where we operate, and the year we arrived in each market.', fill=True)
+      note='Where we operate, and the year we arrived in each market.', fill=True, rows=True)
 
 # ---------------------------------------------------------------- 01.5 CORE VALUES
 values = [
@@ -325,7 +325,7 @@ u_html = ''.join(
     for k, (n, s, d) in enumerate(units, start=1))
 slide(f'<div class="units">{u_html}</div>',
       part_idx=0, num='01.6', title='Business Units',
-      note='Three companies under one group, covering the full delivery chain.', fill=True)
+      note='Three companies under one group, covering the full delivery chain.', fill=True, rows=True)
 
 # ---------------------------------------------------------------- 01.7 SCOPE
 scope = [
@@ -619,7 +619,7 @@ w_html = ''.join(
 slide(f'<div class="wall">{w_html}</div>',
       part_idx=1, num='02.11', title='Reference Index',
       note='A selection from 200+ completed projects. The full reference list is available on request.',
-      foot='Project References', fill=True)
+      foot='Project References', fill=True, rows=True)
 
 # ================================================================ PART 03
 divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.4', 'klcc-dcp',
@@ -642,7 +642,7 @@ e_html = ''.join(
     for k, n, d in esg)
 slide(f'<div class="units">{e_html}</div>',
       part_idx=2, num='03.1', title='ESG Commitments',
-      note='Three pillars, applied to operations and to every project we take on.', fill=True)
+      note='Three pillars, applied to operations and to every project we take on.', fill=True, rows=True)
 
 # ---------------------------------------------------------------- 03.2 SAFETY
 awards = [
@@ -664,7 +664,7 @@ slide(f'''
       <div class="awards">{a_html}</div>
     </div>''',
       part_idx=2, num='03.2', title='Safety & Recognition',
-      note='How our standards are independently verified and recognised.', fill=True)
+      note='How our standards are independently verified and recognised.', fill=True, rows=True)
 
 # ---------------------------------------------------------------- 03.3 CLOSING
 slide('''

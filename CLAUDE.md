@@ -75,6 +75,6 @@ Three or more mockups get split across pages rather than shrunk.
 
 ### 6. After any change
 
-Rebuild all three deliverables and confirm the PDF reports **97 pages**:
+Rebuild all three deliverables and confirm the PDF reports **99 pages**:
 self-contained HTML, the print PDF with fonts embedded, and the published
 artifact.

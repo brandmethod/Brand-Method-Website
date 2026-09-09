@@ -365,3 +365,6 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .stat.sm .cap.tight{font-size:calc(13.5 * var(--u));line-height:1.35;margin-top:calc(6 * var(--u))}
 
 .canvas.fill .eras{grid-template-rows:auto;align-content:center}
+.era-span .to{font-family:var(--sans);font-weight:500;font-size:calc(15 * var(--u));
+  color:var(--muted);letter-spacing:0;margin:0 calc(6 * var(--u))}
+.signoff{width:calc(150 * var(--u));display:block;margin-bottom:calc(6 * var(--u))}

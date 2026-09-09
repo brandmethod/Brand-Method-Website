@@ -1,0 +1,1202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IAQ Total Facility Solutions</title>
+<meta name="description" content="IAQ Group presentation deck — company, project references and delivery capability.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Urbanist:wght@400;500;600&family=League+Spartan:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#101A2B;
+  --ink-2:#1B2739;
+  --signal:#EC2326;
+  --paper:#F6F7F9;
+  --surface:#FFFFFF;
+  --muted:#64707A;
+  --rule:#D5DBE2;
+  --rule-dark:rgba(255,255,255,.16);
+  --paper-on-dark:#E7EBF0;
+  --muted-on-dark:#96A2B2;
+  --sans:"Urbanist","Helvetica Neue",Arial,sans-serif;
+  --display:"Poppins","Helvetica Neue",Arial,sans-serif;
+  --tech:"League Spartan","Helvetica Neue",Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--ink)}
+body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+
+/* ---------- deck shell ---------- */
+.deck{height:100vh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.stage{height:100vh;display:grid;place-items:center;scroll-snap-align:center;padding:0 16px}
+.slide{
+  width:min(96vw,calc(90vh * 16 / 9));
+  aspect-ratio:16/9;
+  container-type:size;
+  position:relative;
+  overflow:hidden;
+  background:var(--paper);
+  color:var(--ink);
+  --u:calc(100cqw / 1920);
+}
+.slide.dark{background:var(--ink);color:var(--paper-on-dark)}
+.pad{position:absolute;inset:calc(76 * var(--u)) calc(96 * var(--u))}
+
+/* ---------- running chrome ---------- */
+.eyebrow,.meta,.folio,.foot{
+  font-family:var(--tech);text-transform:uppercase;line-height:1;
+}
+.eyebrow{position:absolute;top:calc(46 * var(--u));left:calc(96 * var(--u));
+  font-weight:600;font-size:calc(15.5 * var(--u));letter-spacing:.24em;color:var(--ink)}
+.meta{position:absolute;top:calc(46 * var(--u));right:calc(96 * var(--u));
+  font-weight:400;font-size:calc(13.5 * var(--u));letter-spacing:.24em;color:var(--muted)}
+.folio{position:absolute;bottom:calc(44 * var(--u));left:calc(96 * var(--u));
+  font-weight:500;font-size:calc(13.5 * var(--u));letter-spacing:.22em;color:var(--muted);
+  display:flex;align-items:center;gap:calc(14 * var(--u));font-variant-numeric:tabular-nums}
+.folio::before{content:"";width:calc(34 * var(--u));height:calc(4 * var(--u));background:var(--signal)}
+.foot{position:absolute;bottom:calc(44 * var(--u));right:calc(96 * var(--u));
+  font-weight:400;font-size:calc(13.5 * var(--u));letter-spacing:.22em;color:var(--muted)}
+.dark .eyebrow{color:var(--paper-on-dark)}
+.dark .meta,.dark .folio,.dark .foot{color:var(--muted-on-dark)}
+
+/* ---------- type roles ---------- */
+.title{font-family:var(--display);font-weight:600;font-size:calc(72 * var(--u));line-height:.98;
+  letter-spacing:-.02em;margin:0;text-wrap:balance}
+.title.big{font-weight:700;font-size:calc(96 * var(--u))}
+.sect{font-family:var(--display);font-weight:600;font-size:calc(34 * var(--u));line-height:1.15;
+  letter-spacing:-.02em;margin:0}
+.stand{font-family:var(--display);font-weight:500;font-size:calc(26 * var(--u));line-height:1.32;
+  letter-spacing:-.01em;margin:0;color:var(--ink-2)}
+.dark .stand{color:var(--paper-on-dark)}
+.body{font-family:var(--sans);font-weight:400;font-size:calc(19 * var(--u));line-height:1.6;margin:0;
+  color:var(--ink-2);max-width:62ch}
+.dark .body{color:var(--paper-on-dark)}
+.cap{font-family:var(--sans);font-weight:500;font-size:calc(17 * var(--u));line-height:1.5;margin:0;color:var(--muted)}
+.dark .cap{color:var(--muted-on-dark)}
+.ghead{font-family:var(--sans);font-weight:600;font-size:calc(19 * var(--u));line-height:1.3;margin:0}
+.spec{font-family:var(--tech);font-weight:500;font-size:calc(14.5 * var(--u));letter-spacing:.14em;
+  text-transform:uppercase;line-height:1.35;color:var(--signal)}
+.label{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));letter-spacing:.22em;
+  text-transform:uppercase;line-height:1;color:var(--muted)}
+.dark .label{color:var(--muted-on-dark)}
+.num{font-family:var(--display);font-weight:700;letter-spacing:-.03em;line-height:.9;
+  font-variant-numeric:tabular-nums}
+
+/* ---------- cover ---------- */
+.cover-media{position:absolute;inset:0;left:44%}
+.cover-media img{width:100%;height:100%;object-fit:cover;display:block}
+.cover-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(16,26,43,.55) 34%,rgba(16,26,43,0) 74%)}
+.cover-copy{position:absolute;left:calc(96 * var(--u));top:calc(250 * var(--u));width:calc(1000 * var(--u));z-index:2}
+.cover-body{border-left:calc(6 * var(--u)) solid var(--signal);padding-left:calc(38 * var(--u))}
+.logo{width:calc(232 * var(--u));display:block;margin-bottom:calc(56 * var(--u))}
+.cover-copy .stand{margin-top:calc(30 * var(--u));max-width:calc(720 * var(--u))}
+
+/* ---------- dividers ---------- */
+.divider-grid{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr}
+.divider-copy{align-self:center;padding-left:calc(96 * var(--u))}
+.divider-media{position:relative;overflow:hidden}
+.divider-media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.62}
+.divider-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(16,26,43,.25) 60%,rgba(16,26,43,.5) 100%)}
+.phase-num{font-size:calc(210 * var(--u));color:var(--signal)}
+.divider-list{margin:calc(38 * var(--u)) 0 0;padding:0;list-style:none;display:grid;gap:calc(12 * var(--u))}
+.divider-list li{font-family:var(--sans);font-weight:500;font-size:calc(18 * var(--u));color:var(--muted-on-dark)}
+
+/* ---------- generic layout ---------- */
+.stack{display:grid;align-content:center}
+.two-col{display:grid;grid-template-columns:calc(560 * var(--u)) 1fr;gap:calc(72 * var(--u));align-items:center}
+.head-block{display:grid;gap:calc(22 * var(--u));align-content:start}
+
+/* stat tiles */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1 * var(--u));background:var(--rule);
+  border-top:calc(1 * var(--u)) solid var(--rule);border-bottom:calc(1 * var(--u)) solid var(--rule)}
+.stat{background:var(--paper);padding:calc(38 * var(--u)) calc(34 * var(--u))}
+.stat .num{font-size:calc(68 * var(--u));color:var(--ink)}
+.stat .num span{font-size:calc(28 * var(--u));color:var(--signal);margin-left:calc(6 * var(--u))}
+.stat .label{margin-top:calc(14 * var(--u))}
+
+/* certification strip */
+.certs{display:flex;flex-wrap:wrap;gap:calc(10 * var(--u))}
+.cert{font-family:var(--tech);font-weight:500;font-size:calc(13.5 * var(--u));letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink);border:calc(1 * var(--u)) solid var(--rule);
+  padding:calc(11 * var(--u)) calc(16 * var(--u));background:var(--surface)}
+.cert strong{color:var(--signal);font-weight:600}
+
+/* numbered / listed items */
+.rows{display:grid}
+.row{display:grid;grid-template-columns:calc(54 * var(--u)) 1fr;gap:calc(20 * var(--u));
+  padding:calc(19 * var(--u)) 0;border-top:calc(1 * var(--u)) solid var(--rule)}
+.row:last-child{border-bottom:calc(1 * var(--u)) solid var(--rule)}
+.row .idx{font-family:var(--tech);font-weight:500;font-size:calc(14 * var(--u));letter-spacing:.14em;
+  color:var(--signal);padding-top:calc(4 * var(--u));font-variant-numeric:tabular-nums}
+.row .rt{display:grid;gap:calc(6 * var(--u))}
+
+/* chips grid (scope of services) */
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(1 * var(--u));background:var(--rule);
+  border:calc(1 * var(--u)) solid var(--rule)}
+.chip{background:var(--paper);padding:calc(30 * var(--u)) calc(26 * var(--u));display:grid;gap:calc(8 * var(--u))}
+.chip .n{font-family:var(--tech);font-weight:500;font-size:calc(12.5 * var(--u));letter-spacing:.2em;color:var(--signal)}
+.chip .t{font-family:var(--sans);font-weight:600;font-size:calc(18 * var(--u));line-height:1.25}
+.chip .s{font-family:var(--sans);font-weight:400;font-size:calc(15 * var(--u));color:var(--muted);line-height:1.45}
+
+/* ---------- project title block ---------- */
+.tb{display:grid}
+.tb-row{display:grid;grid-template-columns:calc(150 * var(--u)) 1fr;gap:calc(18 * var(--u));
+  padding:calc(12 * var(--u)) 0;border-top:calc(1 * var(--u)) solid var(--rule)}
+.tb-row:last-child{border-bottom:calc(1 * var(--u)) solid var(--rule)}
+.tb-row dt{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted);padding-top:calc(4 * var(--u))}
+.tb-row dd{margin:0;font-family:var(--sans);font-weight:500;font-size:calc(16.5 * var(--u));line-height:1.45;color:var(--ink-2)}
+.tb-row dd.iso{font-family:var(--tech);font-weight:500;font-size:calc(15 * var(--u));letter-spacing:.12em;
+  text-transform:uppercase;color:var(--signal)}
+.dark .tb-row{border-color:var(--rule-dark)}
+.dark .tb-row dt{color:var(--muted-on-dark)}
+.dark .tb-row dd{color:var(--paper-on-dark)}
+
+/* hero project */
+.hero-media{position:absolute;inset:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(16,26,43,.94) 0%,rgba(16,26,43,.86) 34%,rgba(16,26,43,.12) 68%)}
+.hero-panel{position:absolute;left:calc(96 * var(--u));top:calc(210 * var(--u));width:calc(760 * var(--u));z-index:2}
+.hero-panel .title{color:#fff;font-size:calc(56 * var(--u))}
+.hero-panel .flag{margin-bottom:calc(20 * var(--u))}
+
+/* project cards */
+.cards{display:grid;gap:calc(44 * var(--u));align-content:center}
+.cards.two{grid-template-columns:1fr 1fr}
+.cards.three{grid-template-columns:repeat(3,1fr);gap:calc(34 * var(--u))}
+.cards.four{grid-template-columns:repeat(2,1fr);gap:calc(36 * var(--u)) calc(48 * var(--u))}
+.cards.four .card{grid-template-columns:calc(460 * var(--u)) 1fr;gap:calc(28 * var(--u));align-items:start}
+.card{display:grid;align-content:start;gap:calc(18 * var(--u))}
+.shot{width:100%;aspect-ratio:8/5;object-fit:cover;display:block;background:var(--rule)}
+.cards.three .shot{aspect-ratio:4/3}
+.cards.four .shot{aspect-ratio:4/3}
+.card .ct{display:grid;gap:calc(8 * var(--u))}
+.card .cn{font-family:var(--display);font-weight:600;font-size:calc(24 * var(--u));line-height:1.12;
+  letter-spacing:-.02em;margin:0}
+.cards.three .card .cn,.cards.four .card .cn{font-size:calc(21 * var(--u))}
+.flag{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));letter-spacing:.22em;
+  text-transform:uppercase;color:var(--signal)}
+
+/* name wall */
+.wall{display:grid;grid-template-columns:repeat(3,1fr);gap:0 calc(56 * var(--u))}
+.wall-col{display:grid;align-content:start}
+.wall h3{margin:0 0 calc(10 * var(--u));font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.22em;text-transform:uppercase;color:var(--signal)}
+.wall li{list-style:none;font-family:var(--sans);font-weight:500;font-size:calc(15.5 * var(--u));
+  line-height:1.3;padding:calc(8.5 * var(--u)) 0;border-top:calc(1 * var(--u)) solid var(--rule);color:var(--ink-2)}
+.wall ul{margin:0 0 calc(26 * var(--u));padding:0}
+
+/* contacts */
+.contacts{display:grid;grid-template-columns:1fr 1fr;gap:calc(56 * var(--u));max-width:calc(1100 * var(--u))}
+.contact{display:grid;gap:calc(8 * var(--u));padding-top:calc(20 * var(--u));border-top:calc(2 * var(--u)) solid var(--signal)}
+.contact .nm{font-family:var(--display);font-weight:600;font-size:calc(24 * var(--u));letter-spacing:-.02em}
+.contact .rl{font-family:var(--tech);font-weight:500;font-size:calc(13 * var(--u));letter-spacing:.2em;
+  text-transform:uppercase;color:var(--muted-on-dark)}
+.contact .dt{font-family:var(--sans);font-weight:500;font-size:calc(17 * var(--u));color:var(--paper-on-dark)}
+
+/* ---------- viewer nav ---------- */
+.nav{position:fixed;right:20px;bottom:18px;display:flex;align-items:center;gap:10px;z-index:20}
+.nav button{font-family:var(--tech);font-weight:600;font-size:12px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--paper-on-dark);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);
+  padding:9px 13px;cursor:pointer;border-radius:2px}
+.nav button:hover{background:rgba(255,255,255,.16)}
+.nav button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+.counter{font-family:var(--tech);font-weight:500;font-size:12px;letter-spacing:.18em;color:var(--muted-on-dark);
+  font-variant-numeric:tabular-nums}
+
+@media (prefers-reduced-motion:reduce){.deck{scroll-behavior:auto}}
+
+@media print{
+  @page{size:297mm 167mm;margin:0}
+  html,body{background:#fff}
+  .deck{height:auto;overflow:visible;scroll-snap-type:none}
+  .stage{height:auto;padding:0;display:block;break-after:page;page-break-after:always}
+  .slide{width:297mm;height:167mm;aspect-ratio:auto}
+  .nav{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- 01 COVER -->
+<div class="stage"><section class="slide dark">
+  <div class="cover-media"><img src="img/infineon-kulim.jpg" alt="Infineon Kulim Wafer Fab 3, greenfield wafer fabrication plant"></div>
+  <div class="eyebrow">Your Total Facility Solutions Provider</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="cover-copy">
+    <img class="logo" src="img/iaq-logo.png" alt="IAQ">
+    <div class="cover-body">
+      <h1 class="title big">Engineering the facilities<br>advanced industry runs on.</h1>
+      <p class="stand">EPCM, EPCC and Energy Facility Management for cleanroom-critical industries. Established 1994.</p>
+    </div>
+  </div>
+  <div class="folio">01 / 32</div>
+  <div class="foot">Edition 2026</div>
+</section></div>
+
+<!-- 02 CONTENTS -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Contents</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(46 * var(--u))">
+    <h2 class="title" style="max-width:calc(1100 * var(--u))">Three parts, weighted to the work itself.</h2>
+    <div class="rows">
+      <div class="row"><div class="idx">01</div><div class="rt">
+        <p class="ghead">The Company &nbsp;·&nbsp; p.04–09</p>
+        <p class="cap">Who we are · Scale and certification · Global footprint · Business units · Scope of services · Industry focus</p></div></div>
+      <div class="row"><div class="idx">02</div><div class="rt">
+        <p class="ghead">Project References &nbsp;·&nbsp; p.10–28</p>
+        <p class="cap">Semiconductor · Data centre · EV battery · Photovoltaics · Pharmaceutical &amp; medical · District cooling and energy — Malaysia, Singapore, Europe and China</p></div></div>
+      <div class="row"><div class="idx">03</div><div class="rt">
+        <p class="ghead">Safety, Quality &amp; ESG &nbsp;·&nbsp; p.29–32</p>
+        <p class="cap">How we deliver · ESG commitments · Contacts</p></div></div>
+    </div>
+  </div>
+  <div class="folio">02 / 32</div>
+  <div class="foot">Contents</div>
+</section></div>
+
+<!-- 03 DIVIDER 01 -->
+<div class="stage"><section class="slide dark">
+  <div class="divider-grid">
+    <div class="divider-copy">
+      <div class="num phase-num">01</div>
+      <h2 class="title" style="color:#fff;margin-top:calc(24 * var(--u))">The Company</h2>
+      <ul class="divider-list">
+        <li>Established 1994 · 32 years in total facility solutions</li>
+        <li>450 people across 6 global offices</li>
+        <li>ISO 9001 · ISO 14001 · ISO 45001 certified</li>
+      </ul>
+    </div>
+    <div class="divider-media"><img src="img/p-project.jpg" alt="Advanced packaging facility under construction"></div>
+  </div>
+  <div class="eyebrow">Part One of Three</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="folio">03 / 32</div>
+  <div class="foot">The Company</div>
+</section></div>
+
+<!-- 04 ABOUT -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">The Company // About</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad two-col">
+    <div class="head-block">
+      <h2 class="title">Established 1994.<br>A trailblazer in total facility solutions.</h2>
+      <p class="body">Engineering, procurement, construction and maintenance for the industries where contamination, uptime and safety decide the outcome — from semiconductor wafer fabs to gigafactories, data centres and pharmaceutical plants.</p>
+    </div>
+    <div class="stack" style="gap:calc(30 * var(--u));align-content:center">
+      <div class="tb">
+        <div class="tb-row"><dt>Vision</dt><dd>To be a regional facility solutions provider with engineering excellence that facilitates technological innovation and advancement in quality of life.</dd></div>
+        <div class="tb-row"><dt>Mission</dt><dd>Providing innovative, sustainable facility and engineering solutions benefitting our clients and stakeholders, driven by our leadership, employees and partners globally.</dd></div>
+        <div class="tb-row"><dt>Delivery</dt><dd class="iso">EPCM · EPCC · Energy Facility Management</dd></div>
+      </div>
+    </div>
+  </div>
+  <div class="folio">04 / 32</div>
+  <div class="foot">The Company</div>
+</section></div>
+
+<!-- 05 AT A GLANCE -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">The Company // IAQ at a Glance</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(40 * var(--u))">
+    <h2 class="sect">Scale, measured.</h2>
+    <div class="stats">
+      <div class="stat"><div class="num">32</div><div class="label">Years Experience</div></div>
+      <div class="stat"><div class="num">450</div><div class="label">Employees</div></div>
+      <div class="stat"><div class="num">200<span>+</span></div><div class="label">Projects Completed</div></div>
+      <div class="stat"><div class="num">1.5<span>mil m²</span></div><div class="label">Cleanroom Built-Up Area</div></div>
+      <div class="stat"><div class="num">6</div><div class="label">Global Offices</div></div>
+      <div class="stat"><div class="num">20<span>t / yr</span></div><div class="label">Carbon Footprint Reduced</div></div>
+    </div>
+    <div class="stack" style="gap:calc(16 * var(--u))">
+      <div class="label">Certification &amp; Recognition</div>
+      <div class="certs">
+        <span class="cert">Intertek <strong>ISO 9001:2015</strong></span>
+        <span class="cert">Intertek <strong>ISO 14001:2015</strong></span>
+        <span class="cert">Intertek <strong>ISO 45001:2018</strong></span>
+        <span class="cert">CIDB <strong>Grade G7</strong></span>
+        <span class="cert">PKK <strong>Grade G7</strong></span>
+        <span class="cert">Highwire Safety <strong>Gold</strong></span>
+        <span class="cert">MCIEA <strong>Builder of the Year 2024</strong></span>
+      </div>
+    </div>
+  </div>
+  <div class="folio">05 / 32</div>
+  <div class="foot">The Company</div>
+</section></div>
+
+<!-- 06 GLOBAL FOOTPRINT -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">The Company // Global Footprint</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad two-col">
+    <div class="head-block">
+      <h2 class="title">From Shah Alam<br>to seven markets.</h2>
+      <p class="body">Offices across Asia Pacific and Europe — Malaysia, Singapore, Sweden, Norway, China, France and Poland — following our clients as advanced manufacturing localises.</p>
+    </div>
+    <div class="rows" style="align-self:center">
+      <div class="row"><div class="idx">1994</div><div class="rt"><p class="ghead">Malaysia</p><p class="cap">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor, Kuching.</p></div></div>
+      <div class="row"><div class="idx">2020</div><div class="rt"><p class="ghead">Sweden</p><p class="cap">Gigafactory construction for EV battery manufacture, part of Europe's clean and digital transition.</p></div></div>
+      <div class="row"><div class="idx">2023</div><div class="rt"><p class="ghead">Singapore</p><p class="cap">Design &amp; build EPCM services to global semiconductor clients.</p></div></div>
+      <div class="row"><div class="idx">2025</div><div class="rt"><p class="ghead">Germany</p><p class="cap">EPCC services following semiconductor expansion in Europe.</p></div></div>
+      <div class="row"><div class="idx">2026</div><div class="rt"><p class="ghead">India &nbsp;·&nbsp; United States</p><p class="cap">D&amp;B turnkey for India's first wafer fab; US entry following localisation of advanced tech facilities.</p></div></div>
+    </div>
+  </div>
+  <div class="folio">06 / 32</div>
+  <div class="foot">The Company</div>
+</section></div>
+
+<!-- 07 BUSINESS UNITS -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">The Company // Business Units</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(40 * var(--u))">
+    <h2 class="sect">Three units, one delivery chain.</h2>
+    <div class="rows">
+      <div class="row"><div class="idx">01</div><div class="rt">
+        <p class="ghead">IAQ Utility Solutions Sdn Bhd &nbsp;—&nbsp; <span class="spec">Process Critical Utilities &amp; Total Tool Install</span></p>
+        <p class="cap">EPCM partner for semiconductor manufacturing: engineering, procurement and construction management of process-critical utility infrastructure and total tool installation — bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></div>
+      <div class="row"><div class="idx">02</div><div class="rt">
+        <p class="ghead">IAQ Solutions Sdn Bhd &nbsp;—&nbsp; <span class="spec">Engineering, Procurement, Construction &amp; Commissioning</span></p>
+        <p class="cap">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning.</p></div></div>
+      <div class="row"><div class="idx">03</div><div class="rt">
+        <p class="ghead">IAQ Energy Facility Management Sdn Bhd &nbsp;—&nbsp; <span class="spec">Energy Management</span></p>
+        <p class="cap">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></div>
+    </div>
+  </div>
+  <div class="folio">07 / 32</div>
+  <div class="foot">The Company</div>
+</section></div>
+
+<!-- 08 SCOPE OF SERVICES -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">The Company // Scope of Services</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(34 * var(--u))">
+    <div class="head-block" style="gap:calc(14 * var(--u))">
+      <h2 class="sect">Twelve packages, delivered under one contract.</h2>
+      <p class="cap">Self-performed and integrated across the project lifecycle.</p>
+    </div>
+    <div class="chips">
+      <div class="chip"><span class="n">01</span><span class="t">Cleanroom System</span><span class="s">ISO 3 to ISO 8, Class 1 to Class 100K</span></div>
+      <div class="chip"><span class="n">02</span><span class="t">Air Conditioning System</span><span class="s">ACMV, make-up air, recirculation</span></div>
+      <div class="chip"><span class="n">03</span><span class="t">Process Utilities</span><span class="s">CDA, PCW, PV</span></div>
+      <div class="chip"><span class="n">04</span><span class="t">Process Exhaust System</span><span class="s">Scrubbed, heat and general exhaust</span></div>
+      <div class="chip"><span class="n">05</span><span class="t">Chemical &amp; Gas Delivery</span><span class="s">Specialty and bulk gases, chemical delivery</span></div>
+      <div class="chip"><span class="n">06</span><span class="t">Ultra Pure Water</span><span class="s">UPW generation and distribution</span></div>
+      <div class="chip"><span class="n">07</span><span class="t">Waste Water Treatment</span><span class="s">Industrial effluent and recovery</span></div>
+      <div class="chip"><span class="n">08</span><span class="t">Fire Protection System</span><span class="s">Detection, suppression, compliance</span></div>
+      <div class="chip"><span class="n">09</span><span class="t">HT &amp; LV Electrical</span><span class="s">Up to 33kV substations</span></div>
+      <div class="chip"><span class="n">10</span><span class="t">Civil, Structural &amp; Architectural</span><span class="s">Greenfield and brownfield CSA</span></div>
+      <div class="chip"><span class="n">11</span><span class="t">Facility Monitoring &amp; Control</span><span class="s">FMCS, BMS, PA</span></div>
+      <div class="chip"><span class="n">12</span><span class="t">Tools Hookup</span><span class="s">Progressive tool install and hookup</span></div>
+    </div>
+  </div>
+  <div class="folio">08 / 32</div>
+  <div class="foot">The Company</div>
+</section></div>
+
+<!-- 09 INDUSTRY FOCUS -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">The Company // Industry Focus</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(34 * var(--u))">
+    <div class="head-block" style="gap:calc(14 * var(--u))">
+      <h2 class="sect">Seven industries, one discipline: contamination control.</h2>
+      <p class="cap">Each sector carries its own class, code and risk profile. The engineering answer changes; the standard does not.</p>
+    </div>
+    <div class="chips" style="grid-template-columns:repeat(4,1fr)">
+      <div class="chip"><span class="n">01</span><span class="t">Semiconductor</span><span class="s">Wafer fab, advanced packaging, test &amp; assembly</span></div>
+      <div class="chip"><span class="n">02</span><span class="t">Data Centre</span><span class="s">Hyperscale cooling, security, uptime</span></div>
+      <div class="chip"><span class="n">03</span><span class="t">EV Battery</span><span class="s">Dry rooms, moisture control, explosion proofing</span></div>
+      <div class="chip"><span class="n">04</span><span class="t">District Cooling &amp; Heating</span><span class="s">Urban energy plant and distribution</span></div>
+      <div class="chip"><span class="n">05</span><span class="t">Photovoltaics</span><span class="s">Cell and module lines, toxic material handling</span></div>
+      <div class="chip"><span class="n">06</span><span class="t">Pharmaceuticals &amp; Hospitals</span><span class="s">GMP grades, regulated environments</span></div>
+      <div class="chip"><span class="n">07</span><span class="t">Food &amp; Beverage</span><span class="s">Hygienic design, quality and safety standards</span></div>
+      <div class="chip" style="background:var(--ink)"><span class="n">—</span><span class="t" style="color:#fff">Your facility next</span><span class="s" style="color:var(--muted-on-dark)">Total facility solutions, end to end</span></div>
+    </div>
+  </div>
+  <div class="folio">09 / 32</div>
+  <div class="foot">The Company</div>
+</section></div>
+
+<!-- 10 DIVIDER 02 -->
+<div class="stage"><section class="slide dark">
+  <div class="divider-grid">
+    <div class="divider-copy">
+      <div class="num phase-num">02</div>
+      <h2 class="title" style="color:#fff;margin-top:calc(24 * var(--u))">Project References</h2>
+      <ul class="divider-list">
+        <li>200+ projects completed across three regions</li>
+        <li>Over 1.5 million m² of cleanroom built</li>
+        <li>ISO 3 to ISO 8 · Class 1 to Class 100K</li>
+      </ul>
+    </div>
+    <div class="divider-media"><img src="img/northvolt.jpg" alt="Northvolt gigafactory, Skellefteå, Sweden"></div>
+  </div>
+  <div class="eyebrow">Part Two of Three</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="folio">10 / 32</div>
+  <div class="foot">Project References</div>
+</section></div>
+
+<!-- 11 PORTFOLIO AT A GLANCE -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Portfolio</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad two-col">
+    <div class="head-block">
+      <h2 class="title">The book, at a glance.</h2>
+      <p class="body">Wafer fabs, gigafactories, hyperscale data centres, pharmaceutical plants and district cooling — delivered as general contractor, EPCC, EPCM and progressive tool hookup.</p>
+    </div>
+    <div class="stack" style="gap:calc(26 * var(--u));align-content:center">
+      <div class="tb">
+        <div class="tb-row"><dt>Malaysia &amp; SG</dt><dd>Semiconductor, data centre, pharmaceutical, photovoltaics, district cooling and energy</dd></div>
+        <div class="tb-row"><dt>Europe</dt><dd>EV battery gigafactories, wafer fabs and advanced semiconductor — Sweden, Norway, France, Poland, Morocco</dd></div>
+        <div class="tb-row"><dt>China</dt><dd>Semiconductor, display, pharmaceutical, automotive and R&amp;D facilities</dd></div>
+        <div class="tb-row"><dt>Contract Models</dt><dd class="iso">GC · EPCC · EPCM · PCC · Tool Hookup</dd></div>
+      </div>
+      <div class="stats" style="grid-template-columns:repeat(3,1fr)">
+        <div class="stat" style="padding-top:calc(24 * var(--u))"><div class="num" style="font-size:calc(48 * var(--u))">200<span>+</span></div><div class="label">Projects</div></div>
+        <div class="stat" style="padding-top:calc(24 * var(--u))"><div class="num" style="font-size:calc(48 * var(--u))">1.5<span>mil m²</span></div><div class="label">Cleanroom</div></div>
+        <div class="stat" style="padding-top:calc(24 * var(--u))"><div class="num" style="font-size:calc(48 * var(--u))">3</div><div class="label">Regions</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="folio">11 / 32</div>
+  <div class="foot">Project References</div>
+</section></div>
+
+<!-- 12 HERO — INFINEON KULIM -->
+<div class="stage"><section class="slide dark">
+  <div class="hero-media"><img src="img/infineon-kulim.jpg" alt="Infineon Kulim Wafer Fab 3"></div>
+  <div class="eyebrow">Project References // Semiconductor · Malaysia</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="hero-panel">
+    <div class="flag">Kulim, Kedah · Greenfield Wafer Fab</div>
+    <h2 class="title">Infineon Kulim<br>Wafer Fab 3</h2>
+    <dl class="tb" style="margin-top:calc(34 * var(--u))">
+      <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 4 · 5 · 6 · 7 (Class 10 · 100 · 1K · 10K)</dd></div>
+      <div class="tb-row"><dt>Scope</dt><dd>PCC for cleanroom and mechanical works</dd></div>
+      <div class="tb-row"><dt>Description</dt><dd>General contractor for WP06, KLM3 Expansion — 35,000 m² cleanroom area</dd></div>
+    </dl>
+  </div>
+  <div class="folio">12 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 13 HERO — P PROJECT -->
+<div class="stage"><section class="slide dark">
+  <div class="hero-media"><img src="img/p-project.jpg" alt="Advanced packaging facility under construction"></div>
+  <div class="eyebrow">Project References // Semiconductor · Malaysia</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="hero-panel">
+    <div class="flag">Advanced Packaging · 75,000 m²</div>
+    <h2 class="title">P Project</h2>
+    <dl class="tb" style="margin-top:calc(34 * var(--u))">
+      <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 4 – 7 (Class 10 – 10K)</dd></div>
+      <div class="tb-row"><dt>Scope</dt><dd>Design &amp; build GC: CSA, MEP, process utilities, chemical &amp; gases system, waste treatment system</dd></div>
+      <div class="tb-row"><dt>Description</dt><dd>Progressive-built EPCM contract model for the client's advanced packaging facility — 75,000 m² built-up</dd></div>
+    </dl>
+  </div>
+  <div class="folio">13 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 14 TWO-UP — XFAB / SOITEC -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Semiconductor · Malaysia</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad cards two">
+    <article class="card">
+      <img class="shot" src="img/xfab-kuching.jpg" alt="XFAB Kuching wafer fab expansion">
+      <div class="ct">
+        <div class="flag">Kuching, Sarawak</div>
+        <h3 class="cn">XFAB Kuching 40K Expansion</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 5 · 6 · 7 (Class 100 · 1K · 10K)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>CSA, mechanical, electrical &amp; plumbing, process utilities, UPW, chemical &amp; gases system</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>GC design &amp; build for wafer fab extension, CUB and supporting facilities — capacity 30k to 40k, 40,000 m² built-up</dd></div>
+        </dl>
+      </div>
+    </article>
+    <article class="card">
+      <img class="shot" src="img/soitec-pr1a.jpg" alt="SOITEC PR1A greenfield plant">
+      <div class="ct">
+        <div class="flag">Greenfield Plant</div>
+        <h3 class="cn">SOITEC PR1A Expansion</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 4 · 5 · 6 · 7 (Class 10 · 100 · 1K · 10K)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>EPCM design &amp; build for fab, including all related MEP</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>EPCM consultant for PR1A new greenfield plant — 45,000 m² built-up</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+  <div class="folio">14 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 15 TWO-UP — BOSCH / WAFER FAB EXPANSION -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Semiconductor · Malaysia</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad cards two">
+    <article class="card">
+      <img class="shot" src="img/bosch-testing.jpg" alt="Robert Bosch testing and manufacturing plant">
+      <div class="ct">
+        <div class="flag">Greenfield · Test &amp; Manufacturing</div>
+        <h3 class="cn">Robert Bosch Testing Manufacturing Plant</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 6 · 7 (Class 1K · 10K)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Main building CSA, MEP, process utilities and cleanroom package</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>General contractor for greenfield testing and manufacturing plant — 25,000 m² built-up</dd></div>
+        </dl>
+      </div>
+    </article>
+    <article class="card">
+      <img class="shot" src="img/wafer-fab-exp.jpg" alt="Wafer fab facility and expansion">
+      <div class="ct">
+        <div class="flag">FAB1E A/B · New CUB</div>
+        <h3 class="cn">Wafer Fab Facility &amp; Expansion</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>EPCC new building: CSA, mechanical, electrical, cleanroom, process utilities, specialty and bulk gases, chemical delivery</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>EPCC and design &amp; build for FAB1E A/B expansion — 1,000 m² cleanroom, 5,000 m² new CUB</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+  <div class="folio">15 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 16 TWO-UP — TI MELAKA / INFINEON MELAKA -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Semiconductor · Malaysia</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad cards two">
+    <article class="card">
+      <img class="shot" src="img/ti-melaka.jpg" alt="Texas Instruments Melaka">
+      <div class="ct">
+        <div class="flag">Melaka</div>
+        <h3 class="cn">Texas Instruments, Melaka</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 5 · 6 · 7 (Class 100 · 1K · 10K)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Mechanical, electrical, process utilities, testing &amp; commissioning</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>Facilitation works for residual management — 32,000 m² built-up</dd></div>
+        </dl>
+      </div>
+    </article>
+    <article class="card">
+      <img class="shot" src="img/infineon-melaka.jpg" alt="Infineon Technologies Melaka Block 8">
+      <div class="ct">
+        <div class="flag">Melaka · Block 8</div>
+        <h3 class="cn">Infineon Technologies (M) Sdn Bhd</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 6 · 7 (Class 1K · 10K)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>EPCM-GMP for civil &amp; structural, cleanroom, air-conditioning, process utilities and multi-storey carpark</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>Block 8 testing, probe &amp; assembly plant — 43,000 m² built-up</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+  <div class="folio">16 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 17 TWO-UP — MEMC / ST JOHOR -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Semiconductor · Malaysia</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad cards two">
+    <article class="card">
+      <img class="shot" src="img/memc-ipoh.jpg" alt="MEMC Ipoh">
+      <div class="ct">
+        <div class="flag">Ipoh, Perak · Greenfield</div>
+        <h3 class="cn">MEMC Ipoh Sdn Bhd</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 3 · 4 · 5 · 6 · 7 (Class 1 – 10K)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Mechanical, electrical, process utilities, cleanroom, fire fighting, FMCS, CSA and tools hookup</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>Greenfield project — the tightest cleanroom class in the portfolio, ISO 3 (Class 1)</dd></div>
+        </dl>
+      </div>
+    </article>
+    <article class="card">
+      <img class="shot" src="img/st-johor.jpg" alt="STMicroelectronics Johor">
+      <div class="ct">
+        <div class="flag">Johor</div>
+        <h3 class="cn">STMicroelectronics Sdn Bhd</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 7 (Class 10K)</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Cleanroom architectural, ACMV, electrical, process utility and cleanroom works</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>Three-storey production factory</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+  <div class="folio">17 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 18 THREE-UP — SINGAPORE -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Semiconductor · Singapore</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(30 * var(--u))">
+    <h2 class="sect">Singapore — design &amp; build EPCM since 2023.</h2>
+    <div class="cards three">
+      <article class="card">
+        <img class="shot" src="img/teksend.jpg" alt="Teksend Photomask Singapore">
+        <div class="ct">
+          <div class="flag">Photomask</div>
+          <h3 class="cn">Teksend Photomask</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">Class 1 to Class 10K</dd></div>
+            <div class="tb-row"><dt>Scope</dt><dd>EPCC for cleanroom, ACMV, electrical, process utility, BMS, PA, WWT, UPW, tool hookup</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/micron-msh.jpg" alt="Micron MSH tool hookup Singapore">
+        <div class="ct">
+          <div class="flag">Tool Hookup</div>
+          <h3 class="cn">Micron MSH Tool HU</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Scope</dt><dd>Progressive tool hook up</dd></div>
+            <div class="tb-row"><dt>Description</dt><dd>2,000 progressive tool hookup services for MSH</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/micron-f10.jpg" alt="Micron F10A and F10NX">
+        <div class="ct">
+          <div class="flag">Fit-Out</div>
+          <h3 class="cn">Micron F10A &amp; F10NX</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Scope</dt><dd>Interior design &amp; mechanical fit-out works</dd></div>
+            <div class="tb-row"><dt>Description</dt><dd>F10NX office optimisation</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="folio">18 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 19 HERO — HYPERSCALE DATA CENTRE -->
+<div class="stage"><section class="slide dark">
+  <div class="hero-media"><img src="img/hyperscale-dc.jpg" alt="160 MW hyperscale data centre"></div>
+  <div class="eyebrow">Project References // Data Centre</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="hero-panel">
+    <div class="flag">Client Confidential · 160 MW</div>
+    <h2 class="title">Hyperscale<br>Data Centre</h2>
+    <dl class="tb" style="margin-top:calc(34 * var(--u))">
+      <div class="tb-row"><dt>Scope</dt><dd>Construction, completion, testing &amp; commissioning for mechanical packages 1 &amp; 2 — office, data halls, mechanical utility building</dd></div>
+      <div class="tb-row"><dt>Also delivered</dt><dd>Microsoft DTC-KUL 03 — PCC for CHW and CW piping works, 9.6 MW data centre, KUL03 Phase 1</dd></div>
+    </dl>
+  </div>
+  <div class="folio">19 / 32</div>
+  <div class="foot">Data Centre</div>
+</section></div>
+
+<!-- 20 HERO — NORTHVOLT -->
+<div class="stage"><section class="slide dark">
+  <div class="hero-media"><img src="img/northvolt.jpg" alt="Northvolt gigafactory Skellefteå Sweden"></div>
+  <div class="eyebrow">Project References // EV Battery · Europe</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="hero-panel">
+    <div class="flag">Skellefteå, Sweden · 62,000 m²</div>
+    <h2 class="title">Northvolt AB<br>Gigafactory</h2>
+    <dl class="tb" style="margin-top:calc(34 * var(--u))">
+      <div class="tb-row"><dt>Environment</dt><dd class="iso">Dry Room</dd></div>
+      <div class="tb-row"><dt>Scope</dt><dd>Cleanroom and dry room architecture works</dd></div>
+      <div class="tb-row"><dt>Description</dt><dd>Europe gigafactory for lithium-ion battery manufacture — 62,000 m² built-up</dd></div>
+    </dl>
+  </div>
+  <div class="folio">20 / 32</div>
+  <div class="foot">EV Battery</div>
+</section></div>
+
+<!-- 21 TWO-UP — MORROW / ACC -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // EV Battery · Europe</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad cards two">
+    <article class="card">
+      <img class="shot" src="img/morrow.jpg" alt="Morrow Batteries, Norway">
+      <div class="ct">
+        <div class="flag">Norway · Battery Coast</div>
+        <h3 class="cn">Morrow Batteries</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Environment</dt><dd class="iso">Dry Room</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Cleanroom and dry room architectural system, air-conditioning and mechanical ventilation</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>Norway's Battery Coast project — 8,600 m² built-up</dd></div>
+        </dl>
+      </div>
+    </article>
+    <article class="card">
+      <img class="shot" src="img/acc-phase1.jpg" alt="ACC Phase 1 gigafactory, France">
+      <div class="ct">
+        <div class="flag">France · Greenfield</div>
+        <h3 class="cn">ACC Phase 1</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Environment</dt><dd class="iso">Dry Room</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Cleanroom, dry room architecture works</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>8,000 m² dry room architectural system — 35,000 m² built-up</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+  <div class="folio">21 / 32</div>
+  <div class="foot">EV Battery</div>
+</section></div>
+
+<!-- 22 TWO-UP — CONFIDENTIAL CMOS / ENVISION -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Europe</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad cards two">
+    <article class="card">
+      <img class="shot" src="img/confidential-cmos.jpg" alt="Advanced CMOS and FinFET wafer fabrication plant">
+      <div class="ct">
+        <div class="flag">Client Confidential · Wafer Fab</div>
+        <h3 class="cn">28/22nm CMOS · 16/12nm FinFET Plant</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">Class 1 to Class 10K</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Cleanroom &amp; mechanical general contractor</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>Design, supply, installation &amp; commissioning of cleanroom facilities</dd></div>
+        </dl>
+      </div>
+    </article>
+    <article class="card">
+      <img class="shot" src="img/envision-france.jpg" alt="Envision France battery plant">
+      <div class="ct">
+        <div class="flag">France</div>
+        <h3 class="cn">Envision France</h3>
+        <dl class="tb">
+          <div class="tb-row"><dt>Environment</dt><dd class="iso">Dry Room</dd></div>
+          <div class="tb-row"><dt>Scope</dt><dd>Cleanroom, dry room architecture works</dd></div>
+          <div class="tb-row"><dt>Description</dt><dd>Battery manufacturing facility, Envision AESC</dd></div>
+        </dl>
+      </div>
+    </article>
+  </div>
+  <div class="folio">22 / 32</div>
+  <div class="foot">EV Battery</div>
+</section></div>
+
+<!-- 23 THREE-UP — EUROPE SEMICONDUCTOR -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Semiconductor · Europe &amp; Morocco</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(30 * var(--u))">
+    <h2 class="sect">Following the fabs into Europe.</h2>
+    <div class="cards three">
+      <article class="card">
+        <img class="shot" src="img/soitec-paris.jpg" alt="Soitec Semiconductor, Paris">
+        <div class="ct">
+          <div class="flag">Paris, France</div>
+          <h3 class="cn">Soitec Semiconductor</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Scope</dt><dd>EPCC for cleanroom and MEP</dd></div>
+            <div class="tb-row"><dt>Description</dt><dd>11,000 m² built-up</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/st-casablanca.jpg" alt="STMicroelectronics Casablanca, Morocco">
+        <div class="ct">
+          <div class="flag">Casablanca, Morocco</div>
+          <h3 class="cn">STMicroelectronics</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div>
+            <div class="tb-row"><dt>Description</dt><dd>Cleanroom, MEP and hookup works — 60,000 m² built-up</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/xfab-paris.jpg" alt="Xfab Semiconductor, Paris">
+        <div class="ct">
+          <div class="flag">Paris, France</div>
+          <h3 class="cn">Xfab Semiconductor</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div>
+            <div class="tb-row"><dt>Description</dt><dd>Progressive hookup work — 5,000 m² built-up</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="folio">23 / 32</div>
+  <div class="foot">Semiconductor</div>
+</section></div>
+
+<!-- 24 FOUR-UP — CHINA -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // China</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(26 * var(--u))">
+    <h2 class="sect">China — semiconductor, display and precision manufacturing.</h2>
+    <div class="cards four">
+      <article class="card">
+        <img class="shot" src="img/ferrotec-hangzhou.jpg" alt="Ferrotec Semiconductor Hangzhou">
+        <div class="ct">
+          <div class="flag">Hangzhou · 23,400 m²</div>
+          <h3 class="cn">Ferrotec Semiconductor</h3>
+          <p class="spec">ISO 4 · 5 (Class 10 &amp; 100) — EPCC cleanroom, MEP, hookup</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/infineon-wuxi.jpg" alt="Infineon Technologies Wuxi">
+        <div class="ct">
+          <div class="flag">Wuxi · 8,000 m²</div>
+          <h3 class="cn">Infineon Technologies</h3>
+          <p class="spec">ISO 5 (Class 100) — EPCC cleanroom, MEP, hookup</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/smic-ningbo.jpg" alt="SMIC Ningbo">
+        <div class="ct">
+          <div class="flag">Ningbo · 22,000 m²</div>
+          <h3 class="cn">SMIC</h3>
+          <p class="spec">ISO 5 · 6 (Class 100 &amp; 1K) — EPCC for MEP works</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/maxtor-suzhou.jpg" alt="Maxtor Technology Suzhou">
+        <div class="ct">
+          <div class="flag">Suzhou · 95,000 m²</div>
+          <h3 class="cn">Maxtor Technology</h3>
+          <p class="spec">ISO 5 · 6 (Class 100 &amp; 1K) — cleanroom and MEP works</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="folio">24 / 32</div>
+  <div class="foot">China</div>
+</section></div>
+
+<!-- 25 THREE-UP — PHOTOVOLTAICS -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Photovoltaics</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(30 * var(--u))">
+    <h2 class="sect">Solar — cell and module manufacturing.</h2>
+    <div class="cards three">
+      <article class="card">
+        <img class="shot" src="img/first-solar.jpg" alt="First Solar KMW Building, Kulim">
+        <div class="ct">
+          <div class="flag">Kulim, Malaysia</div>
+          <h3 class="cn">First Solar Malaysia</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Scope</dt><dd>PCC for mechanical &amp; electrical, KMW building; CSA and M&amp;E for forming gas plant; M&amp;E for SCO1</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/auo-sunpower.jpg" alt="AUO Sunpower Melaka">
+        <div class="ct">
+          <div class="flag">Melaka, Malaysia</div>
+          <h3 class="cn">AUO Sunpower</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Scope</dt><dd>CSA, utilities, HVAC, electrical, testing &amp; commissioning</dd></div>
+            <div class="tb-row"><dt>Description</dt><dd>Fab 3A solar cell manufacturing</dd></div>
+          </dl>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/chint-solar.jpg" alt="Chint Solar Technology">
+        <div class="ct">
+          <div class="flag">China · 57,000 m²</div>
+          <h3 class="cn">Chint Solar Technology</h3>
+          <dl class="tb">
+            <div class="tb-row"><dt>Cleanroom</dt><dd class="iso">ISO 8 (Class 100K)</dd></div>
+            <div class="tb-row"><dt>Scope</dt><dd>Cleanroom, ACMV, process utilities and tools hookup</dd></div>
+          </dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="folio">25 / 32</div>
+  <div class="foot">Photovoltaics</div>
+</section></div>
+
+<!-- 26 FOUR-UP — PHARMA & MEDICAL -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Pharmaceutical &amp; Medical</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(26 * var(--u))">
+    <h2 class="sect">Regulated environments, built to GMP.</h2>
+    <div class="cards four">
+      <article class="card">
+        <img class="shot" src="img/insulet.jpg" alt="Insulet medical device plant">
+        <div class="ct">
+          <div class="flag">Greenfield · Medical Device</div>
+          <h3 class="cn">Insulet</h3>
+          <p class="spec">ISO 8 (Class 100K) — D&amp;B mechanical, cleanroom &amp; electrical</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/vital-healthcare.jpg" alt="Vital Healthcare medical device plant">
+        <div class="ct">
+          <div class="flag">Greenfield · Medical Device</div>
+          <h3 class="cn">Vital Healthcare</h3>
+          <p class="spec">ISO 8 (Class 100K) — GC for CSA, 33kV substation, MEP</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/pharmaniaga.jpg" alt="Pharmaniaga Puchong">
+        <div class="ct">
+          <div class="flag">Puchong, Selangor</div>
+          <h3 class="cn">Pharmaniaga</h3>
+          <p class="spec">ISO 5 · 7 · 8 — small volume parenteral facility</p>
+        </div>
+      </article>
+      <article class="card">
+        <img class="shot" src="img/ain-medicare.jpg" alt="Ain Medicare pharmaceutical building">
+        <div class="ct">
+          <div class="flag">Pharmaceutical Building</div>
+          <h3 class="cn">Ain Medicare</h3>
+          <p class="spec">ISO 8 (Class 100K) — EPCC CSA, cleanroom, M&amp;E</p>
+        </div>
+      </article>
+    </div>
+  </div>
+  <div class="folio">26 / 32</div>
+  <div class="foot">Pharmaceutical</div>
+</section></div>
+
+<!-- 27 HERO — KLCC DISTRICT COOLING -->
+<div class="stage"><section class="slide dark">
+  <div class="hero-media"><img src="img/klcc-dcp.jpg" alt="KLCC district cooling plant">
+  </div>
+  <div class="eyebrow">Project References // District Cooling &amp; Energy</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="hero-panel">
+    <div class="flag">Gas District Cooling (M) Sdn Bhd</div>
+    <h2 class="title">KLCC District<br>Cooling Plant</h2>
+    <dl class="tb" style="margin-top:calc(34 * var(--u))">
+      <div class="tb-row"><dt>Description</dt><dd class="iso">Largest district cooling centre in Malaysia</dd></div>
+      <div class="tb-row"><dt>Scope</dt><dd>ACMV, electrical &amp; instrumentation, fire protection, process utility, plumbing &amp; sanitary, water treatment, CSA</dd></div>
+      <div class="tb-row"><dt>Also delivered</dt><dd>GDC Putrajaya plant electrification &amp; chiller replacement (PICC) · KLCC DCC two electrical centrifugal chillers · Rapid Petronas Pengerang Co-gen, first co-gen plant in SEA · Pagoh Education Hub DCS, EPCC with O&amp;M</dd></div>
+    </dl>
+  </div>
+  <div class="folio">27 / 32</div>
+  <div class="foot">District Cooling &amp; Energy</div>
+</section></div>
+
+<!-- 28 NAME WALL -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Project References // Selected Index</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(26 * var(--u))">
+    <div class="head-block" style="gap:calc(10 * var(--u))">
+      <h2 class="sect">And the rest of the book.</h2>
+      <p class="cap">A selection from 200+ completed projects. Full reference list available on request.</p>
+    </div>
+    <div class="wall">
+      <div class="wall-col">
+        <h3>Malaysia &amp; Singapore</h3>
+        <ul>
+          <li>Western Digital (M) Sdn Bhd, Petaling Jaya</li>
+          <li>WD Media (M) Sdn Bhd, Penang — MA 28 &amp; MA 29</li>
+          <li>Flextronics Shah Alam Sdn Bhd</li>
+          <li>Caterpillar Asia — 7T office renovation</li>
+          <li>M Project — greenfield food flavouring plant, 40,000 m²</li>
+          <li>P Project — MEP works, mega lab retrofit</li>
+          <li>National University of Singapore — tissue culture lab</li>
+          <li>Matrix (M) Sdn Bhd</li>
+          <li>T Hasegawa — spray dryer &amp; microwave tunnel</li>
+          <li>Elegant Aura (M) Sdn Bhd</li>
+          <li>Rapid MCD chemical plant</li>
+        </ul>
+      </div>
+      <div class="wall-col">
+        <h3>Europe</h3>
+        <ul>
+          <li>Northvolt AB, Skellefteå — 62,000 m²</li>
+          <li>Morrow Batteries, Norway</li>
+          <li>ACC Phase 1, France</li>
+          <li>Envision, France</li>
+          <li>Soitec Semiconductor, Paris</li>
+          <li>Xfab Semiconductor, Paris</li>
+          <li>Nemotek, Rabat, Morocco</li>
+          <li>STMicroelectronics, Casablanca</li>
+          <li>Kimoto, Poland</li>
+          <li>Sumika, Poland</li>
+        </ul>
+      </div>
+      <div class="wall-col">
+        <h3>China</h3>
+        <ul>
+          <li>All-Cent RF Technology, Wuxi — 25,600 m²</li>
+          <li>Kunshan Visionox Display — 27,000 m²</li>
+          <li>GS Magicdrive Inc. — 68,000 m²</li>
+          <li>Shantou Goworld Display</li>
+          <li>M-Flex (Suzhou) — 25,000 m²</li>
+          <li>MMI Industries (Wuxi)</li>
+          <li>Huawei Technologies Co., Ltd</li>
+          <li>Shanghai Roche Pharmaceuticals</li>
+          <li>Suzhou Ascentage Pharma — 25,800 m²</li>
+          <li>Jiangsu GenScript Biotech</li>
+          <li>Mindray Group Co., Ltd</li>
+          <li>Unilever · GE · Dow · Rohm and Haas R&amp;D centres</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="folio">28 / 32</div>
+  <div class="foot">Project References</div>
+</section></div>
+
+<!-- 29 DIVIDER 03 -->
+<div class="stage"><section class="slide dark">
+  <div class="divider-grid">
+    <div class="divider-copy">
+      <div class="num phase-num">03</div>
+      <h2 class="title" style="color:#fff;margin-top:calc(24 * var(--u))">Safety, Quality &amp; ESG</h2>
+      <ul class="divider-list">
+        <li>Highwire Gold safety award</li>
+        <li>ISO 45001:2018 occupational health &amp; safety</li>
+        <li>20 tons per annum carbon footprint reduction</li>
+      </ul>
+    </div>
+    <div class="divider-media"><img src="img/klcc-dcp.jpg" alt="KLCC district cooling plant"></div>
+  </div>
+  <div class="eyebrow">Part Three of Three</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="folio">29 / 32</div>
+  <div class="foot">Safety, Quality &amp; ESG</div>
+</section></div>
+
+<!-- 30 ESG -->
+<div class="stage"><section class="slide">
+  <div class="eyebrow">Safety, Quality &amp; ESG // Commitments</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(36 * var(--u))">
+    <div class="head-block" style="gap:calc(14 * var(--u))">
+      <h2 class="sect">ESG is a cornerstone, not an appendix.</h2>
+      <p class="cap">Aligning operations with sustainability and ethical practice across every project.</p>
+    </div>
+    <div class="rows">
+      <div class="row"><div class="idx">E</div><div class="rt">
+        <p class="ghead">Environmental Responsibility</p>
+        <p class="cap">Minimising environmental footprint through sustainable design and construction. Energy-efficient solutions and eco-friendly technologies, prioritised at design stage.</p></div></div>
+      <div class="row"><div class="idx">S</div><div class="rt">
+        <p class="ghead">Social Accountability</p>
+        <p class="cap">The well-being and safety of employees and communities first. A diverse, inclusive work environment and ethical labour practices.</p></div></div>
+      <div class="row"><div class="idx">G</div><div class="rt">
+        <p class="ghead">Corporate Governance</p>
+        <p class="cap">Transparency, accountability and ethical decision-making, with the highest standards of compliance — building trust with clients, partners and stakeholders.</p></div></div>
+    </div>
+    <div class="certs">
+      <span class="cert">Recognised <strong>MCIEA Builder of the Year 2024</strong> by CIDB</span>
+      <span class="cert">Judged on performance, project management, technical expertise, innovation, quality, <strong>safety</strong> and <strong>sustainability</strong></span>
+    </div>
+  </div>
+  <div class="folio">30 / 32</div>
+  <div class="foot">Safety, Quality &amp; ESG</div>
+</section></div>
+
+<!-- 31 CLOSING STATEMENT -->
+<div class="stage"><section class="slide dark">
+  <div class="eyebrow">Your Total Facility Solutions Provider</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad" style="display:grid;align-content:center">
+    <h2 class="title big" style="color:#fff;max-width:calc(1320 * var(--u))">We infuse safety, quality, efficiency and excellence into every project.</h2>
+    <p class="body" style="margin-top:calc(34 * var(--u));max-width:calc(880 * var(--u))">From engineering design and project management to construction and maintenance — across semiconductor manufacturing, clean energy and every environment in between. IAQ is your trusted partner for total facility solutions.</p>
+  </div>
+  <div class="folio">31 / 32</div>
+  <div class="foot">Close</div>
+</section></div>
+
+<!-- 32 CONTACTS -->
+<div class="stage"><section class="slide dark">
+  <div class="eyebrow">Contact // Inquiry &amp; Business Opportunity</div>
+  <div class="meta">IAQ Group // Company Deck</div>
+  <div class="pad stack" style="gap:calc(52 * var(--u));align-content:center">
+    <h2 class="title" style="color:#fff">Let's build it properly.</h2>
+    <div class="contacts">
+      <div class="contact">
+        <div class="nm">Nelson Tan Wee Keong</div>
+        <div class="rl">Business Development Director</div>
+        <div class="dt">nelsontan@iaqtechnology.com.my</div>
+        <div class="dt">+6012-372 7329</div>
+      </div>
+      <div class="contact">
+        <div class="nm">Sunny Lim Qin Xiang</div>
+        <div class="rl">Senior Engineer, Business Development</div>
+        <div class="dt">qinxiang.lim@iaqtechnology.com.my</div>
+        <div class="dt">+6016-442 4578</div>
+      </div>
+    </div>
+    <div class="tb" style="max-width:calc(1100 * var(--u))">
+      <div class="tb-row"><dt>General</dt><dd>info@iaqtechnology.com.my</dd></div>
+      <div class="tb-row"><dt>Head Office</dt><dd>9, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia</dd></div>
+    </div>
+  </div>
+  <div class="folio">32 / 32</div>
+  <div class="foot">IAQ Group</div>
+</section></div>
+
+</div><!-- /deck -->
+
+<nav class="nav" aria-label="Slide navigation">
+  <span class="counter" id="counter">01 / 32</span>
+  <button type="button" id="prev" aria-label="Previous slide">Prev</button>
+  <button type="button" id="next" aria-label="Next slide">Next</button>
+</nav>
+
+<script>
+(function(){
+  var deck = document.getElementById('deck');
+  var stages = Array.prototype.slice.call(document.querySelectorAll('.stage'));
+  var counter = document.getElementById('counter');
+  var current = 0;
+
+  function pad(n){ return (n < 10 ? '0' : '') + n; }
+
+  function go(i){
+    current = Math.max(0, Math.min(stages.length - 1, i));
+    stages[current].scrollIntoView({behavior: 'smooth', block: 'center'});
+    counter.textContent = pad(current + 1) + ' / ' + stages.length;
+  }
+
+  document.getElementById('next').addEventListener('click', function(){ go(current + 1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(current - 1); });
+
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(current + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(stages.length - 1); }
+  });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          current = stages.indexOf(entry.target);
+          counter.textContent = pad(current + 1) + ' / ' + stages.length;
+        }
+      });
+    }, {threshold: 0.6});
+    stages.forEach(function(s){ io.observe(s); });
+  }
+})();
+</script>
+</body>
+</html>

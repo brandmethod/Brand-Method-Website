@@ -12,6 +12,25 @@ def esc(t):
     return html.escape(t, quote=False)
 
 slides = []          # list of html strings
+STAT_ICONS = [
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.6v5.7l3.6 2.1"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.2" cy="8" r="3.2"/><path d="M3.4 20c0-3.3 2.6-5.6 5.8-5.6s5.8 2.3 5.8 5.6"/><path d="M16.2 5.4a3.2 3.2 0 010 5.6M17.6 14.8c1.9.9 3 2.7 3 5.2"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4" width="15" height="17" rx="2"/><path d="M9 4V2.6h6V4"/><path d="M8.4 12.6l2.6 2.6 4.6-5.2"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="2"/><path d="M8 12V8h4M16 12v4h-4"/><path d="M8 8l8 8"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.2 12h17.6"/><path d="M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 3.8c0 9.1-4.9 13.7-11.1 13.7H5.4C5.4 9.4 11 3.8 20.2 3.8z"/><path d="M3.8 21c1.5-4.6 4.1-7.5 7.7-9.6"/></svg>',
+]
+
+PH_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" '
+           'stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/>'
+           '<circle cx="8.6" cy="10" r="1.7"/><path d="M3.4 17.6l5.2-5.2 4 4 3.1-2.6 4.9 4.6"/></svg>')
+
+def ph(note, dark=False, cap='Visual Placeholder'):
+    """A holding block that states which photograph belongs in this frame."""
+    return ('<figure class="ph%s"><span class="ph-frame">%s</span>'
+            '<span class="ph-cap">%s</span><span class="ph-note">%s</span></figure>'
+            % (' dark' if dark else '', PH_ICON, esc(cap), esc(note)))
+
 PARTS = ['The Company', 'Project References', 'Safety, Quality & ESG']
 
 
@@ -105,7 +124,7 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
 
 
 # ================================================================ 01 COVER
-raw_slide('''  <div class="cover-media"><img src="img/infineon-kulim.jpg" alt="Infineon Kulim Wafer Fab 3"></div>
+raw_slide('''  <div class="cover-media"><img src="img/iaq-hq.jpg" alt="IAQ Solutions headquarters"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
     <div class="tl-r">Company Deck</div>
@@ -159,8 +178,12 @@ slide(f'<div class="contents">{cols}\n    </div>',
       foot='Contents', fill=True, rows=True)
 
 # ================================================================ PART 01
-def divider(part_idx, num, name, note, img, bullets):
+def divider(part_idx, num, name, note, img, bullets, ph_note=None):
     i = len(slides) + 1
+    if ph_note:
+        media, ph_cls = ph(ph_note, dark=True), ' is-ph'
+    else:
+        media, ph_cls = f'<img src="img/{img}.jpg" alt="">', ''
     items = ''.join(f'<li>{esc(b)}</li>' for b in bullets)
     dots = ''.join(f'<i class="dot{" on" if part_idx == k else ""}"></i>' for k in range(3))
     slides.append(f'''<div class="stage"><section class="slide dark divider">
@@ -172,7 +195,7 @@ def divider(part_idx, num, name, note, img, bullets):
       <p class="div-note">{esc(note)}</p>
       <ul class="div-list">{items}</ul>
     </div>
-    <div class="div-media"><img src="img/{img}.jpg" alt=""></div>
+    <div class="div-media{ph_cls}">{media}</div>
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part {num} · {esc(name)}</span></div>
@@ -211,16 +234,19 @@ stats = [('32', '', 'Years Experience'), ('450', '', 'Employees'),
          ('200', '+', 'Projects Completed'), ('1.5', 'mil m²', 'Cleanroom Built-Up Area'),
          ('6', '', 'Global Offices'), ('20', 't / yr', 'Carbon Footprint Reduced')]
 stat_html = ''.join(
-    f'<div class="stat"><div class="num">{v}<span>{u}</span></div><div class="label">{esc(l)}</div></div>'
-    for v, u, l in stats)
+    f'<div class="stat"><span class="st-ico">{STAT_ICONS[k]}</span>'
+    f'<div class="st-body"><div class="num">{v}<span>{u}</span></div>'
+    f'<div class="label">{esc(l)}</div></div></div>'
+    for k, (v, u, l) in enumerate(stats))
 certs = [('Intertek', 'ISO 9001:2015'), ('Intertek', 'ISO 14001:2015'), ('Intertek', 'ISO 45001:2018'),
          ('CIDB', 'Grade G7'), ('PKK', 'Grade G7'), ('Highwire Safety', 'Gold Award'),
          ('MCIEA 2024', 'Builder of the Year')]
 cert_html = ''.join(f'<span class="cert">{esc(a)} <strong>{esc(b)}</strong></span>' for a, b in certs)
+ph_glance = ph('Corporate facility exterior, IAQ delivered project')
 slide(f'''
     <div class="glance">
-      <div class="side-media"><img src="img/soitec-pr1a.jpg" alt="IAQ greenfield facility"></div>
-      <div class="stats">{stat_html}</div>
+      <div class="side-media is-ph">{ph_glance}</div>
+      <div class="stats iconic">{stat_html}</div>
     </div>
     <div class="sub">
       <div class="label">Certification &amp; Recognition</div>
@@ -230,7 +256,7 @@ slide(f'''
       note='The company in six numbers, and the certifications that stand behind them.', fill=True)
 
 # ---------------------------------------------------------------- 01.3 MILESTONES
-slide('<div class="colcards c5 eras-v"><article class="colcard"><img src="img/st-johor.jpg" alt=""><div class="cc-body"><div class="cc-num">1994<span class="to">to</span>2000</div><h3 class="cc-name">Foundation</h3><ul class="mile"><li><span class="yr">1994</span><span class="ev">Established as a cleanroom specialist</span></li><li><span class="yr">2000</span><span class="ev">First decade of cleanroom delivery in Malaysia</span></li></ul></div></article><article class="colcard"><img src="img/memc-ipoh.jpg" alt=""><div class="cc-body"><div class="cc-num">2006<span class="to">to</span>2009</div><h3 class="cc-name">Regional Expansion</h3><ul class="mile"><li><span class="yr">2006</span><span class="ev">(EPCC) ST Microelectronics, Class 10K cleanroom</span></li><li><span class="yr">2008</span><span class="ev">(PCC) Western Digital PJ, Class 10 cleanroom</span></li><li><span class="yr">2009</span><span class="ev">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</span></li></ul></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">2013<span class="to">to</span>2017</div><h3 class="cc-name">Landmark Plants</h3><ul class="mile"><li><span class="yr">2013</span><span class="ev">(GC) KLCC DCC Plant, largest in Malaysia</span></li><li><span class="yr">2016</span><span class="ev">(EPCC) SilTerra FAB · (EPC) Infineon MKZ Class 1K</span></li><li><span class="yr">2017</span><span class="ev">(GC) Ain Medicare</span></li></ul></div></article><article class="colcard"><img src="img/bosch-testing.jpg" alt=""><div class="cc-body"><div class="cc-num">2020<span class="to">to</span>2022</div><h3 class="cc-name">Global Scale</h3><ul class="mile"><li><span class="yr">2020</span><span class="ev">(GC) Vital Healthcare</span></li><li><span class="yr">2021</span><span class="ev">(GC / PCC) Robert Bosch · P Project</span></li><li><span class="yr">2022</span><span class="ev">(PCC) Microsoft Data Center · (EPCM / D&amp;B) Soitec PR1A</span></li></ul></div></article><article class="colcard"><img src="img/xfab-kuching.jpg" alt=""><div class="cc-body"><div class="cc-num">2023<span class="to">to</span>2026</div><h3 class="cc-name">Advanced Technology</h3><ul class="mile"><li><span class="yr">2023</span><span class="ev">(GC / D&amp;B) XFAB 40K Expansion</span></li><li><span class="yr">2025</span><span class="ev">(PCC) 160MW hyperscale data centre · (EPCC) ESCM Germany</span></li><li><span class="yr">2026</span><span class="ev">(D&amp;B) Tata Dholera DF1 · (EPCM / HU) Micron MSH</span></li></ul></div></article></div>',
+slide('<div class="colcards c5 eras-v"><article class="colcard"><img src="img/st-johor.jpg" alt=""><div class="cc-body"><div class="cc-num">1994<span class="to">&ndash;</span>2000</div><h3 class="cc-name">Foundation</h3><ul class="mile"><li><span class="yr">1994</span><span class="ev">Established as a cleanroom specialist</span></li><li><span class="yr">2000</span><span class="ev">First decade of cleanroom delivery in Malaysia</span></li></ul></div></article><article class="colcard"><img src="img/memc-ipoh.jpg" alt=""><div class="cc-body"><div class="cc-num">2006<span class="to">&ndash;</span>2009</div><h3 class="cc-name">Regional Expansion</h3><ul class="mile"><li><span class="yr">2006</span><span class="ev">(EPCC) ST Microelectronics, Class 10K cleanroom</span></li><li><span class="yr">2008</span><span class="ev">(PCC) Western Digital PJ, Class 10 cleanroom</span></li><li><span class="yr">2009</span><span class="ev">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</span></li></ul></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">2013<span class="to">&ndash;</span>2017</div><h3 class="cc-name">Landmark Plants</h3><ul class="mile"><li><span class="yr">2013</span><span class="ev">(GC) KLCC DCC Plant, largest in Malaysia</span></li><li><span class="yr">2016</span><span class="ev">(EPCC) SilTerra FAB · (EPC) Infineon MKZ Class 1K</span></li><li><span class="yr">2017</span><span class="ev">(GC) Ain Medicare</span></li></ul></div></article><article class="colcard"><img src="img/bosch-testing.jpg" alt=""><div class="cc-body"><div class="cc-num">2020<span class="to">&ndash;</span>2022</div><h3 class="cc-name">Global Scale</h3><ul class="mile"><li><span class="yr">2020</span><span class="ev">(GC) Vital Healthcare</span></li><li><span class="yr">2021</span><span class="ev">(GC / PCC) Robert Bosch · P Project</span></li><li><span class="yr">2022</span><span class="ev">(PCC) Microsoft Data Center · (EPCM / D&amp;B) Soitec PR1A</span></li></ul></div></article><article class="colcard"><img src="img/xfab-kuching.jpg" alt=""><div class="cc-body"><div class="cc-num">2023<span class="to">&ndash;</span>2026</div><h3 class="cc-name">Advanced Technology</h3><ul class="mile"><li><span class="yr">2023</span><span class="ev">(GC / D&amp;B) XFAB 40K Expansion</span></li><li><span class="yr">2025</span><span class="ev">(PCC) 160MW hyperscale data centre · (EPCC) ESCM Germany</span></li><li><span class="yr">2026</span><span class="ev">(D&amp;B) Tata Dholera DF1 · (EPCM / HU) Micron MSH</span></li></ul></div></article></div>',
       part_idx=0, num='01.3', title='Milestones',
       note='Landmark projects from 1994 to 2026, grouped into five eras of growth. The full project list is in 02.11.', fill=True)
 
@@ -287,7 +313,10 @@ u_html = ''.join(
       <div class="u-body"><h3 class="u-name">{esc(n)}</h3>
       <p class="spec">{esc(s)}</p><p class="cap">{esc(d)}</p></div></div>'''
     for k, (n, s, d) in enumerate(units, start=1))
-slide('<div class="colcards c3"><article class="colcard"><img src="img/p-project.jpg" alt=""><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">IAQ Solutions Sdn Bhd</h3><p class="cc-spec">Engineering, Procurement, Construction &amp; Commissioning</p><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/infineon-kulim.jpg" alt=""><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">IAQ Utility Solutions Sdn Bhd</h3><p class="cc-spec">Process Critical Utilities &amp; Total Tool Install</p><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">IAQ Energy Facility Management Sdn Bhd</h3><p class="cc-spec">Energy Management</p><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
+ph_bu1 = ph('EPCC delivery on an active construction site')
+ph_bu2 = ph('Process critical utilities and tool installation inside a fab')
+ph_bu3 = ph('Energy plant and facility management operations')
+slide(f'<div class="colcards c3"><article class="colcard">{ph_bu1}<div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">IAQ Solutions Sdn Bhd</h3><p class="cc-spec">Engineering, Procurement, Construction &amp; Commissioning</p><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard">{ph_bu2}<div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">IAQ Utility Solutions Sdn Bhd</h3><p class="cc-spec">Process Critical Utilities &amp; Total Tool Install</p><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard">{ph_bu3}<div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">IAQ Energy Facility Management Sdn Bhd</h3><p class="cc-spec">Energy Management</p><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
       part_idx=0, num='01.6', title='Business Units',
       note='Three companies under one group, covering the full delivery chain.', fill=True)
 
@@ -425,10 +454,11 @@ slide(f'<div class="wall w4">{w_html}</div>',
       foot='Project References', fill=True, rows=True)
 
 # ================================================================ PART 03
-divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.4', 'klcc-dcp',
+divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.4', None,
         ['Highwire Gold safety award',
          'ISO 45001:2018 occupational health & safety',
-         '20 tons per annum carbon footprint reduction'])
+         '20 tons per annum carbon footprint reduction'],
+        ph_note='Site safety in practice: crew in full PPE, toolbox briefing or EHS walkdown on an IAQ site')
 
 # ---------------------------------------------------------------- 03.1 ESG
 esg = [

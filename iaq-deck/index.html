@@ -511,6 +511,57 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .eras-v .colcard{grid-template-rows:auto 1fr}
 .eras-v .colcard img{height:auto;aspect-ratio:5/4}
 
+/* ============================================ 01.2 stat icons */
+.stats.iconic .stat{grid-template-columns:auto 1fr;column-gap:calc(26 * var(--u));
+  align-items:center;align-content:center}
+.st-ico{display:grid;place-items:center;width:calc(84 * var(--u));height:calc(84 * var(--u));
+  color:var(--signal);background:rgba(236,35,38,.07);border-radius:50%}
+.st-ico svg{width:calc(46 * var(--u));height:calc(46 * var(--u))}
+.st-body{display:grid;min-width:0}
+
+/* ============================================ holding visuals
+   A stated placeholder is clearer than an unrelated photograph:
+   the frame keeps its proportion and names the shot that belongs in it. */
+.ph{position:relative;margin:0;width:100%;height:100%;min-height:0;overflow:hidden;
+  display:grid;align-content:center;justify-items:center;text-align:center;
+  gap:calc(16 * var(--u));padding:calc(28 * var(--u));
+  background:var(--rule-2);border:calc(1 * var(--u)) solid var(--rule);
+  background-image:repeating-linear-gradient(135deg,
+    rgba(16,26,43,.045) 0 calc(3 * var(--u)),
+    rgba(0,0,0,0) calc(3 * var(--u)) calc(16 * var(--u)))}
+.ph-frame{display:grid;place-items:center;width:calc(88 * var(--u));height:calc(88 * var(--u));
+  border-radius:50%;color:var(--signal);background:var(--surface)}
+.ph-frame svg{width:calc(46 * var(--u));height:calc(46 * var(--u))}
+.ph-cap{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--signal)}
+.ph-note{font-family:var(--sans);font-weight:400;font-size:calc(16 * var(--u));line-height:1.45;
+  color:var(--muted);max-width:calc(360 * var(--u))}
+.ph.dark{background:rgba(255,255,255,.045);border-color:var(--rule-dark);
+  background-image:repeating-linear-gradient(135deg,
+    rgba(255,255,255,.05) 0 calc(3 * var(--u)),
+    rgba(0,0,0,0) calc(3 * var(--u)) calc(16 * var(--u)))}
+.ph.dark .ph-frame{background:rgba(255,255,255,.08)}
+.ph.dark .ph-note{color:var(--muted-dark)}
+.div-media.is-ph::after{display:none}
+.div-media.is-ph .ph{border:0;border-left:calc(1 * var(--u)) solid var(--rule-dark)}
+.colcard .ph{align-self:stretch}
+
+/* ============================================ 01.3 era cards, top set
+   Beats .colcards.c5 .cc-body, which centres the general five-up card. */
+.colcards.c5.eras-v .cc-body{align-content:start}
+
+/* glance stats: horizontal rules only, no column hairline */
+.glance .stats{background:transparent;gap:0}
+.glance .stat{border-top:calc(1 * var(--u)) solid var(--rule-2)}
+.glance .stat:nth-child(1),.glance .stat:nth-child(2){border-top:0}
+
+/* three-up cards share one media row so every body starts on the same line */
+.colcards.c3{grid-template-rows:1fr auto}
+.colcards.c3 .colcard{grid-row:span 2;grid-template-rows:subgrid}
+
+/* era visuals carry more of the card, so the text tail sits shorter */
+.eras-v .colcard img{aspect-ratio:1/1}
+
 </style>
 </head>
 <body>
@@ -518,7 +569,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="deck" id="deck">
 
 <div class="stage"><section class="slide cover dark">
-  <div class="cover-media"><img src="img/infineon-kulim.jpg" alt="Infineon Kulim Wafer Fab 3"></div>
+  <div class="cover-media"><img src="img/iaq-hq.jpg" alt="IAQ Solutions headquarters"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
     <div class="tl-r">Company Deck</div>
@@ -648,8 +699,8 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
     </header>
   <div class="canvas fill">
     <div class="glance">
-      <div class="side-media"><img src="img/soitec-pr1a.jpg" alt="IAQ greenfield facility"></div>
-      <div class="stats"><div class="stat"><div class="num">32<span></span></div><div class="label">Years Experience</div></div><div class="stat"><div class="num">450<span></span></div><div class="label">Employees</div></div><div class="stat"><div class="num">200<span>+</span></div><div class="label">Projects Completed</div></div><div class="stat"><div class="num">1.5<span>mil m²</span></div><div class="label">Cleanroom Built-Up Area</div></div><div class="stat"><div class="num">6<span></span></div><div class="label">Global Offices</div></div><div class="stat"><div class="num">20<span>t / yr</span></div><div class="label">Carbon Footprint Reduced</div></div></div>
+      <div class="side-media is-ph"><figure class="ph"><span class="ph-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.6" cy="10" r="1.7"/><path d="M3.4 17.6l5.2-5.2 4 4 3.1-2.6 4.9 4.6"/></svg></span><span class="ph-cap">Visual Placeholder</span><span class="ph-note">Corporate facility exterior, IAQ delivered project</span></figure></div>
+      <div class="stats iconic"><div class="stat"><span class="st-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.6v5.7l3.6 2.1"/></svg></span><div class="st-body"><div class="num">32<span></span></div><div class="label">Years Experience</div></div></div><div class="stat"><span class="st-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.2" cy="8" r="3.2"/><path d="M3.4 20c0-3.3 2.6-5.6 5.8-5.6s5.8 2.3 5.8 5.6"/><path d="M16.2 5.4a3.2 3.2 0 010 5.6M17.6 14.8c1.9.9 3 2.7 3 5.2"/></svg></span><div class="st-body"><div class="num">450<span></span></div><div class="label">Employees</div></div></div><div class="stat"><span class="st-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4" width="15" height="17" rx="2"/><path d="M9 4V2.6h6V4"/><path d="M8.4 12.6l2.6 2.6 4.6-5.2"/></svg></span><div class="st-body"><div class="num">200<span>+</span></div><div class="label">Projects Completed</div></div></div><div class="stat"><span class="st-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="2"/><path d="M8 12V8h4M16 12v4h-4"/><path d="M8 8l8 8"/></svg></span><div class="st-body"><div class="num">1.5<span>mil m²</span></div><div class="label">Cleanroom Built-Up Area</div></div></div><div class="stat"><span class="st-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3.2 12h17.6"/><path d="M12 3c2.6 2.7 3.9 5.7 3.9 9s-1.3 6.3-3.9 9c-2.6-2.7-3.9-5.7-3.9-9S9.4 5.7 12 3z"/></svg></span><div class="st-body"><div class="num">6<span></span></div><div class="label">Global Offices</div></div></div><div class="stat"><span class="st-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 3.8c0 9.1-4.9 13.7-11.1 13.7H5.4C5.4 9.4 11 3.8 20.2 3.8z"/><path d="M3.8 21c1.5-4.6 4.1-7.5 7.7-9.6"/></svg></span><div class="st-body"><div class="num">20<span>t / yr</span></div><div class="label">Carbon Footprint Reduced</div></div></div></div>
     </div>
     <div class="sub">
       <div class="label">Certification &amp; Recognition</div>
@@ -672,7 +723,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
       <h2 class="s-title">Milestones</h2>
       <p class="s-note">Landmark projects from 1994 to 2026, grouped into five eras of growth. The full project list is in 02.11.</p>
     </header>
-  <div class="canvas fill"><div class="colcards c5 eras-v"><article class="colcard"><img src="img/st-johor.jpg" alt=""><div class="cc-body"><div class="cc-num">1994<span class="to">to</span>2000</div><h3 class="cc-name">Foundation</h3><ul class="mile"><li><span class="yr">1994</span><span class="ev">Established as a cleanroom specialist</span></li><li><span class="yr">2000</span><span class="ev">First decade of cleanroom delivery in Malaysia</span></li></ul></div></article><article class="colcard"><img src="img/memc-ipoh.jpg" alt=""><div class="cc-body"><div class="cc-num">2006<span class="to">to</span>2009</div><h3 class="cc-name">Regional Expansion</h3><ul class="mile"><li><span class="yr">2006</span><span class="ev">(EPCC) ST Microelectronics, Class 10K cleanroom</span></li><li><span class="yr">2008</span><span class="ev">(PCC) Western Digital PJ, Class 10 cleanroom</span></li><li><span class="yr">2009</span><span class="ev">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</span></li></ul></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">2013<span class="to">to</span>2017</div><h3 class="cc-name">Landmark Plants</h3><ul class="mile"><li><span class="yr">2013</span><span class="ev">(GC) KLCC DCC Plant, largest in Malaysia</span></li><li><span class="yr">2016</span><span class="ev">(EPCC) SilTerra FAB · (EPC) Infineon MKZ Class 1K</span></li><li><span class="yr">2017</span><span class="ev">(GC) Ain Medicare</span></li></ul></div></article><article class="colcard"><img src="img/bosch-testing.jpg" alt=""><div class="cc-body"><div class="cc-num">2020<span class="to">to</span>2022</div><h3 class="cc-name">Global Scale</h3><ul class="mile"><li><span class="yr">2020</span><span class="ev">(GC) Vital Healthcare</span></li><li><span class="yr">2021</span><span class="ev">(GC / PCC) Robert Bosch · P Project</span></li><li><span class="yr">2022</span><span class="ev">(PCC) Microsoft Data Center · (EPCM / D&amp;B) Soitec PR1A</span></li></ul></div></article><article class="colcard"><img src="img/xfab-kuching.jpg" alt=""><div class="cc-body"><div class="cc-num">2023<span class="to">to</span>2026</div><h3 class="cc-name">Advanced Technology</h3><ul class="mile"><li><span class="yr">2023</span><span class="ev">(GC / D&amp;B) XFAB 40K Expansion</span></li><li><span class="yr">2025</span><span class="ev">(PCC) 160MW hyperscale data centre · (EPCC) ESCM Germany</span></li><li><span class="yr">2026</span><span class="ev">(D&amp;B) Tata Dholera DF1 · (EPCM / HU) Micron MSH</span></li></ul></div></article></div>
+  <div class="canvas fill"><div class="colcards c5 eras-v"><article class="colcard"><img src="img/st-johor.jpg" alt=""><div class="cc-body"><div class="cc-num">1994<span class="to">&ndash;</span>2000</div><h3 class="cc-name">Foundation</h3><ul class="mile"><li><span class="yr">1994</span><span class="ev">Established as a cleanroom specialist</span></li><li><span class="yr">2000</span><span class="ev">First decade of cleanroom delivery in Malaysia</span></li></ul></div></article><article class="colcard"><img src="img/memc-ipoh.jpg" alt=""><div class="cc-body"><div class="cc-num">2006<span class="to">&ndash;</span>2009</div><h3 class="cc-name">Regional Expansion</h3><ul class="mile"><li><span class="yr">2006</span><span class="ev">(EPCC) ST Microelectronics, Class 10K cleanroom</span></li><li><span class="yr">2008</span><span class="ev">(PCC) Western Digital PJ, Class 10 cleanroom</span></li><li><span class="yr">2009</span><span class="ev">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</span></li></ul></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">2013<span class="to">&ndash;</span>2017</div><h3 class="cc-name">Landmark Plants</h3><ul class="mile"><li><span class="yr">2013</span><span class="ev">(GC) KLCC DCC Plant, largest in Malaysia</span></li><li><span class="yr">2016</span><span class="ev">(EPCC) SilTerra FAB · (EPC) Infineon MKZ Class 1K</span></li><li><span class="yr">2017</span><span class="ev">(GC) Ain Medicare</span></li></ul></div></article><article class="colcard"><img src="img/bosch-testing.jpg" alt=""><div class="cc-body"><div class="cc-num">2020<span class="to">&ndash;</span>2022</div><h3 class="cc-name">Global Scale</h3><ul class="mile"><li><span class="yr">2020</span><span class="ev">(GC) Vital Healthcare</span></li><li><span class="yr">2021</span><span class="ev">(GC / PCC) Robert Bosch · P Project</span></li><li><span class="yr">2022</span><span class="ev">(PCC) Microsoft Data Center · (EPCM / D&amp;B) Soitec PR1A</span></li></ul></div></article><article class="colcard"><img src="img/xfab-kuching.jpg" alt=""><div class="cc-body"><div class="cc-num">2023<span class="to">&ndash;</span>2026</div><h3 class="cc-name">Advanced Technology</h3><ul class="mile"><li><span class="yr">2023</span><span class="ev">(GC / D&amp;B) XFAB 40K Expansion</span></li><li><span class="yr">2025</span><span class="ev">(PCC) 160MW hyperscale data centre · (EPCC) ESCM Germany</span></li><li><span class="yr">2026</span><span class="ev">(D&amp;B) Tata Dholera DF1 · (EPCM / HU) Micron MSH</span></li></ul></div></article></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">06 / 28</span></div>
@@ -754,7 +805,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
       <h2 class="s-title">Business Units</h2>
       <p class="s-note">Three companies under one group, covering the full delivery chain.</p>
     </header>
-  <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/p-project.jpg" alt=""><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">IAQ Solutions Sdn Bhd</h3><p class="cc-spec">Engineering, Procurement, Construction &amp; Commissioning</p><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/infineon-kulim.jpg" alt=""><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">IAQ Utility Solutions Sdn Bhd</h3><p class="cc-spec">Process Critical Utilities &amp; Total Tool Install</p><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">IAQ Energy Facility Management Sdn Bhd</h3><p class="cc-spec">Energy Management</p><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>
+  <div class="canvas fill"><div class="colcards c3"><article class="colcard"><figure class="ph"><span class="ph-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.6" cy="10" r="1.7"/><path d="M3.4 17.6l5.2-5.2 4 4 3.1-2.6 4.9 4.6"/></svg></span><span class="ph-cap">Visual Placeholder</span><span class="ph-note">EPCC delivery on an active construction site</span></figure><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">IAQ Solutions Sdn Bhd</h3><p class="cc-spec">Engineering, Procurement, Construction &amp; Commissioning</p><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><figure class="ph"><span class="ph-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.6" cy="10" r="1.7"/><path d="M3.4 17.6l5.2-5.2 4 4 3.1-2.6 4.9 4.6"/></svg></span><span class="ph-cap">Visual Placeholder</span><span class="ph-note">Process critical utilities and tool installation inside a fab</span></figure><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">IAQ Utility Solutions Sdn Bhd</h3><p class="cc-spec">Process Critical Utilities &amp; Total Tool Install</p><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><figure class="ph"><span class="ph-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.6" cy="10" r="1.7"/><path d="M3.4 17.6l5.2-5.2 4 4 3.1-2.6 4.9 4.6"/></svg></span><span class="ph-cap">Visual Placeholder</span><span class="ph-note">Energy plant and facility management operations</span></figure><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">IAQ Energy Facility Management Sdn Bhd</h3><p class="cc-spec">Energy Management</p><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">09 / 28</span></div>
@@ -1200,7 +1251,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
       <p class="div-note">Sections 03.1 to 03.4</p>
       <ul class="div-list"><li>Highwire Gold safety award</li><li>ISO 45001:2018 occupational health &amp; safety</li><li>20 tons per annum carbon footprint reduction</li></ul>
     </div>
-    <div class="div-media"><img src="img/klcc-dcp.jpg" alt=""></div>
+    <div class="div-media is-ph"><figure class="ph dark"><span class="ph-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.6" cy="10" r="1.7"/><path d="M3.4 17.6l5.2-5.2 4 4 3.1-2.6 4.9 4.6"/></svg></span><span class="ph-cap">Visual Placeholder</span><span class="ph-note">Site safety in practice: crew in full PPE, toolbox briefing or EHS walkdown on an IAQ site</span></figure></div>
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>

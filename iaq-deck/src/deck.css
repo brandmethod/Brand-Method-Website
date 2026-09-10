@@ -47,7 +47,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   text-transform:uppercase;line-height:1;color:var(--muted)}
 .dark .tl-r{color:var(--muted-dark)}
 
-.botline{position:absolute;bottom:calc(42 * var(--u));left:calc(96 * var(--u));right:calc(96 * var(--u));
+.botline{position:absolute;bottom:calc(52 * var(--u));left:calc(96 * var(--u));right:calc(96 * var(--u));
   display:flex;justify-content:space-between;align-items:center}
 .folio{font-family:var(--tech);font-weight:500;font-size:calc(13.5 * var(--u));letter-spacing:.22em;
   color:var(--muted);font-variant-numeric:tabular-nums}
@@ -65,7 +65,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   padding-bottom:calc(24 * var(--u));border-bottom:calc(1 * var(--u)) solid var(--rule)}
 .dark .shead{border-color:var(--rule-dark)}
 .s-title{font-family:var(--display);font-weight:600;font-size:calc(34 * var(--u));line-height:1.15;
-  letter-spacing:-.02em;margin:0}
+  letter-spacing:-.02em;margin:0;color:var(--signal)}
 .s-note{font-family:var(--sans);font-weight:400;font-size:calc(19 * var(--u));line-height:1.5;
   margin:calc(9 * var(--u)) 0 0;color:var(--muted);max-width:calc(1100 * var(--u))}
 .dark .s-note{color:var(--muted-dark)}
@@ -88,7 +88,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .label{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));letter-spacing:.22em;
   text-transform:uppercase;line-height:1;color:var(--muted)}
 .flag{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));letter-spacing:.22em;
-  text-transform:uppercase;line-height:1.2;color:var(--signal)}
+  text-transform:uppercase;line-height:1.2;color:var(--muted)}
 
 /* spec rows (drawing title block) */
 .specs{display:grid;margin:0}
@@ -103,6 +103,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .dark .sr{border-color:var(--rule-dark)}
 .dark .sr dt{color:var(--muted-dark)}
 .dark .sr dd{color:var(--on-dark)}
+.dark .flag{color:var(--muted-dark)}
 
 /* ============================================ cover */
 .cover-media{position:absolute;inset:0;left:40%}
@@ -248,7 +249,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   padding:calc(20 * var(--u)) calc(24 * var(--u)) calc(22 * var(--u));display:grid;gap:calc(9 * var(--u));
   align-content:start}
 .pname{font-family:var(--display);font-weight:600;font-size:calc(24 * var(--u));line-height:1.1;
-  letter-spacing:-.02em;margin:0}
+  letter-spacing:-.02em;margin:0;color:var(--signal)}
 .grid.three .pname,.grid.four .pname{font-size:calc(21 * var(--u))}
 .panel .specs{margin-top:calc(4 * var(--u))}
 /* four-up = horizontal card */
@@ -379,3 +380,23 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .cover .bl-r,.hero .bl-r,.divider .bl-r{display:none}
 .cover .botline,.hero .botline,.divider .botline{justify-content:flex-start;gap:calc(30 * var(--u))}
 .folio .edition{color:var(--muted-dark);margin-left:calc(14 * var(--u))}
+
+/* ============================================ IAQ slash rule
+   The tint band and angled stripes from the IAQ master slide, rebuilt.
+   The stripe motif comes off the striped letterforms in the logo. As in
+   the company profile it marks the chapter slides, not every page. */
+.slide.dark:not(.hero)::before{content:"";position:absolute;left:0;right:0;bottom:0;
+  height:calc(30 * var(--u));background:rgba(236,35,38,.2);z-index:5;pointer-events:none}
+.slide.dark:not(.hero)::after{content:"";position:absolute;right:0;bottom:0;z-index:6;pointer-events:none;
+  height:calc(30 * var(--u));width:calc(372 * var(--u));
+  background-image:
+    linear-gradient(var(--signal),var(--signal)),
+    repeating-linear-gradient(112deg,
+      var(--signal) 0 calc(13 * var(--u)),
+      rgba(0,0,0,0) calc(13 * var(--u)) calc(34 * var(--u)));
+  background-size:calc(126 * var(--u)) 100%, calc(246 * var(--u)) 100%;
+  background-position:right bottom, left bottom;
+  background-repeat:no-repeat}
+
+/* IAQ mark in the running chrome, as on the master slide */
+.mark{height:calc(30 * var(--u));width:auto;display:block}

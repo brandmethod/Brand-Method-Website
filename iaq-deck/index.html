@@ -58,7 +58,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   text-transform:uppercase;line-height:1;color:var(--muted)}
 .dark .tl-r{color:var(--muted-dark)}
 
-.botline{position:absolute;bottom:calc(42 * var(--u));left:calc(96 * var(--u));right:calc(96 * var(--u));
+.botline{position:absolute;bottom:calc(52 * var(--u));left:calc(96 * var(--u));right:calc(96 * var(--u));
   display:flex;justify-content:space-between;align-items:center}
 .folio{font-family:var(--tech);font-weight:500;font-size:calc(13.5 * var(--u));letter-spacing:.22em;
   color:var(--muted);font-variant-numeric:tabular-nums}
@@ -76,7 +76,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   padding-bottom:calc(24 * var(--u));border-bottom:calc(1 * var(--u)) solid var(--rule)}
 .dark .shead{border-color:var(--rule-dark)}
 .s-title{font-family:var(--display);font-weight:600;font-size:calc(34 * var(--u));line-height:1.15;
-  letter-spacing:-.02em;margin:0}
+  letter-spacing:-.02em;margin:0;color:var(--signal)}
 .s-note{font-family:var(--sans);font-weight:400;font-size:calc(19 * var(--u));line-height:1.5;
   margin:calc(9 * var(--u)) 0 0;color:var(--muted);max-width:calc(1100 * var(--u))}
 .dark .s-note{color:var(--muted-dark)}
@@ -99,7 +99,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .label{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));letter-spacing:.22em;
   text-transform:uppercase;line-height:1;color:var(--muted)}
 .flag{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));letter-spacing:.22em;
-  text-transform:uppercase;line-height:1.2;color:var(--signal)}
+  text-transform:uppercase;line-height:1.2;color:var(--muted)}
 
 /* spec rows (drawing title block) */
 .specs{display:grid;margin:0}
@@ -114,6 +114,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .dark .sr{border-color:var(--rule-dark)}
 .dark .sr dt{color:var(--muted-dark)}
 .dark .sr dd{color:var(--on-dark)}
+.dark .flag{color:var(--muted-dark)}
 
 /* ============================================ cover */
 .cover-media{position:absolute;inset:0;left:40%}
@@ -259,7 +260,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   padding:calc(20 * var(--u)) calc(24 * var(--u)) calc(22 * var(--u));display:grid;gap:calc(9 * var(--u));
   align-content:start}
 .pname{font-family:var(--display);font-weight:600;font-size:calc(24 * var(--u));line-height:1.1;
-  letter-spacing:-.02em;margin:0}
+  letter-spacing:-.02em;margin:0;color:var(--signal)}
 .grid.three .pname,.grid.four .pname{font-size:calc(21 * var(--u))}
 .panel .specs{margin-top:calc(4 * var(--u))}
 /* four-up = horizontal card */
@@ -391,6 +392,26 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .cover .botline,.hero .botline,.divider .botline{justify-content:flex-start;gap:calc(30 * var(--u))}
 .folio .edition{color:var(--muted-dark);margin-left:calc(14 * var(--u))}
 
+/* ============================================ IAQ slash rule
+   The tint band and angled stripes from the IAQ master slide, rebuilt.
+   The stripe motif comes off the striped letterforms in the logo. As in
+   the company profile it marks the chapter slides, not every page. */
+.slide.dark:not(.hero)::before{content:"";position:absolute;left:0;right:0;bottom:0;
+  height:calc(30 * var(--u));background:rgba(236,35,38,.2);z-index:5;pointer-events:none}
+.slide.dark:not(.hero)::after{content:"";position:absolute;right:0;bottom:0;z-index:6;pointer-events:none;
+  height:calc(30 * var(--u));width:calc(372 * var(--u));
+  background-image:
+    linear-gradient(var(--signal),var(--signal)),
+    repeating-linear-gradient(112deg,
+      var(--signal) 0 calc(13 * var(--u)),
+      rgba(0,0,0,0) calc(13 * var(--u)) calc(34 * var(--u)));
+  background-size:calc(126 * var(--u)) 100%, calc(246 * var(--u)) 100%;
+  background-position:right bottom, left bottom;
+  background-repeat:no-repeat}
+
+/* IAQ mark in the running chrome, as on the master slide */
+.mark{height:calc(30 * var(--u));width:auto;display:block}
+
 </style>
 </head>
 <body>
@@ -420,7 +441,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tl-part">IAQ Group</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Contents</h2>
@@ -479,7 +500,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">03 / 34</span></div>
@@ -491,7 +512,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.1</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">About IAQ</h2>
@@ -519,7 +540,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.2</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">IAQ at a Glance</h2>
@@ -542,7 +563,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.3</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Milestones</h2>
@@ -596,7 +617,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.4</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Global Footprint</h2>
@@ -622,7 +643,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.5</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Core Values</h2>
@@ -664,7 +685,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.6</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Business Units</h2>
@@ -688,7 +709,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.7</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Scope of Services</h2>
@@ -706,7 +727,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">01.8</span><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Industry Focus</h2>
@@ -734,7 +755,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">12 / 34</span></div>
@@ -746,7 +767,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.1</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Portfolio Overview</h2>
@@ -784,7 +805,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   <div class="hero-media"><img src="img/infineon-kulim.jpg" alt="Infineon Kulim&lt;br&gt;Wafer Fab 3"></div>
   <div class="topline">
     <div class="tl-l"><span class="tab">02.2</span><span class="tl-part">Semiconductor · Malaysia</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <div class="hero-panel">
     <div class="flag">Kulim, Kedah · Greenfield wafer fab</div>
@@ -802,7 +823,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   <div class="hero-media"><img src="img/p-project.jpg" alt="P Project"></div>
   <div class="topline">
     <div class="tl-l"><span class="tab">02.2</span><span class="tl-part">Semiconductor · Malaysia</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <div class="hero-panel">
     <div class="flag">Advanced packaging · 75,000 m²</div>
@@ -819,7 +840,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.2</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor · Malaysia</h2>
@@ -854,7 +875,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.2</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor · Malaysia</h2>
@@ -889,7 +910,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.2</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor · Malaysia</h2>
@@ -924,7 +945,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.2</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor · Malaysia</h2>
@@ -959,7 +980,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.3</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor · Singapore</h2>
@@ -1003,7 +1024,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   <div class="hero-media"><img src="img/hyperscale-dc.jpg" alt="Hyperscale&lt;br&gt;Data Centre"></div>
   <div class="topline">
     <div class="tl-l"><span class="tab">02.4</span><span class="tl-part">Data Centre</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <div class="hero-panel">
     <div class="flag">Client confidential · 160 MW</div>
@@ -1021,7 +1042,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   <div class="hero-media"><img src="img/northvolt.jpg" alt="Northvolt AB&lt;br&gt;Gigafactory"></div>
   <div class="topline">
     <div class="tl-l"><span class="tab">02.5</span><span class="tl-part">EV Battery · Europe</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <div class="hero-panel">
     <div class="flag">Skellefteå, Sweden · 62,000 m²</div>
@@ -1038,7 +1059,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.5</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">EV Battery · Europe</h2>
@@ -1081,7 +1102,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.6</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor · Europe &amp; Morocco</h2>
@@ -1132,7 +1153,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.7</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor &amp; Display · China</h2>
@@ -1183,7 +1204,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.8</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Photovoltaics</h2>
@@ -1226,7 +1247,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.9</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Pharmaceutical &amp; Medical</h2>
@@ -1278,7 +1299,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   <div class="hero-media"><img src="img/klcc-dcp.jpg" alt="KLCC District&lt;br&gt;Cooling Plant"></div>
   <div class="topline">
     <div class="tl-l"><span class="tab">02.10</span><span class="tl-part">District Cooling &amp; Energy</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <div class="hero-panel">
     <div class="flag">Gas District Cooling (M) Sdn Bhd</div>
@@ -1295,7 +1316,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.11</span><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Reference Index</h2>
@@ -1323,7 +1344,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">30 / 34</span></div>
@@ -1335,7 +1356,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">03.1</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">ESG Commitments</h2>
@@ -1356,7 +1377,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">03.2</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Safety &amp; Recognition</h2>
@@ -1383,7 +1404,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide dark ">
   <div class="topline">
     <div class="tl-l"><span class="tab">03.3</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Closing</h2>
@@ -1407,7 +1428,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 <div class="stage"><section class="slide dark ">
   <div class="topline">
     <div class="tl-l"><span class="tab">03.4</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Contacts</h2>

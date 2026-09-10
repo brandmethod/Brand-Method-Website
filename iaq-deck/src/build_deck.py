@@ -37,7 +37,7 @@ def slide(body, *, part_idx=None, num='', title='', note='', foot='',
     slides.append(f'''<div class="stage"><section class="slide{' dark' if dark else ''} {cls}">
   <div class="topline">
     <div class="tl-l">{tab}<span class="tl-part">{esc(part)}</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>{head}
   <div class="canvas{' fill' if fill else ''}{' rows' if rows else ''}">{body}
   </div>
@@ -86,7 +86,7 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
   <div class="hero-media"><img src="img/{img}.jpg" alt="{esc(title)}"></div>
   <div class="topline">
     <div class="tl-l">{tab}<span class="tl-part">{esc(section)}</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <div class="hero-panel">
     <div class="flag">{esc(flag)}</div>
@@ -173,7 +173,7 @@ def divider(part_idx, num, name, note, img, bullets):
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part {num} · {esc(name)}</span></div>
-    <div class="tl-r">IAQ Group // Company Deck</div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">{i:02d} / TOTAL</span></div>

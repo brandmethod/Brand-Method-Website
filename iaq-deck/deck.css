@@ -624,3 +624,83 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .cc-person{font-size:calc(28 * var(--u))}
 .cc-line{font-size:calc(17.5 * var(--u))}
 .signoff{width:calc(268 * var(--u))}
+
+/* ============================================ presenter layer
+   Controls, overview, timer and blackout. None of it prints. */
+.progress{position:fixed;top:0;left:0;right:0;height:3px;background:rgba(255,255,255,.08);z-index:25}
+.progress span{display:block;height:100%;width:0;background:var(--signal);
+  transition:width .3s ease}
+
+.nav{position:fixed;right:20px;bottom:18px;display:flex;align-items:center;gap:10px;z-index:30;
+  transition:opacity .3s ease}
+.nav button.sq{padding:9px 12px}
+.timer{font-family:var(--tech);font-weight:600;font-size:12px;letter-spacing:.16em;
+  color:var(--muted-dark);font-variant-numeric:tabular-nums;cursor:pointer;
+  padding:9px 11px;border:1px solid rgba(255,255,255,.14);border-radius:2px;
+  background:rgba(255,255,255,.04);user-select:none}
+.timer.running{color:var(--on-dark)}
+.timer.running::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;
+  background:var(--signal);margin-right:8px;vertical-align:middle}
+
+body.idle .nav,body.idle .progress{opacity:0;pointer-events:none}
+body.modal-open .deck{overflow:hidden}
+
+/* present mode: the slide takes the whole screen, chrome steps back */
+body.presenting{background:#000}
+body.presenting .deck{background:#000}
+body.presenting .stage{padding:0}
+body.presenting .slide{width:min(100vw,calc(100vh * 16 / 9));height:auto}
+
+/* ---------------------------------------------- overview */
+.overview{position:fixed;inset:0;z-index:40;background:rgba(9,15,26,.97);
+  display:grid;grid-template-rows:auto 1fr}
+.ov-head{display:flex;align-items:center;gap:18px;padding:20px 26px;
+  border-bottom:1px solid rgba(255,255,255,.12)}
+.ov-title{font-family:var(--display);font-weight:600;font-size:16px;color:#fff}
+.ov-hint{font-family:var(--tech);font-weight:500;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted-dark);margin-right:auto}
+.ov-head button{font-family:var(--tech);font-weight:600;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--on-dark);background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);padding:9px 13px;cursor:pointer;border-radius:2px}
+.ov-head button:hover{background:rgba(255,255,255,.16)}
+.ov-grid{overflow-y:auto;padding:24px 26px 34px;display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:20px;align-content:start}
+.ov-card{padding:0;margin:0;border:0;background:none;cursor:pointer;text-align:left;
+  display:grid;gap:9px;font:inherit}
+.ov-frame{display:block;overflow:hidden;border:1px solid rgba(255,255,255,.14);
+  background:var(--paper);transition:border-color .15s ease,transform .15s ease}
+.ov-card:hover .ov-frame{border-color:rgba(255,255,255,.4);transform:translateY(-2px)}
+.ov-card.on .ov-frame{border-color:var(--signal);box-shadow:0 0 0 2px rgba(236,35,38,.5)}
+/* the clone sizes itself: container-query units scale to this width */
+.ov-frame .slide{width:100%;height:auto;aspect-ratio:16/9;pointer-events:none}
+.ov-meta{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:baseline}
+.ov-n{font-family:var(--tech);font-weight:600;font-size:11.5px;letter-spacing:.16em;
+  color:var(--signal);font-variant-numeric:tabular-nums}
+.ov-t{font-family:var(--sans);font-weight:500;font-size:13px;line-height:1.3;color:var(--on-dark);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ov-card.on .ov-t{color:#fff}
+
+/* ---------------------------------------------- help + blackout */
+.helpbox{position:fixed;right:20px;bottom:70px;z-index:35;width:330px;
+  background:rgba(16,26,43,.98);border:1px solid rgba(255,255,255,.18);
+  padding:20px 22px 22px;border-radius:3px}
+.hb-title{font-family:var(--tech);font-weight:600;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--signal);margin-bottom:12px}
+.hb-list{margin:0;display:grid}
+.hb-list > div{display:grid;grid-template-columns:118px 1fr;gap:12px;padding:7px 0;
+  border-top:1px solid rgba(255,255,255,.09)}
+.hb-list > div:first-child{border-top:0}
+.hb-list dt{font-family:var(--tech);font-weight:600;font-size:11.5px;letter-spacing:.1em;
+  color:var(--on-dark)}
+.hb-list dd{margin:0;font-family:var(--sans);font-weight:400;font-size:13px;color:var(--muted-dark)}
+
+.blackout{position:fixed;inset:0;z-index:45;background:#000;cursor:pointer}
+
+@media print{
+  .progress,.nav,.overview,.helpbox,.blackout{display:none !important}
+}
+
+/* a class-level display would otherwise beat the UA's [hidden] rule */
+[hidden]{display:none !important}
+body.modal-open .nav,body.modal-open .progress{display:none}
+.helpbox{z-index:50}

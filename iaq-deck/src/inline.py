@@ -3,8 +3,10 @@ D='/home/user/Brand-Method-Website/iaq-deck/'
 html=io.open(D+'index.html',encoding='utf-8').read()
 css=io.open(D+'deck.css',encoding='utf-8').read()
 js=io.open(D+'deck.js',encoding='utf-8').read()
-html=re.sub(r'<link[^>]+href="deck\.css"[^>]*>', '<style>\n%s\n</style>'%css, html)
-html=re.sub(r'<script[^>]+src="deck\.js"[^>]*></script>', '<script>\n%s\n</script>'%js, html)
+# lambda replacements: the CSS/JS may contain backslashes that re would
+# otherwise read as template escapes
+html=re.sub(r'<link[^>]+href="deck\.css"[^>]*>', lambda m: '<style>\n%s\n</style>'%css, html)
+html=re.sub(r'<script[^>]+src="deck\.js"[^>]*></script>', lambda m: '<script>\n%s\n</script>'%js, html)
 cache={}
 def sub(m):
     p=m.group(1)

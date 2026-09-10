@@ -583,11 +583,43 @@ doc = f'''<!doctype html>
 
 </div><!-- /deck -->
 
-<nav class="nav" aria-label="Slide navigation">
-  <span class="counter" id="counter">01 / {TOTAL}</span>
+<div class="progress" aria-hidden="true"><span id="bar"></span></div>
+
+<nav class="nav" aria-label="Presentation controls">
+  <button type="button" id="btn-grid" aria-label="Slide overview (O)">Overview</button>
+  <span class="counter" id="counter" aria-live="polite">01 / {TOTAL}</span>
   <button type="button" id="prev" aria-label="Previous slide">Prev</button>
   <button type="button" id="next" aria-label="Next slide">Next</button>
+  <span class="timer" id="timer" role="timer">00:00</span>
+  <button type="button" id="btn-full" aria-label="Present full screen (F)">Present</button>
+  <button type="button" id="btn-help" class="sq" aria-label="Keyboard shortcuts">?</button>
 </nav>
+
+<div class="overview" id="overview" hidden>
+  <div class="ov-head">
+    <span class="ov-title">IAQ Company Deck</span>
+    <span class="ov-hint">Click a slide to jump &middot; type a number and press Enter</span>
+    <button type="button" id="ov-close" aria-label="Close overview">Close</button>
+  </div>
+  <div class="ov-grid" id="ovGrid"></div>
+</div>
+
+<div class="helpbox" id="help" hidden>
+  <div class="hb-title">Presenter shortcuts</div>
+  <dl class="hb-list">
+    <div><dt>&rarr; &nbsp;Space</dt><dd>Next slide</dd></div>
+    <div><dt>&larr;</dt><dd>Previous slide</dd></div>
+    <div><dt>F</dt><dd>Present full screen</dd></div>
+    <div><dt>O</dt><dd>Slide overview</dd></div>
+    <div><dt>B</dt><dd>Blank the screen</dd></div>
+    <div><dt>T</dt><dd>Pause or resume the timer</dd></div>
+    <div><dt>0&ndash;9 then Enter</dt><dd>Jump to a slide</dd></div>
+    <div><dt>Home &nbsp;End</dt><dd>First or last slide</dd></div>
+    <div><dt>Esc</dt><dd>Close, or leave full screen</dd></div>
+  </dl>
+</div>
+
+<div class="blackout" id="blackout" hidden></div>
 
 <script>
 {JS}

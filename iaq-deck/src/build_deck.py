@@ -196,15 +196,12 @@ slide('''
         where contamination, uptime and safety decide the outcome, from semiconductor wafer fabs
         to gigafactories, data centres and pharmaceutical plants.</p>
       </div>
-      <div class="lede-side">''' + specrows([
-        ('Vision', 'To be a regional facility solutions provider with engineering excellence that facilitates technological innovation and advancement in quality of life.', False),
-        ('Mission', 'Providing innovative, sustainable facility and engineering solutions benefitting our clients and stakeholders, driven by our leadership, employees and partners globally.', False),
-        ('Delivery Models', 'EPCM · EPCC · Energy Facility Management', True),
-      ]) + '''
+      <div class="colcards c1">
+        <article class="colcard flat"><div class="cc-body"><h3 class="cc-name">Vision</h3><p class="cc-note">To be a regional facility solutions provider with engineering excellence that facilitates technological innovation and advancement in quality of life.</p></div></article><article class="colcard flat"><div class="cc-body"><h3 class="cc-name">Mission</h3><p class="cc-note">Providing innovative, sustainable facility and engineering solutions benefitting our clients and stakeholders, driven by our leadership, employees and partners globally.</p></div></article><article class="colcard flat"><div class="cc-body"><h3 class="cc-name">Delivery Models</h3><p class="cc-spec">EPCM · EPCC · Energy Facility Management</p><p class="cc-note">Engineering and construction management, full EPCC from design through commissioning, and ongoing energy and facility management.</p></div></article>
       </div>
     </div>''',
       part_idx=0, num='01.1', title='About IAQ',
-      note='Who we are, what we build, and the models we deliver under.', fill=True, rows=True)
+      note='Who we are, what we build, and the models we deliver under.', fill=True)
 
 # ---------------------------------------------------------------- 01.2 GLANCE
 stats = [('32', '', 'Years Experience'), ('450', '', 'Employees'),
@@ -277,16 +274,11 @@ m_html = ''.join(
     f'<p class="ghead">{esc(n)}</p><p class="cap">{esc(d)}</p></div></div>'
     for y, n, d in markets)
 slide(f'''
-    <div class="split">
-      <div class="lede">
-        <h3 class="statement">From Shah Alam<br>to seven markets.</h3>
-        <p class="body">Offices across Asia Pacific and Europe follow our clients as advanced
-        manufacturing localises. Additional offices operate in Norway, China, France and Poland.</p>
-      </div>
-      <div class="mrows">{m_html}</div>
-    </div>''',
+    <div class="colcards c5"><article class="colcard flat"><div class="cc-body"><div class="cc-num">1994</div><h3 class="cc-name">Malaysia</h3><p class="cc-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2020</div><h3 class="cc-name">Sweden</h3><p class="cc-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2023</div><h3 class="cc-name">Singapore</h3><p class="cc-note">Design &amp; build EPCM services to global semiconductor clients.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2025</div><h3 class="cc-name">Germany</h3><p class="cc-note">EPCC services following semiconductor expansion in Europe.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2026</div><h3 class="cc-name">India · United States</h3><p class="cc-note">D&amp;B turnkey for India&rsquo;s first wafer fab, and US entry following localisation of advanced tech facilities.</p></div></article></div>
+    <p class="cc-foot">Offices across Asia Pacific and Europe follow our clients as advanced
+    manufacturing localises. Additional offices operate in Norway, China, France and Poland.</p>''',
       part_idx=0, num='01.4', title='Global Footprint',
-      note='Where we operate, and the year we arrived in each market.', fill=True, rows=True)
+      note='Where we operate, and the year we arrived in each market.', fill=True)
 
 # ---------------------------------------------------------------- 01.5 CORE VALUES
 values = [
@@ -321,9 +313,9 @@ u_html = ''.join(
       <div class="u-body"><h3 class="u-name">{esc(n)}</h3>
       <p class="spec">{esc(s)}</p><p class="cap">{esc(d)}</p></div></div>'''
     for k, (n, s, d) in enumerate(units, start=1))
-slide(f'<div class="units">{u_html}</div>',
+slide('<div class="colcards c3"><article class="colcard"><img src="img/p-project.jpg" alt=""><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">IAQ Solutions Sdn Bhd</h3><p class="cc-spec">Engineering, Procurement, Construction &amp; Commissioning</p><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/infineon-kulim.jpg" alt=""><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">IAQ Utility Solutions Sdn Bhd</h3><p class="cc-spec">Process Critical Utilities &amp; Total Tool Install</p><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">IAQ Energy Facility Management Sdn Bhd</h3><p class="cc-spec">Energy Management</p><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
       part_idx=0, num='01.6', title='Business Units',
-      note='Three companies under one group, covering the full delivery chain.', fill=True, rows=True)
+      note='Three companies under one group, covering the full delivery chain.', fill=True)
 
 # ---------------------------------------------------------------- 01.7 SCOPE
 scope = [
@@ -401,220 +393,59 @@ slide(f'''<div class="maps">{r_html}</div>
       part_idx=1, num='02.1', title='Portfolio Overview',
       note='How the reference book breaks down by region, and which sections cover what.', fill=True)
 
-# ---------------------------------------------------------------- 02.2 SEMI · MALAYSIA
-hero('infineon-kulim', 1, '02.2', 'Semiconductor · Malaysia', 'Kulim, Kedah · Greenfield wafer fab',
-     'Infineon Kulim<br>Wafer Fab 3',
-     [('Cleanroom', 'ISO 4 · 5 · 6 · 7 (Class 10 · 100 · 1K · 10K)', True),
-      ('Scope', 'PCC for cleanroom and mechanical works', False),
-      ('Description', 'General contractor for WP06, KLM3 Expansion, 35,000 m² cleanroom area', False)],
-     'Semiconductor · Malaysia')
-
-hero('p-project', 1, '02.2', 'Semiconductor · Malaysia', 'Advanced packaging · 75,000 m²',
-     'P Project',
-     [('Cleanroom', 'ISO 4 to 7 (Class 10 to 10K)', True),
-      ('Scope', 'Design & build GC: CSA, MEP, process utilities, chemical & gases system, waste treatment', False),
-      ('Description', "Progressive-built EPCM contract model for the client's advanced packaging facility", False)],
-     'Semiconductor · Malaysia')
-
-slide('<div class="grid two">' + pcard(
-        'xfab-kuching', 'Kuching, Sarawak', 'XFAB Kuching 40K Expansion',
-        [('Cleanroom', 'ISO 5 · 6 · 7 (Class 100 · 1K · 10K)', True),
-         ('Scope', 'CSA, mechanical, electrical & plumbing, process utilities, UPW, chemical & gases', False),
-         ('Description', 'GC design & build for wafer fab extension, CUB and supporting facilities. Capacity 30k to 40k, 40,000 m² built-up', False)]) + pcard(
-        'soitec-pr1a', 'Greenfield plant', 'SOITEC PR1A Expansion',
-        [('Cleanroom', 'ISO 4 · 5 · 6 · 7 (Class 10 · 100 · 1K · 10K)', True),
-         ('Scope', 'EPCM design & build for fab, including all related MEP', False),
-         ('Description', 'EPCM consultant for PR1A new greenfield plant, 45,000 m² built-up', False)]) + '\n    </div>',
+# ---------------------------------------------------------------- 02.2 to 02.10
+# One slide per category, two projects on each, a single card format throughout.
+slide('<div class="grid two">' + pcard('infineon-kulim', 'Kulim, Kedah · greenfield wafer fab', 'Infineon Kulim Wafer Fab 3', [('Cleanroom', 'ISO 4 · 5 · 6 · 7 (Class 10 · 100 · 1K · 10K)', True), ('Scope', 'PCC for cleanroom and mechanical works', False), ('Description', 'General contractor for WP06, KLM3 Expansion, 35,000 m² cleanroom area', False)]) + pcard('p-project', 'Advanced packaging · 75,000 m²', 'P Project', [('Cleanroom', 'ISO 4 to 7 (Class 10 to 10K)', True), ('Scope', 'Design & build GC: CSA, MEP, process utilities, chemical & gases system, waste treatment', False), ('Description', "Progressive-built EPCM contract model for the client's advanced packaging facility", False)]) + '\n    </div>',
       part_idx=1, num='02.2', title='Semiconductor · Malaysia',
-      note='Wafer fab, advanced packaging, test and assembly, ISO 3 to ISO 7.',
+      note='Wafer fab, advanced packaging, test and assembly. Further Malaysian projects are listed in 02.11.',
       foot='Semiconductor · Malaysia')
 
-slide('<div class="grid two">' + pcard(
-        'bosch-testing', 'Greenfield · test & manufacturing', 'Robert Bosch Testing Manufacturing Plant',
-        [('Cleanroom', 'ISO 6 · 7 (Class 1K · 10K)', True),
-         ('Scope', 'Main building CSA, MEP, process utilities and cleanroom package', False),
-         ('Description', 'General contractor for greenfield testing and manufacturing plant, 25,000 m² built-up', False)]) + pcard(
-        'wafer-fab-exp', 'FAB1E A/B · new CUB', 'Wafer Fab Facility & Expansion',
-        [('Cleanroom', 'ISO 5 (Class 100)', True),
-         ('Scope', 'EPCC new building: CSA, mechanical, electrical, cleanroom, process utilities, specialty and bulk gases, chemical delivery', False),
-         ('Description', 'EPCC and design & build for FAB1E A/B expansion. 1,000 m² cleanroom, 5,000 m² new CUB', False)]) + '\n    </div>',
-      part_idx=1, num='02.2', title='Semiconductor · Malaysia',
-      note='Continued. Greenfield plants and fab expansions delivered as GC and EPCC.',
-      foot='Semiconductor · Malaysia')
-
-slide('<div class="grid two">' + pcard(
-        'ti-melaka', 'Melaka', 'Texas Instruments, Melaka',
-        [('Cleanroom', 'ISO 5 · 6 · 7 (Class 100 · 1K · 10K)', True),
-         ('Scope', 'Mechanical, electrical, process utilities, testing & commissioning', False),
-         ('Description', 'Facilitation works for residual management, 32,000 m² built-up', False)]) + pcard(
-        'infineon-melaka', 'Melaka · Block 8', 'Infineon Technologies (M) Sdn Bhd',
-        [('Cleanroom', 'ISO 6 · 7 (Class 1K · 10K)', True),
-         ('Scope', 'EPCM-GMP for civil & structural, cleanroom, air-conditioning, process utilities and multi-storey carpark', False),
-         ('Description', 'Block 8 testing, probe & assembly plant, 43,000 m² built-up', False)]) + '\n    </div>',
-      part_idx=1, num='02.2', title='Semiconductor · Malaysia',
-      note='Continued. Test, probe and assembly plants for tier-one device makers.',
-      foot='Semiconductor · Malaysia')
-
-slide('<div class="grid two">' + pcard(
-        'memc-ipoh', 'Ipoh, Perak · greenfield', 'MEMC Ipoh Sdn Bhd',
-        [('Cleanroom', 'ISO 3 · 4 · 5 · 6 · 7 (Class 1 to 10K)', True),
-         ('Scope', 'Mechanical, electrical, process utilities, cleanroom, fire fighting, FMCS, CSA and tools hookup', False),
-         ('Description', 'Greenfield project. The tightest cleanroom class in the portfolio, ISO 3 (Class 1)', False)]) + pcard(
-        'st-johor', 'Johor', 'STMicroelectronics Sdn Bhd',
-        [('Cleanroom', 'ISO 7 (Class 10K)', True),
-         ('Scope', 'Cleanroom architectural, ACMV, electrical, process utility and cleanroom works', False),
-         ('Description', 'Three-storey production factory', False)]) + '\n    </div>',
-      part_idx=1, num='02.2', title='Semiconductor · Malaysia',
-      note='Continued. Class 1 cleanroom capability and multi-storey production works.',
-      foot='Semiconductor · Malaysia')
-
-# ---------------------------------------------------------------- 02.3 SINGAPORE
-slide('<div class="grid three">' + pcard(
-        'teksend', 'Photomask', 'Teksend Photomask',
-        [('Cleanroom', 'Class 1 to Class 10K', True),
-         ('Scope', 'EPCC for cleanroom, ACMV, electrical, process utility, BMS, PA, WWT, UPW, tool hookup', False)]) + pcard(
-        'micron-msh', 'Tool hookup', 'Micron MSH Tool HU',
-        [('Scope', 'Progressive tool hook up', False),
-         ('Description', '2,000 progressive tool hookup services for MSH', False)]) + pcard(
-        'micron-f10', 'Fit-out', 'Micron F10A & F10NX',
-        [('Scope', 'Interior design & mechanical fit-out works', False),
-         ('Description', 'F10NX office optimisation', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('teksend', 'Photomask facility', 'Teksend Photomask', [('Cleanroom', 'Class 1 to Class 10K', True), ('Scope', 'EPCC for cleanroom, ACMV, electrical, process utility, BMS, PA, WWT, UPW, tool hookup', False), ('Description', 'Addition and alteration to an existing two-storey building with cleanroom facilities and ancillary office', False)]) + pcard('micron-msh', 'Progressive tool hookup', 'Micron MSH Tool HU', [('Scope', 'Progressive tool hook up', False), ('Description', '2,000 progressive tool hookup services for MSH', False)]) + '\n    </div>',
       part_idx=1, num='02.3', title='Semiconductor · Singapore',
-      note='Design & build EPCM in Singapore since 2023: photomask, tool hookup and fit-out.',
+      note='Design & build EPCM in Singapore since 2023.',
       foot='Semiconductor · Singapore')
 
-# ---------------------------------------------------------------- 02.4 DATA CENTRE
-hero('hyperscale-dc', 1, '02.4', 'Data Centre', 'Client confidential · 160 MW',
-     'Hyperscale<br>Data Centre',
-     [('Scope', 'Construction, completion, testing & commissioning for mechanical packages 1 & 2: office, data halls, mechanical utility building', False),
-      ('Also delivered', 'Microsoft DTC-KUL 03. PCC for CHW and CW piping works, 9.6 MW data centre, KUL03 Phase 1', False)],
-     'Data Centre')
+slide('<div class="grid two">' + pcard('hyperscale-dc', 'Client confidential · 160 MW', 'Hyperscale Data Centre', [('Scope', 'Construction, completion, testing & commissioning for mechanical packages 1 & 2', False), ('Description', 'Office, data halls and mechanical utility building', False)]) + pcard('microsoft-kul03', 'KUL03 Phase 1 · 9.6 MW', 'Microsoft DTC-KUL 03', [('Scope', 'PCC for CHW and CW piping works', False), ('Description', '9.6 MW data centre', False)]) + '\n    </div>',
+      part_idx=1, num='02.4', title='Data Centre',
+      note='Hyperscale and colocation, 9.6 MW to 160 MW.',
+      foot='Data Centre')
 
-# ---------------------------------------------------------------- 02.5 EV BATTERY
-hero('northvolt', 1, '02.5', 'EV Battery · Europe', 'Skellefteå, Sweden · 62,000 m²',
-     'Northvolt AB<br>Gigafactory',
-     [('Environment', 'Dry Room', True),
-      ('Scope', 'Cleanroom and dry room architecture works', False),
-      ('Description', 'Europe gigafactory for lithium-ion battery manufacture', False)],
-     'EV Battery · Europe')
-
-slide('<div class="grid three">' + pcard(
-        'morrow', 'Norway · Battery Coast', 'Morrow Batteries',
-        [('Environment', 'Dry Room', True),
-         ('Scope', 'Cleanroom and dry room architectural system, ACMV', False),
-         ('Description', '8,600 m² built-up', False)]) + pcard(
-        'acc-phase1', 'France · greenfield', 'ACC Phase 1',
-        [('Environment', 'Dry Room', True),
-         ('Scope', 'Cleanroom, dry room architecture works', False),
-         ('Description', '8,000 m² dry room system, 35,000 m² built-up', False)]) + pcard(
-        'envision-france', 'France', 'Envision France',
-        [('Environment', 'Dry Room', True),
-         ('Scope', 'Cleanroom, dry room architecture works', False),
-         ('Description', 'Battery manufacturing facility', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('northvolt', 'Skellefteå, Sweden · 62,000 m²', 'Northvolt AB Gigafactory', [('Environment', 'Dry Room', True), ('Scope', 'Cleanroom and dry room architecture works', False), ('Description', 'Europe gigafactory for lithium-ion battery manufacture', False)]) + pcard('morrow', 'Norway · Battery Coast · 8,600 m²', 'Morrow Batteries', [('Environment', 'Dry Room', True), ('Scope', 'Cleanroom and dry room architectural system, ACMV', False), ('Description', "Norway's Battery Coast project", False)]) + '\n    </div>',
       part_idx=1, num='02.5', title='EV Battery · Europe',
       note='Dry rooms for the gigafactories: moisture control and contamination control at scale.',
       foot='EV Battery · Europe')
 
-# ---------------------------------------------------------------- 02.6 EUROPE SEMI
-slide('<div class="grid four">' + pcard(
-        'confidential-cmos', 'Client confidential', '28/22nm CMOS · 16/12nm FinFET Plant',
-        [('Cleanroom', 'Class 1 to Class 10K', True),
-         ('Scope', 'Cleanroom & mechanical general contractor', False)]) + pcard(
-        'soitec-paris', 'Paris, France', 'Soitec Semiconductor',
-        [('Scope', 'EPCC for cleanroom and MEP', False),
-         ('Description', '11,000 m² built-up', False)]) + pcard(
-        'st-casablanca', 'Casablanca, Morocco', 'STMicroelectronics',
-        [('Cleanroom', 'ISO 5 (Class 100)', True),
-         ('Description', 'Cleanroom, MEP and hookup, 60,000 m² built-up', False)]) + pcard(
-        'xfab-paris', 'Paris, France', 'Xfab Semiconductor',
-        [('Cleanroom', 'ISO 5 (Class 100)', True),
-         ('Description', 'Progressive hookup work, 5,000 m² built-up', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('confidential-cmos', 'Client confidential · wafer fab', '28/22nm CMOS · 16/12nm FinFET Plant', [('Cleanroom', 'Class 1 to Class 10K', True), ('Scope', 'Cleanroom & mechanical general contractor', False), ('Description', 'Design, supply, installation & commissioning of cleanroom facilities', False)]) + pcard('st-casablanca', 'Casablanca, Morocco · 60,000 m²', 'STMicroelectronics', [('Cleanroom', 'ISO 5 (Class 100)', True), ('Scope', 'Cleanroom, mechanical, electrical, process utilities and hookup works', False)]) + '\n    </div>',
       part_idx=1, num='02.6', title='Semiconductor · Europe & Morocco',
       note='Following the fabs into Europe: advanced-node cleanrooms and progressive hookup.',
-      foot='Semiconductor · Europe', fill=True)
+      foot='Semiconductor · Europe')
 
-# ---------------------------------------------------------------- 02.7 CHINA
-slide('<div class="grid four">' + pcard(
-        'ferrotec-hangzhou', 'Hangzhou · 23,400 m²', 'Ferrotec Semiconductor',
-        [('Cleanroom', 'ISO 4 · 5 (Class 10 & 100)', True),
-         ('Scope', 'EPCC for cleanroom, MEP and hookup works', False)]) + pcard(
-        'infineon-wuxi', 'Wuxi · 8,000 m²', 'Infineon Technologies',
-        [('Cleanroom', 'ISO 5 (Class 100)', True),
-         ('Scope', 'EPCC for cleanroom, MEP and hookup works', False)]) + pcard(
-        'smic-ningbo', 'Ningbo · 22,000 m²', 'SMIC',
-        [('Cleanroom', 'ISO 5 · 6 (Class 100 & 1K)', True),
-         ('Scope', 'EPCC for mechanical, electrical and plumbing works', False)]) + pcard(
-        'maxtor-suzhou', 'Suzhou · 95,000 m²', 'Maxtor Technology',
-        [('Cleanroom', 'ISO 5 · 6 (Class 100 & 1K)', True),
-         ('Scope', 'Cleanroom and MEP works', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('ferrotec-hangzhou', 'Hangzhou · 23,400 m²', 'Ferrotec Semiconductor', [('Cleanroom', 'ISO 4 · 5 (Class 10 & 100)', True), ('Scope', 'EPCC for cleanroom, mechanical, electrical and plumbing works and hookup', False)]) + pcard('infineon-wuxi', 'Wuxi · 8,000 m²', 'Infineon Technologies', [('Cleanroom', 'ISO 5 (Class 100)', True), ('Scope', 'EPCC for cleanroom, mechanical, electrical and plumbing works and hookup', False)]) + '\n    </div>',
       part_idx=1, num='02.7', title='Semiconductor & Display · China',
-      note='EPCC across semiconductor, display and precision manufacturing. 23 further projects in section 02.11.',
-      foot='China', fill=True)
+      note='EPCC across semiconductor, display and precision manufacturing.',
+      foot='China')
 
-# ---------------------------------------------------------------- 02.8 PHOTOVOLTAICS
-slide('<div class="grid three">' + pcard(
-        'first-solar', 'Kulim, Malaysia', 'First Solar Malaysia',
-        [('Scope', 'PCC for M&E, KMW building; CSA and M&E for forming gas plant; M&E for SCO1', False)]) + pcard(
-        'auo-sunpower', 'Melaka, Malaysia', 'AUO Sunpower',
-        [('Scope', 'CSA, utilities, HVAC, electrical, testing & commissioning', False),
-         ('Description', 'Fab 3A solar cell manufacturing', False)]) + pcard(
-        'chint-solar', 'China · 57,000 m²', 'Chint Solar Technology',
-        [('Cleanroom', 'ISO 8 (Class 100K)', True),
-         ('Scope', 'Cleanroom, ACMV, process utilities and tools hookup', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('first-solar', 'Kulim, Malaysia', 'First Solar Malaysia', [('Scope', 'PCC for mechanical & electrical, KMW building; CSA and M&E for forming gas plant; M&E for SCO1', False)]) + pcard('chint-solar', 'China · 57,000 m²', 'Chint Solar Technology', [('Cleanroom', 'ISO 8 (Class 100K)', True), ('Scope', 'Cleanroom system, ACMV, process utilities and tools hookup', False)]) + '\n    </div>',
       part_idx=1, num='02.8', title='Photovoltaics',
       note='Solar cell and module manufacturing, including toxic material and waste handling.',
       foot='Photovoltaics')
 
-# ---------------------------------------------------------------- 02.9 PHARMA
-slide('<div class="grid four">' + pcard(
-        'insulet', 'Greenfield · medical device', 'Insulet',
-        [('Cleanroom', 'ISO 8 (Class 100K)', True),
-         ('Scope', 'Design and build mechanical, cleanroom & electrical package', False)]) + pcard(
-        'vital-healthcare', 'Greenfield · medical device', 'Vital Healthcare',
-        [('Cleanroom', 'ISO 8 (Class 100K)', True),
-         ('Scope', 'GC for CSA, 33kV substation and MEP', False)]) + pcard(
-        'pharmaniaga', 'Puchong, Selangor', 'Pharmaniaga',
-        [('Cleanroom', 'ISO 5 · 7 · 8 (Class 100 · 10K · 100K)', True),
-         ('Scope', 'Cleanroom system and ACMV for a small volume parenteral facility', False)]) + pcard(
-        'ain-medicare', 'Pharmaceutical building', 'Ain Medicare',
-        [('Cleanroom', 'ISO 8 (Class 100K)', True),
-         ('Scope', 'EPCC CSA, cleanroom system and M&E', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('insulet', 'Greenfield · medical device', 'Insulet', [('Cleanroom', 'ISO 8 (Class 100K)', True), ('Scope', 'Design and build mechanical, cleanroom & electrical package', False)]) + pcard('pharmaniaga', 'Puchong, Selangor', 'Pharmaniaga', [('Cleanroom', 'ISO 5 · 7 · 8 (Class 100 · 10K · 100K)', True), ('Scope', 'Cleanroom system and ACMV for a small volume parenteral facility', False)]) + '\n    </div>',
       part_idx=1, num='02.9', title='Pharmaceutical & Medical',
       note='GMP grades and regulated environments, from parenteral facilities to medical device plants.',
-      foot='Pharmaceutical & Medical', fill=True)
+      foot='Pharmaceutical & Medical')
 
-# ---------------------------------------------------------------- 02.10 DISTRICT COOLING
-hero('klcc-dcp', 1, '02.10', 'District Cooling & Energy', 'Gas District Cooling (M) Sdn Bhd',
-     'KLCC District<br>Cooling Plant',
-     [('Description', 'Largest district cooling centre in Malaysia', True),
-      ('Scope', 'ACMV, electrical & instrumentation, fire protection, process utility, plumbing & sanitary, water treatment, CSA', False),
-      ('Also delivered', 'GDC Putrajaya plant electrification & chiller replacement (PICC) · KLCC DCC centrifugal chillers · Rapid Petronas Pengerang Co-gen, first co-gen plant in SEA · Pagoh Education Hub DCS', False)],
-     'District Cooling & Energy')
+slide('<div class="grid two">' + pcard('klcc-dcp', 'Gas District Cooling (M) Sdn Bhd', 'KLCC District Cooling Plant', [('Description', 'Largest district cooling centre in Malaysia', True), ('Scope', 'ACMV, electrical & instrumentation, fire protection, process utility, plumbing & sanitary, water treatment, CSA', False)]) + pcard('gdc-putrajaya', 'PICC Plant, Putrajaya', 'GDC Putrajaya', [('Scope', 'EPCC of plant electrification, chiller replacement and associated works at Gas District Cooling Putrajaya', False)]) + '\n    </div>',
+      part_idx=1, num='02.10', title='District Cooling & Energy',
+      note='Plant, chillers and co-generation for urban and industrial energy.',
+      foot='District Cooling & Energy')
 
 # ---------------------------------------------------------------- 02.11 INDEX
-index_cols = [
-    ('Malaysia &amp; Singapore', [
-        'Western Digital (M) Sdn Bhd, Petaling Jaya', 'WD Media (M) Sdn Bhd, Penang, MA 28 &amp; MA 29',
-        'Flextronics Shah Alam Sdn Bhd', 'Caterpillar Asia, 7T office renovation',
-        'M Project, greenfield food flavouring plant, 40,000 m²', 'P Project, MEP works, mega lab retrofit',
-        'National University of Singapore, tissue culture lab', 'Matrix (M) Sdn Bhd',
-        'T Hasegawa, spray dryer &amp; microwave tunnel', 'Elegant Aura (M) Sdn Bhd',
-        'Rapid MCD chemical plant']),
-    ('Europe &amp; Morocco', [
-        'Northvolt AB, Skellefteå, 62,000 m²', 'Morrow Batteries, Norway', 'ACC Phase 1, France',
-        'Envision, France', 'Soitec Semiconductor, Paris', 'Xfab Semiconductor, Paris',
-        'Nemotek, Rabat, Morocco', 'STMicroelectronics, Casablanca', 'Kimoto, Poland', 'Sumika, Poland']),
-    ('China', [
-        'All-Cent RF Technology, Wuxi, 25,600 m²', 'Kunshan Visionox Display, 27,000 m²',
-        'GS Magicdrive Inc., 68,000 m²', 'Shantou Goworld Display', 'M-Flex (Suzhou), 25,000 m²',
-        'MMI Industries (Wuxi)', 'Huawei Technologies Co., Ltd', 'Shanghai Roche Pharmaceuticals',
-        'Suzhou Ascentage Pharma, 25,800 m²', 'Jiangsu GenScript Biotech', 'Mindray Group Co., Ltd',
-        'Unilever · GE · Dow · Rohm and Haas R&amp;D centres']),
-]
+index_cols = [('Malaysia · Semiconductor', ['XFAB Kuching 40K Expansion, 40,000 m²', 'SOITEC PR1A Expansion, 45,000 m²', 'Robert Bosch Testing Manufacturing Plant', 'Wafer Fab Facility &amp; Expansion, FAB1E A/B', 'Texas Instruments, Melaka, 32,000 m²', 'Infineon Technologies, Melaka, Block 8', 'MEMC Ipoh, Class 1 cleanroom', 'STMicroelectronics, Johor', 'Western Digital (M), Petaling Jaya', 'WD Media (M), Penang, MA 28 &amp; MA 29', 'Flextronics Shah Alam']), ('Malaysia · Other Sectors &amp; Singapore', ['AUO Sunpower, Melaka, Fab 3A', 'Vital Healthcare, medical device plant', 'Ain Medicare, pharmaceutical building', 'M Project, food flavouring plant, 40,000 m²', 'P Project, MEP works, mega lab retrofit', 'Rapid Petronas Pengerang Co-gen', 'Pagoh Education Hub DCS', 'Rapid MCD chemical plant', 'Matrix (M) Sdn Bhd', 'T Hasegawa, spray dryer &amp; microwave tunnel', 'Elegant Aura (M) Sdn Bhd', 'Caterpillar Asia, 7T office renovation', 'Micron F10A &amp; F10NX, Singapore', 'National University of Singapore, tissue culture lab']), ('Europe &amp; Morocco', ['ACC Phase 1, France, 35,000 m²', 'Envision, France', 'Soitec Semiconductor, Paris, 11,000 m²', 'Xfab Semiconductor, Paris', 'Nemotek, Rabat, Morocco', 'Kimoto, Poland', 'Sumika, Poland']), ('China', ['SMIC, Ningbo, 22,000 m²', 'Maxtor Technology, Suzhou, 95,000 m²', 'All-Cent RF Technology, Wuxi, 25,600 m²', 'Kunshan Visionox Display, 27,000 m²', 'GS Magicdrive Inc., 68,000 m²', 'Shantou Goworld Display', 'M-Flex (Suzhou), 25,000 m²', 'MMI Industries (Wuxi)', 'Huawei Technologies Co., Ltd', 'Shanghai Roche Pharmaceuticals', 'Suzhou Ascentage Pharma, 25,800 m²', 'Jiangsu GenScript Biotech', 'Mindray Group Co., Ltd', 'Unilever · GE · Dow · Rohm and Haas R&amp;D centres'])]
 w_html = ''.join(
     f'<div class="wcol"><h3>{name}</h3><ul>' + ''.join(f'<li>{x}</li>' for x in items) + '</ul></div>'
     for name, items in index_cols)
-slide(f'<div class="wall">{w_html}</div>',
+slide(f'<div class="wall w4">{w_html}</div>',
       part_idx=1, num='02.11', title='Reference Index',
       note='A selection from 200+ completed projects. The full reference list is available on request.',
       foot='Project References', fill=True, rows=True)
@@ -638,9 +469,9 @@ e_html = ''.join(
     f'''<div class="unit"><div class="u-num">{k}</div><div class="u-body">
       <h3 class="u-name">{esc(n)}</h3><p class="cap">{esc(d)}</p></div></div>'''
     for k, n, d in esg)
-slide(f'<div class="units">{e_html}</div>',
+slide('<div class="colcards c3"><article class="colcard"><img src="img/value-2.jpg" alt=""><div class="cc-body"><div class="cc-num">E</div><h3 class="cc-name">Environmental Responsibility</h3><p class="cc-note">Minimising environmental footprint through sustainable design and construction. Energy-efficient solutions and eco-friendly technologies, prioritised at design stage.</p></div></article><article class="colcard"><img src="img/value-3.jpg" alt=""><div class="cc-body"><div class="cc-num">S</div><h3 class="cc-name">Social Accountability</h3><p class="cc-note">The well-being and safety of employees and communities first. A diverse, inclusive work environment and ethical labour practices.</p></div></article><article class="colcard"><img src="img/value-4.jpg" alt=""><div class="cc-body"><div class="cc-num">G</div><h3 class="cc-name">Corporate Governance</h3><p class="cc-note">Transparency, accountability and ethical decision-making, with the highest standards of compliance, building trust with clients, partners and stakeholders.</p></div></article></div>',
       part_idx=2, num='03.1', title='ESG Commitments',
-      note='Three pillars, applied to operations and to every project we take on.', fill=True, rows=True)
+      note='Three pillars, applied to operations and to every project we take on.', fill=True)
 
 # ---------------------------------------------------------------- 03.2 SAFETY
 awards = [
@@ -652,17 +483,18 @@ a_html = ''.join(
     f'<div class="award"><h3 class="a-name">{esc(n)}</h3><p class="cap">{esc(d)}</p></div>'
     for n, d in awards)
 slide(f'''
-    <div class="split">
+    <div class="split media">
       <div class="lede">
         <h3 class="statement">Judged on the things<br>that actually matter.</h3>
         <p class="body">MCIEA award recipients are evaluated across company performance, project
         management, technical expertise, innovation, quality, safety and sustainability. The same
         criteria our clients audit us against.</p>
+        <div class="awards">{a_html}</div>
       </div>
-      <div class="awards">{a_html}</div>
+      <div class="side-media"><img src="img/p-project.jpg" alt="IAQ project site"></div>
     </div>''',
       part_idx=2, num='03.2', title='Safety & Recognition',
-      note='How our standards are independently verified and recognised.', fill=True, rows=True)
+      note='How our standards are independently verified and recognised.', fill=True)
 
 # ---------------------------------------------------------------- 03.3 CLOSING
 slide('''

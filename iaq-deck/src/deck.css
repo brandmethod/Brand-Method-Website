@@ -400,3 +400,49 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 
 /* IAQ mark in the running chrome, as on the master slide */
 .mark{height:calc(30 * var(--u));width:auto;display:block}
+
+/* ============================================ column cards
+   Sets of three to five peers, laid across the frame rather than
+   stacked as thin rows in a very wide format. */
+.colcards{display:grid;gap:calc(28 * var(--u));height:100%}
+.colcards.c1{grid-template-columns:1fr;grid-auto-rows:1fr;gap:calc(22 * var(--u))}
+.colcards.c3{grid-template-columns:repeat(3,1fr)}
+.colcards.c5{grid-template-columns:repeat(5,1fr);gap:calc(22 * var(--u))}
+.colcard{display:grid;grid-template-rows:1fr auto;min-height:0}
+.colcard.flat{grid-template-rows:1fr}
+.colcard img{width:100%;height:100%;object-fit:cover;display:block;min-height:0;background:var(--rule)}
+.cc-body{background:var(--surface);border-top:calc(3 * var(--u)) solid var(--signal);
+  padding:calc(24 * var(--u)) calc(24 * var(--u)) calc(26 * var(--u));
+  display:grid;gap:calc(10 * var(--u));align-content:start}
+.dark .cc-body{background:rgba(255,255,255,.06)}
+.cc-num{font-family:var(--display);font-weight:700;font-size:calc(40 * var(--u));line-height:.9;
+  letter-spacing:-.03em;color:var(--signal);font-variant-numeric:tabular-nums}
+.cc-name{font-family:var(--display);font-weight:600;font-size:calc(23 * var(--u));line-height:1.15;
+  letter-spacing:-.02em;margin:0}
+.dark .cc-name{color:#fff}
+.cc-spec{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));letter-spacing:.18em;
+  text-transform:uppercase;line-height:1.35;color:var(--signal);margin:0}
+.cc-note{font-family:var(--sans);font-weight:400;font-size:calc(15.5 * var(--u));line-height:1.5;
+  margin:0;color:var(--muted)}
+.dark .cc-note{color:var(--muted-dark)}
+.cc-foot{font-family:var(--sans);font-weight:400;font-size:calc(17 * var(--u));line-height:1.5;
+  margin:0;color:var(--muted)}
+
+/* split with a full-height image beside the copy */
+.canvas.fill .split.media{height:100%;align-items:stretch;grid-template-columns:1fr calc(660 * var(--u))}
+.side-media{overflow:hidden}
+.side-media img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* milestones: larger setting so the timeline holds the frame */
+.era-span{font-size:calc(34 * var(--u))}
+.era-name{font-size:calc(22 * var(--u))}
+.era-list li{padding:calc(16 * var(--u)) 0}
+.yr{font-size:calc(14 * var(--u))}
+.ev{font-size:calc(16.5 * var(--u))}
+
+/* four-column reference index */
+.wall.w4{grid-template-columns:repeat(4,1fr);gap:0 calc(40 * var(--u))}
+.wall.w4 li{font-size:calc(18.5 * var(--u));padding:calc(8 * var(--u)) 0}
+
+/* stretched column cards centre their content rather than stranding it at the top */
+.colcards.c1 .cc-body,.colcards.c5 .cc-body{align-content:center}

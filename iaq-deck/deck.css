@@ -550,3 +550,77 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 
 /* era visuals carry more of the card, so the text tail sits shorter */
 .eras-v .colcard img{aspect-ratio:1/1}
+
+/* ============================================ 03.4 closing contacts
+   The sign-off lockup holds the left of the frame; the people and the
+   general lines sit opposite it as panels rather than floating rows. */
+.endgrid{display:grid;grid-template-columns:calc(590 * var(--u)) 1fr;
+  gap:calc(84 * var(--u));height:100%;align-items:center}
+.endmark{position:relative;display:grid;align-content:center;gap:calc(24 * var(--u))}
+.endmark::before{content:"";position:absolute;left:calc(-120 * var(--u));top:50%;
+  width:calc(620 * var(--u));height:calc(620 * var(--u));transform:translateY(-50%);
+  border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(236,35,38,.13) 0%,rgba(236,35,38,.04) 45%,rgba(236,35,38,0) 70%)}
+.endmark > *{position:relative}
+.signoff{width:calc(292 * var(--u));margin-bottom:0}
+.end-tag{font-family:var(--tech);font-weight:600;font-size:calc(15 * var(--u));
+  letter-spacing:.26em;text-transform:uppercase;color:var(--signal)}
+.end-line{font-family:var(--sans);font-weight:400;font-size:calc(17.5 * var(--u));line-height:1.55;
+  margin:0;color:var(--muted-dark);max-width:calc(510 * var(--u));
+  padding-top:calc(24 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-dark)}
+
+.endcontacts{display:grid;align-content:center;gap:calc(36 * var(--u))}
+.ccards{display:grid;grid-template-columns:1fr 1fr;gap:calc(28 * var(--u))}
+.ccard{background:rgba(255,255,255,.05);border-top:calc(3 * var(--u)) solid var(--signal);
+  padding:calc(26 * var(--u)) calc(28 * var(--u)) calc(30 * var(--u));
+  display:grid;gap:calc(11 * var(--u));align-content:start}
+.cc-role{font-family:var(--tech);font-weight:600;font-size:calc(12 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;line-height:1.35;color:var(--signal)}
+.cc-person{font-family:var(--display);font-weight:600;font-size:calc(25 * var(--u));line-height:1.15;
+  letter-spacing:-.02em;margin:calc(2 * var(--u)) 0 calc(6 * var(--u));color:#fff}
+.cc-line{display:grid;grid-template-columns:calc(20 * var(--u)) 1fr;gap:calc(13 * var(--u));
+  align-items:center;font-family:var(--sans);font-weight:400;font-size:calc(16.5 * var(--u));
+  line-height:1.4;color:var(--on-dark)}
+.cc-line svg{width:calc(19 * var(--u));height:calc(19 * var(--u));color:var(--signal);display:block}
+
+.endrows{display:grid;margin:0;padding-top:calc(6 * var(--u));
+  border-top:calc(1 * var(--u)) solid var(--rule-dark)}
+.er{display:grid;grid-template-columns:calc(160 * var(--u)) 1fr;gap:calc(22 * var(--u));
+  align-items:baseline;padding:calc(15 * var(--u)) 0;
+  border-top:calc(1 * var(--u)) solid var(--rule-dark)}
+.er:first-child{border-top:0}
+.er dt{font-family:var(--tech);font-weight:600;font-size:calc(12 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted-dark)}
+.er dd{margin:0;font-family:var(--sans);font-weight:500;font-size:calc(16.5 * var(--u));
+  line-height:1.45;color:var(--on-dark)}
+
+/* closing: cards take the top line, the general rows the foot, so the
+   frame is worked rather than centred with dead space above and below */
+.endgrid{align-items:stretch}
+.endcontacts{align-content:space-between}
+.signoff{width:calc(250 * var(--u))}
+.endmark::before{background:radial-gradient(circle,
+  rgba(236,35,38,.17) 0%,rgba(236,35,38,.05) 46%,rgba(236,35,38,0) 70%)}
+.ccard{align-content:start}
+
+/* closing, final composition: mark and people share the upper frame,
+   the general lines run as one band across the foot */
+.endgrid{grid-template-rows:1fr auto;gap:calc(46 * var(--u)) calc(84 * var(--u));align-items:stretch}
+.endmark{align-content:center}
+.ccards{align-content:center}
+.endrows{grid-column:1 / -1}
+.er{grid-template-columns:calc(200 * var(--u)) 1fr}
+
+/* the people panels carry the full upper frame rather than floating in it */
+.ccards{align-content:stretch;grid-auto-rows:1fr}
+.ccard{align-content:center;padding:calc(34 * var(--u)) calc(30 * var(--u))}
+.er{padding:calc(13 * var(--u)) 0}
+
+/* people panels sized by their content, set generously and centred
+   opposite the mark; stretching them left too much empty panel */
+.ccards{align-content:center;grid-auto-rows:auto}
+.ccard{align-content:start;padding:calc(36 * var(--u)) calc(32 * var(--u)) calc(38 * var(--u));
+  gap:calc(13 * var(--u))}
+.cc-person{font-size:calc(28 * var(--u))}
+.cc-line{font-size:calc(17.5 * var(--u))}
+.signoff{width:calc(268 * var(--u))}

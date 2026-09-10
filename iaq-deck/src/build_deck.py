@@ -31,6 +31,22 @@ def ph(note, dark=False, cap='Visual Placeholder'):
             '<span class="ph-cap">%s</span><span class="ph-note">%s</span></figure>'
             % (' dark' if dark else '', PH_ICON, esc(cap), esc(note)))
 
+MAIL_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+             'stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="5" width="18.8" height="14" rx="2"/>'
+             '<path d="M3.4 6.6l8.6 6 8.6-6"/></svg>')
+
+PHONE_ICON = ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" '
+              'stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 3.2H4.8a2 2 0 00-2 2.2c.5 8.2 6.6 '
+              '14.3 14.8 14.8a2 2 0 002.2-2v-2.6a1.4 1.4 0 00-1.2-1.4l-2.9-.4a1.4 1.4 0 00-1.4.7l-.9 1.6a13 13 '
+              '0 01-5.8-5.8l1.6-.9a1.4 1.4 0 00.7-1.4l-.4-2.9a1.4 1.4 0 00-1.4-1.2z"/></svg>')
+
+def person(name, role, mail, tel):
+    return ('<article class="ccard"><span class="cc-role">%s</span>'
+            '<h3 class="cc-person">%s</h3>'
+            '<span class="cc-line">%s<span>%s</span></span>'
+            '<span class="cc-line">%s<span>%s</span></span></article>'
+            % (esc(role), esc(name), MAIL_ICON, esc(mail), PHONE_ICON, esc(tel)))
+
 PARTS = ['The Company', 'Project References', 'Safety, Quality & ESG']
 
 
@@ -512,29 +528,31 @@ slide('''
       note='Your Total Facility Solutions Provider.')
 
 # ---------------------------------------------------------------- 03.4 CONTACTS
-slide('''
-    <img class="signoff" src="img/iaq-logo.png" alt="IAQ">
-    <div class="contacts">
-      <div class="contact">
-        <div class="c-nm">Nelson Tan Wee Keong</div>
-        <div class="c-rl">Business Development Director</div>
-        <div class="c-dt">nelsontan@iaqtechnology.com.my</div>
-        <div class="c-dt">+6012-372 7329</div>
+people = [
+    ('Nelson Tan Wee Keong', 'Business Development Director',
+     'nelsontan@iaqtechnology.com.my', '+6012-372 7329'),
+    ('Sunny Lim Qin Xiang', 'Senior Engineer, Business Development',
+     'qinxiang.lim@iaqtechnology.com.my', '+6016-442 4578'),
+]
+cards = ''.join(person(*p) for p in people)
+rows = [('General', 'info@iaqtechnology.com.my'),
+        ('Head Office', '9, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, '
+                        'Seksyen 32, 40460 Shah Alam, Selangor, Malaysia')]
+row_html = ''.join('<div class="er"><dt>%s</dt><dd>%s</dd></div>' % (esc(a), esc(b)) for a, b in rows)
+slide(f"""
+    <div class="endgrid">
+      <div class="endmark">
+        <img class="signoff" src="img/iaq-logo.png" alt="IAQ">
+        <div class="end-tag">Your Total Facility Solutions Provider</div>
+        <p class="end-line">Engineering, procurement, construction and energy management
+        for the industries where contamination, uptime and safety decide the outcome.
+        Established 1994.</p>
       </div>
-      <div class="contact">
-        <div class="c-nm">Sunny Lim Qin Xiang</div>
-        <div class="c-rl">Senior Engineer, Business Development</div>
-        <div class="c-dt">qinxiang.lim@iaqtechnology.com.my</div>
-        <div class="c-dt">+6016-442 4578</div>
-      </div>
-    </div>
-    <div class="sub">''' + specrows([
-        ('General', 'info@iaqtechnology.com.my', False),
-        ('Head Office', '9, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia', False),
-    ]) + '''
-    </div>''',
+      <div class="ccards">{cards}</div>
+      <dl class="endrows">{row_html}</dl>
+    </div>""",
       part_idx=2, num='03.4', title='Contacts', dark=True,
-      note='For inquiry and business opportunity.')
+      note='For inquiry and business opportunity.', fill=True)
 
 # ================================================================ ASSEMBLE
 TOTAL = len(slides)

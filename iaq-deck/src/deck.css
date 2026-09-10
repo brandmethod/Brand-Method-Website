@@ -446,3 +446,56 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 
 /* stretched column cards centre their content rather than stranding it at the top */
 .colcards.c1 .cc-body,.colcards.c5 .cc-body{align-content:center}
+
+/* ============================================ 01.2 at a glance */
+.glance{display:grid;grid-template-columns:calc(600 * var(--u)) 1fr;gap:calc(48 * var(--u));height:100%}
+.glance .stats{grid-template-columns:1fr 1fr;height:100%;align-content:stretch}
+.glance .stat{display:grid;align-content:center}
+
+/* ============================================ 01.3 milestone era cards */
+.eras-v .cc-body{align-content:start}
+.eras-v .cc-num{font-size:calc(30 * var(--u))}
+.cc-num .to{font-family:var(--sans);font-weight:500;font-size:calc(15 * var(--u));
+  color:var(--muted);letter-spacing:0;margin:0 calc(6 * var(--u))}
+.mile{list-style:none;margin:calc(4 * var(--u)) 0 0;padding:0;display:grid}
+.mile li{display:grid;gap:calc(3 * var(--u));padding:calc(10 * var(--u)) 0;
+  border-top:calc(1 * var(--u)) solid var(--rule-2)}
+.mile li:first-child{border-top:0;padding-top:calc(2 * var(--u))}
+.mile .yr{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.16em;color:var(--signal)}
+.mile .ev{font-family:var(--sans);font-weight:500;font-size:calc(14.5 * var(--u));
+  line-height:1.4;color:var(--ink-2)}
+
+/* ============================================ 01.4 global footprint */
+.foot-grid{display:grid;grid-template-columns:calc(770 * var(--u)) 1fr;
+  gap:calc(50 * var(--u));height:100%;align-items:center}
+.foot-grid .side-media img{object-fit:contain;background:transparent}
+.mkts{display:grid;align-content:center}
+.mkt{display:grid;grid-template-columns:calc(50 * var(--u)) calc(74 * var(--u)) 1fr;
+  gap:calc(20 * var(--u));align-items:start;padding:calc(17 * var(--u)) 0;
+  border-top:calc(1 * var(--u)) solid var(--rule)}
+.mkt:first-child{border-top:0}
+.mk-yr{font-family:var(--display);font-weight:700;font-size:calc(24 * var(--u));line-height:1;
+  color:var(--signal);font-variant-numeric:tabular-nums;padding-top:calc(2 * var(--u))}
+.mk-name{font-family:var(--sans);font-weight:600;font-size:calc(20 * var(--u));line-height:1.2;margin:0}
+.mk-note{font-family:var(--sans);font-weight:400;font-size:calc(15 * var(--u));line-height:1.45;
+  margin:calc(4 * var(--u)) 0 0;color:var(--muted)}
+.mk-more{display:grid;gap:calc(12 * var(--u));padding-top:calc(22 * var(--u));
+  margin-top:calc(6 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule)}
+.offs{display:flex;flex-wrap:wrap;gap:calc(10 * var(--u)) calc(22 * var(--u))}
+.off{display:flex;align-items:center;gap:calc(9 * var(--u));font-family:var(--sans);
+  font-weight:500;font-size:calc(15 * var(--u));color:var(--ink-2)}
+.flg{width:calc(40 * var(--u));height:auto;display:block;
+  outline:calc(1 * var(--u)) solid rgba(16,26,43,.14);outline-offset:calc(-1 * var(--u))}
+.off .flg{width:calc(26 * var(--u))}
+
+/* ============================================ service and industry tiles */
+.ico{width:calc(34 * var(--u));height:calc(34 * var(--u));color:var(--signal);
+  display:block;margin-bottom:calc(6 * var(--u))}
+.chips{grid-auto-rows:auto}
+.chip{padding:calc(26 * var(--u)) calc(26 * var(--u)) calc(26 * var(--u)) 0;gap:calc(7 * var(--u))}
+.chip.solid{padding-left:calc(26 * var(--u))}
+.chip.solid .ico{color:#fff}
+/* era cards: equal images, bodies take the slack */
+.eras-v .colcard{grid-template-rows:auto 1fr}
+.eras-v .colcard img{height:auto;aspect-ratio:5/4}

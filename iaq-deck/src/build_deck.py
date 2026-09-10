@@ -4,6 +4,9 @@ import html, os
 
 OUT = '/home/user/Brand-Method-Website/iaq-deck/index.html'
 
+SERVICE_ICONS = ['<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M7 11v7M12 11v7M17 11v7"/><path d="M5.5 16.5L7 18l1.5-1.5M10.5 16.5L12 18l1.5-1.5M15.5 16.5L17 18l1.5-1.5"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M6 9h12"/><path d="M5 18c1.4-1.6 2.8-1.6 4.2 0s2.8 1.6 4.2 0 2.8-1.6 4.2 0"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18M3 16h18"/><circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="16" r="2.2"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="10" width="12" height="10" rx="1"/><path d="M12 7V2M9.5 4.5L12 2l2.5 2.5"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="6" width="10" height="15" rx="2.5"/><path d="M10 6V4h4v2M7 11h10"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4 5.2 6 7.7 6 10.2A6 6 0 016 13.2C6 10.7 8 8.2 12 3z"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M4 13c2-1.5 4-1.5 6 0s4 1.5 6 0 2-1 4 0"/><path d="M9 5h6"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a5 5 0 005-5c0-4-5-8-5-8s-5 4-5 8a5 5 0 005 5z"/><path d="M4 4h16M12 4v3"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V8l6-5 6 5v13"/><path d="M10 21v-6h4v6"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M7 12l3-3 2.5 2.5L17 7"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9.2 9.2l5.6 5.6"/></svg>']
+INDUSTRY_ICONS = ['<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1"/><rect x="4" y="11" width="16" height="5" rx="1"/><rect x="4" y="18" width="16" height="3" rx="1"/><path d="M7 6.5h.01M7 13.5h.01"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M18 11h3v2h-3"/><path d="M11 9.5l-2 3h3l-2 3"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 17h15l-2-9h-11z"/><path d="M8 8l-1.2 9M16 8l1.2 9M5.6 12.5h12.8"/><path d="M12 4V2"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M9 9V6.5a3 3 0 016 0V9"/><path d="M12 12.5v4M10 14.5h4"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8h11l-1.4 12h-8.2z"/><path d="M17.5 10h2a2 2 0 010 4h-1.6"/><path d="M9 5V3M13 5V3"/></svg>', '<svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg>']
+
 # ---------------------------------------------------------------- helpers
 def esc(t):
     return html.escape(t, quote=False)
@@ -215,7 +218,10 @@ certs = [('Intertek', 'ISO 9001:2015'), ('Intertek', 'ISO 14001:2015'), ('Intert
          ('MCIEA 2024', 'Builder of the Year')]
 cert_html = ''.join(f'<span class="cert">{esc(a)} <strong>{esc(b)}</strong></span>' for a, b in certs)
 slide(f'''
-    <div class="stats">{stat_html}</div>
+    <div class="glance">
+      <div class="side-media"><img src="img/soitec-pr1a.jpg" alt="IAQ greenfield facility"></div>
+      <div class="stats">{stat_html}</div>
+    </div>
     <div class="sub">
       <div class="label">Certification &amp; Recognition</div>
       <div class="certs">{cert_html}</div>
@@ -224,42 +230,9 @@ slide(f'''
       note='The company in six numbers, and the certifications that stand behind them.', fill=True)
 
 # ---------------------------------------------------------------- 01.3 MILESTONES
-eras = [
-    ('1994', '2000', 'Foundation', [
-        ('1994', 'Established as cleanroom specialist'),
-        ('2000', 'First decade of cleanroom delivery in Malaysia')]),
-    ('2006', '2009', 'Regional Expansion', [
-        ('2006', '(EPCC) ST Microelectronics, Class 10K cleanroom'),
-        ('2008', '(PCC) Western Digital PJ, Class 10 cleanroom'),
-        ('2009', '(GC / D&B) MEMC Ipoh, Class 1 cleanroom')]),
-    ('2013', '2017', 'Landmark Plants', [
-        ('2013', '(GC) KLCC DCC Plant, largest DCC plant in Malaysia'),
-        ('2016', '(PCC) MRT tunnel station M&E · (EPC) Infineon MKZ Class 1K · (EPCC) SilTerra FAB · (PCC) Rapid Siemens powerplant piping · (BOT) Pagoh Edu Hub DCS'),
-        ('2017', '(GC) Ain Medicare')]),
-    ('2020', '2022', 'Global Scale', [
-        ('2020', '(GC) Vital Healthcare'),
-        ('2021', '(GC / PCC) Robert Bosch · (GC / PCC) P Project'),
-        ('2022', '(PCC) Microsoft Data Center · (GC / D&B) SilTerra Expansion · (EPCM / D&B) Soitec PR1A Expansion · (GC / EPCM) Infineon IFKM3 Expansion')]),
-    ('2023', '2026', 'Advanced Technology', [
-        ('2023', '(GC / D&B) XFAB 40K Expansion'),
-        ('2024', '(GC / D&B) Progressive Build P Project'),
-        ('2025', '(GC / D&B) Hasegawa · (PCC) 160MW hyperscale data centre · (EPCC) ESCM Germany · (EPCC) KLCC DCS chiller upgrading'),
-        ('2026', '(D&B) Tata Dholera DF1 · (EPCM / HU) Micron MSH · (EPCC) GDC Putrajaya chiller upgrading')]),
-]
-era_html = ''
-for k, (a, b, name, items) in enumerate(eras, start=1):
-    li = ''.join(f'<li><span class="yr">{y}</span><span class="ev">{esc(t)}</span></li>' for y, t in items)
-    era_html += f'''
-      <div class="era">
-        <div class="era-head">
-          <span class="era-span">{a}<span class="to">to</span>{b}</span>
-          <h3 class="era-name">{esc(name)}</h3>
-        </div>
-        <ul class="era-list">{li}</ul>
-      </div>'''
-slide(f'<div class="eras">{era_html}\n    </div>',
+slide('<div class="colcards c5 eras-v"><article class="colcard"><img src="img/st-johor.jpg" alt=""><div class="cc-body"><div class="cc-num">1994<span class="to">to</span>2000</div><h3 class="cc-name">Foundation</h3><ul class="mile"><li><span class="yr">1994</span><span class="ev">Established as a cleanroom specialist</span></li><li><span class="yr">2000</span><span class="ev">First decade of cleanroom delivery in Malaysia</span></li></ul></div></article><article class="colcard"><img src="img/memc-ipoh.jpg" alt=""><div class="cc-body"><div class="cc-num">2006<span class="to">to</span>2009</div><h3 class="cc-name">Regional Expansion</h3><ul class="mile"><li><span class="yr">2006</span><span class="ev">(EPCC) ST Microelectronics, Class 10K cleanroom</span></li><li><span class="yr">2008</span><span class="ev">(PCC) Western Digital PJ, Class 10 cleanroom</span></li><li><span class="yr">2009</span><span class="ev">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</span></li></ul></div></article><article class="colcard"><img src="img/klcc-dcp.jpg" alt=""><div class="cc-body"><div class="cc-num">2013<span class="to">to</span>2017</div><h3 class="cc-name">Landmark Plants</h3><ul class="mile"><li><span class="yr">2013</span><span class="ev">(GC) KLCC DCC Plant, largest in Malaysia</span></li><li><span class="yr">2016</span><span class="ev">(EPCC) SilTerra FAB · (EPC) Infineon MKZ Class 1K</span></li><li><span class="yr">2017</span><span class="ev">(GC) Ain Medicare</span></li></ul></div></article><article class="colcard"><img src="img/bosch-testing.jpg" alt=""><div class="cc-body"><div class="cc-num">2020<span class="to">to</span>2022</div><h3 class="cc-name">Global Scale</h3><ul class="mile"><li><span class="yr">2020</span><span class="ev">(GC) Vital Healthcare</span></li><li><span class="yr">2021</span><span class="ev">(GC / PCC) Robert Bosch · P Project</span></li><li><span class="yr">2022</span><span class="ev">(PCC) Microsoft Data Center · (EPCM / D&amp;B) Soitec PR1A</span></li></ul></div></article><article class="colcard"><img src="img/xfab-kuching.jpg" alt=""><div class="cc-body"><div class="cc-num">2023<span class="to">to</span>2026</div><h3 class="cc-name">Advanced Technology</h3><ul class="mile"><li><span class="yr">2023</span><span class="ev">(GC / D&amp;B) XFAB 40K Expansion</span></li><li><span class="yr">2025</span><span class="ev">(PCC) 160MW hyperscale data centre · (EPCC) ESCM Germany</span></li><li><span class="yr">2026</span><span class="ev">(D&amp;B) Tata Dholera DF1 · (EPCM / HU) Micron MSH</span></li></ul></div></article></div>',
       part_idx=0, num='01.3', title='Milestones',
-      note='Landmark projects from 1994 to 2026, grouped into five eras of growth.', fill=True, rows=True)
+      note='Landmark projects from 1994 to 2026, grouped into five eras of growth. The full project list is in 02.11.', fill=True)
 
 # ---------------------------------------------------------------- 01.4 FOOTPRINT
 markets = [
@@ -274,9 +247,10 @@ m_html = ''.join(
     f'<p class="ghead">{esc(n)}</p><p class="cap">{esc(d)}</p></div></div>'
     for y, n, d in markets)
 slide(f'''
-    <div class="colcards c5"><article class="colcard flat"><div class="cc-body"><div class="cc-num">1994</div><h3 class="cc-name">Malaysia</h3><p class="cc-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2020</div><h3 class="cc-name">Sweden</h3><p class="cc-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2023</div><h3 class="cc-name">Singapore</h3><p class="cc-note">Design &amp; build EPCM services to global semiconductor clients.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2025</div><h3 class="cc-name">Germany</h3><p class="cc-note">EPCC services following semiconductor expansion in Europe.</p></div></article><article class="colcard flat"><div class="cc-body"><div class="cc-num">2026</div><h3 class="cc-name">India · United States</h3><p class="cc-note">D&amp;B turnkey for India&rsquo;s first wafer fab, and US entry following localisation of advanced tech facilities.</p></div></article></div>
-    <p class="cc-foot">Offices across Asia Pacific and Europe follow our clients as advanced
-    manufacturing localises. Additional offices operate in Norway, China, France and Poland.</p>''',
+    <div class="foot-grid">
+      <div class="side-media"><img src="img/map-world.jpg" alt="IAQ offices worldwide"></div>
+      <div class="mkts"><div class="mkt"><svg class="flg" viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0.00" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg><div class="mk-yr">1994</div><div class="mk-tx"><h3 class="mk-name">Malaysia</h3><p class="mk-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></div><div class="mkt"><svg class="flg" viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg><div class="mk-yr">2020</div><div class="mk-tx"><h3 class="mk-name">Sweden</h3><p class="mk-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></div><div class="mkt"><svg class="flg" viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg><div class="mk-yr">2023</div><div class="mk-tx"><h3 class="mk-name">Singapore</h3><p class="mk-note">Design &amp; build EPCM services to global semiconductor clients.</p></div></div><div class="mkt"><svg class="flg" viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg><div class="mk-yr">2025</div><div class="mk-tx"><h3 class="mk-name">Germany</h3><p class="mk-note">EPCC services following semiconductor expansion in Europe.</p></div></div><div class="mkt"><svg class="flg" viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">India · United States</h3><p class="mk-note">D&amp;B turnkey for India&rsquo;s first wafer fab, and US entry following localisation of advanced tech facilities.</p></div></div><div class="mk-more"><span class="label">Additional Offices</span><span class="offs"><span class="off"><svg class="flg" viewBox="0 0 48 35" preserveAspectRatio="xMidYMid meet"><rect width="48" height="35" fill="#BA0C2F"/><rect y="13" width="48" height="9" fill="#fff"/><rect x="11" width="9" height="35" fill="#fff"/><rect y="15.5" width="48" height="4" fill="#00205B"/><rect x="13.5" width="4" height="35" fill="#00205B"/></svg>Norway</span><span class="off"><svg class="flg" viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#DE2910"/><path d="M9 4l1.4 4.3H15l-3.7 2.7 1.4 4.3L9 12.6l-3.7 2.7 1.4-4.3L3 8.3h4.6z" fill="#FFDE00"/><g fill="#FFDE00"><circle cx="18" cy="4" r="1.3"/><circle cx="21.5" cy="7.5" r="1.3"/><circle cx="21.5" cy="12.5" r="1.3"/><circle cx="18" cy="16" r="1.3"/></g></svg>China</span><span class="off"><svg class="flg" viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#002395"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#ED2939"/></svg>France</span><span class="off"><svg class="flg" viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="15" fill="#fff"/><rect y="15" width="48" height="15" fill="#DC143C"/></svg>Poland</span></span></div></div>
+    </div>''',
       part_idx=0, num='01.4', title='Global Footprint',
       note='Where we operate, and the year we arrived in each market.', fill=True)
 
@@ -333,12 +307,12 @@ scope = [
     ('Tools Hookup', 'Progressive tool install and hookup'),
 ]
 s_html = ''.join(
-    f'<div class="chip"><span class="c-num">{k:02d}</span>'
+    f'<div class="chip">{SERVICE_ICONS[k-1]}<span class="c-num">{k:02d}</span>'
     f'<span class="c-name">{n}</span><span class="c-note">{d}</span></div>'
     for k, (n, d) in enumerate(scope, start=1))
 slide(f'<div class="chips four">{s_html}</div>',
       part_idx=0, num='01.7', title='Scope of Services',
-      note='Twelve packages, self-performed and integrated under one contract.', fill=True)
+      note='Twelve packages, self-performed and integrated under one contract.')
 
 # ---------------------------------------------------------------- 01.8 INDUSTRY
 inds = [
@@ -351,15 +325,15 @@ inds = [
     ('Food &amp; Beverage', 'Hygienic design, quality and safety standards'),
 ]
 i_html = ''.join(
-    f'<div class="chip"><span class="c-num">{k:02d}</span>'
+    f'<div class="chip">{INDUSTRY_ICONS[k-1]}<span class="c-num">{k:02d}</span>'
     f'<span class="c-name">{n}</span><span class="c-note">{d}</span></div>'
     for k, (n, d) in enumerate(inds, start=1))
-i_html += ('<div class="chip solid"><span class="c-num">+</span>'
+i_html += ('<div class="chip solid">' + INDUSTRY_ICONS[7] + '<span class="c-num">+</span>'
            '<span class="c-name">Your facility next</span>'
            '<span class="c-note">Total facility solutions, end to end</span></div>')
 slide(f'<div class="chips four">{i_html}</div>',
       part_idx=0, num='01.8', title='Industry Focus',
-      note='Seven sectors, one discipline: contamination control under code and class.', fill=True)
+      note='Seven sectors, one discipline: contamination control under code and class.')
 
 # ================================================================ PART 02
 divider(1, '02', 'Project References', 'Sections 02.1 to 02.11', 'northvolt',

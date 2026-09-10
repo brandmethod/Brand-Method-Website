@@ -108,7 +108,7 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .cover-media{position:absolute;inset:0;left:40%}
 .cover-media img{width:100%;height:100%;object-fit:cover;display:block}
 .cover-media::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(16,26,43,.94) 0%,rgba(16,26,43,.55) 28%,rgba(16,26,43,0) 66%)}
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(16,26,43,.62) 15%,rgba(16,26,43,.16) 34%,rgba(16,26,43,0) 54%)}
 .cover-copy{position:absolute;left:calc(96 * var(--u));top:calc(250 * var(--u));width:calc(1020 * var(--u));z-index:2}
 .logo{width:calc(228 * var(--u));display:block;margin-bottom:calc(52 * var(--u))}
 .cover-body{padding-left:0}
@@ -150,9 +150,9 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
   gap:calc(11 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-dark)}
 .div-list li{font-family:var(--sans);font-weight:500;font-size:calc(17 * var(--u));color:var(--on-dark)}
 .div-media{position:relative;overflow:hidden}
-.div-media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.78}
+.div-media img{width:100%;height:100%;object-fit:cover;display:block;opacity:1}
 .div-media::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(16,26,43,.92) 0%,rgba(16,26,43,.12) 55%,rgba(16,26,43,.3) 100%)}
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(16,26,43,.12) 22%,rgba(16,26,43,0) 46%,rgba(16,26,43,.06) 100%)}
 
 /* ============================================ split / lede */
 .split{display:grid;grid-template-columns:calc(620 * var(--u)) 1fr;gap:calc(80 * var(--u));align-items:center}
@@ -291,12 +291,12 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .c-dt{font-family:var(--sans);font-weight:500;font-size:calc(17 * var(--u));color:var(--on-dark)}
 
 /* ============================================ hero project slides */
-.hero-media{position:absolute;inset:0}
+.hero-media{position:absolute;inset:0;left:40%}
 .hero-media img{width:100%;height:100%;object-fit:cover;display:block}
 .hero-media::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(90deg,rgba(16,26,43,.9) 0%,rgba(16,26,43,.76) 33%,rgba(16,26,43,.04) 72%)}
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(16,26,43,.55) 16%,rgba(16,26,43,.08) 36%,rgba(16,26,43,0) 54%)}
 .hero .topline{z-index:2}
-.hero-panel{position:absolute;left:calc(96 * var(--u));top:calc(230 * var(--u));width:calc(790 * var(--u));z-index:2}
+.hero-panel{position:absolute;left:calc(96 * var(--u));top:calc(230 * var(--u));width:calc(648 * var(--u));z-index:2}
 .hero-title{font-family:var(--display);font-weight:600;font-size:calc(58 * var(--u));line-height:1.02;
   letter-spacing:-.025em;margin:calc(18 * var(--u)) 0 calc(34 * var(--u));color:#fff}
 
@@ -371,3 +371,11 @@ body{margin:0;background:var(--ink);color:var(--ink);font-family:var(--sans);-we
 .unit:first-child,.sr:first-child,.mrow:first-child,.award:first-child,
 .era-list li:first-child,.wall li:first-child,.cp-list li:first-child{border-top:0}
 .unit:last-child,.sr:last-child,.mrow:last-child,.award:last-child{border-bottom:0}
+
+
+/* On image-backed slides the running chrome stays on the solid ground at
+   left; the right-hand items would sit over photography, so they are off. */
+.cover .tl-r,.hero .tl-r,.divider .tl-r,
+.cover .bl-r,.hero .bl-r,.divider .bl-r{display:none}
+.cover .botline,.hero .botline,.divider .botline{justify-content:flex-start;gap:calc(30 * var(--u))}
+.folio .edition{color:var(--muted-dark);margin-left:calc(14 * var(--u))}

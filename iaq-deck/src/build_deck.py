@@ -51,12 +51,10 @@ def slide(body, *, part_idx=None, num='', title='', note='', foot='',
 
 def raw_slide(inner, dark=True):
     i = len(slides) + 1
-    slides.append(f'''<div class="stage"><section class="slide{' dark' if dark else ''}">
+    slides.append(f'''<div class="stage"><section class="slide cover{' dark' if dark else ''}">
 {inner}
   <footer class="botline">
-    <div class="bl-l"><span class="folio">{i:02d} / TOTAL</span></div>
-    <div class="bl-c"></div>
-    <div class="bl-r">IAQ Group</div>
+    <div class="bl-l"><span class="folio">{i:02d} / TOTAL<span class="edition">· Edition 2026</span></span></div>
   </footer>
 </section></div>''')
 
@@ -107,7 +105,7 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
 raw_slide('''  <div class="cover-media"><img src="img/infineon-kulim.jpg" alt="Infineon Kulim Wafer Fab 3"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
-    <div class="tl-r">Company Deck // Edition 2026</div>
+    <div class="tl-r">Company Deck</div>
   </div>
   <div class="cover-copy">
     <img class="logo" src="img/iaq-logo.png" alt="IAQ">

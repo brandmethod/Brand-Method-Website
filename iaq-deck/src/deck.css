@@ -704,3 +704,74 @@ body.presenting .slide{width:min(100vw,calc(100vh * 16 / 9));height:auto}
 [hidden]{display:none !important}
 body.modal-open .nav,body.modal-open .progress{display:none}
 .helpbox{z-index:50}
+
+/* ============================================ 01.3 milestones timeline
+   IAQ's own company-profile timeline, rebuilt. One axis of sixteen years
+   leaves too little width per year at 16:9, so it runs as two bands of
+   eight; entries keep the original's colour coding. */
+.timeline{display:grid;grid-template-rows:auto 1fr 1fr;gap:calc(20 * var(--u));height:100%}
+.tl-key{display:flex;gap:calc(26 * var(--u));align-items:center}
+.tl-key .k{position:relative;padding-left:calc(17 * var(--u));
+  font-family:var(--tech);font-weight:600;font-size:calc(12 * var(--u));
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.tl-key .k::before{content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:calc(9 * var(--u));height:calc(9 * var(--u));border-radius:50%;background:currentColor}
+.k-e{color:var(--ink-2)}
+.k-g{color:#12A150}
+.k-t{color:#7A3DB8}
+.k-o{color:var(--signal)}
+
+.tl-band{position:relative;display:grid;grid-template-columns:repeat(8,1fr);
+  gap:0 calc(18 * var(--u));align-content:start;padding-top:calc(7 * var(--u))}
+/* the axis itself */
+.tl-band::before{content:"";position:absolute;left:0;right:0;top:calc(7 * var(--u));
+  height:calc(2 * var(--u));background:var(--signal)}
+.tl-col{position:relative;display:grid;align-content:start;gap:calc(8 * var(--u));
+  padding-top:calc(15 * var(--u))}
+.tl-tick{position:absolute;left:0;top:calc(-4 * var(--u));
+  width:calc(11 * var(--u));height:calc(11 * var(--u));border-radius:50%;
+  background:var(--surface);border:calc(2.5 * var(--u)) solid var(--signal)}
+.tl-year{display:flex;align-items:center;gap:calc(9 * var(--u));
+  font-family:var(--display);font-weight:700;font-size:calc(27 * var(--u));line-height:1;
+  letter-spacing:-.03em;color:var(--signal);font-variant-numeric:tabular-nums}
+.tl-flag svg{width:calc(23 * var(--u));height:auto;display:block;
+  outline:calc(1 * var(--u)) solid rgba(16,26,43,.16);outline-offset:calc(-1 * var(--u))}
+.tl-list{list-style:none;margin:0;padding:0;display:grid;gap:calc(7 * var(--u))}
+.tl-list li{font-family:var(--sans);font-weight:500;font-size:calc(12.5 * var(--u));
+  line-height:1.35;color:var(--ink-2);position:relative;padding-left:calc(12 * var(--u))}
+.tl-list li::before{content:"";position:absolute;left:0;top:calc(5.5 * var(--u));
+  width:calc(5 * var(--u));height:calc(5 * var(--u));border-radius:50%;background:currentColor}
+.tl-list li.k-g{color:#12A150}
+.tl-list li.k-t{color:#7A3DB8}
+
+/* legend swatches carry the category colour, not the label grey */
+.tl-key .k-e{color:var(--ink-2)}
+.tl-key .k-g{color:#12A150}
+.tl-key .k-t{color:#7A3DB8}
+.tl-key .k-o{color:var(--signal)}
+/* the band has room to breathe, so the setting can come up a step */
+.tl-year{font-size:calc(30 * var(--u))}
+.tl-list li{font-size:calc(13.5 * var(--u))}
+.tl-flag svg{width:calc(25 * var(--u))}
+
+/* ============================================ 01.7 delivery models */
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(30 * var(--u));height:100%}
+.dm{display:grid;align-content:start;gap:calc(14 * var(--u));
+  background:var(--surface);border-top:calc(3 * var(--u)) solid var(--signal);
+  padding:calc(40 * var(--u)) calc(34 * var(--u)) calc(44 * var(--u))}
+.dm-abbr{font-family:var(--display);font-weight:700;font-size:calc(62 * var(--u));line-height:.9;
+  letter-spacing:-.04em;color:var(--signal)}
+.dm-name{font-family:var(--display);font-weight:600;font-size:calc(21 * var(--u));line-height:1.2;
+  letter-spacing:-.02em;margin:0}
+.dm-note{font-family:var(--sans);font-weight:400;font-size:calc(16.5 * var(--u));line-height:1.5;
+  margin:calc(4 * var(--u)) 0 0;color:var(--muted)}
+
+/* models carry their own reference projects, so the card is worked to the foot */
+.dm{grid-template-rows:auto auto auto 1fr;align-content:stretch}
+.dm-refs{align-self:end;display:grid;gap:calc(11 * var(--u));
+  padding-top:calc(20 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-2)}
+.dm-refs ul{list-style:none;margin:0;padding:0;display:grid;gap:calc(8 * var(--u))}
+.dm-refs li{font-family:var(--sans);font-weight:500;font-size:calc(15.5 * var(--u));
+  line-height:1.35;color:var(--ink-2);position:relative;padding-left:calc(14 * var(--u))}
+.dm-refs li::before{content:"";position:absolute;left:0;top:calc(7 * var(--u));
+  width:calc(5 * var(--u));height:calc(5 * var(--u));border-radius:50%;background:var(--signal)}

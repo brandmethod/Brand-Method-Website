@@ -246,9 +246,9 @@ slide('''
       note='Who we are, what we build, and the models we deliver under.', fill=True)
 
 # ---------------------------------------------------------------- 01.2 GLANCE
-stats = [('32', '', 'Years Experience'), ('450', '', 'Employees'),
+stats = [('31', '', 'Years Experience'), ('450', '', 'Employees'),
          ('200', '+', 'Projects Completed'), ('1.5', 'mil m²', 'Cleanroom Built-Up Area'),
-         ('6', '', 'Global Offices'), ('20', 't / yr', 'Carbon Footprint Reduced')]
+         ('7', '', 'Global Offices'), ('20', 't / yr', 'Carbon Footprint Reduced')]
 stat_html = ''.join(
     f'<div class="stat"><span class="st-ico">{STAT_ICONS[k]}</span>'
     f'<div class="st-body"><div class="num">{v}<span>{u}</span></div>'
@@ -317,11 +317,11 @@ slide(f'<div class="values">{v_html}</div>',
 
 # ---------------------------------------------------------------- 01.6 BUSINESS UNITS
 units = [
-    ('IAQ Solutions Sdn Bhd', 'Engineering, Procurement, Construction & Commissioning',
+    ('Engineering, Procurement and Construction (EPC)', '',
      'EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.'),
-    ('IAQ Utility Solutions Sdn Bhd', 'Process Critical Utilities & Total Tool Install',
+    ('Process Critical Utilities & Total Tool Install Solutions', '',
      'EPCM partner for semiconductor manufacturing: engineering, procurement and construction management of process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.'),
-    ('IAQ Energy Facility Management Sdn Bhd', 'Energy Management',
+    ('Energy Management', '',
      'Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.'),
 ]
 u_html = ''.join(
@@ -332,25 +332,27 @@ u_html = ''.join(
 ph_bu1 = ph('EPCC delivery on an active construction site')
 ph_bu2 = ph('Process critical utilities and tool installation inside a fab')
 ph_bu3 = ph('Energy plant and facility management operations')
-slide(f'<div class="colcards c3"><article class="colcard">{ph_bu1}<div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">IAQ Solutions Sdn Bhd</h3><p class="cc-spec">Engineering, Procurement, Construction &amp; Commissioning</p><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard">{ph_bu2}<div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">IAQ Utility Solutions Sdn Bhd</h3><p class="cc-spec">Process Critical Utilities &amp; Total Tool Install</p><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard">{ph_bu3}<div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">IAQ Energy Facility Management Sdn Bhd</h3><p class="cc-spec">Energy Management</p><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
+slide(f'<div class="colcards c3"><article class="colcard">{ph_bu1}<div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard">{ph_bu2}<div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Install Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard">{ph_bu3}<div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
       part_idx=0, num='01.6', title='Business Units',
-      note='Three companies under one group, covering the full delivery chain.', fill=True)
+      note='Three delivery capabilities under one group, covering the full chain.', fill=True)
 
 # ---------------------------------------------------------------- 01.7 SCOPE
 scope = [
-    ('Cleanroom System', 'ISO 3 to ISO 8 · Class 1 to Class 100K'),
-    ('Air Conditioning System', 'ACMV, make-up air, recirculation'),
-    ('Process Utilities', 'CDA, PCW, PV'),
-    ('Process Exhaust System', 'Scrubbed, heat and general exhaust'),
-    ('Chemical &amp; Gas Delivery', 'Specialty and bulk gases, chemical delivery'),
-    ('Ultra Pure Water', 'UPW generation and distribution'),
-    ('Waste Water Treatment', 'Industrial effluent and recovery'),
-    ('Fire Protection System', 'Detection, suppression, compliance'),
-    ('HT &amp; LV Electrical System', 'Up to 33kV substations'),
     ('Civil, Structural &amp; Architectural', 'Greenfield and brownfield CSA'),
-    ('Facility Monitoring &amp; Control', 'FMCS, BMS, PA'),
+    ('Air Conditioning System', 'ACMV, make-up air, recirculation'),
+    ('HT &amp; LV Electrical System', 'Up to 33kV substations'),
+    ('Fire Protection System', 'Detection, suppression, compliance'),
+    ('Cleanroom System', 'ISO 3 to ISO 8 · Class 1 to Class 100K'),
+    ('Process Utilities', 'CDA, PCW'),
+    ('Process Exhaust System', 'Scrubbed, heat and general exhaust'),
+    ('Chemical / Gas Delivery System', 'Specialty and bulk gases, chemical delivery'),
+    ('Ultra Pure Water (UPW)', 'UPW generation and distribution'),
+    ('Waste Water Treatment', 'Industrial effluent and recovery'),
+    ('Facility Monitoring &amp; Control System', 'FMCS, BMS, PA'),
     ('Tools Hookup', 'Progressive tool install and hookup'),
 ]
+# icons follow the packages, so reorder them to match the list above
+SERVICE_ICONS = [SERVICE_ICONS[i] for i in (9, 1, 8, 7, 0, 2, 3, 4, 5, 6, 10, 11)]
 s_html = ''.join(
     f'<div class="chip">{SERVICE_ICONS[k-1]}<span class="c-num">{k:02d}</span>'
     f'<span class="c-name">{n}</span><span class="c-note">{d}</span></div>'
@@ -535,8 +537,8 @@ people = [
      'qinxiang.lim@iaqtechnology.com.my', '+6016-442 4578'),
 ]
 cards = ''.join(person(*p) for p in people)
-rows = [('General', 'info@iaqtechnology.com.my'),
-        ('Head Office', '9, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, '
+rows = [('Business Enquiries', 'business@iaqtechnology.com.my'),
+        ('Head Office', '12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, '
                         'Seksyen 32, 40460 Shah Alam, Selangor, Malaysia')]
 row_html = ''.join('<div class="er"><dt>%s</dt><dd>%s</dd></div>' % (esc(a), esc(b)) for a, b in rows)
 slide(f"""

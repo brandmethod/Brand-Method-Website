@@ -13,7 +13,7 @@ from flags import FLAGS
 
 # (year, [(kind, text)], [office codes])   kind: e=EPCC  g=Energy  t=Tool Utility
 ERAS = [
-    ('1994', [('e', 'Established as a cleanroom specialist')], ['my']),
+    ('1995', [('e', 'Established as a cleanroom specialist')], ['my']),
     ('2000', [('e', '(EPCC) ST Microelectronics, Class 10K cleanroom')], ['ma']),
     ('2006', [], ['cn']),
     ('2007', [], ['pl']),
@@ -76,7 +76,7 @@ end = s.index("# ---------------------------------------------------------------
 NEW = ("# ---------------------------------------------------------------- 01.3 MILESTONES\n"
        "slide('''%s''',\n"
        "      part_idx=0, num='01.3', title='Milestones',\n"
-       "      note='IAQ&rsquo;s own timeline, 1994 to 2026: the projects that marked each year "
+       "      note='IAQ&rsquo;s own timeline, 1995 to 2026: the projects that marked each year "
        "and the offices opened along the way.', fill=True)\n\n" % TIMELINE)
 s = s[:start] + NEW + s[end:]
 io.open(p, 'w', encoding='utf-8').write(s)

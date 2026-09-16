@@ -97,7 +97,23 @@ def raw_slide(inner, dark=True):
 </section></div>''')
 
 
-def specrows(rows):
+ROW_ORDER = ['Description', 'Scope', 'Cleanroom']
+
+
+def specrows(rows, fixed=False):
+    """Render the spec block.
+
+    Project cards pass fixed=True: every card then carries the same three
+    rows in the same order, so the reference pages read as one table rather
+    than a different shape per project. A project with no cleanroom says so
+    rather than dropping the row and breaking the alignment.
+    """
+    if fixed:
+        have = {label: (value, iso) for label, value, iso in rows}
+        rows = []
+        for label in ROW_ORDER:
+            value, iso = have.get(label, ('Not applicable', False))
+            rows.append((label, value, iso))
     out = []
     for label, value, iso in rows:
         out.append(f'''<div class="sr"><dt>{esc(label)}</dt>'''
@@ -112,7 +128,7 @@ def pcard(img, flag, name, rows, alt=None):
         <div class="panel">
           <div class="flag">{esc(flag)}</div>
           <h3 class="pname">{esc(name)}</h3>
-          {specrows(rows)}
+          {specrows(rows, fixed=True)}
         </div>
       </article>'''
 
@@ -129,7 +145,7 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
   <div class="hero-panel">
     <div class="flag">{esc(flag)}</div>
     <h2 class="hero-title">{title}</h2>
-    {specrows(rows)}
+    {specrows(rows, fixed=True)}
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">{i:02d} / TOTAL</span></div>
@@ -140,7 +156,7 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
 
 
 # ================================================================ 01 COVER
-raw_slide('''  <div class="cover-media"><img src="img/iaq-hq.jpg" alt="IAQ Solutions headquarters"></div>
+raw_slide('''  <div class="cover-media"><img src="img/cover-cleanroom.jpg" alt="Completed IAQ cleanroom"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
     <div class="tl-r">Company Deck</div>
@@ -232,7 +248,7 @@ divider(0, '01', 'The Company', 'Sections 01.1 to 01.9', 'p-project',
 
 # ---------------------------------------------------------------- 01.1 ABOUT
 slide('''
-    <div class="split">
+    <div class="split about">
       <div class="lede">
         <h3 class="statement">Established 1994.<br>A trailblazer in total facility solutions.</h3>
         <p class="body">Engineering, procurement, construction and maintenance for the industries
@@ -244,7 +260,7 @@ slide('''
       </div>
     </div>''',
       part_idx=0, num='01.1', title='About IAQ',
-      note='Who we are, what we build, and the models we deliver under.', fill=True)
+      note='Who we are and what we build. The delivery models are in 01.7.', fill=True)
 
 # ---------------------------------------------------------------- 01.2 GLANCE
 stats = [('31', '', 'Years Experience'), ('450', '', 'Employees'),
@@ -259,10 +275,10 @@ certs = [('Intertek', 'ISO 9001:2015'), ('Intertek', 'ISO 14001:2015'), ('Intert
          ('CIDB', 'Grade G7'), ('PKK', 'Grade G7'), ('Highwire Safety', 'Gold Award'),
          ('MCIEA 2024', 'Builder of the Year')]
 cert_html = ''.join(f'<span class="cert">{esc(a)} <strong>{esc(b)}</strong></span>' for a, b in certs)
-ph_glance = ph('Corporate facility exterior, IAQ delivered project')
+_unused_ph_glance = ph('Corporate facility exterior, IAQ delivered project')
 slide(f'''
     <div class="glance">
-      <div class="side-media is-ph">{ph_glance}</div>
+      <div class="side-media"><img src="img/glance-office.jpg" alt="IAQ office"></div>
       <div class="stats iconic">{stat_html}</div>
     </div>
     <div class="sub">
@@ -283,20 +299,29 @@ slide('''<div class="foot-grid"><div class="foot-map"><img src="img/map-base.png
       note='Seven markets, from the Malaysian headquarters outward.', fill=True)
 
 # ---------------------------------------------------------------- 01.5 CORE VALUES
+# Each value carries a picture of the thing it describes: IAQ's own site
+# and plant photography where it says something, the company profile's own
+# pictures where they already fit.
 values = [
-    ('Safety First', 'Our services and works are carried out to the highest standard of safety and ethics.'),
-    ('Quality Consistency', 'We take pride in the quality of solutions delivered, to achieve maximum client satisfaction.'),
-    ('Honesty and Integrity', 'Our core code of conduct, fostering trust, accountability, professionalism and ethical practice.'),
-    ('Efficiency & Proficiency', 'Committed to maximising available resources to achieve the best result collectively.'),
-    ('Engineering Capabilities', 'Our way of working revolves around engineering principles, developing precise and sustainable solutions.'),
-    ('Pursuit of Excellence', 'Devoted to excellence in all our works, providing sustainable solutions to complex challenges.'),
+    ('value-1', 'Safety First',
+     'Our services and works are carried out to the highest standard of safety and ethics.'),
+    ('value-2', 'Quality Consistency',
+     'We take pride in the quality of solutions delivered, to achieve maximum client satisfaction.'),
+    ('value-3', 'Honesty and Integrity',
+     'Our core code of conduct, fostering trust, accountability, professionalism and ethical practice.'),
+    ('value-4', 'Efficiency & Proficiency',
+     'Committed to maximising available resources to achieve the best result collectively.'),
+    ('value-5', 'Engineering Capabilities',
+     'Our way of working revolves around engineering principles, developing precise and sustainable solutions.'),
+    ('val-excellence', 'Pursuit of Excellence',
+     'Devoted to excellence in all our works, providing sustainable solutions to complex challenges.'),
 ]
 v_html = ''.join(
     f'''<article class="value">
-        <img src="img/value-{k}.jpg" alt="">
+        <img src="img/{img}.jpg" alt="{esc(n)}">
         <div class="v-body"><span class="v-num">{k:02d}</span>
         <h3 class="v-name">{esc(n)}</h3><p class="v-note">{esc(d)}</p></div>
-      </article>''' for k, (n, d) in enumerate(values, start=1))
+      </article>''' for k, (img, n, d) in enumerate(values, start=1))
 slide(f'<div class="values">{v_html}</div>',
       part_idx=0, num='01.5', title='Core Values',
       note='Six commitments that govern how every project is run. Not words, but working rules.', fill=True)
@@ -315,10 +340,10 @@ u_html = ''.join(
       <div class="u-body"><h3 class="u-name">{esc(n)}</h3>
       <p class="spec">{esc(s)}</p><p class="cap">{esc(d)}</p></div></div>'''
     for k, (n, s, d) in enumerate(units, start=1))
-ph_bu1 = ph('EPCC delivery on an active construction site')
-ph_bu2 = ph('Process critical utilities and tool installation inside a fab')
-ph_bu3 = ph('Energy plant and facility management operations')
-slide(f'<div class="colcards c3"><article class="colcard">{ph_bu1}<div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard">{ph_bu2}<div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Install Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard">{ph_bu3}<div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
+_unused_ph_bu1 = ph('EPCC delivery on an active construction site')
+_unused_ph_bu2 = ph('Process critical utilities and tool installation inside a fab')
+_unused_ph_bu3 = ph('Energy plant and facility management operations')
+slide(f'<div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Install Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
       part_idx=0, num='01.6', title='Business Units',
       note='Three delivery capabilities under one group, covering the full chain.', fill=True)
 
@@ -353,26 +378,11 @@ slide(f'<div class="chips four">{s_html}</div>',
       part_idx=0, num='01.8', title='Scope of Services',
       note='Twelve packages, self-performed and integrated under one contract.')
 
-# ---------------------------------------------------------------- 01.8 INDUSTRY
-inds = [
-    ('Semiconductor', 'Wafer fab, advanced packaging, test &amp; assembly'),
-    ('Data Centre', 'Hyperscale cooling, security, uptime'),
-    ('EV Battery', 'Dry rooms, moisture control, explosion proofing'),
-    ('District Cooling &amp; Heating', 'Urban energy plant and distribution'),
-    ('Photovoltaics', 'Cell and module lines, toxic material handling'),
-    ('Pharmaceuticals &amp; Hospitals', 'GMP grades, regulated environments'),
-    ('Food &amp; Beverage', 'Hygienic design, quality and safety standards'),
-]
-i_html = ''.join(
-    f'<div class="chip">{INDUSTRY_ICONS[k-1]}<span class="c-num">{k:02d}</span>'
-    f'<span class="c-name">{n}</span><span class="c-note">{d}</span></div>'
-    for k, (n, d) in enumerate(inds, start=1))
-i_html += ('<div class="chip solid">' + INDUSTRY_ICONS[7] + '<span class="c-num">+</span>'
-           '<span class="c-name">Your facility next</span>'
-           '<span class="c-note">Total facility solutions, end to end</span></div>')
-slide(f'<div class="chips four">{i_html}</div>',
+# ---------------------------------------------------------------- 01.9 INDUSTRY
+slide(f'<div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg" alt="Semiconductor"><div class="ind-body">{INDUSTRY_ICONS[0]}<div class="ind-num">01</div><h3 class="ind-name">Semiconductor</h3><p class="ind-note">Wafer fab, advanced packaging, test &amp; assembly</p></div></article><article class="ind"><img src="img/microsoft-kul03.jpg" alt="Data Centre"><div class="ind-body">{INDUSTRY_ICONS[1]}<div class="ind-num">02</div><h3 class="ind-name">Data Centre</h3><p class="ind-note">Hyperscale cooling, security, uptime</p></div></article><article class="ind"><img src="img/northvolt.jpg" alt="EV Battery"><div class="ind-body">{INDUSTRY_ICONS[2]}<div class="ind-num">03</div><h3 class="ind-name">EV Battery</h3><p class="ind-note">Dry rooms, moisture control, explosion proofing</p></div></article><article class="ind"><img src="img/klcc-dcp.jpg" alt="District Cooling and Heating"><div class="ind-body">{INDUSTRY_ICONS[3]}<div class="ind-num">04</div><h3 class="ind-name">District Cooling &amp; Heating</h3><p class="ind-note">Urban energy plant and distribution</p></div></article><article class="ind"><img src="img/first-solar.jpg" alt="Photovoltaics"><div class="ind-body">{INDUSTRY_ICONS[4]}<div class="ind-num">05</div><h3 class="ind-name">Photovoltaics</h3><p class="ind-note">Cell and module lines, toxic material handling</p></div></article><article class="ind"><img src="img/pharmaniaga.jpg" alt="Pharmaceuticals and Hospitals"><div class="ind-body">{INDUSTRY_ICONS[5]}<div class="ind-num">06</div><h3 class="ind-name">Pharmaceuticals &amp; Hospitals</h3><p class="ind-note">GMP grades, regulated environments</p></div></article><article class="ind"><img src="img/ind-hygienic.jpg" alt="Food and Beverage"><div class="ind-body">{INDUSTRY_ICONS[6]}<div class="ind-num">07</div><h3 class="ind-name">Food &amp; Beverage</h3><p class="ind-note">Hygienic design, quality and safety standards</p></div></article><article class="ind solid"><div class="ind-body">{INDUSTRY_ICONS[7]}<div class="ind-num">+</div><h3 class="ind-name">Your facility next</h3><p class="ind-note">Total facility solutions, end to end.</p></div></article></div>',
       part_idx=0, num='01.9', title='Industry Focus',
-      note='Seven sectors, one discipline: contamination control under code and class.')
+      note='Seven sectors, one discipline: contamination control under code and class.',
+      fill=True)
 
 # ================================================================ PART 02
 divider(1, '02', 'Project References', 'Sections 02.1 to 02.11', 'northvolt',
@@ -428,27 +438,27 @@ slide('<div class="grid two">' + pcard('northvolt', 'Skellefteå, Sweden · 62,0
       note='Dry rooms for the gigafactories: moisture control and contamination control at scale.',
       foot='EV Battery · Europe')
 
-slide('<div class="grid two">' + pcard('confidential-cmos', 'Client confidential · wafer fab', '28/22nm CMOS · 16/12nm FinFET Plant', [('Cleanroom', 'Class 1 to Class 10K', True), ('Scope', 'Cleanroom & mechanical general contractor', False), ('Description', 'Design, supply, installation & commissioning of cleanroom facilities', False)]) + pcard('st-casablanca', 'Casablanca, Morocco · 60,000 m²', 'STMicroelectronics', [('Cleanroom', 'ISO 5 (Class 100)', True), ('Scope', 'Cleanroom, mechanical, electrical, process utilities and hookup works', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('confidential-cmos', 'Client confidential · wafer fab', '28/22nm CMOS · 16/12nm FinFET Plant', [('Cleanroom', 'Class 1 to Class 10K', True), ('Scope', 'Cleanroom & mechanical general contractor', False), ('Description', 'Design, supply, installation & commissioning of cleanroom facilities', False)]) + pcard('st-casablanca', 'Casablanca, Morocco · 60,000 m²', 'STMicroelectronics', [('Cleanroom', 'ISO 5 (Class 100)', True), ('Scope', 'Cleanroom, mechanical, electrical, process utilities and hookup works', False), ('Description', 'Built-up area up to 60,000 m²', False)]) + '\n    </div>',
       part_idx=1, num='02.6', title='Semiconductor · Europe & Morocco',
       note='Following the fabs into Europe: advanced-node cleanrooms and progressive hookup.',
       foot='Semiconductor · Europe')
 
-slide('<div class="grid two">' + pcard('ferrotec-hangzhou', 'Hangzhou · 23,400 m²', 'Ferrotec Semiconductor', [('Cleanroom', 'ISO 4 · 5 (Class 10 & 100)', True), ('Scope', 'EPCC for cleanroom, mechanical, electrical and plumbing works and hookup', False)]) + pcard('infineon-wuxi', 'Wuxi · 8,000 m²', 'Infineon Technologies', [('Cleanroom', 'ISO 5 (Class 100)', True), ('Scope', 'EPCC for cleanroom, mechanical, electrical and plumbing works and hookup', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('ferrotec-hangzhou', 'Hangzhou · 23,400 m²', 'Ferrotec Semiconductor', [('Cleanroom', 'ISO 4 · 5 (Class 10 & 100)', True), ('Scope', 'EPCC for cleanroom, mechanical, electrical and plumbing works and hookup', False), ('Description', 'Built-up area up to 23,400 m²', False)]) + pcard('infineon-wuxi', 'Wuxi · 8,000 m²', 'Infineon Technologies', [('Cleanroom', 'ISO 5 (Class 100)', True), ('Scope', 'EPCC for cleanroom, mechanical, electrical and plumbing works and hookup', False), ('Description', 'Built-up area up to 8,000 m²', False)]) + '\n    </div>',
       part_idx=1, num='02.7', title='Semiconductor & Display · China',
       note='EPCC across semiconductor, display and precision manufacturing.',
       foot='China')
 
-slide('<div class="grid two">' + pcard('first-solar', 'Kulim, Malaysia', 'First Solar Malaysia', [('Scope', 'PCC for mechanical & electrical, KMW building; CSA and M&E for forming gas plant; M&E for SCO1', False)]) + pcard('chint-solar', 'China · 57,000 m²', 'Chint Solar Technology', [('Cleanroom', 'ISO 8 (Class 100K)', True), ('Scope', 'Cleanroom system, ACMV, process utilities and tools hookup', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('first-solar', 'Kulim, Malaysia', 'First Solar Malaysia', [('Scope', 'PCC for mechanical & electrical, KMW building; CSA and M&E for forming gas plant; M&E for SCO1', False), ('Description', 'First Solar KMW building in Kulim', False)]) + pcard('chint-solar', 'China · 57,000 m²', 'Chint Solar Technology', [('Cleanroom', 'ISO 8 (Class 100K)', True), ('Scope', 'Cleanroom system, ACMV, process utilities and tools hookup', False), ('Description', 'Built-up area up to 57,000 m²', False)]) + '\n    </div>',
       part_idx=1, num='02.8', title='Photovoltaics',
       note='Solar cell and module manufacturing, including toxic material and waste handling.',
       foot='Photovoltaics')
 
-slide('<div class="grid two">' + pcard('insulet', 'Greenfield · medical device', 'Insulet', [('Cleanroom', 'ISO 8 (Class 100K)', True), ('Scope', 'Design and build mechanical, cleanroom & electrical package', False)]) + pcard('pharmaniaga', 'Puchong, Selangor', 'Pharmaniaga', [('Cleanroom', 'ISO 5 · 7 · 8 (Class 100 · 10K · 100K)', True), ('Scope', 'Cleanroom system and ACMV for a small volume parenteral facility', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('insulet', 'Greenfield · medical device', 'Insulet', [('Cleanroom', 'ISO 8 (Class 100K)', True), ('Scope', 'Design and build mechanical, cleanroom & electrical package', False), ('Description', 'Electronic medical device manufacturing plant, greenfield project', False)]) + pcard('pharmaniaga', 'Puchong, Selangor', 'Pharmaniaga', [('Cleanroom', 'ISO 5 · 7 · 8 (Class 100 · 10K · 100K)', True), ('Scope', 'Cleanroom system, air conditioning and mechanical ventilation', False), ('Description', 'Small volume parenteral facility', False)]) + '\n    </div>',
       part_idx=1, num='02.9', title='Pharmaceutical & Medical',
       note='GMP grades and regulated environments, from parenteral facilities to medical device plants.',
       foot='Pharmaceutical & Medical')
 
-slide('<div class="grid two">' + pcard('klcc-dcp', 'Gas District Cooling (M) Sdn Bhd', 'KLCC District Cooling Plant', [('Description', 'Largest district cooling centre in Malaysia', True), ('Scope', 'ACMV, electrical & instrumentation, fire protection, process utility, plumbing & sanitary, water treatment, CSA', False)]) + pcard('gdc-putrajaya', 'PICC Plant, Putrajaya', 'GDC Putrajaya', [('Scope', 'EPCC of plant electrification, chiller replacement and associated works at Gas District Cooling Putrajaya', False)]) + '\n    </div>',
+slide('<div class="grid two">' + pcard('klcc-dcp', 'Gas District Cooling (M) Sdn Bhd', 'KLCC District Cooling Plant', [('Description', 'Largest district cooling centre in Malaysia', True), ('Scope', 'ACMV, electrical & instrumentation, fire protection, process utility, plumbing & sanitary, water treatment, CSA', False)]) + pcard('gdc-putrajaya', 'PICC Plant, Putrajaya', 'GDC Putrajaya', [('Scope', 'EPCC of plant electrification, chiller replacement and associated works at Gas District Cooling Putrajaya', False), ('Description', 'For the Putrajaya International Convention Centre (PICC) plant', False)]) + '\n    </div>',
       part_idx=1, num='02.10', title='District Cooling & Energy',
       note='Plant, chillers and co-generation for urban and industrial energy.',
       foot='District Cooling & Energy')
@@ -464,11 +474,10 @@ slide(f'<div class="wall w4">{w_html}</div>',
       foot='Project References', fill=True, rows=True)
 
 # ================================================================ PART 03
-divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.4', None,
+divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.4', 'esg-safety',
         ['Highwire Gold safety award',
          'ISO 45001:2018 occupational health & safety',
-         '20 tons per annum carbon footprint reduction'],
-        ph_note='Site safety in practice: crew in full PPE, toolbox briefing or EHS walkdown on an IAQ site')
+         '20 tons per annum carbon footprint reduction'])
 
 # ---------------------------------------------------------------- 03.1 ESG
 esg = [

@@ -944,6 +944,74 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .pin b.r{left:calc(100% + var(--u) * 12)}
 .pin b.l{right:calc(100% + var(--u) * 12)}
 
+/* ---- 01.3 revised: offices in their own strip, axis carries the projects */
+.timeline{grid-template-rows:auto auto 1fr;gap:calc(20 * var(--u))}
+.tl-offices{display:grid;gap:calc(13 * var(--u));
+  padding-bottom:calc(20 * var(--u));border-bottom:calc(1 * var(--u)) solid var(--rule)}
+.tl-offices .offs{display:flex;justify-content:space-between;gap:calc(10 * var(--u))}
+.off{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;
+  column-gap:calc(10 * var(--u));align-items:center}
+.off-flag{grid-row:1 / 3;display:block}
+.off-flag svg{width:calc(34 * var(--u));height:auto;display:block;
+  outline:calc(1 * var(--u)) solid rgba(16,26,43,.16);outline-offset:calc(-1 * var(--u))}
+.off-name{font-family:var(--sans);font-weight:600;font-size:calc(15 * var(--u));line-height:1.2;
+  color:var(--ink)}
+.off-yr{font-family:var(--display);font-weight:700;font-size:calc(15 * var(--u));line-height:1.2;
+  color:var(--signal);font-variant-numeric:tabular-nums}
+.tl-band{grid-template-columns:repeat(13,1fr);column-gap:calc(10 * var(--u))}
+.tl-year{font-size:calc(25 * var(--u))}
+.tl-list li{font-size:calc(12.5 * var(--u));line-height:1.35;padding-left:calc(11 * var(--u))}
+.tl-list li::before{top:calc(6 * var(--u));width:calc(5 * var(--u));height:calc(5 * var(--u))}
+.tl-list{gap:calc(7 * var(--u))}
+.tl-col .tl-set{gap:calc(7 * var(--u))}
+
+/* reclaim the foot: the deepest lower column was running past the canvas */
+.timeline{gap:calc(14 * var(--u))}
+.tl-offices{padding-bottom:calc(14 * var(--u));gap:calc(10 * var(--u))}
+.tl-col.up .tl-set{padding-bottom:calc(12 * var(--u))}
+.tl-col.dn .tl-set{padding-top:calc(12 * var(--u))}
+.tl-list{gap:calc(6 * var(--u))}
+.tl-key{gap:calc(22 * var(--u))}
+.tl-offices{padding-bottom:calc(11 * var(--u))}
+
+/* ============================================ 03.2 certifications & awards */
+.certgrid{display:grid;grid-template-columns:calc(560 * var(--u)) 1fr;
+  gap:calc(44 * var(--u));height:100%}
+.award-panel{background:var(--ink);color:#fff;display:grid;align-content:center;
+  gap:calc(10 * var(--u));padding:calc(46 * var(--u)) calc(42 * var(--u));position:relative;
+  border-top:calc(4 * var(--u)) solid var(--signal)}
+.ap-kicker{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted-dark);line-height:1.4}
+.ap-year{font-family:var(--display);font-weight:700;font-size:calc(104 * var(--u));line-height:.9;
+  letter-spacing:-.04em;color:var(--signal);font-variant-numeric:tabular-nums;
+  margin-top:calc(8 * var(--u))}
+.ap-title{font-family:var(--display);font-weight:600;font-size:calc(38 * var(--u));line-height:1.1;
+  letter-spacing:-.02em;margin:0;color:#fff}
+.ap-note{font-family:var(--sans);font-weight:400;font-size:calc(16 * var(--u));line-height:1.5;
+  margin:calc(10 * var(--u)) 0 0;color:var(--muted-dark)}
+.ap-foot{display:grid;gap:calc(6 * var(--u));margin-top:calc(22 * var(--u));
+  padding-top:calc(20 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-dark)}
+.ap-foot .label{color:var(--muted-dark)}
+.ap-to{font-family:var(--display);font-weight:600;font-size:calc(22 * var(--u));color:#fff}
+
+.certs-list{display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;
+  gap:calc(20 * var(--u))}
+.cert-card{background:var(--surface);border-top:calc(3 * var(--u)) solid var(--signal);
+  padding:calc(22 * var(--u)) calc(24 * var(--u)) calc(24 * var(--u));
+  display:grid;align-content:center;gap:calc(5 * var(--u));min-height:0}
+.cert-mark{height:calc(34 * var(--u));width:auto;display:block;margin-bottom:calc(8 * var(--u))}
+.cc-head{font-family:var(--display);font-weight:700;font-size:calc(24 * var(--u));line-height:1.1;
+  letter-spacing:-.02em;color:var(--signal)}
+.cc-scope{font-family:var(--sans);font-weight:600;font-size:calc(16 * var(--u));line-height:1.25;
+  margin:0;color:var(--ink)}
+.cc-issuer{font-family:var(--sans);font-weight:400;font-size:calc(14 * var(--u));line-height:1.4;
+  margin:0;color:var(--muted)}
+.cert-card{padding:calc(18 * var(--u)) calc(24 * var(--u)) calc(20 * var(--u))}
+.cert-card.wide{grid-column:1 / -1;grid-template-columns:auto 1fr;align-items:center;
+  column-gap:calc(24 * var(--u))}
+.cert-card.wide .cert-mark{grid-row:1 / 4;margin-bottom:0;height:calc(44 * var(--u))}
+.certs-list{gap:calc(18 * var(--u))}
+
 </style>
 </head>
 <body>
@@ -964,7 +1032,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">01 / 29<span class="edition">· Edition 2026</span></span></div>
+    <div class="bl-l"><span class="folio">01 / 30<span class="edition">· Edition 2026</span></span></div>
   </footer>
 </section></div>
 
@@ -1006,12 +1074,12 @@ body.modal-open .nav,body.modal-open .progress{display:none}
             <p class="cp-note">The standards every project is held to.</p>
           </div>
         </div>
-        <ul class="cp-list"><li><span class="ci-n">03.1</span><span class="ci-t">ESG Commitments</span></li><li><span class="ci-n">03.2</span><span class="ci-t">Safety &amp; Recognition</span></li><li><span class="ci-n">03.3</span><span class="ci-t">Closing</span></li><li><span class="ci-n">03.4</span><span class="ci-t">Contacts</span></li></ul>
+        <ul class="cp-list"><li><span class="ci-n">03.1</span><span class="ci-t">ESG Commitments</span></li><li><span class="ci-n">03.2</span><span class="ci-t">Certifications &amp; Awards</span></li><li><span class="ci-n">03.3</span><span class="ci-t">Safety &amp; Recognition</span></li><li><span class="ci-n">03.4</span><span class="ci-t">Closing</span></li><li><span class="ci-n">03.5</span><span class="ci-t">Contacts</span></li></ul>
       </div>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">02 / 29</span></div>
+    <div class="bl-l"><span class="folio">02 / 30</span></div>
     <div class="bl-c"></div>
     <div class="bl-r">Contents</div>
   </footer>
@@ -1033,7 +1101,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">03 / 29</span></div>
+    <div class="bl-l"><span class="folio">03 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1062,7 +1130,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">04 / 29</span></div>
+    <div class="bl-l"><span class="folio">04 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1088,7 +1156,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">05 / 29</span></div>
+    <div class="bl-l"><span class="folio">05 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1101,12 +1169,12 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   </div>
     <header class="shead">
       <h2 class="s-title">Milestones</h2>
-      <p class="s-note">IAQ's own timeline, 1995 to 2026: the projects that marked each year and the offices opened along the way.</p>
+      <p class="s-note">IAQ's own timeline, 1995 to 2026: the offices opened along the way, and the projects that marked each year.</p>
     </header>
-  <div class="canvas fill"><div class="timeline"><div class="tl-key"><span class="k k-e">EPCC projects</span><span class="k k-g">Energy projects</span><span class="k k-t">Tool utility projects</span><span class="k k-o">Office opened</span></div><div class="tl-band"><div class="tl-col up" style="grid-column:1"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">1995<span class="tl-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span></div><ul class="tl-list"><li class="k-e">Established as a cleanroom specialist</li></ul></div></div><div class="tl-col dn" style="grid-column:2"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2000<span class="tl-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#C1272D"/><path d="M24 10.4l2.55 7.85-6.68-4.85h8.26l-6.68 4.85z" fill="none" stroke="#006233" stroke-width="1.15"/></svg></span></div><ul class="tl-list"><li class="k-e">(EPCC) ST Microelectronics, Class 10K cleanroom</li></ul></div></div><div class="tl-col up" style="grid-column:3"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2006<span class="tl-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#DE2910"/><path d="M9 4l1.4 4.3H15l-3.7 2.7 1.4 4.3L9 12.6l-3.7 2.7 1.4-4.3L3 8.3h4.6z" fill="#FFDE00"/><g fill="#FFDE00"><circle cx="18" cy="4" r="1.3"/><circle cx="21.5" cy="7.5" r="1.3"/><circle cx="21.5" cy="12.5" r="1.3"/><circle cx="18" cy="16" r="1.3"/></g></svg></span></div><ul class="tl-list"></ul></div></div><div class="tl-col dn" style="grid-column:4"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2007<span class="tl-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="15" fill="#fff"/><rect y="15" width="48" height="15" fill="#DC143C"/></svg></span></div><ul class="tl-list"></ul></div></div><div class="tl-col up" style="grid-column:5"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2008<span class="tl-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#002395"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#ED2939"/></svg></span></div><ul class="tl-list"><li class="k-e">(PCC) Western Digital PJ, Class 10 cleanroom</li></ul></div></div><div class="tl-col dn" style="grid-column:6"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2009</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</li></ul></div></div><div class="tl-col up" style="grid-column:7"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2013</div><ul class="tl-list"><li class="k-e">(PCC) MRT Project tunnel station M&amp;E</li><li class="k-e">(EPC) Infineon MKZ, Class 1K cleanroom</li><li class="k-e">(EPCC) SilTerra FAB</li><li class="k-g">(PCC) Rapid Project Siemens powerplant piping works</li><li class="k-g">(BOT) Pagoh Edu Hub DCS</li></ul></div></div><div class="tl-col dn" style="grid-column:8"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2016</div><ul class="tl-list"><li class="k-g">(GC) KLCC DCC Plant, largest DCC plant in Malaysia</li></ul></div></div><div class="tl-col up" style="grid-column:9"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2017</div><ul class="tl-list"><li class="k-e">(GC) Ain Medicare</li></ul></div></div><div class="tl-col dn" style="grid-column:10"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2020<span class="tl-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span></div><ul class="tl-list"><li class="k-e">(GC) Vital HC</li><li class="k-e">(GC / PCC) Robert Bosch</li><li class="k-e">(GC / PCC) P Project</li></ul></div></div><div class="tl-col up" style="grid-column:11"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2021</div><ul class="tl-list"><li class="k-e">(PCC) Microsoft Data Center</li><li class="k-e">(GC / D&amp;B) SilTerra expansion</li><li class="k-e">(EPCM / D&amp;B) Soitec PR1A expansion</li><li class="k-e">(GC / EPCM) Infineon IFKM3 expansion</li></ul></div></div><div class="tl-col dn" style="grid-column:12"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2022</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) XFAB 40K expansion</li></ul></div></div><div class="tl-col up" style="grid-column:13"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2023<span class="tl-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span></div><ul class="tl-list"></ul></div></div><div class="tl-col dn" style="grid-column:14"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2024</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) Progressive Build P Project</li></ul></div></div><div class="tl-col up" style="grid-column:15"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2025<span class="tl-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span></div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) Hasegawa</li><li class="k-e">(PCC) 160MW hyperscale data centre</li><li class="k-e">(EPCC) ESCM Germany</li><li class="k-g">(EPCC) KLCC DCS chiller upgrading</li></ul></div></div><div class="tl-col dn" style="grid-column:16"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2026<span class="tl-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><span class="tl-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span></div><ul class="tl-list"><li class="k-e">(D&amp;B) Tata Dholera DF1</li><li class="k-t">(EPCM / HU) Micron MSH</li><li class="k-g">(EPCC) GDC Putrajaya chiller upgrading</li></ul></div></div></div></div>
+  <div class="canvas fill"><div class="timeline"><div class="tl-offices"><span class="label">Offices opened</span><div class="offs"><span class="off"><span class="off-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><span class="off-name">Malaysia</span><span class="off-yr">1995</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#C1272D"/><path d="M24 10.4l2.55 7.85-6.68-4.85h8.26l-6.68 4.85z" fill="none" stroke="#006233" stroke-width="1.15"/></svg></span><span class="off-name">Morocco</span><span class="off-yr">2000</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#DE2910"/><path d="M9 4l1.4 4.3H15l-3.7 2.7 1.4 4.3L9 12.6l-3.7 2.7 1.4-4.3L3 8.3h4.6z" fill="#FFDE00"/><g fill="#FFDE00"><circle cx="18" cy="4" r="1.3"/><circle cx="21.5" cy="7.5" r="1.3"/><circle cx="21.5" cy="12.5" r="1.3"/><circle cx="18" cy="16" r="1.3"/></g></svg></span><span class="off-name">China</span><span class="off-yr">2006</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="15" fill="#fff"/><rect y="15" width="48" height="15" fill="#DC143C"/></svg></span><span class="off-name">Poland</span><span class="off-yr">2007</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#002395"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#ED2939"/></svg></span><span class="off-name">France</span><span class="off-yr">2008</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><span class="off-name">Sweden</span><span class="off-yr">2020</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><span class="off-name">Singapore</span><span class="off-yr">2023</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><span class="off-name">Germany</span><span class="off-yr">2025</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><span class="off-name">United States</span><span class="off-yr">2026</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><span class="off-name">India</span><span class="off-yr">2026</span></span></div></div><div class="tl-key"><span class="k k-e">EPCC projects</span><span class="k k-g">Energy projects</span><span class="k k-t">Tool utility projects</span></div><div class="tl-band"><div class="tl-col up" style="grid-column:1"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">1995</div><ul class="tl-list"><li class="k-e">Established as a cleanroom specialist</li></ul></div></div><div class="tl-col dn" style="grid-column:2"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2000</div><ul class="tl-list"><li class="k-e">(EPCC) ST Microelectronics, Class 10K cleanroom</li></ul></div></div><div class="tl-col up" style="grid-column:3"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2008</div><ul class="tl-list"><li class="k-e">(PCC) Western Digital PJ, Class 10 cleanroom</li></ul></div></div><div class="tl-col dn" style="grid-column:4"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2009</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</li></ul></div></div><div class="tl-col up" style="grid-column:5"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2013</div><ul class="tl-list"><li class="k-e">(PCC) MRT Project tunnel station M&amp;E</li><li class="k-e">(EPC) Infineon MKZ, Class 1K cleanroom</li><li class="k-e">(EPCC) SilTerra FAB</li><li class="k-g">(PCC) Rapid Project Siemens powerplant piping works</li><li class="k-g">(BOT) Pagoh Edu Hub DCS</li></ul></div></div><div class="tl-col dn" style="grid-column:6"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2016</div><ul class="tl-list"><li class="k-g">(GC) KLCC DCC Plant, largest DCC plant in Malaysia</li></ul></div></div><div class="tl-col up" style="grid-column:7"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2017</div><ul class="tl-list"><li class="k-e">(GC) Ain Medicare</li></ul></div></div><div class="tl-col dn" style="grid-column:8"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2020</div><ul class="tl-list"><li class="k-e">(GC) Vital HC</li><li class="k-e">(GC / PCC) Robert Bosch</li><li class="k-e">(GC / PCC) P Project</li></ul></div></div><div class="tl-col up" style="grid-column:9"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2021</div><ul class="tl-list"><li class="k-e">(PCC) Microsoft Data Center</li><li class="k-e">(GC / D&amp;B) SilTerra expansion</li><li class="k-e">(EPCM / D&amp;B) Soitec PR1A expansion</li><li class="k-e">(GC / EPCM) Infineon IFKM3 expansion</li></ul></div></div><div class="tl-col dn" style="grid-column:10"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2022</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) XFAB 40K expansion</li></ul></div></div><div class="tl-col up" style="grid-column:11"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2024</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) Progressive Build P Project</li></ul></div></div><div class="tl-col dn" style="grid-column:12"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2025</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) Hasegawa</li><li class="k-e">(PCC) 160MW hyperscale data centre</li><li class="k-e">(EPCC) ESCM Germany</li><li class="k-g">(EPCC) KLCC DCS chiller upgrading</li></ul></div></div><div class="tl-col up" style="grid-column:13"><div class="tl-dot"></div><div class="tl-stem"></div><div class="tl-set"><div class="tl-year">2026</div><ul class="tl-list"><li class="k-e">(D&amp;B) Tata Dholera DF1</li><li class="k-t">(EPCM / HU) Micron MSH</li><li class="k-g">(EPCC) GDC Putrajaya chiller upgrading</li></ul></div></div></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">06 / 29</span></div>
+    <div class="bl-l"><span class="folio">06 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1124,7 +1192,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="foot-grid"><div class="foot-map"><img src="img/map-base.png" alt="IAQ global footprint"><span class="pin" style="left:21.00%;top:52.00%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">United States</b></span><span class="pin" style="left:44.50%;top:32.05%"><i></i><b class="l" style="--dy:calc(-16 * var(--u))">Ireland</b></span><span class="pin" style="left:49.95%;top:25.00%"><i></i><b class="l" style="--dy:calc(-10 * var(--u))">Sweden</b></span><span class="pin" style="left:49.75%;top:33.95%"><i></i><b class="l" style="--dy:calc(21 * var(--u))">Germany</b></span><span class="pin" style="left:67.70%;top:55.20%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">India</b></span><span class="pin" style="left:75.20%;top:56.10%"><i></i><b class="r" style="--dy:calc(-18 * var(--u))">Malaysia</b></span><span class="pin" style="left:75.35%;top:56.65%"><i></i><b class="r" style="--dy:calc(22 * var(--u))">Singapore</b></span></div><div class="mkts"><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><div class="mk-yr">1995</div><div class="mk-tx"><h3 class="mk-name">Malaysia</h3><p class="mk-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><div class="mk-yr">2020</div><div class="mk-tx"><h3 class="mk-name">Sweden</h3><p class="mk-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><div class="mk-yr">2023</div><div class="mk-tx"><h3 class="mk-name">Singapore</h3><p class="mk-note">Design &amp; build EPCM services to global clients in the semiconductor industry.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><div class="mk-yr">2025</div><div class="mk-tx"><h3 class="mk-name">Germany</h3><p class="mk-note">EPCC services following the semiconductor industry expansion in Europe.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">India</h3><p class="mk-note">D&amp;B turnkey delivery for India&rsquo;s first wafer fab.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">United States</h3><p class="mk-note">Entry to the US following the localisation of advanced technology facilities.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#169B62"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#FF883E"/></svg></span><div class="mk-yr">&mdash;</div><div class="mk-tx"><h3 class="mk-name">Ireland</h3><p class="mk-note">Newest market. Scope and year to be confirmed by IAQ.</p></div></div></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">07 / 29</span></div>
+    <div class="bl-l"><span class="folio">07 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1166,7 +1234,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       </article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">08 / 29</span></div>
+    <div class="bl-l"><span class="folio">08 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1184,7 +1252,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Install Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">09 / 29</span></div>
+    <div class="bl-l"><span class="folio">09 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1202,7 +1270,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="models"><article class="dm"><div class="dm-abbr">EPCM</div><h3 class="dm-name">Engineering, Procurement &amp; Construction Management</h3><p class="dm-note">Management of engineering, procurement and construction for semiconductor manufacturing, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>SilTerra expansion</li><li>Soitec PR1A expansion</li><li>Infineon IFKM3 expansion</li><li>Micron MSH</li></ul></div></article><article class="dm"><div class="dm-abbr">EPCC</div><h3 class="dm-name">Engineering, Procurement, Construction &amp; Commissioning</h3><p class="dm-note">Full turnkey delivery from conception to operation, completion and maintenance, with every stage managed from initial design through commissioning.</p><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>ST Microelectronics</li><li>SilTerra FAB</li><li>ESCM Germany</li><li>KLCC DCS chiller upgrading</li></ul></div></article><article class="dm"><div class="dm-abbr">EFM</div><h3 class="dm-name">Energy Facility Management</h3><p class="dm-note">Ongoing energy and facility management that optimises operations and reduces carbon footprint, keeping facilities at the highest levels of efficiency.</p><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>KLCC DCC Plant</li><li>GDC Putrajaya chiller upgrading</li><li>Pagoh Edu Hub DCS</li></ul></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">10 / 29</span></div>
+    <div class="bl-l"><span class="folio">10 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1220,7 +1288,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas"><div class="chips four"><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V8l6-5 6 5v13"/><path d="M10 21v-6h4v6"/></svg><span class="c-num">01</span><span class="c-name">Civil, Structural &amp; Architectural</span><span class="c-note">Greenfield and brownfield CSA</span></div><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M6 9h12"/><path d="M5 18c1.4-1.6 2.8-1.6 4.2 0s2.8 1.6 4.2 0 2.8-1.6 4.2 0"/></svg><span class="c-num">02</span><span class="c-name">Air Conditioning System</span><span class="c-note">ACMV, make-up air, recirculation</span></div><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg><span class="c-num">03</span><span class="c-name">HT &amp; LV Electrical System</span><span class="c-note">Up to 33kV substations</span></div><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a5 5 0 005-5c0-4-5-8-5-8s-5 4-5 8a5 5 0 005 5z"/><path d="M4 4h16M12 4v3"/></svg><span class="c-num">04</span><span class="c-name">Fire Protection System</span><span class="c-note">Detection, suppression, compliance</span></div><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M7 11v7M12 11v7M17 11v7"/><path d="M5.5 16.5L7 18l1.5-1.5M10.5 16.5L12 18l1.5-1.5M15.5 16.5L17 18l1.5-1.5"/></svg><span class="c-num">05</span><span class="c-name">Cleanroom System</span><span class="c-note">ISO 3 to ISO 8 &middot; Class 1 to Class 100K</span></div><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18M3 16h18"/><circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="16" r="2.2"/></svg><span class="c-num">06</span><span class="c-name">Process Utilities</span><span class="c-note">CDA, PCW</span><ul class="c-sub"><li>Process Exhaust System</li><li>Chemical / Gas Delivery System</li><li>Ultra Pure Water (UPW)</li><li>Waste Water Treatment</li></ul></div><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M7 12l3-3 2.5 2.5L17 7"/></svg><span class="c-num">07</span><span class="c-name">Facility Monitoring &amp; Control System</span><span class="c-note">FMCS, BMS, PA</span></div><div class="chip"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9.2 9.2l5.6 5.6"/></svg><span class="c-num">08</span><span class="c-name">Tools Hookup</span><span class="c-note">Progressive tool install and hookup</span></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">11 / 29</span></div>
+    <div class="bl-l"><span class="folio">11 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1235,10 +1303,10 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <h2 class="s-title">Industry Focus</h2>
       <p class="s-note">Seven sectors, one discipline: contamination control under code and class.</p>
     </header>
-  <div class="canvas fill"><div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg" alt="Semiconductor"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><h3 class="ind-name">Semiconductor</h3><p class="ind-note">Wafer fab, advanced packaging, test &amp; assembly</p></div></article><article class="ind"><img src="img/microsoft-kul03.jpg" alt="Data Centre"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1"/><rect x="4" y="11" width="16" height="5" rx="1"/><rect x="4" y="18" width="16" height="3" rx="1"/><path d="M7 6.5h.01M7 13.5h.01"/></svg><h3 class="ind-name">Data Centre</h3><p class="ind-note">Hyperscale cooling, security, uptime</p></div></article><article class="ind"><img src="img/northvolt.jpg" alt="EV Battery"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M18 11h3v2h-3"/><path d="M11 9.5l-2 3h3l-2 3"/></svg><h3 class="ind-name">EV Battery</h3><p class="ind-note">Dry rooms, moisture control, explosion proofing</p></div></article><article class="ind"><img src="img/klcc-dcp.jpg" alt="District Cooling and Heating"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><h3 class="ind-name">District Cooling &amp; Heating</h3><p class="ind-note">Urban energy plant and distribution</p></div></article><article class="ind"><img src="img/first-solar.jpg" alt="Photovoltaics"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 17h15l-2-9h-11z"/><path d="M8 8l-1.2 9M16 8l1.2 9M5.6 12.5h12.8"/><path d="M12 4V2"/></svg><h3 class="ind-name">Photovoltaics</h3><p class="ind-note">Cell and module lines, toxic material handling</p></div></article><article class="ind"><img src="img/pharmaniaga.jpg" alt="Pharmaceuticals and Hospitals"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M9 9V6.5a3 3 0 016 0V9"/><path d="M12 12.5v4M10 14.5h4"/></svg><h3 class="ind-name">Pharmaceuticals &amp; Hospitals</h3><p class="ind-note">GMP grades, regulated environments</p></div></article><article class="ind"><img src="img/ind-hygienic.jpg" alt="Food and Beverage"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8h11l-1.4 12h-8.2z"/><path d="M17.5 10h2a2 2 0 010 4h-1.6"/><path d="M9 5V3M13 5V3"/></svg><h3 class="ind-name">Food &amp; Beverage</h3><p class="ind-note">Hygienic design, quality and safety standards</p></div></article><article class="ind solid"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><h3 class="ind-name">Your facility next</h3><p class="ind-note">Total facility solutions, end to end.</p></div></article></div>
+  <div class="canvas fill"><div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg" alt="Semiconductor"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><h3 class="ind-name">Semiconductor</h3><p class="ind-note">Wafer fab, advanced packaging, test &amp; assembly</p></div></article><article class="ind"><img src="img/microsoft-kul03.jpg" alt="Data Centre"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1"/><rect x="4" y="11" width="16" height="5" rx="1"/><rect x="4" y="18" width="16" height="3" rx="1"/><path d="M7 6.5h.01M7 13.5h.01"/></svg><h3 class="ind-name">Data Centre</h3><p class="ind-note">Hyperscale cooling, security, uptime</p></div></article><article class="ind"><img src="img/northvolt.jpg" alt="EV Battery"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M18 11h3v2h-3"/><path d="M11 9.5l-2 3h3l-2 3"/></svg><h3 class="ind-name">EV Battery</h3><p class="ind-note">Dry rooms, moisture control, explosion proofing</p></div></article><article class="ind"><img src="img/klcc-dcp.jpg" alt="District Cooling and Heating"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><h3 class="ind-name">District Cooling &amp; Heating</h3><p class="ind-note">Urban energy plant and distribution</p></div></article><article class="ind"><img src="img/first-solar.jpg" alt="Photovoltaics"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 17h15l-2-9h-11z"/><path d="M8 8l-1.2 9M16 8l1.2 9M5.6 12.5h12.8"/><path d="M12 4V2"/></svg><h3 class="ind-name">Photovoltaics</h3><p class="ind-note">Cell and module lines, toxic material handling</p></div></article><article class="ind"><img src="img/pharmaniaga.jpg" alt="Pharmaceuticals and Hospitals"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M9 9V6.5a3 3 0 016 0V9"/><path d="M12 12.5v4M10 14.5h4"/></svg><h3 class="ind-name">Pharmaceuticals &amp; Hospitals</h3><p class="ind-note">GMP grades, regulated environments</p></div></article><article class="ind"><img src="img/ind-food.jpg" alt="Food and Beverage"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8h11l-1.4 12h-8.2z"/><path d="M17.5 10h2a2 2 0 010 4h-1.6"/><path d="M9 5V3M13 5V3"/></svg><h3 class="ind-name">Food &amp; Beverage</h3><p class="ind-note">Hygienic design, quality and safety standards</p></div></article><article class="ind solid"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><h3 class="ind-name">Your facility next</h3><p class="ind-note">Total facility solutions, end to end.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">12 / 29</span></div>
+    <div class="bl-l"><span class="folio">12 / 30</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1260,7 +1328,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">13 / 29</span></div>
+    <div class="bl-l"><span class="folio">13 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -1297,7 +1365,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">14 / 29</span></div>
+    <div class="bl-l"><span class="folio">14 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -1332,7 +1400,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">15 / 29</span></div>
+    <div class="bl-l"><span class="folio">15 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Malaysia</div>
   </footer>
@@ -1367,7 +1435,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">16 / 29</span></div>
+    <div class="bl-l"><span class="folio">16 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Singapore</div>
   </footer>
@@ -1402,7 +1470,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">17 / 29</span></div>
+    <div class="bl-l"><span class="folio">17 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Data Centre</div>
   </footer>
@@ -1437,7 +1505,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">18 / 29</span></div>
+    <div class="bl-l"><span class="folio">18 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">EV Battery · Europe</div>
   </footer>
@@ -1472,7 +1540,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">19 / 29</span></div>
+    <div class="bl-l"><span class="folio">19 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Europe</div>
   </footer>
@@ -1507,7 +1575,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">20 / 29</span></div>
+    <div class="bl-l"><span class="folio">20 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">China</div>
   </footer>
@@ -1542,7 +1610,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">21 / 29</span></div>
+    <div class="bl-l"><span class="folio">21 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Photovoltaics</div>
   </footer>
@@ -1577,7 +1645,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">22 / 29</span></div>
+    <div class="bl-l"><span class="folio">22 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Pharmaceutical &amp; Medical</div>
   </footer>
@@ -1612,7 +1680,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">23 / 29</span></div>
+    <div class="bl-l"><span class="folio">23 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">District Cooling &amp; Energy</div>
   </footer>
@@ -1630,7 +1698,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill rows"><div class="wall w4"><div class="wcol"><h3>Malaysia · Semiconductor</h3><ul><li>XFAB Kuching 40K Expansion, 40,000 m²</li><li>SOITEC PR1A Expansion, 45,000 m²</li><li>Robert Bosch Testing Manufacturing Plant</li><li>Wafer Fab Facility &amp; Expansion, FAB1E A/B</li><li>Texas Instruments, Melaka, 32,000 m²</li><li>Infineon Technologies, Melaka, Block 8</li><li>MEMC Ipoh, Class 1 cleanroom</li><li>STMicroelectronics, Johor</li><li>Western Digital (M), Petaling Jaya</li><li>WD Media (M), Penang, MA 28 &amp; MA 29</li><li>Flextronics Shah Alam</li></ul></div><div class="wcol"><h3>Malaysia · Other Sectors &amp; Singapore</h3><ul><li>AUO Sunpower, Melaka, Fab 3A</li><li>Vital Healthcare, medical device plant</li><li>Ain Medicare, pharmaceutical building</li><li>M Project, food flavouring plant, 40,000 m²</li><li>P Project, MEP works, mega lab retrofit</li><li>Rapid Petronas Pengerang Co-gen</li><li>Pagoh Education Hub DCS</li><li>Rapid MCD chemical plant</li><li>Matrix (M) Sdn Bhd</li><li>T Hasegawa, spray dryer &amp; microwave tunnel</li><li>Elegant Aura (M) Sdn Bhd</li><li>Caterpillar Asia, 7T office renovation</li><li>Micron F10A &amp; F10NX, Singapore</li><li>National University of Singapore, tissue culture lab</li></ul></div><div class="wcol"><h3>Europe &amp; Morocco</h3><ul><li>ACC Phase 1, France, 35,000 m²</li><li>Envision, France</li><li>Soitec Semiconductor, Paris, 11,000 m²</li><li>Xfab Semiconductor, Paris</li><li>Nemotek, Rabat, Morocco</li><li>Kimoto, Poland</li><li>Sumika, Poland</li></ul></div><div class="wcol"><h3>China</h3><ul><li>SMIC, Ningbo, 22,000 m²</li><li>Maxtor Technology, Suzhou, 95,000 m²</li><li>All-Cent RF Technology, Wuxi, 25,600 m²</li><li>Kunshan Visionox Display, 27,000 m²</li><li>GS Magicdrive Inc., 68,000 m²</li><li>Shantou Goworld Display</li><li>M-Flex (Suzhou), 25,000 m²</li><li>MMI Industries (Wuxi)</li><li>Huawei Technologies Co., Ltd</li><li>Shanghai Roche Pharmaceuticals</li><li>Suzhou Ascentage Pharma, 25,800 m²</li><li>Jiangsu GenScript Biotech</li><li>Mindray Group Co., Ltd</li><li>Unilever · GE · Dow · Rohm and Haas R&amp;D centres</li></ul></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">24 / 29</span></div>
+    <div class="bl-l"><span class="folio">24 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -1642,7 +1710,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <span class="div-kicker">Part 03 of 03</span>
       <div class="div-num">03</div>
       <h2 class="div-title">Safety, Quality &amp; ESG</h2>
-      <p class="div-note">Sections 03.1 to 03.4</p>
+      <p class="div-note">Sections 03.1 to 03.5</p>
       <ul class="div-list"><li>Highwire Gold safety award</li><li>ISO 45001:2018 occupational health &amp; safety</li><li>20 tons per annum carbon footprint reduction</li></ul>
     </div>
     <div class="div-media"><img src="img/esg-safety.jpg" alt=""></div>
@@ -1652,7 +1720,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">25 / 29</span></div>
+    <div class="bl-l"><span class="folio">25 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -1670,7 +1738,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/value-2.jpg" alt=""><div class="cc-body"><div class="cc-num">E</div><h3 class="cc-name">Environmental Responsibility</h3><p class="cc-note">Minimising environmental footprint through sustainable design and construction. Energy-efficient solutions and eco-friendly technologies, prioritised at design stage.</p></div></article><article class="colcard"><img src="img/value-3.jpg" alt=""><div class="cc-body"><div class="cc-num">S</div><h3 class="cc-name">Social Accountability</h3><p class="cc-note">The well-being and safety of employees and communities first. A diverse, inclusive work environment and ethical labour practices.</p></div></article><article class="colcard"><img src="img/value-4.jpg" alt=""><div class="cc-body"><div class="cc-num">G</div><h3 class="cc-name">Corporate Governance</h3><p class="cc-note">Transparency, accountability and ethical decision-making, with the highest standards of compliance, building trust with clients, partners and stakeholders.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">26 / 29</span></div>
+    <div class="bl-l"><span class="folio">26 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -1679,6 +1747,24 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 <div class="stage"><section class="slide ">
   <div class="topline">
     <div class="tl-l"><span class="tab">03.2</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Certifications &amp; Awards</h2>
+      <p class="s-note">Independently certified, and recognised as Builder of the Year 2024.</p>
+    </header>
+  <div class="canvas fill"><div class="certgrid"><div class="award-panel"><span class="ap-kicker">Malaysian Construction Industry Excellence Awards</span><div class="ap-year">2024</div><h3 class="ap-title">Builder of the Year</h3><p class="ap-note">Awarded by the Construction Industry Development Board (CIDB). Recipients are judged across company performance, project management, technical expertise, innovation, quality, safety and sustainability.</p><div class="ap-foot"><span class="label">Awarded to</span><span class="ap-to">IAQ Group</span></div></div><div class="certs-list"><article class="cert-card"><div class="cc-head">ISO 9001:2015</div><h3 class="cc-scope">Quality Management</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">ISO 14001:2015</div><h3 class="cc-scope">Environmental Management</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">ISO 45001:2018</div><h3 class="cc-scope">Occupational Health &amp; Safety</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">Highwire Gold</div><h3 class="cc-scope">Contractor Safety Performance</h3><p class="cc-issuer">Gold rated</p></article><article class="cert-card"><div class="cc-head">CIDB Grade G7</div><h3 class="cc-scope">Unlimited Tender Capacity</h3><p class="cc-issuer">Construction Industry Development Board, Malaysia</p></article><article class="cert-card"><div class="cc-head">PKK Grade G7</div><h3 class="cc-scope">Government Works Registration</h3><p class="cc-issuer">Pusat Khidmat Kontraktor, Malaysia</p></article><article class="cert-card wide"><img class="cert-mark" src="img/cert-bizsafe.png" alt="bizSAFE Level 3"><div class="cc-head">bizSAFE Level 3</div><h3 class="cc-scope">Workplace Safety &amp; Health</h3><p class="cc-issuer">WSH Council, Singapore</p></article></div></div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">27 / 30</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
+    <div class="bl-r">Safety, Quality &amp; ESG</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide ">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">03.3</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
@@ -1692,13 +1778,12 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <p class="body">MCIEA award recipients are evaluated across company performance, project
         management, technical expertise, innovation, quality, safety and sustainability. The same
         criteria our clients audit us against.</p>
-        <div class="awards"><div class="award"><h3 class="a-name">Builder of the Year 2024</h3><p class="cap">Malaysian Construction Industry Excellence Awards (MCIEA), awarded by CIDB.</p></div><div class="award"><h3 class="a-name">Highwire Gold</h3><p class="cap">Gold-rated contractor safety performance.</p></div><div class="award"><h3 class="a-name">ISO 45001:2018</h3><p class="cap">Occupational health and safety management, certified by Intertek.</p></div></div>
       </div>
-      <div class="side-media"><img src="img/p-project.jpg" alt="IAQ project site"></div>
+      <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing on site"></div>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">27 / 29</span></div>
+    <div class="bl-l"><span class="folio">28 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -1706,7 +1791,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <div class="stage"><section class="slide dark ">
   <div class="topline">
-    <div class="tl-l"><span class="tab">03.3</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
+    <div class="tl-l"><span class="tab">03.4</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
@@ -1722,7 +1807,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">28 / 29</span></div>
+    <div class="bl-l"><span class="folio">29 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -1730,7 +1815,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <div class="stage"><section class="slide dark ">
   <div class="topline">
-    <div class="tl-l"><span class="tab">03.4</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
+    <div class="tl-l"><span class="tab">03.5</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
@@ -1751,7 +1836,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">29 / 29</span></div>
+    <div class="bl-l"><span class="folio">30 / 30</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -1763,7 +1848,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <nav class="nav" aria-label="Presentation controls">
   <button type="button" id="btn-grid" aria-label="Slide overview (O)">Overview</button>
-  <span class="counter" id="counter" aria-live="polite">01 / 29</span>
+  <span class="counter" id="counter" aria-live="polite">01 / 30</span>
   <button type="button" id="prev" aria-label="Previous slide">Prev</button>
   <button type="button" id="next" aria-label="Next slide">Next</button>
   <span class="timer" id="timer" role="timer">00:00</span>

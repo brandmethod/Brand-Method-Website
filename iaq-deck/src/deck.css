@@ -1036,3 +1036,41 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     var(--signal) 0 calc(6 * var(--u)),
     rgba(0,0,0,0) calc(6 * var(--u)) calc(8 * var(--u)));
   background-position:left bottom}
+
+/* ============================================ cover, rebuilt
+   The first layout was a generic left-copy / right-photo split. This is a
+   document cover instead: the copy column is framed top and bottom by
+   hairlines, the mark sits above a tight four-line title, and the facts
+   that used to run on as a paragraph are a title block of label/value rows
+   — the same drawing-sheet language the project slides already use. */
+.cover-media{left:56%}
+.cover .topline{right:calc(44% + 96 * var(--u));z-index:3}
+.cover .tl-r.cover-meta{display:block;color:var(--muted-dark);align-self:center}
+.cover .botline{display:none}
+
+.cover-rule{position:absolute;left:calc(96 * var(--u));right:calc(44% + 96 * var(--u));
+  height:calc(1.5 * var(--u));background:var(--rule-dark);z-index:2}
+.cover-rule.top{top:calc(104 * var(--u))}
+.cover-rule.bottom{bottom:calc(104 * var(--u))}
+
+.cover-copy{position:absolute;left:calc(96 * var(--u));right:calc(44% + 96 * var(--u));
+  top:calc(176 * var(--u));bottom:calc(152 * var(--u));width:auto;z-index:2;
+  display:flex;flex-direction:column;align-items:flex-start}
+.logo{width:calc(276 * var(--u));display:block;margin:0}
+.cover-title{font-size:calc(82 * var(--u));line-height:1.02;letter-spacing:-.035em;
+  margin:calc(56 * var(--u)) 0 0}
+
+.cover-block{margin:auto 0 0;padding:0;width:100%;display:grid}
+.cover-block .cr{display:grid;grid-template-columns:calc(168 * var(--u)) 1fr;
+  gap:calc(20 * var(--u));align-items:baseline;padding:calc(13 * var(--u)) 0;
+  border-top:calc(1.5 * var(--u)) solid var(--rule-dark)}
+.cover-block .cr:last-child{border-bottom:calc(1.5 * var(--u)) solid var(--rule-dark)}
+.cover-block dt{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.22em;text-transform:uppercase;color:var(--muted-dark);margin:0}
+.cover-block dd{font-family:var(--sans);font-weight:500;font-size:calc(16.5 * var(--u));
+  line-height:1.35;color:var(--on-dark);margin:0}
+
+.cover-foot{position:absolute;left:calc(96 * var(--u));right:calc(44% + 96 * var(--u));
+  bottom:calc(56 * var(--u));z-index:2;display:flex;justify-content:space-between;
+  font-family:var(--tech);font-weight:400;font-size:calc(13.5 * var(--u));
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted-dark)}

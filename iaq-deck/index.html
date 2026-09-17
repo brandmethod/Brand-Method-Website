@@ -1057,7 +1057,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cover .botline{display:none}
 
 /* faint setting-out grid on the navy, the way a sheet is squared up */
-.cover-grid{position:absolute;left:0;top:0;width:calc(860 * var(--u));height:100%;
+.cover-grid{position:absolute;left:0;top:0;width:calc(700 * var(--u));height:100%;
   z-index:0;pointer-events:none;background-image:
     repeating-linear-gradient(90deg,rgba(255,255,255,.055) 0 calc(1.5 * var(--u)),
       rgba(0,0,0,0) calc(1.5 * var(--u)) calc(120 * var(--u))),
@@ -1065,18 +1065,18 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       rgba(0,0,0,0) calc(1.5 * var(--u)) calc(120 * var(--u)))}
 
 /* the work and the people doing it, full height, hard edge against navy */
-.cover-media{inset:0;left:calc(860 * var(--u));z-index:1}
+.cover-media{inset:0;left:calc(700 * var(--u));z-index:1}
 .cover-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 
 /* running chrome stays inside the navy column */
 .cover .topline{left:calc(96 * var(--u));right:calc(96 * var(--u));z-index:4}
 .cover .tl-r.cover-meta{display:block;color:rgba(255,255,255,.86);align-self:center}
-.cover-rule{position:absolute;left:calc(96 * var(--u));right:calc(1060 * var(--u));
+.cover-rule{position:absolute;left:calc(96 * var(--u));right:calc(1220 * var(--u));
   height:calc(1.5 * var(--u));background:var(--rule-dark);z-index:3}
 .cover-rule.top{top:calc(104 * var(--u))}
 
 .cover-copy{position:absolute;left:calc(96 * var(--u));top:calc(176 * var(--u));
-  width:calc(668 * var(--u));bottom:calc(128 * var(--u));right:auto;z-index:3;
+  width:calc(552 * var(--u));bottom:calc(128 * var(--u));right:auto;z-index:3;
   display:flex;flex-direction:column;align-items:flex-start}
 .logo{width:calc(262 * var(--u));display:block;margin:0}
 .cover-lead{margin-top:auto;width:100%}
@@ -1084,23 +1084,25 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 /* the one credential figure, set against the sentence it supports */
 .cover-stat{display:flex;align-items:flex-end;gap:calc(18 * var(--u));
   margin-bottom:calc(40 * var(--u))}
-.cs-n{font-family:var(--display);font-weight:700;font-size:calc(124 * var(--u));
+.cs-n{font-family:var(--display);font-weight:700;font-size:calc(116 * var(--u));
   line-height:.8;letter-spacing:-.05em;color:#fff;font-variant-numeric:tabular-nums}
 .cs-l{font-family:var(--sans);font-weight:500;font-size:calc(18 * var(--u));
   line-height:1.35;color:var(--on-dark);padding-bottom:calc(8 * var(--u))}
 
-.cover-title{font-family:var(--display);font-size:calc(38 * var(--u));line-height:1.22;
+.cover-title{font-family:var(--display);font-size:calc(36 * var(--u));line-height:1.22;
   letter-spacing:-.022em;margin:0;color:#fff;display:grid}
 .cover-title b{font-weight:700}
 .cover-title span{font-weight:500;color:var(--on-dark)}
 
 .cover-tags{list-style:none;margin:calc(26 * var(--u)) 0 0;padding:0;
   display:flex;flex-wrap:wrap;gap:calc(11 * var(--u))}
-.cover-tags li{font-family:var(--sans);font-weight:500;font-size:calc(15 * var(--u));
-  line-height:1;color:var(--on-dark);padding:calc(12 * var(--u)) calc(17 * var(--u));
+.cover-tags li{font-family:var(--sans);font-weight:500;font-size:calc(13.5 * var(--u));
+  line-height:1;color:var(--on-dark);padding:calc(11 * var(--u)) calc(14 * var(--u));
   border:calc(1.5 * var(--u)) solid rgba(255,255,255,.34);border-radius:calc(100 * var(--u))}
 
-.cover-facts{margin-top:calc(30 * var(--u));padding-top:calc(16 * var(--u));
+.cover-scope{font-family:var(--sans);font-weight:400;font-size:calc(15.5 * var(--u));
+  line-height:1.5;margin:calc(22 * var(--u)) 0 0;color:var(--on-dark)}
+.cover-facts{margin-top:calc(26 * var(--u));padding-top:calc(16 * var(--u));
   border-top:calc(1.5 * var(--u)) solid var(--rule-dark);display:grid;
   gap:calc(7 * var(--u));font-family:var(--tech);font-weight:400;
   font-size:calc(12.5 * var(--u));letter-spacing:.17em;text-transform:uppercase;
@@ -1125,9 +1127,10 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="cover-lead">
       <div class="cover-stat"><span class="cs-n">31</span><span class="cs-l">years of delivery<br>since 1995</span></div>
       <h1 class="cover-title"><b>Engineering the facilities</b><span>advanced industry runs on.</span></h1>
-      <ul class="cover-tags"><li>EPC</li><li>Process Utilities</li><li>Energy Management</li></ul>
+      <ul class="cover-tags"><li>EPC</li><li>Process Critical Utilities &amp; Total Tool Installation Solutions</li><li>Energy Management</li></ul>
+      <p class="cover-scope">For cleanroom critical industries: semiconductor, data centre,
+      EV battery, pharmaceutical and energy.</p>
       <div class="cover-facts">
-        <span>Semiconductor &middot; Data Centre &middot; EV Battery &middot; Pharmaceutical &middot; Energy</span>
         <span>ISO 9001 &middot; ISO 14001 &middot; ISO 45001 &middot; CIDB G7</span>
       </div>
     </div>
@@ -1350,7 +1353,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <h2 class="s-title">Business Units</h2>
       <p class="s-note">Three delivery capabilities under one group, covering the full chain.</p>
     </header>
-  <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Install Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>
+  <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Installation Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">09 / 30</span></div>

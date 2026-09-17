@@ -168,9 +168,10 @@ raw_slide('''  <div class="cover-grid"></div>
     <div class="cover-lead">
       <div class="cover-stat"><span class="cs-n">31</span><span class="cs-l">years of delivery<br>since 1995</span></div>
       <h1 class="cover-title"><b>Engineering the facilities</b><span>advanced industry runs on.</span></h1>
-      <ul class="cover-tags"><li>EPC</li><li>Process Utilities</li><li>Energy Management</li></ul>
+      <ul class="cover-tags"><li>EPC</li><li>Process Critical Utilities &amp; Total Tool Installation Solutions</li><li>Energy Management</li></ul>
+      <p class="cover-scope">For cleanroom critical industries: semiconductor, data centre,
+      EV battery, pharmaceutical and energy.</p>
       <div class="cover-facts">
-        <span>Semiconductor &middot; Data Centre &middot; EV Battery &middot; Pharmaceutical &middot; Energy</span>
         <span>ISO 9001 &middot; ISO 14001 &middot; ISO 45001 &middot; CIDB G7</span>
       </div>
     </div>
@@ -336,7 +337,7 @@ slide(f'<div class="values">{v_html}</div>',
 units = [
     ('Engineering, Procurement and Construction (EPC)', '',
      'EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.'),
-    ('Process Critical Utilities & Total Tool Install Solutions', '',
+    ('Process Critical Utilities & Total Tool Installation Solutions', '',
      'EPCM partner for semiconductor manufacturing: engineering, procurement and construction management of process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.'),
     ('Energy Management', '',
      'Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.'),
@@ -349,7 +350,7 @@ u_html = ''.join(
 _unused_ph_bu1 = ph('EPCC delivery on an active construction site')
 _unused_ph_bu2 = ph('Process critical utilities and tool installation inside a fab')
 _unused_ph_bu3 = ph('Energy plant and facility management operations')
-slide(f'<div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Install Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
+slide(f'<div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Installation Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>',
       part_idx=0, num='01.6', title='Business Units',
       note='Three delivery capabilities under one group, covering the full chain.', fill=True)
 

@@ -156,19 +156,30 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
 
 
 # ================================================================ 01 COVER
-raw_slide('''  <div class="cover-media"><img src="img/cover-cleanroom.jpg" alt="Completed IAQ cleanroom"></div>
-  <div class="cover-rule top"></div>
+raw_slide('''  <div class="cover-grid"></div>
+  <div class="cover-media"><img src="img/cover-site.jpg" alt="IAQ engineers on site"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
-    <div class="tl-r cover-meta">Company Profile</div>
+    <div class="tl-r cover-meta">Edition 2026</div>
   </div>
+  <div class="cover-rule top"></div>
   <div class="cover-copy">
     <img class="logo" src="img/iaq-logo.png" alt="IAQ">
-    <h1 class="cover-title">Engineering<br>the facilities<br>advanced industry<br>runs on.</h1>
-    <dl class="cover-block"><div class="cr"><dt>Established</dt><dd>1995 &middot; Shah Alam, Selangor</dd></div><div class="cr"><dt>Delivery</dt><dd>EPC &middot; Process Critical Utilities &middot; Energy Management</dd></div><div class="cr"><dt>Sectors</dt><dd>Semiconductor &middot; Data Centre &middot; EV Battery &middot; Pharmaceutical &middot; Energy</dd></div><div class="cr"><dt>Certified</dt><dd>ISO 9001 &middot; ISO 14001 &middot; ISO 45001</dd></div></dl>
+    <div class="cover-lead">
+      <h1 class="cover-title"><b>Engineering the facilities</b><span>advanced industry runs on.</span></h1>
+      <ul class="cover-tags"><li>EPC</li><li>Process Utilities</li><li>Energy Management</li></ul>
+    </div>
   </div>
-  <div class="cover-rule bottom"></div>
-  <div class="cover-foot"><span>iaqtechnology.com.my</span><span>Edition 2026</span></div>''')
+  <div class="cover-stat">
+    <div class="cs-n">31</div>
+    <div class="cs-l">years</div>
+    <div class="cs-box"><span>Est. 1995</span></div>
+  </div>
+  <div class="cover-strip">
+    <span>Semiconductor &middot; Data Centre &middot; EV Battery &middot; Pharmaceutical &middot; Energy</span>
+    <span>ISO 9001 &middot; ISO 14001 &middot; ISO 45001</span>
+  </div>
+  <div class="cover-word">Company Profile</div>''')
 
 # ================================================================ 02 CONTENTS
 contents_parts = [

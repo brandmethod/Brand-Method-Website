@@ -302,7 +302,7 @@ slide('''<div class="foot-grid"><div class="foot-map"><img src="img/map-base.png
 # and plant photography where it says something, the company profile's own
 # pictures where they already fit.
 values = [
-    ('value-1', 'Safety First',
+    ('val-safety', 'Safety First',
      'Our services and works are carried out to the highest standard of safety and ethics.'),
     ('val-quality', 'Quality Consistency',
      'We take pride in the quality of solutions delivered, to achieve maximum client satisfaction.'),

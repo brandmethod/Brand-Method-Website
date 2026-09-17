@@ -1012,6 +1012,42 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cert-card.wide .cert-mark{grid-row:1 / 4;margin-bottom:0;height:calc(44 * var(--u))}
 .certs-list{gap:calc(18 * var(--u))}
 
+/* ============================================ identity correction
+   Three things were off brand: soft gradients (IAQ does not use them),
+   a bottom pattern of 112-degree diagonals, and warm imagery against a
+   navy palette. Gradients go, the pattern is rebuilt from the logo's own
+   construction, and the photography is graded cold. */
+
+/* 1. no soft gradients anywhere. Photography meets the navy on a hard
+      edge instead, which is more graphic and needs no scrim. */
+.cover-media::after,
+.hero-media::after,
+.div-media::after{display:none}
+.endmark::before{display:none}
+
+/* 2. the bottom accent follows the mark: the IAQ letterforms are built
+      from horizontal bars on roughly a 3.5 : 1 bar-to-gap rhythm, so the
+      band is horizontal bars in solid signal red, not a translucent tint
+      and not diagonals. */
+.slide.dark:not(.hero)::before{display:none}
+.slide.dark:not(.hero)::after{
+  height:calc(34 * var(--u));width:calc(300 * var(--u));
+  background-image:repeating-linear-gradient(180deg,
+    var(--signal) 0 calc(7 * var(--u)),
+    rgba(0,0,0,0) calc(7 * var(--u)) calc(9 * var(--u)));
+  background-size:100% 100%;background-position:right bottom;background-repeat:no-repeat}
+/* with no scrim the split has to clear the copy outright */
+.cover-media{left:44%}
+
+/* the bar block belongs on the navy, reading as the mark's own rhythm:
+   the logo runs a 42:12 bar-to-gap ratio, so 6u bars on 2u gaps */
+.slide.dark:not(.hero)::after{
+  left:0;right:auto;bottom:0;height:calc(32 * var(--u));width:calc(268 * var(--u));
+  background-image:repeating-linear-gradient(180deg,
+    var(--signal) 0 calc(6 * var(--u)),
+    rgba(0,0,0,0) calc(6 * var(--u)) calc(8 * var(--u)));
+  background-position:left bottom}
+
 </style>
 </head>
 <body>
@@ -1208,7 +1244,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <p class="s-note">Six commitments that govern how every project is run. Not words, but working rules.</p>
     </header>
   <div class="canvas fill"><div class="values"><article class="value">
-        <img src="img/value-1.jpg" alt="Safety First">
+        <img src="img/val-safety.jpg" alt="Safety First">
         <div class="v-body"><span class="v-num">01</span>
         <h3 class="v-name">Safety First</h3><p class="v-note">Our services and works are carried out to the highest standard of safety and ethics.</p></div>
       </article><article class="value">

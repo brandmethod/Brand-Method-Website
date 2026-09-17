@@ -1125,3 +1125,11 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .canvas.fill .split.media .cred{align-self:end;margin-top:0}
 .cr-pad{visibility:hidden}
 .cr-pad::before{content:"\00a0"}
+
+/* The document stamp sat top right, over the photograph, where it landed on
+   a white hard hat and disappeared. It belongs on the navy, at the foot of
+   the copy column, where it reads at any size. */
+.cover .tl-r.cover-meta{display:none}
+.cover-stamp{position:absolute;left:calc(96 * var(--u));bottom:calc(54 * var(--u));
+  z-index:3;font-family:var(--tech);font-weight:400;font-size:calc(13.5 * var(--u));
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted-dark)}

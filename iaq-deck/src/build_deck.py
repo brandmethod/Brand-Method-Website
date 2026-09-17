@@ -166,9 +166,9 @@ raw_slide('''  <div class="cover-grid"></div>
   <div class="cover-media"><img src="img/cover-site.jpg" alt="IAQ engineers on site"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
-    <div class="tl-r cover-meta">Company Profile &middot; Edition 2026</div>
   </div>
   <div class="cover-rule top"></div>
+  <div class="cover-stamp">Presentation Slide &middot; Edition 2026</div>
   <div class="cover-copy">
     <img class="logo" src="img/iaq-logo-white.png" alt="IAQ">
     <div class="cover-lead">

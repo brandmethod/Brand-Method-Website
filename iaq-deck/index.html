@@ -1137,6 +1137,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cr-pad{visibility:hidden}
 .cr-pad::before{content:"\00a0"}
 
+/* The document stamp sat top right, over the photograph, where it landed on
+   a white hard hat and disappeared. It belongs on the navy, at the foot of
+   the copy column, where it reads at any size. */
+.cover .tl-r.cover-meta{display:none}
+.cover-stamp{position:absolute;left:calc(96 * var(--u));bottom:calc(54 * var(--u));
+  z-index:3;font-family:var(--tech);font-weight:400;font-size:calc(13.5 * var(--u));
+  letter-spacing:.24em;text-transform:uppercase;color:var(--muted-dark)}
+
 </style>
 </head>
 <body>
@@ -1148,9 +1156,9 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="cover-media"><img src="img/cover-site.jpg" alt="IAQ engineers on site"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
-    <div class="tl-r cover-meta">Company Profile &middot; Edition 2026</div>
   </div>
   <div class="cover-rule top"></div>
+  <div class="cover-stamp">Presentation Slide &middot; Edition 2026</div>
   <div class="cover-copy">
     <img class="logo" src="img/iaq-logo-white.png" alt="IAQ">
     <div class="cover-lead">

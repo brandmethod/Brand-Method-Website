@@ -60,6 +60,12 @@ def chrome(part_idx, num, foot):
     return (tab, part, dots, foot)
 
 
+# The mark is red on paper and white on navy: red on the dark ground has
+# too little contrast to read. Same artwork, alpha untouched.
+LOGO = 'img/iaq-logo.png'
+LOGO_W = 'img/iaq-logo-white.png'
+
+
 def slide(body, *, part_idx=None, num='', title='', note='', foot='',
           dark=False, bare=False, cls='', fill=False, rows=False):
     """Standard content slide: top line, numbered header block, content, footer."""
@@ -75,7 +81,7 @@ def slide(body, *, part_idx=None, num='', title='', note='', foot='',
     slides.append(f'''<div class="stage"><section class="slide{' dark' if dark else ''} {cls}">
   <div class="topline">
     <div class="tl-l">{tab}<span class="tl-part">{esc(part)}</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="{LOGO_W if dark else LOGO}" alt="IAQ"></div>
   </div>{head}
   <div class="canvas{' fill' if fill else ''}{' rows' if rows else ''}">{body}
   </div>
@@ -140,7 +146,7 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
   <div class="hero-media"><img src="img/{img}.jpg" alt="{esc(title)}"></div>
   <div class="topline">
     <div class="tl-l">{tab}<span class="tl-part">{esc(section)}</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="{LOGO_W}" alt="IAQ"></div>
   </div>
   <div class="hero-panel">
     <div class="flag">{esc(flag)}</div>
@@ -164,7 +170,7 @@ raw_slide('''  <div class="cover-grid"></div>
   </div>
   <div class="cover-rule top"></div>
   <div class="cover-copy">
-    <img class="logo" src="img/iaq-logo.png" alt="IAQ">
+    <img class="logo" src="img/iaq-logo-white.png" alt="IAQ">
     <div class="cover-lead">
       <div class="cover-stat"><span class="cs-n">31</span><span class="cs-l">years of delivery<br>since 1995</span></div>
       <h1 class="cover-title"><b>Engineering the facilities</b><span>advanced industry runs on.</span></h1>
@@ -238,7 +244,7 @@ def divider(part_idx, num, name, note, img, bullets, ph_note=None):
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part {num} · {esc(name)}</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="{LOGO_W}" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">{i:02d} / TOTAL</span></div>
@@ -513,23 +519,30 @@ slide('''<div class="certgrid"><div class="award-panel"><span class="ap-kicker">
       fill=True)
 
 # ---------------------------------------------------------------- 03.3 SAFETY
-awards = [
-    ('Builder of the Year 2024', 'Malaysian Construction Industry Excellence Awards (MCIEA), awarded by CIDB.'),
-    ('Highwire Gold', 'Gold-rated contractor safety performance.'),
-    ('ISO 45001:2018', 'Occupational health and safety management, certified by Intertek.'),
-]
-a_html = ''.join(
-    f'<div class="award"><h3 class="a-name">{esc(n)}</h3><p class="cap">{esc(d)}</p></div>'
-    for n, d in awards)
+# The MCIEA criteria, set out as the list the statement promises. The
+# certificates themselves live on 03.2, so this page carries them as one
+# credential rule rather than repeating the cards.
+criteria = ['Company performance', 'Project management', 'Technical expertise',
+            'Innovation', 'Quality', 'Safety', 'Sustainability']
+crit_html = ''.join(
+    f'<li><span class="cr-n">{i:02d}</span><span class="cr-t">{esc(c)}</span></li>'
+    for i, c in enumerate(criteria, 1))
+# seven items in two columns leaves one cell short; an empty cell keeps the
+# rule running the full width of the last row
+if len(criteria) % 2:
+    crit_html += '<li class="cr-pad"></li>'
+creds = ['Builder of the Year 2024', 'Highwire Gold', 'ISO 45001:2018']
+cred_html = ''.join(f'<span>{esc(c)}</span>' for c in creds)
 slide(f'''
     <div class="split media">
       <div class="lede">
         <h3 class="statement">Judged on the things<br>that actually matter.</h3>
-        <p class="body">MCIEA award recipients are evaluated across company performance, project
-        management, technical expertise, innovation, quality, safety and sustainability. The same
-        criteria our clients audit us against.</p>
+        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria &mdash;
+        the same ground our clients audit us on.</p>
+        <ol class="crit">{crit_html}</ol>
+        <div class="cred">{cred_html}</div>
       </div>
-      <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing on site"></div>
+      <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
     </div>''',
       part_idx=2, num='03.3', title='Safety & Recognition',
       note='How our standards are independently verified and recognised.', fill=True)
@@ -560,7 +573,7 @@ row_html = ''.join('<div class="er"><dt>%s</dt><dd>%s</dd></div>' % (esc(a), esc
 slide(f"""
     <div class="endgrid">
       <div class="endmark">
-        <img class="signoff" src="img/iaq-logo.png" alt="IAQ">
+        <img class="signoff" src="img/iaq-logo-white.png" alt="IAQ">
         <div class="end-tag">Your Total Facility Solutions Provider</div>
         <p class="end-line">Engineering, procurement, construction and energy management
         for the industries where contamination, uptime and safety decide the outcome.

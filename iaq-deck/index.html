@@ -1108,6 +1108,35 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   font-size:calc(12.5 * var(--u));letter-spacing:.17em;text-transform:uppercase;
   white-space:nowrap;color:var(--muted-dark)}
 
+/* ============================================ 03.3 safety & recognition
+   The statement promises a list of what IAQ is judged on, so the list is
+   on the page. The certificates keep to 03.2; here they are one rule of
+   credentials under the criteria. */
+.crit{list-style:none;margin:calc(10 * var(--u)) 0 0;padding:0;display:grid;
+  grid-template-columns:1fr 1fr;column-gap:calc(48 * var(--u))}
+.crit li{display:grid;grid-template-columns:auto 1fr;gap:calc(16 * var(--u));
+  align-items:baseline;padding:calc(17 * var(--u)) 0;
+  border-top:calc(1 * var(--u)) solid var(--rule)}
+.cr-n{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.14em;color:var(--signal);font-variant-numeric:tabular-nums}
+.cr-t{font-family:var(--sans);font-weight:600;font-size:calc(19 * var(--u));
+  line-height:1.2;color:var(--ink)}
+.cred{margin-top:calc(26 * var(--u));padding-top:calc(18 * var(--u));
+  border-top:calc(2 * var(--u)) solid var(--signal);display:flex;flex-wrap:wrap;
+  gap:calc(10 * var(--u)) calc(26 * var(--u));font-family:var(--tech);font-weight:600;
+  font-size:calc(13.5 * var(--u));letter-spacing:.18em;text-transform:uppercase;
+  color:var(--muted)}
+.cred span::before{content:"";display:inline-block;width:calc(6 * var(--u));
+  height:calc(6 * var(--u));background:var(--signal);
+  margin-right:calc(10 * var(--u));vertical-align:calc(2 * var(--u))}
+
+/* the criteria block takes the column, with the credential rule set on the
+   photograph's bottom edge rather than floating mid-page */
+.canvas.fill .split.media .lede{height:100%;grid-template-rows:auto auto auto 1fr}
+.canvas.fill .split.media .cred{align-self:end;margin-top:0}
+.cr-pad{visibility:hidden}
+.cr-pad::before{content:"\00a0"}
+
 </style>
 </head>
 <body>
@@ -1123,7 +1152,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   </div>
   <div class="cover-rule top"></div>
   <div class="cover-copy">
-    <img class="logo" src="img/iaq-logo.png" alt="IAQ">
+    <img class="logo" src="img/iaq-logo-white.png" alt="IAQ">
     <div class="cover-lead">
       <div class="cover-stat"><span class="cs-n">31</span><span class="cs-l">years of delivery<br>since 1995</span></div>
       <h1 class="cover-title"><b>Engineering the facilities</b><span>advanced industry runs on.</span></h1>
@@ -1202,7 +1231,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part 01 · The Company</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">03 / 30</span></div>
@@ -1429,7 +1458,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part 02 · Project References</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">13 / 30</span></div>
@@ -1821,7 +1850,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">25 / 30</span></div>
@@ -1879,11 +1908,12 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="split media">
       <div class="lede">
         <h3 class="statement">Judged on the things<br>that actually matter.</h3>
-        <p class="body">MCIEA award recipients are evaluated across company performance, project
-        management, technical expertise, innovation, quality, safety and sustainability. The same
-        criteria our clients audit us against.</p>
+        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria &mdash;
+        the same ground our clients audit us on.</p>
+        <ol class="crit"><li><span class="cr-n">01</span><span class="cr-t">Company performance</span></li><li><span class="cr-n">02</span><span class="cr-t">Project management</span></li><li><span class="cr-n">03</span><span class="cr-t">Technical expertise</span></li><li><span class="cr-n">04</span><span class="cr-t">Innovation</span></li><li><span class="cr-n">05</span><span class="cr-t">Quality</span></li><li><span class="cr-n">06</span><span class="cr-t">Safety</span></li><li><span class="cr-n">07</span><span class="cr-t">Sustainability</span></li><li class="cr-pad"></li></ol>
+        <div class="cred"><span>Builder of the Year 2024</span><span>Highwire Gold</span><span>ISO 45001:2018</span></div>
       </div>
-      <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing on site"></div>
+      <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
     </div>
   </div>
   <footer class="botline">
@@ -1896,7 +1926,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 <div class="stage"><section class="slide dark ">
   <div class="topline">
     <div class="tl-l"><span class="tab">03.4</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Closing</h2>
@@ -1920,7 +1950,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 <div class="stage"><section class="slide dark ">
   <div class="topline">
     <div class="tl-l"><span class="tab">03.5</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
-    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
     <header class="shead">
       <h2 class="s-title">Contacts</h2>
@@ -1929,7 +1959,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill">
     <div class="endgrid">
       <div class="endmark">
-        <img class="signoff" src="img/iaq-logo.png" alt="IAQ">
+        <img class="signoff" src="img/iaq-logo-white.png" alt="IAQ">
         <div class="end-tag">Your Total Facility Solutions Provider</div>
         <p class="end-line">Engineering, procurement, construction and energy management
         for the industries where contamination, uptime and safety decide the outcome.

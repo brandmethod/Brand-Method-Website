@@ -160,26 +160,21 @@ raw_slide('''  <div class="cover-grid"></div>
   <div class="cover-media"><img src="img/cover-site.jpg" alt="IAQ engineers on site"></div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
-    <div class="tl-r cover-meta">Edition 2026</div>
+    <div class="tl-r cover-meta">Company Profile &middot; Edition 2026</div>
   </div>
   <div class="cover-rule top"></div>
   <div class="cover-copy">
     <img class="logo" src="img/iaq-logo.png" alt="IAQ">
     <div class="cover-lead">
+      <div class="cover-stat"><span class="cs-n">31</span><span class="cs-l">years of delivery<br>since 1995</span></div>
       <h1 class="cover-title"><b>Engineering the facilities</b><span>advanced industry runs on.</span></h1>
       <ul class="cover-tags"><li>EPC</li><li>Process Utilities</li><li>Energy Management</li></ul>
+      <div class="cover-facts">
+        <span>Semiconductor &middot; Data Centre &middot; EV Battery &middot; Pharmaceutical &middot; Energy</span>
+        <span>ISO 9001 &middot; ISO 14001 &middot; ISO 45001 &middot; CIDB G7</span>
+      </div>
     </div>
-  </div>
-  <div class="cover-stat">
-    <div class="cs-n">31</div>
-    <div class="cs-l">years</div>
-    <div class="cs-box"><span>Est. 1995</span></div>
-  </div>
-  <div class="cover-strip">
-    <span>Semiconductor &middot; Data Centre &middot; EV Battery &middot; Pharmaceutical &middot; Energy</span>
-    <span>ISO 9001 &middot; ISO 14001 &middot; ISO 45001</span>
-  </div>
-  <div class="cover-word">Company Profile</div>''')
+  </div>''')
 
 # ================================================================ 02 CONTENTS
 contents_parts = [

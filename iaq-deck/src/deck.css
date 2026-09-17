@@ -1037,83 +1037,60 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     rgba(0,0,0,0) calc(6 * var(--u)) calc(8 * var(--u)));
   background-position:left bottom}
 
-/* ============================================ cover, poster build
-   Reference brief: one flat brand field, a single subject anchored to an
-   edge, small type carrying the facts and the document's own name set
-   oversized across the foot. IAQ's field is navy rather than a hot
-   colour, so the accent stays with the mark and the photography is cold.
-   No soft gradients anywhere — the technical grid and the foot rule are
-   the only texture. */
+/* ============================================ cover
+   Reference brief, read as a presentation opener rather than a poster:
+   the photograph is the hero and the people in it are large enough to
+   read, so no oversized foot word competes with them. Navy field, one
+   hard edge, capability pills and a single credential figure. */
 .cover{background:var(--ink)}
 .cover .botline{display:none}
-.cover.slide.dark::after{display:none}      /* the foot word is the graphic */
 
-/* faint setting-out grid, the way a drawing sheet is squared up */
-.cover-grid{position:absolute;inset:0;z-index:0;pointer-events:none;
-  background-image:
+/* faint setting-out grid on the navy, the way a sheet is squared up */
+.cover-grid{position:absolute;left:0;top:0;width:calc(860 * var(--u));height:100%;
+  z-index:0;pointer-events:none;background-image:
     repeating-linear-gradient(90deg,rgba(255,255,255,.055) 0 calc(1.5 * var(--u)),
       rgba(0,0,0,0) calc(1.5 * var(--u)) calc(120 * var(--u))),
     repeating-linear-gradient(180deg,rgba(255,255,255,.055) 0 calc(1.5 * var(--u)),
       rgba(0,0,0,0) calc(1.5 * var(--u)) calc(120 * var(--u)))}
 
-/* the subject: a square plate of the work itself, bled off the top edge */
-.cover-media{inset:auto;left:calc(640 * var(--u));top:0;
-  width:calc(795 * var(--u));height:calc(826 * var(--u));z-index:1}
-.cover-media img{width:100%;height:100%;object-fit:cover;display:block}
+/* the work and the people doing it, full height, hard edge against navy */
+.cover-media{inset:0;left:calc(860 * var(--u));z-index:1}
+.cover-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
 
+/* running chrome stays inside the navy column */
 .cover .topline{left:calc(96 * var(--u));right:calc(96 * var(--u));z-index:4}
-.cover .tl-r.cover-meta{display:block;color:var(--muted-dark);align-self:center}
-.cover-rule{position:absolute;left:calc(96 * var(--u));right:calc(96 * var(--u));
+.cover .tl-r.cover-meta{display:block;color:rgba(255,255,255,.86);align-self:center}
+.cover-rule{position:absolute;left:calc(96 * var(--u));right:calc(1060 * var(--u));
   height:calc(1.5 * var(--u));background:var(--rule-dark);z-index:3}
 .cover-rule.top{top:calc(104 * var(--u))}
 
-/* left column: mark high, the sentence and the capability tags low */
 .cover-copy{position:absolute;left:calc(96 * var(--u));top:calc(176 * var(--u));
-  width:calc(504 * var(--u));bottom:calc(280 * var(--u));right:auto;z-index:3;
+  width:calc(668 * var(--u));bottom:calc(128 * var(--u));right:auto;z-index:3;
   display:flex;flex-direction:column;align-items:flex-start}
-.logo{width:calc(246 * var(--u));display:block;margin:0}
-.cover-lead{margin-top:auto}
+.logo{width:calc(262 * var(--u));display:block;margin:0}
+.cover-lead{margin-top:auto;width:100%}
+
+/* the one credential figure, set against the sentence it supports */
+.cover-stat{display:flex;align-items:flex-end;gap:calc(18 * var(--u));
+  margin-bottom:calc(40 * var(--u))}
+.cs-n{font-family:var(--display);font-weight:700;font-size:calc(124 * var(--u));
+  line-height:.8;letter-spacing:-.05em;color:#fff;font-variant-numeric:tabular-nums}
+.cs-l{font-family:var(--sans);font-weight:500;font-size:calc(18 * var(--u));
+  line-height:1.35;color:var(--on-dark);padding-bottom:calc(8 * var(--u))}
+
 .cover-title{font-family:var(--display);font-size:calc(38 * var(--u));line-height:1.22;
   letter-spacing:-.022em;margin:0;color:#fff;display:grid}
 .cover-title b{font-weight:700}
 .cover-title span{font-weight:500;color:var(--on-dark)}
+
 .cover-tags{list-style:none;margin:calc(26 * var(--u)) 0 0;padding:0;
   display:flex;flex-wrap:wrap;gap:calc(11 * var(--u))}
 .cover-tags li{font-family:var(--sans);font-weight:500;font-size:calc(15 * var(--u));
   line-height:1;color:var(--on-dark);padding:calc(12 * var(--u)) calc(17 * var(--u));
   border:calc(1.5 * var(--u)) solid rgba(255,255,255,.34);border-radius:calc(100 * var(--u))}
 
-/* right column: the figure that matters, then the datum in a set-out box */
-.cover-stat{position:absolute;right:calc(96 * var(--u));left:calc(1495 * var(--u));
-  top:calc(300 * var(--u));z-index:3;text-align:right}
-.cs-n{font-family:var(--display);font-weight:700;font-size:calc(158 * var(--u));
-  line-height:.82;letter-spacing:-.05em;color:#fff;font-variant-numeric:tabular-nums}
-.cs-l{font-family:var(--sans);font-weight:500;font-size:calc(21 * var(--u));
-  line-height:1;color:var(--on-dark);margin-top:calc(10 * var(--u))}
-.cs-box{margin-top:calc(34 * var(--u));display:inline-block;position:relative;
-  padding:calc(13 * var(--u)) calc(16 * var(--u));
-  outline:calc(1.5 * var(--u)) dashed rgba(255,255,255,.34);outline-offset:0}
-.cs-box span{font-family:var(--tech);font-weight:600;font-size:calc(13.5 * var(--u));
-  letter-spacing:.22em;text-transform:uppercase;color:var(--on-dark)}
-.cs-box::before,.cs-box::after,.cs-box span::before,.cs-box span::after{
-  content:"";position:absolute;width:calc(10 * var(--u));height:calc(10 * var(--u));
-  background:#fff}
-.cs-box::before{left:calc(-5 * var(--u));top:calc(-5 * var(--u))}
-.cs-box::after{right:calc(-5 * var(--u));top:calc(-5 * var(--u))}
-.cs-box span::before{left:calc(-5 * var(--u));bottom:calc(-5 * var(--u))}
-.cs-box span::after{right:calc(-5 * var(--u));bottom:calc(-5 * var(--u))}
-
-/* the facts, on one rule, directly above the foot word */
-.cover-strip{position:absolute;left:calc(96 * var(--u));right:calc(96 * var(--u));
-  top:calc(826 * var(--u));z-index:3;display:flex;justify-content:space-between;
-  gap:calc(40 * var(--u));padding-top:calc(15 * var(--u));
-  border-top:calc(1.5 * var(--u)) solid var(--rule-dark);
-  font-family:var(--tech);font-weight:400;font-size:calc(14 * var(--u));
-  letter-spacing:.2em;text-transform:uppercase;color:var(--muted-dark)}
-
-/* the document's own name, set as large as the sheet allows */
-.cover-word{position:absolute;left:calc(96 * var(--u));right:calc(96 * var(--u));
-  bottom:calc(16 * var(--u));z-index:2;font-family:var(--display);font-weight:700;
-  font-size:calc(190 * var(--u));height:calc(152 * var(--u));line-height:calc(152 * var(--u));
-  letter-spacing:-.035em;text-transform:uppercase;color:#fff;white-space:nowrap;
-  overflow:hidden}
+.cover-facts{margin-top:calc(30 * var(--u));padding-top:calc(16 * var(--u));
+  border-top:calc(1.5 * var(--u)) solid var(--rule-dark);display:grid;
+  gap:calc(7 * var(--u));font-family:var(--tech);font-weight:400;
+  font-size:calc(12.5 * var(--u));letter-spacing:.17em;text-transform:uppercase;
+  white-space:nowrap;color:var(--muted-dark)}

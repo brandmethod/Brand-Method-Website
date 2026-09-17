@@ -845,3 +845,90 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .colcards.c1 .cc-note{font-size:calc(18.5 * var(--u))}
 .colcards.c1 .cc-body{padding:calc(40 * var(--u)) calc(38 * var(--u)) calc(44 * var(--u));
   gap:calc(14 * var(--u))}
+
+/* the running mark again: 42u still read small against the header rule */
+.mark{height:calc(64 * var(--u))}
+
+/* ============================================ 01.3 milestones, single axis
+   The company profile runs one axis the full width with the years falling
+   alternately above and below it. Two stacked bands lost that rhythm and
+   stranded the space under the first one, so this follows the original. */
+.timeline{display:grid;grid-template-rows:auto 1fr;gap:calc(14 * var(--u));height:100%}
+.tl-band{position:relative;display:grid;grid-template-columns:repeat(16,1fr);
+  grid-template-rows:1fr 1fr;column-gap:calc(7 * var(--u))}
+.tl-band::before{content:"";position:absolute;left:0;right:0;top:50%;
+  height:calc(2 * var(--u));margin-top:calc(-1 * var(--u));background:var(--signal)}
+.tl-col{position:relative;display:grid;min-height:0}
+.tl-col.up{grid-row:1;align-items:end}
+.tl-col.dn{grid-row:2;align-items:start}
+.tl-col .tl-set{display:grid;gap:calc(5 * var(--u));align-content:end}
+.tl-col.dn .tl-set{align-content:start}
+.tl-col.up .tl-set{padding-bottom:calc(16 * var(--u))}
+.tl-col.dn .tl-set{padding-top:calc(16 * var(--u))}
+/* the tick on the axis, and the stem reaching down or up to it */
+.tl-dot{position:absolute;left:0;width:calc(10 * var(--u));height:calc(10 * var(--u));
+  border-radius:50%;background:var(--surface);border:calc(2.5 * var(--u)) solid var(--signal);
+  z-index:2}
+.tl-col.up .tl-dot{bottom:calc(-5 * var(--u))}
+.tl-col.dn .tl-dot{top:calc(-5 * var(--u))}
+.tl-stem{position:absolute;left:calc(4.5 * var(--u));width:calc(1 * var(--u));
+  background:var(--rule);height:calc(13 * var(--u))}
+.tl-col.up .tl-stem{bottom:0}
+.tl-col.dn .tl-stem{top:0}
+.tl-year{display:flex;align-items:center;gap:calc(6 * var(--u));
+  font-family:var(--display);font-weight:700;font-size:calc(22 * var(--u));line-height:1;
+  letter-spacing:-.03em;color:var(--signal);font-variant-numeric:tabular-nums}
+.tl-flag svg{width:calc(18 * var(--u));height:auto;display:block;
+  outline:calc(1 * var(--u)) solid rgba(16,26,43,.16);outline-offset:calc(-1 * var(--u))}
+.tl-list{list-style:none;margin:0;padding:0;display:grid;gap:calc(5 * var(--u))}
+.tl-list li{font-family:var(--sans);font-weight:500;font-size:calc(10.5 * var(--u));
+  line-height:1.3;color:var(--ink-2);position:relative;padding-left:calc(9 * var(--u))}
+.tl-list li::before{content:"";position:absolute;left:0;top:calc(4.5 * var(--u));
+  width:calc(4 * var(--u));height:calc(4 * var(--u));border-radius:50%;background:currentColor}
+
+/* the upper half has to sit against the axis, not at the top of its row:
+   a single auto row is placed by align-content, not align-items */
+.tl-col.up{align-content:end}
+.tl-col.dn{align-content:start}
+
+/* Scope of Services: a rule between the rows, so the twelve packages read
+   as three bands rather than one drifting field */
+.chips{background:transparent;gap:0}
+.chips.four .chip{border-top:calc(1 * var(--u)) solid var(--rule);
+  padding-top:calc(26 * var(--u))}
+.chips.four .chip:nth-child(-n+4){border-top:0}
+
+/* Process Utilities carries the four sub-scopes that sit under it */
+.c-sub{list-style:none;margin:calc(8 * var(--u)) 0 0;padding:0;display:grid;gap:calc(6 * var(--u))}
+.c-sub li{font-family:var(--sans);font-weight:500;font-size:calc(15 * var(--u));line-height:1.3;
+  color:var(--ink-2);position:relative;padding-left:calc(15 * var(--u))}
+.c-sub li::before{content:"";position:absolute;left:0;top:calc(7 * var(--u));
+  width:calc(6 * var(--u));height:calc(6 * var(--u));border-radius:50%;background:var(--signal)}
+
+/* Industry Focus: the icon carries the sector, so the numbering goes and
+   the icon comes up to a size that actually reads */
+.ind-body{padding:calc(20 * var(--u)) calc(20 * var(--u)) calc(22 * var(--u));
+  gap:calc(7 * var(--u))}
+.ind-body .ico{width:calc(40 * var(--u));height:calc(40 * var(--u));
+  margin-bottom:calc(4 * var(--u))}
+/* the closing card is a statement, not a tile: give it room and centre it */
+.ind.solid .ind-body{align-content:center;justify-items:start;
+  padding:calc(40 * var(--u)) calc(34 * var(--u));gap:calc(12 * var(--u))}
+.ind.solid .ico{width:calc(52 * var(--u));height:calc(52 * var(--u));
+  margin-bottom:calc(10 * var(--u))}
+.ind.solid .ind-name{font-size:calc(24 * var(--u));line-height:1.15}
+.ind.solid .ind-note{font-size:calc(16 * var(--u));line-height:1.45}
+
+/* ============================================ 01.4 map markers
+   Every market IAQ covers is marked in signal red and named on the map
+   itself, the way the company profile's own map called its countries out. */
+.foot-map{position:relative}
+.pin{position:absolute;transform:translate(-50%,-50%);z-index:2}
+.pin i{display:block;width:calc(13 * var(--u));height:calc(13 * var(--u));border-radius:50%;
+  background:var(--signal);border:calc(2 * var(--u)) solid var(--paper);
+  box-shadow:0 0 0 calc(5 * var(--u)) rgba(236,35,38,.20)}
+.pin b{position:absolute;top:50%;white-space:nowrap;font-family:var(--tech);font-weight:600;
+  font-size:calc(14 * var(--u));letter-spacing:.14em;text-transform:uppercase;color:var(--signal);
+  transform:translateY(calc(-50% + var(--dy, 0px)))}
+.pin b.r{left:calc(100% + var(--u) * 12)}
+.pin b.l{right:calc(100% + var(--u) * 12)}

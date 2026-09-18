@@ -1483,6 +1483,19 @@ body.spread .wrap{display:grid;grid-template-columns:repeat(2,auto);justify-cont
 .pg .svc{border-top:0}
 .pg .esr:last-of-type{border-bottom:0}
 .vizw.esgv{max-height:252px;min-height:0;flex:1 1 auto;margin-top:16px}
+
+/* ── one figure size across the deck ─────────────────────────────────
+      The client asked for the hero figures to be standardised and taken
+      down about a quarter. Two sizes, by what the figure has to carry:
+      40px where it leads a whole tile - Why IAQ, The Group in Numbers,
+      Projects Delivered - and 30px where it sits in a compact band over
+      a single line label, on the case studies and Certification. Weight
+      comes back to 700 from 800 on all of them.                        */
+.pg .whn,
+.pg .numc i,
+.pg .rgn{font-size:40px;font-weight:700;letter-spacing:-.035em;line-height:.9}
+.pg .numg.n3 .numc i,
+.pg .grdn{font-size:30px;font-weight:700;letter-spacing:-.03em;line-height:1}
 </style>
 </head><body>
 <svg id="iaqIcons" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" focusable="false"><defs>

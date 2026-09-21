@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the IAQ Group presentation deck (index.html)."""
+"""Generate the IAQ Technology International Sdn Bhd presentation deck."""
 import html, os
 
 OUT = '/home/user/Brand-Method-Website/iaq-deck/index.html'
@@ -53,7 +53,7 @@ PARTS = ['The Company', 'Project References', 'Safety, Quality & ESG']
 def chrome(part_idx, num, foot):
     """Top line + footer shared by every slide. part_idx is 0-2, or None."""
     tab = f'<span class="tab">{num}</span>' if num else ''
-    part = f'Part {part_idx+1:02d} · {PARTS[part_idx]}' if part_idx is not None else 'IAQ Group'
+    part = f'Part {part_idx+1:02d} · {PARTS[part_idx]}' if part_idx is not None else LEGAL_NAME
     dots = ''.join(
         f'<i class="dot{" on" if part_idx == i else ""}"></i>' for i in range(3)
     ) if part_idx is not None else ''
@@ -62,6 +62,10 @@ def chrome(part_idx, num, foot):
 
 # The mark is red on paper and white on navy: red on the dark ground has
 # too little contrast to read. Same artwork, alpha untouched.
+# Registered identity, as it must appear wherever the company is named.
+LEGAL_NAME = 'IAQ Technology International Sdn Bhd'
+REG_NO = '200001031412 (534019-T)'
+
 LOGO = 'img/iaq-logo.png'
 LOGO_W = 'img/iaq-logo-white.png'
 
@@ -70,7 +74,7 @@ def slide(body, *, part_idx=None, num='', title='', note='', foot='',
           dark=False, bare=False, cls='', fill=False, rows=False):
     """Standard content slide: top line, numbered header block, content, footer."""
     i = len(slides) + 1
-    tab, part, dots, foot = chrome(part_idx, num, foot or (PARTS[part_idx] if part_idx is not None else 'IAQ Group'))
+    tab, part, dots, foot = chrome(part_idx, num, foot or (PARTS[part_idx] if part_idx is not None else LEGAL_NAME))
     head = ''
     if not bare:
         head = f'''
@@ -266,6 +270,7 @@ slide('''
         <p class="body">Engineering, procurement, construction and maintenance for the industries
         where contamination, uptime and safety decide the outcome, from semiconductor wafer fabs
         to gigafactories, data centres and pharmaceutical plants.</p>
+        <dl class="legal"><div class="lg"><dt>Registered name</dt><dd>IAQ Technology International Sdn Bhd</dd></div><div class="lg"><dt>Registration no.</dt><dd>200001031412 (534019-T)</dd></div></dl>
       </div>
       <div class="colcards c1">
         <article class="colcard flat"><div class="cc-body"><h3 class="cc-name">Vision</h3><p class="cc-note">To be a regional facility solutions provider with engineering excellence that facilitates technological innovation and advancement in quality of life.</p></div></article><article class="colcard flat"><div class="cc-body"><h3 class="cc-name">Mission</h3><p class="cc-note">Providing innovative, sustainable facility and engineering solutions benefitting our clients and stakeholders, driven by our leadership, employees and partners globally.</p></div></article>
@@ -513,7 +518,7 @@ slide('<div class="colcards c3"><article class="colcard"><img src="img/value-2.j
       note='Three pillars, applied to operations and to every project we take on.', fill=True)
 
 # ---------------------------------------------------------------- 03.2 CERTIFICATIONS
-slide('''<div class="certgrid"><div class="award-panel"><span class="ap-kicker">Malaysian Construction Industry Excellence Awards</span><div class="ap-year">2024</div><h3 class="ap-title">Builder of the Year</h3><p class="ap-note">Awarded by the Construction Industry Development Board (CIDB). Recipients are judged across company performance, project management, technical expertise, innovation, quality, safety and sustainability.</p><div class="ap-foot"><span class="label">Awarded to</span><span class="ap-to">IAQ Group</span></div></div><div class="certs-list"><article class="cert-card"><div class="cc-head">ISO 9001:2015</div><h3 class="cc-scope">Quality Management</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">ISO 14001:2015</div><h3 class="cc-scope">Environmental Management</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">ISO 45001:2018</div><h3 class="cc-scope">Occupational Health &amp; Safety</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">Highwire Gold</div><h3 class="cc-scope">Contractor Safety Performance</h3><p class="cc-issuer">Gold rated</p></article><article class="cert-card"><div class="cc-head">CIDB Grade G7</div><h3 class="cc-scope">Unlimited Tender Capacity</h3><p class="cc-issuer">Construction Industry Development Board, Malaysia</p></article><article class="cert-card"><div class="cc-head">PKK Grade G7</div><h3 class="cc-scope">Government Works Registration</h3><p class="cc-issuer">Pusat Khidmat Kontraktor, Malaysia</p></article><article class="cert-card wide"><img class="cert-mark" src="img/cert-bizsafe.png" alt="bizSAFE Level 3"><div class="cc-head">bizSAFE Level 3</div><h3 class="cc-scope">Workplace Safety &amp; Health</h3><p class="cc-issuer">WSH Council, Singapore</p></article></div></div>''',
+slide('''<div class="certgrid"><div class="award-panel"><span class="ap-kicker">Malaysian Construction Industry Excellence Awards</span><div class="ap-year">2024</div><h3 class="ap-title">Builder of the Year</h3><p class="ap-note">Awarded by the Construction Industry Development Board (CIDB). Recipients are judged across company performance, project management, technical expertise, innovation, quality, safety and sustainability.</p><div class="ap-foot"><span class="label">Awarded to</span><span class="ap-to">IAQ Technology International Sdn Bhd</span></div></div><div class="certs-list"><article class="cert-card"><div class="cc-head">ISO 9001:2015</div><h3 class="cc-scope">Quality Management</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">ISO 14001:2015</div><h3 class="cc-scope">Environmental Management</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">ISO 45001:2018</div><h3 class="cc-scope">Occupational Health &amp; Safety</h3><p class="cc-issuer">Certified by Intertek</p></article><article class="cert-card"><div class="cc-head">Highwire Gold</div><h3 class="cc-scope">Contractor Safety Performance</h3><p class="cc-issuer">Gold rated</p></article><article class="cert-card"><div class="cc-head">CIDB Grade G7</div><h3 class="cc-scope">Unlimited Tender Capacity</h3><p class="cc-issuer">Construction Industry Development Board, Malaysia</p></article><article class="cert-card"><div class="cc-head">PKK Grade G7</div><h3 class="cc-scope">Government Works Registration</h3><p class="cc-issuer">Pusat Khidmat Kontraktor, Malaysia</p></article><article class="cert-card wide"><img class="cert-mark" src="img/cert-bizsafe.png" alt="bizSAFE Level 3"><div class="cc-head">bizSAFE Level 3</div><h3 class="cc-scope">Workplace Safety &amp; Health</h3><p class="cc-issuer">WSH Council, Singapore</p></article></div></div>''',
       part_idx=2, num='03.2', title='Certifications & Awards',
       note='Independently certified, and recognised as Builder of the Year 2024.',
       fill=True)
@@ -566,7 +571,9 @@ people = [
      'qinxiang.lim@iaqtechnology.com.my', '+6016-442 4578'),
 ]
 cards = ''.join(person(*p) for p in people)
-rows = [('Business Enquiries', 'business@iaqtechnology.com.my'),
+rows = [('Registered Name', LEGAL_NAME),
+        ('Registration No.', REG_NO),
+        ('Business Enquiries', 'business@iaqtechnology.com.my'),
         ('Head Office', '12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, '
                         'Seksyen 32, 40460 Shah Alam, Selangor, Malaysia')]
 row_html = ''.join('<div class="er"><dt>%s</dt><dd>%s</dd></div>' % (esc(a), esc(b)) for a, b in rows)
@@ -598,7 +605,7 @@ doc = f'''<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IAQ Total Facility Solutions</title>
-<meta name="description" content="IAQ Group presentation deck covering company, project references and delivery capability.">
+<meta name="description" content="IAQ Technology International Sdn Bhd presentation deck covering company, project references and delivery capability.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Urbanist:wght@400;500;600&family=League+Spartan:wght@400;500;600&display=swap">

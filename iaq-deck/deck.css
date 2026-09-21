@@ -1133,3 +1133,16 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cover-stamp{position:absolute;left:calc(96 * var(--u));bottom:calc(54 * var(--u));
   z-index:3;font-family:var(--tech);font-weight:400;font-size:calc(13.5 * var(--u));
   letter-spacing:.24em;text-transform:uppercase;color:var(--muted-dark)}
+
+/* registered identity on 01.1, set as a small record rather than body copy */
+.legal{margin:calc(8 * var(--u)) 0 0;padding-top:calc(16 * var(--u));
+  border-top:calc(1 * var(--u)) solid var(--rule);display:grid;gap:calc(9 * var(--u))}
+.legal .lg{display:grid;grid-template-columns:calc(168 * var(--u)) 1fr;
+  gap:calc(18 * var(--u));align-items:baseline}
+.legal dt{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin:0}
+.legal dd{font-family:var(--sans);font-weight:600;font-size:calc(16 * var(--u));
+  line-height:1.3;color:var(--ink);margin:0;font-variant-numeric:tabular-nums}
+.dark .legal{border-top-color:var(--rule-dark)}
+.dark .legal dt{color:var(--muted-dark)}
+.dark .legal dd{color:var(--on-dark)}

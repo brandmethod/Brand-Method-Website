@@ -113,17 +113,15 @@ ROW_ORDER = ['Description', 'Scope', 'Cleanroom']
 def specrows(rows, fixed=False):
     """Render the spec block.
 
-    Project cards pass fixed=True: every card then carries the same three
-    rows in the same order, so the reference pages read as one table rather
-    than a different shape per project. A project with no cleanroom says so
-    rather than dropping the row and breaking the alignment.
+    Project cards pass fixed=True: the rows are then put in one order across
+    every card, so the reference pages read as one table rather than a
+    different shape per project. A row a project has nothing to say about is
+    dropped rather than padded out.
     """
     if fixed:
         have = {label: (value, iso) for label, value, iso in rows}
-        rows = []
-        for label in ROW_ORDER:
-            value, iso = have.get(label, ('Not applicable', False))
-            rows.append((label, value, iso))
+        rows = [(label, *have[label]) for label in ROW_ORDER if label in have]
+        rows += [(l, v, i) for l, (v, i) in have.items() if l not in ROW_ORDER]
     out = []
     for label, value, iso in rows:
         out.append(f'''<div class="sr"><dt>{esc(label)}</dt>'''
@@ -131,16 +129,65 @@ def specrows(rows, fixed=False):
     return '<dl class="specs">' + ''.join(out) + '</dl>'
 
 
-def pcard(img, flag, name, rows, alt=None):
+# IAQ's service lines, matched against the scope wording carried over from
+# the reference list so every project is filed under the same vocabulary.
+SERVICE_RULES = [
+    ('EPCC & Design Build', ('epcc', 'epcm', 'design & build', 'design and build',
+                             'general contractor', ' gc,', ' gc ', 'pcc', 'turnkey',
+                             'design, supply')),
+    ('Cleanroom Systems', ('cleanroom', 'clean room', 'dry room')),
+    ('Process Utilities', ('process utilit', 'process gas', 'chemical', 'gases',
+                           'upw', 'wwt', 'waste treatment', 'water treatment',
+                           'bulk gas', 'specialty gas')),
+    ('Tool Hook Up', ('hook up', 'hookup', 'tool install')),
+    ('ACMV & Mechanical', ('acmv', 'mechanical', 'ventilation', 'air conditioning',
+                           'chiller', 'chw', 'piping', 'hvac', 'plumbing')),
+    ('Electrical & Instrumentation', ('electrical', 'instrumentation', 'electrification',
+                                      'bms', 'e&i', 'power')),
+    ('Architecture & Fit Out', ('architect', 'fit out', 'interior', 'renovation',
+                                'csa', 'civil', 'extension', 'building work')),
+    ('Energy Management', ('district cooling', 'energy', 'solar')),
+]
+
+
+def services(scope, cleanroom=''):
+    """Pick the service categories a scope sentence describes, at most three."""
+    hay = f' {scope.lower()} '
+    found = [name for name, keys in SERVICE_RULES if any(k in hay for k in keys)]
+    if cleanroom and 'Cleanroom Systems' not in found:
+        found.insert(0, 'Cleanroom Systems')
+    return found[:3] or ['Specialist Contracting']
+
+
+def pcard(img, flag, name, rows, alt=None, tags=None, fixed=True):
+    """One project card: visual on top, identification and specs below.
+
+    ``tags`` carries the service categories the project was delivered under,
+    so a reader can see at a glance which of IAQ's service lines the job
+    used without reading the scope sentence.
+    """
+    if tags is None:
+        have = {label: value for label, value, _ in rows}
+        tags = services(have.get('Scope', ''),
+                        have.get('Cleanroom', '') or have.get('Environment', ''))
+    chips = ''
+    if tags:
+        chips = ('<ul class="svc">'
+                 + ''.join(f'<li>{esc(t)}</li>' for t in tags)
+                 + '</ul>')
     return f'''
       <article class="pcard">
         <img class="shot" src="img/{img}.jpg" alt="{esc(alt or name)}">
         <div class="panel">
           <div class="flag">{esc(flag)}</div>
           <h3 class="pname">{esc(name)}</h3>
-          {specrows(rows, fixed=True)}
+          {chips}
+          {specrows(rows, fixed=fixed)}
         </div>
       </article>'''
+
+
+
 
 
 def hero(img, part_idx, num, section, flag, title, rows, foot):
@@ -200,7 +247,7 @@ contents_parts = [
         ('02.5', 'EV Battery · Europe'), ('02.6', 'Semiconductor · Europe & Morocco'),
         ('02.7', 'Semiconductor & Display · China'), ('02.8', 'Photovoltaics'),
         ('02.9', 'Pharmaceutical & Medical'), ('02.10', 'District Cooling & Energy'),
-        ('02.11–17', 'Reference Index')]),
+        ('02.11+', 'Full Project Reference List')]),
     ('03', 'Safety, Quality & ESG', 'The standards every project is held to.', [
         ('03.1', 'ESG Commitments'), ('03.2', 'Certifications & Awards'),
         ('03.3', 'Safety & Recognition'), ('03.4', 'Closing'), ('03.5', 'Contacts')]),
@@ -459,7 +506,7 @@ slide(f'<div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg"
       fill=True)
 
 # ================================================================ PART 02
-divider(1, '02', 'Project References', 'Sections 02.1 to 02.11', 'refs-crew',
+divider(1, '02', 'Project References', 'Sections 02.1 to 02.47', 'refs-crew',
         ['200+ projects completed across three regions',
          'Over 1.5 million m² of cleanroom built',
          'ISO 3 to ISO 8 · Class 1 to Class 100K'])
@@ -494,7 +541,7 @@ slide(f'''<div class="maps">{r_html}</div>
 # One slide per category, two projects on each, a single card format throughout.
 slide('<div class="grid two">' + pcard('infineon-kulim', 'Kulim, Kedah · greenfield wafer fab', 'Infineon Kulim Wafer Fab 3', [('Cleanroom', 'ISO 4 · 5 · 6 · 7 (Class 10 · 100 · 1K · 10K)', True), ('Scope', 'PCC for cleanroom and mechanical works', False), ('Description', 'General contractor for WP06, KLM3 Expansion, 35,000 m² cleanroom area', False)]) + pcard('p-project', 'Advanced packaging · 75,000 m²', 'P Project', [('Cleanroom', 'ISO 4 to 7 (Class 10 to 10K)', True), ('Scope', 'Design & build GC: CSA, MEP, process utilities, chemical & gases system, waste treatment', False), ('Description', "Progressive-built EPCM contract model for the client's advanced packaging facility", False)]) + '\n    </div>',
       part_idx=1, num='02.2', title='Semiconductor · Malaysia',
-      note='Wafer fab, advanced packaging, test and assembly. Further Malaysian projects are listed in 02.11.',
+      note='Wafer fab, advanced packaging, test and assembly. The full reference list follows from 02.11.',
       foot='Semiconductor · Malaysia')
 
 slide('<div class="grid two">' + pcard('teksend', 'Photomask facility', 'Teksend Photomask', [('Cleanroom', 'Class 1 to Class 10K', True), ('Scope', 'EPCC for cleanroom, ACMV, electrical, process utility, BMS, PA, WWT, UPW, tool hookup', False), ('Description', 'Addition and alteration to an existing two-storey building with cleanroom facilities and ancillary office', False)]) + pcard('micron-msh', 'Progressive tool hookup', 'Micron MSH Tool HU', [('Scope', 'Progressive tool hook up', False), ('Description', '2,000 progressive tool hookup services for MSH', False)]) + '\n    </div>',
@@ -541,118 +588,107 @@ slide('<div class="grid two">' + pcard('klcc-dcp', 'Gas District Cooling (M) Sdn
 # The full reference list as the old company profile states it, pages 21 to
 # 68: ninety-one projects. The deck was carrying forty-six of them, and the
 # China section was listing fourteen of forty-two.
-# Every project in IAQ's own reference list, pages 21 to 68 of the company
-# profile, each with the photograph the profile pairs it with. Ninety-one in
-# all: (source page, half of that page, name, region, cleanroom class, scope).
+# The rest of IAQ's reference list, pages 21 to 68 of the company profile:
+# the seventy-three projects the industry slides above do not already cover,
+# each on the same two-up card as those slides, with the photograph the
+# profile pairs it with. (source page, half, name, region, class, scope)
 REFS = [
-    (21, 'top', 'Teksend Photomask', 'Singapore', 'Class 1 to Class 10K', 'EPCC: cleanroom, ACMV, electrical, process utility, BMS, PA, WWT, UPW, tool hook up'),
-    (21, 'bot', 'Micron MSH Tool Hook Up', 'Singapore', '', '2,000 progressive tool hook up services'),
-    (22, 'top', 'Micron F10A &amp; F10NX', 'Singapore', '', 'Interior design &amp; mechanical fit out, F10NX office optimisation'),
+    (22, 'top', 'Micron F10A & F10NX', 'Singapore', '', 'Interior design & mechanical fit out, F10NX office optimisation'),
     (22, 'bot', 'Caterpillar Asia', 'Malaysia', '', 'Three storey office renovation, 7T office'),
-    (23, 'top', 'M Project', 'Malaysia', '', 'Design &amp; build GC, greenfield food flavouring plant, 40,000 m²'),
-    (23, 'bot', 'P Project', 'Malaysia', 'ISO 4&ndash;7 (Class 10&ndash;10K)', 'Design &amp; build GC, advanced packaging facility, 75,000 m²'),
-    (24, 'top', 'Infineon Kulim Wafer Fab 3', 'Malaysia', 'ISO 4, 5, 6 &amp; 7', 'GC for WP06, KLM3 expansion, greenfield wafer fab, 35,000 m² cleanroom'),
-    (24, 'bot', 'XFAB Kuching 40K Expansion', 'Malaysia', 'ISO 5, 6 &amp; 7', 'Design and build, wafer fab extension, 30K to 40K capacity, 40,000 m²'),
-    (25, 'top', 'SOITEC PR1A Expansion', 'Malaysia', 'ISO 4, 5, 6 &amp; 7', 'EPCM consultant, new greenfield plant, 45,000 m²'),
+    (23, 'top', 'M Project', 'Malaysia', '', 'Design & build GC, greenfield food flavouring plant, 40,000 m²'),
+    (24, 'bot', 'XFAB Kuching 40K Expansion', 'Malaysia', 'ISO 5, 6 & 7', 'Design and build, wafer fab extension, 30K to 40K capacity, 40,000 m²'),
+    (25, 'top', 'SOITEC PR1A Expansion', 'Malaysia', 'ISO 4, 5, 6 & 7', 'EPCM consultant, new greenfield plant, 45,000 m²'),
     (25, 'bot', 'Robert Bosch Testing Manufacturing Plant', 'Malaysia', 'ISO 6, 7', 'GC, greenfield testing and manufacturing plant, 25,000 m²'),
-    (26, 'top', 'Wafer Fab Facility &amp; Expansion', 'Malaysia', 'ISO 5 (Class 100)', 'EPCC and design &amp; build, FAB1E A/B expansion, new CUB 5,000 m²'),
-    (26, 'bot', 'P Project &ndash; MEP Works', 'Malaysia', '', 'Retrofit existing office into mega lab, 7,000 m²'),
+    (26, 'top', 'Wafer Fab Facility & Expansion', 'Malaysia', 'ISO 5 (Class 100)', 'EPCC and design & build, FAB1E A/B expansion, new CUB 5,000 m²'),
+    (26, 'bot', 'P Project – MEP Works', 'Malaysia', '', 'Retrofit existing office into mega lab, 7,000 m²'),
     (27, 'top', 'Texas Instrument, Melaka', 'Malaysia', 'ISO 5, 6, 7', 'Facilitation works for residual management, 32,000 m²'),
     (27, 'bot', 'Texas Instrument (M) Sdn Bhd', 'Kuala Lumpur', 'ISO 5, 6, 7', 'DLP cleanroom project'),
     (28, 'top', 'Western Digital (M) Sdn Bhd', 'Petaling Jaya', '', 'Phase 2 and 3 renovation, mechanical, electrical and cleanroom'),
-    (28, 'bot', 'WD Media (M) Sdn Bhd', 'Penang', 'ISO 6 (Class 1K)', 'PCC, MA 28 &amp; MA 29, cleanroom, HVAC, FMCS, hookup'),
+    (28, 'bot', 'WD Media (M) Sdn Bhd', 'Penang', 'ISO 6 (Class 1K)', 'PCC, MA 28 & MA 29, cleanroom, HVAC, FMCS, hookup'),
     (29, 'top', 'STMicroelectronics Sdn Bhd', 'Johor', 'ISO 7 (Class 10K)', '3 storey production factory, cleanroom and ACMV'),
-    (29, 'bot', 'Infineon Technologies (M) Sdn Bhd', 'Melaka', 'ISO 6, 7', 'EPCM-GMP, Block 8 testing, probe &amp; assembly, 43,000 m²'),
-    (30, 'top', 'MEMC Ipoh Sdn Bhd', 'Malaysia', 'ISO 3 to 7 (Class 1&ndash;10K)', 'Greenfield project, MEP, cleanroom, FMCS, CSA and tools hookup'),
+    (29, 'bot', 'Infineon Technologies (M) Sdn Bhd', 'Melaka', 'ISO 6, 7', 'EPCM-GMP, Block 8 testing, probe & assembly, 43,000 m²'),
+    (30, 'top', 'MEMC Ipoh Sdn Bhd', 'Malaysia', 'ISO 3 to 7 (Class 1–10K)', 'Greenfield project, MEP, cleanroom, FMCS, CSA and tools hookup'),
     (30, 'bot', 'Flextronic Shah Alam Sdn Bhd', 'Malaysia', 'ISO 7 (Class 10K)', 'PCC, 33kV substation, mechanical, cleanroom, civil and structural'),
-    (31, 'top', 'First Solar Malaysia Sdn Bhd', 'Malaysia', '', 'PCC mechanical and electrical, KMW building, forming gas plant'),
     (31, 'bot', 'AUO Sunpower Melaka', 'Malaysia', '', 'Fab 3A solar cell manufacturing, CSA, utilities, HVAC, electrical'),
-    (32, 'top', '160 MW Hyperscale Data Centre', 'Malaysia', '', 'Mechanical packages 1 &amp; 2, office, data halls, utility building'),
-    (32, 'bot', 'Microsoft DTC-KUL 03', 'Malaysia', '', 'PCC for CHW and CW piping, 9.6 MW data centre phase 1'),
-    (33, 'top', 'Insulet', 'Malaysia', 'ISO 8 (Class 100K)', 'Design and build, electronic medical device plant, greenfield'),
     (33, 'bot', 'Vital Healthcare Sdn Bhd', 'Malaysia', 'ISO 8 (Class 100K)', 'GC, medical device plant, 33kV substation, MEP'),
-    (34, 'top', 'Ain Medicare Sdn Bhd', 'Malaysia', 'ISO 8 (Class 100K)', 'EPCC, CSA, cleanroom and M&amp;E, pharmaceutical building'),
-    (34, 'bot', 'Pharmaniaga, Puchong', 'Malaysia', 'ISO 5, 7, 8', 'Cleanroom and ACMV, small volume parenteral facility'),
+    (34, 'top', 'Ain Medicare Sdn Bhd', 'Malaysia', 'ISO 8 (Class 100K)', 'EPCC, CSA, cleanroom and M&E, pharmaceutical building'),
     (35, 'top', 'Elegant Aura (M) Sdn Bhd', 'Malaysia', 'GMP Grade D', 'PCC for HVAC and cleanroom system'),
-    (35, 'bot', 'National University of Singapore', 'Singapore', 'ISO 6 &amp; 7', 'M&amp;E and cleanroom, tissue culture laboratory'),
+    (35, 'bot', 'National University of Singapore', 'Singapore', 'ISO 6 & 7', 'M&E and cleanroom, tissue culture laboratory'),
     (36, 'top', 'Matrix (M) Sdn Bhd', 'Malaysia', '', 'PCC, CSA, HVAC, electrical, fire protection and process utilities'),
-    (36, 'bot', 'T Hasegawa', 'Malaysia', '', 'Spray dryer &amp; microwave tunnel renovation, MDR mechanical, ACMV'),
-    (37, 'top', 'GDC Putrajaya', 'Malaysia', '', 'EPCC plant electrification and chiller replacement, PICC plant'),
+    (36, 'bot', 'T Hasegawa', 'Malaysia', '', 'Spray dryer & microwave tunnel renovation, MDR mechanical, ACMV'),
     (37, 'bot', 'KLCC KGP KL', 'Malaysia', '', 'EPCC of two electrical centrifugal chillers, KLCC district cooling'),
-    (38, 'top', 'Gas District Cooling (M) Sdn Bhd', 'Malaysia', '', 'KLCC district cooling plant, largest DCC in Malaysia, ACMV, E&amp;I, CSA'),
     (38, 'bot', 'Rapid MCD Chemical Plant', 'Malaysia', '', 'Field erection of mechanical piping system'),
     (39, 'top', 'Pagoh Education Hub', 'Malaysia', '', 'EPCC, operation and maintenance of DCS'),
-    (39, 'bot', 'Rapid Petronas Pengerang Co-gen Plant', 'Malaysia', '', 'Mechanical erection, BoP piping &amp; WCCT, first co-gen plant in SEA'),
-    (41, 'top', '28/22nm CMOS &amp; 16/12nm FinFET Wafer Fab', 'Europe', 'Class 1 to Class 10K', 'Cleanroom &amp; mechanical general contractor, design to commissioning'),
-    (41, 'bot', 'Morrow Batteries', 'Norway', 'Dry Room', 'Cleanroom and dry room architecture, ACMV, 8,600 m²'),
-    (42, 'top', 'Northvolt AB, Skellefte&aring;', 'Sweden', 'Dry Room', 'Europe gigafactory for lithium-ion battery, 62,000 m²'),
+    (39, 'bot', 'Rapid Petronas Pengerang Co-gen Plant', 'Malaysia', '', 'Mechanical erection, BoP piping & WCCT, first co-gen plant in SEA'),
     (42, 'bot', 'Envision', 'France', 'Dry Room', 'Cleanroom, dry room architecture works'),
     (43, 'top', 'ACC Phase 1', 'France', 'Dry Room', 'Greenfield, 8,000 m² dry room architectural system, 35,000 m²'),
     (43, 'bot', 'Soitec Semiconductor, Paris', 'France', '', 'EPCC cleanroom and MEP, 11,000 m²'),
     (44, 'top', 'Xfab Semiconductor, Paris', 'France', 'ISO 5 (Class 100)', 'Cleanroom, MEP and tools hookup, progressive hookup, 5,000 m²'),
     (44, 'bot', 'Nemotek, Rabat', 'Morocco', 'ISO 5 (Class 100)', 'EPCC cleanroom and MEP works, 11,000 m²'),
-    (45, 'top', 'STMicroelectronics, Casablanca', 'Morocco', 'ISO 5 (Class 100)', 'Cleanroom, MEP and hookup works, 60,000 m²'),
-    (45, 'bot', 'Kimoto', 'Poland', 'ISO 5 (Class 100)', 'Cleanroom, mechanical &amp; electrical system'),
-    (46, 'top', 'Sumika', 'Poland', 'ISO 5 (Class 100)', 'Cleanroom architecture, mechanical &amp; electrical system'),
-    (48, 'top', 'Ferrotec Semiconductor HangZhou Co. Ltd', 'China', 'ISO 4, 5', 'EPCC cleanroom, MEP and hookup works, 23,400 m²'),
-    (48, 'bot', 'All-Cent RF Technology (Wuxi) Co., Ltd', 'China', 'ISO 5 &amp; 6', 'EPCC for MEP works, 25,600 m²'),
-    (49, 'top', 'Infineon Technologies (Wuxi) Co. Ltd', 'China', 'ISO 5 (Class 100)', 'EPCC cleanroom, MEP and hookup works, 8,000 m²'),
-    (49, 'bot', 'SMIC, Ningbo', 'China', 'ISO 5 &amp; 6', 'EPCC for MEP works, 22,000 m²'),
+    (45, 'bot', 'Kimoto', 'Poland', 'ISO 5 (Class 100)', 'Cleanroom, mechanical & electrical system'),
+    (46, 'top', 'Sumika', 'Poland', 'ISO 5 (Class 100)', 'Cleanroom architecture, mechanical & electrical system'),
+    (48, 'bot', 'All-Cent RF Technology (Wuxi) Co., Ltd', 'China', 'ISO 5 & 6', 'EPCC for MEP works, 25,600 m²'),
+    (49, 'bot', 'SMIC, Ningbo', 'China', 'ISO 5 & 6', 'EPCC for MEP works, 22,000 m²'),
     (50, 'top', 'Kunshan Visionox Display Co., Ltd', 'China', 'ISO 5, 6, 7', 'PCC cleanroom, MEP and hookup works, 27,000 m²'),
     (50, 'bot', 'GS Magic Drive Inc.', 'China', 'ISO 4, 5, 6', 'PCC cleanroom and MEP works, 68,000 m²'),
     (51, 'top', 'STS Microelectronics (Shenzhen) Co., Ltd', 'China', 'ISO 6 (Class 1K)', 'Cleanroom Class 1K system, 4,800 m²'),
     (51, 'bot', 'Shantou Goworld Display Co., Ltd', 'China', 'ISO 5, 6, 7', 'Cleanroom and MEP works, 14,300 m²'),
     (52, 'top', 'CSR Zhuzhou Electric Locomotive Research Institute', 'China', 'ISO 5, 6, 7', 'Cleanroom and MEP works, 22,000 m²'),
     (52, 'bot', 'M-Flex (Suzhou) Co., Ltd', 'China', 'ISO 5, 6, 7', 'Cleanroom and MEP works, 25,000 m²'),
-    (53, 'top', 'Maxtor Technology (Suzhou) Co., Ltd', 'China', 'ISO 5 &amp; 6', 'Cleanroom and MEP works, 95,000 m²'),
+    (53, 'top', 'Maxtor Technology (Suzhou) Co., Ltd', 'China', 'ISO 5 & 6', 'Cleanroom and MEP works, 95,000 m²'),
     (53, 'bot', 'MMI Industries (Wuxi) Co., Ltd', 'China', 'ISO 5, 6, 7', 'Cleanroom and MEP works, 7,200 m²'),
     (54, 'top', 'Snap On Asia Manufacturing (Kunshan) Co., Ltd', 'China', '', 'General contractor, CSA, steel structure and MEP, 4,800 m²'),
-    (54, 'bot', 'Huawei Technologies Co., Ltd', 'China', 'ISO 6 &amp; 7', 'Cleanroom and MEP works, 3,400 m²'),
+    (54, 'bot', 'Huawei Technologies Co., Ltd', 'China', 'ISO 6 & 7', 'Cleanroom and MEP works, 3,400 m²'),
     (55, 'top', 'Suzhou Golden Concord Technology Co., Ltd', 'China', 'ISO 5 (Class 100)', 'PCC cleanroom and MEP works, 38,500 m²'),
     (55, 'bot', 'Shanghai Roche Pharmaceuticals Ltd.', 'China', 'ISO B (Class 100)', 'PCC cleanroom and MEP works, 5,000 m²'),
-    (56, 'top', 'Forecyte Bio Limited (Shanghai) Co., Ltd', 'China', 'ISO C &amp; D', 'Cleanroom and MEP works, 13,800 m²'),
-    (56, 'bot', 'Suzhou Ascentage Pharma Co., Ltd', 'China', 'ISO C &amp; D', 'Cleanroom and MEP works, 25,800 m²'),
-    (57, 'top', 'Jiangsu Genscript Biotech Co., Ltd', 'China', 'ISO C &amp; D', 'Cleanroom and MEP works, 6,000 m²'),
-    (57, 'bot', 'Mindray Group Co., Ltd', 'China', 'ISO C &amp; D', 'Cleanroom and MEP works, 12,000 m²'),
-    (58, 'top', 'EpimAb Biotechnology Su Zhou Co., Ltd', 'China', 'ISO C &amp; D', 'Cleanroom and MEP works, 5,200 m²'),
-    (58, 'bot', 'Longxiang Pharma Science and Technology Co., Ltd', 'China', 'ISO B, C &amp; D', 'Cleanroom and MEP works, 46,000 m²'),
-    (59, 'top', 'Sumitomo Medical (Suzhou) Co., Ltd', 'China', 'ISO 7 &amp; 8', 'Cleanroom and MEP works, 3,000 m²'),
+    (56, 'top', 'Forecyte Bio Limited (Shanghai) Co., Ltd', 'China', 'ISO C & D', 'Cleanroom and MEP works, 13,800 m²'),
+    (56, 'bot', 'Suzhou Ascentage Pharma Co., Ltd', 'China', 'ISO C & D', 'Cleanroom and MEP works, 25,800 m²'),
+    (57, 'top', 'Jiangsu Genscript Biotech Co., Ltd', 'China', 'ISO C & D', 'Cleanroom and MEP works, 6,000 m²'),
+    (57, 'bot', 'Mindray Group Co., Ltd', 'China', 'ISO C & D', 'Cleanroom and MEP works, 12,000 m²'),
+    (58, 'top', 'EpimAb Biotechnology Su Zhou Co., Ltd', 'China', 'ISO C & D', 'Cleanroom and MEP works, 5,200 m²'),
+    (58, 'bot', 'Longxiang Pharma Science and Technology Co., Ltd', 'China', 'ISO B, C & D', 'Cleanroom and MEP works, 46,000 m²'),
+    (59, 'top', 'Sumitomo Medical (Suzhou) Co., Ltd', 'China', 'ISO 7 & 8', 'Cleanroom and MEP works, 3,000 m²'),
     (59, 'bot', 'Suzhou Capsugel Co., Ltd', 'China', 'ISO 7 (Class 10K)', 'Cleanroom and MEP works, 21,500 m²'),
     (60, 'top', 'AW (Suzhou) Co., Ltd', 'China', '', 'Electrical system, 45,000 m²'),
-    (60, 'bot', 'AAM Automobile (Changshu) Co., Ltd', 'China', '', 'EPC for mechanical &amp; electrical system, 18,000 m²'),
+    (60, 'bot', 'AAM Automobile (Changshu) Co., Ltd', 'China', '', 'EPC for mechanical & electrical system, 18,000 m²'),
     (61, 'top', 'ZF (China) Investment Co., Ltd', 'China', '', 'Electrical system, 44,000 m²'),
-    (61, 'bot', 'Umicore Automotive Catalyst (Su Zhou) Co., Ltd', 'China', '', 'EPC for mechanical &amp; electrical system, 6,800 m²'),
+    (61, 'bot', 'Umicore Automotive Catalyst (Su Zhou) Co., Ltd', 'China', '', 'EPC for mechanical & electrical system, 6,800 m²'),
     (62, 'top', 'Mary Kay (China) Cosmetics Co., Ltd', 'China', '', 'EPC for mechanical and electrical system, 26,000 m²'),
     (62, 'bot', 'Celestica (Dongguan-SSL) Technology Co., Ltd', 'China', '', 'General contractor, 13,000 m²'),
     (63, 'top', 'Intercos Cosmetics (Suzhou) Co., Ltd', 'China', '', 'EPC for mechanical and electrical system, 30,000 m²'),
     (63, 'bot', 'Voith Fabric (Kunshan) Co., Ltd', 'China', '', 'EPC for mechanical and electrical system, 11,000 m²'),
-    (64, 'top', 'Chint Solar Technology Co., Ltd', 'China', 'ISO 8 (Class 100K)', 'Cleanroom, ACMV, process utilities and tools hookup, 57,000 m²'),
     (64, 'bot', 'HVOLT Lithium-ion Battery Co., Ltd', 'China', 'ISO 7 (Class 10K)', 'Air-conditioning system, 79,000 m²'),
-    (65, 'top', 'Jiang Su Senior Technology Co., Ltd', 'China', 'ISO 7 &amp; 8', 'Cleanroom, ACMV, process utilities and tools hookup, 70,000 m²'),
+    (65, 'top', 'Jiang Su Senior Technology Co., Ltd', 'China', 'ISO 7 & 8', 'Cleanroom, ACMV, process utilities and tools hookup, 70,000 m²'),
     (65, 'bot', 'Jin Neng Clean Energy Technology Co., Ltd', 'China', 'ISO 8 (Class 100K)', 'Cleanroom system, 20,000 m²'),
-    (66, 'top', 'Juli New Energy Co., Ltd', 'China', 'ISO 6 &amp; 7', 'Cleanroom, ACMV, process utilities and tools hookup, 9,600 m²'),
+    (66, 'top', 'Juli New Energy Co., Ltd', 'China', 'ISO 6 & 7', 'Cleanroom, ACMV, process utilities and tools hookup, 9,600 m²'),
     (66, 'bot', 'Baoding Fengfan Storage Battery Co., Ltd', 'China', 'ISO 7 (Class 10K)', 'Cleanroom system, 4,000 m²'),
-    (67, 'top', 'Unilever R&amp;D Center', 'China', '', 'Mechanical and electrical system, 37,000 m²'),
-    (67, 'bot', 'GE (China) R&amp;D Center', 'China', '', 'Mechanical and electrical system, 36,000 m²'),
-    (68, 'top', 'Dow Shanghai R&amp;D Center', 'China', '', 'Mechanical and electrical system, 100,000 m²'),
-    (68, 'bot', 'Rohm and Haas (China) R&amp;D Center', 'China', '', 'Mechanical and electrical system, 27,000 m²'),
+    (67, 'top', 'Unilever R&D Center', 'China', '', 'Mechanical and electrical system, 37,000 m²'),
+    (67, 'bot', 'GE (China) R&D Center', 'China', '', 'Mechanical and electrical system, 36,000 m²'),
+    (68, 'top', 'Dow Shanghai R&D Center', 'China', '', 'Mechanical and electrical system, 100,000 m²'),
+    (68, 'bot', 'Rohm and Haas (China) R&D Center', 'China', '', 'Mechanical and electrical system, 27,000 m²'),
 ]
-# balanced across the sheets, so the last one is not left with an orphan
-SHEETS = -(-len(REFS) // 15)
-ref_pages = [REFS[i * len(REFS) // SHEETS:(i + 1) * len(REFS) // SHEETS]
-             for i in range(SHEETS)]
-for k, chunk in enumerate(ref_pages, 1):
+
+
+def ref_region(pg):
+    return 'Malaysia & Singapore' if pg < 40 else ('Europe & Morocco' if pg < 47 else 'China')
+
+
+ref_pages = [REFS[i:i + 2] for i in range(0, len(REFS), 2)]
+for k, pair in enumerate(ref_pages, 1):
     cards = ''.join(
-        f'<article class="rcard"><img src="img/ref/p{pg}{half[0]}.jpg" alt="{esc(n)}">'
-        f'<div class="rc-body"><h3 class="rc-name">{n}</h3>'
-        f'<div class="rc-meta">{rg}' + (f' &middot; {cl}' if cl else '') + '</div>'
-        f'<p class="rc-scope">{sc}</p></div></article>'
-        for pg, half, n, rg, cl, sc in chunk)
-    slide(f'<div class="rgrid">{cards}</div>',
-          part_idx=1, num=f'02.{10 + k}', title='Reference Index',
-          note=f"Every project in IAQ's reference list, with the photograph from the "
-               f"company profile. Sheet {k} of {len(ref_pages)}.",
-          foot='Project References', fill=True)
+        pcard(f'ref/p{pg}{half[0]}', rg, n,
+              [('Scope', sc, False)] + ([('Cleanroom', cl, True)] if cl else []),
+              tags=services(sc, cl), fixed=False)
+        for pg, half, n, rg, cl, sc in pair)
+    regions = [ref_region(r[0]) for r in pair]
+    first = 2 * k - 1
+    last = min(first + 1, len(REFS))
+    span = f'Project {first}' if first == last else f'Projects {first}\u2013{last}'
+    wide = ' one' if len(pair) == 1 else ''
+    slide(f'<div class="grid two{wide}">{cards}\n    </div>',
+          part_idx=1, num=f'02.{10 + k}', title=regions[0],
+          note=f'{span} of {len(REFS)} from IAQ\u2019s own reference list.',
+          foot='Project References', fill=True, cls='refpg')
 
 # ================================================================ PART 03
 divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.5', 'esg-safety',

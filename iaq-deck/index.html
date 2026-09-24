@@ -1565,6 +1565,31 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .rc-scope{font-family:var(--sans);font-weight:400;font-size:calc(10.5 * var(--u));
   line-height:1.35;margin:0;color:var(--muted)}
 
+/* ---- service categories on a project card ------------------------------ */
+.svc{list-style:none;margin:calc(2 * var(--u)) 0 calc(4 * var(--u));padding:0;
+  display:flex;flex-wrap:wrap;gap:calc(8 * var(--u))}
+.svc li{font-family:var(--tech);font-weight:600;font-size:calc(11.5 * var(--u));
+  letter-spacing:.16em;text-transform:uppercase;line-height:1;color:var(--signal);
+  padding:calc(7 * var(--u)) calc(12 * var(--u));
+  border:calc(1 * var(--u)) solid rgba(210,35,42,.34);background:rgba(210,35,42,.055)}
+.dark .svc li{color:#fff;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)}
+
+/* ---- reference pages: two projects filling the canvas ------------------ */
+.refpg .canvas.fill .grid.two{height:100%;align-content:stretch}
+.refpg .pcard{grid-template-rows:1fr auto;min-height:0}
+.refpg .shot{aspect-ratio:auto;height:100%;min-height:0}
+.refpg .panel{padding:calc(22 * var(--u)) calc(26 * var(--u)) calc(24 * var(--u))}
+.refpg .sr{grid-template-columns:calc(112 * var(--u)) 1fr}
+/* odd page out: one project runs the full width, image beside the panel */
+.refpg .grid.two.one{grid-template-columns:1fr}
+.refpg .grid.one .pcard{grid-template-columns:calc(1020 * var(--u)) 1fr;grid-template-rows:1fr}
+.refpg .grid.one .shot{height:100%}
+.refpg .grid.one .panel{align-content:center;border-top:0;
+  border-left:calc(3 * var(--u)) solid var(--signal)}
+.refpg .canvas.fill .grid.two.one{align-content:center}
+.refpg .grid.one .pcard{height:calc(430 * var(--u))}
+.refpg .grid.one .panel{padding:calc(34 * var(--u)) calc(40 * var(--u))}
+
 </style>
 </head>
 <body>
@@ -1593,7 +1618,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">01 / 36<span class="edition">· Edition 2026</span></span></div>
+    <div class="bl-l"><span class="folio">01 / 66<span class="edition">· Edition 2026</span></span></div>
   </footer>
 </section></div>
 
@@ -1625,7 +1650,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
             <p class="cp-note">The work itself, grouped by industry and region.</p>
           </div>
         </div>
-        <ul class="cp-list"><li><span class="ci-n">02.1</span><span class="ci-t">Portfolio Overview</span></li><li><span class="ci-n">02.2</span><span class="ci-t">Semiconductor · Malaysia</span></li><li><span class="ci-n">02.3</span><span class="ci-t">Semiconductor · Singapore</span></li><li><span class="ci-n">02.4</span><span class="ci-t">Data Centre</span></li><li><span class="ci-n">02.5</span><span class="ci-t">EV Battery · Europe</span></li><li><span class="ci-n">02.6</span><span class="ci-t">Semiconductor · Europe &amp; Morocco</span></li><li><span class="ci-n">02.7</span><span class="ci-t">Semiconductor &amp; Display · China</span></li><li><span class="ci-n">02.8</span><span class="ci-t">Photovoltaics</span></li><li><span class="ci-n">02.9</span><span class="ci-t">Pharmaceutical &amp; Medical</span></li><li><span class="ci-n">02.10</span><span class="ci-t">District Cooling &amp; Energy</span></li><li><span class="ci-n">02.11–17</span><span class="ci-t">Reference Index</span></li></ul>
+        <ul class="cp-list"><li><span class="ci-n">02.1</span><span class="ci-t">Portfolio Overview</span></li><li><span class="ci-n">02.2</span><span class="ci-t">Semiconductor · Malaysia</span></li><li><span class="ci-n">02.3</span><span class="ci-t">Semiconductor · Singapore</span></li><li><span class="ci-n">02.4</span><span class="ci-t">Data Centre</span></li><li><span class="ci-n">02.5</span><span class="ci-t">EV Battery · Europe</span></li><li><span class="ci-n">02.6</span><span class="ci-t">Semiconductor · Europe &amp; Morocco</span></li><li><span class="ci-n">02.7</span><span class="ci-t">Semiconductor &amp; Display · China</span></li><li><span class="ci-n">02.8</span><span class="ci-t">Photovoltaics</span></li><li><span class="ci-n">02.9</span><span class="ci-t">Pharmaceutical &amp; Medical</span></li><li><span class="ci-n">02.10</span><span class="ci-t">District Cooling &amp; Energy</span></li><li><span class="ci-n">02.11+</span><span class="ci-t">Full Project Reference List</span></li></ul>
       </div>
       <div class="cpart">
         <div class="cp-head">
@@ -1640,7 +1665,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">02 / 36</span></div>
+    <div class="bl-l"><span class="folio">02 / 66</span></div>
     <div class="bl-c"></div>
     <div class="bl-r">Contents</div>
   </footer>
@@ -1662,7 +1687,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">03 / 36</span></div>
+    <div class="bl-l"><span class="folio">03 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1704,7 +1729,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">04 / 36</span></div>
+    <div class="bl-l"><span class="folio">04 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1730,7 +1755,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">05 / 36</span></div>
+    <div class="bl-l"><span class="folio">05 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1748,7 +1773,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="timeline"><div class="tl-offices"><span class="label">Offices opened</span><div class="offs"><span class="off"><span class="off-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><span class="off-name">Malaysia</span><span class="off-yr">1995</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#C1272D"/><path d="M24 10.4l2.55 7.85-6.68-4.85h8.26l-6.68 4.85z" fill="none" stroke="#006233" stroke-width="1.15"/></svg></span><span class="off-name">Morocco</span><span class="off-yr">2000</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#DE2910"/><path d="M9 4l1.4 4.3H15l-3.7 2.7 1.4 4.3L9 12.6l-3.7 2.7 1.4-4.3L3 8.3h4.6z" fill="#FFDE00"/><g fill="#FFDE00"><circle cx="18" cy="4" r="1.3"/><circle cx="21.5" cy="7.5" r="1.3"/><circle cx="21.5" cy="12.5" r="1.3"/><circle cx="18" cy="16" r="1.3"/></g></svg></span><span class="off-name">China</span><span class="off-yr">2006</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="15" fill="#fff"/><rect y="15" width="48" height="15" fill="#DC143C"/></svg></span><span class="off-name">Poland</span><span class="off-yr">2007</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#002395"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#ED2939"/></svg></span><span class="off-name">France</span><span class="off-yr">2008</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><span class="off-name">Sweden</span><span class="off-yr">2020</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><span class="off-name">Singapore</span><span class="off-yr">2023</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><span class="off-name">Germany</span><span class="off-yr">2025</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><span class="off-name">United States</span><span class="off-yr">2026</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><span class="off-name">India</span><span class="off-yr">2026</span></span></div></div><div class="tl-key"><span class="k k-e">EPCC projects</span><span class="k k-g">Energy projects</span><span class="k k-t">Tool utility projects</span></div><div class="tl-track"><div class="tl-cols" style="grid-template-columns:repeat(7,1fr)"><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">1995</div><ul class="tl-list"><li class="k-e">Established as a cleanroom specialist</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2000</div><ul class="tl-list"><li class="k-e">(EPCC) ST Microelectronics, Class 10K cleanroom</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2008</div><ul class="tl-list"><li class="k-e">(PCC) Western Digital PJ, Class 10 cleanroom</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2009</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2013</div><ul class="tl-list"><li class="k-e">(PCC) MRT Project tunnel station M&amp;E</li><li class="k-e">(EPC) Infineon MKZ, Class 1K cleanroom</li><li class="k-e">(EPCC) SilTerra FAB</li><li class="k-g">(PCC) Rapid Project Siemens powerplant piping works</li><li class="k-g">(BOT) Pagoh Edu Hub DCS</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2016</div><ul class="tl-list"><li class="k-g">(GC) KLCC DCC Plant, largest DCC plant in Malaysia</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2017</div><ul class="tl-list"><li class="k-e">(GC) Ain Medicare</li></ul></div></div></div><div class="tl-track"><div class="tl-cols" style="grid-template-columns:repeat(6,1fr)"><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2020</div><ul class="tl-list"><li class="k-e">(GC) Vital HC</li><li class="k-e">(GC / PCC) Robert Bosch</li><li class="k-e">(GC / PCC) P Project</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2021</div><ul class="tl-list"><li class="k-e">(PCC) Microsoft Data Center</li><li class="k-e">(GC / D&amp;B) SilTerra expansion</li><li class="k-e">(EPCM / D&amp;B) Soitec PR1A expansion</li><li class="k-e">(GC / EPCM) Infineon IFKM3 expansion</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2022</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) XFAB 40K expansion</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2024</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) Progressive Build P Project</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2025</div><ul class="tl-list"><li class="k-e">(GC / D&amp;B) Hasegawa</li><li class="k-e">(PCC) 160MW hyperscale data centre</li><li class="k-e">(EPCC) ESCM Germany</li><li class="k-g">(EPCC) KLCC DCS chiller upgrading</li></ul></div><div class="tl-yr"><span class="tl-dot"></span><div class="tl-year">2026</div><ul class="tl-list"><li class="k-e">(D&amp;B) Tata Dholera DF1</li><li class="k-t">(EPCM / HU) Micron MSH</li><li class="k-g">(EPCC) GDC Putrajaya chiller upgrading</li></ul></div></div></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">06 / 36</span></div>
+    <div class="bl-l"><span class="folio">06 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1766,7 +1791,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="foot-grid"><div class="foot-map"><img src="img/map-base.png" alt="IAQ global footprint"><span class="pin" style="left:21.00%;top:52.00%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">United States</b></span><span class="pin" style="left:44.50%;top:32.05%"><i></i><b class="l" style="--dy:calc(-16 * var(--u))">Ireland</b></span><span class="pin" style="left:49.95%;top:25.00%"><i></i><b class="l" style="--dy:calc(-10 * var(--u))">Sweden</b></span><span class="pin" style="left:49.75%;top:33.95%"><i></i><b class="l" style="--dy:calc(21 * var(--u))">Germany</b></span><span class="pin" style="left:67.70%;top:55.20%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">India</b></span><span class="pin" style="left:75.20%;top:56.10%"><i></i><b class="r" style="--dy:calc(-18 * var(--u))">Malaysia</b></span><span class="pin" style="left:75.35%;top:56.65%"><i></i><b class="r" style="--dy:calc(22 * var(--u))">Singapore</b></span></div><div class="mkts"><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><div class="mk-yr">1995</div><div class="mk-tx"><h3 class="mk-name">Malaysia</h3><p class="mk-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><div class="mk-yr">2020</div><div class="mk-tx"><h3 class="mk-name">Sweden</h3><p class="mk-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><div class="mk-yr">2023</div><div class="mk-tx"><h3 class="mk-name">Singapore</h3><p class="mk-note">Design &amp; build EPCM services to global clients in the semiconductor industry.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><div class="mk-yr">2025</div><div class="mk-tx"><h3 class="mk-name">Germany</h3><p class="mk-note">EPCC services following the semiconductor industry expansion in Europe.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">India</h3><p class="mk-note">D&amp;B turnkey delivery for India&rsquo;s first wafer fab.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">United States</h3><p class="mk-note">Entry to the US following the localisation of advanced technology facilities.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#169B62"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#FF883E"/></svg></span><div class="mk-yr">&mdash;</div><div class="mk-tx"><h3 class="mk-name">Ireland</h3><p class="mk-note">Newest market. Scope and year to be confirmed by IAQ.</p></div></div></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">07 / 36</span></div>
+    <div class="bl-l"><span class="folio">07 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1808,7 +1833,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       </article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">08 / 36</span></div>
+    <div class="bl-l"><span class="folio">08 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1826,7 +1851,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><span class="cc-ent">IAQ Solutions Sdn Bhd</span><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><span class="cc-ent">IAQ Utility Solutions Sdn Bhd</span><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Installation Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><span class="cc-ent">IAQ Energy Facility Management Sdn Bhd</span><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">09 / 36</span></div>
+    <div class="bl-l"><span class="folio">09 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1844,7 +1869,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="dmrows"><article class="dmrow"><div class="dr-abbr">EPCM</div><div class="dr-body"><h3 class="dr-name">Engineering, Procurement &amp; Construction Management</h3><p class="dr-note">Management of engineering, procurement and construction for semiconductor manufacturing, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p><div class="dr-foot"><ul class="dr-ph"><li class="on">Engineering</li><li class="on">Procurement</li><li class="on">Construction</li><li class="">Commissioning</li><li class="">Operation</li></ul><p class="dr-refs">SilTerra expansion &middot; Soitec PR1A expansion &middot; Infineon IFKM3 expansion &middot; Micron MSH</p></div></div></article><article class="dmrow"><div class="dr-abbr">EPCC</div><div class="dr-body"><h3 class="dr-name">Engineering, Procurement, Construction &amp; Commissioning</h3><p class="dr-note">Full turnkey delivery from conception to operation, completion and maintenance, with every stage managed from initial design through commissioning.</p><div class="dr-foot"><ul class="dr-ph"><li class="on">Engineering</li><li class="on">Procurement</li><li class="on">Construction</li><li class="on">Commissioning</li><li class="">Operation</li></ul><p class="dr-refs">ST Microelectronics &middot; SilTerra FAB &middot; ESCM Germany &middot; KLCC DCS chiller upgrading</p></div></div></article><article class="dmrow"><div class="dr-abbr">EFM</div><div class="dr-body"><h3 class="dr-name">Energy Facility Management</h3><p class="dr-note">Ongoing energy and facility management that optimises operations and reduces carbon footprint, keeping facilities at the highest levels of efficiency.</p><div class="dr-foot"><ul class="dr-ph"><li class="">Engineering</li><li class="">Procurement</li><li class="">Construction</li><li class="">Commissioning</li><li class="on">Operation</li></ul><p class="dr-refs">KLCC DCC Plant &middot; GDC Putrajaya chiller upgrading &middot; Pagoh Edu Hub DCS</p></div></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">10 / 36</span></div>
+    <div class="bl-l"><span class="folio">10 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1866,7 +1891,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">11 / 36</span></div>
+    <div class="bl-l"><span class="folio">11 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1884,7 +1909,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg" alt="Semiconductor"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><h3 class="ind-name">Semiconductor</h3><p class="ind-note">Wafer fab, advanced packaging, test &amp; assembly</p></div></article><article class="ind"><img src="img/microsoft-kul03.jpg" alt="Data Centre"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1"/><rect x="4" y="11" width="16" height="5" rx="1"/><rect x="4" y="18" width="16" height="3" rx="1"/><path d="M7 6.5h.01M7 13.5h.01"/></svg><h3 class="ind-name">Data Centre</h3><p class="ind-note">Hyperscale cooling, security, uptime</p></div></article><article class="ind"><img src="img/northvolt.jpg" alt="EV Battery"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M18 11h3v2h-3"/><path d="M11 9.5l-2 3h3l-2 3"/></svg><h3 class="ind-name">EV Battery</h3><p class="ind-note">Dry rooms, moisture control, explosion proofing</p></div></article><article class="ind"><img src="img/klcc-dcp.jpg" alt="District Cooling and Heating"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><h3 class="ind-name">District Cooling &amp; Heating</h3><p class="ind-note">Urban energy plant and distribution</p></div></article><article class="ind"><img src="img/first-solar.jpg" alt="Photovoltaics"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 17h15l-2-9h-11z"/><path d="M8 8l-1.2 9M16 8l1.2 9M5.6 12.5h12.8"/><path d="M12 4V2"/></svg><h3 class="ind-name">Photovoltaics</h3><p class="ind-note">Cell and module lines, toxic material handling</p></div></article><article class="ind"><img src="img/pharmaniaga.jpg" alt="Pharmaceuticals and Hospitals"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M9 9V6.5a3 3 0 016 0V9"/><path d="M12 12.5v4M10 14.5h4"/></svg><h3 class="ind-name">Pharmaceuticals &amp; Hospitals</h3><p class="ind-note">GMP grades, regulated environments</p></div></article><article class="ind"><img src="img/ind-food.jpg" alt="Food and Beverage"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8h11l-1.4 12h-8.2z"/><path d="M17.5 10h2a2 2 0 010 4h-1.6"/><path d="M9 5V3M13 5V3"/></svg><h3 class="ind-name">Food &amp; Beverage</h3><p class="ind-note">Hygienic design, quality and safety standards</p></div></article><article class="ind solid"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><h3 class="ind-name">Your facility next</h3><p class="ind-note">Total facility solutions, end to end.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">12 / 36</span></div>
+    <div class="bl-l"><span class="folio">12 / 66</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1896,7 +1921,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <span class="div-kicker">Part 02 of 03</span>
       <div class="div-num">02</div>
       <h2 class="div-title">Project References</h2>
-      <p class="div-note">Sections 02.1 to 02.11</p>
+      <p class="div-note">Sections 02.1 to 02.47</p>
       <ul class="div-list"><li>200+ projects completed across three regions</li><li>Over 1.5 million m² of cleanroom built</li><li>ISO 3 to ISO 8 · Class 1 to Class 100K</li></ul>
     </div>
     <div class="div-media"><img src="img/refs-crew.jpg" alt=""></div>
@@ -1906,7 +1931,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">13 / 36</span></div>
+    <div class="bl-l"><span class="folio">13 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -1943,7 +1968,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">14 / 36</span></div>
+    <div class="bl-l"><span class="folio">14 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -1956,7 +1981,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   </div>
     <header class="shead">
       <h2 class="s-title">Semiconductor · Malaysia</h2>
-      <p class="s-note">Wafer fab, advanced packaging, test and assembly. Further Malaysian projects are listed in 02.11.</p>
+      <p class="s-note">Wafer fab, advanced packaging, test and assembly. The full reference list follows from 02.11.</p>
     </header>
   <div class="canvas"><div class="grid two">
       <article class="pcard">
@@ -1964,6 +1989,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Kulim, Kedah · greenfield wafer fab</div>
           <h3 class="pname">Infineon Kulim Wafer Fab 3</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">General contractor for WP06, KLM3 Expansion, 35,000 m² cleanroom area</dd></div><div class="sr"><dt>Scope</dt><dd class="">PCC for cleanroom and mechanical works</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 4 · 5 · 6 · 7 (Class 10 · 100 · 1K · 10K)</dd></div></dl>
         </div>
       </article>
@@ -1972,13 +1998,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Advanced packaging · 75,000 m²</div>
           <h3 class="pname">P Project</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li><li>Process Utilities</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Progressive-built EPCM contract model for the client's advanced packaging facility</dd></div><div class="sr"><dt>Scope</dt><dd class="">Design &amp; build GC: CSA, MEP, process utilities, chemical &amp; gases system, waste treatment</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 4 to 7 (Class 10 to 10K)</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">15 / 36</span></div>
+    <div class="bl-l"><span class="folio">15 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Malaysia</div>
   </footer>
@@ -1999,6 +2026,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Photomask facility</div>
           <h3 class="pname">Teksend Photomask</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>Process Utilities</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Addition and alteration to an existing two-storey building with cleanroom facilities and ancillary office</dd></div><div class="sr"><dt>Scope</dt><dd class="">EPCC for cleanroom, ACMV, electrical, process utility, BMS, PA, WWT, UPW, tool hookup</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">Class 1 to Class 10K</dd></div></dl>
         </div>
       </article>
@@ -2007,13 +2035,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Progressive tool hookup</div>
           <h3 class="pname">Micron MSH Tool HU</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">2,000 progressive tool hookup services for MSH</dd></div><div class="sr"><dt>Scope</dt><dd class="">Progressive tool hook up</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>Tool Hook Up</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">2,000 progressive tool hookup services for MSH</dd></div><div class="sr"><dt>Scope</dt><dd class="">Progressive tool hook up</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">16 / 36</span></div>
+    <div class="bl-l"><span class="folio">16 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Singapore</div>
   </footer>
@@ -2034,7 +2063,8 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Client confidential · 160 MW</div>
           <h3 class="pname">Hyperscale Data Centre</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Office, data halls and mechanical utility building</dd></div><div class="sr"><dt>Scope</dt><dd class="">Construction, completion, testing &amp; commissioning for mechanical packages 1 &amp; 2</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Office, data halls and mechanical utility building</dd></div><div class="sr"><dt>Scope</dt><dd class="">Construction, completion, testing &amp; commissioning for mechanical packages 1 &amp; 2</dd></div></dl>
         </div>
       </article>
       <article class="pcard">
@@ -2042,13 +2072,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">KUL03 Phase 1 · 9.6 MW</div>
           <h3 class="pname">Microsoft DTC-KUL 03</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">9.6 MW data centre</dd></div><div class="sr"><dt>Scope</dt><dd class="">PCC for CHW and CW piping works</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">9.6 MW data centre</dd></div><div class="sr"><dt>Scope</dt><dd class="">PCC for CHW and CW piping works</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">17 / 36</span></div>
+    <div class="bl-l"><span class="folio">17 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Data Centre</div>
   </footer>
@@ -2069,7 +2100,8 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Skellefteå, Sweden · 62,000 m²</div>
           <h3 class="pname">Northvolt AB Gigafactory</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Europe gigafactory for lithium-ion battery manufacture</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and dry room architecture works</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Europe gigafactory for lithium-ion battery manufacture</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and dry room architecture works</dd></div><div class="sr"><dt>Environment</dt><dd class="iso">Dry Room</dd></div></dl>
         </div>
       </article>
       <article class="pcard">
@@ -2077,13 +2109,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Norway · Battery Coast · 8,600 m²</div>
           <h3 class="pname">Morrow Batteries</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Norway's Battery Coast project</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and dry room architectural system, ACMV</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Norway's Battery Coast project</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and dry room architectural system, ACMV</dd></div><div class="sr"><dt>Environment</dt><dd class="iso">Dry Room</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">18 / 36</span></div>
+    <div class="bl-l"><span class="folio">18 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">EV Battery · Europe</div>
   </footer>
@@ -2104,6 +2137,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Client confidential · wafer fab</div>
           <h3 class="pname">28/22nm CMOS · 16/12nm FinFET Plant</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Design, supply, installation &amp; commissioning of cleanroom facilities</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom &amp; mechanical general contractor</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">Class 1 to Class 10K</dd></div></dl>
         </div>
       </article>
@@ -2112,13 +2146,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Casablanca, Morocco · 60,000 m²</div>
           <h3 class="pname">STMicroelectronics</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Process Utilities</li><li>Tool Hook Up</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Built-up area up to 60,000 m²</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom, mechanical, electrical, process utilities and hookup works</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">19 / 36</span></div>
+    <div class="bl-l"><span class="folio">19 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Europe</div>
   </footer>
@@ -2139,6 +2174,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Hangzhou · 23,400 m²</div>
           <h3 class="pname">Ferrotec Semiconductor</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>Tool Hook Up</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Built-up area up to 23,400 m²</dd></div><div class="sr"><dt>Scope</dt><dd class="">EPCC for cleanroom, mechanical, electrical and plumbing works and hookup</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 4 · 5 (Class 10 &amp; 100)</dd></div></dl>
         </div>
       </article>
@@ -2147,13 +2183,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Wuxi · 8,000 m²</div>
           <h3 class="pname">Infineon Technologies</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>Tool Hook Up</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Built-up area up to 8,000 m²</dd></div><div class="sr"><dt>Scope</dt><dd class="">EPCC for cleanroom, mechanical, electrical and plumbing works and hookup</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">20 / 36</span></div>
+    <div class="bl-l"><span class="folio">20 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">China</div>
   </footer>
@@ -2174,7 +2211,8 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Kulim, Malaysia</div>
           <h3 class="pname">First Solar Malaysia</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">First Solar KMW building in Kulim</dd></div><div class="sr"><dt>Scope</dt><dd class="">PCC for mechanical &amp; electrical, KMW building; CSA and M&amp;E for forming gas plant; M&amp;E for SCO1</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">First Solar KMW building in Kulim</dd></div><div class="sr"><dt>Scope</dt><dd class="">PCC for mechanical &amp; electrical, KMW building; CSA and M&amp;E for forming gas plant; M&amp;E for SCO1</dd></div></dl>
         </div>
       </article>
       <article class="pcard">
@@ -2182,13 +2220,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">China · 57,000 m²</div>
           <h3 class="pname">Chint Solar Technology</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Process Utilities</li><li>Tool Hook Up</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Built-up area up to 57,000 m²</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom system, ACMV, process utilities and tools hookup</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 8 (Class 100K)</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">21 / 36</span></div>
+    <div class="bl-l"><span class="folio">21 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Photovoltaics</div>
   </footer>
@@ -2209,6 +2248,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Greenfield · medical device</div>
           <h3 class="pname">Insulet</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Electronic medical device manufacturing plant, greenfield project</dd></div><div class="sr"><dt>Scope</dt><dd class="">Design and build mechanical, cleanroom &amp; electrical package</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 8 (Class 100K)</dd></div></dl>
         </div>
       </article>
@@ -2217,13 +2257,14 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Puchong, Selangor</div>
           <h3 class="pname">Pharmaniaga</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li></ul>
           <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">Small volume parenteral facility</dd></div><div class="sr"><dt>Scope</dt><dd class="">Cleanroom system, air conditioning and mechanical ventilation</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 · 7 · 8 (Class 100 · 10K · 100K)</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">22 / 36</span></div>
+    <div class="bl-l"><span class="folio">22 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Pharmaceutical &amp; Medical</div>
   </footer>
@@ -2244,7 +2285,8 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">Gas District Cooling (M) Sdn Bhd</div>
           <h3 class="pname">KLCC District Cooling Plant</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="iso">Largest district cooling centre in Malaysia</dd></div><div class="sr"><dt>Scope</dt><dd class="">ACMV, electrical &amp; instrumentation, fire protection, process utility, plumbing &amp; sanitary, water treatment, CSA</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>Process Utilities</li><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="iso">Largest district cooling centre in Malaysia</dd></div><div class="sr"><dt>Scope</dt><dd class="">ACMV, electrical &amp; instrumentation, fire protection, process utility, plumbing &amp; sanitary, water treatment, CSA</dd></div></dl>
         </div>
       </article>
       <article class="pcard">
@@ -2252,139 +2294,1374 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="panel">
           <div class="flag">PICC Plant, Putrajaya</div>
           <h3 class="pname">GDC Putrajaya</h3>
-          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">For the Putrajaya International Convention Centre (PICC) plant</dd></div><div class="sr"><dt>Scope</dt><dd class="">EPCC of plant electrification, chiller replacement and associated works at Gas District Cooling Putrajaya</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="">Not applicable</dd></div></dl>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Description</dt><dd class="">For the Putrajaya International Convention Centre (PICC) plant</dd></div><div class="sr"><dt>Scope</dt><dd class="">EPCC of plant electrification, chiller replacement and associated works at Gas District Cooling Putrajaya</dd></div></dl>
         </div>
       </article>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">23 / 36</span></div>
+    <div class="bl-l"><span class="folio">23 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">District Cooling &amp; Energy</div>
   </footer>
 </section></div>
 
-<div class="stage"><section class="slide ">
+<div class="stage"><section class="slide refpg">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.11</span><span class="tl-part">Part 02 · Project References</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Reference Index</h2>
-      <p class="s-note">Every project in IAQ's reference list, with the photograph from the company profile. Sheet 1 of 7.</p>
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 1–2 of 73 from IAQ’s own reference list.</p>
     </header>
-  <div class="canvas fill"><div class="rgrid"><article class="rcard"><img src="img/ref/p21t.jpg" alt="Teksend Photomask"><div class="rc-body"><h3 class="rc-name">Teksend Photomask</h3><div class="rc-meta">Singapore &middot; Class 1 to Class 10K</div><p class="rc-scope">EPCC: cleanroom, ACMV, electrical, process utility, BMS, PA, WWT, UPW, tool hook up</p></div></article><article class="rcard"><img src="img/ref/p21b.jpg" alt="Micron MSH Tool Hook Up"><div class="rc-body"><h3 class="rc-name">Micron MSH Tool Hook Up</h3><div class="rc-meta">Singapore</div><p class="rc-scope">2,000 progressive tool hook up services</p></div></article><article class="rcard"><img src="img/ref/p22t.jpg" alt="Micron F10A &amp;amp; F10NX"><div class="rc-body"><h3 class="rc-name">Micron F10A &amp; F10NX</h3><div class="rc-meta">Singapore</div><p class="rc-scope">Interior design &amp; mechanical fit out, F10NX office optimisation</p></div></article><article class="rcard"><img src="img/ref/p22b.jpg" alt="Caterpillar Asia"><div class="rc-body"><h3 class="rc-name">Caterpillar Asia</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Three storey office renovation, 7T office</p></div></article><article class="rcard"><img src="img/ref/p23t.jpg" alt="M Project"><div class="rc-body"><h3 class="rc-name">M Project</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Design &amp; build GC, greenfield food flavouring plant, 40,000 m²</p></div></article><article class="rcard"><img src="img/ref/p23b.jpg" alt="P Project"><div class="rc-body"><h3 class="rc-name">P Project</h3><div class="rc-meta">Malaysia &middot; ISO 4&ndash;7 (Class 10&ndash;10K)</div><p class="rc-scope">Design &amp; build GC, advanced packaging facility, 75,000 m²</p></div></article><article class="rcard"><img src="img/ref/p24t.jpg" alt="Infineon Kulim Wafer Fab 3"><div class="rc-body"><h3 class="rc-name">Infineon Kulim Wafer Fab 3</h3><div class="rc-meta">Malaysia &middot; ISO 4, 5, 6 &amp; 7</div><p class="rc-scope">GC for WP06, KLM3 expansion, greenfield wafer fab, 35,000 m² cleanroom</p></div></article><article class="rcard"><img src="img/ref/p24b.jpg" alt="XFAB Kuching 40K Expansion"><div class="rc-body"><h3 class="rc-name">XFAB Kuching 40K Expansion</h3><div class="rc-meta">Malaysia &middot; ISO 5, 6 &amp; 7</div><p class="rc-scope">Design and build, wafer fab extension, 30K to 40K capacity, 40,000 m²</p></div></article><article class="rcard"><img src="img/ref/p25t.jpg" alt="SOITEC PR1A Expansion"><div class="rc-body"><h3 class="rc-name">SOITEC PR1A Expansion</h3><div class="rc-meta">Malaysia &middot; ISO 4, 5, 6 &amp; 7</div><p class="rc-scope">EPCM consultant, new greenfield plant, 45,000 m²</p></div></article><article class="rcard"><img src="img/ref/p25b.jpg" alt="Robert Bosch Testing Manufacturing Plant"><div class="rc-body"><h3 class="rc-name">Robert Bosch Testing Manufacturing Plant</h3><div class="rc-meta">Malaysia &middot; ISO 6, 7</div><p class="rc-scope">GC, greenfield testing and manufacturing plant, 25,000 m²</p></div></article><article class="rcard"><img src="img/ref/p26t.jpg" alt="Wafer Fab Facility &amp;amp; Expansion"><div class="rc-body"><h3 class="rc-name">Wafer Fab Facility &amp; Expansion</h3><div class="rc-meta">Malaysia &middot; ISO 5 (Class 100)</div><p class="rc-scope">EPCC and design &amp; build, FAB1E A/B expansion, new CUB 5,000 m²</p></div></article><article class="rcard"><img src="img/ref/p26b.jpg" alt="P Project &amp;ndash; MEP Works"><div class="rc-body"><h3 class="rc-name">P Project &ndash; MEP Works</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Retrofit existing office into mega lab, 7,000 m²</p></div></article><article class="rcard"><img src="img/ref/p27t.jpg" alt="Texas Instrument, Melaka"><div class="rc-body"><h3 class="rc-name">Texas Instrument, Melaka</h3><div class="rc-meta">Malaysia &middot; ISO 5, 6, 7</div><p class="rc-scope">Facilitation works for residual management, 32,000 m²</p></div></article></div>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p22t.jpg" alt="Micron F10A &amp; F10NX">
+        <div class="panel">
+          <div class="flag">Singapore</div>
+          <h3 class="pname">Micron F10A &amp; F10NX</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Interior design &amp; mechanical fit out, F10NX office optimisation</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p22b.jpg" alt="Caterpillar Asia">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Caterpillar Asia</h3>
+          <ul class="svc"><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Three storey office renovation, 7T office</dd></div></dl>
+        </div>
+      </article>
+    </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">24 / 36</span></div>
+    <div class="bl-l"><span class="folio">24 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
 </section></div>
 
-<div class="stage"><section class="slide ">
+<div class="stage"><section class="slide refpg">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.12</span><span class="tl-part">Part 02 · Project References</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Reference Index</h2>
-      <p class="s-note">Every project in IAQ's reference list, with the photograph from the company profile. Sheet 2 of 7.</p>
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 3–4 of 73 from IAQ’s own reference list.</p>
     </header>
-  <div class="canvas fill"><div class="rgrid"><article class="rcard"><img src="img/ref/p27b.jpg" alt="Texas Instrument (M) Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Texas Instrument (M) Sdn Bhd</h3><div class="rc-meta">Kuala Lumpur &middot; ISO 5, 6, 7</div><p class="rc-scope">DLP cleanroom project</p></div></article><article class="rcard"><img src="img/ref/p28t.jpg" alt="Western Digital (M) Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Western Digital (M) Sdn Bhd</h3><div class="rc-meta">Petaling Jaya</div><p class="rc-scope">Phase 2 and 3 renovation, mechanical, electrical and cleanroom</p></div></article><article class="rcard"><img src="img/ref/p28b.jpg" alt="WD Media (M) Sdn Bhd"><div class="rc-body"><h3 class="rc-name">WD Media (M) Sdn Bhd</h3><div class="rc-meta">Penang &middot; ISO 6 (Class 1K)</div><p class="rc-scope">PCC, MA 28 &amp; MA 29, cleanroom, HVAC, FMCS, hookup</p></div></article><article class="rcard"><img src="img/ref/p29t.jpg" alt="STMicroelectronics Sdn Bhd"><div class="rc-body"><h3 class="rc-name">STMicroelectronics Sdn Bhd</h3><div class="rc-meta">Johor &middot; ISO 7 (Class 10K)</div><p class="rc-scope">3 storey production factory, cleanroom and ACMV</p></div></article><article class="rcard"><img src="img/ref/p29b.jpg" alt="Infineon Technologies (M) Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Infineon Technologies (M) Sdn Bhd</h3><div class="rc-meta">Melaka &middot; ISO 6, 7</div><p class="rc-scope">EPCM-GMP, Block 8 testing, probe &amp; assembly, 43,000 m²</p></div></article><article class="rcard"><img src="img/ref/p30t.jpg" alt="MEMC Ipoh Sdn Bhd"><div class="rc-body"><h3 class="rc-name">MEMC Ipoh Sdn Bhd</h3><div class="rc-meta">Malaysia &middot; ISO 3 to 7 (Class 1&ndash;10K)</div><p class="rc-scope">Greenfield project, MEP, cleanroom, FMCS, CSA and tools hookup</p></div></article><article class="rcard"><img src="img/ref/p30b.jpg" alt="Flextronic Shah Alam Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Flextronic Shah Alam Sdn Bhd</h3><div class="rc-meta">Malaysia &middot; ISO 7 (Class 10K)</div><p class="rc-scope">PCC, 33kV substation, mechanical, cleanroom, civil and structural</p></div></article><article class="rcard"><img src="img/ref/p31t.jpg" alt="First Solar Malaysia Sdn Bhd"><div class="rc-body"><h3 class="rc-name">First Solar Malaysia Sdn Bhd</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">PCC mechanical and electrical, KMW building, forming gas plant</p></div></article><article class="rcard"><img src="img/ref/p31b.jpg" alt="AUO Sunpower Melaka"><div class="rc-body"><h3 class="rc-name">AUO Sunpower Melaka</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Fab 3A solar cell manufacturing, CSA, utilities, HVAC, electrical</p></div></article><article class="rcard"><img src="img/ref/p32t.jpg" alt="160 MW Hyperscale Data Centre"><div class="rc-body"><h3 class="rc-name">160 MW Hyperscale Data Centre</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Mechanical packages 1 &amp; 2, office, data halls, utility building</p></div></article><article class="rcard"><img src="img/ref/p32b.jpg" alt="Microsoft DTC-KUL 03"><div class="rc-body"><h3 class="rc-name">Microsoft DTC-KUL 03</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">PCC for CHW and CW piping, 9.6 MW data centre phase 1</p></div></article><article class="rcard"><img src="img/ref/p33t.jpg" alt="Insulet"><div class="rc-body"><h3 class="rc-name">Insulet</h3><div class="rc-meta">Malaysia &middot; ISO 8 (Class 100K)</div><p class="rc-scope">Design and build, electronic medical device plant, greenfield</p></div></article><article class="rcard"><img src="img/ref/p33b.jpg" alt="Vital Healthcare Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Vital Healthcare Sdn Bhd</h3><div class="rc-meta">Malaysia &middot; ISO 8 (Class 100K)</div><p class="rc-scope">GC, medical device plant, 33kV substation, MEP</p></div></article></div>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p23t.jpg" alt="M Project">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">M Project</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Design &amp; build GC, greenfield food flavouring plant, 40,000 m²</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p24b.jpg" alt="XFAB Kuching 40K Expansion">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">XFAB Kuching 40K Expansion</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Design and build, wafer fab extension, 30K to 40K capacity, 40,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6 &amp; 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">25 / 36</span></div>
+    <div class="bl-l"><span class="folio">25 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
 </section></div>
 
-<div class="stage"><section class="slide ">
+<div class="stage"><section class="slide refpg">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.13</span><span class="tl-part">Part 02 · Project References</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Reference Index</h2>
-      <p class="s-note">Every project in IAQ's reference list, with the photograph from the company profile. Sheet 3 of 7.</p>
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 5–6 of 73 from IAQ’s own reference list.</p>
     </header>
-  <div class="canvas fill"><div class="rgrid"><article class="rcard"><img src="img/ref/p34t.jpg" alt="Ain Medicare Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Ain Medicare Sdn Bhd</h3><div class="rc-meta">Malaysia &middot; ISO 8 (Class 100K)</div><p class="rc-scope">EPCC, CSA, cleanroom and M&amp;E, pharmaceutical building</p></div></article><article class="rcard"><img src="img/ref/p34b.jpg" alt="Pharmaniaga, Puchong"><div class="rc-body"><h3 class="rc-name">Pharmaniaga, Puchong</h3><div class="rc-meta">Malaysia &middot; ISO 5, 7, 8</div><p class="rc-scope">Cleanroom and ACMV, small volume parenteral facility</p></div></article><article class="rcard"><img src="img/ref/p35t.jpg" alt="Elegant Aura (M) Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Elegant Aura (M) Sdn Bhd</h3><div class="rc-meta">Malaysia &middot; GMP Grade D</div><p class="rc-scope">PCC for HVAC and cleanroom system</p></div></article><article class="rcard"><img src="img/ref/p35b.jpg" alt="National University of Singapore"><div class="rc-body"><h3 class="rc-name">National University of Singapore</h3><div class="rc-meta">Singapore &middot; ISO 6 &amp; 7</div><p class="rc-scope">M&amp;E and cleanroom, tissue culture laboratory</p></div></article><article class="rcard"><img src="img/ref/p36t.jpg" alt="Matrix (M) Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Matrix (M) Sdn Bhd</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">PCC, CSA, HVAC, electrical, fire protection and process utilities</p></div></article><article class="rcard"><img src="img/ref/p36b.jpg" alt="T Hasegawa"><div class="rc-body"><h3 class="rc-name">T Hasegawa</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Spray dryer &amp; microwave tunnel renovation, MDR mechanical, ACMV</p></div></article><article class="rcard"><img src="img/ref/p37t.jpg" alt="GDC Putrajaya"><div class="rc-body"><h3 class="rc-name">GDC Putrajaya</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">EPCC plant electrification and chiller replacement, PICC plant</p></div></article><article class="rcard"><img src="img/ref/p37b.jpg" alt="KLCC KGP KL"><div class="rc-body"><h3 class="rc-name">KLCC KGP KL</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">EPCC of two electrical centrifugal chillers, KLCC district cooling</p></div></article><article class="rcard"><img src="img/ref/p38t.jpg" alt="Gas District Cooling (M) Sdn Bhd"><div class="rc-body"><h3 class="rc-name">Gas District Cooling (M) Sdn Bhd</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">KLCC district cooling plant, largest DCC in Malaysia, ACMV, E&amp;I, CSA</p></div></article><article class="rcard"><img src="img/ref/p38b.jpg" alt="Rapid MCD Chemical Plant"><div class="rc-body"><h3 class="rc-name">Rapid MCD Chemical Plant</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Field erection of mechanical piping system</p></div></article><article class="rcard"><img src="img/ref/p39t.jpg" alt="Pagoh Education Hub"><div class="rc-body"><h3 class="rc-name">Pagoh Education Hub</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">EPCC, operation and maintenance of DCS</p></div></article><article class="rcard"><img src="img/ref/p39b.jpg" alt="Rapid Petronas Pengerang Co-gen Plant"><div class="rc-body"><h3 class="rc-name">Rapid Petronas Pengerang Co-gen Plant</h3><div class="rc-meta">Malaysia</div><p class="rc-scope">Mechanical erection, BoP piping &amp; WCCT, first co-gen plant in SEA</p></div></article><article class="rcard"><img src="img/ref/p41t.jpg" alt="28/22nm CMOS &amp;amp; 16/12nm FinFET Wafer Fab"><div class="rc-body"><h3 class="rc-name">28/22nm CMOS &amp; 16/12nm FinFET Wafer Fab</h3><div class="rc-meta">Europe &middot; Class 1 to Class 10K</div><p class="rc-scope">Cleanroom &amp; mechanical general contractor, design to commissioning</p></div></article></div>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p25t.jpg" alt="SOITEC PR1A Expansion">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">SOITEC PR1A Expansion</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCM consultant, new greenfield plant, 45,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 4, 5, 6 &amp; 7</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p25b.jpg" alt="Robert Bosch Testing Manufacturing Plant">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Robert Bosch Testing Manufacturing Plant</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">GC, greenfield testing and manufacturing plant, 25,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 6, 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">26 / 36</span></div>
+    <div class="bl-l"><span class="folio">26 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
 </section></div>
 
-<div class="stage"><section class="slide ">
+<div class="stage"><section class="slide refpg">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.14</span><span class="tl-part">Part 02 · Project References</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Reference Index</h2>
-      <p class="s-note">Every project in IAQ's reference list, with the photograph from the company profile. Sheet 4 of 7.</p>
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 7–8 of 73 from IAQ’s own reference list.</p>
     </header>
-  <div class="canvas fill"><div class="rgrid"><article class="rcard"><img src="img/ref/p41b.jpg" alt="Morrow Batteries"><div class="rc-body"><h3 class="rc-name">Morrow Batteries</h3><div class="rc-meta">Norway &middot; Dry Room</div><p class="rc-scope">Cleanroom and dry room architecture, ACMV, 8,600 m²</p></div></article><article class="rcard"><img src="img/ref/p42t.jpg" alt="Northvolt AB, Skellefte&amp;aring;"><div class="rc-body"><h3 class="rc-name">Northvolt AB, Skellefte&aring;</h3><div class="rc-meta">Sweden &middot; Dry Room</div><p class="rc-scope">Europe gigafactory for lithium-ion battery, 62,000 m²</p></div></article><article class="rcard"><img src="img/ref/p42b.jpg" alt="Envision"><div class="rc-body"><h3 class="rc-name">Envision</h3><div class="rc-meta">France &middot; Dry Room</div><p class="rc-scope">Cleanroom, dry room architecture works</p></div></article><article class="rcard"><img src="img/ref/p43t.jpg" alt="ACC Phase 1"><div class="rc-body"><h3 class="rc-name">ACC Phase 1</h3><div class="rc-meta">France &middot; Dry Room</div><p class="rc-scope">Greenfield, 8,000 m² dry room architectural system, 35,000 m²</p></div></article><article class="rcard"><img src="img/ref/p43b.jpg" alt="Soitec Semiconductor, Paris"><div class="rc-body"><h3 class="rc-name">Soitec Semiconductor, Paris</h3><div class="rc-meta">France</div><p class="rc-scope">EPCC cleanroom and MEP, 11,000 m²</p></div></article><article class="rcard"><img src="img/ref/p44t.jpg" alt="Xfab Semiconductor, Paris"><div class="rc-body"><h3 class="rc-name">Xfab Semiconductor, Paris</h3><div class="rc-meta">France &middot; ISO 5 (Class 100)</div><p class="rc-scope">Cleanroom, MEP and tools hookup, progressive hookup, 5,000 m²</p></div></article><article class="rcard"><img src="img/ref/p44b.jpg" alt="Nemotek, Rabat"><div class="rc-body"><h3 class="rc-name">Nemotek, Rabat</h3><div class="rc-meta">Morocco &middot; ISO 5 (Class 100)</div><p class="rc-scope">EPCC cleanroom and MEP works, 11,000 m²</p></div></article><article class="rcard"><img src="img/ref/p45t.jpg" alt="STMicroelectronics, Casablanca"><div class="rc-body"><h3 class="rc-name">STMicroelectronics, Casablanca</h3><div class="rc-meta">Morocco &middot; ISO 5 (Class 100)</div><p class="rc-scope">Cleanroom, MEP and hookup works, 60,000 m²</p></div></article><article class="rcard"><img src="img/ref/p45b.jpg" alt="Kimoto"><div class="rc-body"><h3 class="rc-name">Kimoto</h3><div class="rc-meta">Poland &middot; ISO 5 (Class 100)</div><p class="rc-scope">Cleanroom, mechanical &amp; electrical system</p></div></article><article class="rcard"><img src="img/ref/p46t.jpg" alt="Sumika"><div class="rc-body"><h3 class="rc-name">Sumika</h3><div class="rc-meta">Poland &middot; ISO 5 (Class 100)</div><p class="rc-scope">Cleanroom architecture, mechanical &amp; electrical system</p></div></article><article class="rcard"><img src="img/ref/p48t.jpg" alt="Ferrotec Semiconductor HangZhou Co. Ltd"><div class="rc-body"><h3 class="rc-name">Ferrotec Semiconductor HangZhou Co. Ltd</h3><div class="rc-meta">China &middot; ISO 4, 5</div><p class="rc-scope">EPCC cleanroom, MEP and hookup works, 23,400 m²</p></div></article><article class="rcard"><img src="img/ref/p48b.jpg" alt="All-Cent RF Technology (Wuxi) Co., Ltd"><div class="rc-body"><h3 class="rc-name">All-Cent RF Technology (Wuxi) Co., Ltd</h3><div class="rc-meta">China &middot; ISO 5 &amp; 6</div><p class="rc-scope">EPCC for MEP works, 25,600 m²</p></div></article><article class="rcard"><img src="img/ref/p49t.jpg" alt="Infineon Technologies (Wuxi) Co. Ltd"><div class="rc-body"><h3 class="rc-name">Infineon Technologies (Wuxi) Co. Ltd</h3><div class="rc-meta">China &middot; ISO 5 (Class 100)</div><p class="rc-scope">EPCC cleanroom, MEP and hookup works, 8,000 m²</p></div></article></div>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p26t.jpg" alt="Wafer Fab Facility &amp; Expansion">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Wafer Fab Facility &amp; Expansion</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC and design &amp; build, FAB1E A/B expansion, new CUB 5,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p26b.jpg" alt="P Project – MEP Works">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">P Project – MEP Works</h3>
+          <ul class="svc"><li>Specialist Contracting</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Retrofit existing office into mega lab, 7,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">27 / 36</span></div>
+    <div class="bl-l"><span class="folio">27 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
 </section></div>
 
-<div class="stage"><section class="slide ">
+<div class="stage"><section class="slide refpg">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.15</span><span class="tl-part">Part 02 · Project References</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Reference Index</h2>
-      <p class="s-note">Every project in IAQ's reference list, with the photograph from the company profile. Sheet 5 of 7.</p>
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 9–10 of 73 from IAQ’s own reference list.</p>
     </header>
-  <div class="canvas fill"><div class="rgrid"><article class="rcard"><img src="img/ref/p49b.jpg" alt="SMIC, Ningbo"><div class="rc-body"><h3 class="rc-name">SMIC, Ningbo</h3><div class="rc-meta">China &middot; ISO 5 &amp; 6</div><p class="rc-scope">EPCC for MEP works, 22,000 m²</p></div></article><article class="rcard"><img src="img/ref/p50t.jpg" alt="Kunshan Visionox Display Co., Ltd"><div class="rc-body"><h3 class="rc-name">Kunshan Visionox Display Co., Ltd</h3><div class="rc-meta">China &middot; ISO 5, 6, 7</div><p class="rc-scope">PCC cleanroom, MEP and hookup works, 27,000 m²</p></div></article><article class="rcard"><img src="img/ref/p50b.jpg" alt="GS Magic Drive Inc."><div class="rc-body"><h3 class="rc-name">GS Magic Drive Inc.</h3><div class="rc-meta">China &middot; ISO 4, 5, 6</div><p class="rc-scope">PCC cleanroom and MEP works, 68,000 m²</p></div></article><article class="rcard"><img src="img/ref/p51t.jpg" alt="STS Microelectronics (Shenzhen) Co., Ltd"><div class="rc-body"><h3 class="rc-name">STS Microelectronics (Shenzhen) Co., Ltd</h3><div class="rc-meta">China &middot; ISO 6 (Class 1K)</div><p class="rc-scope">Cleanroom Class 1K system, 4,800 m²</p></div></article><article class="rcard"><img src="img/ref/p51b.jpg" alt="Shantou Goworld Display Co., Ltd"><div class="rc-body"><h3 class="rc-name">Shantou Goworld Display Co., Ltd</h3><div class="rc-meta">China &middot; ISO 5, 6, 7</div><p class="rc-scope">Cleanroom and MEP works, 14,300 m²</p></div></article><article class="rcard"><img src="img/ref/p52t.jpg" alt="CSR Zhuzhou Electric Locomotive Research Institute"><div class="rc-body"><h3 class="rc-name">CSR Zhuzhou Electric Locomotive Research Institute</h3><div class="rc-meta">China &middot; ISO 5, 6, 7</div><p class="rc-scope">Cleanroom and MEP works, 22,000 m²</p></div></article><article class="rcard"><img src="img/ref/p52b.jpg" alt="M-Flex (Suzhou) Co., Ltd"><div class="rc-body"><h3 class="rc-name">M-Flex (Suzhou) Co., Ltd</h3><div class="rc-meta">China &middot; ISO 5, 6, 7</div><p class="rc-scope">Cleanroom and MEP works, 25,000 m²</p></div></article><article class="rcard"><img src="img/ref/p53t.jpg" alt="Maxtor Technology (Suzhou) Co., Ltd"><div class="rc-body"><h3 class="rc-name">Maxtor Technology (Suzhou) Co., Ltd</h3><div class="rc-meta">China &middot; ISO 5 &amp; 6</div><p class="rc-scope">Cleanroom and MEP works, 95,000 m²</p></div></article><article class="rcard"><img src="img/ref/p53b.jpg" alt="MMI Industries (Wuxi) Co., Ltd"><div class="rc-body"><h3 class="rc-name">MMI Industries (Wuxi) Co., Ltd</h3><div class="rc-meta">China &middot; ISO 5, 6, 7</div><p class="rc-scope">Cleanroom and MEP works, 7,200 m²</p></div></article><article class="rcard"><img src="img/ref/p54t.jpg" alt="Snap On Asia Manufacturing (Kunshan) Co., Ltd"><div class="rc-body"><h3 class="rc-name">Snap On Asia Manufacturing (Kunshan) Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">General contractor, CSA, steel structure and MEP, 4,800 m²</p></div></article><article class="rcard"><img src="img/ref/p54b.jpg" alt="Huawei Technologies Co., Ltd"><div class="rc-body"><h3 class="rc-name">Huawei Technologies Co., Ltd</h3><div class="rc-meta">China &middot; ISO 6 &amp; 7</div><p class="rc-scope">Cleanroom and MEP works, 3,400 m²</p></div></article><article class="rcard"><img src="img/ref/p55t.jpg" alt="Suzhou Golden Concord Technology Co., Ltd"><div class="rc-body"><h3 class="rc-name">Suzhou Golden Concord Technology Co., Ltd</h3><div class="rc-meta">China &middot; ISO 5 (Class 100)</div><p class="rc-scope">PCC cleanroom and MEP works, 38,500 m²</p></div></article><article class="rcard"><img src="img/ref/p55b.jpg" alt="Shanghai Roche Pharmaceuticals Ltd."><div class="rc-body"><h3 class="rc-name">Shanghai Roche Pharmaceuticals Ltd.</h3><div class="rc-meta">China &middot; ISO B (Class 100)</div><p class="rc-scope">PCC cleanroom and MEP works, 5,000 m²</p></div></article></div>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p27t.jpg" alt="Texas Instrument, Melaka">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Texas Instrument, Melaka</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Facilitation works for residual management, 32,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6, 7</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p27b.jpg" alt="Texas Instrument (M) Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Kuala Lumpur</div>
+          <h3 class="pname">Texas Instrument (M) Sdn Bhd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">DLP cleanroom project</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6, 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">28 / 36</span></div>
+    <div class="bl-l"><span class="folio">28 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
 </section></div>
 
-<div class="stage"><section class="slide ">
+<div class="stage"><section class="slide refpg">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.16</span><span class="tl-part">Part 02 · Project References</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Reference Index</h2>
-      <p class="s-note">Every project in IAQ's reference list, with the photograph from the company profile. Sheet 6 of 7.</p>
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 11–12 of 73 from IAQ’s own reference list.</p>
     </header>
-  <div class="canvas fill"><div class="rgrid"><article class="rcard"><img src="img/ref/p56t.jpg" alt="Forecyte Bio Limited (Shanghai) Co., Ltd"><div class="rc-body"><h3 class="rc-name">Forecyte Bio Limited (Shanghai) Co., Ltd</h3><div class="rc-meta">China &middot; ISO C &amp; D</div><p class="rc-scope">Cleanroom and MEP works, 13,800 m²</p></div></article><article class="rcard"><img src="img/ref/p56b.jpg" alt="Suzhou Ascentage Pharma Co., Ltd"><div class="rc-body"><h3 class="rc-name">Suzhou Ascentage Pharma Co., Ltd</h3><div class="rc-meta">China &middot; ISO C &amp; D</div><p class="rc-scope">Cleanroom and MEP works, 25,800 m²</p></div></article><article class="rcard"><img src="img/ref/p57t.jpg" alt="Jiangsu Genscript Biotech Co., Ltd"><div class="rc-body"><h3 class="rc-name">Jiangsu Genscript Biotech Co., Ltd</h3><div class="rc-meta">China &middot; ISO C &amp; D</div><p class="rc-scope">Cleanroom and MEP works, 6,000 m²</p></div></article><article class="rcard"><img src="img/ref/p57b.jpg" alt="Mindray Group Co., Ltd"><div class="rc-body"><h3 class="rc-name">Mindray Group Co., Ltd</h3><div class="rc-meta">China &middot; ISO C &amp; D</div><p class="rc-scope">Cleanroom and MEP works, 12,000 m²</p></div></article><article class="rcard"><img src="img/ref/p58t.jpg" alt="EpimAb Biotechnology Su Zhou Co., Ltd"><div class="rc-body"><h3 class="rc-name">EpimAb Biotechnology Su Zhou Co., Ltd</h3><div class="rc-meta">China &middot; ISO C &amp; D</div><p class="rc-scope">Cleanroom and MEP works, 5,200 m²</p></div></article><article class="rcard"><img src="img/ref/p58b.jpg" alt="Longxiang Pharma Science and Technology Co., Ltd"><div class="rc-body"><h3 class="rc-name">Longxiang Pharma Science and Technology Co., Ltd</h3><div class="rc-meta">China &middot; ISO B, C &amp; D</div><p class="rc-scope">Cleanroom and MEP works, 46,000 m²</p></div></article><article class="rcard"><img src="img/ref/p59t.jpg" alt="Sumitomo Medical (Suzhou) Co., Ltd"><div class="rc-body"><h3 class="rc-name">Sumitomo Medical (Suzhou) Co., Ltd</h3><div class="rc-meta">China &middot; ISO 7 &amp; 8</div><p class="rc-scope">Cleanroom and MEP works, 3,000 m²</p></div></article><article class="rcard"><img src="img/ref/p59b.jpg" alt="Suzhou Capsugel Co., Ltd"><div class="rc-body"><h3 class="rc-name">Suzhou Capsugel Co., Ltd</h3><div class="rc-meta">China &middot; ISO 7 (Class 10K)</div><p class="rc-scope">Cleanroom and MEP works, 21,500 m²</p></div></article><article class="rcard"><img src="img/ref/p60t.jpg" alt="AW (Suzhou) Co., Ltd"><div class="rc-body"><h3 class="rc-name">AW (Suzhou) Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">Electrical system, 45,000 m²</p></div></article><article class="rcard"><img src="img/ref/p60b.jpg" alt="AAM Automobile (Changshu) Co., Ltd"><div class="rc-body"><h3 class="rc-name">AAM Automobile (Changshu) Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">EPC for mechanical &amp; electrical system, 18,000 m²</p></div></article><article class="rcard"><img src="img/ref/p61t.jpg" alt="ZF (China) Investment Co., Ltd"><div class="rc-body"><h3 class="rc-name">ZF (China) Investment Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">Electrical system, 44,000 m²</p></div></article><article class="rcard"><img src="img/ref/p61b.jpg" alt="Umicore Automotive Catalyst (Su Zhou) Co., Ltd"><div class="rc-body"><h3 class="rc-name">Umicore Automotive Catalyst (Su Zhou) Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">EPC for mechanical &amp; electrical system, 6,800 m²</p></div></article><article class="rcard"><img src="img/ref/p62t.jpg" alt="Mary Kay (China) Cosmetics Co., Ltd"><div class="rc-body"><h3 class="rc-name">Mary Kay (China) Cosmetics Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">EPC for mechanical and electrical system, 26,000 m²</p></div></article></div>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p28t.jpg" alt="Western Digital (M) Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Petaling Jaya</div>
+          <h3 class="pname">Western Digital (M) Sdn Bhd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Phase 2 and 3 renovation, mechanical, electrical and cleanroom</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p28b.jpg" alt="WD Media (M) Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Penang</div>
+          <h3 class="pname">WD Media (M) Sdn Bhd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>Tool Hook Up</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC, MA 28 &amp; MA 29, cleanroom, HVAC, FMCS, hookup</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 6 (Class 1K)</dd></div></dl>
+        </div>
+      </article>
+    </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">29 / 36</span></div>
+    <div class="bl-l"><span class="folio">29 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
 </section></div>
 
-<div class="stage"><section class="slide ">
+<div class="stage"><section class="slide refpg">
   <div class="topline">
     <div class="tl-l"><span class="tab">02.17</span><span class="tl-part">Part 02 · Project References</span></div>
     <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Reference Index</h2>
-      <p class="s-note">Every project in IAQ's reference list, with the photograph from the company profile. Sheet 7 of 7.</p>
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 13–14 of 73 from IAQ’s own reference list.</p>
     </header>
-  <div class="canvas fill"><div class="rgrid"><article class="rcard"><img src="img/ref/p62b.jpg" alt="Celestica (Dongguan-SSL) Technology Co., Ltd"><div class="rc-body"><h3 class="rc-name">Celestica (Dongguan-SSL) Technology Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">General contractor, 13,000 m²</p></div></article><article class="rcard"><img src="img/ref/p63t.jpg" alt="Intercos Cosmetics (Suzhou) Co., Ltd"><div class="rc-body"><h3 class="rc-name">Intercos Cosmetics (Suzhou) Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">EPC for mechanical and electrical system, 30,000 m²</p></div></article><article class="rcard"><img src="img/ref/p63b.jpg" alt="Voith Fabric (Kunshan) Co., Ltd"><div class="rc-body"><h3 class="rc-name">Voith Fabric (Kunshan) Co., Ltd</h3><div class="rc-meta">China</div><p class="rc-scope">EPC for mechanical and electrical system, 11,000 m²</p></div></article><article class="rcard"><img src="img/ref/p64t.jpg" alt="Chint Solar Technology Co., Ltd"><div class="rc-body"><h3 class="rc-name">Chint Solar Technology Co., Ltd</h3><div class="rc-meta">China &middot; ISO 8 (Class 100K)</div><p class="rc-scope">Cleanroom, ACMV, process utilities and tools hookup, 57,000 m²</p></div></article><article class="rcard"><img src="img/ref/p64b.jpg" alt="HVOLT Lithium-ion Battery Co., Ltd"><div class="rc-body"><h3 class="rc-name">HVOLT Lithium-ion Battery Co., Ltd</h3><div class="rc-meta">China &middot; ISO 7 (Class 10K)</div><p class="rc-scope">Air-conditioning system, 79,000 m²</p></div></article><article class="rcard"><img src="img/ref/p65t.jpg" alt="Jiang Su Senior Technology Co., Ltd"><div class="rc-body"><h3 class="rc-name">Jiang Su Senior Technology Co., Ltd</h3><div class="rc-meta">China &middot; ISO 7 &amp; 8</div><p class="rc-scope">Cleanroom, ACMV, process utilities and tools hookup, 70,000 m²</p></div></article><article class="rcard"><img src="img/ref/p65b.jpg" alt="Jin Neng Clean Energy Technology Co., Ltd"><div class="rc-body"><h3 class="rc-name">Jin Neng Clean Energy Technology Co., Ltd</h3><div class="rc-meta">China &middot; ISO 8 (Class 100K)</div><p class="rc-scope">Cleanroom system, 20,000 m²</p></div></article><article class="rcard"><img src="img/ref/p66t.jpg" alt="Juli New Energy Co., Ltd"><div class="rc-body"><h3 class="rc-name">Juli New Energy Co., Ltd</h3><div class="rc-meta">China &middot; ISO 6 &amp; 7</div><p class="rc-scope">Cleanroom, ACMV, process utilities and tools hookup, 9,600 m²</p></div></article><article class="rcard"><img src="img/ref/p66b.jpg" alt="Baoding Fengfan Storage Battery Co., Ltd"><div class="rc-body"><h3 class="rc-name">Baoding Fengfan Storage Battery Co., Ltd</h3><div class="rc-meta">China &middot; ISO 7 (Class 10K)</div><p class="rc-scope">Cleanroom system, 4,000 m²</p></div></article><article class="rcard"><img src="img/ref/p67t.jpg" alt="Unilever R&amp;amp;D Center"><div class="rc-body"><h3 class="rc-name">Unilever R&amp;D Center</h3><div class="rc-meta">China</div><p class="rc-scope">Mechanical and electrical system, 37,000 m²</p></div></article><article class="rcard"><img src="img/ref/p67b.jpg" alt="GE (China) R&amp;amp;D Center"><div class="rc-body"><h3 class="rc-name">GE (China) R&amp;D Center</h3><div class="rc-meta">China</div><p class="rc-scope">Mechanical and electrical system, 36,000 m²</p></div></article><article class="rcard"><img src="img/ref/p68t.jpg" alt="Dow Shanghai R&amp;amp;D Center"><div class="rc-body"><h3 class="rc-name">Dow Shanghai R&amp;D Center</h3><div class="rc-meta">China</div><p class="rc-scope">Mechanical and electrical system, 100,000 m²</p></div></article><article class="rcard"><img src="img/ref/p68b.jpg" alt="Rohm and Haas (China) R&amp;amp;D Center"><div class="rc-body"><h3 class="rc-name">Rohm and Haas (China) R&amp;D Center</h3><div class="rc-meta">China</div><p class="rc-scope">Mechanical and electrical system, 27,000 m²</p></div></article></div>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p29t.jpg" alt="STMicroelectronics Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Johor</div>
+          <h3 class="pname">STMicroelectronics Sdn Bhd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">3 storey production factory, cleanroom and ACMV</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 7 (Class 10K)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p29b.jpg" alt="Infineon Technologies (M) Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Melaka</div>
+          <h3 class="pname">Infineon Technologies (M) Sdn Bhd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCM-GMP, Block 8 testing, probe &amp; assembly, 43,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 6, 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">30 / 36</span></div>
+    <div class="bl-l"><span class="folio">30 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.18</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 15–16 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p30t.jpg" alt="MEMC Ipoh Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">MEMC Ipoh Sdn Bhd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Tool Hook Up</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Greenfield project, MEP, cleanroom, FMCS, CSA and tools hookup</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 3 to 7 (Class 1–10K)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p30b.jpg" alt="Flextronic Shah Alam Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Flextronic Shah Alam Sdn Bhd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC, 33kV substation, mechanical, cleanroom, civil and structural</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 7 (Class 10K)</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">31 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.19</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 17–18 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p31b.jpg" alt="AUO Sunpower Melaka">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">AUO Sunpower Melaka</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Fab 3A solar cell manufacturing, CSA, utilities, HVAC, electrical</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p33b.jpg" alt="Vital Healthcare Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Vital Healthcare Sdn Bhd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">GC, medical device plant, 33kV substation, MEP</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 8 (Class 100K)</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">32 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.20</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 19–20 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p34t.jpg" alt="Ain Medicare Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Ain Medicare Sdn Bhd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC, CSA, cleanroom and M&amp;E, pharmaceutical building</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 8 (Class 100K)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p35t.jpg" alt="Elegant Aura (M) Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Elegant Aura (M) Sdn Bhd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC for HVAC and cleanroom system</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">GMP Grade D</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">33 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.21</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 21–22 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p35b.jpg" alt="National University of Singapore">
+        <div class="panel">
+          <div class="flag">Singapore</div>
+          <h3 class="pname">National University of Singapore</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">M&amp;E and cleanroom, tissue culture laboratory</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 6 &amp; 7</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p36t.jpg" alt="Matrix (M) Sdn Bhd">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Matrix (M) Sdn Bhd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Process Utilities</li><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC, CSA, HVAC, electrical, fire protection and process utilities</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">34 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.22</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 23–24 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p36b.jpg" alt="T Hasegawa">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">T Hasegawa</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Spray dryer &amp; microwave tunnel renovation, MDR mechanical, ACMV</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p37b.jpg" alt="KLCC KGP KL">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">KLCC KGP KL</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC of two electrical centrifugal chillers, KLCC district cooling</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">35 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.23</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 25–26 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p38b.jpg" alt="Rapid MCD Chemical Plant">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Rapid MCD Chemical Plant</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Field erection of mechanical piping system</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p39t.jpg" alt="Pagoh Education Hub">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Pagoh Education Hub</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC, operation and maintenance of DCS</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">36 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.24</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Malaysia &amp; Singapore</h2>
+      <p class="s-note">Projects 27–28 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p39b.jpg" alt="Rapid Petronas Pengerang Co-gen Plant">
+        <div class="panel">
+          <div class="flag">Malaysia</div>
+          <h3 class="pname">Rapid Petronas Pengerang Co-gen Plant</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Mechanical erection, BoP piping &amp; WCCT, first co-gen plant in SEA</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p42b.jpg" alt="Envision">
+        <div class="panel">
+          <div class="flag">France</div>
+          <h3 class="pname">Envision</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom, dry room architecture works</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">Dry Room</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">37 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.25</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Europe &amp; Morocco</h2>
+      <p class="s-note">Projects 29–30 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p43t.jpg" alt="ACC Phase 1">
+        <div class="panel">
+          <div class="flag">France</div>
+          <h3 class="pname">ACC Phase 1</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Greenfield, 8,000 m² dry room architectural system, 35,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">Dry Room</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p43b.jpg" alt="Soitec Semiconductor, Paris">
+        <div class="panel">
+          <div class="flag">France</div>
+          <h3 class="pname">Soitec Semiconductor, Paris</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC cleanroom and MEP, 11,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">38 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.26</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Europe &amp; Morocco</h2>
+      <p class="s-note">Projects 31–32 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p44t.jpg" alt="Xfab Semiconductor, Paris">
+        <div class="panel">
+          <div class="flag">France</div>
+          <h3 class="pname">Xfab Semiconductor, Paris</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Tool Hook Up</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom, MEP and tools hookup, progressive hookup, 5,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p44b.jpg" alt="Nemotek, Rabat">
+        <div class="panel">
+          <div class="flag">Morocco</div>
+          <h3 class="pname">Nemotek, Rabat</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC cleanroom and MEP works, 11,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">39 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.27</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Europe &amp; Morocco</h2>
+      <p class="s-note">Projects 33–34 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p45b.jpg" alt="Kimoto">
+        <div class="panel">
+          <div class="flag">Poland</div>
+          <h3 class="pname">Kimoto</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom, mechanical &amp; electrical system</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p46t.jpg" alt="Sumika">
+        <div class="panel">
+          <div class="flag">Poland</div>
+          <h3 class="pname">Sumika</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom architecture, mechanical &amp; electrical system</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">40 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.28</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 35–36 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p48b.jpg" alt="All-Cent RF Technology (Wuxi) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">All-Cent RF Technology (Wuxi) Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC for MEP works, 25,600 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 &amp; 6</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p49b.jpg" alt="SMIC, Ningbo">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">SMIC, Ningbo</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPCC for MEP works, 22,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 &amp; 6</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">41 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.29</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 37–38 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p50t.jpg" alt="Kunshan Visionox Display Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Kunshan Visionox Display Co., Ltd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li><li>Tool Hook Up</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC cleanroom, MEP and hookup works, 27,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6, 7</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p50b.jpg" alt="GS Magic Drive Inc.">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">GS Magic Drive Inc.</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC cleanroom and MEP works, 68,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 4, 5, 6</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">42 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.30</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 39–40 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p51t.jpg" alt="STS Microelectronics (Shenzhen) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">STS Microelectronics (Shenzhen) Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom Class 1K system, 4,800 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 6 (Class 1K)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p51b.jpg" alt="Shantou Goworld Display Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Shantou Goworld Display Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 14,300 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6, 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">43 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.31</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 41–42 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p52t.jpg" alt="CSR Zhuzhou Electric Locomotive Research Institute">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">CSR Zhuzhou Electric Locomotive Research Institute</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 22,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6, 7</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p52b.jpg" alt="M-Flex (Suzhou) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">M-Flex (Suzhou) Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 25,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6, 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">44 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.32</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 43–44 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p53t.jpg" alt="Maxtor Technology (Suzhou) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Maxtor Technology (Suzhou) Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 95,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 &amp; 6</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p53b.jpg" alt="MMI Industries (Wuxi) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">MMI Industries (Wuxi) Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 7,200 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5, 6, 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">45 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.33</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 45–46 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p54t.jpg" alt="Snap On Asia Manufacturing (Kunshan) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Snap On Asia Manufacturing (Kunshan) Co., Ltd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Architecture &amp; Fit Out</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">General contractor, CSA, steel structure and MEP, 4,800 m²</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p54b.jpg" alt="Huawei Technologies Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Huawei Technologies Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 3,400 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 6 &amp; 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">46 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.34</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 47–48 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p55t.jpg" alt="Suzhou Golden Concord Technology Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Suzhou Golden Concord Technology Co., Ltd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC cleanroom and MEP works, 38,500 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 5 (Class 100)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p55b.jpg" alt="Shanghai Roche Pharmaceuticals Ltd.">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Shanghai Roche Pharmaceuticals Ltd.</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">PCC cleanroom and MEP works, 5,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO B (Class 100)</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">47 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.35</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 49–50 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p56t.jpg" alt="Forecyte Bio Limited (Shanghai) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Forecyte Bio Limited (Shanghai) Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 13,800 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO C &amp; D</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p56b.jpg" alt="Suzhou Ascentage Pharma Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Suzhou Ascentage Pharma Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 25,800 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO C &amp; D</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">48 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.36</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 51–52 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p57t.jpg" alt="Jiangsu Genscript Biotech Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Jiangsu Genscript Biotech Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 6,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO C &amp; D</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p57b.jpg" alt="Mindray Group Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Mindray Group Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 12,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO C &amp; D</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">49 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.37</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 53–54 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p58t.jpg" alt="EpimAb Biotechnology Su Zhou Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">EpimAb Biotechnology Su Zhou Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 5,200 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO C &amp; D</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p58b.jpg" alt="Longxiang Pharma Science and Technology Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Longxiang Pharma Science and Technology Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 46,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO B, C &amp; D</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">50 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.38</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 55–56 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p59t.jpg" alt="Sumitomo Medical (Suzhou) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Sumitomo Medical (Suzhou) Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 3,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 7 &amp; 8</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p59b.jpg" alt="Suzhou Capsugel Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Suzhou Capsugel Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom and MEP works, 21,500 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 7 (Class 10K)</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">51 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.39</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 57–58 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p60t.jpg" alt="AW (Suzhou) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">AW (Suzhou) Co., Ltd</h3>
+          <ul class="svc"><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Electrical system, 45,000 m²</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p60b.jpg" alt="AAM Automobile (Changshu) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">AAM Automobile (Changshu) Co., Ltd</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPC for mechanical &amp; electrical system, 18,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">52 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.40</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 59–60 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p61t.jpg" alt="ZF (China) Investment Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">ZF (China) Investment Co., Ltd</h3>
+          <ul class="svc"><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Electrical system, 44,000 m²</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p61b.jpg" alt="Umicore Automotive Catalyst (Su Zhou) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Umicore Automotive Catalyst (Su Zhou) Co., Ltd</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPC for mechanical &amp; electrical system, 6,800 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">53 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.41</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 61–62 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p62t.jpg" alt="Mary Kay (China) Cosmetics Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Mary Kay (China) Cosmetics Co., Ltd</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPC for mechanical and electrical system, 26,000 m²</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p62b.jpg" alt="Celestica (Dongguan-SSL) Technology Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Celestica (Dongguan-SSL) Technology Co., Ltd</h3>
+          <ul class="svc"><li>EPCC &amp; Design Build</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">General contractor, 13,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">54 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.42</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 63–64 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p63t.jpg" alt="Intercos Cosmetics (Suzhou) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Intercos Cosmetics (Suzhou) Co., Ltd</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPC for mechanical and electrical system, 30,000 m²</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p63b.jpg" alt="Voith Fabric (Kunshan) Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Voith Fabric (Kunshan) Co., Ltd</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">EPC for mechanical and electrical system, 11,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">55 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.43</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 65–66 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p64b.jpg" alt="HVOLT Lithium-ion Battery Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">HVOLT Lithium-ion Battery Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Air-conditioning system, 79,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 7 (Class 10K)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p65t.jpg" alt="Jiang Su Senior Technology Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Jiang Su Senior Technology Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Process Utilities</li><li>Tool Hook Up</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom, ACMV, process utilities and tools hookup, 70,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 7 &amp; 8</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">56 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.44</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 67–68 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p65b.jpg" alt="Jin Neng Clean Energy Technology Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Jin Neng Clean Energy Technology Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom system, 20,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 8 (Class 100K)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p66t.jpg" alt="Juli New Energy Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Juli New Energy Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li><li>Process Utilities</li><li>Tool Hook Up</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom, ACMV, process utilities and tools hookup, 9,600 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 6 &amp; 7</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">57 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.45</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 69–70 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p66b.jpg" alt="Baoding Fengfan Storage Battery Co., Ltd">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Baoding Fengfan Storage Battery Co., Ltd</h3>
+          <ul class="svc"><li>Cleanroom Systems</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Cleanroom system, 4,000 m²</dd></div><div class="sr"><dt>Cleanroom</dt><dd class="iso">ISO 7 (Class 10K)</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p67t.jpg" alt="Unilever R&amp;D Center">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Unilever R&amp;D Center</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Mechanical and electrical system, 37,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">58 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.46</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Projects 71–72 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p67b.jpg" alt="GE (China) R&amp;D Center">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">GE (China) R&amp;D Center</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Mechanical and electrical system, 36,000 m²</dd></div></dl>
+        </div>
+      </article>
+      <article class="pcard">
+        <img class="shot" src="img/ref/p68t.jpg" alt="Dow Shanghai R&amp;D Center">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Dow Shanghai R&amp;D Center</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Mechanical and electrical system, 100,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">59 / 66</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
+    <div class="bl-r">Project References</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide refpg">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">02.47</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><img class="mark" src="img/iaq-logo.png" alt="IAQ"></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">China</h2>
+      <p class="s-note">Project 73 of 73 from IAQ’s own reference list.</p>
+    </header>
+  <div class="canvas fill"><div class="grid two one">
+      <article class="pcard">
+        <img class="shot" src="img/ref/p68b.jpg" alt="Rohm and Haas (China) R&amp;D Center">
+        <div class="panel">
+          <div class="flag">China</div>
+          <h3 class="pname">Rohm and Haas (China) R&amp;D Center</h3>
+          <ul class="svc"><li>ACMV &amp; Mechanical</li><li>Electrical &amp; Instrumentation</li></ul>
+          <dl class="specs"><div class="sr"><dt>Scope</dt><dd class="">Mechanical and electrical system, 27,000 m²</dd></div></dl>
+        </div>
+      </article>
+    </div>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">60 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2406,7 +3683,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><img class="mark" src="img/iaq-logo-white.png" alt="IAQ"></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">31 / 36</span></div>
+    <div class="bl-l"><span class="folio">61 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -2424,7 +3701,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/value-2.jpg" alt=""><div class="cc-body"><div class="cc-num">E</div><h3 class="cc-name">Environmental Responsibility</h3><p class="cc-note">Minimising environmental footprint through sustainable design and construction. Energy-efficient solutions and eco-friendly technologies, prioritised at design stage.</p></div></article><article class="colcard"><img src="img/value-3.jpg" alt=""><div class="cc-body"><div class="cc-num">S</div><h3 class="cc-name">Social Accountability</h3><p class="cc-note">The well-being and safety of employees and communities first. A diverse, inclusive work environment and ethical labour practices.</p></div></article><article class="colcard"><img src="img/value-4.jpg" alt=""><div class="cc-body"><div class="cc-num">G</div><h3 class="cc-name">Corporate Governance</h3><p class="cc-note">Transparency, accountability and ethical decision-making, with the highest standards of compliance, building trust with clients, partners and stakeholders.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">32 / 36</span></div>
+    <div class="bl-l"><span class="folio">62 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -2458,7 +3735,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">33 / 36</span></div>
+    <div class="bl-l"><span class="folio">63 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -2485,7 +3762,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">34 / 36</span></div>
+    <div class="bl-l"><span class="folio">64 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -2509,7 +3786,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">35 / 36</span></div>
+    <div class="bl-l"><span class="folio">65 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -2538,7 +3815,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">36 / 36</span></div>
+    <div class="bl-l"><span class="folio">66 / 66</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -2550,7 +3827,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <nav class="nav" aria-label="Presentation controls">
   <button type="button" id="btn-grid" aria-label="Slide overview (O)">Overview</button>
-  <span class="counter" id="counter" aria-live="polite">01 / 36</span>
+  <span class="counter" id="counter" aria-live="polite">01 / 66</span>
   <button type="button" id="prev" aria-label="Previous slide">Prev</button>
   <button type="button" id="next" aria-label="Next slide">Next</button>
   <span class="timer" id="timer" role="timer">00:00</span>

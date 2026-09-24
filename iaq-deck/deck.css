@@ -1351,3 +1351,9 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .tl-yr .tl-dot{position:static;margin:0;border:0;transform:none;
   width:calc(12 * var(--u));height:calc(12 * var(--u));border-radius:50%;
   background:var(--signal)}
+
+/* 01.6: the operating entity behind each business unit, as the old company
+   profile states it */
+.cc-ent{font-family:var(--tech);font-weight:600;font-size:calc(12 * var(--u));
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
+  display:block;margin:calc(2 * var(--u)) 0 calc(6 * var(--u))}

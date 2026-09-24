@@ -394,22 +394,26 @@ COVER = {'EPCM': {'Engineering', 'Procurement', 'Construction'},
          'EFM': {'Operation'}}
 
 
-def phases(abbr):
-    rows = ''.join(
-        '<div class="pcv%s"><i></i><span>%s</span></div>'
-        % (' on' if st in COVER[abbr] else '', st) for st in STAGES)
-    return ('<div class="dm-phase"><span class="label">Phases covered</span>'
-            '<div class="pcv-list">%s</div></div>' % rows)
+def gantt():
+    head = '<div class="gt-row head"><span></span>' + ''.join(
+        f'<span class="gt-h">{st}</span>' for st in STAGES) + '</div>'
+    body = ''.join(
+        f'<div class="gt-row"><span class="gt-k">{a}</span>' + ''.join(
+            '<i class="gt-cell%s"></i>' % (' on' if st in COVER[a] else '')
+            for st in STAGES) + '</div>'
+        for a in ('EPCM', 'EPCC', 'EFM'))
+    return ('<div class="dm-gantt"><span class="label">Phase coverage across the '
+            'life of a facility</span><div class="gt">%s%s</div></div>' % (head, body))
 
 
 m_html = ''.join(
     f'<article class="dm"><div class="dm-head"><div class="dm-abbr">{a}</div>'
     f'<h3 class="dm-name">{n}</h3></div>'
-    f'<div class="dm-body"><p class="dm-note">{d}</p>{phases(a)}</div>'
+    f'<div class="dm-body"><p class="dm-note">{d}</p></div>'
     f'<div class="dm-refs"><span class="label">Delivered under this model</span>'
     + '<ul>' + ''.join(f'<li>{esc(r)}</li>' for r in refs) + '</ul></div></article>'
     for a, n, d, refs in models)
-slide(f'<div class="models">{m_html}</div>',
+slide(f'<div class="dmwrap"><div class="models">{m_html}</div>{gantt()}</div>',
       part_idx=0, num='01.7', title='Delivery Models',
       note='The three models IAQ contracts under, across the full life of a facility.',
       fill=True)
@@ -432,8 +436,8 @@ scope = [
 SERVICE_ICONS = [SERVICE_ICONS[i] for i in (9, 1, 8, 7, 0, 2, 10, 11)]
 s_html = ''.join(
     f'<div class="chip"><span class="c-ico">{SERVICE_ICONS[k-1]}</span>'
-    f'<div class="c-body"><span class="c-num">{k:02d}</span>'
-    f'<span class="c-name">{n}</span><span class="c-note">{d}</span></div></div>'
+    f'<div class="c-body"><span class="c-name">{n}</span>'
+    f'<span class="c-note">{d}</span></div><span class="c-num">{k:02d}</span></div>'
     for k, (n, d, sub) in enumerate(scope, start=1))
 slide(f'''
     <div class="scope">
@@ -618,22 +622,19 @@ slide(f'''
 criteria = ['Company performance', 'Project management', 'Technical expertise',
             'Innovation', 'Quality', 'Safety', 'Sustainability']
 crit_html = ''.join(
-    f'<li><span class="cr-n">{i:02d}</span><span class="cr-t">{esc(c)}</span></li>'
+    f'<li><span class="cr-t">{esc(c)}</span><span class="cr-n">{i:02d}</span></li>'
     for i, c in enumerate(criteria, 1))
-# seven items in two columns leaves one cell short; an empty cell keeps the
-# rule running the full width of the last row
-if len(criteria) % 2:
-    crit_html += '<li class="cr-pad"></li>'
+# seven criteria leave one cell of the 2x4 grid free; the credentials take it
 creds = ['Builder of the Year 2024', 'Highwire Gold', 'ISO 45001:2018']
-cred_html = ''.join(f'<span>{esc(c)}</span>' for c in creds)
+crit_html += ('<li class="cr-cred"><span class="label">Recognised</span>'
+              + ''.join(f'<span class="cc-i">{esc(c)}</span>' for c in creds) + '</li>')
 slide(f'''
     <div class="split media">
       <div class="lede">
         <h3 class="statement">Judged on the things<br>that actually matter.</h3>
-        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria &mdash;
-        the same ground our clients audit us on.</p>
+        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
+        They are the same ground our clients audit us on.</p>
         <ol class="crit">{crit_html}</ol>
-        <div class="cred">{cred_html}</div>
       </div>
       <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
     </div>''',

@@ -1369,6 +1369,104 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
   display:block;margin:calc(2 * var(--u)) 0 calc(6 * var(--u))}
 
+/* ============================================ 01.7 phase coverage chart
+   The three per-card lists said the same thing three times and left the
+   foot of the page empty. One chart instead: five phases across, the three
+   models down, filled where the model covers the phase. */
+.dmwrap{display:grid;grid-template-rows:1fr auto;gap:calc(26 * var(--u));height:100%;min-height:0}
+.models{height:100%;min-height:0}
+.dm-gantt{display:grid;gap:calc(14 * var(--u));background:var(--surface);
+  padding:calc(24 * var(--u)) calc(28 * var(--u)) calc(26 * var(--u))}
+.gt{display:grid;gap:calc(10 * var(--u))}
+.gt-row{display:grid;grid-template-columns:calc(96 * var(--u)) repeat(5,1fr);
+  gap:calc(8 * var(--u));align-items:center}
+.gt-h{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center}
+.gt-k{font-family:var(--display);font-weight:700;font-size:calc(21 * var(--u));
+  letter-spacing:-.02em;color:var(--signal)}
+.gt-cell{height:calc(30 * var(--u));background:var(--rule-2);display:block}
+.gt-cell.on{background:var(--signal)}
+
+/* ============================================ marks, refined
+   Red on transparent, no tinted chip behind them, set at a size that holds
+   its own beside the title and aligned to the text rather than floating. */
+.c-ico{background:transparent;width:calc(46 * var(--u));height:calc(46 * var(--u));
+  place-items:center}
+.c-ico .ico{width:calc(46 * var(--u));height:calc(46 * var(--u));color:var(--signal)}
+.ind-body .ico{background:transparent;padding:0;
+  width:calc(44 * var(--u));height:calc(44 * var(--u));margin-bottom:calc(12 * var(--u))}
+.ind.solid .ico{background:transparent;padding:0;
+  width:calc(56 * var(--u));height:calc(56 * var(--u))}
+
+/* the package number becomes a large ghost figure on the right of the tile,
+   the way the old profile sets its section numbers */
+.chips.two .chip{grid-template-columns:auto 1fr auto;column-gap:calc(20 * var(--u));
+  align-items:center}
+.chips.two .c-num{font-family:var(--display);font-weight:700;font-size:calc(46 * var(--u));
+  line-height:1;letter-spacing:-.04em;color:rgba(236,35,38,.16);
+  font-variant-numeric:tabular-nums;align-self:center}
+.chips.two .c-name{font-size:calc(21.5 * var(--u))}
+
+/* ============================================ 02.1 portfolio overview
+   The three region rules were landing at different heights because each card
+   sized its own text block; the body row is fixed now so they read as one
+   line. The figures below share baselines through subgrid and lose the
+   hairlines that were dividing them. */
+.canvas.fill .maptile{grid-template-rows:1fr calc(150 * var(--u))}
+.m-body{align-content:start}
+.sub .tri{background:transparent;gap:0 calc(34 * var(--u));
+  grid-template-rows:auto auto auto}
+.sub .tri .stat{grid-row:span 3;grid-template-rows:subgrid;background:transparent;
+  padding:calc(4 * var(--u)) 0 0;align-content:start}
+.sub .tri .stat .num{font-size:calc(46 * var(--u))}
+.sub .tri .stat .label{margin-top:calc(11 * var(--u))}
+.sub .tri .stat .cap.tight{margin-top:calc(7 * var(--u));font-size:calc(13.5 * var(--u));
+  line-height:1.35;color:var(--muted)}
+
+/* ============================================ 03.3 safety, rebuilt
+   The criteria were rows on grey hairlines. They are filled tiles now, each
+   with its figure set as a ghost numeral, and the credentials take the eighth
+   cell on the navy so the block reads as one graphic. No rules on the page. */
+.crit{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);
+  column-gap:calc(16 * var(--u));row-gap:calc(16 * var(--u));margin:calc(20 * var(--u)) 0 0;
+  height:100%;min-height:0}
+.crit li{background:var(--surface);border-top:0;
+  grid-template-columns:1fr auto;align-items:center;
+  padding:calc(16 * var(--u)) calc(20 * var(--u));gap:calc(14 * var(--u))}
+.cr-t{font-family:var(--sans);font-weight:600;font-size:calc(18 * var(--u));
+  line-height:1.2;color:var(--ink)}
+.cr-n{font-family:var(--display);font-weight:700;font-size:calc(34 * var(--u));
+  line-height:1;letter-spacing:-.04em;color:rgba(236,35,38,.18);
+  font-variant-numeric:tabular-nums}
+.cr-cred{background:var(--ink);display:grid;grid-template-columns:1fr;
+  align-content:center;gap:calc(5 * var(--u))}
+.cr-cred .label{color:var(--muted-dark);margin-bottom:calc(3 * var(--u))}
+.cc-i{font-family:var(--sans);font-weight:600;font-size:calc(14.5 * var(--u));
+  line-height:1.25;color:#fff}
+.canvas.fill .split.media .lede{grid-template-rows:auto auto 1fr}
+/* the credential cell needs to beat the tile rule it shares a selector with */
+.crit li.cr-cred{background:var(--ink);grid-template-columns:1fr;align-content:center;
+  padding:calc(15 * var(--u)) calc(20 * var(--u))}
+.crit li{min-height:0;padding:calc(14 * var(--u)) calc(20 * var(--u))}
+.crit{row-gap:calc(13 * var(--u));margin-top:calc(16 * var(--u))}
+.cr-t{font-size:calc(17 * var(--u))}
+.cr-n{font-size:calc(30 * var(--u))}
+/* trim the block so the eight cells sit inside the canvas */
+.canvas.fill .split.media .lede{gap:calc(16 * var(--u))}
+.crit{margin-top:calc(6 * var(--u));row-gap:calc(11 * var(--u))}
+.crit li{padding:calc(11 * var(--u)) calc(18 * var(--u))}
+.cr-t{font-size:calc(16 * var(--u))}
+.cr-n{font-size:calc(27 * var(--u))}
+.cc-i{font-size:calc(13.5 * var(--u))}
+.split.about .statement,.split.media .statement{font-size:calc(46 * var(--u))}
+/* let the tile grid shrink into the row it is given instead of pushing past
+   the canvas foot */
+.canvas.fill .split.media .lede{min-height:0}
+.canvas.fill .split.media .lede > *{min-height:0}
+.crit{align-content:stretch}
+.crit li{align-content:center}
+.crit{row-gap:calc(9 * var(--u))}
+
 </style>
 </head>
 <body>
@@ -1633,7 +1731,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <h2 class="s-title">Delivery Models</h2>
       <p class="s-note">The three models IAQ contracts under, across the full life of a facility.</p>
     </header>
-  <div class="canvas fill"><div class="models"><article class="dm"><div class="dm-head"><div class="dm-abbr">EPCM</div><h3 class="dm-name">Engineering, Procurement &amp; Construction Management</h3></div><div class="dm-body"><p class="dm-note">Management of engineering, procurement and construction for semiconductor manufacturing, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p><div class="dm-phase"><span class="label">Phases covered</span><div class="pcv-list"><div class="pcv on"><i></i><span>Engineering</span></div><div class="pcv on"><i></i><span>Procurement</span></div><div class="pcv on"><i></i><span>Construction</span></div><div class="pcv"><i></i><span>Commissioning</span></div><div class="pcv"><i></i><span>Operation</span></div></div></div></div><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>SilTerra expansion</li><li>Soitec PR1A expansion</li><li>Infineon IFKM3 expansion</li><li>Micron MSH</li></ul></div></article><article class="dm"><div class="dm-head"><div class="dm-abbr">EPCC</div><h3 class="dm-name">Engineering, Procurement, Construction &amp; Commissioning</h3></div><div class="dm-body"><p class="dm-note">Full turnkey delivery from conception to operation, completion and maintenance, with every stage managed from initial design through commissioning.</p><div class="dm-phase"><span class="label">Phases covered</span><div class="pcv-list"><div class="pcv on"><i></i><span>Engineering</span></div><div class="pcv on"><i></i><span>Procurement</span></div><div class="pcv on"><i></i><span>Construction</span></div><div class="pcv on"><i></i><span>Commissioning</span></div><div class="pcv"><i></i><span>Operation</span></div></div></div></div><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>ST Microelectronics</li><li>SilTerra FAB</li><li>ESCM Germany</li><li>KLCC DCS chiller upgrading</li></ul></div></article><article class="dm"><div class="dm-head"><div class="dm-abbr">EFM</div><h3 class="dm-name">Energy Facility Management</h3></div><div class="dm-body"><p class="dm-note">Ongoing energy and facility management that optimises operations and reduces carbon footprint, keeping facilities at the highest levels of efficiency.</p><div class="dm-phase"><span class="label">Phases covered</span><div class="pcv-list"><div class="pcv"><i></i><span>Engineering</span></div><div class="pcv"><i></i><span>Procurement</span></div><div class="pcv"><i></i><span>Construction</span></div><div class="pcv"><i></i><span>Commissioning</span></div><div class="pcv on"><i></i><span>Operation</span></div></div></div></div><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>KLCC DCC Plant</li><li>GDC Putrajaya chiller upgrading</li><li>Pagoh Edu Hub DCS</li></ul></div></article></div>
+  <div class="canvas fill"><div class="dmwrap"><div class="models"><article class="dm"><div class="dm-head"><div class="dm-abbr">EPCM</div><h3 class="dm-name">Engineering, Procurement &amp; Construction Management</h3></div><div class="dm-body"><p class="dm-note">Management of engineering, procurement and construction for semiconductor manufacturing, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>SilTerra expansion</li><li>Soitec PR1A expansion</li><li>Infineon IFKM3 expansion</li><li>Micron MSH</li></ul></div></article><article class="dm"><div class="dm-head"><div class="dm-abbr">EPCC</div><h3 class="dm-name">Engineering, Procurement, Construction &amp; Commissioning</h3></div><div class="dm-body"><p class="dm-note">Full turnkey delivery from conception to operation, completion and maintenance, with every stage managed from initial design through commissioning.</p></div><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>ST Microelectronics</li><li>SilTerra FAB</li><li>ESCM Germany</li><li>KLCC DCS chiller upgrading</li></ul></div></article><article class="dm"><div class="dm-head"><div class="dm-abbr">EFM</div><h3 class="dm-name">Energy Facility Management</h3></div><div class="dm-body"><p class="dm-note">Ongoing energy and facility management that optimises operations and reduces carbon footprint, keeping facilities at the highest levels of efficiency.</p></div><div class="dm-refs"><span class="label">Delivered under this model</span><ul><li>KLCC DCC Plant</li><li>GDC Putrajaya chiller upgrading</li><li>Pagoh Edu Hub DCS</li></ul></div></article></div><div class="dm-gantt"><span class="label">Phase coverage across the life of a facility</span><div class="gt"><div class="gt-row head"><span></span><span class="gt-h">Engineering</span><span class="gt-h">Procurement</span><span class="gt-h">Construction</span><span class="gt-h">Commissioning</span><span class="gt-h">Operation</span></div><div class="gt-row"><span class="gt-k">EPCM</span><i class="gt-cell on"></i><i class="gt-cell on"></i><i class="gt-cell on"></i><i class="gt-cell"></i><i class="gt-cell"></i></div><div class="gt-row"><span class="gt-k">EPCC</span><i class="gt-cell on"></i><i class="gt-cell on"></i><i class="gt-cell on"></i><i class="gt-cell on"></i><i class="gt-cell"></i></div><div class="gt-row"><span class="gt-k">EFM</span><i class="gt-cell"></i><i class="gt-cell"></i><i class="gt-cell"></i><i class="gt-cell"></i><i class="gt-cell on"></i></div></div></div></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">10 / 30</span></div>
@@ -1654,7 +1752,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill">
     <div class="scope">
       <div class="side-media"><img src="img/scope-bim.jpg" alt="IAQ BIM models: building, services and MEP layout"></div>
-      <div class="chips two"><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V8l6-5 6 5v13"/><path d="M10 21v-6h4v6"/></svg></span><div class="c-body"><span class="c-num">01</span><span class="c-name">Civil, Structural &amp; Architectural</span><span class="c-note">Greenfield and brownfield CSA</span></div></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M6 9h12"/><path d="M5 18c1.4-1.6 2.8-1.6 4.2 0s2.8 1.6 4.2 0 2.8-1.6 4.2 0"/></svg></span><div class="c-body"><span class="c-num">02</span><span class="c-name">Air Conditioning System</span><span class="c-note">ACMV, make-up air, recirculation</span></div></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg></span><div class="c-body"><span class="c-num">03</span><span class="c-name">HT &amp; LV Electrical System</span><span class="c-note">Up to 33kV substations</span></div></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a5 5 0 005-5c0-4-5-8-5-8s-5 4-5 8a5 5 0 005 5z"/><path d="M4 4h16M12 4v3"/></svg></span><div class="c-body"><span class="c-num">04</span><span class="c-name">Fire Protection System</span><span class="c-note">Detection, suppression, compliance</span></div></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M7 11v7M12 11v7M17 11v7"/><path d="M5.5 16.5L7 18l1.5-1.5M10.5 16.5L12 18l1.5-1.5M15.5 16.5L17 18l1.5-1.5"/></svg></span><div class="c-body"><span class="c-num">05</span><span class="c-name">Cleanroom System</span><span class="c-note">ISO 3 to ISO 8 &middot; Class 1 to Class 100K</span></div></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18M3 16h18"/><circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="16" r="2.2"/></svg></span><div class="c-body"><span class="c-num">06</span><span class="c-name">Process Utilities</span><span class="c-note">CDA, PCW &middot; Process Exhaust &middot; Chemical / Gas Delivery &middot; Ultra Pure Water (UPW) &middot; Waste Water Treatment</span></div></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M7 12l3-3 2.5 2.5L17 7"/></svg></span><div class="c-body"><span class="c-num">07</span><span class="c-name">Facility Monitoring &amp; Control System</span><span class="c-note">FMCS, BMS, PA</span></div></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9.2 9.2l5.6 5.6"/></svg></span><div class="c-body"><span class="c-num">08</span><span class="c-name">Tools Hookup</span><span class="c-note">Progressive tool install and hookup</span></div></div></div>
+      <div class="chips two"><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V8l6-5 6 5v13"/><path d="M10 21v-6h4v6"/></svg></span><div class="c-body"><span class="c-name">Civil, Structural &amp; Architectural</span><span class="c-note">Greenfield and brownfield CSA</span></div><span class="c-num">01</span></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M6 9h12"/><path d="M5 18c1.4-1.6 2.8-1.6 4.2 0s2.8 1.6 4.2 0 2.8-1.6 4.2 0"/></svg></span><div class="c-body"><span class="c-name">Air Conditioning System</span><span class="c-note">ACMV, make-up air, recirculation</span></div><span class="c-num">02</span></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg></span><div class="c-body"><span class="c-name">HT &amp; LV Electrical System</span><span class="c-note">Up to 33kV substations</span></div><span class="c-num">03</span></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a5 5 0 005-5c0-4-5-8-5-8s-5 4-5 8a5 5 0 005 5z"/><path d="M4 4h16M12 4v3"/></svg></span><div class="c-body"><span class="c-name">Fire Protection System</span><span class="c-note">Detection, suppression, compliance</span></div><span class="c-num">04</span></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M7 11v7M12 11v7M17 11v7"/><path d="M5.5 16.5L7 18l1.5-1.5M10.5 16.5L12 18l1.5-1.5M15.5 16.5L17 18l1.5-1.5"/></svg></span><div class="c-body"><span class="c-name">Cleanroom System</span><span class="c-note">ISO 3 to ISO 8 &middot; Class 1 to Class 100K</span></div><span class="c-num">05</span></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18M3 16h18"/><circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="16" r="2.2"/></svg></span><div class="c-body"><span class="c-name">Process Utilities</span><span class="c-note">CDA, PCW &middot; Process Exhaust &middot; Chemical / Gas Delivery &middot; Ultra Pure Water (UPW) &middot; Waste Water Treatment</span></div><span class="c-num">06</span></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M7 12l3-3 2.5 2.5L17 7"/></svg></span><div class="c-body"><span class="c-name">Facility Monitoring &amp; Control System</span><span class="c-note">FMCS, BMS, PA</span></div><span class="c-num">07</span></div><div class="chip"><span class="c-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9.2 9.2l5.6 5.6"/></svg></span><div class="c-body"><span class="c-name">Tools Hookup</span><span class="c-note">Progressive tool install and hookup</span></div><span class="c-num">08</span></div></div>
     </div>
   </div>
   <footer class="botline">
@@ -2161,10 +2259,9 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="split media">
       <div class="lede">
         <h3 class="statement">Judged on the things<br>that actually matter.</h3>
-        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria &mdash;
-        the same ground our clients audit us on.</p>
-        <ol class="crit"><li><span class="cr-n">01</span><span class="cr-t">Company performance</span></li><li><span class="cr-n">02</span><span class="cr-t">Project management</span></li><li><span class="cr-n">03</span><span class="cr-t">Technical expertise</span></li><li><span class="cr-n">04</span><span class="cr-t">Innovation</span></li><li><span class="cr-n">05</span><span class="cr-t">Quality</span></li><li><span class="cr-n">06</span><span class="cr-t">Safety</span></li><li><span class="cr-n">07</span><span class="cr-t">Sustainability</span></li><li class="cr-pad"></li></ol>
-        <div class="cred"><span>Builder of the Year 2024</span><span>Highwire Gold</span><span>ISO 45001:2018</span></div>
+        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
+        They are the same ground our clients audit us on.</p>
+        <ol class="crit"><li><span class="cr-t">Company performance</span><span class="cr-n">01</span></li><li><span class="cr-t">Project management</span><span class="cr-n">02</span></li><li><span class="cr-t">Technical expertise</span><span class="cr-n">03</span></li><li><span class="cr-t">Innovation</span><span class="cr-n">04</span></li><li><span class="cr-t">Quality</span><span class="cr-n">05</span></li><li><span class="cr-t">Safety</span><span class="cr-n">06</span></li><li><span class="cr-t">Sustainability</span><span class="cr-n">07</span></li><li class="cr-cred"><span class="label">Recognised</span><span class="cc-i">Builder of the Year 2024</span><span class="cc-i">Highwire Gold</span><span class="cc-i">ISO 45001:2018</span></li></ol>
       </div>
       <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
     </div>

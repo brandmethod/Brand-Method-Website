@@ -1357,3 +1357,101 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cc-ent{font-family:var(--tech);font-weight:600;font-size:calc(12 * var(--u));
   letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
   display:block;margin:calc(2 * var(--u)) 0 calc(6 * var(--u))}
+
+/* ============================================ 01.7 phase coverage chart
+   The three per-card lists said the same thing three times and left the
+   foot of the page empty. One chart instead: five phases across, the three
+   models down, filled where the model covers the phase. */
+.dmwrap{display:grid;grid-template-rows:1fr auto;gap:calc(26 * var(--u));height:100%;min-height:0}
+.models{height:100%;min-height:0}
+.dm-gantt{display:grid;gap:calc(14 * var(--u));background:var(--surface);
+  padding:calc(24 * var(--u)) calc(28 * var(--u)) calc(26 * var(--u))}
+.gt{display:grid;gap:calc(10 * var(--u))}
+.gt-row{display:grid;grid-template-columns:calc(96 * var(--u)) repeat(5,1fr);
+  gap:calc(8 * var(--u));align-items:center}
+.gt-h{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-align:center}
+.gt-k{font-family:var(--display);font-weight:700;font-size:calc(21 * var(--u));
+  letter-spacing:-.02em;color:var(--signal)}
+.gt-cell{height:calc(30 * var(--u));background:var(--rule-2);display:block}
+.gt-cell.on{background:var(--signal)}
+
+/* ============================================ marks, refined
+   Red on transparent, no tinted chip behind them, set at a size that holds
+   its own beside the title and aligned to the text rather than floating. */
+.c-ico{background:transparent;width:calc(46 * var(--u));height:calc(46 * var(--u));
+  place-items:center}
+.c-ico .ico{width:calc(46 * var(--u));height:calc(46 * var(--u));color:var(--signal)}
+.ind-body .ico{background:transparent;padding:0;
+  width:calc(44 * var(--u));height:calc(44 * var(--u));margin-bottom:calc(12 * var(--u))}
+.ind.solid .ico{background:transparent;padding:0;
+  width:calc(56 * var(--u));height:calc(56 * var(--u))}
+
+/* the package number becomes a large ghost figure on the right of the tile,
+   the way the old profile sets its section numbers */
+.chips.two .chip{grid-template-columns:auto 1fr auto;column-gap:calc(20 * var(--u));
+  align-items:center}
+.chips.two .c-num{font-family:var(--display);font-weight:700;font-size:calc(46 * var(--u));
+  line-height:1;letter-spacing:-.04em;color:rgba(236,35,38,.16);
+  font-variant-numeric:tabular-nums;align-self:center}
+.chips.two .c-name{font-size:calc(21.5 * var(--u))}
+
+/* ============================================ 02.1 portfolio overview
+   The three region rules were landing at different heights because each card
+   sized its own text block; the body row is fixed now so they read as one
+   line. The figures below share baselines through subgrid and lose the
+   hairlines that were dividing them. */
+.canvas.fill .maptile{grid-template-rows:1fr calc(150 * var(--u))}
+.m-body{align-content:start}
+.sub .tri{background:transparent;gap:0 calc(34 * var(--u));
+  grid-template-rows:auto auto auto}
+.sub .tri .stat{grid-row:span 3;grid-template-rows:subgrid;background:transparent;
+  padding:calc(4 * var(--u)) 0 0;align-content:start}
+.sub .tri .stat .num{font-size:calc(46 * var(--u))}
+.sub .tri .stat .label{margin-top:calc(11 * var(--u))}
+.sub .tri .stat .cap.tight{margin-top:calc(7 * var(--u));font-size:calc(13.5 * var(--u));
+  line-height:1.35;color:var(--muted)}
+
+/* ============================================ 03.3 safety, rebuilt
+   The criteria were rows on grey hairlines. They are filled tiles now, each
+   with its figure set as a ghost numeral, and the credentials take the eighth
+   cell on the navy so the block reads as one graphic. No rules on the page. */
+.crit{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);
+  column-gap:calc(16 * var(--u));row-gap:calc(16 * var(--u));margin:calc(20 * var(--u)) 0 0;
+  height:100%;min-height:0}
+.crit li{background:var(--surface);border-top:0;
+  grid-template-columns:1fr auto;align-items:center;
+  padding:calc(16 * var(--u)) calc(20 * var(--u));gap:calc(14 * var(--u))}
+.cr-t{font-family:var(--sans);font-weight:600;font-size:calc(18 * var(--u));
+  line-height:1.2;color:var(--ink)}
+.cr-n{font-family:var(--display);font-weight:700;font-size:calc(34 * var(--u));
+  line-height:1;letter-spacing:-.04em;color:rgba(236,35,38,.18);
+  font-variant-numeric:tabular-nums}
+.cr-cred{background:var(--ink);display:grid;grid-template-columns:1fr;
+  align-content:center;gap:calc(5 * var(--u))}
+.cr-cred .label{color:var(--muted-dark);margin-bottom:calc(3 * var(--u))}
+.cc-i{font-family:var(--sans);font-weight:600;font-size:calc(14.5 * var(--u));
+  line-height:1.25;color:#fff}
+.canvas.fill .split.media .lede{grid-template-rows:auto auto 1fr}
+/* the credential cell needs to beat the tile rule it shares a selector with */
+.crit li.cr-cred{background:var(--ink);grid-template-columns:1fr;align-content:center;
+  padding:calc(15 * var(--u)) calc(20 * var(--u))}
+.crit li{min-height:0;padding:calc(14 * var(--u)) calc(20 * var(--u))}
+.crit{row-gap:calc(13 * var(--u));margin-top:calc(16 * var(--u))}
+.cr-t{font-size:calc(17 * var(--u))}
+.cr-n{font-size:calc(30 * var(--u))}
+/* trim the block so the eight cells sit inside the canvas */
+.canvas.fill .split.media .lede{gap:calc(16 * var(--u))}
+.crit{margin-top:calc(6 * var(--u));row-gap:calc(11 * var(--u))}
+.crit li{padding:calc(11 * var(--u)) calc(18 * var(--u))}
+.cr-t{font-size:calc(16 * var(--u))}
+.cr-n{font-size:calc(27 * var(--u))}
+.cc-i{font-size:calc(13.5 * var(--u))}
+.split.about .statement,.split.media .statement{font-size:calc(46 * var(--u))}
+/* let the tile grid shrink into the row it is given instead of pushing past
+   the canvas foot */
+.canvas.fill .split.media .lede{min-height:0}
+.canvas.fill .split.media .lede > *{min-height:0}
+.crit{align-content:stretch}
+.crit li{align-content:center}
+.crit{row-gap:calc(9 * var(--u))}

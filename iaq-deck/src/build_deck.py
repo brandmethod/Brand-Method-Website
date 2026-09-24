@@ -406,26 +406,19 @@ COVER = {'EPCM': {'Engineering', 'Procurement', 'Construction'},
          'EFM': {'Operation'}}
 
 
-def gantt():
-    head = '<div class="gt-row head"><span></span>' + ''.join(
-        f'<span class="gt-h">{st}</span>' for st in STAGES) + '</div>'
-    body = ''.join(
-        f'<div class="gt-row"><span class="gt-k">{a}</span>' + ''.join(
-            '<i class="gt-cell%s"></i>' % (' on' if st in COVER[a] else '')
-            for st in STAGES) + '</div>'
-        for a in ('EPCM', 'EPCC', 'EFM'))
-    return ('<div class="dm-gantt"><span class="label">Phase coverage across the '
-            'life of a facility</span><div class="gt">%s%s</div></div>' % (head, body))
-
-
+# One band per model: the acronym, what it is, the phases it covers and the
+# projects delivered under it. Everything on one line of reading, no stacked
+# panels and no separate chart repeating the same fact.
 m_html = ''.join(
-    f'<article class="dm"><div class="dm-head"><div class="dm-abbr">{a}</div>'
-    f'<h3 class="dm-name">{n}</h3></div>'
-    f'<div class="dm-body"><p class="dm-note">{d}</p></div>'
-    f'<div class="dm-refs"><span class="label">Delivered under this model</span>'
-    + '<ul>' + ''.join(f'<li>{esc(r)}</li>' for r in refs) + '</ul></div></article>'
+    f'<article class="dmrow"><div class="dr-abbr">{a}</div><div class="dr-body">'
+    f'<h3 class="dr-name">{n}</h3><p class="dr-note">{d}</p>'
+    '<div class="dr-foot"><ul class="dr-ph">'
+    + ''.join('<li class="%s">%s</li>' % ('on' if st in COVER[a] else '', st)
+              for st in STAGES)
+    + '</ul><p class="dr-refs">' + ' &middot; '.join(esc(r) for r in refs)
+    + '</p></div></div></article>'
     for a, n, d, refs in models)
-slide(f'<div class="dmwrap"><div class="models">{m_html}</div>{gantt()}</div>',
+slide(f'<div class="dmrows">{m_html}</div>',
       part_idx=0, num='01.7', title='Delivery Models',
       note='The three models IAQ contracts under, across the full life of a facility.',
       fill=True)

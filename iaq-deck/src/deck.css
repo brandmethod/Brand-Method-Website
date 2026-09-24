@@ -1480,3 +1480,49 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .about2 .legal{border-top:0;background:rgba(16,26,43,.045);
   padding:calc(18 * var(--u)) calc(22 * var(--u));margin:0}
 .about2 .legal .lg{grid-template-columns:calc(176 * var(--u)) 1fr}
+
+/* ============================================ 01.7 delivery models, again
+   Stacked panels plus a separate chart made the page drag: two blocks saying
+   the same thing, with dead grey under each card. One band per model now —
+   acronym, what it is, the phases it covers, the projects under it — read
+   left to right, three bands filling the sheet with nothing spare. */
+.dmrows{display:grid;grid-template-rows:repeat(3,1fr);gap:calc(22 * var(--u));
+  height:100%;min-height:0}
+.dmrow{display:grid;grid-template-columns:calc(176 * var(--u)) 1fr;
+  background:var(--surface);min-height:0;overflow:hidden}
+.dr-abbr{background:rgba(236,35,38,.08);display:grid;place-items:center;
+  font-family:var(--display);font-weight:700;font-size:calc(40 * var(--u));
+  line-height:1;letter-spacing:-.035em;color:var(--signal)}
+.dr-body{display:grid;align-content:center;gap:calc(8 * var(--u));
+  padding:calc(20 * var(--u)) calc(28 * var(--u));min-width:0}
+.dr-name{font-family:var(--display);font-weight:600;font-size:calc(21 * var(--u));
+  line-height:1.2;letter-spacing:-.02em;margin:0;color:var(--ink)}
+.dr-note{font-family:var(--sans);font-weight:400;font-size:calc(15 * var(--u));
+  line-height:1.45;margin:0;color:var(--muted)}
+.dr-foot{display:grid;grid-template-columns:auto 1fr;gap:calc(26 * var(--u));
+  align-items:center;margin-top:calc(6 * var(--u));min-width:0}
+.dr-ph{list-style:none;margin:0;padding:0;display:flex;gap:calc(5 * var(--u))}
+.dr-ph li{font-family:var(--tech);font-weight:600;font-size:calc(10.5 * var(--u));
+  letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
+  padding:calc(8 * var(--u)) calc(11 * var(--u)) calc(6 * var(--u));
+  background:var(--rule-2);color:var(--muted)}
+.dr-ph li.on{background:var(--signal);color:#fff}
+.dr-refs{font-family:var(--sans);font-weight:500;font-size:calc(13.5 * var(--u));
+  line-height:1.4;margin:0;color:var(--muted);min-width:0}
+/* the bands were carrying small type in a tall box, which read as slack;
+   everything up a step so the content fills the band it is given */
+.dr-abbr{font-size:calc(48 * var(--u))}
+.dr-name{font-size:calc(25 * var(--u))}
+.dr-note{font-size:calc(16.5 * var(--u));line-height:1.5}
+.dr-body{gap:calc(11 * var(--u));padding:calc(24 * var(--u)) calc(32 * var(--u))}
+.dr-foot{margin-top:calc(10 * var(--u));gap:calc(30 * var(--u))}
+.dr-ph li{font-size:calc(11.5 * var(--u));
+  padding:calc(10 * var(--u)) calc(13 * var(--u)) calc(8 * var(--u))}
+.dr-refs{font-size:calc(15 * var(--u))}
+/* bands size to their content and the sheet distributes the space between
+   them, so there is no slack inside a band and none bunched at the foot */
+.dmrows{grid-template-rows:repeat(3,auto);align-content:space-between;
+  gap:calc(20 * var(--u))}
+.dr-foot{grid-template-columns:1fr;gap:calc(12 * var(--u));align-items:start}
+.dr-refs{font-size:calc(15 * var(--u));color:var(--ink-2)}
+.dr-body{padding:calc(26 * var(--u)) calc(32 * var(--u))}

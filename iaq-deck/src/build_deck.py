@@ -263,18 +263,30 @@ divider(0, '01', 'The Company', 'Sections 01.1 to 01.9', 'company-office',
          'ISO 9001 · ISO 14001 · ISO 45001 certified'])
 
 # ---------------------------------------------------------------- 01.1 ABOUT
-slide('''
-    <div class="split about">
-      <div class="lede">
+slide(f'''
+    <div class="about2">
+      <div class="ab-copy">
         <h3 class="statement">Established 1995.<br>A trailblazer in total facility solutions.</h3>
         <p class="body">Engineering, procurement, construction and maintenance for the industries
         where contamination, uptime and safety decide the outcome, from semiconductor wafer fabs
         to gigafactories, data centres and pharmaceutical plants.</p>
-        <dl class="legal"><div class="lg"><dt>Registered name</dt><dd>IAQ Technology International Sdn Bhd</dd></div><div class="lg"><dt>Registration no.</dt><dd>200001031412 (534019-T)</dd></div></dl>
+        <dl class="legal"><div class="lg"><dt>Registered name</dt><dd>{LEGAL_NAME}</dd></div>
+        <div class="lg"><dt>Registration no.</dt><dd>{REG_NO}</dd></div></dl>
       </div>
-      <div class="colcards c1">
-        <article class="colcard flat"><div class="cc-body"><h3 class="cc-name">Vision</h3><p class="cc-note">To be a regional facility solutions provider with engineering excellence that facilitates technological innovation and advancement in quality of life.</p></div></article><article class="colcard flat"><div class="cc-body"><h3 class="cc-name">Mission</h3><p class="cc-note">Providing innovative, sustainable facility and engineering solutions benefitting our clients and stakeholders, driven by our leadership, employees and partners globally.</p></div></article>
-      </div>
+      <div class="ab-media"><img src="img/about-facility.jpg" alt="An IAQ delivered facility"></div>
+      <article class="vm">
+        <img class="vm-ico" src="img/icon-vision.png" alt="">
+        <div class="vm-body"><h3 class="vm-name">Vision</h3>
+        <p class="vm-note">To be a regional facility solutions provider with engineering excellence
+        that facilitates technological innovation and advancement in quality of life.</p></div>
+      </article>
+      <article class="vm">
+        <img class="vm-ico" src="img/icon-mission.png" alt="">
+        <div class="vm-body"><h3 class="vm-name">Mission</h3>
+        <p class="vm-note">Providing innovative, sustainable facility and engineering solutions
+        benefitting our clients and stakeholders, driven by our leadership, employees and
+        partners globally.</p></div>
+      </article>
     </div>''',
       part_idx=0, num='01.1', title='About IAQ',
       note='Who we are and what we build. The delivery models are in 01.7.', fill=True)

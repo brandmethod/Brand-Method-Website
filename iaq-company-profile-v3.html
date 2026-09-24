@@ -2256,6 +2256,18 @@ goto(1);
 .geoc:first-child{grid-column:1 / -1}
 .geon{font-size:14.5px}
 .geod{font-size:12px;line-height:1.45;color:#39435A}
+
+/* ── the scope lists · a rule under every line, on every page that
+      carries one. The client struck them; the marker already starts
+      each line and the spacing separates them.                       */
+.secg{border-top:0 !important}
+.secg .sci{border-bottom:0 !important}
+.pscol+.pscol{border-left:0 !important}
+
+/* ── what we build · each column's mark sits on a chip and carries a
+      heavier stroke, so it reads as a mark rather than a hairline    */
+.psic{width:58px;height:58px;padding:13px;box-sizing:border-box;background:var(--cloud);
+ stroke-width:1.7;margin-bottom:18px}
 </style>
 <script id="bm-photofix">
 /* ── AUTO EXPOSURE · every photograph is measured on load and pulled to one

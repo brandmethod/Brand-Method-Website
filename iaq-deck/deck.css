@@ -1146,3 +1146,208 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .dark .legal{border-top-color:var(--rule-dark)}
 .dark .legal dt{color:var(--muted-dark)}
 .dark .legal dd{color:var(--on-dark)}
+
+/* ============================================ 01.2 at a glance, rebuilt
+   Same six numbers and the same certifications, set as tiles rather than
+   rows divided by rules. Nothing on this page is a line: separation is
+   done with fill and space, the lead figure takes the navy, and the
+   certifications sit in filled chips instead of outlined ones. */
+.glance{grid-template-columns:calc(556 * var(--u)) 1fr;gap:calc(32 * var(--u))}
+.glance .stats{background:transparent;grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr 1fr;gap:calc(20 * var(--u));height:100%}
+.glance .stat,
+.glance .stat:nth-child(1),.glance .stat:nth-child(2){border-top:0}
+.glance .stats.iconic .stat{background:var(--surface);
+  padding:calc(26 * var(--u)) calc(28 * var(--u));grid-template-columns:1fr;
+  column-gap:0;align-items:start;align-content:space-between;row-gap:calc(14 * var(--u))}
+.glance .st-ico{width:calc(62 * var(--u));height:calc(62 * var(--u))}
+.glance .st-ico svg{width:calc(33 * var(--u));height:calc(33 * var(--u))}
+.glance .stat .num{font-size:calc(60 * var(--u))}
+.glance .stat .num span{font-size:calc(22 * var(--u))}
+.glance .stat .label{margin-top:calc(9 * var(--u))}
+
+/* the lead figure carries the navy so the block has a head */
+.glance .stats.iconic .stat.hero{background:var(--ink)}
+.glance .stat.hero .num{color:#fff}
+.glance .stat.hero .label{color:var(--muted-dark)}
+.glance .stat.hero .st-ico{background:rgba(255,255,255,.12);color:#fff}
+
+/* certifications: filled chips, no outlines */
+.sub{gap:calc(14 * var(--u))}
+.sub .certs{gap:calc(12 * var(--u))}
+.sub .cert{border:0;background:rgba(16,26,43,.055);color:var(--muted);
+  padding:calc(13 * var(--u)) calc(18 * var(--u)) calc(11 * var(--u))}
+
+/* ============================================ 01.8 scope of services, rebuilt
+   Eight packages as tiles beside a plate of IAQ's own plant room, so the page
+   carries a picture of the work instead of two rows floating in white space.
+   No rules: every division is a fill. */
+.scope{display:grid;grid-template-columns:calc(500 * var(--u)) 1fr;
+  gap:calc(30 * var(--u));height:100%}
+.scope .side-media{overflow:hidden}
+.scope .side-media img{width:100%;height:100%;object-fit:cover;display:block}
+.chips.two{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);
+  gap:calc(16 * var(--u));background:transparent;height:100%}
+.chips.two .chip{background:var(--surface);border-top:0;
+  padding:calc(20 * var(--u)) calc(22 * var(--u));
+  grid-template-columns:auto 1fr;column-gap:calc(18 * var(--u));
+  align-items:center;align-content:center;gap:0}
+.c-ico{display:grid;place-items:center;width:calc(62 * var(--u));height:calc(62 * var(--u));
+  background:rgba(236,35,38,.08);color:var(--signal);flex:none}
+.c-ico .ico{width:calc(32 * var(--u));height:calc(32 * var(--u))}
+.c-body{display:grid;gap:calc(4 * var(--u));min-width:0}
+.chips.two .c-num{font-size:calc(12.5 * var(--u));letter-spacing:.2em}
+.chips.two .c-name{font-size:calc(21 * var(--u));line-height:1.2}
+.chips.two .c-note{font-size:calc(14 * var(--u));line-height:1.4}
+
+/* ============================================ icons, read at size
+   The line icons were set at 1.6 and drawn small, which broke up at export
+   scale. They are 2.0 now, larger, and sit on a tinted chip so each one
+   reads as a mark rather than a stray stroke. */
+.ico{width:calc(38 * var(--u));height:calc(38 * var(--u))}
+.ind-body .ico{width:calc(30 * var(--u));height:calc(30 * var(--u))}
+.ind-ico{display:grid;place-items:center;width:calc(54 * var(--u));height:calc(54 * var(--u));
+  background:rgba(236,35,38,.08);color:var(--signal);margin-bottom:calc(10 * var(--u))}
+.ind.solid .ind-ico{background:rgba(255,255,255,.12);color:#fff;
+  width:calc(64 * var(--u));height:calc(64 * var(--u))}
+.ind.solid .ind-ico .ico{width:calc(34 * var(--u));height:calc(34 * var(--u))}
+
+/* ============================================ 01.7 delivery models, rebuilt
+   Three zones per card, each a fill rather than a rule: the acronym and name
+   on a tinted head, the description centred in the white, the reference
+   projects on a tinted foot. Nothing on the card is a line. */
+.models{gap:calc(26 * var(--u))}
+.dm{border-top:0;padding:0;gap:0;background:var(--surface);
+  grid-template-rows:auto 1fr auto;align-content:stretch}
+.dm-head{background:rgba(236,35,38,.07);display:grid;gap:calc(10 * var(--u));
+  padding:calc(30 * var(--u)) calc(30 * var(--u)) calc(26 * var(--u))}
+.dm-abbr{font-size:calc(58 * var(--u))}
+.dm-body{display:grid;align-content:center;
+  padding:calc(24 * var(--u)) calc(30 * var(--u))}
+.dm-note{margin:0}
+.dm-refs{border-top:0;align-self:stretch;background:rgba(16,26,43,.045);
+  padding:calc(24 * var(--u)) calc(30 * var(--u)) calc(28 * var(--u))}
+
+/* the three cards share their row lines, so head, body and foot align across
+   the page however long each model's name runs; the reference panel takes the
+   slack rather than leaving a white void in the middle of the card */
+.models{grid-template-rows:auto auto 1fr}
+.dm{grid-row:span 3;grid-template-rows:subgrid}
+.dm-head{align-content:start}
+.dm-body{align-content:start;padding:calc(26 * var(--u)) calc(30 * var(--u)) calc(24 * var(--u))}
+.dm-note{font-size:calc(17 * var(--u))}
+.dm-refs{align-content:center}
+
+/* phase coverage: what each model's own name says it covers */
+.models{grid-template-rows:auto 1fr auto}
+.dm-refs{align-content:start}
+.dm-phase{margin-top:calc(28 * var(--u));display:grid;gap:calc(13 * var(--u))}
+.pcv-list{display:grid;gap:calc(10 * var(--u))}
+.pcv{display:grid;grid-template-columns:auto 1fr;gap:calc(13 * var(--u));align-items:center}
+.pcv i{width:calc(12 * var(--u));height:calc(12 * var(--u));background:var(--rule-2);display:block}
+.pcv.on i{background:var(--signal)}
+.pcv span{font-family:var(--sans);font-weight:500;font-size:calc(15.5 * var(--u));
+  line-height:1;color:var(--rule)}
+.pcv.on span{color:var(--ink);font-weight:600}
+
+/* the card now carries head, description, coverage and references, so the
+   whole thing is tuned down to sit inside the canvas */
+.dm-head{padding:calc(24 * var(--u)) calc(26 * var(--u)) calc(20 * var(--u));
+  gap:calc(8 * var(--u))}
+.dm-abbr{font-size:calc(50 * var(--u))}
+.dm-name{font-size:calc(19 * var(--u))}
+.dm-body{padding:calc(20 * var(--u)) calc(26 * var(--u)) calc(18 * var(--u))}
+.dm-note{font-size:calc(15.5 * var(--u));line-height:1.45}
+.dm-phase{margin-top:calc(20 * var(--u));gap:calc(11 * var(--u))}
+.pcv-list{gap:calc(8 * var(--u))}
+.pcv span{font-size:calc(14.5 * var(--u))}
+.dm-refs{padding:calc(18 * var(--u)) calc(26 * var(--u)) calc(20 * var(--u));
+  gap:calc(9 * var(--u))}
+.dm-refs ul{gap:calc(6 * var(--u))}
+.dm-refs li{font-size:calc(14.5 * var(--u));line-height:1.3}
+.dm-head{padding:calc(20 * var(--u)) calc(24 * var(--u)) calc(17 * var(--u))}
+.dm-abbr{font-size:calc(46 * var(--u))}
+.dm-body{padding:calc(17 * var(--u)) calc(24 * var(--u)) calc(15 * var(--u))}
+.dm-phase{margin-top:calc(17 * var(--u))}
+.dm-refs{padding:calc(16 * var(--u)) calc(24 * var(--u)) calc(18 * var(--u))}
+.dm-refs{padding-bottom:calc(14 * var(--u))}
+.dm-refs ul{gap:calc(5 * var(--u))}
+/* the tinted reference panel takes the card's slack, so no white gap is left
+   floating between the coverage list and the projects */
+.models{grid-template-rows:auto auto 1fr}
+.dm-refs{align-content:start}
+
+/* ============================================ 03.2 certifications, rebuilt
+   The three ISO registrations are shown as the documents themselves, taken
+   from IAQ's own asset folder, with the licences and ratings that have no
+   document beneath them as chips. No rules: fills and space only. */
+.certgrid{grid-template-columns:calc(470 * var(--u)) 1fr;gap:calc(30 * var(--u))}
+.award-panel{border-top:0}
+.certcol{display:grid;grid-template-rows:1fr auto;gap:calc(22 * var(--u));min-height:0}
+.cdocs{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(20 * var(--u));min-height:0}
+.cdoc{margin:0;display:grid;grid-template-rows:1fr auto;background:var(--surface);min-height:0}
+.cdoc img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;min-height:0}
+.cdoc figcaption{display:grid;gap:calc(4 * var(--u));
+  padding:calc(16 * var(--u)) calc(18 * var(--u)) calc(18 * var(--u))}
+.cd-std{font-family:var(--display);font-weight:600;font-size:calc(19 * var(--u));
+  line-height:1.15;color:var(--signal)}
+.cd-scope{font-family:var(--sans);font-weight:600;font-size:calc(14.5 * var(--u));
+  line-height:1.25;color:var(--ink)}
+.cd-by{font-family:var(--sans);font-weight:400;font-size:calc(13 * var(--u));
+  line-height:1.3;color:var(--muted)}
+
+.lics{display:grid;grid-template-columns:repeat(5,1fr);gap:calc(16 * var(--u))}
+.lic{background:var(--surface);padding:calc(18 * var(--u));display:grid;
+  align-content:start;gap:calc(5 * var(--u))}
+.lic-mark{height:calc(26 * var(--u));width:auto;display:block;margin-bottom:calc(6 * var(--u))}
+.lic-name{font-family:var(--sans);font-weight:600;font-size:calc(15 * var(--u));
+  line-height:1.2;color:var(--signal)}
+.lic-note{font-family:var(--sans);font-weight:400;font-size:calc(12.5 * var(--u));
+  line-height:1.3;color:var(--muted)}
+/* the whole document has to be visible, so it is contained rather than
+   cropped, and the sign-off block on the award panel loses its rule */
+.cdoc img{object-fit:contain;object-position:center top;background:#fff;
+  padding:calc(10 * var(--u)) calc(10 * var(--u)) 0}
+.ap-foot{border-top:0;background:rgba(255,255,255,.07);
+  padding:calc(16 * var(--u)) calc(18 * var(--u));margin-top:calc(22 * var(--u))}
+.lic-name{font-size:calc(14 * var(--u))}
+
+/* ============================================ 01.3 milestones, rebuilt
+   Thirteen years on one zigzag axis left every column ragged and the foot of
+   the page empty. Same years, same projects, run as two tracks: each year
+   gets about twice the measure, the entries all hang the same way, and the
+   page fills top to bottom. */
+.timeline{display:grid;grid-template-rows:auto auto 1fr 1fr;
+  gap:calc(22 * var(--u));height:100%;min-height:0}
+.tl-track{position:relative;padding-top:calc(18 * var(--u));min-height:0}
+.tl-track::before{content:"";position:absolute;left:0;right:0;top:calc(23 * var(--u));
+  height:calc(2 * var(--u));background:var(--rule)}
+.tl-cols{display:grid;gap:calc(22 * var(--u));position:relative;min-height:0}
+.tl-yr{display:grid;align-content:start;gap:calc(9 * var(--u));min-width:0}
+.tl-dot{width:calc(12 * var(--u));height:calc(12 * var(--u));border-radius:50%;
+  background:var(--signal);display:block}
+.tl-yr .tl-year{font-family:var(--display);font-weight:700;font-size:calc(30 * var(--u));
+  line-height:1;letter-spacing:-.03em;color:var(--signal);margin:0}
+.tl-yr .tl-list{gap:calc(7 * var(--u))}
+.tl-yr .tl-list li{font-size:calc(12.5 * var(--u));line-height:1.35;
+  padding-left:calc(11 * var(--u))}
+.tl-yr .tl-list li::before{top:calc(6 * var(--u));width:calc(5 * var(--u));
+  height:calc(5 * var(--u))}
+/* the rail was cutting through the year numerals; the marker sits on the rail
+   and the year clears it */
+.tl-track{padding-top:calc(10 * var(--u))}
+.tl-track::before{top:calc(15 * var(--u))}
+.tl-yr{gap:calc(8 * var(--u))}
+.tl-yr .tl-year{margin-top:calc(10 * var(--u))}
+/* industry marks read as badges: the glyph sits inside a tinted chip drawn on
+   the svg itself, so the markup stays as it is */
+.ind-body .ico{width:calc(54 * var(--u));height:calc(54 * var(--u));
+  background:rgba(236,35,38,.08);padding:calc(12 * var(--u));box-sizing:border-box;
+  margin-bottom:calc(12 * var(--u))}
+.ind.solid .ico{width:calc(64 * var(--u));height:calc(64 * var(--u));
+  background:rgba(255,255,255,.12);padding:calc(15 * var(--u))}
+/* the markers came from the old zigzag, where they were absolutely placed;
+   in the tracks they sit in flow, one per year */
+.tl-yr .tl-dot{position:static;margin:0;border:0;transform:none;
+  width:calc(12 * var(--u));height:calc(12 * var(--u));border-radius:50%;
+  background:var(--signal)}

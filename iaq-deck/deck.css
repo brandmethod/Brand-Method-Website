@@ -1526,3 +1526,13 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .dr-foot{grid-template-columns:1fr;gap:calc(12 * var(--u));align-items:start}
 .dr-refs{font-size:calc(15 * var(--u));color:var(--ink-2)}
 .dr-body{padding:calc(26 * var(--u)) calc(32 * var(--u))}
+
+/* ============================================ 02.11 reference index
+   Five columns to carry the full list from the old profile, ninety-one
+   projects, at a size that still reads. Rows separate on space, not rules. */
+.wall.w5{grid-template-columns:repeat(5,1fr);gap:0 calc(26 * var(--u));align-content:start}
+.wall.w5 h3{font-size:calc(13 * var(--u));letter-spacing:.16em;
+  margin:0 0 calc(10 * var(--u));color:var(--signal)}
+.wall.w5 li{font-size:calc(12.5 * var(--u));line-height:1.3;
+  padding:calc(5.5 * var(--u)) 0;border-top:0;color:var(--ink-2)}
+.canvas.fill .wall.w5 li{padding:calc(5.5 * var(--u)) 0}

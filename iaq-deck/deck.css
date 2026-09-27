@@ -1714,3 +1714,91 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .pu-name{font-size:calc(19 * var(--u))}
 .pu-list{gap:calc(10 * var(--u))}
 .pu-list li{font-size:calc(15.5 * var(--u))}
+
+/* ============================================ 01.3 milestones
+   One axis with the years set inside it, their projects alternating above
+   and below. Alternating buys each year two columns of measure, which is
+   what thirteen years on a 16:9 frame needs to stay readable. */
+.mstone{display:grid;grid-template-rows:auto auto 1fr;gap:calc(22 * var(--u));height:100%}
+.ms-track{position:relative;display:grid;grid-template-columns:repeat(13,1fr);
+  grid-template-rows:1.12fr auto 1fr;padding:0 calc(58 * var(--u));min-height:0}
+.ms-col{grid-row:span 3;display:grid;grid-template-rows:subgrid;position:relative}
+
+.ms-body{position:relative;width:calc(224 * var(--u));justify-self:center}
+.ms-col.up .ms-body{grid-row:1;align-self:end;padding-bottom:calc(24 * var(--u))}
+.ms-col.down .ms-body{grid-row:3;align-self:start;padding-top:calc(24 * var(--u))}
+/* the drop from the axis to the block it belongs to */
+.ms-body::after{content:"";position:absolute;left:50%;width:calc(1.5 * var(--u));
+  height:calc(24 * var(--u));background:rgba(236,35,38,.32)}
+.ms-col.up .ms-body::after{bottom:0}
+.ms-col.down .ms-body::after{top:0}
+
+.ms-rail{grid-row:2;position:relative;display:grid;place-items:center;
+  height:calc(58 * var(--u))}
+.ms-rail::before{content:"";position:absolute;left:0;right:0;top:50%;
+  height:calc(2 * var(--u));transform:translateY(-50%);background:rgba(236,35,38,.22)}
+.ms-col:first-child .ms-rail::before{left:50%}
+.ms-col:last-child .ms-rail::before{right:50%}
+.ms-node{position:relative;display:grid;place-items:center;
+  width:calc(58 * var(--u));height:calc(58 * var(--u));border-radius:50%;
+  background:var(--paper);box-shadow:0 0 0 calc(2.5 * var(--u)) var(--signal) inset;
+  font-family:var(--tech);font-weight:600;font-size:calc(15.5 * var(--u));
+  letter-spacing:.02em;color:var(--signal);font-variant-numeric:tabular-nums}
+
+.ms-list{list-style:none;margin:0;padding:0;display:grid;gap:calc(8 * var(--u))}
+.ms-list li{position:relative;padding-left:calc(13 * var(--u));font-family:var(--sans);
+  font-weight:500;font-size:calc(13 * var(--u));line-height:1.35;color:var(--ink-2)}
+.ms-list li::before{content:"";position:absolute;left:0;top:calc(6 * var(--u));
+  width:calc(5 * var(--u));height:calc(5 * var(--u));border-radius:50%;background:currentColor}
+.ms-list li.k-g{color:#12A150}
+.ms-list li.k-t{color:#7A3DB8}
+/* the blocks are wider than their columns on purpose: they must not push the
+   columns out, so the tracks are free to shrink and the block overhangs */
+.mstone{min-width:0}
+.ms-track{grid-template-columns:repeat(13,minmax(0,1fr))}
+.ms-col{min-width:0}
+/* the end blocks must stay inside the page margin, and the entries carry the
+   band better one step up in size */
+.ms-track{padding:0 calc(72 * var(--u))}
+.ms-body{width:calc(210 * var(--u))}
+.ms-list{gap:calc(9 * var(--u))}
+.ms-list li{font-size:calc(14 * var(--u));padding-left:calc(14 * var(--u))}
+.ms-list li::before{top:calc(6.5 * var(--u))}
+.ms-rail::before{background:rgba(236,35,38,.28)}
+.ms-body::after{background:rgba(236,35,38,.4)}
+/* the axis sits where the two sides leave equal margin, so the band reads as
+   deliberately centred rather than bottom-heavy */
+.ms-track{grid-template-rows:1.12fr auto .88fr}
+
+/* ============================================ 03.5 contacts, three slots
+   Three people share the band, so the sign-off column gives up width and the
+   card sets one step down. The unfilled slot holds its place as an outline
+   rather than reading as a real contact. */
+.endgrid{grid-template-columns:calc(480 * var(--u)) 1fr;gap:calc(46 * var(--u)) calc(62 * var(--u))}
+.ccards{grid-template-columns:repeat(3,1fr);gap:calc(22 * var(--u))}
+.ccard{padding:calc(30 * var(--u)) calc(26 * var(--u)) calc(32 * var(--u));
+  gap:calc(11 * var(--u))}
+.cc-person{font-size:calc(23 * var(--u))}
+.cc-line{font-size:calc(14.5 * var(--u));grid-template-columns:calc(19 * var(--u)) 1fr;
+  gap:calc(11 * var(--u))}
+.cc-line svg{width:calc(17 * var(--u));height:calc(17 * var(--u))}
+.cc-role{font-size:calc(11.5 * var(--u))}
+.signoff{width:calc(236 * var(--u))}
+.end-line{max-width:calc(440 * var(--u))}
+
+.ccard.tbc{position:relative;background:transparent;
+  border:calc(1.5 * var(--u)) dashed rgba(255,255,255,.22);
+  border-top:calc(3 * var(--u)) solid rgba(236,35,38,.45)}
+.ccard.tbc .cc-role,.ccard.tbc .cc-person,.ccard.tbc .cc-line span{color:var(--muted-dark)}
+.ccard.tbc .cc-line svg{color:rgba(236,35,38,.5)}
+.cc-tag{justify-self:start;font-family:var(--tech);font-weight:600;
+  font-size:calc(10.5 * var(--u));letter-spacing:.2em;text-transform:uppercase;line-height:1;
+  color:var(--signal);padding:calc(6 * var(--u)) calc(9 * var(--u)) calc(5 * var(--u));
+  border:calc(1 * var(--u)) solid rgba(236,35,38,.4);margin-bottom:calc(2 * var(--u))}
+/* the role runs to two lines on one card, so every card reserves two: the
+   names then sit on one line across the three */
+.ccard{position:relative}
+.cc-role{min-height:calc(27 * var(--u));line-height:1.35}
+.cc-tag{position:absolute;top:calc(15 * var(--u));right:calc(16 * var(--u));margin:0}
+.ccard.tbc .cc-role{padding-right:calc(120 * var(--u))}
+.end-tag{font-size:calc(13.5 * var(--u));letter-spacing:.2em}

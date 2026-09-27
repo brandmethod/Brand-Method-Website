@@ -339,30 +339,56 @@ slide(f'''
       note='Who we are and what we build. The delivery models are in 01.7.', fill=True)
 
 # ---------------------------------------------------------------- 01.2 GLANCE
-stats = [('31', '', 'Years Experience'), ('450', '', 'Employees'),
-         ('200', '+', 'Projects Completed'), ('1.5', 'mil m²', 'Cleanroom Built-Up Area'),
+# Rebuilt to follow the investor profile's "IAQ Group Brief": the six numbers
+# as IAQ states them there, the five-stage delivery cycle that page carries,
+# and the certifications that back the claim.
+stats = [('31', '', 'Years Experience'), ('530', '+', 'Employees'),
+         ('235', '+', 'Projects Completed'), ('1.5', 'mil m\u00b2', 'Cleanroom Built-Up Area'),
          ('7', '', 'Global Offices'), ('20', 't / yr', 'Carbon Footprint Reduced')]
 stat_html = ''.join(
     f'<div class="stat{" hero" if k == 0 else ""}"><span class="st-ico">{STAT_ICONS[k]}</span>'
     f'<div class="st-body"><div class="num">{v}<span>{u}</span></div>'
     f'<div class="label">{esc(l)}</div></div></div>'
     for k, (v, u, l) in enumerate(stats))
+
+CYCLE_ICONS = [
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M9.5 4.2l7.2 3.1-6.4 10.9-3.6-1.5z"/><path d="M8.3 7.6l7.2 3.1"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6h2l2.2 9.2h9.6L19 8.4H6.2"/><circle cx="9.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-4.5V21"/><path d="M12 11h7v10"/><path d="M8 13h1.5M8 16.5h1.5M15 14.5h1.5M15 18h1.5"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14a8 8 0 10-16 0"/><path d="M12 14l4.2-3.4"/><path d="M4 18h16"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5a4.6 4.6 0 006 6L13 17l-3.6.9.9-3.6z"/><path d="M4 20.5l3.6-3.6"/></svg>',
+]
+cycle = [('Engineering', 'Design &amp; consultation'), ('Procurement', 'Sourcing &amp; supply chain'),
+         ('Construction', 'Self-performed packages'), ('Testing', 'Commissioning &amp; handover'),
+         ('Maintenance', 'Operate, service, optimise')]
+cy_html = ''.join(
+    f'<div class="cy-step"><span class="cy-mark">{CYCLE_ICONS[k-1]}<b>{k:02d}</b></span>'
+    f'<div class="cy-name">{n}</div><div class="cy-note">{d}</div></div>'
+    for k, (n, d) in enumerate(cycle, start=1))
+
 certs = [('Intertek', 'ISO 9001:2015'), ('Intertek', 'ISO 14001:2015'), ('Intertek', 'ISO 45001:2018'),
          ('CIDB', 'Grade G7'), ('PKK', 'Grade G7'), ('Highwire Safety', 'Gold Award'),
          ('MCIEA 2024', 'Builder of the Year')]
 cert_html = ''.join(f'<span class="cert">{esc(a)} <strong>{esc(b)}</strong></span>' for a, b in certs)
-_unused_ph_glance = ph('Corporate facility exterior, IAQ delivered project')
+
 slide(f'''
-    <div class="glance">
-      <div class="side-media"><img src="img/glance-cleanroom.jpg" alt="IAQ office"></div>
-      <div class="stats iconic">{stat_html}</div>
-    </div>
-    <div class="sub">
-      <div class="label">Certification &amp; Recognition</div>
-      <div class="certs">{cert_html}</div>
+    <div class="brief">
+      <div class="stats iconic six">{stat_html}</div>
+      <section class="cycle">
+        <div class="cy-head"><span class="label">The delivery cycle</span>
+          <p class="cy-lead">A proudly Malaysian company on three continents, delivering
+          mission-critical cleanroom facilities where contamination control, precision
+          and compliance are absolute.</p></div>
+        <div class="cy-track">{cy_html}</div>
+      </section>
+      <div class="sub">
+        <div class="label">Certification &amp; Recognition</div>
+        <div class="certs">{cert_html}</div>
+      </div>
     </div>''',
       part_idx=0, num='01.2', title='IAQ at a Glance',
-      note='The company in six numbers, and the certifications that stand behind them.', fill=True)
+      note='The company in six numbers, the delivery cycle behind them, and the certifications that stand behind both.',
+      fill=True)
 
 # ---------------------------------------------------------------- 01.3 MILESTONES
 # The zigzag ran 13 years across one axis, which left the columns ragged and
@@ -374,7 +400,7 @@ slide('''<div class="timeline"><div class="tl-offices"><span class="label">Offic
            "and the projects that marked each year.", fill=True)
 
 # ---------------------------------------------------------------- 01.4 FOOTPRINT
-slide('''<div class="foot-grid"><div class="foot-map"><img src="img/map-base.png" alt="IAQ global footprint"><span class="pin" style="left:21.00%;top:52.00%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">United States</b></span><span class="pin" style="left:44.50%;top:32.05%"><i></i><b class="l" style="--dy:calc(-16 * var(--u))">Ireland</b></span><span class="pin" style="left:49.95%;top:25.00%"><i></i><b class="l" style="--dy:calc(-10 * var(--u))">Sweden</b></span><span class="pin" style="left:49.75%;top:33.95%"><i></i><b class="l" style="--dy:calc(21 * var(--u))">Germany</b></span><span class="pin" style="left:67.70%;top:55.20%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">India</b></span><span class="pin" style="left:75.20%;top:56.10%"><i></i><b class="r" style="--dy:calc(-18 * var(--u))">Malaysia</b></span><span class="pin" style="left:75.35%;top:56.65%"><i></i><b class="r" style="--dy:calc(22 * var(--u))">Singapore</b></span></div><div class="mkts"><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><div class="mk-yr">1995</div><div class="mk-tx"><h3 class="mk-name">Malaysia</h3><p class="mk-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><div class="mk-yr">2020</div><div class="mk-tx"><h3 class="mk-name">Sweden</h3><p class="mk-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><div class="mk-yr">2023</div><div class="mk-tx"><h3 class="mk-name">Singapore</h3><p class="mk-note">Design &amp; build EPCM services to global clients in the semiconductor industry.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><div class="mk-yr">2025</div><div class="mk-tx"><h3 class="mk-name">Germany</h3><p class="mk-note">EPCC services following the semiconductor industry expansion in Europe.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">India</h3><p class="mk-note">D&amp;B turnkey delivery for India&rsquo;s first wafer fab.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">United States</h3><p class="mk-note">Entry to the US following the localisation of advanced technology facilities.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#169B62"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#FF883E"/></svg></span><div class="mk-yr">&mdash;</div><div class="mk-tx"><h3 class="mk-name">Ireland</h3><p class="mk-note">Newest market. Scope and year to be confirmed by IAQ.</p></div></div></div></div>''',
+slide('''<div class="foot-grid"><div class="foot-map"><img src="img/map-base.png" alt="IAQ global footprint"><span class="pin" style="left:21.00%;top:52.00%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">United States</b></span><span class="pin" style="left:44.50%;top:32.05%"><i></i><b class="l" style="--dy:calc(-16 * var(--u))">Ireland</b></span><span class="pin" style="left:49.95%;top:25.00%"><i></i><b class="l" style="--dy:calc(-10 * var(--u))">Sweden</b></span><span class="pin" style="left:49.75%;top:33.95%"><i></i><b class="l" style="--dy:calc(21 * var(--u))">Germany</b></span><span class="pin" style="left:67.70%;top:55.20%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">India</b></span><span class="pin" style="left:75.20%;top:56.10%"><i></i><b class="r" style="--dy:calc(-18 * var(--u))">Malaysia</b></span><span class="pin" style="left:75.35%;top:56.65%"><i></i><b class="r" style="--dy:calc(22 * var(--u))">Singapore</b></span></div><div class="mkts"><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><div class="mk-yr">1995</div><div class="mk-tx"><h3 class="mk-name">Malaysia</h3><p class="mk-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><div class="mk-yr">2020</div><div class="mk-tx"><h3 class="mk-name">Sweden</h3><p class="mk-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><div class="mk-yr">2023</div><div class="mk-tx"><h3 class="mk-name">Singapore</h3><p class="mk-note">Design &amp; build EPCM services to global clients in the semiconductor industry.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><div class="mk-yr">2025</div><div class="mk-tx"><h3 class="mk-name">Germany</h3><p class="mk-note">EPCC services following the semiconductor industry expansion in Europe.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">India</h3><p class="mk-note">D&amp;B turnkey delivery for India&rsquo;s first wafer fab.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">United States</h3><p class="mk-note">Entry to the US following the localisation of advanced technology facilities.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#169B62"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#FF883E"/></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">Ireland</h3><p class="mk-note">Incorporated to support a client&rsquo;s wafer fabrication project.</p></div></div></div></div>''',
       part_idx=0, num='01.4', title='Global Footprint',
       note='Seven markets, from the Malaysian headquarters outward.', fill=True)
 
@@ -396,10 +422,25 @@ values = [
     ('val-excellence', 'Pursuit of Excellence',
      'Devoted to excellence in all our works, providing sustainable solutions to complex challenges.'),
 ]
+VALUE_ICONS = [
+ # safety: hard hat
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 16.5a8.8 8.8 0 0117.6 0z"/><path d="M9.4 8.1V5.3a1.6 1.6 0 011.6-1.6h2a1.6 1.6 0 011.6 1.6v2.8"/><path d="M2.4 16.5h19.2v2.3H2.4z"/></svg>',
+ # quality: seal with a check
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.6" r="6.3"/><path d="M9.4 9.6l1.9 1.9 3.3-3.6"/><path d="M8.3 15.1L7 21l5-2.2L17 21l-1.3-5.9"/></svg>',
+ # integrity: shield and check
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l7.6 2.9v6c0 4.3-3 8-7.6 9.5-4.6-1.5-7.6-5.2-7.6-9.5v-6z"/><path d="M8.7 11.9l2.4 2.4 4.2-4.6"/></svg>',
+ # efficiency: gauge
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.4 15.6a9 9 0 10-16.8 0"/><path d="M12 15.6l4.4-4.9"/><circle cx="12" cy="15.6" r="1.3"/></svg>',
+ # engineering: gear
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.1"/><path d="M12 2.6v2.8M12 18.6v2.8M21.4 12h-2.8M5.4 12H2.6M18.6 5.4l-2 2M7.4 16.6l-2 2M18.6 18.6l-2-2M7.4 7.4l-2-2"/></svg>',
+ # excellence: summit
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2.4 19.6L9 6.4l3.5 6.6 2.2-3.4 6.9 10z"/><path d="M9 6.4l2.1 4"/></svg>',
+]
 v_html = ''.join(
     f'''<article class="value">
         <img src="img/{img}.jpg" alt="{esc(n)}">
-        <div class="v-body"><span class="v-num">{k:02d}</span>
+        <div class="v-body"><span class="v-ico">{VALUE_ICONS[k - 1]}</span>
+        <span class="v-num">{k:02d}</span>
         <h3 class="v-name">{esc(n)}</h3><p class="v-note">{esc(d)}</p></div>
       </article>''' for k, (img, n, d) in enumerate(values, start=1))
 slide(f'<div class="values">{v_html}</div>',
@@ -471,18 +512,18 @@ slide(f'<div class="dmrows">{m_html}</div>',
       fill=True)
 
 # ---------------------------------------------------------------- 01.8 SCOPE
+# Two bands, following the investor profile: the eight packages IAQ
+# self-performs, then the process critical utilities the profile breaks out
+# by solution family, and the tool installation work that follows them.
 scope = [
-    ('Civil, Structural &amp; Architectural', 'Greenfield and brownfield CSA', []),
-    ('Air Conditioning System', 'ACMV, make-up air, recirculation', []),
-    ('HT &amp; LV Electrical System', 'Up to 33kV substations', []),
-    ('Fire Protection System', 'Detection, suppression, compliance', []),
-    ('Cleanroom System', 'ISO 3 to ISO 8 &middot; Class 1 to Class 100K', []),
-    # the four that follow sit under Process Utilities in IAQ's own profile
-    ('Process Utilities',
-     'CDA, PCW &middot; Process Exhaust &middot; Chemical / Gas Delivery '
-     '&middot; Ultra Pure Water (UPW) &middot; Waste Water Treatment', []),
-    ('Facility Monitoring &amp; Control System', 'FMCS, BMS, PA', []),
-    ('Tools Hookup', 'Progressive tool install and hookup', []),
+    ('Civil, Structural &amp; Architectural', 'Greenfield and brownfield CSA'),
+    ('Air Conditioning System', 'ACMV, make-up air, recirculation'),
+    ('HT &amp; LV Electrical System', 'Up to 33kV substations'),
+    ('Fire Protection System', 'Detection, suppression, compliance'),
+    ('Cleanroom System', 'ISO 3 to ISO 8 &middot; Class 1 to Class 100K'),
+    ('Process Utilities', 'Water, chemical, gas and exhaust systems'),
+    ('Facility Monitoring &amp; Control', 'FMCS, BMS, PA'),
+    ('Tools Hookup', 'Progressive tool install and hookup'),
 ]
 # icons follow the packages, so reorder them to match the list above
 SERVICE_ICONS = [SERVICE_ICONS[i] for i in (9, 1, 8, 7, 0, 2, 10, 11)]
@@ -490,14 +531,54 @@ s_html = ''.join(
     f'<div class="chip"><span class="c-ico">{SERVICE_ICONS[k-1]}</span>'
     f'<div class="c-body"><span class="c-name">{n}</span>'
     f'<span class="c-note">{d}</span></div><span class="c-num">{k:02d}</span></div>'
-    for k, (n, d, sub) in enumerate(scope, start=1))
+    for k, (n, d) in enumerate(scope, start=1))
+
+PU_ICONS = [
+ # water
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8c4 5.4 6.2 8.1 6.2 10.6A6.2 6.2 0 015.8 13.4c0-2.5 2.2-5.2 6.2-10.6z"/></svg>',
+ # chemical and slurry
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.6 2.8v6.1L4.7 18a2.1 2.1 0 001.8 3.2h11a2.1 2.1 0 001.8-3.2l-4.9-9.1V2.8z"/><path d="M8.4 2.8h7.2M6.6 14.6h10.8"/></svg>',
+ # gas
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6.2" width="8" height="15" rx="4"/><path d="M10.4 6.2V3.4h3.2v2.8M9.4 10.4h5.2"/></svg>',
+ # exhaust
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 21V9.6l4.2-2.2V21M8.6 21V4.6l6.8-2.2V21M15.4 21V9.6l4.2 2.2V21"/><path d="M2.6 21h18.8"/></svg>',
+ # tool install
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.8" cy="6.8" r="3.1"/><circle cx="17.2" cy="17.2" r="3.1"/><path d="M9 9l6 6"/></svg>',
+]
+pu = [
+    ('Water Solutions',
+     ['UPW plant &amp; distribution', 'Process waste drains, WWT', 'Reclaim and ZLD',
+      'Chemical storage &amp; dispensing']),
+    ('Chemical &amp; Slurry Solutions',
+     ['Bulk chemical', 'Blending systems', 'Dispense systems']),
+    ('Gas Solutions',
+     ['Bulk gas', 'Specialty gas &amp; abatement', 'Bunker: NH&#8323;, SiH&#8324;, H&#8322;',
+      'Liquid dispense system']),
+    ('Process Exhaust Solutions',
+     ['General and acid', 'Caustic and solvent', 'Calamity exhaust']),
+    ('Tool Installations',
+     ['Progressive hook up', 'Gas detection &amp; monitoring', 'Electrical power &amp; controls']),
+]
+pu_html = ''.join(
+    f'<article class="pu"><span class="pu-ico">{PU_ICONS[k]}</span>'
+    f'<h3 class="pu-name">{n}</h3>'
+    + '<ul class="pu-list">' + ''.join(f'<li>{x}</li>' for x in items) + '</ul></article>'
+    for k, (n, items) in enumerate(pu))
+
 slide(f'''
-    <div class="scope">
-      <div class="side-media"><img src="img/scope-bim.jpg" alt="IAQ BIM models: building, services and MEP layout"></div>
-      <div class="chips two">{s_html}</div>
+    <div class="scope2">
+      <div class="chips four sv">{s_html}</div>
+      <section class="puband">
+        <div class="pu-head"><span class="label">Process critical utilities</span>
+          <p class="pu-lead">Delivered by IAQ Utility Solutions as an EPCM package:
+          the utility infrastructure a fab runs on, and the tool installations
+          that bring it to production.</p></div>
+        <div class="pu-grid">{pu_html}</div>
+      </section>
     </div>''',
       part_idx=0, num='01.8', title='Scope of Services',
-      note='Eight packages, self-performed and integrated under one contract.', fill=True)
+      note='Eight packages self-performed under one contract, and the process utilities behind them.',
+      fill=True)
 
 # ---------------------------------------------------------------- 01.9 INDUSTRY
 slide(f'<div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg" alt="Semiconductor"><div class="ind-body">{INDUSTRY_ICONS[0]}<h3 class="ind-name">Semiconductor</h3><p class="ind-note">Wafer fab, advanced packaging, test &amp; assembly</p></div></article><article class="ind"><img src="img/microsoft-kul03.jpg" alt="Data Centre"><div class="ind-body">{INDUSTRY_ICONS[1]}<h3 class="ind-name">Data Centre</h3><p class="ind-note">Hyperscale cooling, security, uptime</p></div></article><article class="ind"><img src="img/northvolt.jpg" alt="EV Battery"><div class="ind-body">{INDUSTRY_ICONS[2]}<h3 class="ind-name">EV Battery</h3><p class="ind-note">Dry rooms, moisture control, explosion proofing</p></div></article><article class="ind"><img src="img/klcc-dcp.jpg" alt="District Cooling and Heating"><div class="ind-body">{INDUSTRY_ICONS[3]}<h3 class="ind-name">District Cooling &amp; Heating</h3><p class="ind-note">Urban energy plant and distribution</p></div></article><article class="ind"><img src="img/first-solar.jpg" alt="Photovoltaics"><div class="ind-body">{INDUSTRY_ICONS[4]}<h3 class="ind-name">Photovoltaics</h3><p class="ind-note">Cell and module lines, toxic material handling</p></div></article><article class="ind"><img src="img/pharmaniaga.jpg" alt="Pharmaceuticals and Hospitals"><div class="ind-body">{INDUSTRY_ICONS[5]}<h3 class="ind-name">Pharmaceuticals &amp; Hospitals</h3><p class="ind-note">GMP grades, regulated environments</p></div></article><article class="ind"><img src="img/ind-food.jpg" alt="Food and Beverage"><div class="ind-body">{INDUSTRY_ICONS[6]}<h3 class="ind-name">Food &amp; Beverage</h3><p class="ind-note">Hygienic design, quality and safety standards</p></div></article><article class="ind solid"><div class="ind-body">{INDUSTRY_ICONS[7]}<h3 class="ind-name">Your facility next</h3><p class="ind-note">Total facility solutions, end to end.</p></div></article></div>',
@@ -507,7 +588,7 @@ slide(f'<div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg"
 
 # ================================================================ PART 02
 divider(1, '02', 'Project References', 'Sections 02.1 to 02.47', 'refs-crew',
-        ['200+ projects completed across three regions',
+        ['235+ projects completed across three regions',
          'Over 1.5 million m² of cleanroom built',
          'ISO 3 to ISO 8 · Class 1 to Class 100K'])
 
@@ -529,7 +610,7 @@ r_html = ''.join(
 slide(f'''<div class="maps">{r_html}</div>
     <div class="sub">
       <div class="tri">
-        <div class="stat sm"><div class="num">200<span>+</span></div><div class="label">Projects Completed</div></div>
+        <div class="stat sm"><div class="num">235<span>+</span></div><div class="label">Projects Completed</div></div>
         <div class="stat sm"><div class="num">1.5<span>mil m²</span></div><div class="label">Cleanroom Built</div></div>
         <div class="stat sm"><div class="num">5</div><div class="label">Contract Models</div><p class="cap tight">GC · EPCC · EPCM · PCC · Tool Hookup</p></div>
       </div>

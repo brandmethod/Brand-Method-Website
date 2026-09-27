@@ -1578,3 +1578,139 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .refpg .canvas.fill .grid.two.one{align-content:center}
 .refpg .grid.one .pcard{height:calc(430 * var(--u))}
 .refpg .grid.one .panel{padding:calc(34 * var(--u)) calc(40 * var(--u))}
+
+/* ============================================ 01.2 group brief
+   Three bands: the numbers, the five-stage delivery cycle IAQ states in its
+   own investor profile, and the certifications that back both. */
+.brief{display:grid;grid-template-rows:auto 1fr auto;gap:calc(30 * var(--u));height:100%}
+.stats.six{grid-template-columns:repeat(6,1fr);background:transparent;gap:0}
+.stats.six .stat{background:var(--surface);padding:calc(26 * var(--u)) calc(22 * var(--u));
+  margin-right:calc(1 * var(--u));grid-template-columns:1fr;row-gap:calc(14 * var(--u));
+  align-content:center}
+.stats.six .stat:last-child{margin-right:0}
+.stats.six .stat.hero{background:var(--ink)}
+.stats.six .stat.hero .num{color:#fff}
+.stats.six .stat.hero .label{color:var(--muted-dark)}
+.stats.six .stat.hero .st-ico{background:rgba(255,255,255,.1);color:#fff}
+.stats.six .st-ico{width:calc(52 * var(--u));height:calc(52 * var(--u))}
+.stats.six .st-ico svg{width:calc(28 * var(--u));height:calc(28 * var(--u))}
+.stats.six .num{font-size:calc(52 * var(--u))}
+.stats.six .num span{font-size:calc(18 * var(--u))}
+.stats.six .label{font-size:calc(11.5 * var(--u));letter-spacing:.18em;line-height:1.4}
+
+/* the delivery cycle */
+.cycle{display:grid;grid-template-rows:auto 1fr;gap:calc(22 * var(--u));
+  background:var(--surface);padding:calc(30 * var(--u)) calc(34 * var(--u)) calc(34 * var(--u));
+  border-top:calc(3 * var(--u)) solid var(--signal);min-height:0}
+.cy-head{display:grid;grid-template-columns:calc(260 * var(--u)) 1fr;
+  gap:calc(34 * var(--u));align-items:center}
+.cy-lead{font-family:var(--sans);font-weight:400;font-size:calc(16.5 * var(--u));
+  line-height:1.5;margin:0;color:var(--muted);max-width:calc(1120 * var(--u))}
+.cy-track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);
+  align-content:center;gap:calc(20 * var(--u))}
+/* the run of the cycle, behind the markers */
+.cy-track::before{content:"";position:absolute;left:10%;right:10%;top:calc(34 * var(--u));
+  height:calc(2 * var(--u));background:rgba(236,35,38,.22)}
+.cy-step{position:relative;display:grid;justify-items:center;text-align:center;
+  gap:calc(9 * var(--u));align-content:start}
+.cy-mark{position:relative;display:grid;place-items:center;
+  width:calc(68 * var(--u));height:calc(68 * var(--u));border-radius:50%;
+  background:var(--surface);color:var(--signal);
+  box-shadow:0 0 0 calc(2 * var(--u)) var(--signal) inset}
+.cy-mark svg{width:calc(30 * var(--u));height:calc(30 * var(--u))}
+.cy-mark b{position:absolute;right:calc(-6 * var(--u));top:calc(-4 * var(--u));
+  font-family:var(--tech);font-weight:600;font-size:calc(11.5 * var(--u));letter-spacing:.08em;
+  color:#fff;background:var(--signal);padding:calc(4 * var(--u)) calc(6 * var(--u)) calc(3 * var(--u));
+  line-height:1;font-variant-numeric:tabular-nums}
+.cy-name{font-family:var(--display);font-weight:600;font-size:calc(21 * var(--u));
+  line-height:1.15;letter-spacing:-.02em;margin-top:calc(4 * var(--u))}
+.cy-note{font-family:var(--sans);font-weight:400;font-size:calc(14.5 * var(--u));
+  line-height:1.4;color:var(--muted);max-width:calc(210 * var(--u))}
+/* the six-across band is one row, not the two the generic fill rule assumes */
+.canvas.fill .stats.six{height:auto;grid-template-rows:auto}
+/* the run of the cycle is drawn per step, so it meets the markers at their
+   centres wherever the band distributes its slack */
+.cy-track::before{display:none}
+.cy-track{align-content:center;gap:calc(14 * var(--u))}
+.cy-step::before{content:"";position:absolute;top:calc(42 * var(--u));height:calc(2 * var(--u));
+  left:calc(50% + 50 * var(--u));right:calc(-50% + 50 * var(--u));background:rgba(236,35,38,.24)}
+.cy-step:last-child::before{display:none}
+.cy-mark{width:calc(84 * var(--u));height:calc(84 * var(--u))}
+.cy-mark svg{width:calc(37 * var(--u));height:calc(37 * var(--u))}
+.cy-mark b{font-size:calc(12.5 * var(--u));right:calc(-7 * var(--u));top:calc(-3 * var(--u))}
+.cy-step{gap:calc(12 * var(--u))}
+.cy-name{font-size:calc(24 * var(--u));margin-top:calc(8 * var(--u))}
+.cy-note{font-size:calc(15.5 * var(--u));max-width:calc(240 * var(--u))}
+.cy-lead{font-size:calc(17.5 * var(--u))}
+/* both bands share the frame, so neither strands a void under its content */
+.brief{grid-template-rows:minmax(0,.95fr) minmax(0,1.3fr) auto}
+.canvas.fill .stats.six{height:100%;grid-template-rows:1fr}
+
+/* ============================================ 01.5 core values
+   Each value carries its own mark: a red disc straddling the picture and the
+   panel, with the count set as a ghost numeral opposite it. */
+.value{position:relative}
+.v-body{position:relative;padding:calc(40 * var(--u)) calc(22 * var(--u)) calc(20 * var(--u));
+  gap:calc(7 * var(--u))}
+.v-ico{position:absolute;top:calc(-31 * var(--u));left:calc(22 * var(--u));
+  display:grid;place-items:center;width:calc(62 * var(--u));height:calc(62 * var(--u));
+  border-radius:50%;background:var(--signal);color:#fff;
+  box-shadow:0 0 0 calc(5 * var(--u)) var(--surface)}
+.v-ico svg{width:calc(29 * var(--u));height:calc(29 * var(--u))}
+.v-num{position:absolute;top:calc(14 * var(--u));right:calc(20 * var(--u));
+  font-family:var(--display);font-weight:700;font-size:calc(46 * var(--u));line-height:.9;
+  letter-spacing:-.04em;color:rgba(236,35,38,.13);font-variant-numeric:tabular-nums}
+.v-name{font-size:calc(21 * var(--u))}
+.v-note{font-size:calc(15 * var(--u));max-width:calc(420 * var(--u))}
+
+/* ============================================ 01.8 scope of services
+   Band one: the eight self-performed packages. Band two: the process
+   critical utilities, broken out by solution family as IAQ's own investor
+   profile states them. */
+.scope2{display:grid;grid-template-rows:auto 1fr;gap:calc(30 * var(--u));height:100%}
+.chips.four.sv{grid-template-columns:repeat(4,1fr);background:transparent;gap:0}
+.chips.four.sv .chip{position:relative;background:var(--surface);padding:calc(22 * var(--u));
+  margin-right:calc(1 * var(--u));grid-template-columns:auto 1fr;
+  column-gap:calc(15 * var(--u));row-gap:0;align-items:center}
+.chips.four.sv .chip:nth-child(4n){margin-right:0}
+.chips.four.sv .c-ico{display:grid;place-items:center;width:calc(44 * var(--u));height:calc(44 * var(--u));
+  border-radius:50%;background:rgba(236,35,38,.07);color:var(--signal)}
+.chips.four.sv .c-ico svg{width:calc(23 * var(--u));height:calc(23 * var(--u));margin:0}
+.chips.four.sv .c-body{display:grid;gap:calc(4 * var(--u));min-width:0}
+.chips.four.sv .c-name{font-size:calc(17 * var(--u));line-height:1.2}
+.chips.four.sv .c-note{font-size:calc(13.5 * var(--u));line-height:1.35}
+.chips.four.sv .c-num{position:absolute;top:calc(10 * var(--u));right:calc(13 * var(--u));
+  font-family:var(--display);font-weight:700;font-size:calc(26 * var(--u));line-height:1;
+  letter-spacing:-.04em;color:rgba(236,35,38,.14)}
+
+.puband{display:grid;grid-template-rows:auto 1fr;gap:calc(22 * var(--u));min-height:0;
+  background:var(--surface);border-top:calc(3 * var(--u)) solid var(--signal);
+  padding:calc(28 * var(--u)) calc(32 * var(--u)) calc(30 * var(--u))}
+.pu-head{display:grid;grid-template-columns:calc(260 * var(--u)) 1fr;gap:calc(34 * var(--u));
+  align-items:center}
+.pu-lead{font-family:var(--sans);font-weight:400;font-size:calc(16.5 * var(--u));line-height:1.5;
+  margin:0;color:var(--muted);max-width:calc(1100 * var(--u))}
+.pu-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:calc(26 * var(--u));min-height:0}
+.pu{display:grid;align-content:start;gap:calc(10 * var(--u))}
+.pu-ico{display:grid;place-items:center;width:calc(46 * var(--u));height:calc(46 * var(--u));
+  border-radius:50%;color:var(--signal);box-shadow:0 0 0 calc(1.5 * var(--u)) rgba(236,35,38,.3) inset}
+.pu-ico svg{width:calc(23 * var(--u));height:calc(23 * var(--u))}
+.pu-name{font-family:var(--display);font-weight:600;font-size:calc(17.5 * var(--u));line-height:1.2;
+  letter-spacing:-.02em;margin:calc(2 * var(--u)) 0 0}
+.pu-list{list-style:none;margin:0;padding:0;display:grid;gap:calc(7 * var(--u))}
+.pu-list li{position:relative;padding-left:calc(14 * var(--u));font-family:var(--sans);
+  font-weight:400;font-size:calc(14.5 * var(--u));line-height:1.4;color:var(--muted)}
+.pu-list li::before{content:"";position:absolute;left:0;top:calc(7 * var(--u));
+  width:calc(5 * var(--u));height:calc(5 * var(--u));border-radius:50%;background:var(--signal)}
+/* the two bands share the frame; the families set larger so the lower band
+   is worked rather than stranding its slack at the foot */
+.scope2{grid-template-rows:minmax(0,.92fr) minmax(0,1.28fr)}
+.chips.four.sv .chip{padding:calc(26 * var(--u)) calc(22 * var(--u));align-content:center}
+.pu-head{grid-template-columns:calc(300 * var(--u)) 1fr}
+.pu-grid{align-content:center}
+.pu{gap:calc(13 * var(--u))}
+.pu-ico{width:calc(54 * var(--u));height:calc(54 * var(--u))}
+.pu-ico svg{width:calc(27 * var(--u));height:calc(27 * var(--u))}
+.pu-name{font-size:calc(19 * var(--u))}
+.pu-list{gap:calc(10 * var(--u))}
+.pu-list li{font-size:calc(15.5 * var(--u))}

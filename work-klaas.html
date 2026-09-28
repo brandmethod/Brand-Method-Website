@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KLAAS Case Study | Brand Method</title>
+<meta name="description" content="How Brand Method brought KLAAS, Malaysia's award-winning interior design & build studio, to screen and online with four brand films and a new website.">
+<meta property="og:title" content="KLAAS Case Study | Brand Method">
+<meta property="og:description" content="Four brand films and a website for KLAAS, award-winning interior design & build, Malaysia.">
+<meta property="og:image" content="https://i.ytimg.com/vi/ctkp2_xwEnc/hqdefault.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+/* ============================================================
+   KLAAS case study: page-scoped styles (cs-*)
+   Pulls accent + fonts from the site theme when css/style.css
+   is present, and falls back to its own values when it isn't.
+   ============================================================ */
+.cs {
+  --cs-accent: var(--accent, #a8875a);
+  --cs-ink: #111111;
+  --cs-body: #5b5b5b;
+  --cs-muted: #8a8a8a;
+  --cs-line: rgba(17, 17, 17, 0.12);
+  --cs-paper: #ffffff;
+  --cs-stone: #f5f3ef;
+  --cs-night: #0f0f0f;
+  --cs-serif: var(--font-display, 'Cormorant Garamond', Georgia, serif);
+  --cs-sans: var(--font-sans, 'Inter', system-ui, -apple-system, sans-serif);
+  --cs-gutter: clamp(20px, 5vw, 64px);
+  --cs-max: 1280px;
+  font-family: var(--cs-sans);
+  color: var(--cs-ink);
+  background: var(--cs-paper);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.cs *, .cs *::before, .cs *::after { box-sizing: border-box; }
+.cs img { max-width: 100%; display: block; }
+.cs a { color: inherit; }
+.cs em { font-style: italic; color: var(--cs-accent); }
+
+.cs-wrap { max-width: var(--cs-max); margin: 0 auto; padding: 0 var(--cs-gutter); }
+.cs-section { padding: clamp(72px, 10vw, 140px) 0; }
+.cs-tag {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+  color: var(--cs-accent); font-weight: 500; margin-bottom: 24px;
+}
+.cs-tag::before { content: ""; width: 32px; height: 1px; background: currentColor; }
+.cs-h2 {
+  font-family: var(--cs-serif); font-weight: 300;
+  font-size: clamp(36px, 5vw, 64px); line-height: 1.08; letter-spacing: -0.01em;
+  margin: 0 0 24px;
+}
+.cs-lead { font-size: 16px; line-height: 1.9; color: var(--cs-body); max-width: 560px; margin: 0; }
+
+/* Buttons */
+.cs-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 30px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+  text-decoration: none; font-weight: 500; border: 1px solid var(--cs-ink);
+  transition: background .3s ease, color .3s ease, border-color .3s ease;
+}
+.cs-btn--solid { background: var(--cs-ink); color: #fff !important; }
+.cs-btn--solid:hover { background: var(--cs-accent); border-color: var(--cs-accent); }
+.cs-btn--light { border-color: rgba(255,255,255,.4); color: #fff; }
+.cs-btn--light:hover { background: #fff; color: var(--cs-ink); border-color: #fff; }
+.cs-btn:focus-visible, .cs-play:focus-visible, .cs a:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 4px; }
+
+/* ---------- HERO ---------- */
+.cs-hero { padding: clamp(120px, 14vw, 180px) 0 clamp(56px, 7vw, 96px); }
+.cs-crumb {
+  display: flex; gap: 10px; align-items: center;
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cs-muted);
+  margin-bottom: clamp(40px, 6vw, 72px);
+}
+.cs-crumb a { text-decoration: none; transition: color .2s; }
+.cs-crumb a:hover { color: var(--cs-accent); }
+.cs-crumb [aria-current] { color: var(--cs-ink); }
+.cs-hero-grid { display: grid; grid-template-columns: 1.25fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; }
+.cs-client {
+  font-family: var(--cs-serif); font-weight: 300;
+  font-size: clamp(80px, 16vw, 230px); line-height: .82; letter-spacing: 0.02em;
+  margin: 0;
+}
+.cs-hero-copy h1 {
+  font-family: var(--cs-serif); font-weight: 300; font-size: clamp(26px, 3vw, 38px);
+  line-height: 1.25; margin: 0 0 20px;
+}
+.cs-hero-copy p { color: var(--cs-body); line-height: 1.85; font-size: 15px; margin: 0; }
+
+.cs-meta {
+  display: grid; grid-template-columns: repeat(4, 1fr); margin: clamp(48px, 7vw, 88px) 0 0;
+  border-top: 1px solid var(--cs-line); border-bottom: 1px solid var(--cs-line);
+}
+.cs-meta div { padding: 24px 24px 24px 0; }
+.cs-meta div + div { padding-left: 24px; border-left: 1px solid var(--cs-line); }
+.cs-meta dt { font-size: 10px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--cs-muted); margin-bottom: 8px; }
+.cs-meta dd { margin: 0; font-size: 15px; line-height: 1.5; }
+
+/* ---------- VIDEO (click-to-play, iframe loads on demand) ---------- */
+.cs-video { position: relative; aspect-ratio: 16 / 9; background: #1a1a1a; overflow: hidden; }
+.cs-video img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  transition: transform 1.2s cubic-bezier(.2,.7,.2,1);
+}
+.cs-video::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,.55) 100%);
+  transition: opacity .4s;
+}
+.cs-video:hover img { transform: scale(1.04); }
+.cs-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; z-index: 3; }
+.cs-video.is-playing::after { opacity: 0; }
+.cs-play {
+  position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: none; border: 0; cursor: pointer; padding: 0;
+}
+.cs-play-ring {
+  width: clamp(64px, 8vw, 96px); height: clamp(64px, 8vw, 96px); border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.7); backdrop-filter: blur(6px);
+  background: rgba(255,255,255,.08);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform .4s cubic-bezier(.2,.7,.2,1), background .3s, border-color .3s;
+}
+.cs-play-ring svg { width: 30%; height: 30%; margin-left: 6%; fill: #fff; }
+.cs-play:hover .cs-play-ring { transform: scale(1.08); background: var(--cs-accent); border-color: var(--cs-accent); }
+.cs-video-label {
+  position: absolute; left: clamp(16px, 2.5vw, 32px); bottom: clamp(14px, 2.2vw, 28px); z-index: 2;
+  color: #fff; pointer-events: none;
+}
+.cs-video-label span { display: block; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; opacity: .75; margin-bottom: 6px; }
+.cs-video-label strong { font-family: var(--cs-serif); font-weight: 300; font-size: clamp(20px, 2.4vw, 30px); }
+
+/* ---------- OVERVIEW ---------- */
+.cs-overview { background: var(--cs-stone); }
+.cs-split { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 8vw, 120px); }
+.cs-pillars { display: grid; gap: 1px; background: var(--cs-line); border: 1px solid var(--cs-line); }
+.cs-pillar { background: var(--cs-stone); padding: 32px; display: grid; grid-template-columns: 56px 1fr; gap: 8px 20px; }
+.cs-pillar-num { font-family: var(--cs-serif); font-size: 32px; color: var(--cs-accent); line-height: 1; grid-row: span 2; }
+.cs-pillar h3 { font-family: var(--cs-serif); font-weight: 400; font-size: 24px; margin: 0; }
+.cs-pillar p { margin: 0; color: var(--cs-body); font-size: 14px; line-height: 1.8; }
+
+/* ---------- FILMS ---------- */
+.cs-films { background: var(--cs-night); color: #fff; }
+.cs-films .cs-lead { color: rgba(255,255,255,.6); }
+.cs-films-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: clamp(40px, 5vw, 64px); flex-wrap: wrap; }
+.cs-count { font-family: var(--cs-serif); font-size: clamp(80px, 11vw, 160px); line-height: .8; font-weight: 300; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.35); }
+.cs-film-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(16px, 2vw, 28px); margin-top: clamp(32px, 4vw, 56px); }
+.cs-film { margin: 0; }
+.cs-film figcaption {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding-top: 16px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55);
+}
+.cs-film figcaption a { text-decoration: none; transition: color .2s; white-space: nowrap; }
+.cs-film figcaption a:hover { color: var(--cs-accent); }
+
+/* ---------- WEBSITE ---------- */
+.cs-web-head { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); align-items: end; margin-bottom: clamp(48px, 6vw, 80px); }
+.cs-devices { position: relative; padding-bottom: clamp(40px, 6vw, 80px); margin-bottom: clamp(40px, 5vw, 64px); }
+.cs-browser {
+  background: #fff; border: 1px solid var(--cs-line); overflow: hidden; width: 86%;
+  box-shadow: 0 40px 80px -30px rgba(17,17,17,.28), 0 12px 24px -12px rgba(17,17,17,.12);
+}
+.cs-browser-bar { display: flex; align-items: center; gap: 16px; padding: 12px 16px; background: #f2f0ec; border-bottom: 1px solid var(--cs-line); }
+.cs-dots { display: flex; gap: 6px; }
+.cs-dots i { width: 10px; height: 10px; border-radius: 50%; background: #d4d0c8; }
+.cs-url { flex: 1; max-width: 420px; margin: 0 auto; background: #fff; border-radius: 4px; padding: 6px 12px; font-size: 12px; color: var(--cs-muted); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cs-screen { aspect-ratio: 16 / 10; background: var(--cs-stone); overflow: hidden; position: relative; }
+.cs-screen img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.cs-screen-empty {
+  position: absolute; inset: 0; display: none; align-items: center; justify-content: center; flex-direction: column; gap: 10px;
+  font-family: var(--cs-serif); font-size: clamp(40px, 6vw, 80px); letter-spacing: .2em; color: var(--cs-ink);
+}
+.cs-screen-empty small { font-family: var(--cs-sans); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--cs-muted); }
+.cs-screen.is-empty img { display: none; }
+.cs-screen.is-empty .cs-screen-empty { display: flex; }
+.cs-phone {
+  position: absolute; right: 0; bottom: 0; width: 24%; min-width: 150px;
+  border: 8px solid var(--cs-ink); border-radius: 28px; overflow: hidden; background: var(--cs-ink);
+  box-shadow: 0 40px 70px -24px rgba(17,17,17,.4);
+}
+.cs-phone .cs-screen { aspect-ratio: 9 / 19.5; border-radius: 20px; }
+.cs-phone .cs-screen-empty { font-size: clamp(18px, 2vw, 26px); }
+
+.cs-features { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--cs-line); }
+.cs-feature { padding: 32px 28px 0 0; }
+.cs-feature + .cs-feature { padding-left: 28px; border-left: 1px solid var(--cs-line); }
+.cs-feature span { font-size: 11px; letter-spacing: .2em; color: var(--cs-accent); }
+.cs-feature h3 { font-family: var(--cs-serif); font-weight: 400; font-size: 22px; margin: 12px 0 10px; }
+.cs-feature p { margin: 0; color: var(--cs-body); font-size: 14px; line-height: 1.8; }
+.cs-web-cta { margin-top: clamp(40px, 5vw, 64px); display: flex; gap: 16px; flex-wrap: wrap; }
+
+/* ---------- DELIVERABLES ---------- */
+.cs-deliver { background: var(--cs-stone); }
+.cs-deliver .cs-h2 { margin-bottom: 48px; }
+.cs-deliver-list { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--cs-line); }
+.cs-deliver-list li {
+  display: grid; grid-template-columns: 80px 1fr auto; gap: 24px; align-items: baseline;
+  padding: 28px 0; border-bottom: 1px solid var(--cs-line);
+  transition: padding .4s cubic-bezier(.2,.7,.2,1);
+}
+.cs-deliver-list li:hover { padding-left: 16px; }
+.cs-deliver-list .n { font-size: 12px; letter-spacing: .2em; color: var(--cs-muted); }
+.cs-deliver-list .t { font-family: var(--cs-serif); font-weight: 300; font-size: clamp(26px, 3.4vw, 44px); line-height: 1.1; }
+.cs-deliver-list .d { font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--cs-body); text-align: right; }
+
+/* ---------- CLOSING ---------- */
+.cs-quote { text-align: center; }
+.cs-quote blockquote {
+  font-family: var(--cs-serif); font-weight: 300; font-style: italic;
+  font-size: clamp(30px, 4.4vw, 56px); line-height: 1.2; margin: 0 auto; max-width: 980px;
+}
+.cs-quote cite { display: block; margin-top: 28px; font-style: normal; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--cs-muted); }
+
+.cs-cta { background: var(--cs-night); color: #fff; text-align: center; }
+.cs-cta .cs-tag { justify-content: center; }
+.cs-cta .cs-h2 { color: #fff; }
+.cs-cta p { color: rgba(255,255,255,.6); margin: 0 auto 40px; max-width: 520px; line-height: 1.8; }
+.cs-cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.cs-cta .cs-btn--solid { background: var(--cs-accent); border-color: var(--cs-accent); }
+.cs-cta .cs-btn--solid:hover { background: #fff; border-color: #fff; color: var(--cs-ink) !important; }
+
+/* ---------- Reveal on scroll ---------- */
+.cs-js .cs-reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.cs-js .cs-reveal.is-in { opacity: 1; transform: none; }
+.cs-js .cs-deliver-list li.cs-reveal { transition: padding .4s cubic-bezier(.2,.7,.2,1), opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
+.cs-d1 { transition-delay: .1s; } .cs-d2 { transition-delay: .2s; } .cs-d3 { transition-delay: .3s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cs-js .cs-reveal { opacity: 1; transform: none; transition: none; }
+  .cs-video img, .cs-play-ring, .cs-deliver-list li { transition: none; }
+  .cs-video:hover img { transform: none; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .cs-hero-grid, .cs-split, .cs-web-head { grid-template-columns: 1fr; }
+  .cs-features { grid-template-columns: repeat(2, 1fr); }
+  .cs-feature:nth-child(3) { padding-left: 0; border-left: 0; }
+  .cs-feature { padding-bottom: 32px; }
+}
+@media (max-width: 760px) {
+  .cs-meta { grid-template-columns: repeat(2, 1fr); }
+  .cs-meta div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .cs-meta div:nth-child(n+3) { border-top: 1px solid var(--cs-line); }
+  .cs-film-grid { grid-template-columns: 1fr; }
+  .cs-browser { width: 100%; }
+  .cs-phone { position: relative; width: 48%; margin: -24% 4% 0 auto; }
+  .cs-devices { padding-bottom: 0; }
+  .cs-features { grid-template-columns: 1fr; }
+  .cs-feature, .cs-feature + .cs-feature { padding: 28px 0; border-left: 0; }
+  .cs-feature + .cs-feature { border-top: 1px solid var(--cs-line); }
+  .cs-deliver-list li { grid-template-columns: 40px 1fr; gap: 8px 16px; }
+  .cs-deliver-list .d { grid-column: 2; text-align: left; }
+  .cs-pillar { padding: 24px; grid-template-columns: 44px 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="page-wrap">
+<main class="cs" id="csPage">
+<script>document.getElementById('csPage').classList.add('cs-js');</script>
+
+<!-- ============ HERO ============ -->
+<section class="cs-hero">
+  <div class="cs-wrap">
+    <nav class="cs-crumb cs-reveal" aria-label="Breadcrumb">
+      <a href="index.html">Home</a><span aria-hidden="true">/</span>
+      <a href="work.html">Work</a><span aria-hidden="true">/</span>
+      <span aria-current="page">KLAAS</span>
+    </nav>
+
+    <div class="cs-hero-grid">
+      <p class="cs-client cs-reveal" aria-hidden="true">KLAAS</p>
+      <div class="cs-hero-copy">
+        <div class="cs-tag cs-reveal cs-d1">Case Study</div>
+        <h1 class="cs-reveal cs-d1">Bringing an award-winning design house to screen, <em>a Klaas above</em> the rest.</h1>
+        <p class="cs-reveal cs-d2">KLAAS is one of Malaysia's leading interior design &amp; build studios, taking homes, bungalows and commercial spaces from concept to completion. We produced a series of brand films and a website that let their craft speak as clearly online as it does in person.</p>
+      </div>
+    </div>
+
+    <dl class="cs-meta cs-reveal cs-d2">
+      <div><dt>Client</dt><dd>KLAAS Design &amp; Build</dd></div>
+      <div><dt>Industry</dt><dd>Interior Design &amp; Build</dd></div>
+      <div><dt>Market</dt><dd>Malaysia</dd></div>
+      <div><dt>Scope</dt><dd>Brand Films · Website</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="cs-section cs-overview">
+  <div class="cs-wrap cs-split">
+    <div>
+      <div class="cs-tag cs-reveal">The Brief</div>
+      <h2 class="cs-h2 cs-reveal cs-d1">Great spaces are felt.<br>The brand had to <em>feel</em> the same.</h2>
+      <p class="cs-lead cs-reveal cs-d2">With two decades of experience and a team of over 30 designers, KLAAS already had the portfolio. What it needed was a brand presence to match: content that shows the finish, detail and process behind every project, and a home online that turns interest into consultations.</p>
+    </div>
+    <div class="cs-pillars cs-reveal cs-d1">
+      <div class="cs-pillar">
+        <div class="cs-pillar-num">01</div>
+        <h3>Show the craft</h3>
+        <p>Cinematic films that let homeowners walk through finished spaces, from materials and lighting to the details that set KLAAS apart.</p>
+      </div>
+      <div class="cs-pillar">
+        <div class="cs-pillar-num">02</div>
+        <h3>Build trust</h3>
+        <p>A consistent, premium look across video and web, so every touchpoint says "award-winning" before a word is read.</p>
+      </div>
+      <div class="cs-pillar">
+        <div class="cs-pillar-num">03</div>
+        <h3>Convert interest</h3>
+        <p>A website structured around how clients actually search, with a clear path from inspiration to booking a consultation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FILMS ============ -->
+<section class="cs-section cs-films" id="films">
+  <div class="cs-wrap">
+    <div class="cs-films-head">
+      <div>
+        <div class="cs-tag cs-reveal">Brand Films</div>
+        <h2 class="cs-h2 cs-reveal cs-d1">Spaces, told as <em>stories</em></h2>
+        <p class="cs-lead cs-reveal cs-d2">A series of films for KLAAS's YouTube and social channels, each built to showcase the studio's design and build work.</p>
+      </div>
+      <div class="cs-count cs-reveal cs-d2" aria-hidden="true">04</div>
+    </div>
+
+    <!-- Films are rendered from the CS_FILMS list at the bottom of this file. -->
+    <div id="csFilmFeature" class="cs-reveal"></div>
+    <div id="csFilmGrid" class="cs-film-grid"></div>
+  </div>
+</section>
+
+<!-- ============ WEBSITE ============ -->
+<section class="cs-section" id="website">
+  <div class="cs-wrap">
+    <div class="cs-web-head">
+      <div>
+        <div class="cs-tag cs-reveal">Website</div>
+        <h2 class="cs-h2 cs-reveal cs-d1">klaas.com.my,<br>from <em>concept to completion</em></h2>
+      </div>
+      <p class="cs-lead cs-reveal cs-d2">A website as considered as a KLAAS interior. Generous imagery, calm typography and a clear structure guide visitors from first impression to a complimentary consultation.</p>
+    </div>
+
+    <!--
+      Screenshots: drop real captures into Work/KLAAS/ as
+        website-desktop.webp (1440x900) and website-mobile.webp (390x844).
+      Until they exist, a live capture of klaas.com.my is loaded instead.
+    -->
+    <div class="cs-devices cs-reveal">
+      <div class="cs-browser">
+        <div class="cs-browser-bar">
+          <div class="cs-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="cs-url">klaas.com.my</div>
+        </div>
+        <div class="cs-screen">
+          <img src="Work/KLAAS/website-desktop.webp"
+               data-fallback="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fklaas.com.my%2F?w=1440&amp;h=900"
+               alt="KLAAS website homepage on desktop">
+          <div class="cs-screen-empty">KLAAS<small>klaas.com.my</small></div>
+        </div>
+      </div>
+      <div class="cs-phone">
+        <div class="cs-screen">
+          <img src="Work/KLAAS/website-mobile.webp"
+               data-fallback="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fklaas.com.my%2F?vpw=390&amp;vph=844&amp;w=390&amp;h=844"
+               alt="KLAAS website on mobile">
+          <div class="cs-screen-empty">KLAAS</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-features">
+      <div class="cs-feature cs-reveal">
+        <span>01</span>
+        <h3>Portfolio-first design</h3>
+        <p>Full-bleed project imagery and restrained type, so the interiors do the selling.</p>
+      </div>
+      <div class="cs-feature cs-reveal cs-d1">
+        <span>02</span>
+        <h3>Built for search</h3>
+        <p>Dedicated pages for services, bungalow design &amp; build, packages and each state KLAAS serves across Malaysia.</p>
+      </div>
+      <div class="cs-feature cs-reveal cs-d2">
+        <span>03</span>
+        <h3>Mobile-ready</h3>
+        <p>A responsive build that feels just as premium on a phone, where most homeowners start their search.</p>
+      </div>
+      <div class="cs-feature cs-reveal cs-d3">
+        <span>04</span>
+        <h3>Clear conversion</h3>
+        <p>Consultation calls-to-action throughout, turning inspiration into site-visit enquiries.</p>
+      </div>
+    </div>
+
+    <div class="cs-web-cta cs-reveal">
+      <a class="cs-btn cs-btn--solid" href="https://klaas.com.my/" target="_blank" rel="noopener">Visit the live site ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DELIVERABLES ============ -->
+<section class="cs-section cs-deliver">
+  <div class="cs-wrap">
+    <div class="cs-tag cs-reveal">What We Delivered</div>
+    <h2 class="cs-h2 cs-reveal cs-d1">One team, <em>end to end</em></h2>
+    <ul class="cs-deliver-list">
+      <li class="cs-reveal"><span class="n">01</span><span class="t">Creative Direction</span><span class="d">Concept · Look &amp; Feel</span></li>
+      <li class="cs-reveal cs-d1"><span class="n">02</span><span class="t">Video Production</span><span class="d">4 Brand Films</span></li>
+      <li class="cs-reveal cs-d1"><span class="n">03</span><span class="t">Website Design &amp; Build</span><span class="d">UX · UI · Development</span></li>
+      <li class="cs-reveal cs-d2"><span class="n">04</span><span class="t">SEO Structure</span><span class="d">Service &amp; Location Pages</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CLOSING LINE ============ -->
+<section class="cs-section cs-quote">
+  <div class="cs-wrap">
+    <blockquote class="cs-reveal">"From concept to completion, built <em>a Klaas above</em>."</blockquote>
+    <cite class="cs-reveal cs-d1">The KLAAS promise</cite>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cs-section cs-cta">
+  <div class="cs-wrap">
+    <div class="cs-tag cs-reveal">Your Brand Next</div>
+    <h2 class="cs-h2 cs-reveal cs-d1">Ready to build a brand<br>that <em>dominates</em>?</h2>
+    <p class="cs-reveal cs-d2">Films, websites and brand systems, built as one. Let's talk about what's next for yours.</p>
+    <div class="cs-cta-actions cs-reveal cs-d3">
+      <a href="contact.html" class="cs-btn cs-btn--solid">Hire Us</a>
+      <a href="work.html" class="cs-btn cs-btn--light">More Work</a>
+    </div>
+  </div>
+</section>
+
+</main>
+</div><!-- page-wrap -->
+
+<script>
+/* ------------------------------------------------------------
+   Films: edit titles here. The first film is shown large.
+   ------------------------------------------------------------ */
+var CS_FILMS = [
+  { id: 'ctkp2_xwEnc', title: 'Film 01' },
+  { id: 'N7LmgciJSj8', title: 'Film 02' },
+  { id: '54n629DpFcE', title: 'Film 03' },
+  { id: 'mk856q0BLSE', title: 'Film 04' }
+];
+
+(function () {
+  var PLAY_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8z"/></svg>';
+  var total = ('0' + CS_FILMS.length).slice(-2);
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function filmHTML(f, i, feature) {
+    var num = ('0' + (i + 1)).slice(-2);
+    var t = esc(f.title);
+    var id = esc(f.id);
+    return '' +
+      '<figure class="cs-film">' +
+        '<div class="cs-video" data-id="' + id + '" data-title="' + t + '">' +
+          '<img src="https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg" ' +
+               'data-fallback="https://i.ytimg.com/vi/' + id + '/hqdefault.jpg" ' +
+               'alt="" loading="' + (feature ? 'eager' : 'lazy') + '">' +
+          '<button type="button" class="cs-play" aria-label="Play ' + t + '">' +
+            '<span class="cs-play-ring">' + PLAY_ICON + '</span>' +
+          '</button>' +
+          '<div class="cs-video-label"><span>KLAAS · ' + num + '</span><strong>' + t + '</strong></div>' +
+        '</div>' +
+        '<figcaption><span>' + num + ' / ' + total + '</span>' +
+          '<a href="https://www.youtube.com/watch?v=' + id + '" target="_blank" rel="noopener">Watch on YouTube ↗</a>' +
+        '</figcaption>' +
+      '</figure>';
+  }
+
+  var grid = document.getElementById('csFilmGrid');
+  document.getElementById('csFilmFeature').innerHTML = filmHTML(CS_FILMS[0], 0, true);
+  grid.innerHTML = CS_FILMS.slice(1).map(function (f, i) { return filmHTML(f, i + 1, false); }).join('');
+  Array.prototype.forEach.call(grid.children, function (el, i) {
+    el.classList.add('cs-reveal');
+    if (i) el.classList.add('cs-d' + i);
+  });
+
+  // Click-to-play: the YouTube iframe only loads on click, and one film plays at a time.
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest && e.target.closest('.cs-play');
+    if (!btn) return;
+    var v = btn.closest('.cs-video');
+    document.querySelectorAll('.cs-video.is-playing').forEach(function (p) {
+      var old = p.querySelector('iframe');
+      if (old) p.removeChild(old);
+      p.classList.remove('is-playing');
+    });
+    var fr = document.createElement('iframe');
+    fr.src = 'https://www.youtube-nocookie.com/embed/' + encodeURIComponent(v.getAttribute('data-id')) + '?autoplay=1&rel=0&modestbranding=1';
+    fr.title = v.getAttribute('data-title');
+    fr.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+    fr.setAttribute('allowfullscreen', '');
+    fr.referrerPolicy = 'strict-origin-when-cross-origin';
+    v.appendChild(fr);
+    v.classList.add('is-playing');
+  });
+
+  // Image fallbacks: YouTube maxres -> hq thumbnail; local screenshot -> live capture -> text placeholder.
+  document.querySelectorAll('.cs img[data-fallback]').forEach(function (img) {
+    function fail() {
+      var fb = img.getAttribute('data-fallback');
+      if (fb) {
+        img.removeAttribute('data-fallback');
+        img.src = fb;
+      } else if (img.parentNode.classList.contains('cs-screen')) {
+        img.parentNode.classList.add('is-empty');
+      } else {
+        img.style.visibility = 'hidden';
+      }
+    }
+    // YouTube returns a 120x90 grey image (not a 404) when maxres doesn't exist.
+    function check() {
+      if (/\/maxresdefault\.jpg$/.test(img.src) && img.naturalWidth <= 120) fail();
+    }
+    img.addEventListener('load', check);
+    img.addEventListener('error', fail);
+    if (img.complete) { img.naturalWidth === 0 ? fail() : check(); }
+  });
+
+  // Reveal on scroll.
+  var items = document.querySelectorAll('.cs-reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('is-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script src="js/layout.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

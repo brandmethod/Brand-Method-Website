@@ -70,8 +70,10 @@ def chrome(part_idx, num, foot):
 LEGAL_NAME = 'IAQ Technology International Sdn Bhd'
 REG_NO = '200001031412 (534019-T)'
 
-LOGO = 'img/iaq-logo.png'
-LOGO_W = 'img/iaq-logo-white.png'
+# The lockup with the tagline is the mark of record, so it runs everywhere:
+# the running chrome, the cover and the sign-off.
+LOGO = 'img/iaq-logo-tag.png'
+LOGO_W = 'img/iaq-logo-tag-white.png'
 
 
 def slide(body, *, part_idx=None, num='', title='', note='', foot='',
@@ -89,7 +91,7 @@ def slide(body, *, part_idx=None, num='', title='', note='', foot='',
     slides.append(f'''<div class="stage"><section class="slide{' dark' if dark else ''} {cls}">
   <div class="topline">
     <div class="tl-l">{tab}<span class="tl-part">{esc(part)}</span></div>
-    <div class="tl-r"><img class="mark" src="{LOGO_W if dark else LOGO}" alt="IAQ"></div>
+    <div class="tl-r"><span class="mark{' on-dark' if dark else ''}" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>{head}
   <div class="canvas{' fill' if fill else ''}{' rows' if rows else ''}">{body}
   </div>
@@ -201,7 +203,7 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
   <div class="hero-media"><img src="img/{img}.jpg" alt="{esc(title)}"></div>
   <div class="topline">
     <div class="tl-l">{tab}<span class="tl-part">{esc(section)}</span></div>
-    <div class="tl-r"><img class="mark" src="{LOGO_W}" alt="IAQ"></div>
+    <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
   <div class="hero-panel">
     <div class="flag">{esc(flag)}</div>
@@ -220,12 +222,12 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
 raw_slide('''  <div class="cover-grid"></div>
   <div class="cover-media"><img src="img/cover-site.jpg" alt="IAQ engineers on site"></div>
   <div class="topline">
-    <div class="tl-l"><span class="tl-part">Your Total Facility Solutions Provider</span></div>
+    <div class="tl-l"><span class="tl-part">IAQ Technology International Sdn Bhd</span></div>
   </div>
   <div class="cover-rule top"></div>
   <div class="cover-stamp">Presentation Slide &middot; Edition 2026</div>
   <div class="cover-copy">
-    <img class="logo" src="img/iaq-logo-white.png" alt="IAQ">
+    <img class="logo" src="img/iaq-logo-tag-white.png" alt="IAQ: your total facility solutions provider">
     <div class="cover-lead">
       <div class="cover-stat"><span class="cs-n">31</span><span class="cs-l">years of delivery<br>since 1995</span></div>
       <h1 class="cover-title"><b>Engineering the facilities</b><span>advanced industry runs on.</span></h1>
@@ -299,7 +301,7 @@ def divider(part_idx, num, name, note, img, bullets, ph_note=None):
   </div>
   <div class="topline">
     <div class="tl-l"><span class="tl-part">Part {num} · {esc(name)}</span></div>
-    <div class="tl-r"><img class="mark" src="{LOGO_W}" alt="IAQ"></div>
+    <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">{i:02d} / TOTAL</span></div>
@@ -310,7 +312,7 @@ def divider(part_idx, num, name, note, img, bullets, ph_note=None):
 
 divider(0, '01', 'The Company', 'Sections 01.1 to 01.9', 'company-office',
         ['Established 1995 · 31 years in total facility solutions',
-         '450 people across 7 global offices',
+         '530+ people across 7 global offices',
          'ISO 9001 · ISO 14001 · ISO 45001 certified'])
 
 # ---------------------------------------------------------------- 01.1 ABOUT
@@ -884,7 +886,7 @@ slide('''
       IAQ is your trusted partner for total facility solutions.</p>
     </div>''',
       part_idx=2, num='03.4', title='Closing', dark=True,
-      note='Your Total Facility Solutions Provider.')
+      note='Engineering the facilities advanced industry runs on.')
 
 # ---------------------------------------------------------------- 03.4 CONTACTS
 people = [
@@ -905,8 +907,7 @@ row_html = ''.join('<div class="er"><dt>%s</dt><dd>%s</dd></div>' % (esc(a), esc
 slide(f"""
     <div class="endgrid">
       <div class="endmark">
-        <img class="signoff" src="img/iaq-logo-white.png" alt="IAQ">
-        <div class="end-tag">Your Total Facility Solutions Provider</div>
+        <img class="signoff" src="img/iaq-logo-tag-white.png" alt="IAQ: your total facility solutions provider">
         <p class="end-line">Engineering, procurement, construction and energy management
         for the industries where contamination, uptime and safety decide the outcome.
         Established 1995.</p>

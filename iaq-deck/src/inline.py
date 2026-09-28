@@ -16,6 +16,15 @@ def sub(m):
     return 'src="%s"'%cache[p]
 html=re.sub(r'src="(img/[^"]+)"', sub, html)
 
+# CSS backgrounds too: the running mark lives in a rule, not in the markup
+def csssub(m):
+    p = m.group(1)
+    if p not in cache:
+        mt = mimetypes.guess_type(p)[0] or 'image/png'
+        cache[p] = 'data:%s;base64,%s' % (mt, base64.b64encode(open(D + p, 'rb').read()).decode())
+    return 'url(%s)' % cache[p]
+html = re.sub(r'url\((img/[^)\'"]+)\)', csssub, html)
+
 # The three typefaces travel with the file. Google Fonts is a network call,
 # and this deck is handed over as one document that has to open offline, so
 # the latin and latin-ext faces are fetched once and carried inline. The

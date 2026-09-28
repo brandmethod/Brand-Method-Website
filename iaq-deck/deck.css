@@ -1802,3 +1802,32 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cc-tag{position:absolute;top:calc(15 * var(--u));right:calc(16 * var(--u));margin:0}
 .ccard.tbc .cc-role{padding-right:calc(120 * var(--u))}
 .end-tag{font-size:calc(13.5 * var(--u));letter-spacing:.2em}
+
+/* ---- reference pages: the two pictures share one row ------------------- */
+/* Panels differ in height when one project states a cleanroom class and the
+   other does not. Sharing the grid rows keeps the pictures the same size and
+   their edges on the same line, and the panels take the difference. */
+.refpg .canvas.fill .grid.two:not(.one){grid-template-rows:1fr auto}
+.refpg .grid.two:not(.one) .pcard{grid-row:span 2;grid-template-rows:subgrid}
+/* the shared rows must not inherit the column gap, or the panel floats off
+   the foot of its picture */
+.refpg .grid.two:not(.one){row-gap:0;column-gap:calc(44 * var(--u))}
+
+/* ============================================ the tagline lockup
+   The mark of record carries "Your Total Facility Solutions Provider" under
+   the letterforms, so every placement is set for a 2:1 lockup rather than
+   the 2.28:1 mark, and the running chrome comes up a step to keep the
+   letterforms the size they were. */
+.mark{height:calc(46 * var(--u))}
+.logo{width:calc(300 * var(--u));margin-bottom:calc(44 * var(--u))}
+.signoff{width:calc(300 * var(--u))}
+.endmark{gap:calc(22 * var(--u))}
+/* the lockup is 83.5% letterforms and 11.5% tagline, so the running chrome is
+   set from the letterforms: 50u total keeps them a shade larger than the
+   plain mark was */
+.mark{height:calc(50 * var(--u))}
+/* the running mark is drawn from CSS, so the standalone build carries one
+   copy of the lockup rather than one per slide */
+.mark{display:block;height:calc(50 * var(--u));width:calc(100 * var(--u));
+  background:url(img/iaq-logo-tag.png) no-repeat center/contain}
+.mark.on-dark{background-image:url(img/iaq-logo-tag-white.png)}

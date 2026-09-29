@@ -25,32 +25,22 @@ def csssub(m):
     return 'url(%s)' % cache[p]
 html = re.sub(r'url\((img/[^)\'"]+)\)', csssub, html)
 
-# The three typefaces travel with the file. Google Fonts is a network call,
-# and this deck is handed over as one document that has to open offline, so
-# the latin and latin-ext faces are fetched once and carried inline. The
-# other subsets (cyrillic, greek, vietnamese) are not used by the deck.
-FONT_CSS = 'fonts.css'
-KEEP = ('/* latin */',)
-faces, fcache = [], {}
-block = None
-for chunk in io.open(FONT_CSS, encoding='utf-8').read().split('@font-face'):
-    head = chunk.strip().splitlines()[-1].strip() if chunk.strip() else ''
-    if block is not None and block in KEEP:
-        faces.append('@font-face' + chunk[:chunk.rindex('}') + 1])
-    block = head if head.startswith('/*') else None
-def wsub(m):
-    u = m.group(1)
-    if u not in fcache:
-        import urllib.request
-        fcache[u] = ('data:font/woff2;base64,'
-                     + base64.b64encode(urllib.request.urlopen(u).read()).decode())
-    return 'url(%s)' % fcache[u]
-fonts = re.sub(r'url\((https://fonts\.gstatic\.com/[^)]+)\)', wsub, ''.join(faces))
-html = re.sub(r'<link rel="preconnect"[^>]*>\s*', '', html)
-html = re.sub(r'<link rel="stylesheet" href="https://fonts\.googleapis\.com[^"]*"[^>]*>',
+# The three typefaces travel with the file. This deck is handed over as one
+# document that has to open offline, so the latin faces beside it are carried
+# inline rather than fetched.
+fcss = io.open(D + 'fonts.css', encoding='utf-8').read()
+def fsub(m):
+    p = m.group(1)
+    if p not in cache:
+        cache[p] = ('data:font/woff2;base64,'
+                    + base64.b64encode(open(D + p, 'rb').read()).decode())
+    return 'url(%s)' % cache[p]
+# only the woff2 source is inlined; the ttf fallback beside it would double the file
+fcss = re.sub(r",url\(fonts/[^)]+\) format\('truetype'\)", '', fcss)
+fonts = re.sub(r'url\((fonts/[^)]+\.woff2)\)', fsub, fcss)
+html = re.sub(r'<link rel="stylesheet" href="fonts\.css">',
               lambda m: '<style>\n%s\n</style>' % fonts, html)
 
 io.open(D+'IAQ-Company-Deck-2026.html','w',encoding='utf-8').write(html)
 io.open('iaq-deck-standalone.html','w',encoding='utf-8').write(html)
-print('standalone %.2f MB, %d images + %d font files inlined'
-      % (len(html.encode())/1e6, len(cache), len(fcache)))
+print('standalone %.2f MB, %d files inlined' % (len(html.encode())/1e6, len(cache)))

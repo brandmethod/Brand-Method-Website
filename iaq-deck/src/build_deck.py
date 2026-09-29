@@ -970,9 +970,7 @@ doc = f'''<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>IAQ Total Facility Solutions</title>
 <meta name="description" content="IAQ Technology International Sdn Bhd presentation deck covering company, project references and delivery capability.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Urbanist:wght@400;500;600&family=League+Spartan:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="fonts.css">
 <style>
 {CSS}
 </style>

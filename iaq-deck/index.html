@@ -1843,6 +1843,93 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   background:url(img/iaq-logo-tag.png) no-repeat center/contain}
 .mark.on-dark{background-image:url(img/iaq-logo-tag-white.png)}
 
+/* ============================================ 03.3 the award
+   One honour, the whole frame: the photograph of the night bleeds to the
+   right, the citation sits on the solid ground at left. */
+.slide.award .aw-media{position:absolute;inset:0;left:44%}
+.slide.award .aw-media img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.award .aw-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(16,26,43,.6) 14%,
+    rgba(16,26,43,.1) 34%,rgba(16,26,43,0) 52%)}
+.slide.award .topline{z-index:2}
+.aw-copy{position:absolute;left:calc(96 * var(--u));top:calc(196 * var(--u));
+  width:calc(690 * var(--u));z-index:2;display:grid;align-content:start;gap:0}
+.aw-kicker{font-family:var(--tech);font-weight:600;font-size:calc(13.5 * var(--u));
+  letter-spacing:.24em;text-transform:uppercase;line-height:1.5;color:var(--signal);
+  max-width:calc(560 * var(--u))}
+.aw-year{font-family:var(--display);font-weight:700;font-size:calc(184 * var(--u));
+  line-height:.86;letter-spacing:-.05em;color:#fff;margin:calc(14 * var(--u)) 0 0;
+  font-variant-numeric:tabular-nums}
+.aw-title{font-family:var(--display);font-weight:600;font-size:calc(56 * var(--u));
+  line-height:1.02;letter-spacing:-.025em;margin:calc(10 * var(--u)) 0 0;color:var(--signal)}
+.aw-note{font-family:var(--sans);font-weight:400;font-size:calc(17.5 * var(--u));
+  line-height:1.6;margin:calc(28 * var(--u)) 0 0;color:var(--muted-dark);
+  max-width:calc(600 * var(--u));
+  padding-top:calc(26 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-dark)}
+.aw-rows{display:grid;grid-template-columns:1fr 1fr;gap:calc(30 * var(--u));
+  margin:calc(30 * var(--u)) 0 0;max-width:calc(600 * var(--u))}
+.aw-row{display:grid;gap:calc(7 * var(--u));align-content:start;
+  padding-top:calc(16 * var(--u));border-top:calc(2 * var(--u)) solid var(--signal)}
+.aw-row dt{font-family:var(--tech);font-weight:600;font-size:calc(11.5 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted-dark)}
+.aw-row dd{margin:0;font-family:var(--display);font-weight:600;
+  font-size:calc(20 * var(--u));line-height:1.25;letter-spacing:-.02em;color:#fff}
+
+/* ============================================ 03.2 without the award panel */
+.certgrid.solo{grid-template-columns:1fr;gap:calc(30 * var(--u));
+  grid-template-rows:1fr auto;height:100%}
+.certgrid.solo .cdocs{grid-template-columns:repeat(3,1fr);min-height:0}
+.certgrid.solo .lics{grid-template-columns:repeat(5,1fr)}
+
+/* ============================================ 03.4 the criteria, set quietly
+   Seven names do not need seven boxes. The number leads, the rule under each
+   is the only mark, and the page keeps its air. */
+.crit{list-style:none;margin:calc(10 * var(--u)) 0 0;padding:0;display:grid;
+  grid-template-columns:1fr 1fr;gap:0 calc(48 * var(--u));background:none}
+.crit li{display:grid;grid-template-columns:calc(46 * var(--u)) 1fr;
+  align-items:baseline;gap:calc(14 * var(--u));background:none;padding:calc(15 * var(--u)) 0;
+  border-top:calc(1 * var(--u)) solid var(--rule-2)}
+.crit li:nth-child(1),.crit li:nth-child(2){border-top:0}
+.cr-n{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.14em;color:var(--signal);font-variant-numeric:tabular-nums}
+.cr-t{font-family:var(--sans);font-weight:500;font-size:calc(19 * var(--u));
+  line-height:1.3;color:var(--ink)}
+/* the photograph runs the whole frame, so the screen behind the presentation
+   reads in full; the navy is carried over it rather than beside it */
+.slide.award .aw-media{left:0}
+.slide.award .aw-media::after{background:linear-gradient(90deg,
+  var(--ink) 0%,var(--ink) 26%,rgba(16,26,43,.86) 40%,rgba(16,26,43,.34) 56%,
+  rgba(16,26,43,.08) 70%,rgba(16,26,43,0) 84%)}
+.aw-kicker{max-width:calc(640 * var(--u))}
+/* no rules between the criteria: the numbers and the air carry the list */
+.crit li{border-top:0;padding:0}
+.crit{align-content:space-between;gap:0 calc(48 * var(--u))}
+.cr-t{font-size:calc(20 * var(--u))}
+.cr-n{font-size:calc(13.5 * var(--u))}
+
+/* the one licence that carries a mark keeps it out of the text column, so
+   all five read off the same baseline */
+.lic{position:relative}
+.lic-mark{position:absolute;top:calc(16 * var(--u));right:calc(16 * var(--u));
+  height:calc(21 * var(--u));width:auto;margin:0}
+/* The deck takes no scrims: photography meets the navy on a hard edge. The
+   award photograph is also the citation, so it is shown whole at its own
+   proportion and the navy holds the rest of the frame. */
+.slide.award .aw-media{position:absolute;right:0;top:calc(150 * var(--u));
+  bottom:calc(126 * var(--u));left:auto;width:calc(1230 * var(--u))}
+.slide.award .aw-media img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.award .aw-media::after{display:none}
+.aw-copy{top:calc(214 * var(--u));width:calc(500 * var(--u))}
+.aw-kicker{max-width:calc(470 * var(--u));font-size:calc(12.5 * var(--u));letter-spacing:.2em}
+.aw-year{font-size:calc(140 * var(--u))}
+.aw-title{font-size:calc(40 * var(--u))}
+.aw-note{font-size:calc(15.5 * var(--u));max-width:calc(470 * var(--u));
+  margin-top:calc(22 * var(--u));padding-top:calc(20 * var(--u))}
+.aw-rows{grid-template-columns:1fr;gap:calc(18 * var(--u));max-width:calc(470 * var(--u));
+  margin-top:calc(24 * var(--u))}
+.aw-row dd{font-size:calc(18 * var(--u))}
+.aw-kicker{max-width:calc(380 * var(--u))}
+
 </style>
 </head>
 <body>
@@ -1871,7 +1958,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">01 / 66<span class="edition">· Edition 2026</span></span></div>
+    <div class="bl-l"><span class="folio">01 / 67<span class="edition">· Edition 2026</span></span></div>
   </footer>
 </section></div>
 
@@ -1913,12 +2000,12 @@ body.modal-open .nav,body.modal-open .progress{display:none}
             <p class="cp-note">The standards every project is held to.</p>
           </div>
         </div>
-        <ul class="cp-list"><li><span class="ci-n">03.1</span><span class="ci-t">ESG Commitments</span></li><li><span class="ci-n">03.2</span><span class="ci-t">Certifications &amp; Awards</span></li><li><span class="ci-n">03.3</span><span class="ci-t">Safety &amp; Recognition</span></li><li><span class="ci-n">03.4</span><span class="ci-t">Closing</span></li><li><span class="ci-n">03.5</span><span class="ci-t">Contacts</span></li></ul>
+        <ul class="cp-list"><li><span class="ci-n">03.1</span><span class="ci-t">ESG Commitments</span></li><li><span class="ci-n">03.2</span><span class="ci-t">Certifications</span></li><li><span class="ci-n">03.3</span><span class="ci-t">Builder of the Year 2024</span></li><li><span class="ci-n">03.4</span><span class="ci-t">Safety &amp; Recognition</span></li><li><span class="ci-n">03.5</span><span class="ci-t">Closing</span></li><li><span class="ci-n">03.6</span><span class="ci-t">Contacts</span></li></ul>
       </div>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">02 / 66</span></div>
+    <div class="bl-l"><span class="folio">02 / 67</span></div>
     <div class="bl-c"></div>
     <div class="bl-r">Contents</div>
   </footer>
@@ -1940,7 +2027,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">03 / 66</span></div>
+    <div class="bl-l"><span class="folio">03 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -1982,7 +2069,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">04 / 66</span></div>
+    <div class="bl-l"><span class="folio">04 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2014,7 +2101,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">05 / 66</span></div>
+    <div class="bl-l"><span class="folio">05 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2032,7 +2119,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="mstone"><div class="tl-offices"><span class="label">Offices opened</span><div class="offs"><span class="off"><span class="off-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><span class="off-name">Malaysia</span><span class="off-yr">1995</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#C1272D"/><path d="M24 10.4l2.55 7.85-6.68-4.85h8.26l-6.68 4.85z" fill="none" stroke="#006233" stroke-width="1.15"/></svg></span><span class="off-name">Morocco</span><span class="off-yr">2000</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#DE2910"/><path d="M9 4l1.4 4.3H15l-3.7 2.7 1.4 4.3L9 12.6l-3.7 2.7 1.4-4.3L3 8.3h4.6z" fill="#FFDE00"/><g fill="#FFDE00"><circle cx="18" cy="4" r="1.3"/><circle cx="21.5" cy="7.5" r="1.3"/><circle cx="21.5" cy="12.5" r="1.3"/><circle cx="18" cy="16" r="1.3"/></g></svg></span><span class="off-name">China</span><span class="off-yr">2006</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="15" fill="#fff"/><rect y="15" width="48" height="15" fill="#DC143C"/></svg></span><span class="off-name">Poland</span><span class="off-yr">2007</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#002395"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#ED2939"/></svg></span><span class="off-name">France</span><span class="off-yr">2008</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><span class="off-name">Sweden</span><span class="off-yr">2020</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><span class="off-name">Singapore</span><span class="off-yr">2023</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><span class="off-name">Germany</span><span class="off-yr">2025</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><span class="off-name">United States</span><span class="off-yr">2026</span></span><span class="off"><span class="off-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><span class="off-name">India</span><span class="off-yr">2026</span></span></div></div><div class="tl-key"><span class="k k-e">EPCC projects</span><span class="k k-g">Energy projects</span><span class="k k-t">Tool utility projects</span></div><div class="ms-track"><div class="ms-col up"><div class="ms-body"><ul class="ms-list"><li class="k-e">Established as a cleanroom specialist</li></ul></div><div class="ms-rail"><span class="ms-node">1995</span></div></div><div class="ms-col down"><div class="ms-body"><ul class="ms-list"><li class="k-e">(EPCC) ST Microelectronics, Class 10K cleanroom</li></ul></div><div class="ms-rail"><span class="ms-node">2000</span></div></div><div class="ms-col up"><div class="ms-body"><ul class="ms-list"><li class="k-e">(PCC) Western Digital PJ, Class 10 cleanroom</li></ul></div><div class="ms-rail"><span class="ms-node">2008</span></div></div><div class="ms-col down"><div class="ms-body"><ul class="ms-list"><li class="k-e">(GC / D&amp;B) MEMC Ipoh, Class 1 cleanroom</li></ul></div><div class="ms-rail"><span class="ms-node">2009</span></div></div><div class="ms-col up"><div class="ms-body"><ul class="ms-list"><li class="k-e">(PCC) MRT Project tunnel station M&amp;E</li><li class="k-e">(EPC) Infineon MKZ, Class 1K cleanroom</li><li class="k-e">(EPCC) SilTerra FAB</li><li class="k-g">(PCC) Rapid Project Siemens powerplant piping works</li><li class="k-g">(BOT) Pagoh Edu Hub DCS</li></ul></div><div class="ms-rail"><span class="ms-node">2013</span></div></div><div class="ms-col down"><div class="ms-body"><ul class="ms-list"><li class="k-g">(GC) KLCC DCC Plant, largest DCC plant in Malaysia</li></ul></div><div class="ms-rail"><span class="ms-node">2016</span></div></div><div class="ms-col up"><div class="ms-body"><ul class="ms-list"><li class="k-e">(GC) Ain Medicare</li></ul></div><div class="ms-rail"><span class="ms-node">2017</span></div></div><div class="ms-col down"><div class="ms-body"><ul class="ms-list"><li class="k-e">(GC) Vital HC</li><li class="k-e">(GC / PCC) Robert Bosch</li><li class="k-e">(GC / PCC) P Project</li></ul></div><div class="ms-rail"><span class="ms-node">2020</span></div></div><div class="ms-col up"><div class="ms-body"><ul class="ms-list"><li class="k-e">(PCC) Microsoft Data Center</li><li class="k-e">(GC / D&amp;B) SilTerra expansion</li><li class="k-e">(EPCM / D&amp;B) Soitec PR1A expansion</li><li class="k-e">(GC / EPCM) Infineon IFKM3 expansion</li></ul></div><div class="ms-rail"><span class="ms-node">2021</span></div></div><div class="ms-col down"><div class="ms-body"><ul class="ms-list"><li class="k-e">(GC / D&amp;B) XFAB 40K expansion</li></ul></div><div class="ms-rail"><span class="ms-node">2022</span></div></div><div class="ms-col up"><div class="ms-body"><ul class="ms-list"><li class="k-e">(GC / D&amp;B) Progressive Build P Project</li></ul></div><div class="ms-rail"><span class="ms-node">2024</span></div></div><div class="ms-col down"><div class="ms-body"><ul class="ms-list"><li class="k-e">(GC / D&amp;B) Hasegawa</li><li class="k-e">(PCC) 160MW hyperscale data centre</li><li class="k-e">(EPCC) ESCM Germany</li><li class="k-g">(EPCC) KLCC DCS chiller upgrading</li></ul></div><div class="ms-rail"><span class="ms-node">2025</span></div></div><div class="ms-col up"><div class="ms-body"><ul class="ms-list"><li class="k-e">(D&amp;B) Tata Dholera DF1</li><li class="k-t">(EPCM / HU) Micron MSH</li><li class="k-g">(EPCC) GDC Putrajaya chiller upgrading</li></ul></div><div class="ms-rail"><span class="ms-node">2026</span></div></div></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">06 / 66</span></div>
+    <div class="bl-l"><span class="folio">06 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2050,7 +2137,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="foot-grid"><div class="foot-map"><img src="img/map-base.png" alt="IAQ global footprint"><span class="pin" style="left:21.00%;top:52.00%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">United States</b></span><span class="pin" style="left:44.50%;top:32.05%"><i></i><b class="l" style="--dy:calc(-16 * var(--u))">Ireland</b></span><span class="pin" style="left:49.95%;top:25.00%"><i></i><b class="l" style="--dy:calc(-10 * var(--u))">Sweden</b></span><span class="pin" style="left:49.75%;top:33.95%"><i></i><b class="l" style="--dy:calc(21 * var(--u))">Germany</b></span><span class="pin" style="left:67.70%;top:55.20%"><i></i><b class="r" style="--dy:calc(0 * var(--u))">India</b></span><span class="pin" style="left:75.20%;top:56.10%"><i></i><b class="r" style="--dy:calc(-18 * var(--u))">Malaysia</b></span><span class="pin" style="left:75.35%;top:56.65%"><i></i><b class="r" style="--dy:calc(22 * var(--u))">Singapore</b></span></div><div class="mkts"><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 24" preserveAspectRatio="xMidYMid meet"><rect width="48" height="24" fill="#fff"/><rect y="0" width="48" height="1.71" fill="#CC0001"/><rect y="3.43" width="48" height="1.71" fill="#CC0001"/><rect y="6.86" width="48" height="1.71" fill="#CC0001"/><rect y="10.28" width="48" height="1.71" fill="#CC0001"/><rect y="13.71" width="48" height="1.71" fill="#CC0001"/><rect y="17.14" width="48" height="1.71" fill="#CC0001"/><rect y="20.57" width="48" height="1.71" fill="#CC0001"/><rect width="24" height="13.71" fill="#010066"/><circle cx="9.4" cy="6.9" r="4.2" fill="#FC0"/><circle cx="11.3" cy="6.9" r="3.7" fill="#010066"/><path d="M16.8 3.1l.83 2.55h2.68l-2.17 1.58.83 2.55-2.17-1.58-2.17 1.58.83-2.55-2.17-1.58h2.68z" fill="#FC0"/></svg></span><div class="mk-yr">1995</div><div class="mk-tx"><h3 class="mk-name">Malaysia</h3><p class="mk-note">Turnkey design, procurement, construction and commissioning for hi-tech clients. Selangor (HQ), Penang, Johor and Kuching.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="30" fill="#006AA7"/><rect y="12" width="48" height="6" fill="#FECC00"/><rect x="13" width="6" height="30" fill="#FECC00"/></svg></span><div class="mk-yr">2020</div><div class="mk-tx"><h3 class="mk-name">Sweden</h3><p class="mk-note">Gigafactory construction for EV battery manufacture, part of Europe&rsquo;s clean and digital transition.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><rect width="48" height="16" fill="#ED2939"/><circle cx="10.5" cy="8" r="5.6" fill="#fff"/><circle cx="13.2" cy="8" r="4.8" fill="#ED2939"/><g fill="#fff"><circle cx="18" cy="4.6" r="1"/><circle cx="21.4" cy="7" r="1"/><circle cx="20.1" cy="11" r="1"/><circle cx="15.9" cy="11" r="1"/><circle cx="14.6" cy="7" r="1"/></g></svg></span><div class="mk-yr">2023</div><div class="mk-tx"><h3 class="mk-name">Singapore</h3><p class="mk-note">Design &amp; build EPCM services to global clients in the semiconductor industry.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 30" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10" fill="#000"/><rect y="10" width="48" height="10" fill="#D00"/><rect y="20" width="48" height="10" fill="#FFCE00"/></svg></span><div class="mk-yr">2025</div><div class="mk-tx"><h3 class="mk-name">Germany</h3><p class="mk-note">EPCC services following the semiconductor industry expansion in Europe.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="10.7" fill="#F93"/><rect y="10.7" width="48" height="10.6" fill="#fff"/><rect y="21.3" width="48" height="10.7" fill="#138808"/><circle cx="24" cy="16" r="4" fill="none" stroke="#008" stroke-width="1"/><circle cx="24" cy="16" r="1.1" fill="#008"/></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">India</h3><p class="mk-note">D&amp;B turnkey delivery for India&rsquo;s first wafer fab.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="48" height="32" fill="#fff"/><g fill="#B22234"><rect y="0" width="48" height="2.46"/><rect y="4.92" width="48" height="2.46"/><rect y="9.84" width="48" height="2.46"/><rect y="14.77" width="48" height="2.46"/><rect y="19.69" width="48" height="2.46"/><rect y="24.61" width="48" height="2.46"/><rect y="29.53" width="48" height="2.46"/></g><rect width="19.2" height="17.23" fill="#3C3B6E"/><g fill="#fff"><circle cx="3.2" cy="3" r="1"/><circle cx="8" cy="3" r="1"/><circle cx="12.8" cy="3" r="1"/><circle cx="5.6" cy="6.4" r="1"/><circle cx="10.4" cy="6.4" r="1"/><circle cx="15.2" cy="6.4" r="1"/><circle cx="3.2" cy="9.8" r="1"/><circle cx="8" cy="9.8" r="1"/><circle cx="12.8" cy="9.8" r="1"/><circle cx="5.6" cy="13.2" r="1"/><circle cx="10.4" cy="13.2" r="1"/><circle cx="15.2" cy="13.2" r="1"/></g></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">United States</h3><p class="mk-note">Entry to the US following the localisation of advanced technology facilities.</p></div></div><div class="mkt"><span class="mk-flag"><svg viewBox="0 0 48 32" preserveAspectRatio="xMidYMid meet"><rect width="16" height="32" fill="#169B62"/><rect x="16" width="16" height="32" fill="#fff"/><rect x="32" width="16" height="32" fill="#FF883E"/></svg></span><div class="mk-yr">2026</div><div class="mk-tx"><h3 class="mk-name">Ireland</h3><p class="mk-note">Incorporated to support a client&rsquo;s wafer fabrication project.</p></div></div></div></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">07 / 66</span></div>
+    <div class="bl-l"><span class="folio">07 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2098,7 +2185,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       </article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">08 / 66</span></div>
+    <div class="bl-l"><span class="folio">08 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2116,7 +2203,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/bu-epc.jpg" alt="IAQ crew on an active project site"><div class="cc-body"><div class="cc-num">01</div><span class="cc-ent">IAQ Solutions Sdn Bhd</span><h3 class="cc-name">Engineering, Procurement and Construction (EPC)</h3><p class="cc-note">EPCC from conception to operation, completion and maintenance. Every stage managed, from initial design through commissioning, so clients in hi-tech industries can bring their visions to life.</p></div></article><article class="colcard"><img src="img/bu-utilities.jpg" alt="Cleanroom gowning area"><div class="cc-body"><div class="cc-num">02</div><span class="cc-ent">IAQ Utility Solutions Sdn Bhd</span><h3 class="cc-name">Process Critical Utilities &amp; Total Tool Installation Solutions</h3><p class="cc-note">EPCM partner for semiconductor manufacturing: process-critical utility infrastructure and total tool installation, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p></div></article><article class="colcard"><img src="img/bu-energy.jpg" alt="Chilled water plant room"><div class="cc-body"><div class="cc-num">03</div><span class="cc-ent">IAQ Energy Facility Management Sdn Bhd</span><h3 class="cc-name">Energy Management</h3><p class="cc-note">Energy management solutions that optimise operations and reduce carbon footprint, keeping facilities running at the highest levels of efficiency and sustainability.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">09 / 66</span></div>
+    <div class="bl-l"><span class="folio">09 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2134,7 +2221,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="dmrows"><article class="dmrow"><div class="dr-abbr">EPCM</div><div class="dr-body"><h3 class="dr-name">Engineering, Procurement &amp; Construction Management</h3><p class="dr-note">Management of engineering, procurement and construction for semiconductor manufacturing, bridging facility readiness and manufacturing start-up to accelerate fab ramp-up.</p><div class="dr-foot"><ul class="dr-ph"><li class="on">Engineering</li><li class="on">Procurement</li><li class="on">Construction</li><li class="">Commissioning</li><li class="">Operation</li></ul><p class="dr-refs">SilTerra expansion &middot; Soitec PR1A expansion &middot; Infineon IFKM3 expansion &middot; Micron MSH</p></div></div></article><article class="dmrow"><div class="dr-abbr">EPCC</div><div class="dr-body"><h3 class="dr-name">Engineering, Procurement, Construction &amp; Commissioning</h3><p class="dr-note">Full turnkey delivery from conception to operation, completion and maintenance, with every stage managed from initial design through commissioning.</p><div class="dr-foot"><ul class="dr-ph"><li class="on">Engineering</li><li class="on">Procurement</li><li class="on">Construction</li><li class="on">Commissioning</li><li class="">Operation</li></ul><p class="dr-refs">ST Microelectronics &middot; SilTerra FAB &middot; ESCM Germany &middot; KLCC DCS chiller upgrading</p></div></div></article><article class="dmrow"><div class="dr-abbr">EFM</div><div class="dr-body"><h3 class="dr-name">Energy Facility Management</h3><p class="dr-note">Ongoing energy and facility management that optimises operations and reduces carbon footprint, keeping facilities at the highest levels of efficiency.</p><div class="dr-foot"><ul class="dr-ph"><li class="">Engineering</li><li class="">Procurement</li><li class="">Construction</li><li class="">Commissioning</li><li class="on">Operation</li></ul><p class="dr-refs">KLCC DCC Plant &middot; GDC Putrajaya chiller upgrading &middot; Pagoh Edu Hub DCS</p></div></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">10 / 66</span></div>
+    <div class="bl-l"><span class="folio">10 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2162,7 +2249,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">11 / 66</span></div>
+    <div class="bl-l"><span class="folio">11 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2180,7 +2267,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="inds"><article class="ind"><img src="img/infineon-kulim.jpg" alt="Semiconductor"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><h3 class="ind-name">Semiconductor</h3><p class="ind-note">Wafer fab, advanced packaging, test &amp; assembly</p></div></article><article class="ind"><img src="img/microsoft-kul03.jpg" alt="Data Centre"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="5" rx="1"/><rect x="4" y="11" width="16" height="5" rx="1"/><rect x="4" y="18" width="16" height="3" rx="1"/><path d="M7 6.5h.01M7 13.5h.01"/></svg><h3 class="ind-name">Data Centre</h3><p class="ind-note">Hyperscale cooling, security, uptime</p></div></article><article class="ind"><img src="img/northvolt.jpg" alt="EV Battery"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="15" height="10" rx="2"/><path d="M18 11h3v2h-3"/><path d="M11 9.5l-2 3h3l-2 3"/></svg><h3 class="ind-name">EV Battery</h3><p class="ind-note">Dry rooms, moisture control, explosion proofing</p></div></article><article class="ind"><img src="img/klcc-dcp.jpg" alt="District Cooling and Heating"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.5 7.5l15 9M19.5 7.5l-15 9"/></svg><h3 class="ind-name">District Cooling &amp; Heating</h3><p class="ind-note">Urban energy plant and distribution</p></div></article><article class="ind"><img src="img/first-solar.jpg" alt="Photovoltaics"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 17h15l-2-9h-11z"/><path d="M8 8l-1.2 9M16 8l1.2 9M5.6 12.5h12.8"/><path d="M12 4V2"/></svg><h3 class="ind-name">Photovoltaics</h3><p class="ind-note">Cell and module lines, toxic material handling</p></div></article><article class="ind"><img src="img/pharmaniaga.jpg" alt="Pharmaceuticals and Hospitals"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="9" width="16" height="11" rx="2"/><path d="M9 9V6.5a3 3 0 016 0V9"/><path d="M12 12.5v4M10 14.5h4"/></svg><h3 class="ind-name">Pharmaceuticals &amp; Hospitals</h3><p class="ind-note">GMP grades, regulated environments</p></div></article><article class="ind"><img src="img/ind-food.jpg" alt="Food and Beverage"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 8h11l-1.4 12h-8.2z"/><path d="M17.5 10h2a2 2 0 010 4h-1.6"/><path d="M9 5V3M13 5V3"/></svg><h3 class="ind-name">Food &amp; Beverage</h3><p class="ind-note">Hygienic design, quality and safety standards</p></div></article><article class="ind solid"><div class="ind-body"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><h3 class="ind-name">Your facility next</h3><p class="ind-note">Total facility solutions, end to end.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">12 / 66</span></div>
+    <div class="bl-l"><span class="folio">12 / 67</span></div>
     <div class="bl-c"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
     <div class="bl-r">The Company</div>
   </footer>
@@ -2202,7 +2289,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">13 / 66</span></div>
+    <div class="bl-l"><span class="folio">13 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2239,7 +2326,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">14 / 66</span></div>
+    <div class="bl-l"><span class="folio">14 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2276,7 +2363,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">15 / 66</span></div>
+    <div class="bl-l"><span class="folio">15 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Malaysia</div>
   </footer>
@@ -2313,7 +2400,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">16 / 66</span></div>
+    <div class="bl-l"><span class="folio">16 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Singapore</div>
   </footer>
@@ -2350,7 +2437,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">17 / 66</span></div>
+    <div class="bl-l"><span class="folio">17 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Data Centre</div>
   </footer>
@@ -2387,7 +2474,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">18 / 66</span></div>
+    <div class="bl-l"><span class="folio">18 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">EV Battery · Europe</div>
   </footer>
@@ -2424,7 +2511,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">19 / 66</span></div>
+    <div class="bl-l"><span class="folio">19 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Semiconductor · Europe</div>
   </footer>
@@ -2461,7 +2548,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">20 / 66</span></div>
+    <div class="bl-l"><span class="folio">20 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">China</div>
   </footer>
@@ -2498,7 +2585,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">21 / 66</span></div>
+    <div class="bl-l"><span class="folio">21 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Photovoltaics</div>
   </footer>
@@ -2535,7 +2622,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">22 / 66</span></div>
+    <div class="bl-l"><span class="folio">22 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Pharmaceutical &amp; Medical</div>
   </footer>
@@ -2572,7 +2659,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">23 / 66</span></div>
+    <div class="bl-l"><span class="folio">23 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">District Cooling &amp; Energy</div>
   </footer>
@@ -2609,7 +2696,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">24 / 66</span></div>
+    <div class="bl-l"><span class="folio">24 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2646,7 +2733,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">25 / 66</span></div>
+    <div class="bl-l"><span class="folio">25 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2683,7 +2770,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">26 / 66</span></div>
+    <div class="bl-l"><span class="folio">26 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2720,7 +2807,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">27 / 66</span></div>
+    <div class="bl-l"><span class="folio">27 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2757,7 +2844,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">28 / 66</span></div>
+    <div class="bl-l"><span class="folio">28 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2794,7 +2881,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">29 / 66</span></div>
+    <div class="bl-l"><span class="folio">29 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2831,7 +2918,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">30 / 66</span></div>
+    <div class="bl-l"><span class="folio">30 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2868,7 +2955,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">31 / 66</span></div>
+    <div class="bl-l"><span class="folio">31 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2905,7 +2992,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">32 / 66</span></div>
+    <div class="bl-l"><span class="folio">32 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2942,7 +3029,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">33 / 66</span></div>
+    <div class="bl-l"><span class="folio">33 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -2979,7 +3066,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">34 / 66</span></div>
+    <div class="bl-l"><span class="folio">34 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3016,7 +3103,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">35 / 66</span></div>
+    <div class="bl-l"><span class="folio">35 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3053,7 +3140,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">36 / 66</span></div>
+    <div class="bl-l"><span class="folio">36 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3090,7 +3177,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">37 / 66</span></div>
+    <div class="bl-l"><span class="folio">37 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3127,7 +3214,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">38 / 66</span></div>
+    <div class="bl-l"><span class="folio">38 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3164,7 +3251,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">39 / 66</span></div>
+    <div class="bl-l"><span class="folio">39 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3201,7 +3288,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">40 / 66</span></div>
+    <div class="bl-l"><span class="folio">40 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3238,7 +3325,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">41 / 66</span></div>
+    <div class="bl-l"><span class="folio">41 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3275,7 +3362,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">42 / 66</span></div>
+    <div class="bl-l"><span class="folio">42 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3312,7 +3399,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">43 / 66</span></div>
+    <div class="bl-l"><span class="folio">43 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3349,7 +3436,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">44 / 66</span></div>
+    <div class="bl-l"><span class="folio">44 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3386,7 +3473,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">45 / 66</span></div>
+    <div class="bl-l"><span class="folio">45 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3423,7 +3510,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">46 / 66</span></div>
+    <div class="bl-l"><span class="folio">46 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3460,7 +3547,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">47 / 66</span></div>
+    <div class="bl-l"><span class="folio">47 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3497,7 +3584,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">48 / 66</span></div>
+    <div class="bl-l"><span class="folio">48 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3534,7 +3621,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">49 / 66</span></div>
+    <div class="bl-l"><span class="folio">49 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3571,7 +3658,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">50 / 66</span></div>
+    <div class="bl-l"><span class="folio">50 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3608,7 +3695,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">51 / 66</span></div>
+    <div class="bl-l"><span class="folio">51 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3645,7 +3732,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">52 / 66</span></div>
+    <div class="bl-l"><span class="folio">52 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3682,7 +3769,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">53 / 66</span></div>
+    <div class="bl-l"><span class="folio">53 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3719,7 +3806,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">54 / 66</span></div>
+    <div class="bl-l"><span class="folio">54 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3756,7 +3843,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">55 / 66</span></div>
+    <div class="bl-l"><span class="folio">55 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3793,7 +3880,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">56 / 66</span></div>
+    <div class="bl-l"><span class="folio">56 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3830,7 +3917,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">57 / 66</span></div>
+    <div class="bl-l"><span class="folio">57 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3867,7 +3954,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">58 / 66</span></div>
+    <div class="bl-l"><span class="folio">58 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3904,7 +3991,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">59 / 66</span></div>
+    <div class="bl-l"><span class="folio">59 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3932,7 +4019,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">60 / 66</span></div>
+    <div class="bl-l"><span class="folio">60 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot on"></i><i class="dot"></i></div>
     <div class="bl-r">Project References</div>
   </footer>
@@ -3944,7 +4031,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <span class="div-kicker">Part 03 of 03</span>
       <div class="div-num">03</div>
       <h2 class="div-title">Safety, Quality &amp; ESG</h2>
-      <p class="div-note">Sections 03.1 to 03.5</p>
+      <p class="div-note">Sections 03.1 to 03.6</p>
       <ul class="div-list"><li>Highwire Gold safety award</li><li>ISO 45001:2018 occupational health &amp; safety</li><li>20 tons per annum carbon footprint reduction</li></ul>
     </div>
     <div class="div-media"><img src="img/esg-safety.jpg" alt=""></div>
@@ -3954,7 +4041,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">61 / 66</span></div>
+    <div class="bl-l"><span class="folio">61 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -3972,7 +4059,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   <div class="canvas fill"><div class="colcards c3"><article class="colcard"><img src="img/value-2.jpg" alt=""><div class="cc-body"><div class="cc-num">E</div><h3 class="cc-name">Environmental Responsibility</h3><p class="cc-note">Minimising environmental footprint through sustainable design and construction. Energy-efficient solutions and eco-friendly technologies, prioritised at design stage.</p></div></article><article class="colcard"><img src="img/value-3.jpg" alt=""><div class="cc-body"><div class="cc-num">S</div><h3 class="cc-name">Social Accountability</h3><p class="cc-note">The well-being and safety of employees and communities first. A diverse, inclusive work environment and ethical labour practices.</p></div></article><article class="colcard"><img src="img/value-4.jpg" alt=""><div class="cc-body"><div class="cc-num">G</div><h3 class="cc-name">Corporate Governance</h3><p class="cc-note">Transparency, accountability and ethical decision-making, with the highest standards of compliance, building trust with clients, partners and stakeholders.</p></div></article></div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">62 / 66</span></div>
+    <div class="bl-l"><span class="folio">62 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -3984,29 +4071,37 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Certifications &amp; Awards</h2>
-      <p class="s-note">Independently certified, and recognised as Builder of the Year 2024.</p>
+      <h2 class="s-title">Certifications</h2>
+      <p class="s-note">Every management system independently registered, and every licence current.</p>
     </header>
   <div class="canvas fill">
-    <div class="certgrid">
-      <div class="award-panel">
-        <span class="ap-kicker">Malaysian Construction Industry Excellence Awards</span>
-        <div class="ap-year">2024</div>
-        <h3 class="ap-title">Builder of the Year</h3>
-        <p class="ap-note">Awarded by the Construction Industry Development Board (CIDB).
-        Recipients are judged across company performance, project management, technical
-        expertise, innovation, quality, safety and sustainability.</p>
-        <div class="ap-foot"><span class="label">Awarded to</span>
-        <span class="ap-to">IAQ Technology International Sdn Bhd</span></div>
-      </div>
-      <div class="certcol">
-        <div class="cdocs"><figure class="cdoc"><img src="img/cert-iso9001.jpg" alt="ISO 9001:2015 certificate of registration"><figcaption><span class="cd-std">ISO 9001:2015</span><span class="cd-scope">Quality Management</span><span class="cd-by">Intertek &middot; valid to June 2029</span></figcaption></figure><figure class="cdoc"><img src="img/cert-iso14001.jpg" alt="ISO 14001:2015 certificate of registration"><figcaption><span class="cd-std">ISO 14001:2015</span><span class="cd-scope">Environmental Management</span><span class="cd-by">Intertek &middot; valid to June 2029</span></figcaption></figure><figure class="cdoc"><img src="img/cert-iso45001.jpg" alt="ISO 45001:2018 certificate of registration"><figcaption><span class="cd-std">ISO 45001:2018</span><span class="cd-scope">Occupational Health &amp; Safety</span><span class="cd-by">Intertek &middot; valid to June 2029</span></figcaption></figure></div>
-        <div class="lics"><div class="lic"><span class="lic-name">CIDB Grade G7</span><span class="lic-note">Unlimited tender capacity</span></div><div class="lic"><span class="lic-name">PKK Grade G7</span><span class="lic-note">Government works registration</span></div><div class="lic"><span class="lic-name">Highwire Gold</span><span class="lic-note">Contractor safety performance</span></div><div class="lic"><span class="lic-name">Energy Commission Class B</span><span class="lic-note">Suruhanjaya Tenaga, Malaysia</span></div><div class="lic"><img class="lic-mark" src="img/cert-bizsafe.png" alt="bizSAFE Level 3"><span class="lic-name">bizSAFE Level 3</span><span class="lic-note">WSH Council, Singapore</span></div></div>
-      </div>
+    <div class="certgrid solo">
+      <div class="cdocs"><figure class="cdoc"><img src="img/cert-iso9001.jpg" alt="ISO 9001:2015 certificate of registration"><figcaption><span class="cd-std">ISO 9001:2015</span><span class="cd-scope">Quality Management</span><span class="cd-by">Intertek &middot; valid to June 2029</span></figcaption></figure><figure class="cdoc"><img src="img/cert-iso14001.jpg" alt="ISO 14001:2015 certificate of registration"><figcaption><span class="cd-std">ISO 14001:2015</span><span class="cd-scope">Environmental Management</span><span class="cd-by">Intertek &middot; valid to June 2029</span></figcaption></figure><figure class="cdoc"><img src="img/cert-iso45001.jpg" alt="ISO 45001:2018 certificate of registration"><figcaption><span class="cd-std">ISO 45001:2018</span><span class="cd-scope">Occupational Health &amp; Safety</span><span class="cd-by">Intertek &middot; valid to June 2029</span></figcaption></figure></div>
+      <div class="lics"><div class="lic"><span class="lic-name">CIDB Grade G7</span><span class="lic-note">Unlimited tender capacity</span></div><div class="lic"><span class="lic-name">PKK Grade G7</span><span class="lic-note">Government works registration</span></div><div class="lic"><span class="lic-name">Highwire Gold</span><span class="lic-note">Contractor safety performance</span></div><div class="lic"><span class="lic-name">Energy Commission Class B</span><span class="lic-note">Suruhanjaya Tenaga, Malaysia</span></div><div class="lic"><img class="lic-mark" src="img/cert-bizsafe.png" alt="bizSAFE Level 3"><span class="lic-name">bizSAFE Level 3</span><span class="lic-note">WSH Council, Singapore</span></div></div>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">63 / 66</span></div>
+    <div class="bl-l"><span class="folio">63 / 67</span></div>
+    <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
+    <div class="bl-r">Safety, Quality &amp; ESG</div>
+  </footer>
+</section></div>
+
+<div class="stage"><section class="slide dark award">
+  <div class="aw-media"><img src="img/award-mciea.jpg" alt="Builder of the Year: IAQ on stage at the awards"></div>
+  <div class="topline">
+    <div class="tl-l"><span class="tab">03.3</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
+    <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+  <div class="aw-copy">
+    <span class="aw-kicker">Malaysian Construction Industry Excellence Awards</span>
+    <div class="aw-year">2024</div>
+    <h2 class="aw-title">Builder of the Year</h2>
+    <p class="aw-note">The Construction Industry Development Board&rsquo;s highest recognition for a contractor. Recipients are judged across company performance, project management, technical expertise, innovation, quality, safety and sustainability.</p>
+    <dl class="aw-rows"><div class="aw-row"><dt>Awarded to</dt><dd>IAQ Solutions Sdn Bhd</dd></div><div class="aw-row"><dt>Conferred by</dt><dd>CIDB Malaysia</dd></div></dl>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">64 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -4014,7 +4109,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <div class="stage"><section class="slide ">
   <div class="topline">
-    <div class="tl-l"><span class="tab">03.3</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
+    <div class="tl-l"><span class="tab">03.4</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
     <div class="tl-r"><span class="mark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
@@ -4027,13 +4122,13 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <h3 class="statement">Judged on the things<br>that actually matter.</h3>
         <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
         They are the same ground our clients audit us on.</p>
-        <ol class="crit"><li><span class="cr-t">Company performance</span><span class="cr-n">01</span></li><li><span class="cr-t">Project management</span><span class="cr-n">02</span></li><li><span class="cr-t">Technical expertise</span><span class="cr-n">03</span></li><li><span class="cr-t">Innovation</span><span class="cr-n">04</span></li><li><span class="cr-t">Quality</span><span class="cr-n">05</span></li><li><span class="cr-t">Safety</span><span class="cr-n">06</span></li><li><span class="cr-t">Sustainability</span><span class="cr-n">07</span></li><li class="cr-cred"><span class="label">Recognised</span><span class="cc-i">Builder of the Year 2024</span><span class="cc-i">Highwire Gold</span><span class="cc-i">ISO 45001:2018</span></li></ol>
+        <ol class="crit"><li><span class="cr-n">01</span><span class="cr-t">Company performance</span></li><li><span class="cr-n">02</span><span class="cr-t">Project management</span></li><li><span class="cr-n">03</span><span class="cr-t">Technical expertise</span></li><li><span class="cr-n">04</span><span class="cr-t">Innovation</span></li><li><span class="cr-n">05</span><span class="cr-t">Quality</span></li><li><span class="cr-n">06</span><span class="cr-t">Safety</span></li><li><span class="cr-n">07</span><span class="cr-t">Sustainability</span></li></ol>
       </div>
       <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">64 / 66</span></div>
+    <div class="bl-l"><span class="folio">65 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -4041,7 +4136,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <div class="stage"><section class="slide dark ">
   <div class="topline">
-    <div class="tl-l"><span class="tab">03.4</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
+    <div class="tl-l"><span class="tab">03.5</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
     <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
@@ -4057,7 +4152,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">65 / 66</span></div>
+    <div class="bl-l"><span class="folio">66 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -4065,7 +4160,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <div class="stage"><section class="slide dark ">
   <div class="topline">
-    <div class="tl-l"><span class="tab">03.5</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
+    <div class="tl-l"><span class="tab">03.6</span><span class="tl-part">Part 03 · Safety, Quality &amp; ESG</span></div>
     <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
@@ -4085,7 +4180,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     </div>
   </div>
   <footer class="botline">
-    <div class="bl-l"><span class="folio">66 / 66</span></div>
+    <div class="bl-l"><span class="folio">67 / 67</span></div>
     <div class="bl-c"><i class="dot"></i><i class="dot"></i><i class="dot on"></i></div>
     <div class="bl-r">Safety, Quality &amp; ESG</div>
   </footer>
@@ -4097,7 +4192,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 
 <nav class="nav" aria-label="Presentation controls">
   <button type="button" id="btn-grid" aria-label="Slide overview (O)">Overview</button>
-  <span class="counter" id="counter" aria-live="polite">01 / 66</span>
+  <span class="counter" id="counter" aria-live="polite">01 / 67</span>
   <button type="button" id="prev" aria-label="Previous slide">Prev</button>
   <button type="button" id="next" aria-label="Next slide">Next</button>
   <span class="timer" id="timer" role="timer">00:00</span>

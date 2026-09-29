@@ -1831,3 +1831,90 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .mark{display:block;height:calc(50 * var(--u));width:calc(100 * var(--u));
   background:url(img/iaq-logo-tag.png) no-repeat center/contain}
 .mark.on-dark{background-image:url(img/iaq-logo-tag-white.png)}
+
+/* ============================================ 03.3 the award
+   One honour, the whole frame: the photograph of the night bleeds to the
+   right, the citation sits on the solid ground at left. */
+.slide.award .aw-media{position:absolute;inset:0;left:44%}
+.slide.award .aw-media img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.award .aw-media::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--ink) 0%,rgba(16,26,43,.6) 14%,
+    rgba(16,26,43,.1) 34%,rgba(16,26,43,0) 52%)}
+.slide.award .topline{z-index:2}
+.aw-copy{position:absolute;left:calc(96 * var(--u));top:calc(196 * var(--u));
+  width:calc(690 * var(--u));z-index:2;display:grid;align-content:start;gap:0}
+.aw-kicker{font-family:var(--tech);font-weight:600;font-size:calc(13.5 * var(--u));
+  letter-spacing:.24em;text-transform:uppercase;line-height:1.5;color:var(--signal);
+  max-width:calc(560 * var(--u))}
+.aw-year{font-family:var(--display);font-weight:700;font-size:calc(184 * var(--u));
+  line-height:.86;letter-spacing:-.05em;color:#fff;margin:calc(14 * var(--u)) 0 0;
+  font-variant-numeric:tabular-nums}
+.aw-title{font-family:var(--display);font-weight:600;font-size:calc(56 * var(--u));
+  line-height:1.02;letter-spacing:-.025em;margin:calc(10 * var(--u)) 0 0;color:var(--signal)}
+.aw-note{font-family:var(--sans);font-weight:400;font-size:calc(17.5 * var(--u));
+  line-height:1.6;margin:calc(28 * var(--u)) 0 0;color:var(--muted-dark);
+  max-width:calc(600 * var(--u));
+  padding-top:calc(26 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-dark)}
+.aw-rows{display:grid;grid-template-columns:1fr 1fr;gap:calc(30 * var(--u));
+  margin:calc(30 * var(--u)) 0 0;max-width:calc(600 * var(--u))}
+.aw-row{display:grid;gap:calc(7 * var(--u));align-content:start;
+  padding-top:calc(16 * var(--u));border-top:calc(2 * var(--u)) solid var(--signal)}
+.aw-row dt{font-family:var(--tech);font-weight:600;font-size:calc(11.5 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted-dark)}
+.aw-row dd{margin:0;font-family:var(--display);font-weight:600;
+  font-size:calc(20 * var(--u));line-height:1.25;letter-spacing:-.02em;color:#fff}
+
+/* ============================================ 03.2 without the award panel */
+.certgrid.solo{grid-template-columns:1fr;gap:calc(30 * var(--u));
+  grid-template-rows:1fr auto;height:100%}
+.certgrid.solo .cdocs{grid-template-columns:repeat(3,1fr);min-height:0}
+.certgrid.solo .lics{grid-template-columns:repeat(5,1fr)}
+
+/* ============================================ 03.4 the criteria, set quietly
+   Seven names do not need seven boxes. The number leads, the rule under each
+   is the only mark, and the page keeps its air. */
+.crit{list-style:none;margin:calc(10 * var(--u)) 0 0;padding:0;display:grid;
+  grid-template-columns:1fr 1fr;gap:0 calc(48 * var(--u));background:none}
+.crit li{display:grid;grid-template-columns:calc(46 * var(--u)) 1fr;
+  align-items:baseline;gap:calc(14 * var(--u));background:none;padding:calc(15 * var(--u)) 0;
+  border-top:calc(1 * var(--u)) solid var(--rule-2)}
+.crit li:nth-child(1),.crit li:nth-child(2){border-top:0}
+.cr-n{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.14em;color:var(--signal);font-variant-numeric:tabular-nums}
+.cr-t{font-family:var(--sans);font-weight:500;font-size:calc(19 * var(--u));
+  line-height:1.3;color:var(--ink)}
+/* the photograph runs the whole frame, so the screen behind the presentation
+   reads in full; the navy is carried over it rather than beside it */
+.slide.award .aw-media{left:0}
+.slide.award .aw-media::after{background:linear-gradient(90deg,
+  var(--ink) 0%,var(--ink) 26%,rgba(16,26,43,.86) 40%,rgba(16,26,43,.34) 56%,
+  rgba(16,26,43,.08) 70%,rgba(16,26,43,0) 84%)}
+.aw-kicker{max-width:calc(640 * var(--u))}
+/* no rules between the criteria: the numbers and the air carry the list */
+.crit li{border-top:0;padding:0}
+.crit{align-content:space-between;gap:0 calc(48 * var(--u))}
+.cr-t{font-size:calc(20 * var(--u))}
+.cr-n{font-size:calc(13.5 * var(--u))}
+
+/* the one licence that carries a mark keeps it out of the text column, so
+   all five read off the same baseline */
+.lic{position:relative}
+.lic-mark{position:absolute;top:calc(16 * var(--u));right:calc(16 * var(--u));
+  height:calc(21 * var(--u));width:auto;margin:0}
+/* The deck takes no scrims: photography meets the navy on a hard edge. The
+   award photograph is also the citation, so it is shown whole at its own
+   proportion and the navy holds the rest of the frame. */
+.slide.award .aw-media{position:absolute;right:0;top:calc(150 * var(--u));
+  bottom:calc(126 * var(--u));left:auto;width:calc(1230 * var(--u))}
+.slide.award .aw-media img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.award .aw-media::after{display:none}
+.aw-copy{top:calc(214 * var(--u));width:calc(500 * var(--u))}
+.aw-kicker{max-width:calc(470 * var(--u));font-size:calc(12.5 * var(--u));letter-spacing:.2em}
+.aw-year{font-size:calc(140 * var(--u))}
+.aw-title{font-size:calc(40 * var(--u))}
+.aw-note{font-size:calc(15.5 * var(--u));max-width:calc(470 * var(--u));
+  margin-top:calc(22 * var(--u));padding-top:calc(20 * var(--u))}
+.aw-rows{grid-template-columns:1fr;gap:calc(18 * var(--u));max-width:calc(470 * var(--u));
+  margin-top:calc(24 * var(--u))}
+.aw-row dd{font-size:calc(18 * var(--u))}
+.aw-kicker{max-width:calc(380 * var(--u))}

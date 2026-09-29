@@ -218,6 +218,33 @@ def hero(img, part_idx, num, section, flag, title, rows, foot):
 </section></div>''')
 
 
+def award_slide(img, num, kicker, year, title, note, rows, foot):
+    """A single honour, given the whole frame: the photograph of the night
+    full bleed to the right, the citation held on the solid ground at left."""
+    i = len(slides) + 1
+    tab, part, dots, foot = chrome(2, num, foot)
+    rows_html = ''.join(
+        f'<div class="aw-row"><dt>{esc(a)}</dt><dd>{esc(b)}</dd></div>' for a, b in rows)
+    slides.append(f'''<div class="stage"><section class="slide dark award">
+  <div class="aw-media"><img src="img/{img}.jpg" alt="{esc(title)}: IAQ on stage at the awards"></div>
+  <div class="topline">
+    <div class="tl-l">{tab}<span class="tl-part">{esc(part)}</span></div>
+    <div class="tl-r"><span class="mark on-dark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+  <div class="aw-copy">
+    <span class="aw-kicker">{kicker}</span>
+    <div class="aw-year">{year}</div>
+    <h2 class="aw-title">{esc(title)}</h2>
+    <p class="aw-note">{note}</p>
+    <dl class="aw-rows">{rows_html}</dl>
+  </div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">{i:02d} / TOTAL</span></div>
+    <div class="bl-c">{dots}</div>
+    <div class="bl-r">{esc(foot)}</div>
+  </footer>
+</section></div>''')
+
 # ================================================================ 01 COVER
 raw_slide('''  <div class="cover-grid"></div>
   <div class="cover-media"><img src="img/cover-site.jpg" alt="IAQ engineers on site"></div>
@@ -255,8 +282,9 @@ contents_parts = [
         ('02.9', 'Pharmaceutical & Medical'), ('02.10', 'District Cooling & Energy'),
         ('02.11+', 'Full Project Reference List')]),
     ('03', 'Safety, Quality & ESG', 'The standards every project is held to.', [
-        ('03.1', 'ESG Commitments'), ('03.2', 'Certifications & Awards'),
-        ('03.3', 'Safety & Recognition'), ('03.4', 'Closing'), ('03.5', 'Contacts')]),
+        ('03.1', 'ESG Commitments'), ('03.2', 'Certifications'),
+        ('03.3', 'Builder of the Year 2024'), ('03.4', 'Safety & Recognition'),
+        ('03.5', 'Closing'), ('03.6', 'Contacts')]),
 ]
 cols = ''
 for pn, pname, pnote, secs in contents_parts:
@@ -779,7 +807,7 @@ for k, pair in enumerate(ref_pages, 1):
           foot='Project References', fill=True, cls='refpg')
 
 # ================================================================ PART 03
-divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.5', 'esg-safety',
+divider(2, '03', 'Safety, Quality & ESG', 'Sections 03.1 to 03.6', 'esg-safety',
         ['Highwire Gold safety award',
          'ISO 45001:2018 occupational health & safety',
          '20 tons per annum carbon footprint reduction'])
@@ -831,39 +859,37 @@ lic_html = ''.join(
     + f'<span class="lic-name">{n}</span><span class="lic-note">{esc(d)}</span></div>'
     for n, d, m in licences)
 slide(f'''
-    <div class="certgrid">
-      <div class="award-panel">
-        <span class="ap-kicker">Malaysian Construction Industry Excellence Awards</span>
-        <div class="ap-year">2024</div>
-        <h3 class="ap-title">Builder of the Year</h3>
-        <p class="ap-note">Awarded by the Construction Industry Development Board (CIDB).
-        Recipients are judged across company performance, project management, technical
-        expertise, innovation, quality, safety and sustainability.</p>
-        <div class="ap-foot"><span class="label">Awarded to</span>
-        <span class="ap-to">IAQ Technology International Sdn Bhd</span></div>
-      </div>
-      <div class="certcol">
-        <div class="cdocs">{cert_cards}</div>
-        <div class="lics">{lic_html}</div>
-      </div>
+    <div class="certgrid solo">
+      <div class="cdocs">{cert_cards}</div>
+      <div class="lics">{lic_html}</div>
     </div>''',
-      part_idx=2, num='03.2', title='Certifications & Awards',
-      note='Independently certified, and recognised as Builder of the Year 2024.',
+      part_idx=2, num='03.2', title='Certifications',
+      note='Every management system independently registered, and every licence current.',
       fill=True)
 
-# ---------------------------------------------------------------- 03.3 SAFETY
+# ---------------------------------------------------------------- 03.3 AWARD
+# The photograph is IAQ's own, from the company profile: the stage at the
+# Malaysian Construction Industry Excellence Awards, the screen naming the
+# honour and the company that took it.
+award_slide(
+    'award-mciea', '03.3',
+    'Malaysian Construction Industry Excellence Awards',
+    '2024', 'Builder of the Year',
+    'The Construction Industry Development Board&rsquo;s highest recognition for a '
+    'contractor. Recipients are judged across company performance, project management, '
+    'technical expertise, innovation, quality, safety and sustainability.',
+    [('Awarded to', 'IAQ Solutions Sdn Bhd'), ('Conferred by', 'CIDB Malaysia')],
+    'Safety, Quality & ESG')
+
+# ---------------------------------------------------------------- 03.4 SAFETY
 # The MCIEA criteria, set out as the list the statement promises. The
 # certificates themselves live on 03.2, so this page carries them as one
 # credential rule rather than repeating the cards.
 criteria = ['Company performance', 'Project management', 'Technical expertise',
             'Innovation', 'Quality', 'Safety', 'Sustainability']
 crit_html = ''.join(
-    f'<li><span class="cr-t">{esc(c)}</span><span class="cr-n">{i:02d}</span></li>'
+    f'<li><span class="cr-n">{i:02d}</span><span class="cr-t">{esc(c)}</span></li>'
     for i, c in enumerate(criteria, 1))
-# seven criteria leave one cell of the 2x4 grid free; the credentials take it
-creds = ['Builder of the Year 2024', 'Highwire Gold', 'ISO 45001:2018']
-crit_html += ('<li class="cr-cred"><span class="label">Recognised</span>'
-              + ''.join(f'<span class="cc-i">{esc(c)}</span>' for c in creds) + '</li>')
 slide(f'''
     <div class="split media">
       <div class="lede">
@@ -874,7 +900,7 @@ slide(f'''
       </div>
       <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
     </div>''',
-      part_idx=2, num='03.3', title='Safety & Recognition',
+      part_idx=2, num='03.4', title='Safety & Recognition',
       note='How our standards are independently verified and recognised.', fill=True)
 
 # ---------------------------------------------------------------- 03.3 CLOSING
@@ -885,7 +911,7 @@ slide('''
       across semiconductor manufacturing, clean energy and every environment in between.
       IAQ is your trusted partner for total facility solutions.</p>
     </div>''',
-      part_idx=2, num='03.4', title='Closing', dark=True,
+      part_idx=2, num='03.5', title='Closing', dark=True,
       note='Engineering the facilities advanced industry runs on.')
 
 # ---------------------------------------------------------------- 03.4 CONTACTS
@@ -915,7 +941,7 @@ slide(f"""
       <div class="ccards">{cards}</div>
       <dl class="endrows">{row_html}</dl>
     </div>""",
-      part_idx=2, num='03.5', title='Contacts', dark=True,
+      part_idx=2, num='03.6', title='Contacts', dark=True,
       note='For inquiry and business opportunity.', fill=True)
 
 # ================================================================ ASSEMBLE

@@ -943,10 +943,10 @@ slide(f"""
             <figcaption><span class="qr-l">Website</span>
             <span class="qr-v">iaqtechnology.com.my</span></figcaption>
           </figure>
-          <figure class="qr tbc">
-            <div class="qr-hold">QR<br>to come</div>
+          <figure class="qr">
+            <img src="img/qr-linkedin.png" alt="Scan for IAQ Group of Companies on LinkedIn">
             <figcaption><span class="qr-l">LinkedIn</span>
-            <span class="qr-v">Company page</span></figcaption>
+            <span class="qr-v">IAQ Group of Companies</span></figcaption>
           </figure>
         </div>
       </div>

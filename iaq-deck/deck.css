@@ -1953,3 +1953,23 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .qr img,.qr-hold{width:calc(92 * var(--u));height:calc(92 * var(--u))}
 .endgrid{gap:calc(34 * var(--u)) calc(62 * var(--u))}
 .er{padding:calc(11 * var(--u)) 0}
+/* A code has to survive the page it is printed on: the LinkedIn address is
+   37 modules across the quiet zone, so the tile is sized to give each module
+   about four pixels at full frame rather than under two. */
+.qr img,.qr-hold{width:calc(150 * var(--u));height:calc(150 * var(--u));
+  padding:calc(6 * var(--u))}
+.qrs{gap:calc(22 * var(--u));margin-top:calc(24 * var(--u))}
+.qr-v{font-size:calc(14 * var(--u))}
+/* the larger tiles have to come out of the page's own slack, not the footer */
+.qr img,.qr-hold{width:calc(142 * var(--u));height:calc(142 * var(--u))}
+.qrs{margin-top:calc(16 * var(--u))}
+.endgrid{gap:calc(24 * var(--u)) calc(62 * var(--u))}
+.er{padding:calc(9 * var(--u)) 0}
+.end-line{padding-top:calc(18 * var(--u))}
+/* 37 modules at four whole pixels each, scaled by an integer from the source
+   and resampled nearest-neighbour, so the grid stays hard-edged and scans */
+.qr img{width:calc(148 * var(--u));height:calc(148 * var(--u));padding:0;
+  image-rendering:pixelated}
+.qr-hold{width:calc(148 * var(--u));height:calc(148 * var(--u))}
+.signoff{width:calc(250 * var(--u))}
+.qrs{margin-top:calc(14 * var(--u))}

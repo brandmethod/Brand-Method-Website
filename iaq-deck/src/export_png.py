@@ -25,7 +25,7 @@ async def main():
         await pg.wait_for_timeout(1200)
         titles = await pg.evaluate("""()=>[...document.querySelectorAll('.stage')].map(st=>{
           if(st.querySelector('.cover-title')) return 'Cover';
-          const e=st.querySelector('.s-title, .div-title, .hero-title');
+          const e=st.querySelector('.s-title, .div-title, .hero-title, .aw-title');
           if(!e) return 'Slide';
           const d=document.createElement('div');
           d.innerHTML=e.innerHTML.replace(/<br\\s*\\/?>/gi,' ');

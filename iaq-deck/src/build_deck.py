@@ -58,9 +58,8 @@ def chrome(part_idx, num, foot):
     """Top line + footer shared by every slide. part_idx is 0-2, or None."""
     tab = f'<span class="tab">{num}</span>' if num else ''
     part = f'Part {part_idx+1:02d} · {PARTS[part_idx]}' if part_idx is not None else LEGAL_NAME
-    dots = ''.join(
-        f'<i class="dot{" on" if part_idx == i else ""}"></i>' for i in range(3)
-    ) if part_idx is not None else ''
+    # the part marker carries the section already; the footer stays a clean line
+    dots = ''
     return (tab, part, dots, foot)
 
 
@@ -315,7 +314,7 @@ def divider(part_idx, num, name, note, img, bullets, ph_note=None):
     else:
         media, ph_cls = f'<img src="img/{img}.jpg" alt="">', ''
     items = ''.join(f'<li>{esc(b)}</li>' for b in bullets)
-    dots = ''.join(f'<i class="dot{" on" if part_idx == k else ""}"></i>' for k in range(3))
+    dots = ''
     slides.append(f'''<div class="stage"><section class="slide dark divider">
   <div class="div-grid">
     <div class="div-copy">

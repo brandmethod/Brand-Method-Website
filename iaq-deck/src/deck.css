@@ -1087,7 +1087,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   display:flex;flex-wrap:wrap;gap:calc(11 * var(--u))}
 .cover-tags li{font-family:var(--sans);font-weight:500;font-size:calc(13.5 * var(--u));
   line-height:1;color:var(--on-dark);padding:calc(11 * var(--u)) calc(14 * var(--u));
-  border:calc(1.5 * var(--u)) solid rgba(255,255,255,.34);border-radius:calc(100 * var(--u))}
+  border:calc(1.5 * var(--u)) solid #fff;border-radius:0}
 
 .cover-scope{font-family:var(--sans);font-weight:400;font-size:calc(15.5 * var(--u));
   line-height:1.5;margin:calc(22 * var(--u)) 0 0;color:var(--on-dark)}

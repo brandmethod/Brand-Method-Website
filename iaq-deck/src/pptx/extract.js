@@ -58,7 +58,9 @@
       }
       push({ k: 'rect', x: px(x), y: px(y), w: px(w), h: px(h), fill: bg,
              radius: parseFloat(c.borderTopLeftRadius) || 0,
-             grad: bi && bi !== 'none' ? bi.slice(0, 40) : null, pseudo: which });
+             // the red bar block under the dark slides is a pseudo box with a
+             // repeating gradient, so it needs its background image carried over
+             bimg: bi && bi !== 'none' ? bi : null, pseudo: which });
     };
 
     const walk = e => {

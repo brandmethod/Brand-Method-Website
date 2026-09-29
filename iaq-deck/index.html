@@ -1983,6 +1983,65 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .signoff{width:calc(250 * var(--u))}
 .qrs{margin-top:calc(14 * var(--u))}
 
+/* ============================================ 03.4 the criteria, as a band
+   Seven names beside the photograph left the column's slack under them and
+   the icons doing no work. They take their own band now: an icon well, its
+   figure and the name, read the way the scope packages read on 01.8. */
+.judge{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:calc(26 * var(--u));min-height:0}
+.judge .split.media{min-height:0}
+.canvas.fill .judge .split.media .lede{height:auto;align-content:center;
+  grid-template-rows:auto auto;gap:calc(22 * var(--u))}
+.critband{background:var(--surface);border-top:calc(3 * var(--u)) solid var(--signal);
+  padding:calc(24 * var(--u)) calc(30 * var(--u)) calc(28 * var(--u));
+  display:grid;gap:calc(22 * var(--u))}
+.cb-head{display:flex;align-items:baseline;justify-content:space-between;
+  gap:calc(30 * var(--u))}
+.cb-src{font-family:var(--tech);font-weight:400;font-size:calc(13 * var(--u));
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.cb-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:calc(24 * var(--u))}
+.cb{display:grid;align-content:start;gap:calc(10 * var(--u))}
+.cb-ico{display:grid;place-items:center;width:calc(52 * var(--u));height:calc(52 * var(--u));
+  border-radius:50%;color:var(--signal);
+  box-shadow:0 0 0 calc(1.5 * var(--u)) rgba(236,35,38,.3) inset}
+.cb-ico svg{width:calc(25 * var(--u));height:calc(25 * var(--u))}
+.cb-k{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.2em;color:var(--signal);font-variant-numeric:tabular-nums}
+.cb-name{font-family:var(--display);font-weight:600;font-size:calc(18.5 * var(--u));
+  line-height:1.2;letter-spacing:-.02em;margin:0;color:var(--ink)}
+
+/* the criteria carry what each one means, and the recognitions sit under the
+   statement so the page's second word is on the page, not only in the title */
+.cb{gap:calc(9 * var(--u))}
+.cb-note{font-family:var(--sans);font-weight:400;font-size:calc(13.5 * var(--u));
+  line-height:1.35;margin:0;color:var(--muted)}
+.rec{list-style:none;margin:calc(4 * var(--u)) 0 0;padding:0;display:grid;
+  gap:calc(14 * var(--u))}
+.rec li{display:grid;grid-template-columns:calc(66 * var(--u)) 1fr;
+  column-gap:calc(20 * var(--u));align-items:baseline;
+  padding-top:calc(14 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-2)}
+.rec-y{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.rec-t{font-family:var(--sans);font-weight:600;font-size:calc(18 * var(--u));
+  line-height:1.2;color:var(--ink)}
+.rec-b{grid-column:2;font-family:var(--sans);font-weight:400;
+  font-size:calc(14 * var(--u));line-height:1.35;color:var(--muted);
+  margin-top:calc(3 * var(--u))}
+
+/* the recognitions carry a mark, not a rule: the deck sets no grey hairlines */
+.rec{gap:calc(18 * var(--u));margin-top:calc(8 * var(--u))}
+.rec li{display:grid;grid-template-columns:auto 1fr;column-gap:calc(16 * var(--u));
+  align-items:baseline;padding:0;border-top:0}
+.rec li::before{content:"";width:calc(7 * var(--u));height:calc(7 * var(--u));
+  background:var(--signal);transform:translateY(calc(-3 * var(--u)))}
+.rec-t{grid-column:2}
+.rec-b{grid-column:2;margin-top:calc(4 * var(--u))}
+
+/* the mark is set against the line rather than the row box, the way the other
+   marked lists in the deck are, so it lands on the type in every render */
+.rec li{display:block;position:relative;padding-left:calc(23 * var(--u))}
+.rec li::before{position:absolute;left:0;top:calc(9 * var(--u));transform:none}
+.rec-t,.rec-b{display:block}
+
 </style>
 </head>
 <body>
@@ -4170,14 +4229,28 @@ body.modal-open .nav,body.modal-open .progress{display:none}
       <p class="s-note">How our standards are independently verified and recognised.</p>
     </header>
   <div class="canvas fill">
-    <div class="split media">
-      <div class="lede">
-        <h3 class="statement">Judged on the things<br>that actually matter.</h3>
-        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
-        They are the same ground our clients audit us on.</p>
-        <ol class="crit"><li><span class="cr-n">01</span><span class="cr-t">Company performance</span></li><li><span class="cr-n">02</span><span class="cr-t">Project management</span></li><li><span class="cr-n">03</span><span class="cr-t">Technical expertise</span></li><li><span class="cr-n">04</span><span class="cr-t">Innovation</span></li><li><span class="cr-n">05</span><span class="cr-t">Quality</span></li><li><span class="cr-n">06</span><span class="cr-t">Safety</span></li><li><span class="cr-n">07</span><span class="cr-t">Sustainability</span></li></ol>
+    <div class="judge">
+      <div class="split media">
+        <div class="lede">
+          <h3 class="statement">Judged on the things<br>that actually matter.</h3>
+          <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
+          They are the same ground our clients audit us on.</p>
+          <ul class="rec">
+            <li><span class="rec-t">Builder of the Year 2024</span>
+              <span class="rec-b">MCIEA &middot; CIDB Malaysia</span></li>
+            <li><span class="rec-t">Highwire safety rating, Gold</span>
+              <span class="rec-b">Independent contractor audit</span></li>
+            <li><span class="rec-t">ISO 45001:2018</span>
+              <span class="rec-b">Occupational health &amp; safety management</span></li>
+          </ul>
+        </div>
+        <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
       </div>
-      <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
+      <section class="critband">
+        <div class="cb-head"><span class="label">The seven criteria</span>
+          <span class="cb-src">Assessed by CIDB Malaysia</span></div>
+        <div class="cb-grid"><article class="cb"><span class="cb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 3.6v17h17.2"/><path d="M7 15.4l3.7-4.3 3.1 2.6 5.1-6.1"/><path d="M15.6 7.6h3.3v3.3"/></svg></span><span class="cb-k">01</span><h3 class="cb-name">Company performance</h3><p class="cb-note">Standing and delivery record</p></article><article class="cb"><span class="cb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.6" y="4" width="14.8" height="17" rx="2"/><path d="M9 4V2.6h6V4"/><path d="M8.2 10.2h6.2M8.2 13.9h7.6M8.2 17.6h3.4"/></svg></span><span class="cb-k">02</span><h3 class="cb-name">Project management</h3><p class="cb-note">Programme, cost and site control</p></article><article class="cb"><span class="cb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="3.6" r="1.6"/><path d="M12 5.2v2.2"/><path d="M12 7.4L6.4 20.8M12 7.4l5.6 13.4"/><path d="M8.9 14.6h6.2"/></svg></span><span class="cb-k">03</span><h3 class="cb-name">Technical expertise</h3><p class="cb-note">Engineering depth and method</p></article><article class="cb"><span class="cb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.9 15.4a6 6 0 116.2 0v2.2H8.9z"/><path d="M10.1 20.8h3.8"/><path d="M12 9.2v4"/></svg></span><span class="cb-k">04</span><h3 class="cb-name">Innovation</h3><p class="cb-note">New method and technology</p></article><article class="cb"><span class="cb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9.6" r="6.3"/><path d="M9.4 9.6l1.9 1.9 3.3-3.6"/><path d="M8.3 15.1L7 21l5-2.2L17 21l-1.3-5.9"/></svg></span><span class="cb-k">05</span><h3 class="cb-name">Quality</h3><p class="cb-note">Workmanship against the standard</p></article><article class="cb"><span class="cb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.2 16.5a8.8 8.8 0 0117.6 0z"/><path d="M9.4 8.1V5.3a1.6 1.6 0 011.6-1.6h2a1.6 1.6 0 011.6 1.6v2.8"/><path d="M2.4 16.5h19.2v2.3H2.4z"/></svg></span><span class="cb-k">06</span><h3 class="cb-name">Safety</h3><p class="cb-note">Zero-harm practice on every site</p></article><article class="cb"><span class="cb-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 3.8c0 9.1-4.9 13.7-11.1 13.7H5.4C5.4 9.4 11 3.8 20.2 3.8z"/><path d="M3.8 21c1.5-4.6 4.1-7.5 7.7-9.6"/></svg></span><span class="cb-k">07</span><h3 class="cb-name">Sustainability</h3><p class="cb-note">Environmental and social outcome</p></article></div>
+      </section>
     </div>
   </div>
   <footer class="botline">

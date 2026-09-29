@@ -882,22 +882,59 @@ award_slide(
 
 # ---------------------------------------------------------------- 03.4 SAFETY
 # The MCIEA criteria, set out as the list the statement promises. The
-# certificates themselves live on 03.2, so this page carries them as one
-# credential rule rather than repeating the cards.
-criteria = ['Company performance', 'Project management', 'Technical expertise',
-            'Innovation', 'Quality', 'Safety', 'Sustainability']
+# certificates themselves live on 03.2, so this page carries the criteria
+# rather than the documents: each one with its own icon well and figure, the
+# way the scope packages are set on 01.8.
+CRIT_ICONS = [
+ # company performance: a trend read off a baseline
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 3.6v17h17.2"/><path d="M7 15.4l3.7-4.3 3.1 2.6 5.1-6.1"/><path d="M15.6 7.6h3.3v3.3"/></svg>',
+ # project management: a clipboard running a programme
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4.6" y="4" width="14.8" height="17" rx="2"/><path d="M9 4V2.6h6V4"/><path d="M8.2 10.2h6.2M8.2 13.9h7.6M8.2 17.6h3.4"/></svg>',
+ # technical expertise: a drafting compass
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="3.6" r="1.6"/><path d="M12 5.2v2.2"/><path d="M12 7.4L6.4 20.8M12 7.4l5.6 13.4"/><path d="M8.9 14.6h6.2"/></svg>',
+ # innovation: a filament coming up to light
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8.9 15.4a6 6 0 116.2 0v2.2H8.9z"/><path d="M10.1 20.8h3.8"/><path d="M12 9.2v4"/></svg>',
+ VALUE_ICONS[1],   # quality: the seal and its check
+ VALUE_ICONS[0],   # safety: the hard hat
+ STAT_ICONS[5],    # sustainability: the leaf
+]
+criteria = [
+    ('Company performance', 'Standing and delivery record'),
+    ('Project management', 'Programme, cost and site control'),
+    ('Technical expertise', 'Engineering depth and method'),
+    ('Innovation', 'New method and technology'),
+    ('Quality', 'Workmanship against the standard'),
+    ('Safety', 'Zero-harm practice on every site'),
+    ('Sustainability', 'Environmental and social outcome'),
+]
 crit_html = ''.join(
-    f'<li><span class="cr-n">{i:02d}</span><span class="cr-t">{esc(c)}</span></li>'
-    for i, c in enumerate(criteria, 1))
+    f'<article class="cb"><span class="cb-ico">{CRIT_ICONS[i - 1]}</span>'
+    f'<span class="cb-k">{i:02d}</span>'
+    f'<h3 class="cb-name">{esc(c)}</h3><p class="cb-note">{esc(d)}</p></article>'
+    for i, (c, d) in enumerate(criteria, 1))
 slide(f'''
-    <div class="split media">
-      <div class="lede">
-        <h3 class="statement">Judged on the things<br>that actually matter.</h3>
-        <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
-        They are the same ground our clients audit us on.</p>
-        <ol class="crit">{crit_html}</ol>
+    <div class="judge">
+      <div class="split media">
+        <div class="lede">
+          <h3 class="statement">Judged on the things<br>that actually matter.</h3>
+          <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
+          They are the same ground our clients audit us on.</p>
+          <ul class="rec">
+            <li><span class="rec-t">Builder of the Year 2024</span>
+              <span class="rec-b">MCIEA &middot; CIDB Malaysia</span></li>
+            <li><span class="rec-t">Highwire safety rating, Gold</span>
+              <span class="rec-b">Independent contractor audit</span></li>
+            <li><span class="rec-t">ISO 45001:2018</span>
+              <span class="rec-b">Occupational health &amp; safety management</span></li>
+          </ul>
+        </div>
+        <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
       </div>
-      <div class="side-media"><img src="img/safety-review.jpg" alt="IAQ engineers reviewing work on site"></div>
+      <section class="critband">
+        <div class="cb-head"><span class="label">The seven criteria</span>
+          <span class="cb-src">Assessed by CIDB Malaysia</span></div>
+        <div class="cb-grid">{crit_html}</div>
+      </section>
     </div>''',
       part_idx=2, num='03.4', title='Safety & Recognition',
       note='How our standards are independently verified and recognised.', fill=True)

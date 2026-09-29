@@ -1973,3 +1973,62 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .qr-hold{width:calc(148 * var(--u));height:calc(148 * var(--u))}
 .signoff{width:calc(250 * var(--u))}
 .qrs{margin-top:calc(14 * var(--u))}
+
+/* ============================================ 03.4 the criteria, as a band
+   Seven names beside the photograph left the column's slack under them and
+   the icons doing no work. They take their own band now: an icon well, its
+   figure and the name, read the way the scope packages read on 01.8. */
+.judge{display:grid;grid-template-rows:minmax(0,1fr) auto;gap:calc(26 * var(--u));min-height:0}
+.judge .split.media{min-height:0}
+.canvas.fill .judge .split.media .lede{height:auto;align-content:center;
+  grid-template-rows:auto auto;gap:calc(22 * var(--u))}
+.critband{background:var(--surface);border-top:calc(3 * var(--u)) solid var(--signal);
+  padding:calc(24 * var(--u)) calc(30 * var(--u)) calc(28 * var(--u));
+  display:grid;gap:calc(22 * var(--u))}
+.cb-head{display:flex;align-items:baseline;justify-content:space-between;
+  gap:calc(30 * var(--u))}
+.cb-src{font-family:var(--tech);font-weight:400;font-size:calc(13 * var(--u));
+  letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.cb-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:calc(24 * var(--u))}
+.cb{display:grid;align-content:start;gap:calc(10 * var(--u))}
+.cb-ico{display:grid;place-items:center;width:calc(52 * var(--u));height:calc(52 * var(--u));
+  border-radius:50%;color:var(--signal);
+  box-shadow:0 0 0 calc(1.5 * var(--u)) rgba(236,35,38,.3) inset}
+.cb-ico svg{width:calc(25 * var(--u));height:calc(25 * var(--u))}
+.cb-k{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.2em;color:var(--signal);font-variant-numeric:tabular-nums}
+.cb-name{font-family:var(--display);font-weight:600;font-size:calc(18.5 * var(--u));
+  line-height:1.2;letter-spacing:-.02em;margin:0;color:var(--ink)}
+
+/* the criteria carry what each one means, and the recognitions sit under the
+   statement so the page's second word is on the page, not only in the title */
+.cb{gap:calc(9 * var(--u))}
+.cb-note{font-family:var(--sans);font-weight:400;font-size:calc(13.5 * var(--u));
+  line-height:1.35;margin:0;color:var(--muted)}
+.rec{list-style:none;margin:calc(4 * var(--u)) 0 0;padding:0;display:grid;
+  gap:calc(14 * var(--u))}
+.rec li{display:grid;grid-template-columns:calc(66 * var(--u)) 1fr;
+  column-gap:calc(20 * var(--u));align-items:baseline;
+  padding-top:calc(14 * var(--u));border-top:calc(1 * var(--u)) solid var(--rule-2)}
+.rec-y{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.rec-t{font-family:var(--sans);font-weight:600;font-size:calc(18 * var(--u));
+  line-height:1.2;color:var(--ink)}
+.rec-b{grid-column:2;font-family:var(--sans);font-weight:400;
+  font-size:calc(14 * var(--u));line-height:1.35;color:var(--muted);
+  margin-top:calc(3 * var(--u))}
+
+/* the recognitions carry a mark, not a rule: the deck sets no grey hairlines */
+.rec{gap:calc(18 * var(--u));margin-top:calc(8 * var(--u))}
+.rec li{display:grid;grid-template-columns:auto 1fr;column-gap:calc(16 * var(--u));
+  align-items:baseline;padding:0;border-top:0}
+.rec li::before{content:"";width:calc(7 * var(--u));height:calc(7 * var(--u));
+  background:var(--signal);transform:translateY(calc(-3 * var(--u)))}
+.rec-t{grid-column:2}
+.rec-b{grid-column:2;margin-top:calc(4 * var(--u))}
+
+/* the mark is set against the line rather than the row box, the way the other
+   marked lists in the deck are, so it lands on the type in every render */
+.rec li{display:block;position:relative;padding-left:calc(23 * var(--u))}
+.rec li::before{position:absolute;left:0;top:calc(9 * var(--u));transform:none}
+.rec-t,.rec-b{display:block}

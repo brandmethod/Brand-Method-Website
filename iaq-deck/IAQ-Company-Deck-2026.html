@@ -2003,6 +2003,31 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   padding:calc(12 * var(--u)) calc(12 * var(--u)) calc(4 * var(--u))}
 .cdoc figcaption{padding:calc(12 * var(--u)) calc(18 * var(--u)) calc(16 * var(--u))}
 
+/* ============================================ 03.6 scan codes
+   The codes sit with the sign-off, where a reader turning back for the
+   address finds them. A code needs a light field to scan, so each keeps its
+   own white tile whatever the page behind it. */
+.qrs{display:flex;gap:calc(20 * var(--u));margin-top:calc(30 * var(--u))}
+.qr{margin:0;display:grid;gap:calc(10 * var(--u));justify-items:start}
+.qr img,.qr-hold{width:calc(104 * var(--u));height:calc(104 * var(--u));display:block;
+  background:#fff;padding:calc(7 * var(--u))}
+.qr-hold{display:grid;place-items:center;text-align:center;background:transparent;
+  border:calc(1.5 * var(--u)) dashed rgba(255,255,255,.24);
+  font-family:var(--tech);font-weight:600;font-size:calc(11.5 * var(--u));
+  letter-spacing:.16em;text-transform:uppercase;line-height:1.5;color:var(--muted-dark)}
+.qr figcaption{display:grid;gap:calc(3 * var(--u))}
+.qr-l{font-family:var(--tech);font-weight:600;font-size:calc(11 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--signal)}
+.qr-v{font-family:var(--sans);font-weight:500;font-size:calc(13.5 * var(--u));
+  line-height:1.3;color:var(--on-dark)}
+.qr.tbc .qr-l{color:var(--muted-dark)}
+.qr.tbc .qr-v{color:var(--muted-dark)}
+/* the codes must not push the general rows into the folio */
+.qrs{margin-top:calc(22 * var(--u));gap:calc(18 * var(--u))}
+.qr img,.qr-hold{width:calc(92 * var(--u));height:calc(92 * var(--u))}
+.endgrid{gap:calc(34 * var(--u)) calc(62 * var(--u))}
+.er{padding:calc(11 * var(--u)) 0}
+
 </style>
 </head>
 <body>
@@ -4247,6 +4272,18 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <p class="end-line">Engineering, procurement, construction and energy management
         for the industries where contamination, uptime and safety decide the outcome.
         Established 1995.</p>
+        <div class="qrs">
+          <figure class="qr">
+            <img src="data:image/png;base64,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" alt="Scan for iaqtechnology.com.my">
+            <figcaption><span class="qr-l">Website</span>
+            <span class="qr-v">iaqtechnology.com.my</span></figcaption>
+          </figure>
+          <figure class="qr tbc">
+            <div class="qr-hold">QR<br>to come</div>
+            <figcaption><span class="qr-l">LinkedIn</span>
+            <span class="qr-v">Company page</span></figcaption>
+          </figure>
+        </div>
       </div>
       <div class="ccards"><article class="ccard"><span class="cc-role">Business Development Director</span><h3 class="cc-person">Nelson Tan Wee Keong</h3><span class="cc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="5" width="18.8" height="14" rx="2"/><path d="M3.4 6.6l8.6 6 8.6-6"/></svg><span>nelsontan@iaqtechnology.com.my</span></span><span class="cc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 3.2H4.8a2 2 0 00-2 2.2c.5 8.2 6.6 14.3 14.8 14.8a2 2 0 002.2-2v-2.6a1.4 1.4 0 00-1.2-1.4l-2.9-.4a1.4 1.4 0 00-1.4.7l-.9 1.6a13 13 0 01-5.8-5.8l1.6-.9a1.4 1.4 0 00.7-1.4l-.4-2.9a1.4 1.4 0 00-1.4-1.2z"/></svg><span>+6012-372 7329</span></span></article><article class="ccard"><span class="cc-role">Senior Engineer, Business Development</span><h3 class="cc-person">Sunny Lim Qin Xiang</h3><span class="cc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="5" width="18.8" height="14" rx="2"/><path d="M3.4 6.6l8.6 6 8.6-6"/></svg><span>qinxiang.lim@iaqtechnology.com.my</span></span><span class="cc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 3.2H4.8a2 2 0 00-2 2.2c.5 8.2 6.6 14.3 14.8 14.8a2 2 0 002.2-2v-2.6a1.4 1.4 0 00-1.2-1.4l-2.9-.4a1.4 1.4 0 00-1.4.7l-.9 1.6a13 13 0 01-5.8-5.8l1.6-.9a1.4 1.4 0 00.7-1.4l-.4-2.9a1.4 1.4 0 00-1.4-1.2z"/></svg><span>+6016-442 4578</span></span></article><article class="ccard tbc"><span class="cc-tag">To be confirmed</span><span class="cc-role">Role to be advised</span><h3 class="cc-person">Name to be advised</h3><span class="cc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.6" y="5" width="18.8" height="14" rx="2"/><path d="M3.4 6.6l8.6 6 8.6-6"/></svg><span>name@iaqtechnology.com.my</span></span><span class="cc-line"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 3.2H4.8a2 2 0 00-2 2.2c.5 8.2 6.6 14.3 14.8 14.8a2 2 0 002.2-2v-2.6a1.4 1.4 0 00-1.2-1.4l-2.9-.4a1.4 1.4 0 00-1.4.7l-.9 1.6a13 13 0 01-5.8-5.8l1.6-.9a1.4 1.4 0 00.7-1.4l-.4-2.9a1.4 1.4 0 00-1.4-1.2z"/></svg><span>+60</span></span></article></div>
       <dl class="endrows"><div class="er"><dt>Registered Name</dt><dd>IAQ Technology International Sdn Bhd</dd></div><div class="er"><dt>Registration No.</dt><dd>200001031412 (534019-T)</dd></div><div class="er"><dt>Business Enquiries</dt><dd>business@iaqtechnology.com.my</dd></div><div class="er"><dt>Head Office</dt><dd>12, Jalan Sungai Jeluh 32/192, Kawasan Perindustrian Kemuning, Seksyen 32, 40460 Shah Alam, Selangor, Malaysia</dd></div></dl>

@@ -937,6 +937,18 @@ slide(f"""
         <p class="end-line">Engineering, procurement, construction and energy management
         for the industries where contamination, uptime and safety decide the outcome.
         Established 1995.</p>
+        <div class="qrs">
+          <figure class="qr">
+            <img src="img/qr-website.png" alt="Scan for iaqtechnology.com.my">
+            <figcaption><span class="qr-l">Website</span>
+            <span class="qr-v">iaqtechnology.com.my</span></figcaption>
+          </figure>
+          <figure class="qr tbc">
+            <div class="qr-hold">QR<br>to come</div>
+            <figcaption><span class="qr-l">LinkedIn</span>
+            <span class="qr-v">Company page</span></figcaption>
+          </figure>
+        </div>
       </div>
       <div class="ccards">{cards}</div>
       <dl class="endrows">{row_html}</dl>

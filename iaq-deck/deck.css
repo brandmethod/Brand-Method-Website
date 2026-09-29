@@ -1918,3 +1918,13 @@ body.modal-open .nav,body.modal-open .progress{display:none}
   margin-top:calc(24 * var(--u))}
 .aw-row dd{font-size:calc(18 * var(--u))}
 .aw-kicker{max-width:calc(380 * var(--u))}
+
+/* ============================================ 03.2 certificates, uncropped
+   The registrations are portrait documents. The cards now take that
+   proportion and sit centred, so each certificate is shown entire, down to
+   the signature and the accreditation footer. */
+.certgrid.solo .cdocs{grid-template-columns:repeat(3,calc(392 * var(--u)));
+  justify-content:center;gap:calc(44 * var(--u))}
+.cdoc img{object-fit:contain;object-position:center;
+  padding:calc(12 * var(--u)) calc(12 * var(--u)) calc(4 * var(--u))}
+.cdoc figcaption{padding:calc(12 * var(--u)) calc(18 * var(--u)) calc(16 * var(--u))}

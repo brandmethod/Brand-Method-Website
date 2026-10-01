@@ -2032,3 +2032,54 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .rec li{display:block;position:relative;padding-left:calc(23 * var(--u))}
 .rec li::before{position:absolute;left:0;top:calc(9 * var(--u));transform:none}
 .rec-t,.rec-b{display:block}
+
+/* ============================================ 01.8 the packages, on their own
+   The process utilities band under the packages was a second page's worth of
+   detail on the first page's frame. The eight packages take the canvas. */
+.scope2.solo{grid-template-rows:minmax(0,1fr)}
+.scope2.solo .chips.four.sv{height:100%;grid-auto-rows:1fr;row-gap:calc(1 * var(--u))}
+.scope2.solo .chips.four.sv .chip{padding:calc(34 * var(--u)) calc(30 * var(--u));
+  column-gap:calc(20 * var(--u));align-content:center}
+.scope2.solo .chips.four.sv .c-ico{width:calc(64 * var(--u));height:calc(64 * var(--u))}
+.scope2.solo .chips.four.sv .c-ico svg{width:calc(32 * var(--u));height:calc(32 * var(--u))}
+.scope2.solo .chips.four.sv .c-body{gap:calc(7 * var(--u))}
+.scope2.solo .chips.four.sv .c-name{font-size:calc(21.5 * var(--u))}
+.scope2.solo .chips.four.sv .c-note{font-size:calc(15.5 * var(--u))}
+.scope2.solo .chips.four.sv .c-num{font-size:calc(34 * var(--u));
+  top:calc(16 * var(--u));right:calc(22 * var(--u))}
+
+/* the packages set against the building: four each side of the fab section,
+   the way IAQ reads them off the model on the SEMICON backdrop */
+.fabx{display:grid;grid-template-columns:1fr minmax(0,calc(760 * var(--u))) 1fr;
+  gap:calc(40 * var(--u));height:100%;min-height:0;align-items:stretch}
+.fx-col{display:grid;align-content:space-between;gap:calc(22 * var(--u));min-width:0}
+.fx{display:grid;grid-template-columns:auto 1fr;column-gap:calc(18 * var(--u));
+  align-items:center;min-width:0}
+.fx-ico{display:grid;place-items:center;width:calc(56 * var(--u));height:calc(56 * var(--u));
+  border-radius:50%;background:rgba(236,35,38,.07);color:var(--signal)}
+.fx-ico svg{width:calc(28 * var(--u));height:calc(28 * var(--u))}
+.fx-body{display:grid;gap:calc(3 * var(--u));min-width:0}
+.fx-k{font-family:var(--tech);font-weight:600;font-size:calc(12 * var(--u));
+  letter-spacing:.2em;color:var(--signal);font-variant-numeric:tabular-nums}
+.fx-name{font-family:var(--display);font-weight:600;font-size:calc(19.5 * var(--u));
+  line-height:1.2;letter-spacing:-.02em;margin:0;color:var(--ink)}
+.fx-note{font-family:var(--sans);font-weight:400;font-size:calc(14.5 * var(--u));
+  line-height:1.35;margin:0;color:var(--muted)}
+.fx-core{display:grid;grid-template-rows:1fr auto;gap:calc(18 * var(--u));min-height:0}
+.fx-core .ph{height:100%;min-height:0}
+.fx-core img{width:100%;height:100%;object-fit:contain;display:block}
+.fx-cap{font-family:var(--tech);font-weight:600;font-size:calc(13 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted);text-align:center}
+/* the model is a wide section, so the frame is set to it rather than to the
+   column, and the two package stacks read against its middle */
+.fx-core{align-content:center;grid-template-rows:auto auto}
+.fx-core .ph{height:auto;aspect-ratio:16 / 9}
+
+/* the cycle runs six stages: tool hookup is its own stage between the build
+   and the testing, as IAQ sets it, so the track is set to six */
+.cy-track{grid-template-columns:repeat(6,1fr)}
+.cy-step::before{left:calc(50% + 46 * var(--u));right:calc(-50% + 46 * var(--u))}
+.cy-mark{width:calc(76 * var(--u));height:calc(76 * var(--u))}
+.cy-mark svg{width:calc(33 * var(--u));height:calc(33 * var(--u))}
+.cy-name{font-size:calc(22 * var(--u))}
+.cy-note{font-size:calc(15 * var(--u));max-width:calc(210 * var(--u))}

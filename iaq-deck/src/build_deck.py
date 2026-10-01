@@ -388,11 +388,13 @@ CYCLE_ICONS = [
  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16"/><path d="M9.5 4.2l7.2 3.1-6.4 10.9-3.6-1.5z"/><path d="M8.3 7.6l7.2 3.1"/></svg>',
  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 6h2l2.2 9.2h9.6L19 8.4H6.2"/><circle cx="9.5" cy="19" r="1.5"/><circle cx="16.5" cy="19" r="1.5"/></svg>',
  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V9l7-4.5V21"/><path d="M12 11h7v10"/><path d="M8 13h1.5M8 16.5h1.5M15 14.5h1.5M15 18h1.5"/></svg>',
+ '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.9" cy="6.9" r="3.2"/><circle cx="17.1" cy="17.1" r="3.2"/><path d="M9.2 9.2l5.6 5.6"/></svg>',
  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14a8 8 0 10-16 0"/><path d="M12 14l4.2-3.4"/><path d="M4 18h16"/></svg>',
  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 3.5a4.6 4.6 0 006 6L13 17l-3.6.9.9-3.6z"/><path d="M4 20.5l3.6-3.6"/></svg>',
 ]
 cycle = [('Engineering', 'Design &amp; consultation'), ('Procurement', 'Sourcing &amp; supply chain'),
-         ('Construction', 'Self-performed packages'), ('Testing', 'Commissioning &amp; handover'),
+         ('Construction', 'Self-performed packages'), ('Tools Hookup', 'Progressive install and hookup'),
+         ('Testing', 'Commissioning &amp; handover'),
          ('Maintenance', 'Operate, service, optimise')]
 cy_html = ''.join(
     f'<div class="cy-step"><span class="cy-mark">{CYCLE_ICONS[k-1]}<b>{k:02d}</b></span>'
@@ -567,51 +569,30 @@ s_html = ''.join(
     f'<span class="c-note">{d}</span></div><span class="c-num">{k:02d}</span></div>'
     for k, (n, d) in enumerate(scope, start=1))
 
-PU_ICONS = [
- # water
- '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8c4 5.4 6.2 8.1 6.2 10.6A6.2 6.2 0 015.8 13.4c0-2.5 2.2-5.2 6.2-10.6z"/></svg>',
- # chemical and slurry
- '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.6 2.8v6.1L4.7 18a2.1 2.1 0 001.8 3.2h11a2.1 2.1 0 001.8-3.2l-4.9-9.1V2.8z"/><path d="M8.4 2.8h7.2M6.6 14.6h10.8"/></svg>',
- # gas
- '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6.2" width="8" height="15" rx="4"/><path d="M10.4 6.2V3.4h3.2v2.8M9.4 10.4h5.2"/></svg>',
- # exhaust
- '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 21V9.6l4.2-2.2V21M8.6 21V4.6l6.8-2.2V21M15.4 21V9.6l4.2 2.2V21"/><path d="M2.6 21h18.8"/></svg>',
- # tool install
- '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.8" cy="6.8" r="3.1"/><circle cx="17.2" cy="17.2" r="3.1"/><path d="M9 9l6 6"/></svg>',
-]
-pu = [
-    ('Water Solutions',
-     ['UPW plant &amp; distribution', 'Process waste drains, WWT', 'Reclaim and ZLD',
-      'Chemical storage &amp; dispensing']),
-    ('Chemical &amp; Slurry Solutions',
-     ['Bulk chemical', 'Blending systems', 'Dispense systems']),
-    ('Gas Solutions',
-     ['Bulk gas', 'Specialty gas &amp; abatement', 'Bunker: NH&#8323;, SiH&#8324;, H&#8322;',
-      'Liquid dispense system']),
-    ('Process Exhaust Solutions',
-     ['General and acid', 'Caustic and solvent', 'Calamity exhaust']),
-    ('Tool Installations',
-     ['Progressive hook up', 'Gas detection &amp; monitoring', 'Electrical power &amp; controls']),
-]
-pu_html = ''.join(
-    f'<article class="pu"><span class="pu-ico">{PU_ICONS[k]}</span>'
-    f'<h3 class="pu-name">{n}</h3>'
-    + '<ul class="pu-list">' + ''.join(f'<li>{x}</li>' for x in items) + '</ul></article>'
-    for k, (n, items) in enumerate(pu))
+# the packages read off the building they are installed in, the way IAQ sets
+# them against the fab section on the SEMICON backdrop
+MODEL_NOTE = 'Fab section with the eight packages called out, from IAQ’s SEMICON backdrop'
+
+
+def fx(k):
+    n, d = scope[k - 1]
+    return (f'<article class="fx"><span class="fx-ico">{SERVICE_ICONS[k - 1]}</span>'
+            f'<div class="fx-body"><span class="fx-k">{k:02d}</span>'
+            f'<h3 class="fx-name">{n}</h3><p class="fx-note">{d}</p></div></article>')
+fx_left = ''.join(fx(k) for k in (1, 2, 3, 4))
+fx_right = ''.join(fx(k) for k in (5, 6, 7, 8))
 
 slide(f'''
-    <div class="scope2">
-      <div class="chips four sv">{s_html}</div>
-      <section class="puband">
-        <div class="pu-head"><span class="label">Process critical utilities</span>
-          <p class="pu-lead">Delivered by IAQ Utility Solutions as an EPCM package:
-          the utility infrastructure a fab runs on, and the tool installations
-          that bring it to production.</p></div>
-        <div class="pu-grid">{pu_html}</div>
-      </section>
+    <div class="fabx">
+      <div class="fx-col">{fx_left}</div>
+      <div class="fx-core">
+        {ph(MODEL_NOTE, cap='BIM model')}
+        <span class="fx-cap">One contract, one model, eight packages</span>
+      </div>
+      <div class="fx-col">{fx_right}</div>
     </div>''',
       part_idx=0, num='01.8', title='Scope of Services',
-      note='Eight packages self-performed under one contract, and the process utilities behind them.',
+      note='Eight packages self-performed under one contract, set against the building they run.',
       fill=True)
 
 # ---------------------------------------------------------------- 01.9 INDUSTRY

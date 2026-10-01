@@ -571,9 +571,17 @@ s_html = ''.join(
 
 # the packages read off the building they are installed in, the way IAQ sets
 # them against the fab section on the SEMICON backdrop
+# six of the eight packages have a model of their own on the backdrop; the two
+# that do not keep their mark in the same slot so the stacks stay even
+FX_MODEL = {1: 'csa', 2: 'acmv', 3: 'electrical', 5: 'cleanroom',
+            6: 'utilities', 8: 'hookup'}
+
 def fx(k):
     n, d = scope[k - 1]
-    return (f'<article class="fx"><span class="fx-ico">{SERVICE_ICONS[k - 1]}</span>'
+    m = FX_MODEL.get(k)
+    vis = (f'<img src="img/sys-{m}.png" alt="">' if m
+           else f'<span class="fx-ico">{SERVICE_ICONS[k - 1]}</span>')
+    return (f'<article class="fx"><span class="fx-vis">{vis}</span>'
             f'<div class="fx-body"><span class="fx-k">{k:02d}</span>'
             f'<h3 class="fx-name">{n}</h3><p class="fx-note">{d}</p></div></article>')
 fx_left = ''.join(fx(k) for k in (1, 2, 3, 4))

@@ -2092,6 +2092,28 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cy-mark svg{width:calc(33 * var(--u));height:calc(33 * var(--u))}
 .cy-name{font-size:calc(22 * var(--u))}
 .cy-note{font-size:calc(15 * var(--u));max-width:calc(210 * var(--u))}
+/* the section is IAQ's own model, so it is shown at its own proportion and
+   near its own size rather than blown up to fill a frame */
+.fabx{grid-template-columns:1fr minmax(0,calc(700 * var(--u))) 1fr}
+.fx-core{justify-items:center}
+.fx-core img{width:100%;max-width:calc(640 * var(--u));height:auto;display:block}
+
+/* the stacks are cards of equal height either side of the model, so the page
+   reads as one block of eight rather than text floating in the margins */
+.fabx{grid-template-columns:1fr minmax(0,calc(660 * var(--u))) 1fr;
+  gap:calc(26 * var(--u));align-content:stretch}
+.fx-col{align-content:stretch;grid-auto-rows:1fr;gap:calc(14 * var(--u))}
+.fx{background:var(--surface);padding:calc(18 * var(--u)) calc(22 * var(--u));
+  align-content:center;align-items:center}
+.fx-core{background:var(--surface);align-content:center;justify-items:center;
+  padding:calc(30 * var(--u)) calc(26 * var(--u));gap:calc(22 * var(--u))}
+.fx-core img{max-width:calc(600 * var(--u))}
+/* the plate carries the model between its label and the line that says what
+   the page is arguing, so the centre column is worked rather than padded */
+.fx-core{grid-template-rows:auto auto auto;gap:calc(26 * var(--u))}
+.fx-lead{font-family:var(--sans);font-weight:400;font-size:calc(16.5 * var(--u));
+  line-height:1.5;margin:0;color:var(--muted);text-align:center;
+  max-width:calc(520 * var(--u))}
 
 </style>
 </head>
@@ -2153,7 +2175,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
             <p class="cp-note">The work itself, grouped by industry and region.</p>
           </div>
         </div>
-        <ul class="cp-list"><li><span class="ci-n">02.1</span><span class="ci-t">Portfolio Overview</span></li><li><span class="ci-n">02.2</span><span class="ci-t">Semiconductor · Malaysia</span></li><li><span class="ci-n">02.3</span><span class="ci-t">Semiconductor · Singapore</span></li><li><span class="ci-n">02.4</span><span class="ci-t">Data Centre</span></li><li><span class="ci-n">02.5</span><span class="ci-t">EV Battery · Europe</span></li><li><span class="ci-n">02.6</span><span class="ci-t">Semiconductor · Europe &amp; Morocco</span></li><li><span class="ci-n">02.7</span><span class="ci-t">Semiconductor &amp; Display · China</span></li><li><span class="ci-n">02.8</span><span class="ci-t">Photovoltaics</span></li><li><span class="ci-n">02.9</span><span class="ci-t">Pharmaceutical &amp; Medical</span></li><li><span class="ci-n">02.10</span><span class="ci-t">District Cooling &amp; Energy</span></li><li><span class="ci-n">02.11+</span><span class="ci-t">Full Project Reference List</span></li></ul>
+        <ul class="cp-list"><li><span class="ci-n">02.1</span><span class="ci-t">Portfolio Overview</span></li><li><span class="ci-n">02.2</span><span class="ci-t">Semiconductor · Malaysia</span></li><li><span class="ci-n">02.3</span><span class="ci-t">Semiconductor · Singapore</span></li><li><span class="ci-n">02.4</span><span class="ci-t">Data Centre</span></li><li><span class="ci-n">02.5</span><span class="ci-t">EV Battery · Europe</span></li><li><span class="ci-n">02.6</span><span class="ci-t">Semiconductor · Europe</span></li><li><span class="ci-n">02.7</span><span class="ci-t">Semiconductor &amp; Display · China</span></li><li><span class="ci-n">02.8</span><span class="ci-t">Photovoltaics</span></li><li><span class="ci-n">02.9</span><span class="ci-t">Pharmaceutical &amp; Medical</span></li><li><span class="ci-n">02.10</span><span class="ci-t">District Cooling &amp; Energy</span></li><li><span class="ci-n">02.11+</span><span class="ci-t">Full Project Reference List</span></li></ul>
       </div>
       <div class="cpart">
         <div class="cp-head">
@@ -2403,8 +2425,10 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="fabx">
       <div class="fx-col"><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M6 21V8l6-5 6 5v13"/><path d="M10 21v-6h4v6"/></svg></span><div class="fx-body"><span class="fx-k">01</span><h3 class="fx-name">Civil, Structural &amp; Architectural</h3><p class="fx-note">Greenfield and brownfield CSA</p></div></article><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="8" rx="1.5"/><path d="M6 9h12"/><path d="M5 18c1.4-1.6 2.8-1.6 4.2 0s2.8 1.6 4.2 0 2.8-1.6 4.2 0"/></svg></span><div class="fx-body"><span class="fx-k">02</span><h3 class="fx-name">Air Conditioning System</h3><p class="fx-note">ACMV, make-up air, recirculation</p></div></article><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L5 14h6l-1 8 8-12h-6z"/></svg></span><div class="fx-body"><span class="fx-k">03</span><h3 class="fx-name">HT &amp; LV Electrical System</h3><p class="fx-note">Up to 33kV substations</p></div></article><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21a5 5 0 005-5c0-4-5-8-5-8s-5 4-5 8a5 5 0 005 5z"/><path d="M4 4h16M12 4v3"/></svg></span><div class="fx-body"><span class="fx-k">04</span><h3 class="fx-name">Fire Protection System</h3><p class="fx-note">Detection, suppression, compliance</p></div></article></div>
       <div class="fx-core">
-        <figure class="ph"><span class="ph-frame"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.6" cy="10" r="1.7"/><path d="M3.4 17.6l5.2-5.2 4 4 3.1-2.6 4.9 4.6"/></svg></span><span class="ph-cap">BIM model</span><span class="ph-note">Fab section with the eight packages called out, from IAQ’s SEMICON backdrop</span></figure>
-        <span class="fx-cap">One contract, one model, eight packages</span>
+        <span class="fx-cap">One model, eight packages</span>
+        <img src="img/fab-section.png" alt="Cross-section of a fab showing the systems IAQ installs under one contract">
+        <p class="fx-lead">Every package on this page is installed in the same building,
+        by IAQ&rsquo;s own crews, under one programme.</p>
       </div>
       <div class="fx-col"><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="4" rx="1"/><path d="M7 11v7M12 11v7M17 11v7"/><path d="M5.5 16.5L7 18l1.5-1.5M10.5 16.5L12 18l1.5-1.5M15.5 16.5L17 18l1.5-1.5"/></svg></span><div class="fx-body"><span class="fx-k">05</span><h3 class="fx-name">Cleanroom System</h3><p class="fx-note">ISO 3 to ISO 8 &middot; Class 1 to Class 100K</p></div></article><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18M3 16h18"/><circle cx="9" cy="8" r="2.2"/><circle cx="15" cy="16" r="2.2"/></svg></span><div class="fx-body"><span class="fx-k">06</span><h3 class="fx-name">Process Utilities</h3><p class="fx-note">Water, chemical, gas and exhaust systems</p></div></article><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/><path d="M7 12l3-3 2.5 2.5L17 7"/></svg></span><div class="fx-body"><span class="fx-k">07</span><h3 class="fx-name">Facility Monitoring &amp; Control</h3><p class="fx-note">FMCS, BMS, PA</p></div></article><article class="fx"><span class="fx-ico"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="17" cy="17" r="3"/><path d="M9.2 9.2l5.6 5.6"/></svg></span><div class="fx-body"><span class="fx-k">08</span><h3 class="fx-name">Tools Hookup</h3><p class="fx-note">Progressive tool install and hookup</p></div></article></div>
     </div>
@@ -2470,9 +2494,9 @@ body.modal-open .nav,body.modal-open .progress{display:none}
         <div class="m-body"><span class="flag">02.2 to 02.4 · 02.8 to 02.10</span>
         <h3 class="m-name">Malaysia &amp; Singapore</h3><p class="cap">Semiconductor, data centre, pharmaceutical, photovoltaics, district cooling and energy.</p></div>
       </article><article class="maptile">
-        <img src="img/map-europe.jpg" alt="Europe &amp;amp; Morocco project locations">
+        <img src="img/map-europe.jpg" alt="Europe project locations">
         <div class="m-body"><span class="flag">02.5 to 02.6</span>
-        <h3 class="m-name">Europe &amp; Morocco</h3><p class="cap">EV battery gigafactories, wafer fabs and advanced semiconductor in Sweden, Norway, France, Poland and Morocco.</p></div>
+        <h3 class="m-name">Europe</h3><p class="cap">EV battery gigafactories, wafer fabs and advanced semiconductor in Sweden, Norway, France and Poland.</p></div>
       </article><article class="maptile">
         <img src="img/map-china.jpg" alt="China project locations">
         <div class="m-body"><span class="flag">02.7</span>
@@ -2647,7 +2671,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Semiconductor · Europe &amp; Morocco</h2>
+      <h2 class="s-title">Semiconductor · Europe</h2>
       <p class="s-note">Following the fabs into Europe: advanced-node cleanrooms and progressive hookup.</p>
     </header>
   <div class="canvas"><div class="grid two">
@@ -3350,7 +3374,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Europe &amp; Morocco</h2>
+      <h2 class="s-title">Europe</h2>
       <p class="s-note">Projects 29–30 of 73 from IAQ’s own reference list.</p>
     </header>
   <div class="canvas fill"><div class="grid two">
@@ -3387,7 +3411,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Europe &amp; Morocco</h2>
+      <h2 class="s-title">Europe</h2>
       <p class="s-note">Projects 31–32 of 73 from IAQ’s own reference list.</p>
     </header>
   <div class="canvas fill"><div class="grid two">
@@ -3424,7 +3448,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="tl-r"><span class="mark" role="img" aria-label="IAQ: your total facility solutions provider"></span></div>
   </div>
     <header class="shead">
-      <h2 class="s-title">Europe &amp; Morocco</h2>
+      <h2 class="s-title">Europe</h2>
       <p class="s-note">Projects 33–34 of 73 from IAQ’s own reference list.</p>
     </header>
   <div class="canvas fill"><div class="grid two">
@@ -4285,8 +4309,8 @@ body.modal-open .nav,body.modal-open .progress{display:none}
           <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
           They are the same ground our clients audit us on.</p>
           <ul class="rec">
-            <li><span class="rec-t">Builder of the Year 2024</span>
-              <span class="rec-b">MCIEA &middot; CIDB Malaysia</span></li>
+            <li><span class="rec-t">MOSHPA Safety Award</span>
+              <span class="rec-b">Gold Award</span></li>
             <li><span class="rec-t">Highwire safety rating, Gold</span>
               <span class="rec-b">Independent contractor audit</span></li>
             <li><span class="rec-t">ISO 45001:2018</span>

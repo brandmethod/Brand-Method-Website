@@ -276,7 +276,7 @@ contents_parts = [
     ('02', 'Project References', 'The work itself, grouped by industry and region.', [
         ('02.1', 'Portfolio Overview'), ('02.2', 'Semiconductor · Malaysia'),
         ('02.3', 'Semiconductor · Singapore'), ('02.4', 'Data Centre'),
-        ('02.5', 'EV Battery · Europe'), ('02.6', 'Semiconductor · Europe & Morocco'),
+        ('02.5', 'EV Battery · Europe'), ('02.6', 'Semiconductor · Europe'),
         ('02.7', 'Semiconductor & Display · China'), ('02.8', 'Photovoltaics'),
         ('02.9', 'Pharmaceutical & Medical'), ('02.10', 'District Cooling & Energy'),
         ('02.11+', 'Full Project Reference List')]),
@@ -571,9 +571,6 @@ s_html = ''.join(
 
 # the packages read off the building they are installed in, the way IAQ sets
 # them against the fab section on the SEMICON backdrop
-MODEL_NOTE = 'Fab section with the eight packages called out, from IAQ’s SEMICON backdrop'
-
-
 def fx(k):
     n, d = scope[k - 1]
     return (f'<article class="fx"><span class="fx-ico">{SERVICE_ICONS[k - 1]}</span>'
@@ -586,8 +583,10 @@ slide(f'''
     <div class="fabx">
       <div class="fx-col">{fx_left}</div>
       <div class="fx-core">
-        {ph(MODEL_NOTE, cap='BIM model')}
-        <span class="fx-cap">One contract, one model, eight packages</span>
+        <span class="fx-cap">One model, eight packages</span>
+        <img src="img/fab-section.png" alt="Cross-section of a fab showing the systems IAQ installs under one contract">
+        <p class="fx-lead">Every package on this page is installed in the same building,
+        by IAQ&rsquo;s own crews, under one programme.</p>
       </div>
       <div class="fx-col">{fx_right}</div>
     </div>''',
@@ -611,8 +610,8 @@ divider(1, '02', 'Project References', 'Sections 02.1 to 02.47', 'refs-crew',
 regions = [
     ('map-my-sg', 'Malaysia &amp; Singapore', '02.2 to 02.4 · 02.8 to 02.10',
      'Semiconductor, data centre, pharmaceutical, photovoltaics, district cooling and energy.'),
-    ('map-europe', 'Europe &amp; Morocco', '02.5 to 02.6',
-     'EV battery gigafactories, wafer fabs and advanced semiconductor in Sweden, Norway, France, Poland and Morocco.'),
+    ('map-europe', 'Europe', '02.5 to 02.6',
+     'EV battery gigafactories, wafer fabs and advanced semiconductor in Sweden, Norway, France and Poland.'),
     ('map-china', 'China', '02.7',
      'Semiconductor, display, pharmaceutical, automotive and R&amp;D facilities.'),
 ]
@@ -656,7 +655,7 @@ slide('<div class="grid two">' + pcard('northvolt', 'Skellefteå, Sweden · 62,0
       foot='EV Battery · Europe')
 
 slide('<div class="grid two">' + pcard('confidential-cmos', 'Client confidential · wafer fab', '28/22nm CMOS · 16/12nm FinFET Plant', [('Cleanroom', 'Class 1 to Class 10K', True), ('Scope', 'Cleanroom & mechanical general contractor', False), ('Description', 'Design, supply, installation & commissioning of cleanroom facilities', False)]) + pcard('st-casablanca', 'Casablanca, Morocco · 60,000 m²', 'STMicroelectronics', [('Cleanroom', 'ISO 5 (Class 100)', True), ('Scope', 'Cleanroom, mechanical, electrical, process utilities and hookup works', False), ('Description', 'Built-up area up to 60,000 m²', False)]) + '\n    </div>',
-      part_idx=1, num='02.6', title='Semiconductor · Europe & Morocco',
+      part_idx=1, num='02.6', title='Semiconductor · Europe',
       note='Following the fabs into Europe: advanced-node cleanrooms and progressive hookup.',
       foot='Semiconductor · Europe')
 
@@ -766,7 +765,7 @@ REFS = [
 
 
 def ref_region(pg):
-    return 'Malaysia & Singapore' if pg < 40 else ('Europe & Morocco' if pg < 47 else 'China')
+    return 'Malaysia & Singapore' if pg < 40 else ('Europe' if pg < 47 else 'China')
 
 
 ref_pages = [REFS[i:i + 2] for i in range(0, len(REFS), 2)]
@@ -901,8 +900,8 @@ slide(f'''
           <p class="body">MCIEA recipients are assessed by CIDB against seven criteria.
           They are the same ground our clients audit us on.</p>
           <ul class="rec">
-            <li><span class="rec-t">Builder of the Year 2024</span>
-              <span class="rec-b">MCIEA &middot; CIDB Malaysia</span></li>
+            <li><span class="rec-t">MOSHPA Safety Award</span>
+              <span class="rec-b">Gold Award</span></li>
             <li><span class="rec-t">Highwire safety rating, Gold</span>
               <span class="rec-b">Independent contractor audit</span></li>
             <li><span class="rec-t">ISO 45001:2018</span>

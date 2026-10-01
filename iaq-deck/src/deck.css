@@ -2083,3 +2083,25 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .cy-mark svg{width:calc(33 * var(--u));height:calc(33 * var(--u))}
 .cy-name{font-size:calc(22 * var(--u))}
 .cy-note{font-size:calc(15 * var(--u));max-width:calc(210 * var(--u))}
+/* the section is IAQ's own model, so it is shown at its own proportion and
+   near its own size rather than blown up to fill a frame */
+.fabx{grid-template-columns:1fr minmax(0,calc(700 * var(--u))) 1fr}
+.fx-core{justify-items:center}
+.fx-core img{width:100%;max-width:calc(640 * var(--u));height:auto;display:block}
+
+/* the stacks are cards of equal height either side of the model, so the page
+   reads as one block of eight rather than text floating in the margins */
+.fabx{grid-template-columns:1fr minmax(0,calc(660 * var(--u))) 1fr;
+  gap:calc(26 * var(--u));align-content:stretch}
+.fx-col{align-content:stretch;grid-auto-rows:1fr;gap:calc(14 * var(--u))}
+.fx{background:var(--surface);padding:calc(18 * var(--u)) calc(22 * var(--u));
+  align-content:center;align-items:center}
+.fx-core{background:var(--surface);align-content:center;justify-items:center;
+  padding:calc(30 * var(--u)) calc(26 * var(--u));gap:calc(22 * var(--u))}
+.fx-core img{max-width:calc(600 * var(--u))}
+/* the plate carries the model between its label and the line that says what
+   the page is arguing, so the centre column is worked rather than padded */
+.fx-core{grid-template-rows:auto auto auto;gap:calc(26 * var(--u))}
+.fx-lead{font-family:var(--sans);font-weight:400;font-size:calc(16.5 * var(--u));
+  line-height:1.5;margin:0;color:var(--muted);text-align:center;
+  max-width:calc(520 * var(--u))}

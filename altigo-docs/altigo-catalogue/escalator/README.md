@@ -258,7 +258,10 @@ full bleed: it is cut to a wedge on the right, the diagonal running from
 `(1698, 0)` down to `(962, 880)`, with a 4 px red rule on the cut and a 9 px
 blue rule just inside it. Below `y 880` a solid `#01102F` band runs the full
 width and carries the three-column contact block — labels at `y 1000`, values
-at `y 1023` and `y 1046`. The ground is a navy gradient with a `#1340B5` glow
+at `y 890` and `y 913`, with a hairline at `y 944` and the manufacturer of record
+beneath it — name at `y 996` and both registered addresses on single lines at
+`y 1020` and `y 1042`. The band is 258 px rather than the reference's 200 px to
+carry that fourth field. The ground is a navy gradient with a `#1340B5` glow
 off the top-left corner. Type: logo at `y 72`, year right-aligned, eyebrow at
 `y 300`, the title in Ardela 148 on a 136 px pitch with its caps landing at
 `y 400` and `y 536`, and the product line at `y 694` in Axiforma Bold 31.

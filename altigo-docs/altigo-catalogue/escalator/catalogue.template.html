@@ -335,13 +335,13 @@ img{display:block;max-width:100%}
    diagonal running from (1698,0) down to (962,880) where the footer band
    starts, with a red rule on the cut and a blue rule just inside it.       */
 .cover-fig{position:absolute;inset:0;overflow:hidden;
-  clip-path:polygon(88.65% 0, 100% 0, 100% 81.48%, 50.31% 81.48%)}
+  clip-path:polygon(88.65% 0, 100% 0, 100% 76.11%, 52.84% 76.11%)}
 .cover-fig img{position:absolute;top:0;left:23%;width:100%;height:100%;object-fit:cover;
   opacity:.86;mix-blend-mode:screen}
 .cover-fig::after{content:'';position:absolute;inset:0;background:
   linear-gradient(118deg,rgba(4,20,72,.86) 0%,rgba(4,20,72,.36) 40%,rgba(4,20,72,.1) 100%)}
 .cover-rules{position:absolute;inset:0;pointer-events:none}
-.cover-band{position:absolute;left:0;right:0;top:880px;bottom:0;background:#01102F}
+.cover-band{position:absolute;left:0;right:0;top:822px;bottom:0;background:#01102F}
 .cover-mark{position:absolute;left:var(--m);top:69px;width:250px;height:52px}
 .cover-year{position:absolute;right:var(--m);top:75px;font-family:var(--f-head);font-size:18px;
   font-weight:800;letter-spacing:.2em;color:rgba(255,255,255,.72)}
@@ -351,12 +351,23 @@ img{display:block;max-width:100%}
   font-size:148px;font-weight:800;line-height:.919;letter-spacing:-.03em;color:#fff}
 .cover-sub{position:absolute;left:var(--m);top:684px}
 .cover-sub span{font-family:var(--f-head);font-size:31px;font-weight:700;letter-spacing:.09em;color:#fff}
-.cover-foot{position:absolute;left:var(--m);top:972px;width:1332px;display:grid;
+.cover-foot{position:absolute;left:var(--m);top:862px;width:1332px;display:grid;
   grid-template-columns:repeat(3,1fr);gap:0}
 .cover-foot dt{font-family:var(--f-label);font-size:11px;font-weight:500;letter-spacing:.24em;
   text-transform:uppercase;color:rgba(255,255,255,.52);margin-bottom:9px}
 .cover-foot dd{font-family:var(--f-label);font-size:15px;font-weight:600;line-height:1.53;
   color:#fff;text-transform:uppercase;letter-spacing:.02em}
+.cover-mfr{position:absolute;left:var(--m);right:var(--m);top:968px}
+.cover-mfr::before{content:'';position:absolute;left:0;right:0;top:-24px;height:1px;
+  background:rgba(255,255,255,.15)}
+.cover-mfr b{display:block;font-family:var(--f-label);font-size:11px;font-weight:500;
+  letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.52);margin-bottom:9px}
+.cover-mfr span{font-family:var(--f-label);font-size:15px;font-weight:600;color:#fff;
+  text-transform:uppercase;letter-spacing:.02em}
+.cover-mfr p{font-family:var(--f-label);font-size:13px;font-weight:400;letter-spacing:.05em;
+  text-transform:uppercase;color:rgba(255,255,255,.58);line-height:1.46;margin-top:4px}
+.cover-mfr p i{display:inline-block;width:40px;font-style:normal;font-weight:700;
+  letter-spacing:.14em;color:rgba(255,255,255,.4)}
 
 /* ── Page type · split ──────────────────────────────────────────────
    The header band is dropped and the page is cut vertically instead: a
@@ -805,8 +816,8 @@ img{display:block;max-width:100%}
       <div class="gridlines"></div>
       <figure class="cover-fig"><img src="{{ASSET:cover-photo.jpeg}}" alt="Altigo escalator, glazed tunnel installation"></figure>
       <svg class="cover-rules" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
-        <line x1="1702" y1="0" x2="966" y2="880" stroke="#F61800" stroke-width="4"/>
-        <line x1="1721" y1="0" x2="985" y2="880" stroke="#2E6BFF" stroke-width="9"/>
+        <line x1="1702" y1="0" x2="1014" y2="822" stroke="#F61800" stroke-width="4"/>
+        <line x1="1721" y1="0" x2="1033" y2="822" stroke="#2E6BFF" stroke-width="9"/>
       </svg>
       <div class="cover-band"></div>
       <div class="cover-mark logo w" role="img" aria-label="Altigo"></div>
@@ -819,6 +830,12 @@ img{display:block;max-width:100%}
         <div><dt>Contact</dt><dd>+604-283 7005<br>+604-283 6772</dd></div>
         <div><dt>Digital</dt><dd>www.akkalliance.com<br>altigoelevator@gmail.com</dd></div>
       </dl>
+      <div class="cover-mfr">
+        <b>Manufacturer</b>
+        <span>Hangzhou Optimax Tech Co., Ltd.</span>
+        <p><i>1st</i>No.&nbsp;1181, Bin&rsquo;an Road, Hangzhou City, Zhejiang Province, P.R.&nbsp;China</p>
+        <p><i>2nd</i>No.&nbsp;2329, Science and Technology Avenue, Qingshan Lake Science and Technology Zone, Lin&rsquo;an District, Hangzhou City, Zhejiang Province, P.R.&nbsp;China</p>
+      </div>
     </div>
   </section>
 

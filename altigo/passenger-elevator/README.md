@@ -180,6 +180,15 @@ Editorial changes were limited to correcting typography and obvious errors:
   project-specific. Dimensioned drawings and the civil-works package are issued
   per project as separate documents
 
+The back page also carries the **manufacturer of record**, taken from the EU
+type-examination certificate (EUROCERT SA, notified body 1128, certificate
+10.03.5968, European Lift Directive 2014/33/EU Annex IV Module B):
+
+> HANGZHOU OPTIMAX TECH CO., LTD.
+> Plant 1 — No. 1181, Bin'an Road, Hangzhou City, Zhejiang Province, P.R. China
+> Plant 2 — No. 2329, Science and Technology Avenue, Qingshan Lake Science and
+> Technology Zone, Lin'an District, Hangzhou City, Zhejiang Province, P.R. China
+
 **Contact details are unchanged** and now appear consistently on the cover and
 the back page:
 

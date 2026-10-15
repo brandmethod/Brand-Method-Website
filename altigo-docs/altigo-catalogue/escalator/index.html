@@ -260,7 +260,7 @@ img{display:block;max-width:100%}
 /* running footer — the same device on every page, set by the closing page */
 /* only the closing page carries a footer; interior pages have none */
 .foot{display:none}
-.slide[data-bg="contact"] .foot{position:absolute;left:var(--m);right:var(--m);top:993px;bottom:auto;
+.slide[data-bg="contact"] .foot{position:absolute;left:var(--m);right:var(--m);top:1024px;bottom:auto;
   display:flex;justify-content:space-between;align-items:baseline}
 .foot span{font-family:var(--f-label);font-size:14px;font-weight:500;letter-spacing:.2em;
   text-transform:uppercase;color:var(--muted)}
@@ -698,6 +698,14 @@ img{display:block;max-width:100%}
 .c-grid dd small{display:block;font-family:var(--f-label);font-size:14px;font-weight:400;
   letter-spacing:.12em;color:rgba(255,255,255,.6);margin-top:5px}
 .c-grid .wide{grid-column:1 / -1;margin-top:5px}
+/* the manufacturer of record, from the EU type-examination certificate. Two
+   registered addresses, so the lines are set smaller and held clear of the
+   wedge that cuts in from the right.                                       */
+.c-grid .mfr{margin-top:-4px}
+.c-grid .mfr dd{font-size:20px}
+.c-grid .mfr small{max-width:1000px;letter-spacing:.05em;line-height:1.46;margin-top:5px}
+.c-grid .mfr small i{display:inline-block;width:42px;font-style:normal;font-weight:700;
+  letter-spacing:.14em;color:rgba(255,255,255,.44)}
 
 /* ══ PRINT · A4 landscape ══════════════════════════════════════════════
    1920px × 0.584646 = 1122.5px = 297mm. One slide per page, centred;
@@ -1528,6 +1536,9 @@ img{display:block;max-width:100%}
         <div><dt>Email</dt><dd>altigoelevator@gmail.com</dd></div>
         <div><dt>Phone</dt><dd>+604-283 7005 / +604-283 6772</dd></div>
         <div class="wide"><dt>Address</dt><dd>No. 54-3-3, Wisma Sri Mata,<br>Jalan Van Praagh, 11600 Penang, Malaysia</dd></div>
+        <div class="wide mfr"><dt>Manufacturer</dt><dd>Hangzhou Optimax Tech Co., Ltd.
+          <small><i>1st</i>No.&nbsp;1181, Bin&rsquo;an Road, Hangzhou City, Zhejiang Province, P.R.&nbsp;China</small>
+          <small><i>2nd</i>No.&nbsp;2329, Science and Technology Avenue, Qingshan Lake Science and Technology Zone,<br>Lin&rsquo;an District, Hangzhou City, Zhejiang Province, P.R.&nbsp;China</small></dd></div>
       </dl>
       <div class="foot"><span>Altigo · Product Catalogue · Malaysia 2026</span></div>
     </div>

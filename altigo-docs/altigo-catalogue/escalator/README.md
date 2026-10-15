@@ -268,7 +268,10 @@ off the top-left corner. Type: logo at `y 72`, year right-aligned, eyebrow at
 red rule. A two-column field grid at `x 88` and `x 680`, values landing at
 `y 513`, `y 644` and `y 754`/`y 789`. A `#1345CF` wedge fills the bottom-right
 corner, cut on the same diagonal as the cover and carrying the same blue and red
-rules. Year top-right; running line bottom-left at `y 996`.
+rules. A fourth field carries the manufacturer of record — Hangzhou Optimax Tech
+Co., Ltd. and both registered addresses, taken verbatim from the EU
+type-examination certificate — set smaller than the other values and held
+clear of the wedge. Year top-right; running line bottom-left at `y 1024`.
 
 Both covers were matched to the supplied artwork by measuring ink positions off
 the reference rasters and diffing them against the rendered page, so every row

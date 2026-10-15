@@ -16,13 +16,29 @@
    ============================================================ */
 
 /* ---------- 1. FONTS ------------------------------------------------ */
-@font-face{font-family:"Altigo Edge";src:url("assets/fonts/AltigoEdge.woff2") format("woff2");font-weight:800;font-display:block}
+/* one real cut, claimed across the range: the page asks for Edge at 400 and 700
+   in places, and a face declared only at 800 makes the browser synthesise —
+   which lands in the PDF as Type3 outlines instead of the embedded face */
+@font-face{font-family:"Altigo Edge";src:url("assets/fonts/AltigoEdge.woff2") format("woff2");font-weight:100 900;font-display:block}
 @font-face{font-family:"Altigo Display";src:url("assets/fonts/AltigoDisplay-Black.woff2") format("woff2");font-weight:900;font-display:block}
 @font-face{font-family:"Altigo Display";src:url("assets/fonts/AltigoDisplay-Bold.woff2") format("woff2");font-weight:700;font-display:block}
 @font-face{font-family:"Altigo Display";src:url("assets/fonts/AltigoDisplay-Regular.woff2") format("woff2");font-weight:400;font-display:block}
-@font-face{font-family:"Poppins";src:url("assets/fonts/Poppins-700.woff2") format("woff2");font-weight:700;font-display:swap}
-@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/IBMPlexSans-var.woff2") format("woff2-variations");font-weight:100 700;font-display:swap}
-@font-face{font-family:"Inter";src:url("assets/fonts/Inter-var.woff2") format("woff2-variations");font-weight:100 900;font-display:swap}
+/* the metric-compatible fallback, claimed across the range for the same reason:
+   a handful of glyphs are absent from the reconstructed Altigo subsets and
+   fall through to this face, at whatever weight the element asked for */
+@font-face{font-family:"Poppins";src:url("assets/fonts/Poppins-700.woff2") format("woff2");font-weight:100 900;font-display:swap}
+/* Static instances, not the variable masters. A variable font makes the browser
+   draw every glyph as a Type3 procedure when it prints, so the PDF carries
+   outlines instead of a real embedded typeface — heavier, and worse for a print
+   RIP. Static cuts come out as proper TrueType subsets. */
+@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/IBMPlexSans-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/IBMPlexSans-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/IBMPlexSans-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"IBM Plex Sans";src:url("assets/fonts/IBMPlexSans-700.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Inter";src:url("assets/fonts/Inter-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Inter";src:url("assets/fonts/Inter-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Inter";src:url("assets/fonts/Inter-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Inter";src:url("assets/fonts/Inter-700.woff2") format("woff2");font-weight:700;font-display:swap}
 
 /* ---------- 2. TOKENS ----------------------------------------------- */
 :root{

@@ -109,6 +109,16 @@ catalogue, so the wordmark, headings and spec figures are unchanged:
 Poppins is loaded as a metric-compatible fallback so nothing breaks if a glyph
 falls outside the embedded subsets.
 
+IBM Plex Sans and Inter ship as **static instances** (400 / 500 / 600 / 700),
+not as the variable masters. A variable font makes the browser draw every glyph
+as a Type3 procedure when it prints, so the exported PDF ends up carrying
+outlines rather than a real embedded typeface — bulkier, and less predictable
+on a print RIP. Static cuts come out as proper TrueType subsets. Every face is
+also declared across the full weight range, so the browser never synthesises a
+weight it cannot find. Both exports now embed seven real typefaces; only three
+Type3 entries remain, for the handful of glyphs that are absent from the
+reconstructed Altigo subsets and fall through to the system.
+
 **Colour** — unchanged from the source: `#0242CA` Altigo blue, `#F61800` Altigo
 red, `#0B0D12` ink, plus grey steps for hairlines and secondary text.
 

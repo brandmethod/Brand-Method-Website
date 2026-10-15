@@ -624,6 +624,12 @@ img{display:block;max-width:100%}
 .dwg text.s{font-size:13px;fill:#6C7891}
 .dwg text.v{fill:var(--red);font-weight:700}
 .dwg text.sym{font-size:21px;font-weight:700;fill:var(--blue)}
+/* theta, drawn rather than set: no self-hosted subset carries U+03B8, and a
+   system fallback would put a foreign typeface into the book and the PDF.   */
+.dwg .sym-th{fill:none;stroke:var(--blue);stroke-width:2.6}
+/* .fig svg is sized to fill its figure, so this inline glyph needs to outrank it */
+.keytab b .gl-th{width:.8em;height:.96em;vertical-align:-.12em;fill:none;
+  stroke:currentColor;stroke-width:2.45;flex:none;min-height:0}
 .dwg text.n{font-family:var(--f-label);font-size:13px;font-weight:700;fill:#fff}
 .dwg .marker{fill:var(--red)}
 .dwg .hi{stroke:var(--red);stroke-width:2.4;fill:none}
@@ -1430,7 +1436,8 @@ img{display:block;max-width:100%}
               <text class="s" x="925" y="172" text-anchor="end">Bottom floor</text>
               <path class="dash" d="M470 50 H616"/>
               <path class="thin" d="M546 50 A76 76 0 0 1 536 88"/>
-              <text class="sym" x="536" y="84">θ</text>
+              <g class="sym-th" aria-label="Inclination angle" role="img">
+                <ellipse cx="541" cy="76" rx="5.4" ry="8"/><path d="M535 76h12"/></g>
               <path class="dash" d="M470 50 H988 M695 180 H988"/>
               <path class="dim" d="M975 50 V180"/>
               <path class="dim" d="M969 56 l6 -6 6 6 M969 174 l6 6 6 -6"/>
@@ -1502,7 +1509,7 @@ img{display:block;max-width:100%}
               <li><b>D</b><span>Minimum well width</span><em>1460</em></li>
               <li><b>H</b><span>Rise, floor to floor</span><em>per project</em></li>
               <li><b>L</b><span>Overall length / support span</span><em>per project</em></li>
-              <li><b>θ</b><span>Inclination angle</span><em>30° · 35°</em></li>
+              <li><b><svg class="gl-th" viewBox="0 0 14 18" role="img" aria-label="Theta"><ellipse cx="7" cy="9" rx="5.1" ry="8"/><path d="M1.9 9h10.2"/></svg></b><span>Inclination angle</span><em>30° · 35°</em></li>
               <li><b>P</b><span>Pit depth, lower landing</span><em>1100</em></li>
               <li><b>R</b><span>Support reactions, upper &amp; lower</span><em>R1 · R2</em></li>
             </ul>

@@ -249,9 +249,9 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 
 /* ---------- 9. COVER -------------------------------------------------- */
 .cover{background:#02236E}
-.cover .bg{position:absolute;inset:0;overflow:hidden}
+.cover .bg{position:absolute;inset:0 0 150px 0;overflow:hidden}
 .cover .bg img{width:100%;height:100%;object-fit:cover;object-position:center 42%}
-.cover .wash{position:absolute;inset:0;background:
+.cover .wash{position:absolute;inset:0 0 150px 0;background:
   linear-gradient(180deg,rgba(2,25,88,.18) 0%,rgba(2,30,105,.10) 42%,rgba(1,16,47,.72) 100%)}
 .cover .logo{position:absolute;left:88px;top:72px;width:262px}
 .cover .yr{position:absolute;right:88px;top:74px;font-family:var(--edge);font-size:18px;letter-spacing:.3em;color:#fff}
@@ -266,9 +266,11 @@ figure.fill img{max-height:100%;max-width:100%;width:auto;object-fit:contain}
 }
 /* the cut narrows the field towards the foot of the page, so the contact block
    gets its own full-width footing instead of being crushed into the point */
-.coverbar{position:absolute;left:0;right:0;bottom:-4px;height:162px;background:#01102F;
+.coverbar{position:absolute;left:0;right:0;bottom:-4px;height:178px;background:#01102F;
   display:flex;align-items:center}
-.cover .meta{margin-left:88px;display:grid;grid-template-columns:repeat(3,412px);gap:32px}
+.cover .meta{margin-left:88px;display:grid;grid-template-columns:repeat(4,412px);gap:32px;align-items:start}
+.cover .meta dd.sub{font-family:var(--body);font-size:12.5px;letter-spacing:.015em;line-height:1.52;
+  color:rgba(255,255,255,.60);margin-top:8px}
 .cover .meta dt{font-family:var(--ui);font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:9px}
 .cover .meta dd{font-family:var(--edge);font-size:15px;letter-spacing:.06em;color:#fff;line-height:1.5}
 .corner{position:absolute;right:0;bottom:0;width:330px;height:290px;overflow:hidden;pointer-events:none}
@@ -779,6 +781,9 @@ body.thumb-only .pages,body.thumb-only .pop,body.thumb-only .modal{display:none 
           <div><dt>Company</dt><dd>ALTIGO SDN. BHD.<br>REG. 562238-H</dd></div>
           <div><dt>Contact</dt><dd>+604-283 7005<br>+604-283 6772</dd></div>
           <div><dt>Digital</dt><dd>WWW.AKKALLIANCE.COM<br>ALTIGOELEVATOR@GMAIL.COM</dd></div>
+          <!-- the cover carries the principal plant only; both are on the back page -->
+          <div><dt>Manufacturer</dt><dd>HANGZHOU OPTIMAX TECH CO., LTD.</dd>
+            <dd class="sub">No. 1181, Bin&rsquo;an Road, Hangzhou City,<br>Zhejiang Province, P.R. China</dd></div>
         </dl>
       </div>
     </div>

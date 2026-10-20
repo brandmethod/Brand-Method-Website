@@ -156,18 +156,18 @@ def add_text(sl, it):
                                          {'val': str(int(s['col']['a'] * 100000))}))
             if s.get('ls'):
                 rPr.set('spc', str(int(round(s['ls'] * PT * 100))))
-            # name the same face for latin, east-asian and complex scripts.
-            # rPr children follow a fixed order in the schema: latin, ea, cs.
-            prev = rPr.find(qn('a:latin'))
-            if prev is None:
-                prev = rPr.makeelement(qn('a:latin'), {}); rPr.append(prev)
-            prev.set('typeface', fam)
+            # name the face for latin only. These are latin faces; naming them
+            # as the east-asian and complex-script font as well sends a reader
+            # that cannot find them down its symbol fallback, which is how a
+            # missing Urbanist came back as dingbats rather than as plain text.
+            lat = rPr.find(qn('a:latin'))
+            if lat is None:
+                lat = rPr.makeelement(qn('a:latin'), {}); rPr.append(lat)
+            lat.set('typeface', fam)
             for tag in ('a:ea', 'a:cs'):
                 e = rPr.find(qn(tag))
-                if e is None:
-                    e = rPr.makeelement(qn(tag), {}); prev.addnext(e)
-                e.set('typeface', fam)
-                prev = e
+                if e is not None:
+                    rPr.remove(e)
     return box
 
 BIMG = re.compile(r'url\("?file://([^")]+)"?\)')
@@ -284,6 +284,6 @@ def build(data, out):
 
 if __name__ == '__main__':
     data = json.load(io.open('slides.json', encoding='utf-8'))
-    build(data, 'IAQ-Company-Deck-2026.pptx')
-    print('wrote IAQ-Company-Deck-2026.pptx  %.1f MB'
-          % (os.path.getsize('IAQ-Company-Deck-2026.pptx') / 1e6))
+    build(data, 'IAQ-Master-Template-Examples.pptx')
+    print('wrote IAQ-Master-Template-Examples.pptx  %.1f MB'
+          % (os.path.getsize('IAQ-Master-Template-Examples.pptx') / 1e6))

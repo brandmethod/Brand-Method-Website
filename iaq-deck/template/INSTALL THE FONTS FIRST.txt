@@ -1,0 +1,41 @@
+READ THIS BEFORE OPENING THE DECK
+----------------------------------------------------------------------
+
+The deck is set in three typefaces: Poppins, Urbanist and League
+Spartan. They are in the Fonts folder beside this note.
+
+INSTALL THEM FIRST. It takes about thirty seconds and you only do it
+once on each machine.
+
+   Windows   Open the Fonts folder, select all nine files, right-click
+             and choose Install (or Install for all users).
+   Mac       Open the Fonts folder, select all nine, double-click, and
+             press Install Font.
+
+Then open IAQ-Company-Deck-2026.pptx.
+
+----------------------------------------------------------------------
+WHY IT MATTERS
+----------------------------------------------------------------------
+
+If the typefaces are missing, PowerPoint substitutes something close
+and the deck still reads. Some other editors do not: WPS Office picks a
+symbol font instead, and the body copy comes out as circles, triangles
+and arrows. That is not damage to the file. Install the fonts, reopen
+it, and the text is back.
+
+The typefaces are also embedded inside the file, which PowerPoint for
+Windows reads on its own. Not every editor honours that, which is why
+installing them is the thing that always works.
+
+----------------------------------------------------------------------
+IF YOU CANNOT INSTALL FONTS
+----------------------------------------------------------------------
+
+Use IAQ-Company-Deck-2026.pdf. Everything is carried inside the PDF, so
+it reads correctly on any machine, in any viewer, and prints right. It
+is the file to send to a client. You cannot edit it, which is the
+trade: the PowerPoint is for building, the PDF is for sending.
+
+----------------------------------------------------------------------
+Brand Method for IAQ Technology International Sdn Bhd (200001031412)

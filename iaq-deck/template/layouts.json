@@ -1,0 +1,87 @@
+[
+ {
+  "n": 1,
+  "name": "Title",
+  "purpose": "Open a deck or a chapter of one."
+ },
+ {
+  "n": 2,
+  "name": "Section divider",
+  "purpose": "Open a new part of the deck."
+ },
+ {
+  "n": 3,
+  "name": "Statement",
+  "purpose": "One argument, said plainly, with a photograph."
+ },
+ {
+  "n": 4,
+  "name": "Highlights",
+  "purpose": "Three or four figures that carry the page."
+ },
+ {
+  "n": 5,
+  "name": "Icon cards",
+  "purpose": "A set of capabilities, services or principles."
+ },
+ {
+  "n": 6,
+  "name": "Comparison",
+  "purpose": "Two or three options read side by side."
+ },
+ {
+  "n": 7,
+  "name": "Org chart \u00b7 reporting tree",
+  "purpose": "Who reports to whom, three levels at most."
+ },
+ {
+  "n": 8,
+  "name": "Org chart \u00b7 flat team band",
+  "purpose": "A team of peers, no hierarchy implied."
+ },
+ {
+  "n": 9,
+  "name": "Org chart \u00b7 group structure",
+  "purpose": "A holding company and the businesses under it."
+ },
+ {
+  "n": 10,
+  "name": "Process",
+  "purpose": "Stages that run in order, start to finish."
+ },
+ {
+  "n": 11,
+  "name": "Timeline",
+  "purpose": "Dates in order, with what happened at each."
+ },
+ {
+  "n": 12,
+  "name": "Infographic",
+  "purpose": "One visual in the middle, the parts around it."
+ },
+ {
+  "n": 13,
+  "name": "Image and specs",
+  "purpose": "One project or product, pictured and specified."
+ },
+ {
+  "n": 14,
+  "name": "Programme",
+  "purpose": "Work packages against a calendar."
+ },
+ {
+  "n": 15,
+  "name": "Table",
+  "purpose": "Rows and columns, where the detail has to be exact."
+ },
+ {
+  "n": 16,
+  "name": "Full-bleed image",
+  "purpose": "Let one photograph carry the page."
+ },
+ {
+  "n": 17,
+  "name": "Closing",
+  "purpose": "End the deck: the ask, and how to reach you."
+ }
+]

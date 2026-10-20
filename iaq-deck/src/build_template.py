@@ -651,7 +651,7 @@ slides.insert(0, f'''<div class="stage"><section class="slide">
   </div>
   <header class="shead">
     <h2 class="s-title">Master template</h2>
-    <p class="s-note">{'Seventeen layouts to build a new slide from. Copy the page you need and type into it.' if EMPTY_ONLY else 'Seventeen layouts to build a new slide from. Each one is shown filled, then empty with a line in every box.'}</p>
+    <p class="s-note">{'Every layout in the set. Copy the page you need and type into it.' if EMPTY_ONLY else 'Every layout in the set, shown filled and then empty with a line in every box.'}</p>
   </header>
   <div class="canvas fill">
     <div class="ix">{rows}</div>

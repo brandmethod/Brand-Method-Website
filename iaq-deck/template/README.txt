@@ -8,18 +8,26 @@ IAQ-Company-Deck-2026.pptx
     The presentation, all 67 pages of it, exactly as it stands. Nothing
     has been taken out and nothing has been restyled.
 
-    What is new is inside it. Twenty IAQ layouts now live in the slide
-    master, so a new page comes out of the deck itself:
+    Behind them, pages 68 to 88 are the master template: an index and
+    twenty empty layouts. They are HIDDEN, so they never appear when
+    you present or export to PDF, but they sit in the slide panel where
+    you can see them.
 
-      Home > New Slide > pick a layout by name.
+    TO ADD A NEW SLIDE
+      1. Scroll to the end and find the layout that fits.
+      2. Right-click it > Duplicate Slide.
+      3. Drag the copy to where it belongs in the deck.
+      4. Right-click it > Hide Slide, to un-hide it. (A copy of a
+         hidden page is hidden too, so this one click matters.)
+      5. Type over the guide text.
 
-    The list reads IAQ, Title; IAQ, Comparison; IAQ, Org chart; and so
-    on. Click a box and type. Position, size, typeface, weight and
-    colour are already set, so the new page sits with the other 67
-    without anyone styling it.
-
-    On the wrong layout? Home > Layout and pick another. The content
-    moves across into the new arrangement.
+    THE SAME LAYOUTS, THE POWERPOINT WAY
+    They are also wired into the slide master, so in PowerPoint you can
+    use Home > New Slide and pick one by name from the gallery: it
+    reads IAQ, Title; IAQ, Comparison; IAQ, Org chart and so on. In
+    Google Slides the same list is under Slide > Apply layout.
+    PowerPoint's own eleven starter layouts have been taken out of that
+    menu, since picking one of those is how a deck goes off-brand.
 
 ----------------------------------------------------------------------
 ALSO IN HERE

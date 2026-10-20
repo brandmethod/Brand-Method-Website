@@ -6,10 +6,14 @@ client can see what good looks like, once empty with a line in every box
 saying what belongs there. The pair is what gets handed over; the empty one
 is also what the PowerPoint template's layout is cut from.
 """
-import html, io, os
+import html, io, os, sys
 
 DECK = '/home/user/Brand-Method-Website/iaq-deck/'
-OUT = DECK + 'template.html'
+# the template itself is the empty set: a client opens it, copies the page they
+# need and types into it. The paired build keeps a worked example beside each
+# one, for reference rather than for use.
+EMPTY_ONLY = 'paired' not in sys.argv
+OUT = DECK + ('template.html' if not EMPTY_ONLY else 'template-empty.html')
 LEGAL = 'IAQ Technology International Sdn Bhd'
 
 esc = lambda t: html.escape(t, quote=False)
@@ -46,6 +50,12 @@ def layout(key, name, purpose, filled, empty):
     """One layout, shown filled and then empty."""
     index.append((len(index) + 1, name, purpose))
     opts = dict(name=name)
+    if EMPTY_ONLY:
+        page(empty['body'], twin=True, title=empty['title'], note=empty['note'],
+             foot=empty['foot'], dark=empty.get('dark', False),
+             cls=empty.get('cls', ''), bare=empty.get('bare', False),
+             fill=empty.get('fill', False), raw=empty.get('raw', False), **opts)
+        return
     page(filled['body'], twin=False, title=filled['title'], note=filled['note'],
          foot=filled['foot'], dark=filled.get('dark', False),
          cls=filled.get('cls', ''), bare=filled.get('bare', False),
@@ -560,8 +570,7 @@ slides.insert(0, f'''<div class="stage"><section class="slide">
   </div>
   <header class="shead">
     <h2 class="s-title">Master template</h2>
-    <p class="s-note">Seventeen layouts to build a new slide from. Each one is
-    shown filled, then empty with a line in every box.</p>
+    <p class="s-note">{'Seventeen layouts to build a new slide from. Copy the page you need and type into it.' if EMPTY_ONLY else 'Seventeen layouts to build a new slide from. Each one is shown filled, then empty with a line in every box.'}</p>
   </header>
   <div class="canvas fill">
     <div class="ix">{rows}</div>
@@ -603,7 +612,8 @@ io.open(OUT, 'w', encoding='utf-8').write(doc)
 # the layout names travel with the pages, so the PowerPoint template cannot
 # drift from what the examples show
 import json
-json.dump([{'n': n, 'name': name, 'purpose': purpose} for n, name, purpose in index],
-          io.open(DECK + 'template/layouts.json', 'w', encoding='utf-8'), indent=1)
+if not EMPTY_ONLY:
+    json.dump([{'n': n, 'name': name, 'purpose': purpose} for n, name, purpose in index],
+              io.open(DECK + 'template/layouts.json', 'w', encoding='utf-8'), indent=1)
 print('wrote %s - %d slides, %d layouts, %d KB'
       % (OUT, len(slides), len(index), len(doc.encode()) // 1024))

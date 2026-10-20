@@ -1,8 +1,8 @@
-"""One file carrying the layouts, for reviewing them in a browser."""
+"""One file carrying the master template, for reviewing it in a browser."""
 import base64, io, mimetypes, os, re
 
 D = '/home/user/Brand-Method-Website/iaq-deck/'
-html = io.open(D + 'template.html', encoding='utf-8').read()
+html = io.open(D + 'template-empty.html', encoding='utf-8').read()
 cache = {}
 
 

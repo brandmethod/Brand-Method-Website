@@ -1,29 +1,40 @@
 IAQ MASTER TEMPLATE 2026
-Seventeen layouts to build a new slide from.
+Seventeen slide layouts, empty and ready to type into.
 
 ----------------------------------------------------------------------
-WHAT IS IN HERE
+START HERE
 ----------------------------------------------------------------------
 
-IAQ-Master-Template-2026.potx          The template
-    Double-click it. PowerPoint opens a new, empty presentation set up
-    in IAQ's house style: the right slide size, the right typefaces and
-    colours, and seventeen layouts in the slide master.
+IAQ-Master-Template-2026.pptx
+    Open it. Eighteen pages: a contents page, then seventeen layouts,
+    each one empty with a line in every box saying what belongs there.
 
-    To add a page:  Home > New Slide > pick a layout by name.
-    To change one:  Home > Layout > pick another. The content moves
-                    across into the new arrangement.
+    To build a new slide:
+      1. Find the layout that fits what you are saying.
+      2. Right-click it in the slide panel and choose Duplicate Slide.
+      3. Type over the guide text. Delete the contents page when done.
 
-IAQ-Master-Template-Examples.pptx      What each layout is for
-    Every layout twice over: once filled with real IAQ content so you
-    can see what good looks like, once empty with a line in every box
-    saying what belongs there. Read it before you build. You can also
-    copy a filled page straight out of here and type over it.
+    Position, size, typeface, weight and colour are already set, so a
+    page stays on brand without anyone thinking about it.
 
-Fonts/                                 Install once
+----------------------------------------------------------------------
+ALSO IN HERE
+----------------------------------------------------------------------
+
+IAQ-Master-Template-2026.potx
+    The same seventeen layouts wired into the slide master. Open this
+    one instead if you would rather work with Home > New Slide and pick
+    a layout by name, the way PowerPoint templates normally behave.
+
+IAQ-Master-Template-Examples.pptx
+    Every layout filled with real IAQ content, beside the empty one.
+    Read it when you want to see what good looks like on a layout
+    before you build your own.
+
+Fonts/
     Poppins, Urbanist and League Spartan, nine faces. The typefaces are
-    embedded in the template, so Windows PowerPoint needs nothing. On a
-    Mac, install these once (select all, open, Install Font).
+    embedded in every file here, so Windows PowerPoint needs nothing.
+    On a Mac, install these once (select all, open, Install Font).
 
 ----------------------------------------------------------------------
 THE SEVENTEEN LAYOUTS
@@ -48,25 +59,18 @@ THE SEVENTEEN LAYOUTS
 17  Closing                     End the deck: the ask, and how to reach you
 
 ----------------------------------------------------------------------
-HOW TO WORK WITH IT
+WORKING WITH IT
 ----------------------------------------------------------------------
 
-Type into the boxes. Position, size, typeface, weight and colour are
-already set by the layout, so a page stays on brand without anyone
-thinking about it.
-
-Photographs are real pictures, not placeholders: right-click one and
-choose Change Picture to swap it. The frame and the crop stay put.
-
-Page numbers come from the master. Switch them on once, for the whole
-deck, under Insert > Header & Footer > Slide number > Apply to All.
+Photographs are real pictures: right-click one and choose Change
+Picture to swap it. The frame and the crop stay put.
 
 Need a row, a column, a card or a step more than the layout gives you?
 Copy one that is there and paste it. It keeps the type and the spacing.
 
 Do not restyle inside a page. If a layout is not working for what you
-are saying, you are probably on the wrong layout: Home > Layout and try
-another. That is what the seventeen are for.
+are saying, you are probably on the wrong layout. Pick another one.
+That is what the seventeen are for.
 
 ----------------------------------------------------------------------
 Brand Method for IAQ Technology International Sdn Bhd (200001031412)

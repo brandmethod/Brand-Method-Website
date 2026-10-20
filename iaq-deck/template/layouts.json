@@ -83,5 +83,20 @@
   "n": 17,
   "name": "Closing",
   "purpose": "End the deck: the ask, and how to reach you."
+ },
+ {
+  "n": 18,
+  "name": "Agenda",
+  "purpose": "What the deck covers, before it covers it."
+ },
+ {
+  "n": 19,
+  "name": "Quote",
+  "purpose": "Let a client, or the board, say it instead of you."
+ },
+ {
+  "n": 20,
+  "name": "Before and after",
+  "purpose": "Two states of the same thing, side by side."
  }
 ]

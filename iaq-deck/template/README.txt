@@ -1,30 +1,34 @@
-IAQ MASTER TEMPLATE 2026
-Seventeen slide layouts, empty and ready to type into.
+IAQ COMPANY DECK 2026, WITH THE MASTER TEMPLATE IN IT
 
 ----------------------------------------------------------------------
 START HERE
 ----------------------------------------------------------------------
 
-IAQ-Master-Template-2026.pptx
-    Open it. Eighteen pages: a contents page, then seventeen layouts,
-    each one empty with a line in every box saying what belongs there.
+IAQ-Company-Deck-2026.pptx
+    The presentation, all 67 pages of it, exactly as it stands. Nothing
+    has been taken out and nothing has been restyled.
 
-    To build a new slide:
-      1. Find the layout that fits what you are saying.
-      2. Right-click it in the slide panel and choose Duplicate Slide.
-      3. Type over the guide text. Delete the contents page when done.
+    What is new is inside it. Twenty IAQ layouts now live in the slide
+    master, so a new page comes out of the deck itself:
 
-    Position, size, typeface, weight and colour are already set, so a
-    page stays on brand without anyone thinking about it.
+      Home > New Slide > pick a layout by name.
+
+    The list reads IAQ, Title; IAQ, Comparison; IAQ, Org chart; and so
+    on. Click a box and type. Position, size, typeface, weight and
+    colour are already set, so the new page sits with the other 67
+    without anyone styling it.
+
+    On the wrong layout? Home > Layout and pick another. The content
+    moves across into the new arrangement.
 
 ----------------------------------------------------------------------
 ALSO IN HERE
 ----------------------------------------------------------------------
 
-IAQ-Master-Template-2026.potx
-    The same seventeen layouts wired into the slide master. Open this
-    one instead if you would rather work with Home > New Slide and pick
-    a layout by name, the way PowerPoint templates normally behave.
+IAQ-Master-Template-2026.pptx
+    The same twenty layouts as ordinary pages, empty. Useful if you
+    would rather duplicate a page than use New Slide, or if you want to
+    build something separate from the company deck.
 
 IAQ-Master-Template-Examples.pptx
     Every layout filled with real IAQ content, beside the empty one.
@@ -37,7 +41,7 @@ Fonts/
     On a Mac, install these once (select all, open, Install Font).
 
 ----------------------------------------------------------------------
-THE SEVENTEEN LAYOUTS
+THE TWENTY LAYOUTS
 ----------------------------------------------------------------------
 
 01  Title                       Open a deck or a chapter of one
@@ -57,6 +61,9 @@ THE SEVENTEEN LAYOUTS
 15  Table                       Rows and columns, where detail has to be exact
 16  Full-bleed image            Let one photograph carry the page
 17  Closing                     End the deck: the ask, and how to reach you
+18  Agenda                      What the deck covers, before it covers it
+19  Quote                       Let a client, or the board, say it instead
+20  Before and after            Two states of the same thing, side by side
 
 ----------------------------------------------------------------------
 WORKING WITH IT
@@ -70,7 +77,7 @@ Copy one that is there and paste it. It keeps the type and the spacing.
 
 Do not restyle inside a page. If a layout is not working for what you
 are saying, you are probably on the wrong layout. Pick another one.
-That is what the seventeen are for.
+That is what the twenty are for.
 
 ----------------------------------------------------------------------
 Brand Method for IAQ Technology International Sdn Bhd (200001031412)

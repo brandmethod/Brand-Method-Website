@@ -2360,6 +2360,61 @@ body.modal-open .nav,body.modal-open .progress{display:none}
 .slide.dark .spec-v,.slide.dark.twin .canvas .spec-v{color:var(--on-dark)}
 .org-ticks{width:100%}
 
+/* ---------------------------------------------------------------- agenda */
+.agn{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(26 * var(--u));
+  height:100%;min-height:0;align-content:start}
+.agn-c{display:grid;align-content:start;gap:calc(16 * var(--u));min-width:0}
+.agn-n{font-family:var(--display);font-weight:700;font-size:calc(52 * var(--u));
+  line-height:1;letter-spacing:-.04em;color:var(--signal)}
+.agn-h{font-family:var(--display);font-weight:600;font-size:calc(24 * var(--u));
+  line-height:1.15;letter-spacing:-.02em;margin:0;color:var(--ink);
+  padding-bottom:calc(14 * var(--u));
+  border-bottom:calc(2 * var(--u)) solid var(--signal)}
+.agn-l{list-style:none;margin:0;padding:0;display:grid;gap:calc(12 * var(--u))}
+.agn-l li{display:grid;grid-template-columns:calc(44 * var(--u)) 1fr;
+  column-gap:calc(14 * var(--u));align-items:baseline}
+.agn-k{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.16em;color:var(--signal);font-variant-numeric:tabular-nums}
+.agn-t{font-family:var(--sans);font-weight:500;font-size:calc(17 * var(--u));
+  line-height:1.3;color:var(--ink-2)}
+
+/* ---------------------------------------------------------------- quote */
+.qt{display:grid;grid-template-columns:1fr calc(560 * var(--u));
+  gap:calc(48 * var(--u));height:100%;min-height:0;align-items:center}
+.qt-tx{display:grid;gap:calc(28 * var(--u));align-content:center}
+.qt-mark{font-family:var(--display);font-weight:700;font-size:calc(90 * var(--u));
+  line-height:.6;color:var(--signal)}
+.qt-line{font-family:var(--display);font-weight:600;font-size:calc(38 * var(--u));
+  line-height:1.25;letter-spacing:-.02em;margin:0;color:var(--ink)}
+.slide.dark .qt-line{color:#fff}
+.qt-by{display:grid;gap:calc(5 * var(--u));padding-top:calc(20 * var(--u));
+  border-top:calc(2 * var(--u)) solid var(--signal)}
+.qt-n{font-family:var(--sans);font-weight:600;font-size:calc(18 * var(--u));color:var(--ink)}
+.slide.dark .qt-n{color:#fff}
+.qt-r{font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.qt-media{overflow:hidden;height:100%;background:var(--surface)}
+.qt-media img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ------------------------------------------------------------ before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:calc(26 * var(--u));
+  height:100%;min-height:0}
+.ba-c{display:grid;grid-template-rows:1fr auto;gap:calc(18 * var(--u));min-height:0}
+.ba-f{position:relative;overflow:hidden;background:var(--surface);min-height:0}
+.ba-f img{width:100%;height:100%;object-fit:cover;display:block}
+.ba-tag{position:absolute;left:0;top:0;background:var(--signal);color:#fff;
+  font-family:var(--tech);font-weight:600;font-size:calc(12.5 * var(--u));
+  letter-spacing:.2em;text-transform:uppercase;
+  padding:calc(9 * var(--u)) calc(16 * var(--u))}
+.ba-tag.alt{background:var(--ink)}
+.ba-tx{display:grid;gap:calc(7 * var(--u))}
+.ba-h{font-family:var(--display);font-weight:600;font-size:calc(22 * var(--u));
+  line-height:1.2;letter-spacing:-.02em;margin:0;color:var(--ink)}
+.ba-n{font-family:var(--sans);font-weight:400;font-size:calc(16 * var(--u));
+  line-height:1.45;margin:0;color:var(--muted)}
+/* type reversed out of a solid stays reversed out, empty page or not */
+.slide.twin .canvas .ba-tag,.slide.twin .canvas .gt-bar b{color:#fff}
+
 </style>
 </head>
 <body>
@@ -2375,7 +2430,7 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <p class="s-note">Seventeen layouts to build a new slide from. Each one is shown filled, then empty with a line in every box.</p>
   </header>
   <div class="canvas fill">
-    <div class="ix"><div class="ix-r"><span class="ix-n">01</span><span class="ix-h">Title</span><span class="ix-p">Open a deck or a chapter of one.</span></div><div class="ix-r"><span class="ix-n">02</span><span class="ix-h">Section divider</span><span class="ix-p">Open a new part of the deck.</span></div><div class="ix-r"><span class="ix-n">03</span><span class="ix-h">Statement</span><span class="ix-p">One argument, said plainly, with a photograph.</span></div><div class="ix-r"><span class="ix-n">04</span><span class="ix-h">Highlights</span><span class="ix-p">Three or four figures that carry the page.</span></div><div class="ix-r"><span class="ix-n">05</span><span class="ix-h">Icon cards</span><span class="ix-p">A set of capabilities, services or principles.</span></div><div class="ix-r"><span class="ix-n">06</span><span class="ix-h">Comparison</span><span class="ix-p">Two or three options read side by side.</span></div><div class="ix-r"><span class="ix-n">07</span><span class="ix-h">Org chart · reporting tree</span><span class="ix-p">Who reports to whom, three levels at most.</span></div><div class="ix-r"><span class="ix-n">08</span><span class="ix-h">Org chart · flat team band</span><span class="ix-p">A team of peers, no hierarchy implied.</span></div><div class="ix-r"><span class="ix-n">09</span><span class="ix-h">Org chart · group structure</span><span class="ix-p">A holding company and the businesses under it.</span></div><div class="ix-r"><span class="ix-n">10</span><span class="ix-h">Process</span><span class="ix-p">Stages that run in order, start to finish.</span></div><div class="ix-r"><span class="ix-n">11</span><span class="ix-h">Timeline</span><span class="ix-p">Dates in order, with what happened at each.</span></div><div class="ix-r"><span class="ix-n">12</span><span class="ix-h">Infographic</span><span class="ix-p">One visual in the middle, the parts around it.</span></div><div class="ix-r"><span class="ix-n">13</span><span class="ix-h">Image and specs</span><span class="ix-p">One project or product, pictured and specified.</span></div><div class="ix-r"><span class="ix-n">14</span><span class="ix-h">Programme</span><span class="ix-p">Work packages against a calendar.</span></div><div class="ix-r"><span class="ix-n">15</span><span class="ix-h">Table</span><span class="ix-p">Rows and columns, where the detail has to be exact.</span></div><div class="ix-r"><span class="ix-n">16</span><span class="ix-h">Full-bleed image</span><span class="ix-p">Let one photograph carry the page.</span></div><div class="ix-r"><span class="ix-n">17</span><span class="ix-h">Closing</span><span class="ix-p">End the deck: the ask, and how to reach you.</span></div></div>
+    <div class="ix"><div class="ix-r"><span class="ix-n">01</span><span class="ix-h">Title</span><span class="ix-p">Open a deck or a chapter of one.</span></div><div class="ix-r"><span class="ix-n">02</span><span class="ix-h">Section divider</span><span class="ix-p">Open a new part of the deck.</span></div><div class="ix-r"><span class="ix-n">03</span><span class="ix-h">Statement</span><span class="ix-p">One argument, said plainly, with a photograph.</span></div><div class="ix-r"><span class="ix-n">04</span><span class="ix-h">Highlights</span><span class="ix-p">Three or four figures that carry the page.</span></div><div class="ix-r"><span class="ix-n">05</span><span class="ix-h">Icon cards</span><span class="ix-p">A set of capabilities, services or principles.</span></div><div class="ix-r"><span class="ix-n">06</span><span class="ix-h">Comparison</span><span class="ix-p">Two or three options read side by side.</span></div><div class="ix-r"><span class="ix-n">07</span><span class="ix-h">Org chart · reporting tree</span><span class="ix-p">Who reports to whom, three levels at most.</span></div><div class="ix-r"><span class="ix-n">08</span><span class="ix-h">Org chart · flat team band</span><span class="ix-p">A team of peers, no hierarchy implied.</span></div><div class="ix-r"><span class="ix-n">09</span><span class="ix-h">Org chart · group structure</span><span class="ix-p">A holding company and the businesses under it.</span></div><div class="ix-r"><span class="ix-n">10</span><span class="ix-h">Process</span><span class="ix-p">Stages that run in order, start to finish.</span></div><div class="ix-r"><span class="ix-n">11</span><span class="ix-h">Timeline</span><span class="ix-p">Dates in order, with what happened at each.</span></div><div class="ix-r"><span class="ix-n">12</span><span class="ix-h">Infographic</span><span class="ix-p">One visual in the middle, the parts around it.</span></div><div class="ix-r"><span class="ix-n">13</span><span class="ix-h">Image and specs</span><span class="ix-p">One project or product, pictured and specified.</span></div><div class="ix-r"><span class="ix-n">14</span><span class="ix-h">Programme</span><span class="ix-p">Work packages against a calendar.</span></div><div class="ix-r"><span class="ix-n">15</span><span class="ix-h">Table</span><span class="ix-p">Rows and columns, where the detail has to be exact.</span></div><div class="ix-r"><span class="ix-n">16</span><span class="ix-h">Full-bleed image</span><span class="ix-p">Let one photograph carry the page.</span></div><div class="ix-r"><span class="ix-n">17</span><span class="ix-h">Closing</span><span class="ix-p">End the deck: the ask, and how to reach you.</span></div><div class="ix-r"><span class="ix-n">18</span><span class="ix-h">Agenda</span><span class="ix-p">What the deck covers, before it covers it.</span></div><div class="ix-r"><span class="ix-n">19</span><span class="ix-h">Quote</span><span class="ix-p">Let a client, or the board, say it instead of you.</span></div><div class="ix-r"><span class="ix-n">20</span><span class="ix-h">Before and after</span><span class="ix-p">Two states of the same thing, side by side.</span></div></div>
   </div>
   <footer class="botline">
     <div class="bl-l"><span class="folio">00</span></div>
@@ -2979,6 +3034,108 @@ body.modal-open .nav,body.modal-open .progress{display:none}
     <div class="bl-l"><span class="folio">34</span></div>
     <div class="bl-c"></div>
     <div class="bl-r">Closing</div>
+  </footer>
+</section></div>
+<div class="stage"><section class="slide ">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">18</span><span class="tl-part">Part 01 · The Company</span></div>
+    <div class="tl-r"><span class="mark" role="img"
+      aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">What follows</h2>
+      <p class="s-note">Three parts, and what each one answers.</p>
+    </header>
+  <div class="canvas fill"><div class="agn"><div class="agn-c"><span class="agn-n">01</span><h3 class="agn-h">The Company</h3><ul class="agn-l"><li><span class="agn-k">01.1</span><span class="agn-t">Who we are and what we build</span></li><li><span class="agn-k">01.2</span><span class="agn-t">The numbers behind it</span></li><li><span class="agn-k">01.3</span><span class="agn-t">Thirty-one years of milestones</span></li><li><span class="agn-k">01.4</span><span class="agn-t">Where we work</span></li></ul></div><div class="agn-c"><span class="agn-n">02</span><h3 class="agn-h">Project References</h3><ul class="agn-l"><li><span class="agn-k">02.1</span><span class="agn-t">How the portfolio breaks down</span></li><li><span class="agn-k">02.2</span><span class="agn-t">Semiconductor and display</span></li><li><span class="agn-k">02.3</span><span class="agn-t">Data centre and EV battery</span></li><li><span class="agn-k">02.4</span><span class="agn-t">The full reference list</span></li></ul></div><div class="agn-c"><span class="agn-n">03</span><h3 class="agn-h">Safety, Quality and ESG</h3><ul class="agn-l"><li><span class="agn-k">03.1</span><span class="agn-t">The commitments we hold</span></li><li><span class="agn-k">03.2</span><span class="agn-t">Certifications and licences</span></li><li><span class="agn-k">03.3</span><span class="agn-t">Builder of the Year 2024</span></li><li><span class="agn-k">03.4</span><span class="agn-t">How we are assessed</span></li></ul></div></div></div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">35</span></div>
+    <div class="bl-c"></div>
+    <div class="bl-r">Agenda</div>
+  </footer>
+</section></div>
+<div class="stage"><section class="slide twin ">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">18</span><span class="tl-part">Section name</span></div>
+    <div class="tl-r"><span class="mark" role="img"
+      aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Page title</h2>
+      <p class="s-note">One line under it saying what the page is for.</p>
+    </header>
+  <div class="canvas fill"><div class="agn"><div class="agn-c"><span class="agn-n">01</span><h3 class="agn-h">Part name</h3><ul class="agn-l"><li><span class="agn-k">01.1</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">01.2</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">01.3</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">01.4</span><span class="agn-t">What this section answers</span></li></ul></div><div class="agn-c"><span class="agn-n">02</span><h3 class="agn-h">Part name</h3><ul class="agn-l"><li><span class="agn-k">02.1</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">02.2</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">02.3</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">02.4</span><span class="agn-t">What this section answers</span></li></ul></div><div class="agn-c"><span class="agn-n">03</span><h3 class="agn-h">Part name</h3><ul class="agn-l"><li><span class="agn-k">03.1</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">03.2</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">03.3</span><span class="agn-t">What this section answers</span></li><li><span class="agn-k">03.4</span><span class="agn-t">What this section answers</span></li></ul></div></div></div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">36</span></div>
+    <div class="bl-c"></div>
+    <div class="bl-r">Agenda</div>
+  </footer>
+</section></div>
+<div class="stage"><section class="slide ">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">19</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><span class="mark" role="img"
+      aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">In their words</h2>
+      <p class="s-note">What the people who hired us say about it.</p>
+    </header>
+  <div class="canvas fill"><div class="qt"><div class="qt-tx"><span class="qt-mark">&ldquo;</span><p class="qt-line">They self-performed the packages that usually slip. That is the whole reason the fab opened on time.</p><div class="qt-by"><span class="qt-n">Name of the person</span><span class="qt-r">Role · client organisation</span></div></div><div class="qt-media"><img src="img/refs-crew.jpg" alt=""></div></div></div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">37</span></div>
+    <div class="bl-c"></div>
+    <div class="bl-r">Quote</div>
+  </footer>
+</section></div>
+<div class="stage"><section class="slide twin ">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">19</span><span class="tl-part">Section name</span></div>
+    <div class="tl-r"><span class="mark" role="img"
+      aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Page title</h2>
+      <p class="s-note">One line under it saying what the page is for.</p>
+    </header>
+  <div class="canvas fill"><div class="qt"><div class="qt-tx"><span class="qt-mark">&ldquo;</span><p class="qt-line">The quotation, two lines at most. Cut it back until only the part worth repeating is left.</p><div class="qt-by"><span class="qt-n">Name of the person</span><span class="qt-r">Role · organisation</span></div></div><div class="qt-media"><img src="img/refs-crew.jpg" alt=""></div></div></div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">38</span></div>
+    <div class="bl-c"></div>
+    <div class="bl-r">Quote</div>
+  </footer>
+</section></div>
+<div class="stage"><section class="slide ">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">20</span><span class="tl-part">Part 02 · Project References</span></div>
+    <div class="tl-r"><span class="mark" role="img"
+      aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">What changed</h2>
+      <p class="s-note">The same hall, before handover and in production.</p>
+    </header>
+  <div class="canvas fill"><div class="ba"><div class="ba-c"><div class="ba-f"><span class="ba-tag alt">Before</span><img src="img/about-facility.jpg" alt=""></div><div class="ba-tx"><h3 class="ba-h">Shell and core</h3><p class="ba-n">Structure complete, services roughed in, no classification yet.</p></div></div><div class="ba-c"><div class="ba-f"><span class="ba-tag">After</span><img src="img/glance-cleanroom.jpg" alt=""></div><div class="ba-tx"><h3 class="ba-h">ISO 5 in production</h3><p class="ba-n">Classified, commissioned and handed over to the client’s team.</p></div></div></div></div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">39</span></div>
+    <div class="bl-c"></div>
+    <div class="bl-r">Before and after</div>
+  </footer>
+</section></div>
+<div class="stage"><section class="slide twin ">
+  <div class="topline">
+    <div class="tl-l"><span class="tab">20</span><span class="tl-part">Section name</span></div>
+    <div class="tl-r"><span class="mark" role="img"
+      aria-label="IAQ: your total facility solutions provider"></span></div>
+  </div>
+    <header class="shead">
+      <h2 class="s-title">Page title</h2>
+      <p class="s-note">One line under it saying what the page is for.</p>
+    </header>
+  <div class="canvas fill"><div class="ba"><div class="ba-c"><div class="ba-f"><span class="ba-tag alt">Before</span><img src="img/about-facility.jpg" alt=""></div><div class="ba-tx"><h3 class="ba-h">What it was</h3><p class="ba-n">One or two sentences on the state it started in.</p></div></div><div class="ba-c"><div class="ba-f"><span class="ba-tag">After</span><img src="img/glance-cleanroom.jpg" alt=""></div><div class="ba-tx"><h3 class="ba-h">What it became</h3><p class="ba-n">One or two sentences on the state it ended in.</p></div></div></div></div>
+  <footer class="botline">
+    <div class="bl-l"><span class="folio">40</span></div>
+    <div class="bl-c"></div>
+    <div class="bl-r">Before and after</div>
   </footer>
 </section></div>
 </div>

@@ -556,6 +556,87 @@ layout('closing', 'Closing', 'End the deck: the ask, and how to reach you.',
                     [('Label', 'The detail'), ('Label', 'The detail'),
                      ('Label', 'The detail'), ('Label', 'The detail')])))
 
+# ============================================================ 18 agenda
+def agenda(cols):
+    out = ''
+    for n, head, items in cols:
+        li = ''.join(f'<li><span class="agn-k">{k}</span>'
+                     f'<span class="agn-t">{t}</span></li>' for k, t in items)
+        out += (f'<div class="agn-c"><span class="agn-n">{n}</span>'
+                f'<h3 class="agn-h">{head}</h3><ul class="agn-l">{li}</ul></div>')
+    return f'<div class="agn">{out}</div>'
+
+layout('agenda', 'Agenda', 'What the deck covers, before it covers it.',
+  dict(title='What follows', note='Three parts, and what each one answers.',
+       foot='Part 01 ' + G + ' The Company', fill=True,
+       body=agenda([('01', 'The Company',
+                     [('01.1', 'Who we are and what we build'),
+                      ('01.2', 'The numbers behind it'),
+                      ('01.3', 'Thirty-one years of milestones'),
+                      ('01.4', 'Where we work')]),
+                    ('02', 'Project References',
+                     [('02.1', 'How the portfolio breaks down'),
+                      ('02.2', 'Semiconductor and display'),
+                      ('02.3', 'Data centre and EV battery'),
+                      ('02.4', 'The full reference list')]),
+                    ('03', 'Safety, Quality and ESG',
+                     [('03.1', 'The commitments we hold'),
+                      ('03.2', 'Certifications and licences'),
+                      ('03.3', 'Builder of the Year 2024'),
+                      ('03.4', 'How we are assessed')])])),
+  dict(title='Page title', note='One line under it saying what the page is for.',
+       foot='Section name', fill=True,
+       body=agenda([(f'0{i}', 'Part name',
+                     [(f'0{i}.{k}', 'What this section answers') for k in range(1, 5)])
+                    for i in (1, 2, 3)])))
+
+# ============================================================ 19 quote
+def quote(line, who, role, img):
+    return (f'<div class="qt"><div class="qt-tx"><span class="qt-mark">&ldquo;</span>'
+            f'<p class="qt-line">{line}</p>'
+            f'<div class="qt-by"><span class="qt-n">{who}</span>'
+            f'<span class="qt-r">{role}</span></div></div>'
+            f'<div class="qt-media"><img src="{img}" alt=""></div></div>')
+
+layout('quote', 'Quote', 'Let a client, or the board, say it instead of you.',
+  dict(title='In their words', note='What the people who hired us say about it.',
+       foot='Part 02 ' + G + ' Project References', fill=True,
+       body=quote('They self-performed the packages that usually slip. '
+                  'That is the whole reason the fab opened on time.',
+                  'Name of the person', 'Role ' + G + ' client organisation',
+                  'img/refs-crew.jpg')),
+  dict(title='Page title', note='One line under it saying what the page is for.',
+       foot='Section name', fill=True,
+       body=quote('The quotation, two lines at most. Cut it back until only the '
+                  'part worth repeating is left.',
+                  'Name of the person', 'Role ' + G + ' organisation',
+                  'img/refs-crew.jpg')))
+
+# ============================================================ 20 before/after
+def beforeafter(a, b):
+    out = ''
+    for tag, alt, img, head, note in (a, b):
+        out += (f'<div class="ba-c"><div class="ba-f">'
+                f'<span class="ba-tag{" alt" if alt else ""}">{tag}</span>'
+                f'<img src="{img}" alt=""></div>'
+                f'<div class="ba-tx"><h3 class="ba-h">{head}</h3>'
+                f'<p class="ba-n">{note}</p></div></div>')
+    return f'<div class="ba">{out}</div>'
+
+layout('beforeafter', 'Before and after', 'Two states of the same thing, side by side.',
+  dict(title='What changed', note='The same hall, before handover and in production.',
+       foot='Part 02 ' + G + ' Project References', fill=True,
+       body=beforeafter(('Before', True, 'img/about-facility.jpg', 'Shell and core',
+                         'Structure complete, services roughed in, no classification yet.'),
+                        ('After', False, 'img/glance-cleanroom.jpg', 'ISO 5 in production',
+                         'Classified, commissioned and handed over to the client\u2019s team.'))),
+  dict(title='Page title', note='One line under it saying what the page is for.',
+       foot='Section name', fill=True,
+       body=beforeafter(('Before', True, 'img/about-facility.jpg', 'What it was',
+                         'One or two sentences on the state it started in.'),
+                        ('After', False, 'img/glance-cleanroom.jpg', 'What it became',
+                         'One or two sentences on the state it ended in.'))))
+
 # ============================================================ contents, front
 rows = ''.join(
     f'<div class="ix-r"><span class="ix-n">{n:02d}</span>'
